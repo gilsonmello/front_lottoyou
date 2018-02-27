@@ -1,256 +1,264 @@
 <template>
-	<div class="container-fluid" style="background: linear-gradient(90deg,#fafafa,#f2f4f2); border-bottom: 1px solid #d9deda">  
-	    <div class="container" style="position: initial;">
-	        <div class="row">
-	            <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-	                <img class="img-responsive" src="//www.lottoland.com/cms/5846d49ce4b0d02cb5922547/18_icon@2x.png">
+	<footer>
+		<div class="container-fluid" style="background: linear-gradient(90deg,#fafafa,#f2f4f2); border-bottom: 1px solid #d9deda">  
+		    <div class="container" style="position: initial;">
+		        <div class="row">
+		            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d49ce4b0d02cb5922547/18_icon@2x.png">
+		            </div>
+		            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d4a6e4b0d02cb5922549/eu_icon@2x.png">
+		            </div>
+		            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+		                <a href="#">
+		                    <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d4afe4b0d02cb592254d/gibraltar-gov_icon@2x.png">
+		                </a>
+		            </div>
+		            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+		                <a href="#">
+		                    <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d4c2e4b0d02cb5922550/gbga_icon@2x.png">
+		                </a>
+		            </div>
+		        </div>
+		    </div> 
+		</div>
+		<div class="container" style="position: initial; background-color: white">
+		    <div class="row">
+	            <div class="col-lg-3 col-md-3 col-12 col-sm-6">
+	                <h3 class="page-header">
+	                    Loterias
+	                </h3>
+	                <ul class="list-group">
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Resultados de loterias
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Prêmios
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Comparação
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Ganhos e pagamentos
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Promoções
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Aplicativo Lottoland
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Loteria de Natal
+	                        </a>
+	                    </li>
+	                </ul>               
 	            </div>
-	            <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-	                <img class="img-responsive" src="//www.lottoland.com/cms/5846d4a6e4b0d02cb5922549/eu_icon@2x.png">
+	            <div class="col-lg-3 col-md-3 col-12 col-sm-6">
+	                <h3 class="page-header">
+	                    Informações
+	                </h3>
+	                <ul class="list-group">
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Ajuda
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Proteção do Jogador
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Privacidade
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Termos e Condições
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Sobre a Lottoland
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Pergunte
+	                        </a>
+	                    </li>
+	                </ul>               
 	            </div>
-	            <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-	                <a href="#">
-	                    <img class="img-responsive" src="//www.lottoland.com/cms/5846d4afe4b0d02cb592254d/gibraltar-gov_icon@2x.png">
-	                </a>
+	            <div class="col-lg-3 col-md-3 col-12 col-sm-6">
+	                <h3 class="page-header">
+	                    Os nossos sites
+	                </h3>
+	                <ul class="list-group">
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Lottoland.hu
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Lottoland.pt
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Lottoland.com.au
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Lottoland.ie
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Lottoland.at
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Lottoland.se
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Lottoland.co.uk
+	                        </a>
+	                    </li>
+	                </ul>               
 	            </div>
-	            <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-	                <a href="#">
-	                    <img class="img-responsive" src="//www.lottoland.com/cms/5846d4c2e4b0d02cb5922550/gbga_icon@2x.png">
-	                </a>
+	            <div class="col-lg-3 col-md-3 col-12 col-sm-6">
+	                <h3 class="page-header">
+	                    Idioma
+	                </h3>
+	                <ul class="list-group">
+	                    <li class="list-group-item">
+	                        <a @click.prevent="redirect" href="/#/br" class="color-green">
+	                            Português (Brasil)
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Deutsch
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a @click.prevent="redirect" href="/#/" class="color-green">
+	                            English
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Slovak
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Polski
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Svenska
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Português
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            České
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            English (Canada)
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-green">
+	                            Deutsch (Schweiz)
+	                        </a>
+	                    </li>
+	                </ul>               
 	            </div>
 	        </div>
-	    </div> 
-	    <br>
-	    <div class="container-fluid no-padding">
-    <div class="container" style="position: initial;">
-        
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-xs-12 col-sm-3">
-                <h3 class="page-header">
-                    Loterias
-                </h3>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Resultados de loterias
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Prêmios
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Comparação
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Ganhos e pagamentos
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Promoções
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Aplicativo Lottoland
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Loteria de Natal
-                        </a>
-                    </li>
-                </ul>               
-            </div>
-            <div class="col-lg-3 col-md-3 col-xs-12 col-sm-3">
-                <h3 class="page-header">
-                    Informações
-                </h3>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Ajuda
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Proteção do Jogador
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Privacidade
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Termos e Condições
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Sobre a Lottoland
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Pergunte
-                        </a>
-                    </li>
-                </ul>               
-            </div>
-            <div class="col-lg-3 col-md-3 col-xs-12 col-sm-3">
-                <h3 class="page-header">
-                    Os nossos sites
-                </h3>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Lottoland.hu
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Lottoland.pt
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Lottoland.com.au
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Lottoland.ie
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Lottoland.at
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Lottoland.se
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Lottoland.co.uk
-                        </a>
-                    </li>
-                </ul>               
-            </div>
-            <div class="col-lg-3 col-md-3 col-xs-12 col-sm-3">
-                <h3 class="page-header">
-                    Idioma
-                </h3>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Português (Brasil)
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Deutsch
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            English
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Slovak
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Polski
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Svenska
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Português
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            České
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            English (Canada)
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="color-green">
-                            Deutsch (Schweiz)
-                        </a>
-                    </li>
-                </ul>               
-            </div>
-        </div>
-        <br>
-        <div class="row" style="border: 1px solid black">
-            <div class="col-lg-3 col-xs-6 col-md-3 col-sm-3">
-                <img class="img-responsive" src="//www.lottoland.com/cms/5846d41ce4b0d02cb5922535/boletol_logo@2x.png">
-            </div>
-            <div class="col-lg-3 col-xs-6 col-md-3 col-sm-3">
-                <img class="img-responsive" src="//www.lottoland.com/cms/5846d427e4b0d02cb592253a/transferencia_bancaria_local_logo@2x.png">
-            </div>
-            <div class="col-lg-3 col-xs-6 col-md-3 col-sm-3">
-                <img class="img-responsive" src="//www.lottoland.com/cms/596c86890eb35860f76742c5/visa_logo@2x.png">
-            </div>
-            <div class="col-lg-3 col-xs-6 col-md-3 col-sm-3">
-                <img class="img-responsive" src="//www.lottoland.com/cms/596c86940eb35860f76742c7/mastercard_logo@2x.png">
-            </div>
-        </div>
-    </div>
-</div>
-<br>
-<footer class="container" style="position: initial;">
-    <div class="row" style="">
-        <div class="col-md-3 col-sm-3 col-lg-3 img-footer">
-            <img src="//www.lottoland.com/cms/5846d442e4b0d02cb592253d/webutation_icon@1x.png"  class="footer-item" width="65" height="65">
-        </div>
-        <div class="col-md-3 col-sm-3 col-lg-3 img-footer">
-            <img src="//www.lottoland.com/cms/54f8a9e7e4b0deabcfd57249/br_trustsign_ekomi.png" class="footer-item">
-        </div>
-        <div class="col-md-3 col-sm-3 col-lg-3 img-footer">
-            <img src="//www.lottoland.com/cms/54f8aa32e4b0deabcfd58079/br_trustsign_webshop.png"  class="footer-item">
-        </div>
-        <div class="col-md-3 col-sm-3 col-lg-3 img-footer">
-            <img src="//www.lottoland.com/cms/59f998ed0eb35873b6b46d98/EGR-Power-50-Rankings-Twitter-banner-768x384.jpg" width="384" height="192"  class="footer-item">
-        </div>
+	        <br>
+	        <div class="row" style="border: 1px solid black">
+	            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+	                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d41ce4b0d02cb5922535/boletol_logo@2x.png">
+	            </div>
+	            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+	                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d427e4b0d02cb592253a/transferencia_bancaria_local_logo@2x.png">
+	            </div>
+	            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+	                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/596c86890eb35860f76742c5/visa_logo@2x.png">
+	            </div>
+	            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+	                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/596c86940eb35860f76742c7/mastercard_logo@2x.png">
+	            </div>
+	        </div>
+		</div>
+		<br>
+		<div class="container-fluid footer-plataform-container" style="background: linear-gradient(90deg,#fafafa,#f2f4f2)">
+			<br>
+			<div class="container no-padding">
+				<p class="text-center"><a href="/br" class="l-link-basic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570 180">
+				<path id="svg_1" d="m262.200317,130.5c-28.300049,19.5 -64.199951,27.900024 -113.200562,27.900024c-48.799438,0 -84.899048,-8.400024 -113.200195,-27.900024c-4.899323,-3.299988 -9.899323,-0.200012 -4.698853,6.099976c22,24.200012 67.099609,42.5 117.799561,42.5s95.899414,-18.299988 117.799774,-42.5c5.399445,-6.299988 0.399445,-9.399963 -4.499725,-6.099976zm-205,-21.099976c2.200043,-0.400024 3,-0.700012 3,-2.700012l0,-10.299988c0,-1.5 -1.200562,-2.799988 -2.799957,-2.799988l-22.500122,0c-9.100677,0 -12.699921,-2.299988 -12.699921,-12.200012l0,-76.5c0,-1.5 -1.200562,-2.799988 -2.80127,-2.799988l-15.19873,0c-1.500244,0 -2.80127,1.200011 -2.80127,2.799988l0,76.5c0,26.599976 9.80127,29.299988 35.600708,29.299988c7.900482,-0.099976 15.799805,-0.299988 20.200562,-1.299988z"></path>
+				<path id="svg_2" d="m98.699951,110.600037c23.500366,0 35.700439,-15.099976 35.700439,-35.5l0,-11.5c0,-20.400024 -12.200073,-35.5 -35.700439,-35.5s-35.700195,15.099976 -35.700195,35.5l0,11.5c0,20.399963 12.300049,35.5 35.700195,35.5zm-16,-47c0,-11.700012 5.599854,-19.299988 15.900269,-19.299988c10.500488,0 15.900269,7.5 15.900269,19.299988l0,11.5c0,11.700012 -5.60022,19.299988 -15.900269,19.299988c-10.499512,0 -15.900269,-7.5 -15.900269,-19.299988l0,-11.5z"></path>
+				<path id="svg_3" d="m139.999756,43.200012l6.500732,0l0,44.700012c0,19.099976 6.899902,22.599976 23.700439,22.599976c3.299561,0 7.799438,-0.200012 10.099228,-1c2.200333,-0.5 2.500015,-1 2.700211,-1.899963c0,-0.200012 0.099731,-0.5 0.099731,-0.700012l0,-8.299988c0,-1.5 -1.199844,-2.800049 -2.799942,-2.800049l-8.299789,0c-5.299683,0 -5.799438,-0.899963 -5.799438,-8l0,-44.599976l25.09935,0l0,44.700012c0,19.099976 6.90065,22.599976 23.700089,22.599976c3.299927,0 7.799805,-0.200012 10.100708,-1c2.199219,-0.5 2.49939,-1 2.699097,-1.899963c0,-0.200012 0.100098,-0.5 0.100098,-0.700012l0,-8.299988c0,-1.5 -1.199585,-2.800049 -2.799194,-2.800049l-8.300903,0c-5.299683,0 -5.799805,-0.899963 -5.799805,-8l0,-44.599976l10.400391,0c1.499512,0 2.800171,-1.200012 2.800171,-2.799988l0,-8.600037c0,-1.5 -1.200562,-2.799988 -2.800171,-2.799988l-10.199829,0l0,-19.899963c0,-1.5 -1,-2.100037 -2.300674,-2.100037l-0.499512,0l-13.800278,2.200012c-1.600098,0.200012 -3,1.200012 -3,2.799988l0,17l-25.099976,0l0,-20c0,-1.5 -1,-2.099975 -2.299561,-2.099975l-0.600601,0l-13.800766,2.200012c-1.599243,0.200012 -3,1.200012 -3,2.799989l0,16.999999l-6.499756,0c-1.500244,0 -2.799316,1.200012 -2.799316,2.799988l0,8.600037c-0.300171,1.599976 0.899902,2.899963 2.499268,2.899963z"></path>
+				<path id="svg_4" d="m266.600464,27.900024c-23.500977,0 -35.700195,15.099976 -35.700195,35.5l0,11.5c0,20.400024 12.199219,35.5 35.700195,35.5c23.499084,0 35.699341,-15.099976 35.699341,-35.5l0,-11.5c-0.099487,-20.5 -12.299866,-35.5 -35.699341,-35.5zm16,46.899963c0,11.700012 -5.600464,19.299988 -15.900421,19.299988c-10.499725,0 -15.90036,-7.5 -15.90036,-19.299988l0,-11.5c0,-11.700012 5.600708,-19.299988 15.90036,-19.299988c10.500275,0 15.900421,7.5 15.900421,19.299988l0,11.5z"></path>
+				<path id="svg_5" d="m329.90033,2l-14.499939,0c-1.500061,0 -2.700256,1.200013 -2.700256,2.799987l0,101.799988c0,1.5 1.200195,2.800049 2.700256,2.800049l14.499939,0c1.500061,0 2.699402,-1.200012 2.699402,-2.800049l0,-101.699951c0,-1.5 -1.299805,-2.900025 -2.699402,-2.900025z"></path>
+				<path id="svg_6" d="m375.799805,28.100037c-10.299805,0 -18.899414,1.099976 -25,2.200012c-2,0.399963 -2.799805,1.5 -2.799805,3l0,9.099976c0,2 1.200256,2.5 2.700195,2.5l0.700256,0c4.899475,-0.599976 14.799805,-1.099976 24.299744,-1.099976c8.799805,0 13.099609,2.200012 13.099609,11.5l0,6.299988l-9.399353,0c-25.900452,0 -36.400452,8.400024 -36.400452,24.700012l0,0.599976c0,19.299988 13.5,23.799988 25.799805,23.799988c7.200226,0 14.200226,-2.199951 21,-6.299988l0,2.200012c0,1.599976 1.400452,2.799988 3,2.799988l12.700195,0c1.600647,0 3,-1.200012 3,-2.799988l0,-51.400024c0.09967,-18.200012 -11.599609,-27.099976 -32.700195,-27.099976zm13.100586,63.5c-4.30072,2.200012 -9.90036,4 -15.200195,4c-7.400269,0 -10.700165,-1.900024 -10.700165,-8.900024l0,-0.599976c0,-8 3,-12.099976 16.59964,-12.099976l9.40036,0l-0.09964,17.599976l0,0z"></path>
+				<path id="svg_7" d="m565.200256,2l-13.700256,0c-1.601563,0 -3,1.200013 -3,2.799987l0,24.100037c-5.601563,-0.700012 -10.700195,-1 -14.299744,-1c-24,0 -35.700195,13.599976 -35.700195,35.799988l0,11c0,22.200012 11.600586,35.799988 35.700195,35.799988c9.499939,0 20.799866,-1.5 30,-3.700012c3.499939,-0.899963 4.099609,-1.700012 4.099609,-3.799988l0,-98.200013c-0.099609,-1.399963 -1.401428,-2.799987 -3.099609,-2.799987zm-16.700256,92.200012c-2.799805,0.599976 -8.90033,1 -14.299744,1c-12.799866,0 -15.900391,-8.599976 -15.900391,-20.400024l0,-11c0,-11.699951 3.100525,-20.399963 15.900391,-20.399963c3.599548,0 10.099609,0.399963 14.299744,1l0,49.799988zm-86.299744,-66.099976c-9.900391,0 -15.600586,1.599976 -24.200256,6.799988l0,-3c0,-1.599976 -1.40033,-2.799988 -3,-2.799988l-13,0c-1.599548,0 -3,1.200012 -3,2.799988l0,74.600037c0,1.599976 1.400452,3 3,3l13.700195,0c1.599731,0 3,-1.5 3,-3l0,-57.300049c6.299805,-3.099976 11.700195,-5.199951 16.799866,-5.199951c11.499939,0 12.700195,3.599976 12.700195,15.899963l0,46.400024c0,1.599976 1.399414,3 3,3l13.799744,0c1.59967,0 3,-1.5 3,-3l0,-46.400024c0,-18 -4.299835,-31.799988 -25.799744,-31.799988z"></path>
+				</svg></a>
+				</p>
 
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <p>
-                A Lottoland.com é administrada pela Lottoland, em nome da EU Lotto Limited.
-                EU Lotto está autorizada a oferecer serviços de intermediação.<br>
-                EU Lotto não é associada ou afiliada a nenhuma operadora de loterias oficiais. Sede no endereço: Suite A, Ocean Village Promenade, Ocean Village, Gibraltar, GX11 1AA <br/>
-                Jogue nas maiores loterias online com a lottoland.com/br
-            </p>
-        </div>
-    </div>
-    <p>&copy; Company 2013</p>
-</footer>
-	</div>
+				<ul class="footer-signs">
+					<li class="footer-signs-item">
+						<img src="//www.lottoland.com/cms/5846d442e4b0d02cb592253d/webutation_icon@1x.png" width="65" height="65">
+					</li>
+					<li class="footer-signs-item">
+						<img src="//www.lottoland.com/cms/54f8a9e7e4b0deabcfd57249/br_trustsign_ekomi.png">
+					</li>
+					<li class="footer-signs-item">
+						<img src="//www.lottoland.com/cms/54f8aa32e4b0deabcfd58079/br_trustsign_webshop.png">
+					</li>
+					<li class="footer-signs-item">
+						<img src="//www.lottoland.com/cms/59f998ed0eb35873b6b46d98/EGR-Power-50-Rankings-Twitter-banner-768x384.jpg" class="img-fluid">
+					</li>
+				</ul>
+				<p></p>
+				<p class="text-center">
+					<br>A Lottoland.com é administrada pela Lottoland, em nome da EU Lotto Limited.
+					EU Lotto está autorizada a oferecer serviços de intermediação.<br>
+
+					<br> EU Lotto não é associada ou afiliada a nenhuma operadora de loterias oficiais. Sede no endereço: Suite A, Ocean Village Promenade, Ocean Village, Gibraltar, GX11 1AA <br><br>
+					Jogue nas maiores loterias online com a lottoland.com/br
+				</p>
+			</div>
+		</div>
+	</footer>
 </template>
 
 <script>
@@ -261,7 +269,11 @@
 			}
 		},
 		methods: {
-
+			redirect: function(el) {
+				window.location.href = el.target.getAttribute('href')
+				window.location.reload();
+				
+			}
 		},
 		created: function() {
 
@@ -279,5 +291,31 @@
 
     .color-green:hover{
         color: #3f6304
+    }
+
+    .footer-signs {
+    	width: 100%;
+    	list-style: none;
+    	text-align: center;
+    }
+
+    .footer-signs .footer-signs-item {
+    	margin: 0 7px;
+    	display: inline-block;
+    	max-width: 112px;
+    }
+
+    svg {
+    	fill: #9aa89c;
+	    stroke: #9aa89c;
+	    vertical-align: text-bottom;
+	    height: 32px;
+    }
+
+    .footer-plataform-container p{
+    	margin-bottom: 36px;
+	    font-size: 12px;
+	    color: #9aa89c;
+	    margin: 0 0 10px;
     }
 </style>

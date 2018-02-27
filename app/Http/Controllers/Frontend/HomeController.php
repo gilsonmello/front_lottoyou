@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use File;
 
 class HomeController extends Controller
 {
@@ -12,9 +13,42 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $loc = $request->session()->get('locale');
+
+        if(is_null($loc)){
+            \Session::put('locale', 'en');
+        }
+
+        if((isset($_GET['locale']) && !empty($_GET['locale']))){
+            \Session::put('locale', $_GET['locale']);
+        }
+        
         return view('layouts.frontend.app');
+    }
+
+    public function getTranslations($locale = null) {
+        // copy all translations from /resources/lang/CURRENT_LOCALE/* to global JS variable
+        switch ($locale) {
+            case 'br':
+                $locale = 'pt_BR';
+                break;
+            case 'es': {
+                $locale = 'es_ES';
+            }
+            default:
+                $locale = 'en';
+                break;
+        }
+        $lang_files = File::files(resource_path() . '/lang/' . $locale);
+        $trans = [];
+        foreach ($lang_files as $f) {
+            $filename = pathinfo($f)['filename'];
+            $trans[$filename] = trans($filename);
+        }
+        return response()->json($trans, 200);
     }
 
     /**

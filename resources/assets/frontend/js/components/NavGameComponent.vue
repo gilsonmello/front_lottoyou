@@ -4,7 +4,7 @@
         <span class="navbar-toggler-icon"></span>
       	</button>
       	<div class="collapse navbar-collapse" id="navbarCollapse">
-	        <ul class="navbar-nav" style="text-align: center; width: 70%; margin: 0 auto;">
+	        <ul class="navbar-nav" style="text-align: center;">
 	          <li class="nav-item active">
 	            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 	          </li>
@@ -24,6 +24,13 @@
 	}
 </script>
 
-<style>
-	
+<style scoped>
+	ul {
+		width: 100%;
+		text-align: center;
+		display: initial;
+	}
+	ul li {
+		display: inline-block;
+	}
 </style>

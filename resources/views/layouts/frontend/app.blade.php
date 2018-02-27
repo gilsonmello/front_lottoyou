@@ -19,17 +19,59 @@
         <div id="app">
         </div>
         <script>
+            var query = location.hash.split('/');
+           
+            window.document.cookie = query[1] != undefined ? 'hash=' + query[1] : 'hash=en';
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "/getTranslations/"+query[1], false);
+            let token = document.head.querySelector('meta[name="csrf-token"]');
+            xhttp.setRequestHeader("X-CSRF-TOKEN", token.content);
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  window.trans = JSON.parse(this.response);
+                }
+            };
+            xhttp.send();
+
+
+            /*<?php 
+                $locale = '';
+                if(isset($_COOKIE['hash'])){
+                    switch($_COOKIE['hash']) {
+                        case 'br': {
+                            $locale = 'pt_BR';
+                            break;
+                        }
+                        case 'es': {
+                            $locale = 'es_ES';
+                            break;
+                        }
+                        default: {
+                            $locale = 'en';
+                            break;
+                        }
+                    }
+                }
+            ?>            
+
             window.trans = <?php
+                $locale = isset($_GET['locale']) && !empty($_GET['locale']) ? $_GET['locale'] : $locale;
+                if($locale == ''){
+                    $locale = "en";
+                }
                 // copy all translations from /resources/lang/CURRENT_LOCALE/* to global JS variable
-                $lang_files = File::files(resource_path() . '/lang/' . app()->getLocale());
+                $lang_files = File::files(resource_path() . '/lang/' . $locale);
                 $trans = [];
                 foreach ($lang_files as $f) {
                     $filename = pathinfo($f)['filename'];
                     $trans[$filename] = trans($filename);
                 }
                 echo json_encode($trans);
-            ?>;
-            window.locale = '<?= app()->getLocale(); ?>';
+            ?>;     */       
+
+            window.locale = query[1];
+            window.QueryString = <?php echo json_encode($_GET); ?>;
         </script>
         <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}"></script>
     </body>
