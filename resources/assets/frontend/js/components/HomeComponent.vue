@@ -1,9 +1,9 @@
 <template>
-	<section>
+	<div>
 		<slider-component></slider-component>
 		<br>
 		<carousel-component></carousel-component>
-	</section>
+	</div>
 </template>
 
 <script>

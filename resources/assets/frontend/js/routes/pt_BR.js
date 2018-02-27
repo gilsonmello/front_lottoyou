@@ -3,7 +3,7 @@ export default {
   	routes: [
   		{
   			path: '/br',
-	        component: require('../components/App.vue'),
+	        component: require('../components/MainComponent.vue'),
   			children: [
   				{ 
   					path: '',

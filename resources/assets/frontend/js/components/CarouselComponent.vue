@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container">
             <div class="row">
                 <div class="col-lg-12">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -78,7 +78,7 @@
                     </a>
         </div>
     </div>
-    <div class="row" id="conteudo" style=" width: 90%; margin: 0 auto">
+    <div class="row" id="conteudo" style="">
                 <div class="col-lg-12" style="min-height: 50px; background-color: #ccc;">
                       
                 </div>

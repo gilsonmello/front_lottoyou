@@ -16,7 +16,8 @@
         <link rel="icon" type="image/x-icon" href="//www.lottoland.com/skins/lottoland/images/ui/favicon-906cd6ceee89e2b3.ico" />
     </head>
     <body>
-        <div id="app"></div>
+        <div id="app">
+        </div>
         <script>
             window.trans = <?php
                 // copy all translations from /resources/lang/CURRENT_LOCALE/* to global JS variable

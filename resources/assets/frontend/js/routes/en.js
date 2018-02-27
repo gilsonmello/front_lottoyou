@@ -2,7 +2,7 @@ export default {
   	routes: [
   		{
   			path: '/',
-	        component: require('../components/App.vue'),
+	        component: require('../components/MainComponent.vue'),
   			children: [
   				{ 
   					path: '', 
