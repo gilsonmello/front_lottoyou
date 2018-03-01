@@ -1,6 +1,6 @@
 export const protocol = "http://"
-export const enviroment = "local";
-export const host = enviroment == "production" ? "http://pi.mirandafitness.com.br" : "http://localhost:8000";
+export const enviroment = "production";
+export const host = enviroment == "production" ? "http://lottoyou.bet" : "http://localhost:8000";
 
 export const routes = {
 	auth: {
