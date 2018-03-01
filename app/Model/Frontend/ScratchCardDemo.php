@@ -3,19 +3,26 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ScratchCardTheme extends Model
+class ScratchCardDemo extends Model
 {
+	use SoftDeletes;
+	
     /**
      * @var bool
      */
-    public $timestamps = true;
+    public $timestamps = false;
+
+    protected $appends = [
+        
+    ];
 
     /**
      * 
      * @var array
      */
-    public $table = 'temas_raspadinhas';
+    public $table = 'raspadinha_demonstracoes';
 
     /**
      * The attributes that are mass assignable.
@@ -34,9 +41,4 @@ class ScratchCardTheme extends Model
     protected $hidden = [
         
     ];
-
-    public function lots() {
-    	return $this->hasMany(\App\Model\Frontend\ScratchCardLot::class, 'temas_raspadinha_id')
-            ->where('active', '=', 1);
-    }
 }

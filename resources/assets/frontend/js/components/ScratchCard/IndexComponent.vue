@@ -77,57 +77,150 @@
 		  	<div class="modal-dialog modal-lg">
 			    <div class="modal-content">
 					<!-- Modal Header -->
-			      	<div class="modal-header">
+			      	<div class="modal-header" style="border-bottom: none;">
 			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
 			        	<div class="container-actions vcenter no-padding">
-			        		
-			        	
-			        	<div class="col-lg-4" style="padding-left: 0;">
-			        		<img class="img-fluid" src="https://www.grandesloterias.com/images/gluck/scratchcards/halloween_en.jpg">
-			        	</div>
-			        	<div class="col-lg-7">
-			        		<div class="row">
-			        			<div class="col-lg-6">
-			        				<a class="btn btn-md btn-success" href="#" @click.prevent="">
-			        					{{ trans('strings.play_now') }}
-			        				</a>
-			        			</div>			        			
-			        			<div class="col-lg-6">
-			        				<a class="btn btn-md btn-demo" href="#" @click.prevent="">
-				        				Demo
-				        			</a>
-			        			</div>
-			        		</div>
-			        		<div class="row">
-			        			<div class="col-lg-12">
-			        				<p class="text-center number-of-cards">Número de cartões 15000000</p>
-			        			</div>
-			        		</div>
-			        	</div>
+				        	<div class="col-lg-4" style="padding-left: 0;">
+				        		<img class="img-fluid" src="https://www.grandesloterias.com/images/gluck/scratchcards/halloween_en.jpg">
+				        	</div>
+				        	<div class="col-lg-7">
+				        		<div class="row">
+				        			<div class="col-lg-6">
+				        				<a class="btn btn-md btn-success" href="#" @click.prevent="">
+				        					{{ trans('strings.play_now') }}
+				        				</a>
+				        			</div>			        			
+				        			<div class="col-lg-6">
+				        				<a class="btn btn-md btn-demo" href="#" @click.prevent="demo">
+					        				Demo
+					        			</a>
+				        			</div>
+				        		</div>
+				        		<div class="row">
+				        			<div class="col-lg-12">
+				        				<p class="text-center number-of-cards">
+				        					{{ trans('strings.number_of_cards') }} 15000000
+				        				</p>
+				        			</div>
+				        		</div>
+				        	</div>
 			        	</div>
 			        	<button type="button" class="close" data-dismiss="modal">&times;</button>
 			      	</div>
 
 			      	<!-- Modal body -->
-			      	<div class="modal-body">
-		        		<table class="table table-striped">
+			      	<div class="modal-body" style="padding-top: 0;">
+		        		<table class="table table-striped text-center">
 		        			<thead>
 		        				<tr>
 		        					<th>{{ trans('strings.level') }}</th>
-		        					<th>{{ trans('strings.level') }}</th>
-		        					<th>{{ trans('strings.level') }}</th>
+		        					<th>{{ trans('strings.jackpot_available') }}</th>
+		        					<th>{{ trans('strings.amount') }}</th>
 		        				</tr>
 		        			</thead>
+		        			<tbody>
+		        				<tr v-if="scratch_card_jackpot_available != null" v-for="(jackpot_available, key) in scratch_card_jackpot_available.scratch_card_winning">
+		        					<td>{{ key + 1 }}</td>
+		        					<td>{{ jackpot_available.quantity }}</td>
+		        					<td>$ {{ jackpot_available.jackpot }}</td>
+		        				</tr>
+		        			</tbody>
 		        		</table>
 			      	</div>
-
-			      	<!-- Modal footer -->
+					<!-- Modal footer -->
 			      	<div class="modal-footer">
-			        	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			        	<!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
 			      	</div>
 				</div>
 		  	</div>
 		</div>
+
+		<div class="modal fade modal-demo">
+		  	<div class="modal-dialog modal-lg">
+			    <div class="modal-content">
+					<!-- Modal Header -->
+			      	<div class="modal-header">
+			        	<h4 class="modal-title">Demo de Raspadinhas sem prêmios</h4>    	
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			      	</div>
+
+			      	<!-- Modal body -->
+			      	<div class="modal-body">
+			      		<div class="row">
+			      			<div class="col-lg-12 col-12 col-md-12 col-sm-12" style="background-image: url(https://cdn.poweredbygluck.com/ral-puk-100k-client/assets/themes/100K/img/_default/bg.jpg); background-size: 100% 100%;">
+			      				<div class="row" style="padding: 20px;">
+			      					<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+			      						
+			      					</div>
+			      					<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+			      						<div class="row">
+			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+			      								<div class="scratchpad">
+			      									
+			      								</div>
+			      							</div>
+			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+			      								<div class="scratchpad">
+			      									
+			      								</div>
+			      							</div>
+			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+			      								<div class="scratchpad">
+			      									
+			      								</div>
+			      							</div>
+			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+			      								<div class="scratchpad">
+			      									
+			      								</div>
+			      							</div>
+			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+			      								<div class="scratchpad">
+			      									
+			      								</div>
+			      							</div>
+			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+			      								<div class="scratchpad">
+			      									
+			      								</div>
+			      							</div>
+			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+			      								<div class="scratchpad">
+			      									
+			      								</div>
+			      							</div>
+			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+			      								<div class="scratchpad">
+			      									
+			      								</div>
+			      							</div>
+			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+			      								<div class="scratchpad">
+			      									
+			      								</div>
+			      							</div>
+			      						</div>
+			      					</div>
+			      				</div>
+			      				<div class="row">
+			      					<div class="col-lg-6">
+			      						Raspadinhas restantes: 
+			      					</div>
+			      					<div class="col-lg-6">
+			      						Jogar raspadinha
+			      					</div>
+			      				</div>
+			      			</div>
+			      		</div>
+		        	</div>
+					<!-- Modal footer -->
+			      	<!-- <div class="modal-footer">
+			        	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			      	</div>-->
+				</div>
+		  	</div>
+		</div>
+
 	</div>
 </template>
 
@@ -144,19 +237,40 @@
 		},
 		methods: {
 			demo: function() {
+				$('.modal-demo').modal('toggle');
+				$('.scratchpad').wScratchPad('destroy');
 
+				$('.scratchpad').each(function () {
+					$(this).wScratchPad({
+                        bg: 'img/raspadinha/0.05.png',
+                        fg: 'files/RaspadinhasTemas/PIRATAS/capa.png',
+                        'cursor': '../img/raspadinha/coin.png") 5 5, coin',
+                        scratchMove: function (e, percent) {
+                            if (percent > 39) {}
+                        }
+                    });
+				});
+				$('.scratchpad').wScratchPad('enable', true);
 			},
 			submit: function (){
 
 			},
 			handleJackpotTable: function(el) {
-				console.log(el)
+				var id = el.target.getAttribute('data-id');
+				axios.get(routes.scratch_card_themes.jackpot_available.replace('{id}', id), {}).then(response => {
+		            if(response.status === 200){
+		            	this.scratch_card_jackpot_available = response.data
+		            }
+		        }).catch((error) => {
+		            
+		        })
 				$('.modal-jackpot-table').modal('toggle');
 			}
 		},
 		data: function() {
 			return {
 				scratch_card_themes: [],
+				scratch_card_jackpot_available: {},
 				method: "GET",
 				action: null,
 			}
@@ -292,4 +406,10 @@
 	    margin-left: 20px;
 	    text-align: center;
 	}
+
+	.modal-demo .modal-body {
+		padding: 20px;
+	}
+
+	
 </style>

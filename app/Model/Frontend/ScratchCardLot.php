@@ -50,10 +50,11 @@ class ScratchCardLot extends Model
 
     public function getScratchCardWinningAttribute()
     {
-        return ScratchCard::selectRaw('count(*) as quantity, premio')
+        return ScratchCard::selectRaw('count(*) as quantity, premio as jackpot')
             ->where('lote', '=', $this->id)
             ->where('ativo', '=', 3)
-            ->groupBy(['premio'])
+            ->groupBy(['jackpot'])
+            ->orderBy('jackpot', 'DESC')
             ->get();
     }
 

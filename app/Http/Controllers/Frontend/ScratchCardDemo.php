@@ -4,16 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\ScratchCardTheme;
-use App\Model\Frontend\ScratchCardLot;
 
-class ScratchCardThemeController extends Controller
+class ScratchCardDemo extends Controller
 {
-    
-    public function jackpotAvailable($id = null){
-        return ScratchCardLot::select('id')->where('temas_raspadinha_id', '=', $id)->get()->first();
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,9 +14,7 @@ class ScratchCardThemeController extends Controller
      */
     public function index()
     {
-        return ScratchCardTheme::whereHas('lots', function($query) {
-            $query->where('active', '=', 1);
-        })->get();
+        //
     }
 
     /**

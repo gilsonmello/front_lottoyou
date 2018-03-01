@@ -102,9 +102,26 @@
 	    transition: border .3s ease-in-out;
 	    font-size: 13px;
 	}
+
+	.btn-demo:hover {
+		border: 2px solid #fff;
+		color: #fff;
+	}
+
 	.number-of-cards {
 		padding-top: 10px;
 	    text-align: center;
 	    color: white;
+	}
+
+	.modal-demo .scratchpad {
+		width: 123px;
+    	height: 123px !important;
+    	margin-bottom: 12px;
+    }
+
+	.modal-demo .scratchpad canvas, .scratchpad img {
+	    left: 0 !important;
+	    right: 0 !important;
 	}
 </style>

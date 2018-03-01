@@ -15,6 +15,7 @@ return [
     'register' => 'Cadastro',
     'registers' => 'Cadastros',
     'cart' => 'Carrinho',
+    'number_of_cards' => 'Número de Cartões',
     'last_name' => 'Sobre Nome',
     'tags' => 'Tags',
     'categories' => 'Categorias',

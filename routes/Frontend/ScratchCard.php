@@ -1,13 +1,16 @@
 <?php
 
-Route::resource('scratch_card_themes', 'ScratchCardThemeController', [
+Route::resource('scratch_cards', 'ScratchCardController', [
     'names' => [
-        'index' => 'frontend.scratch_card_themes.index',
-        'create' => 'frontend.scratch_card_themes.create',
-        'store' => 'frontend.scratch_card_themes.store',
-        'edit' => 'frontend.scratch_card_themes.edit',
-        'update' => 'frontend.scratch_card_themes.update',
-        'destroy' => 'frontend.scratch_card_themes.destroy',
-        'show' => 'frontend.scratch_card_themes.show'
+        'index' => 'frontend.scratch_cards.index',
+        'create' => 'frontend.scratch_cards.create',
+        'store' => 'frontend.scratch_cards.store',
+        'edit' => 'frontend.scratch_cards.edit',
+        'update' => 'frontend.scratch_cards.update',
+        'destroy' => 'frontend.scratch_cards.destroy',
+        'show' => 'frontend.scratch_cards.show'
     ]
 ]);
+
+
+Route::get('scratch_cards/{theme_id}/jackpot_available', 'ScratchCardController@jackpotAvailable');
