@@ -91,4 +91,20 @@
 	    margin: 44px 0 22px;
 	    border-bottom: 1px solid #eeeeee;
 	}
+
+	.btn-demo {
+		display: block;
+	    border: 2px solid rgba(255,255,255,.2);
+	    border-radius: 5px;
+	    color: #fff;
+	    font-weight: 700;
+	    -webkit-transition: border .3s ease-in-out;
+	    transition: border .3s ease-in-out;
+	    font-size: 13px;
+	}
+	.number-of-cards {
+		padding-top: 10px;
+	    text-align: center;
+	    color: white;
+	}
 </style>

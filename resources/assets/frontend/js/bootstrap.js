@@ -13,6 +13,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+    require('./plugins/AppWscratchPad.js');
 
     require('jquery.inputmask/dist/jquery.inputmask.bundle.js');
     require('bootstrap-datepicker');

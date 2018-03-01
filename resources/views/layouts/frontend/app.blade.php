@@ -23,6 +23,10 @@
            
             window.document.cookie = query[1] != undefined ? 'hash=' + query[1] : 'hash=en';
 
+            if(query[1] == ''){
+                query[1] = 'en';
+            }
+
             var xhttp = new XMLHttpRequest();
             xhttp.open("POST", "/getTranslations/"+query[1], false);
             let token = document.head.querySelector('meta[name="csrf-token"]');
@@ -74,5 +78,6 @@
             window.QueryString = <?php echo json_encode($_GET); ?>;
         </script>
         <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}"></script>
+        
     </body>
 </html>

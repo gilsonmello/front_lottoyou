@@ -12,6 +12,11 @@ return [
       |
      */
     'card_birth_date' => 'Data de Nascimento',
+    'soccer_expert' => 'Soccer Expert',
+    'home' => 'Home',
+    'play_now' => 'Jogue Agora',
+    'scratch_card' => 'Raspadinha',
+    'scratch_cards' => 'Raspadinhas',
     'register' => 'Cadastro',
     'registers' => 'Cadastros',
     'cart' => 'Carrinho',

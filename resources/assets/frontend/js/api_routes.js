@@ -18,5 +18,11 @@ export const routes = {
 		index: host+'/packages',
 		show: host+'/packages/{slug}',
 		find: host+'/packages/find/{id}',
+	},
+	scratch_cards: {
+		index: host+'/scratch_cards'
+	},
+	scratch_card_themes: {
+		index: host+'/scratch_card_themes'
 	}
 };

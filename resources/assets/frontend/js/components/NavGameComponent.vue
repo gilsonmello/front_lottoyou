@@ -5,15 +5,27 @@
       	</button>
       	<div class="collapse navbar-collapse" id="navbarCollapse">
 	        <ul class="navbar-nav" style="text-align: center;">
-	          <li class="nav-item active">
-	            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Link</a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link disabled" href="#">Disabled</a>
-	          </li>
+	          	<li class="nav-item">
+	          		<router-link class="nav-link" :to="{ name: 'home' }">
+	          			{{ trans('strings.home') }} <span class="sr-only">(current)</span>
+	          		</router-link>
+	            </li>
+	            <li class="nav-item">
+	          		<router-link class="nav-link" :to="{ name: 'scratch_cards.index' }">
+	          			{{ trans('strings.scratch_card') }}</span>
+	          		</router-link>
+	            </li>
+	             <li class="nav-item">
+	          		<router-link class="nav-link" :to="{ name: 'soccer_expert.index' }">
+	          			{{ trans('strings.soccer_expert') }}</span>
+	          		</router-link>
+	            </li>
+	          	<!-- <li class="nav-item">
+	            	<a class="nav-link" href="#">Link</a>
+	          	</li>
+	          	<li class="nav-item">
+	            	<a class="nav-link disabled" href="#">Disabled</a>
+	          	</li> -->
 	        </ul>
       	</div>
     </nav>

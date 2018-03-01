@@ -22,6 +22,18 @@ export default {
 			        name: 'users.register', 
 			        props: true,
 			        component: require('../components/User/RegisterComponent.vue')
+			    },
+			    {   
+			  		path: 'raspadinhas',
+			        name: 'scratch_cards.index', 
+			        props: true,
+			        component: require('../components/ScratchCard/IndexComponent.vue')
+			    },
+			    {   
+			  		path: 'soccer_expert',
+			        name: 'soccer_expert.index', 
+			        props: true,
+			        component: require('../components/SoccerExpert/IndexComponent.vue')
 			    }
   			]
   		}

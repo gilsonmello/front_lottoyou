@@ -19,4 +19,7 @@ use Illuminate\Http\Request;
 Route::group(['namespace' => 'Frontend'], function(){
 	require __DIR__.'/Frontend/Home.php';
 	require __DIR__.'/Frontend/User.php';
+	require __DIR__.'/Frontend/ScratchCard.php';
+	require __DIR__.'/Frontend/ScratchCardTheme.php';
+	require __DIR__.'/Frontend/ScratchCardLot.php';
 });
