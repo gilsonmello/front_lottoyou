@@ -1,5 +1,6 @@
 <template>
-	<div class="container">
+	<load-component v-if="loading == true"></load-component>
+	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.scratch_cards') }}</h1>
 		<div class="row">
 			<div class="col-12 col-md-4 col-sm-4 col-lg-4" v-for="scratch_card_theme in scratch_card_themes">
@@ -227,10 +228,11 @@
 <script>
 	import {routes} from '../../api_routes'
 	import ModalFormComponent from '../ModalFormComponent'
+	import LoadComponent from '../Load'
 	export default {
 		props: [],
 		created: function() {
-
+			
 		},
 		activated: function() {
 			
@@ -273,12 +275,15 @@
 				scratch_card_jackpot_available: {},
 				method: "GET",
 				action: null,
+				loading: true
 			}
 		},
 		mounted: function() {
+			console.log(this.$parent)
 			axios.get(routes.scratch_card_themes.index, {}).then(response => {
 	            if(response.status === 200){
 	            	this.scratch_card_themes = response.data
+	            	this.loading = false
 	            }
 	        }).catch((error) => {
 	            
@@ -291,7 +296,8 @@
 
 		},
 		components: {
-			ModalFormComponent
+			ModalFormComponent,
+			LoadComponent
 		}
 	}
 </script>

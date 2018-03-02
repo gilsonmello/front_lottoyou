@@ -6,30 +6,19 @@
 	import HeaderComponent from './HeaderComponent'
 	import SliderComponent from './SliderComponent'
 	import CarouselComponent from './CarouselComponent'
+	import LoadComponent from './Load'
 	import router from '../router'
 	export default {
 		data: function() {
 			return {
-
+				
 			}
 		},
 		methods: {
 
 		},
 		created: function() {
-			router.beforeEach((to, from, next) => {
-			    if(to.meta.requiresAuth == true){
-		            next()
-			    }
-		        next();
-			});
-
-			router.afterEach((to, from) => {
-			    var height = $('main').prop('scrollHeight');
-			    $('html, body').animate({
-			        scrollTop: 0
-			    },  300);
-			});
+			
 		},
 		mounted: function() {
 			
@@ -37,7 +26,8 @@
 		components: {
 			HeaderComponent,
 			SliderComponent,
-			CarouselComponent
+			CarouselComponent,
+			LoadComponent
 		}
 	}
 </script>
