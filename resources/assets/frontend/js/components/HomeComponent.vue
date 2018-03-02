@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12" id="banner-01">
-					<h1 class="text-center">Banner 01</h1>
+					<h1 class="text-center">Banner 01<br>960 x 481px</h1>
 				</div>
 			</div>
 		</div>
@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12" id="banner-02">
-					<h1 class="text-center">Banner 02</h1>
+					<h1 class="text-center">Banner 02<br>960 x 200px</h1>
 				</div>
 			</div>
 		</div>
@@ -24,7 +24,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter" id="banner-03">
-					<h1 class="text-center">Banner 03</h1>
+					<h1 class="text-center">Banner 03<br>960 x 200px</h1>
 				</div>
 			</div>
 		</div>
@@ -58,7 +58,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12" id="explications">
-					<h1 class="text-center">Explicações</h1>
+					<h1 class="text-center">Explicações<br>960 x 300px</h1>
 				</div>
 			</div>
 		</div>
@@ -90,6 +90,8 @@
 	}
 </script>
 
-<style>
-	
+<style scoped>
+	h1 {
+		width: 100%;
+	}
 </style>

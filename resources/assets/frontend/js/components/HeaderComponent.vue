@@ -6,17 +6,17 @@
   					<ul class="vcenter">
   						<li>
   							<router-link :to="{ name: 'home' }">
-  								<img class="img-log img-fluid" width="100" src="/imgs/logo.png">
+  								<img class="img-log img-fluid" style="height: 80px;width: 250px;" src="/imgs/logo.png">
   							</router-link>
   						</li>
-  						<li>
+  						<!-- <li>
   							<img class="img-fluid" width="60" src="//www.lottoland.com/cms/5a8d7f7a0eb3587e04426c35/multi_60px.png">
   						</li>
   						<li>
   							<span>Novidade: Loteria Multi Keno</span>
 							<span>Ganhe até R$ 24 milhões</span>
 							<span>Tente aqui a sua sorte!</span>
-  						</li>
+  						</li> -->
   					</ul>
 				</div>
 			  	<div class="navbar-right">
@@ -153,7 +153,7 @@
 	}
 
 	.navbar-right ul li {
-		padding: 15px 30px 15px 15px;
+		padding: 15px 15px 15px 0;
 		margin-right: 10px;
 		position: relative;
 		list-style: none;

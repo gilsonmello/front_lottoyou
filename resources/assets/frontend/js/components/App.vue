@@ -115,8 +115,8 @@
 	}
 
 	.modal-demo .scratchpad {
-		width: 123px;
-    	height: 123px !important;
+		width: 120px;
+    	height: 120px !important;
     	margin-bottom: 12px;
     }
 

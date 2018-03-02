@@ -2,23 +2,21 @@
 	<div class="container-fluid">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-5 col-5 col-md-5 col-sm-5" style="min-height: 260px; padding: 21px;">
+				<div class="col-lg-9 col-9 col-md-5 col-sm-5" style="min-height: 260px; padding: 21px;">
 					<h1>
 						A FESTA APENAS
 						<span style="color: #E6B00F; text-align: center;">COMEÇOU!</span>
 						<img class="img-fluid" src="https://www.lottoland.com/cms/59706a8c0eb3583efd1b422c/br_ms_stage_smile.png">
 					</h1>
 				</div>
-				<div class="col-lg-4 col-1 col-md-3 col-sm-3">
-					
-				</div>
-				<div class="col-lg-3 col-3 col-md-3 col-sm-3" style="padding-top: 30px;">
-					<img class="l-stageTemplate-banner-iconContainer-floatingBall l-stageTemplate-banner-iconContainer-icon" src="https://www.lottoland.com/cms/599fd29b0eb35855e66e8e7f/br_sticker_3_137px_desktop_bubble_2jogos.png">
+				<div class="col-lg-3 col-3 col-md-3 col-sm-3" style="padding-top: 31px;">
+					<img class="img-fluid l-stageTemplate-banner-iconContainer-floatingBall l-stageTemplate-banner-iconContainer-icon" src="https://www.lottoland.com/cms/599fd29b0eb35855e66e8e7f/br_sticker_3_137px_desktop_bubble_2jogos.png">
 				</div>
 			</div>
-			<br>
-			<br>
-			<div class="row vcenter" style="background-color: yellow;">
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<!--<div class="row vcenter" style="background-color: yellow;">
 				<div class="col-lg-1 col-2 col-sm-1 col-md-2">
 					<img class="img-fluid" src="https://www.lottoland.com/skins/lottoland/images/lotteryLogos/lt-megaSena-46abf10e66bb8829.png">
 				</div>
@@ -35,7 +33,7 @@
 					<span class="pull-right">ao comprar 3 jogos da Mega-Sena</span><br>
 					<a href="#" class="btn btn-md btn-success pull-right">Jogar agora</a>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>

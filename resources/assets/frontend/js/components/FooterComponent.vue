@@ -297,6 +297,7 @@
     	width: 100%;
     	list-style: none;
     	text-align: center;
+    	padding-left: 0;
     }
 
     .footer-signs .footer-signs-item {
