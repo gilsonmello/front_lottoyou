@@ -12,12 +12,27 @@ class ScratchCardThemeController extends Controller
 {
     
     public function jackpotAvailable($id = null){
-        return ScratchCardLot::select('id')->where('temas_raspadinha_id', '=', $id)->get()->first();
+        $jackpotAvailable = ScratchCardLot::with('theme')
+            ->select('id')
+            ->where('temas_raspadinha_id', '=', $id)
+            ->get()
+            ->first();
+        if(!is_null($jackpotAvailable)) {
+            return response()->json($jackpotAvailable, 200);
+        }
+        return response()->json(['msg' => trans('strings.not_found_jacktpot_table')], 422);
     }
 
     public function demo($id = null) {
-        $demo = ScratchCardDemo::where('temas_raspadinha_id', '=', $id)->get()->first();
-        return response()->json($demo, 200);
+        $demo = ScratchCardDemo::with('theme')
+            ->where('temas_raspadinha_id', '=', $id)
+            ->orderByRaw('RAND()')
+            ->get()
+            ->first();
+        if(!is_null($demo)) {
+           return response()->json($demo, 200);
+        }
+        return response()->json(['msg' => trans('strings.not_found_demo')], 422);
     }
 
     /**

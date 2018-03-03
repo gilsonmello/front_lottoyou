@@ -12,9 +12,13 @@ return [
       |
      */
     'card_birth_date' => 'Data de Nascimento',
+    'good_luck_to_the_next' => 'Boa sorte para a próxima',
     'play_again' => 'Jogar Novamente',
+    'play_truth' => 'Jogue de Verdade',
     'play_scratch_card' => 'Jogar Raspadinha',
     'loading' => 'Carregando',
+    'not_found_demo' => 'Nenhuma demo encontrada',
+    'not_found_jacktpot_table' => 'Tabela de premiação não encontrada',
     'reveal_all' => 'Revelar Todas',
     'jackpot_available' => 'Prêmios disponíveis',
     'amount' => 'Quantia',

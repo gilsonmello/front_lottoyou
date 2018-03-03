@@ -40,7 +40,7 @@ class ScratchCardLot extends Model
         
     ];
 
-    public function temas() {
+    public function theme() {
     	return $this->belongsTo(\App\Model\Frontend\ScratchCardTheme::class, 'temas_raspadinha_id');
     }
 

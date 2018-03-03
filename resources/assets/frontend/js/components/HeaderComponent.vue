@@ -1,6 +1,6 @@
 <template>
 	<div class="header fixed-top bg-white">
-		<div class="container">
+		<div class="container-fluid">
 			<nav class="navbar navbar-toggleable-md navbar-light bg-inverse" style="padding: 0;">
   				<div class="navbar-brand" href="#">
   					<ul class="vcenter">

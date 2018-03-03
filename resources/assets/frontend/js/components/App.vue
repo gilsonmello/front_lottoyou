@@ -75,10 +75,7 @@
 		background-color: #ccc;
 		width: 100%;
 		height: 200px
-	}
-		
-
-	
+	}	
 
 	.btn-demo {
 		display: block;
@@ -100,18 +97,11 @@
 		padding-top: 10px;
 	    text-align: center;
 	    color: white;
-	}
-
-	.modal-demo .scratchpad {
-		width: 120px;
-    	height: 120px !important;
-    	margin-bottom: 12px;
-    }
+	}	
 
 	.modal-demo .scratchpad canvas, .scratchpad img {
 	    left: 0 !important;
 	    right: 0 !important;
 	}
 
-	
 </style>

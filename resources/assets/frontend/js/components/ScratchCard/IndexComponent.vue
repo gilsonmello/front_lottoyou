@@ -1,9 +1,9 @@
 <template>
 	<load-component v-if="loading.component == true"></load-component>
-	<div class="container" v-else>
+	<div class="container-fluid" v-else>
 		<h1 class="page-header">{{ trans('strings.scratch_cards') }}</h1>
 		<div class="row">
-			<div class="col-12 col-md-3 col-sm-3 col-lg-4" v-for="scratch_card_theme in scratch_card_themes">
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="scratch_card_theme in scratch_card_themes">
 				<div class="scratch-card">
 					<header class="scratch-card-header">
 						<div class="extras">
@@ -21,14 +21,14 @@
 						</div>
 						<div class="jackpot-table">
 							<div class="row vcenter">
-								<div class="col-lg-8">
+								<div class="col-lg-8 col-12 col-md-8 col-sm-12">
 									<a :data-id="scratch_card_theme.id" href="#" @click.prevent="handleJackpotTable($event)" class="btn description">
 										<i class="fa fa-money" aria-hidden="true"></i>
 										&nbsp;
 										Tabela de Premios
 									</a>
 								</div>
-								<div class="col-lg-4">
+								<div class="col-lg-4 col-12 col-md-4 col-sm-12">
 									<a @click.prevent="handleDemo($event)" :data-id="scratch_card_theme.id" href="#" class="btn btn-md demo">
 										Demo
 									</a>
@@ -40,24 +40,24 @@
 					<footer class="scratch-card-footer">
 						<form>
 							<div class="row vcenter">
-								<div class="col-lg-9">
+								<div class="col-lg-9 col-9 col-md-9 col-sm-9">
 									<label class="">
 										<input type="radio" name="game_1_option">
 										<span>1 Jogo</span>
 									</label>
 								</div>
-								<div class="col-lg-3">
+								<div class="col-lg-3 col-3 col-md-3 col-sm-3">
 									<span>$ 1.50</span>
 								</div>
 							</div>
 							<div class="row vcenter">
-								<div class="col-lg-9">
+								<div class="col-lg-9 col-9 col-md-9 col-sm-9">
 									<label>
 										<input type="radio" name="game_1_option">
 										<span>2 Jogo</span>
 									</label>
 								</div>
-								<div class="col-lg-3">
+								<div class="col-lg-3 col-3 col-md-3 col-sm-3">
 									<span>$ 1.50</span>
 								</div>
 							</div>
@@ -90,7 +90,7 @@
 			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
 			        	<div class="container-actions vcenter no-padding" style="width: 100%;">
 				        	<div class="col-lg-4" style="padding-left: 0;">
-				        		<img class="img-fluid" src="https://www.grandesloterias.com/images/gluck/scratchcards/halloween_en.jpg">
+				        		<img class="img-fluid" :src="'/'+scratch_card_jackpot_available.theme.img_card_url">
 				        	</div>
 				        	<div class="col-lg-7">
 				        		<div class="row">
@@ -157,20 +157,39 @@
 			    <div class="modal-content" v-else>
 					<!-- Modal Header -->
 			      	<div class="modal-header">
-			        	<h4 class="modal-title">Demo de Raspadinhas sem prêmios</h4>    	
+			      		<div class="col-lg-6">
+				        	<h4 class="modal-title">Demo de Raspadinhas sem prêmios</h4> 
+				        </div>
+			        	<div class="col-lg-5">
+			        		<a href="javascript: void(0);" class="btn btn-success btn-md pull-right">
+				        		{{ trans('strings.play_truth') }}
+				        	</a>  
+			        	</div> 	
 				        <button type="button" class="close" data-dismiss="modal">&times;</button>
 			      	</div>
 
 			      	<!-- Modal body -->
 			      	<div class="modal-body">
-			      		<div class="col-lg-12 col-12 col-md-12 col-sm-12" style="background-image: url(https://cdn.poweredbygluck.com/ral-puk-100k-client/assets/themes/100K/img/_default/bg.jpg); background-size: 100% 100%;">
+			      		<div class="col-lg-12 col-12 col-md-12 col-sm-12" v-if="scratch_card_demo.theme" :style="'background-image: url('+scratch_card_demo.theme.img_background_url+'); background-size: 100% 100%;'">
 		      				<div class="row" style="padding: 20px 20px 0 20px;">
-		      					<div class="col-lg-6 col-6 col-md-6 col-sm-6 vcenter-end">
-		      						<a href="javascript: void(0);" class="btn btn-result invisible">
-		      							{{ trans('strings.result') }}
-		      						</a>
+		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
+		      						<div class="row" style="height: 100%;">
+		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+		      								<span class="ticket-number">ID do Bilhete: #++++DEMO++++</span>
+		      							</div>
+		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end">
+		      								<p :style="'color: '+scratch_card_demo.theme.cor_texto_raspadinha+' '" class="text-center info-text">
+		      									{{ scratch_card_demo.theme.texto_index }}
+		      								</p>
+		      							</div>
+		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end">
+		      								<a href="javascript: void(0);" class="btn btn-result invisible">
+				      							{{ trans('strings.result') }}
+				      						</a>
+		      							</div>
+		      						</div>
 		      					</div>
-		      					<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
 		      						<div class="row">
 		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
@@ -221,20 +240,20 @@
 		      					</div>
 		      				</div>
 		      				<div class="row" style="padding: 10px 20px 10px 20px;">
-		      					<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
 		      						<a href="javascript: void(0);" class="btn remaining-tickets">Raspadinhas restantes: </a>
 		      					</div>
-		      					<div class="col-lg-6 col-6 col-md-6 col-sm-6">
-		      						<a href="javascript: void(0);" class="btn btn-game btn-play">
+		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
+		      						<a @click.prevent="handlePlay($event)" href="javascript: void(0);" class="btn btn-game btn-play">
 		      							{{ trans('strings.play_scratch_card') }}
 		      						</a>
-		      						<a href="javascript: void(0);" class="btn hide btn-game btn-loading">
+		      						<a @click.prevent="handleLoading($event)" href="javascript: void(0);" class="btn hide btn-game btn-loading">
 		      							{{ trans('strings.loading') + ' ...' }}
 		      						</a>
-		      						<a href="javascript: void(0);" class="btn hide btn-game btn-reveal-all">
+		      						<a @click.prevent="handleReveal($event)" href="javascript: void(0);" class="btn hide btn-game btn-reveal-all">
 		      							{{ trans('strings.reveal_all') }}
 		      						</a>
-		      						<a href="javascript: void(0);" class="btn hide btn-game btn-play-again">
+		      						<a @click.prevent="handlePlayAgain($event)" href="javascript: void(0);" class="btn hide btn-game btn-play-again">
 		      							{{ trans('strings.play_again') }}
 		      						</a>
 		      					</div>
@@ -265,41 +284,121 @@
 			
 		},
 		methods: {
-			handleScratchPad: function() {
+			handlePlayAgain: function (el) {
+				$('.modal-demo').off('hide.bs.modal');
+				const instance = axios.create();
+				instance.interceptors.request.use(config => {
+					$('.btn-result').addClass('invisible');
+					this.loading.modalDemo = true;
+					return config;
+				});
+				instance.get(routes.scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(response => {
+		            if(response.status === 200) {
+		            	this.scratch_card_demo = response.data
+						this.loading.modalDemo = false;
+						$(el.target).addClass('hide');
+						$('.btn-play').removeClass('hide');
+						this.handleScratchPad();
+					}
+		        }).catch((error) => {
+		        	$('.modal-demo').on('hide.bs.modal', function (e) {
+		        		if(error.response.data.msg) {
+							toastr.error(error.response.data.msg);
+			        	}
+		        	});
+		        	setTimeout(() => {
+						$('.modal-demo').modal('hide');
+		        	}, 500);
+		        })			
+			},
+			handlePlay: function (el){
+				$(el.target).addClass('hide');
+				$('.btn-reveal-all').removeClass('hide');
+				$('.scratchpad').wScratchPad('enable', true);
+			},
+			handleReveal: function(el) {
+				const vm = this;
 				var time = setTimeout(() => {
+					$('.scratchpad').wScratchPad('clear');
+					if(this.scratch_card_demo.premio > 0) {
+						$('.btn-result').text('Parabéns, você ganhou: $ '+this.scratch_card_demo.premio);
+					}else {
+						$('.btn-result').text(vm.trans('strings.good_luck_to_the_next'));
+					}
+					$(el.target).addClass('hide');
+					$('.btn-result').removeClass('invisible');
+                	$('.btn-play-again').removeClass('hide');
+				}, 200);
+			},
+			handleScratchPad: function() {
+				const vm = this;
+				var dataScratchCard = this.scratch_card_demo;
+				var count = 1;
+        		var time = setTimeout(() => {
 					$('.scratchpad').wScratchPad('destroy');
+					var i = 0;
 					$('.scratchpad').each(function () {
+						var verifica = 0;
+						var scratchpad = $(this);
+						$(this).css({
+							width: $(this).parent().width()
+						});
 						$(this).wScratchPad({
-	                        bg: 'img/raspadinha/0.05.png',
-	                        fg: 'files/RaspadinhasTemas/PIRATAS/capa.png',
+	                        bg: 'img/raspadinha/'+ dataScratchCard['valor'+count] +'.png',
+	                        fg: dataScratchCard.theme.img_capa_url,
 	                        'cursor': '../img/raspadinha/coin.png") 5 5, coin',
 	                        scratchMove: function (e, percent) {
-	                            if (percent > 39) {}
+	                            if (percent > 39) {
+	                            	i++;
+	                            	scratchpad.wScratchPad('clear');
+	                            	scratchpad.wScratchPad('enable', false);
+	                            }
+
+	                            if(i == 9) {
+	                            	if(dataScratchCard.premio > 0) {
+	                            		$('.btn-result').removeClass('invisible');
+										$('.btn-result').text('Parabéns, você ganhou: $ '+dataScratchCard.premio);
+	                            	}else{
+	                            		$('.btn-result').removeClass('invisible');
+										$('.btn-result').text(vm.trans('strings.good_luck_to_the_next'));
+	                            	}
+	                            	$('.btn-reveal-all').addClass('hide');
+	                            	$('.btn-play-again').removeClass('hide');
+	                            }
 	                        }
 	                    });
+                        count++;
 					});
-					$('.scratchpad').wScratchPad('enable', true);
+					$('.scratchpad').wScratchPad('enable', false);
 					if($('.scratchpad')[0].length > 0){
 						clearInterval(time);
 					}
 				});
 			},
 			handleDemo: function(el) {
-				var id = el.target.getAttribute('data-id');
+				this.id = el.target.getAttribute('data-id');
 				$('.modal-demo').modal('toggle');
+				$('.modal-demo').off('hide.bs.modal');
 				const instance = axios.create();
 				instance.interceptors.request.use(config => {
 					this.loading.modalDemo = true;
 					return config;
 				});
-				instance.get(routes.scratch_card_themes.demo.replace('{theme_id}', id), {}).then(response => {
-		            if(response.status === 200){
-		            	this.scratch_card_jackpot_available = response.data
+				instance.get(routes.scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(response => {
+		            if(response.status === 200) {
+		            	this.scratch_card_demo = response.data
 						this.loading.modalDemo = false;
 						this.handleScratchPad();
 					}
 		        }).catch((error) => {
-		            
+		        	$('.modal-demo').on('hide.bs.modal', function (e) {
+		        		if(error.response.data.msg) {
+							toastr.error(error.response.data.msg);
+			        	}
+		        	});
+		        	setTimeout(() => {
+						$('.modal-demo').modal('hide');
+		        	}, 500);
 		        })				
 			},
 			submit: function (){
@@ -333,7 +432,9 @@
 					modalDemo: false,
 					modalJackpotTable: false,
 					component: true
-				}
+				},
+				id: null,
+				scratch_card_demo: {}
 			}
 		},
 		mounted: function() {
@@ -373,6 +474,20 @@
 	    line-height: 48px;
 	    padding: 0 15px;
 	    width: 100%;
+	}
+
+	.info-text {
+		color: #fff;
+    	font-size: 15px;
+	    margin: 0;
+	    padding: 0 8px;
+	    line-height: 22px;
+	    text-shadow: 0 2px 3px rgba(0,0,0,.8);
+	}
+
+	.ticket-number {
+	    color: #fff;
+	    font-family: courier;
 	}
 
 	.btn-result {
@@ -471,7 +586,6 @@
 	    border: 2px solid rgba(255,255,255,.2);
 	    border-radius: 5px;
 	    color: #fff;
-	    padding: 1px 15px 2px;
 	    font-weight: 700;
 	    -webkit-transition: border .3s ease-in-out;
 	    transition: border .3s ease-in-out;
@@ -492,6 +606,10 @@
 
 	.scratch-card-header {
 		position: relative;
+	}
+
+	.scratch-card-header .header-image { 
+		width: 100%;
 	}
 
 	.scratch-card-header:hover .descript {

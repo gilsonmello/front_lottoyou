@@ -41,4 +41,8 @@ class ScratchCardDemo extends Model
     protected $hidden = [
         
     ];
+
+    public function theme() {
+        return $this->belongsTo(\App\Model\Frontend\ScratchCardTheme::class, 'temas_raspadinha_id');
+    }
 }
