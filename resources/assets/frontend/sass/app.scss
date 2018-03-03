@@ -88,12 +88,10 @@ body {
 }
 
 @media (min-width: 576px){
-    .modal-dialog {
-        max-width: 100%;
-    }
+    
 }
 @media (min-width: 992px) {
     .modal-xl {
-        width: 75%;
+        max-width: 75% !important;
     }
 }

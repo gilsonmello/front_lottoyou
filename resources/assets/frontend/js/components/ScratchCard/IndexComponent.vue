@@ -75,7 +75,7 @@
 			
 		</div>
 		<div class="modal fade modal-jackpot-table">
-		  	<div class="modal-dialog modal-xl">
+		  	<div class="modal-dialog modal-lg">
 		  		<div class="modal-content" v-if="loading.modalJackpotTable == true">
 		  			<div class="modal-header">
 		  				
@@ -88,7 +88,7 @@
 					<!-- Modal Header -->
 			      	<div class="modal-header" style="border-bottom: none;">
 			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
-			        	<div class="container-actions vcenter no-padding">
+			        	<div class="container-actions vcenter no-padding" style="width: 100%;">
 				        	<div class="col-lg-4" style="padding-left: 0;">
 				        		<img class="img-fluid" src="https://www.grandesloterias.com/images/gluck/scratchcards/halloween_en.jpg">
 				        	</div>
