@@ -1,9 +1,9 @@
 <template>
-	<load-component v-if="loading == true"></load-component>
+	<load-component v-if="loading.component == true"></load-component>
 	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.scratch_cards') }}</h1>
 		<div class="row">
-			<div class="col-12 col-md-4 col-sm-4 col-lg-4" v-for="scratch_card_theme in scratch_card_themes">
+			<div class="col-12 col-md-3 col-sm-3 col-lg-4" v-for="scratch_card_theme in scratch_card_themes">
 				<div class="scratch-card">
 					<header class="scratch-card-header">
 						<div class="extras">
@@ -29,7 +29,7 @@
 									</a>
 								</div>
 								<div class="col-lg-4">
-									<a @click.prevent="demo" href="#" class="btn btn-md demo">
+									<a @click.prevent="handleDemo($event)" :data-id="scratch_card_theme.id" href="#" class="btn btn-md demo">
 										Demo
 									</a>
 								</div>
@@ -75,8 +75,16 @@
 			
 		</div>
 		<div class="modal fade modal-jackpot-table">
-		  	<div class="modal-dialog modal-lg">
-			    <div class="modal-content">
+		  	<div class="modal-dialog modal-xl">
+		  		<div class="modal-content" v-if="loading.modalJackpotTable == true">
+		  			<div class="modal-header">
+		  				
+		  			</div>
+		  			<div class="modal-body">
+		  				<load-component></load-component>
+		  			</div>
+		  		</div>
+			    <div class="modal-content" v-else>
 					<!-- Modal Header -->
 			      	<div class="modal-header" style="border-bottom: none;">
 			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
@@ -92,7 +100,7 @@
 				        				</a>
 				        			</div>			        			
 				        			<div class="col-lg-6">
-				        				<a class="btn btn-md btn-demo" href="#" @click.prevent="demo">
+				        				<a class="btn btn-md btn-demo" href="#" @click.prevent="handleDemo($event)">
 					        				Demo
 					        			</a>
 				        			</div>
@@ -137,8 +145,16 @@
 		</div>
 
 		<div class="modal fade modal-demo">
-		  	<div class="modal-dialog modal-lg">
-			    <div class="modal-content">
+		  	<div class="modal-dialog modal-xl">
+		  		<div class="modal-content" v-if="loading.modalDemo == true">
+		  			<div class="modal-header">
+		  				
+		  			</div>
+		  			<div class="modal-body">
+		  				<load-component></load-component>
+		  			</div>
+		  		</div>
+			    <div class="modal-content" v-else>
 					<!-- Modal Header -->
 			      	<div class="modal-header">
 			        	<h4 class="modal-title">Demo de Raspadinhas sem prêmios</h4>    	
@@ -147,72 +163,83 @@
 
 			      	<!-- Modal body -->
 			      	<div class="modal-body">
-			      		<div class="row">
-			      			<div class="col-lg-12 col-12 col-md-12 col-sm-12" style="background-image: url(https://cdn.poweredbygluck.com/ral-puk-100k-client/assets/themes/100K/img/_default/bg.jpg); background-size: 100% 100%;">
-			      				<div class="row" style="padding: 20px;">
-			      					<div class="col-lg-6 col-6 col-md-6 col-sm-6">
-			      						
-			      					</div>
-			      					<div class="col-lg-6 col-6 col-md-6 col-sm-6">
-			      						<div class="row">
-			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
-			      								<div class="scratchpad">
-			      									
-			      								</div>
-			      							</div>
-			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
-			      								<div class="scratchpad">
-			      									
-			      								</div>
-			      							</div>
-			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
-			      								<div class="scratchpad">
-			      									
-			      								</div>
-			      							</div>
-			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
-			      								<div class="scratchpad">
-			      									
-			      								</div>
-			      							</div>
-			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
-			      								<div class="scratchpad">
-			      									
-			      								</div>
-			      							</div>
-			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
-			      								<div class="scratchpad">
-			      									
-			      								</div>
-			      							</div>
-			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
-			      								<div class="scratchpad">
-			      									
-			      								</div>
-			      							</div>
-			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
-			      								<div class="scratchpad">
-			      									
-			      								</div>
-			      							</div>
-			      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
-			      								<div class="scratchpad">
-			      									
-			      								</div>
-			      							</div>
-			      						</div>
-			      					</div>
-			      				</div>
-			      				<div class="row">
-			      					<div class="col-lg-6">
-			      						Raspadinhas restantes: 
-			      					</div>
-			      					<div class="col-lg-6">
-			      						Jogar raspadinha
-			      					</div>
-			      				</div>
-			      			</div>
-			      		</div>
+			      		<div class="col-lg-12 col-12 col-md-12 col-sm-12" style="background-image: url(https://cdn.poweredbygluck.com/ral-puk-100k-client/assets/themes/100K/img/_default/bg.jpg); background-size: 100% 100%;">
+		      				<div class="row" style="padding: 20px 20px 0 20px;">
+		      					<div class="col-lg-6 col-6 col-md-6 col-sm-6 vcenter-end">
+		      						<a href="javascript: void(0);" class="btn btn-result invisible">
+		      							{{ trans('strings.result') }}
+		      						</a>
+		      					</div>
+		      					<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+		      						<div class="row">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      								<div class="scratchpad">
+		      									
+		      								</div>
+		      							</div>
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      								<div class="scratchpad">
+		      									
+		      								</div>
+		      							</div>
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      								<div class="scratchpad">
+		      									
+		      								</div>
+		      							</div>
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      								<div class="scratchpad">
+		      									
+		      								</div>
+		      							</div>
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      								<div class="scratchpad">
+		      									
+		      								</div>
+		      							</div>
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      								<div class="scratchpad">
+		      									
+		      								</div>
+		      							</div>
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      								<div class="scratchpad">
+		      									
+		      								</div>
+		      							</div>
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      								<div class="scratchpad">
+		      									
+		      								</div>
+		      							</div>
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      								<div class="scratchpad">
+		      									
+		      								</div>
+		      							</div>
+		      						</div>
+		      					</div>
+		      				</div>
+		      				<div class="row" style="padding: 10px 20px 10px 20px;">
+		      					<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+		      						<a href="javascript: void(0);" class="btn remaining-tickets">Raspadinhas restantes: </a>
+		      					</div>
+		      					<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+		      						<a href="javascript: void(0);" class="btn btn-game btn-play">
+		      							{{ trans('strings.play_scratch_card') }}
+		      						</a>
+		      						<a href="javascript: void(0);" class="btn hide btn-game btn-loading">
+		      							{{ trans('strings.loading') + ' ...' }}
+		      						</a>
+		      						<a href="javascript: void(0);" class="btn hide btn-game btn-reveal-all">
+		      							{{ trans('strings.reveal_all') }}
+		      						</a>
+		      						<a href="javascript: void(0);" class="btn hide btn-game btn-play-again">
+		      							{{ trans('strings.play_again') }}
+		      						</a>
+		      					</div>
+		      				</div>
+		      			</div>
 		        	</div>
 					<!-- Modal footer -->
 			      	<!-- <div class="modal-footer">
@@ -238,35 +265,62 @@
 			
 		},
 		methods: {
-			demo: function() {
-				$('.modal-demo').modal('toggle');
-				$('.scratchpad').wScratchPad('destroy');
-
-				$('.scratchpad').each(function () {
-					$(this).wScratchPad({
-                        bg: 'img/raspadinha/0.05.png',
-                        fg: 'files/RaspadinhasTemas/PIRATAS/capa.png',
-                        'cursor': '../img/raspadinha/coin.png") 5 5, coin',
-                        scratchMove: function (e, percent) {
-                            if (percent > 39) {}
-                        }
-                    });
+			handleScratchPad: function() {
+				var time = setTimeout(() => {
+					$('.scratchpad').wScratchPad('destroy');
+					$('.scratchpad').each(function () {
+						$(this).wScratchPad({
+	                        bg: 'img/raspadinha/0.05.png',
+	                        fg: 'files/RaspadinhasTemas/PIRATAS/capa.png',
+	                        'cursor': '../img/raspadinha/coin.png") 5 5, coin',
+	                        scratchMove: function (e, percent) {
+	                            if (percent > 39) {}
+	                        }
+	                    });
+					});
+					$('.scratchpad').wScratchPad('enable', true);
+					if($('.scratchpad')[0].length > 0){
+						clearInterval(time);
+					}
 				});
-				$('.scratchpad').wScratchPad('enable', true);
+			},
+			handleDemo: function(el) {
+				var id = el.target.getAttribute('data-id');
+				$('.modal-demo').modal('toggle');
+				const instance = axios.create();
+				instance.interceptors.request.use(config => {
+					this.loading.modalDemo = true;
+					return config;
+				});
+				instance.get(routes.scratch_card_themes.demo.replace('{theme_id}', id), {}).then(response => {
+		            if(response.status === 200){
+		            	this.scratch_card_jackpot_available = response.data
+						this.loading.modalDemo = false;
+						this.handleScratchPad();
+					}
+		        }).catch((error) => {
+		            
+		        })				
 			},
 			submit: function (){
 
 			},
 			handleJackpotTable: function(el) {
 				var id = el.target.getAttribute('data-id');
-				axios.get(routes.scratch_card_themes.jackpot_available.replace('{id}', id), {}).then(response => {
+				$('.modal-jackpot-table').modal('toggle');
+				const instance = axios.create();
+				instance.interceptors.request.use(config => {
+					this.loading.modalJackpotTable = true;
+					return config;
+				});
+				instance.get(routes.scratch_card_themes.jackpot_available.replace('{id}', id), {}).then(response => {
 		            if(response.status === 200){
 		            	this.scratch_card_jackpot_available = response.data
+	            		this.loading.modalJackpotTable = false;
 		            }
 		        }).catch((error) => {
 		            
 		        })
-				$('.modal-jackpot-table').modal('toggle');
 			}
 		},
 		data: function() {
@@ -275,15 +329,22 @@
 				scratch_card_jackpot_available: {},
 				method: "GET",
 				action: null,
-				loading: true
+				loading: {
+					modalDemo: false,
+					modalJackpotTable: false,
+					component: true
+				}
 			}
 		},
 		mounted: function() {
-			console.log(this.$parent)
+			axios.interceptors.request.use(config => {
+				this.loading.component = true;
+				return config;
+			});
 			axios.get(routes.scratch_card_themes.index, {}).then(response => {
 	            if(response.status === 200){
 	            	this.scratch_card_themes = response.data
-	            	this.loading = false
+	            	this.loading.component = false
 	            }
 	        }).catch((error) => {
 	            
@@ -293,7 +354,7 @@
 
 		},
 		watch: {
-
+			'loading.modalDemo': function(newValue, oldValue) {}
 		},
 		components: {
 			ModalFormComponent,
@@ -303,6 +364,52 @@
 </script>
 
 <style scoped>
+	
+	.remaining-tickets {
+	    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+	    border-color: #baa359;
+	    color: #f2d472;
+	    text-align: left;
+	    line-height: 48px;
+	    padding: 0 15px;
+	    width: 100%;
+	}
+
+	.btn-result {
+		border-color: #baa359;
+	    line-height: 36px;
+	    font-weight: bold;
+	    text-align: center;
+        color: #f2d472;
+        border-color: #baa359;
+	    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+	    font-size: 21px !important;
+	    width: 100%;
+	}
+
+	.btn-game:not([disabled]):not(.disabled):active {
+		background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0 !important;
+	}
+
+	.btn-game {
+		background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0;
+	    border: 0 none;
+	    width: 100%;
+	    border-radius: 5px;
+	    box-shadow: 0 -4px 0 -2px #708f00 inset;
+	    box-sizing: border-box;
+	    color: #fff;
+	    cursor: pointer;
+	    font-family: "kievit",arial,sans-serif;
+	    font-size: 24px;
+	    font-weight: 700;
+	    line-height: 48px;
+	    padding: 0 15px;
+	    text-align: center;
+	    text-decoration: none;
+	    text-shadow: 1px 1px 2px #586e00;
+	    vertical-align: bottom;
+	}
 	
 	.scratch-card {
 		background: #efefef;

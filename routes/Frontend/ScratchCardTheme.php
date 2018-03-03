@@ -12,3 +12,4 @@ Route::resource('scratch_card_themes', 'ScratchCardThemeController', [
     ]
 ]);
 Route::get('scratch_card_themes/{theme_id}/jackpot_available', 'ScratchCardThemeController@jackpotAvailable');
+Route::get('scratch_card_themes/{theme_id}/demo', 'ScratchCardThemeController@demo');

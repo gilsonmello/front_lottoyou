@@ -6,12 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Frontend\ScratchCardTheme;
 use App\Model\Frontend\ScratchCardLot;
+use App\Model\Frontend\ScratchCardDemo;
 
 class ScratchCardThemeController extends Controller
 {
     
     public function jackpotAvailable($id = null){
         return ScratchCardLot::select('id')->where('temas_raspadinha_id', '=', $id)->get()->first();
+    }
+
+    public function demo($id = null) {
+        $demo = ScratchCardDemo::where('temas_raspadinha_id', '=', $id)->get()->first();
+        return response()->json($demo, 200);
     }
 
     /**

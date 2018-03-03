@@ -25,10 +25,11 @@ export const routes = {
 	},
 	scratch_card_themes: {
 		index: host+'/scratch_card_themes',
-		jackpot_available: host+'/scratch_card_themes/{id}/jackpot_available'
+		jackpot_available: host+'/scratch_card_themes/{id}/jackpot_available',
+		demo: host+'/scratch_card_themes/{theme_id}/demo'
 	},
 	scratch_card_demo: {
 		index: host+'/scratch_card_demo',
-		find: host+'/scratch_card_demo/{theme_id}',
+		find: host+'/scratch_card_demo/{id}',
 	}
 };

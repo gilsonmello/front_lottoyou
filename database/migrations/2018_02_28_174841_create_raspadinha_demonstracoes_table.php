@@ -19,7 +19,7 @@ class CreateRaspadinhaDemonstracoesTable extends Migration
             $unsigned = true;
             $table->addColumn('integer', 'lote_id', compact('length'));
             $table->addColumn('integer', 'user_id', compact('length', 'unsigned'));
-            $table->addColumn('integer', 'temas_raspadinhas_id', compact('length'));
+            $table->addColumn('integer', 'temas_raspadinha_id', compact('length'));
             $table->float('valor1');
             $table->float('valor2');
             $table->float('valor3');

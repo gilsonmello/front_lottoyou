@@ -12,6 +12,10 @@ return [
       |
      */
     'card_birth_date' => 'Data de Nascimento',
+    'play_again' => 'Jogar Novamente',
+    'play_scratch_card' => 'Jogar Raspadinha',
+    'loading' => 'Carregando',
+    'reveal_all' => 'Revelar Todas',
     'jackpot_available' => 'Prêmios disponíveis',
     'amount' => 'Quantia',
     'soccer_expert' => 'Soccer Expert',
