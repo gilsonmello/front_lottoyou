@@ -13,7 +13,7 @@ class ScratchCardThemeController extends Controller
     
     public function jackpotAvailable($id = null){
         $jackpotAvailable = ScratchCardLot::with('theme')
-            ->select('id')
+            ->select('id', 'temas_raspadinha_id')
             ->where('temas_raspadinha_id', '=', $id)
             ->get()
             ->first();
