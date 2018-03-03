@@ -90,7 +90,7 @@
 			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
 			        	<div class="container-actions vcenter no-padding" style="width: 100%;">
 				        	<div class="col-lg-4" style="padding-left: 0;">
-				        		<img class="img-fluid" :src="'/'+scratch_card_jackpot_available.theme.img_card_url">
+				        		<img class="img-fluid" v-if="scratch_card_jackpot_available.theme" :src="'/'+scratch_card_jackpot_available.theme.img_card_url">
 				        	</div>
 				        	<div class="col-lg-7">
 				        		<div class="row">
