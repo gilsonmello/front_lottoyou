@@ -498,7 +498,7 @@
         color: #f2d472;
         border-color: #baa359;
 	    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
-	    font-size: 21px !important;
+	    font-size: 21px;
 	    width: 100%;
 	}
 
