@@ -11,8 +11,8 @@
 						</div>
 						<img class="header-image img-fluid" alt="Halloween" :src="'/'+scratch_card_theme.img_background_url">
 						<div class="descript">
-                            <h2 class="ng-binding">Halloween</h2>
-                            <p class="ng-binding">Não há nada mais gostoso do que doce de Halloween ou ganhar prêmios em dinheiro!</p>
+                            <h2 class="ng-binding">{{ scratch_card_theme.nome }}</h2>
+                            <p class="ng-binding">{{ scratch_card_theme.texto_raspadinha }}</p>
                         </div>
 					</header>
 					<div class="scratch-card-body">
