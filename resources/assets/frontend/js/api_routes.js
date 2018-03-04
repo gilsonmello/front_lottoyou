@@ -1,5 +1,5 @@
 export const protocol = "http://"
-export const enviroment = "local";
+export const enviroment = "production";
 export const host = enviroment == "production" ? "http://lottoyou.bet" : "http://localhost:8000";
 
 export const routes = {
