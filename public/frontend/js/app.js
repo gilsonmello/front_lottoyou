@@ -22465,7 +22465,9 @@ module.exports = Component.exports
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return routes; });
 var protocol = "http://";
 var enviroment = "production";
-var host = enviroment == "production" ? "http://lottoyou.bet" : "http://localhost:8000";
+var host = window.location.protocol + '//' + window.location.hostname + (location.port ? ':' + location.port : '');
+
+console.log(host);
 
 var routes = {
 	auth: {
