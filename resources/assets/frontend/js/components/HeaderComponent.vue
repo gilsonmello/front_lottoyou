@@ -2,11 +2,11 @@
 	<div class="header fixed-top bg-white">
 		<div class="container-fluid">
 			<nav class="navbar navbar-toggleable-md navbar-light bg-inverse" style="padding: 0;">
-  				<div class="navbar-brand" href="#">
-  					<ul class="vcenter">
+  				<div class="navbar-brand">
+  					<ul class="vcenter" style="justify-content: center;">
   						<li>
   							<router-link :to="{ name: 'home' }">
-  								<img class="img-log img-fluid" style="height: 80px;width: 250px;" src="/imgs/logo.png">
+  								<img class="img-fluid" style="height: 80px;width: 250px;" src="/imgs/logo.png">
   							</router-link>
   						</li>
   						<!-- <li>
@@ -20,7 +20,7 @@
   					</ul>
 				</div>
 			  	<div class="navbar-right">
-			  		<ul class="vcenter">
+			  		<ul class="vcenter" style="justify-content: center;">
 			  			<li class="item-register-login">
 			  				<router-link :to="{ name: 'login' }">
 								{{ trans('strings.login') }}

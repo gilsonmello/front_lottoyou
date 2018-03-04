@@ -74,12 +74,9 @@
 			</div>
 			
 		</div>
-		<div class="modal fade modal-jackpot-table">
+		<div class="modal fade modal-jackpot-table" id="nivel1" data-backdrop="static" tabindex="-1" aria-labelledby="nivel1" aria-hidden="true">
 		  	<div class="modal-dialog modal-lg">
 		  		<div class="modal-content" v-if="loading.modalJackpotTable == true">
-		  			<div class="modal-header">
-		  				
-		  			</div>
 		  			<div class="modal-body">
 		  				<load-component></load-component>
 		  			</div>
@@ -139,10 +136,7 @@
 					        		
 					        	</div>
 		        			</div>
-		        		</div>
-			        	
-				        	
-			        	
+		        		</div>		        	
 			        	<button type="button" class="close" data-dismiss="modal">&times;</button>
 			      	</div>
 
@@ -173,12 +167,9 @@
 		  	</div>
 		</div>
 
-		<div class="modal fade modal-demo">
+		<div class="modal fade modal-demo" id="nivel2" data-backdrop="static" tabindex="-1" aria-labelledby="nivel2" aria-hidden="true">
 		  	<div class="modal-dialog modal-xl">
 		  		<div class="modal-content" v-if="loading.modalDemo == true">
-		  			<div class="modal-header">
-		  				
-		  			</div>
 		  			<div class="modal-body">
 		  				<load-component></load-component>
 		  			</div>
@@ -314,7 +305,7 @@
 		},
 		methods: {
 			handlePlayAgain: function (el) {
-				$('.modal-demo').off('hide.bs.modal');
+				$('.modal-demo').off('hidden.bs.modal');
 				const instance = axios.create();
 				instance.interceptors.request.use(config => {
 					$('.btn-result').addClass('invisible');
@@ -330,7 +321,7 @@
 						this.handleScratchPad();
 					}
 		        }).catch((error) => {
-		        	$('.modal-demo').on('hide.bs.modal', function (e) {
+		        	$('.modal-demo').on('hidden.bs.modal', function (e) {
 		        		if(error.response.data.msg) {
 							toastr.error(error.response.data.msg);
 			        	}
@@ -406,33 +397,28 @@
 			},
 			handleDemo: function(el) {
 				this.id = el.target.getAttribute('data-id');
-				$('.modal-jackpot-table').modal('hide');
-				setTimeout(() => {
-					$('.modal-demo').modal('toggle');
-					$('.modal-demo').off('hide.bs.modal');
-					const instance = axios.create();
-					instance.interceptors.request.use(config => {
-						this.loading.modalDemo = true;
-						return config;
-					});
-					instance.get(routes.scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(response => {
-			            if(response.status === 200) {
-			            	this.scratch_card_demo = response.data
-							this.loading.modalDemo = false;
-							this.handleScratchPad();
-						}
-			        }).catch((error) => {
-			        	$('.modal-demo').on('hide.bs.modal', function (e) {
-			        		if(error.response.data.msg) {
-								toastr.error(error.response.data.msg);
-				        	}
-			        	});
-			        	setTimeout(() => {
-							$('.modal-demo').modal('hide');
-			        	}, 500);
-			        })
-
-				}, 500);				
+				
+				$('.modal-demo').modal('toggle');
+				$('.modal-demo').off('hidden.bs.modal');
+				const instance = axios.create();
+				instance.interceptors.request.use(config => {
+					this.loading.modalDemo = true;
+					return config;
+				});
+				instance.get(routes.scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(response => {
+		            if(response.status === 200) {
+		            	this.scratch_card_demo = response.data
+						this.loading.modalDemo = false;
+						this.handleScratchPad();
+					}
+		        }).catch((error) => {
+		        	$('.modal-demo').on('hidden.bs.modal', function (e) {
+		        		if(error.response.data.msg) {
+							toastr.error(error.response.data.msg);
+			        	}
+		        	});
+	        		$('.modal-demo').modal('hide');
+		        });				
 			},
 			submit: function (){
 
@@ -470,16 +456,18 @@
 				scratch_card_demo: {}
 			}
 		},
+		beforeMount: function() {
+			
+		},
 		mounted: function() {
 			axios.interceptors.request.use(config => {
-				this.loading.component = true;
 				return config;
 			});
 			axios.get(routes.scratch_card_themes.index, {}).then(response => {
 	            if(response.status === 200){
 	            	this.scratch_card_themes = response.data
 	            	this.loading.component = false
-	            }
+			    }
 	        }).catch((error) => {
 	            
 	        })

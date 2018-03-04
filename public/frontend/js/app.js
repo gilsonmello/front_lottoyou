@@ -489,7 +489,7 @@ function applyToTag (styleElement, obj) {
 "use strict";
 
 
-var bind = __webpack_require__(20);
+var bind = __webpack_require__(21);
 var isBuffer = __webpack_require__(51);
 
 /*global toString:true*/
@@ -11245,6 +11245,57 @@ module.exports = Component.exports
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(95)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(97)
+/* template */
+var __vue_template__ = __webpack_require__(98)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-26cf5ae2"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Load.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-26cf5ae2", Component.options)
+  } else {
+    hotAPI.reload("data-v-26cf5ae2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
@@ -11265,10 +11316,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(22);
+    adapter = __webpack_require__(23);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(22);
+    adapter = __webpack_require__(23);
   }
   return adapter;
 }
@@ -11339,10 +11390,10 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)))
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22159,11 +22210,11 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(68).setImmediate))
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(72);
 
@@ -22200,7 +22251,7 @@ if (window.QueryString.locale) {
 }
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -22251,7 +22302,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -22302,7 +22353,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -22353,7 +22404,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -22404,7 +22455,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22413,7 +22464,7 @@ module.exports = Component.exports
 /* unused harmony export host */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return routes; });
 var protocol = "http://";
-var enviroment = "production";
+var enviroment = "local";
 var host = enviroment == "production" ? "http://lottoyou.bet" : "http://localhost:8000";
 
 var routes = {
@@ -22449,7 +22500,7 @@ var routes = {
 };
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -22500,7 +22551,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24946,7 +24997,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25135,7 +25186,7 @@ exports.isBuffer = function (obj) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25160,7 +25211,7 @@ module.exports = {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -25519,7 +25570,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25537,7 +25588,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -25727,7 +25778,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25738,7 +25789,7 @@ var settle = __webpack_require__(54);
 var buildURL = __webpack_require__(56);
 var parseHeaders = __webpack_require__(57);
 var isURLSameOrigin = __webpack_require__(58);
-var createError = __webpack_require__(23);
+var createError = __webpack_require__(24);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(59);
 
 module.exports = function xhrAdapter(config) {
@@ -25914,7 +25965,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25939,7 +25990,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25951,7 +26002,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25977,7 +26028,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -26018,57 +26069,6 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-7d64b6a4", Component.options)
   } else {
     hotAPI.reload("data-v-7d64b6a4", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(95)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(97)
-/* template */
-var __vue_template__ = __webpack_require__(98)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-26cf5ae2"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/frontend/js/components/Load.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-26cf5ae2", Component.options)
-  } else {
-    hotAPI.reload("data-v-26cf5ae2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -26196,7 +26196,7 @@ module.exports = __webpack_require__(153);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["getTrans"] = getTrans;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_resource__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Select2Component__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Select2Component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Select2Component__);
@@ -26215,28 +26215,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __webpack_require__(32);
 
-window.Vue = __webpack_require__(8);
+$(document).on('hidden.bs.modal', '.modal', function (e) {
+	if ($('.modal').is(':visible')) {
+		$('body').addClass('modal-open');
+	}
+});
+
+window.Vue = __webpack_require__(9);
 
 Vue.prototype.trans = function (key) {
-  return _.get(window.trans, key, key);
+	return _.get(window.trans, key, key);
 };
 
 function getTrans(key) {
-  var keys = key.split('.');
-  var value = '';
-  var obj = window.trans;
-  var keyAux = '';
+	var keys = key.split('.');
+	var value = '';
+	var obj = window.trans;
+	var keyAux = '';
 
-  if (keys.length > 0) {
-    for (var i = 0; i < keys.length; i++) {
-      keyAux = keys[i];
-      obj = obj[keyAux];
-      if (typeof obj === 'string') {
-        value = obj;
-      }
-    }
-  }
-  return value;
+	if (keys.length > 0) {
+		for (var i = 0; i < keys.length; i++) {
+			keyAux = keys[i];
+			obj = obj[keyAux];
+			if (typeof obj === 'string') {
+				value = obj;
+			}
+		}
+	}
+	return value;
 };
 
 /**
@@ -26261,19 +26267,14 @@ Vue.component('datepicker', __WEBPACK_IMPORTED_MODULE_5__components_DatepickerCo
 Vue.component('app', __WEBPACK_IMPORTED_MODULE_6__components_App___default.a);
 
 var app = new Vue({
-  router: __WEBPACK_IMPORTED_MODULE_1__router__["a" /* default */],
-  store: __WEBPACK_IMPORTED_MODULE_2__store__["a" /* default */],
-  el: '#app',
-  render: function render(h) {
-    return h(__WEBPACK_IMPORTED_MODULE_6__components_App___default.a);
-  },
-  created: function created() {},
-  mounted: function mounted() {
-    var header = $('.header');
-    $('body').css({
-      'padding-top': header[0].clientHeight
-    });
-  }
+	router: __WEBPACK_IMPORTED_MODULE_1__router__["a" /* default */],
+	store: __WEBPACK_IMPORTED_MODULE_2__store__["a" /* default */],
+	el: '#app',
+	render: function render(h) {
+		return h(__WEBPACK_IMPORTED_MODULE_6__components_App___default.a);
+	},
+	created: function created() {},
+	mounted: function mounted() {}
 });
 
 /***/ }),
@@ -26282,7 +26283,7 @@ var app = new Vue({
 
 
 window._ = __webpack_require__(33);
-window.Popper = __webpack_require__(16).default;
+window.Popper = __webpack_require__(17).default;
 window.qs = __webpack_require__(35);
 
 /**
@@ -26339,6 +26340,10 @@ function getParamsUrl() {
     }
     return r;
 };
+
+$('<img/>').attr('src', '/img/load.gif').on('load', function () {
+    $(this).remove();
+});
 
 //window.QueryString = getParamsUrl();
 
@@ -43502,7 +43507,7 @@ module.exports = function(module) {
 
 var stringify = __webpack_require__(36);
 var parse = __webpack_require__(37);
-var formats = __webpack_require__(18);
+var formats = __webpack_require__(19);
 
 module.exports = {
     formats: formats,
@@ -43518,8 +43523,8 @@ module.exports = {
 "use strict";
 
 
-var utils = __webpack_require__(17);
-var formats = __webpack_require__(18);
+var utils = __webpack_require__(18);
+var formats = __webpack_require__(19);
 
 var arrayPrefixGenerators = {
     brackets: function brackets(prefix) { // eslint-disable-line func-name-matching
@@ -43725,7 +43730,7 @@ module.exports = function (object, opts) {
 "use strict";
 
 
-var utils = __webpack_require__(17);
+var utils = __webpack_require__(18);
 
 var has = Object.prototype.hasOwnProperty;
 
@@ -43902,7 +43907,7 @@ module.exports = function (str, opts) {
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-	 true ? factory(exports, __webpack_require__(5), __webpack_require__(16)) :
+	 true ? factory(exports, __webpack_require__(5), __webpack_require__(17)) :
 	typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
 	(factory((global.bootstrap = {}),global.jQuery,global.Popper));
 }(this, (function (exports,$,Popper) { 'use strict';
@@ -52855,7 +52860,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(19)(content, options);
+var update = __webpack_require__(20)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53481,7 +53486,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(19)(content, options);
+var update = __webpack_require__(20)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -53525,9 +53530,9 @@ module.exports = __webpack_require__(50);
 
 
 var utils = __webpack_require__(3);
-var bind = __webpack_require__(20);
+var bind = __webpack_require__(21);
 var Axios = __webpack_require__(52);
-var defaults = __webpack_require__(7);
+var defaults = __webpack_require__(8);
 
 /**
  * Create an instance of Axios
@@ -53560,9 +53565,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(25);
+axios.Cancel = __webpack_require__(26);
 axios.CancelToken = __webpack_require__(66);
-axios.isCancel = __webpack_require__(24);
+axios.isCancel = __webpack_require__(25);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -53610,7 +53615,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(7);
+var defaults = __webpack_require__(8);
 var utils = __webpack_require__(3);
 var InterceptorManager = __webpack_require__(61);
 var dispatchRequest = __webpack_require__(62);
@@ -53715,7 +53720,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(23);
+var createError = __webpack_require__(24);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -54150,8 +54155,8 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(3);
 var transformData = __webpack_require__(63);
-var isCancel = __webpack_require__(24);
-var defaults = __webpack_require__(7);
+var isCancel = __webpack_require__(25);
+var defaults = __webpack_require__(8);
 var isAbsoluteURL = __webpack_require__(64);
 var combineURLs = __webpack_require__(65);
 
@@ -54310,7 +54315,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(25);
+var Cancel = __webpack_require__(26);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -54659,7 +54664,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(21)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(22)))
 
 /***/ }),
 /* 70 */
@@ -58863,22 +58868,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	routes: [{
 		path: '/br',
-		component: __webpack_require__(10),
+		component: __webpack_require__(11),
 		children: [{
 			path: '',
 			name: 'home',
-			component: __webpack_require__(12),
+			component: __webpack_require__(13),
 			props: true
 		}, {
 			path: 'login',
 			name: 'login',
 			props: true,
-			component: __webpack_require__(13)
+			component: __webpack_require__(14)
 		}, {
 			path: 'cadastro',
 			name: 'users.register',
 			props: true,
-			component: __webpack_require__(15)
+			component: __webpack_require__(16)
 		}, {
 			path: 'raspadinhas',
 			name: 'scratch_cards.index',
@@ -58929,7 +58934,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\nbody {\n\tpadding-top: 10rem;\n\tmin-height: 75rem;\n\tbackground-color: #fff\n}\nmain {\n}\n#banner-01 {\n\tbackground-color: #ccc;\n\twidth: 100%;\n\theight: 480px\n}\n#banner-02 {\n\tbackground-color: #ccc;\n\twidth: 100%;\n\theight: 200px\n}\n.vcenter {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n.page-header {\n\tcolor: #000;\n    padding-bottom: 10px;\n    margin: 44px 0 22px;\n    border-bottom: 1px solid #eeeeee;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58973,15 +58978,15 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__HeaderComponent__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__HeaderComponent__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__HeaderComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__HeaderComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__SliderComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselComponent__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselComponent__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__CarouselComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Load__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Load__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Load__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__router__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__router__ = __webpack_require__(10);
 //
 //
 //
@@ -59589,62 +59594,76 @@ var render = function() {
           staticStyle: { padding: "0" }
         },
         [
-          _c("div", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-            _c("ul", { staticClass: "vcenter" }, [
-              _c(
-                "li",
-                [
-                  _c("router-link", { attrs: { to: { name: "home" } } }, [
-                    _c("img", {
-                      staticClass: "img-log img-fluid",
-                      staticStyle: { height: "80px", width: "250px" },
-                      attrs: { src: "/imgs/logo.png" }
-                    })
-                  ])
-                ],
-                1
-              )
-            ])
+          _c("div", { staticClass: "navbar-brand" }, [
+            _c(
+              "ul",
+              {
+                staticClass: "vcenter",
+                staticStyle: { "justify-content": "center" }
+              },
+              [
+                _c(
+                  "li",
+                  [
+                    _c("router-link", { attrs: { to: { name: "home" } } }, [
+                      _c("img", {
+                        staticClass: "img-fluid",
+                        staticStyle: { height: "80px", width: "250px" },
+                        attrs: { src: "/imgs/logo.png" }
+                      })
+                    ])
+                  ],
+                  1
+                )
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "navbar-right" }, [
-            _c("ul", { staticClass: "vcenter" }, [
-              _c(
-                "li",
-                { staticClass: "item-register-login" },
-                [
-                  _c("router-link", { attrs: { to: { name: "login" } } }, [
-                    _vm._v(
-                      "\n\t\t\t\t\t\t\t\t" +
-                        _vm._s(_vm.trans("strings.login")) +
-                        "\n\t\t\t\t\t\t\t"
-                    )
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "item-register-login" },
-                [
-                  _c(
-                    "router-link",
-                    { attrs: { to: { name: "users.register" } } },
-                    [
+            _c(
+              "ul",
+              {
+                staticClass: "vcenter",
+                staticStyle: { "justify-content": "center" }
+              },
+              [
+                _c(
+                  "li",
+                  { staticClass: "item-register-login" },
+                  [
+                    _c("router-link", { attrs: { to: { name: "login" } } }, [
                       _vm._v(
                         "\n\t\t\t\t\t\t\t\t" +
-                          _vm._s(_vm.trans("strings.register")) +
+                          _vm._s(_vm.trans("strings.login")) +
                           "\n\t\t\t\t\t\t\t"
                       )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _vm._m(0)
-            ])
+                    ])
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "item-register-login" },
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: { name: "users.register" } } },
+                      [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t\t" +
+                            _vm._s(_vm.trans("strings.register")) +
+                            "\n\t\t\t\t\t\t\t"
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(0)
+              ]
+            )
           ])
         ]
       )
@@ -60359,8 +60378,10 @@ exports.push([module.i, "\nh1[data-v-22829092] {\n\twidth: 100%;\n}\n", ""]);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SliderComponent__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SliderComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__SliderComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CarouselComponent__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CarouselComponent__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CarouselComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__CarouselComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Load__);
 //
 //
 //
@@ -60428,19 +60449,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
-		return {};
+		return {
+			loading: {
+				component: true
+			}
+		};
+	},
+	beforeCreate: function beforeCreate() {},
+	beforeMount: function beforeMount() {
+		this.loading.component = true;
 	},
 	methods: {},
+
 	created: function created() {},
-	mounted: function mounted() {},
+	mounted: function mounted() {
+		this.loading.component = false;
+	},
 	components: {
 		SliderComponent: __WEBPACK_IMPORTED_MODULE_0__SliderComponent___default.a,
-		CarouselComponent: __WEBPACK_IMPORTED_MODULE_1__CarouselComponent___default.a
+		CarouselComponent: __WEBPACK_IMPORTED_MODULE_1__CarouselComponent___default.a,
+		LoadComponent: __WEBPACK_IMPORTED_MODULE_2__Load___default.a
 	}
 });
 
@@ -60452,180 +60487,185 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("slider-component"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("carousel-component"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _vm._m(2),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _vm._m(3),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _vm._m(4)
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          {
-            staticClass: "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12",
-            attrs: { id: "banner-01" }
-          },
-          [
-            _c("h1", { staticClass: "text-center" }, [
-              _vm._v("Banner 01"),
-              _c("br"),
-              _vm._v("960 x 481px")
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          {
-            staticClass: "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12",
-            attrs: { id: "banner-02" }
-          },
-          [
-            _c("h1", { staticClass: "text-center" }, [
-              _vm._v("Banner 02"),
-              _c("br"),
-              _vm._v("960 x 200px")
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          {
-            staticClass: "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter",
-            attrs: { id: "banner-03" }
-          },
-          [
-            _c("h1", { staticClass: "text-center" }, [
-              _vm._v("Banner 03"),
-              _c("br"),
-              _vm._v("960 x 200px")
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12 col-md-12 col-xs-12 col-sm-12" }, [
-          _c("div", { attrs: { id: "how-to-play" } }, [
-            _c("h1", { staticClass: "text-center" }, [_vm._v("Como jogar")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
+  return _vm.loading.component == true
+    ? _c("load-component")
+    : _c(
         "div",
-        {
-          staticClass: "row",
-          staticStyle: {
-            "background-image":
-              "url(//www.lottoland.com/cms/5554aadbe4b06bf49b4e071e/br_homepage_step-icons2.jpg)",
-            height: "300px",
-            "background-size": "100% auto",
-            "background-repeat": "no-repeat",
-            padding: "200px 0 0 130px"
-          }
-        },
         [
-          _c("div", { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" }, [
-            _c("h5", [_c("strong", [_vm._v("1. Escolha seus números")])]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("Clique sobre seus números da sorte e confirme!")])
-          ]),
+          _c("slider-component"),
           _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" }, [
-            _c("h5", [_c("strong", [_vm._v("1. Escolha seus números")])]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("Clique sobre seus números da sorte e confirme!")])
-          ]),
+          _c("br"),
           _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" }, [
-            _c("h5", [_c("strong", [_vm._v("1. Escolha seus números")])]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("Clique sobre seus números da sorte e confirme!")])
-          ])
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          {
-            staticClass: "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12",
-            attrs: { id: "explications" }
-          },
-          [
-            _c("h1", { staticClass: "text-center" }, [
-              _vm._v("Explicações"),
-              _c("br"),
-              _vm._v("960 x 300px")
+          _c("carousel-component"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12",
+                  attrs: { id: "banner-01" }
+                },
+                [
+                  _c("h1", { staticClass: "text-center" }, [
+                    _vm._v("Banner 01"),
+                    _c("br"),
+                    _vm._v("960 x 481px")
+                  ])
+                ]
+              )
             ])
-          ]
-        )
-      ])
-    ])
-  }
-]
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12",
+                  attrs: { id: "banner-02" }
+                },
+                [
+                  _c("h1", { staticClass: "text-center" }, [
+                    _vm._v("Banner 02"),
+                    _c("br"),
+                    _vm._v("960 x 200px")
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter",
+                  attrs: { id: "banner-03" }
+                },
+                [
+                  _c("h1", { staticClass: "text-center" }, [
+                    _vm._v("Banner 03"),
+                    _c("br"),
+                    _vm._v("960 x 200px")
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-lg-12 col-md-12 col-xs-12 col-sm-12" },
+                [
+                  _c("div", { attrs: { id: "how-to-play" } }, [
+                    _c("h1", { staticClass: "text-center" }, [
+                      _vm._v("Como jogar")
+                    ])
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "row",
+                staticStyle: {
+                  "background-image":
+                    "url(//www.lottoland.com/cms/5554aadbe4b06bf49b4e071e/br_homepage_step-icons2.jpg)",
+                  height: "300px",
+                  "background-size": "100% auto",
+                  "background-repeat": "no-repeat",
+                  padding: "200px 0 0 130px"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
+                  [
+                    _c("h5", [
+                      _c("strong", [_vm._v("1. Escolha seus números")])
+                    ]),
+                    _vm._v(" "),
+                    _c("h5", [
+                      _vm._v("Clique sobre seus números da sorte e confirme!")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
+                  [
+                    _c("h5", [
+                      _c("strong", [_vm._v("1. Escolha seus números")])
+                    ]),
+                    _vm._v(" "),
+                    _c("h5", [
+                      _vm._v("Clique sobre seus números da sorte e confirme!")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
+                  [
+                    _c("h5", [
+                      _c("strong", [_vm._v("1. Escolha seus números")])
+                    ]),
+                    _vm._v(" "),
+                    _c("h5", [
+                      _vm._v("Clique sobre seus números da sorte e confirme!")
+                    ])
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12",
+                  attrs: { id: "explications" }
+                },
+                [
+                  _c("h1", { staticClass: "text-center" }, [
+                    _vm._v("Explicações"),
+                    _c("br"),
+                    _vm._v("960 x 300px")
+                  ])
+                ]
+              )
+            ])
+          ])
+        ],
+        1
+      )
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -60681,7 +60721,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(15);
 //
 //
 //
@@ -60994,7 +61034,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(15);
 //
 //
 //
@@ -61677,20 +61717,11 @@ exports.push([module.i, "\n.remaining-tickets[data-v-fc188428] {\n\t    backgrou
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalFormComponent__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalFormComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ModalFormComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Load__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -61996,7 +62027,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		handlePlayAgain: function handlePlayAgain(el) {
 			var _this = this;
 
-			$('.modal-demo').off('hide.bs.modal');
+			$('.modal-demo').off('hidden.bs.modal');
 			var instance = axios.create();
 			instance.interceptors.request.use(function (config) {
 				$('.btn-result').addClass('invisible');
@@ -62012,7 +62043,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					_this.handleScratchPad();
 				}
 			}).catch(function (error) {
-				$('.modal-demo').on('hide.bs.modal', function (e) {
+				$('.modal-demo').on('hidden.bs.modal', function (e) {
 					if (error.response.data.msg) {
 						toastr.error(error.response.data.msg);
 					}
@@ -62092,32 +62123,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var _this3 = this;
 
 			this.id = el.target.getAttribute('data-id');
-			$('.modal-jackpot-table').modal('hide');
-			setTimeout(function () {
-				$('.modal-demo').modal('toggle');
-				$('.modal-demo').off('hide.bs.modal');
-				var instance = axios.create();
-				instance.interceptors.request.use(function (config) {
-					_this3.loading.modalDemo = true;
-					return config;
-				});
-				instance.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].scratch_card_themes.demo.replace('{theme_id}', _this3.id), {}).then(function (response) {
-					if (response.status === 200) {
-						_this3.scratch_card_demo = response.data;
-						_this3.loading.modalDemo = false;
-						_this3.handleScratchPad();
+
+			$('.modal-demo').modal('toggle');
+			$('.modal-demo').off('hidden.bs.modal');
+			var instance = axios.create();
+			instance.interceptors.request.use(function (config) {
+				_this3.loading.modalDemo = true;
+				return config;
+			});
+			instance.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(function (response) {
+				if (response.status === 200) {
+					_this3.scratch_card_demo = response.data;
+					_this3.loading.modalDemo = false;
+					_this3.handleScratchPad();
+				}
+			}).catch(function (error) {
+				$('.modal-demo').on('hidden.bs.modal', function (e) {
+					if (error.response.data.msg) {
+						toastr.error(error.response.data.msg);
 					}
-				}).catch(function (error) {
-					$('.modal-demo').on('hide.bs.modal', function (e) {
-						if (error.response.data.msg) {
-							toastr.error(error.response.data.msg);
-						}
-					});
-					setTimeout(function () {
-						$('.modal-demo').modal('hide');
-					}, 500);
 				});
-			}, 500);
+				$('.modal-demo').modal('hide');
+			});
 		},
 		submit: function submit() {},
 		handleJackpotTable: function handleJackpotTable(el) {
@@ -62153,11 +62180,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			scratch_card_demo: {}
 		};
 	},
+	beforeMount: function beforeMount() {},
 	mounted: function mounted() {
 		var _this5 = this;
 
 		axios.interceptors.request.use(function (config) {
-			_this5.loading.component = true;
 			return config;
 		});
 		axios.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].scratch_card_themes.index, {}).then(function (response) {
@@ -62571,163 +62598,311 @@ var render = function() {
           })
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "modal fade modal-jackpot-table" }, [
-          _c("div", { staticClass: "modal-dialog modal-lg" }, [
-            _vm.loading.modalJackpotTable == true
-              ? _c("div", { staticClass: "modal-content" }, [
-                  _c("div", { staticClass: "modal-header" }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "modal-body" },
-                    [_c("load-component")],
-                    1
-                  )
-                ])
-              : _c("div", { staticClass: "modal-content" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "modal-header",
-                      staticStyle: { "border-bottom": "none" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "col-lg-12 col-md-12 col-12 col-sm-12" },
-                        [
-                          _c("div", { staticClass: "row" }, [
-                            _vm.scratch_card_jackpot_available.theme
-                              ? _c("div", {
+        _c(
+          "div",
+          {
+            staticClass: "modal fade modal-jackpot-table",
+            attrs: {
+              id: "nivel1",
+              "data-backdrop": "static",
+              tabindex: "-1",
+              "aria-labelledby": "nivel1",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c("div", { staticClass: "modal-dialog modal-lg" }, [
+              _vm.loading.modalJackpotTable == true
+                ? _c("div", { staticClass: "modal-content" }, [
+                    _c(
+                      "div",
+                      { staticClass: "modal-body" },
+                      [_c("load-component")],
+                      1
+                    )
+                  ])
+                : _c("div", { staticClass: "modal-content" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal-header",
+                        staticStyle: { "border-bottom": "none" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-lg-12 col-md-12 col-12 col-sm-12"
+                          },
+                          [
+                            _c("div", { staticClass: "row" }, [
+                              _vm.scratch_card_jackpot_available.theme
+                                ? _c("div", {
+                                    staticClass:
+                                      "col-lg-4 col-md-4 col-sm-12 col-12",
+                                    style:
+                                      "background-image: url(/" +
+                                      _vm.scratch_card_jackpot_available.theme.img_card_url.replace(
+                                        " ",
+                                        "%20"
+                                      ) +
+                                      "); background-size: 100% 100%; padding-right: 0; padding-left: 0; min-height: 106px;"
+                                  })
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
                                   staticClass:
-                                    "col-lg-4 col-md-4 col-sm-12 col-12",
-                                  style:
-                                    "background-image: url(/" +
-                                    _vm.scratch_card_jackpot_available.theme.img_card_url.replace(
-                                      " ",
-                                      "%20"
-                                    ) +
-                                    "); background-size: 100% 100%; padding-right: 0; padding-left: 0; min-height: 106px;"
-                                })
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions",
-                                staticStyle: { "background-color": "#155C7B" }
-                              },
-                              [
-                                _c("div", { staticStyle: { width: "100%" } }, [
-                                  _c("div", { staticClass: "row" }, [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "col-lg-6 col-12 col-md-6 col-sm-6 pull-left"
-                                      },
-                                      [
+                                    "col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions",
+                                  staticStyle: { "background-color": "#155C7B" }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticStyle: { width: "100%" } },
+                                    [
+                                      _c("div", { staticClass: "row" }, [
                                         _c(
-                                          "a",
+                                          "div",
                                           {
                                             staticClass:
-                                              "btn btn-md btn-success",
-                                            attrs: { href: "#" },
-                                            on: {
-                                              click: function($event) {
-                                                $event.preventDefault()
-                                              }
-                                            }
+                                              "col-lg-6 col-12 col-md-6 col-sm-6 pull-left"
                                           },
                                           [
-                                            _vm._v(
-                                              "\n\t\t\t\t\t\t        \t\t\t\t\t" +
-                                                _vm._s(
-                                                  _vm.trans("strings.play_now")
-                                                ) +
-                                                "\n\t\t\t\t\t\t        \t\t\t\t"
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "col-lg-6 col-12 col-md-6 col-sm-6 pull-left"
-                                      },
-                                      [
-                                        _c(
-                                          "a",
-                                          {
-                                            staticClass: "btn btn-md btn-demo",
-                                            attrs: {
-                                              "data-id": _vm.id,
-                                              href: "#"
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                $event.preventDefault()
-                                                _vm.handleDemo($event)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n\t\t\t\t\t\t\t        \t\t\t\tDemo\n\t\t\t\t\t\t\t        \t\t\t"
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "row" }, [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "col-lg-12 col-12 col-md-12 col-sm-12"
-                                      },
-                                      [
-                                        _vm.scratch_card_jackpot_available
-                                          ? _c(
-                                              "p",
+                                            _c(
+                                              "a",
                                               {
                                                 staticClass:
-                                                  "text-center number-of-cards"
+                                                  "btn btn-md btn-success",
+                                                attrs: { href: "#" },
+                                                on: {
+                                                  click: function($event) {
+                                                    $event.preventDefault()
+                                                  }
+                                                }
                                               },
                                               [
                                                 _vm._v(
                                                   "\n\t\t\t\t\t\t        \t\t\t\t\t" +
                                                     _vm._s(
                                                       _vm.trans(
-                                                        "strings.number_of_cards"
+                                                        "strings.play_now"
                                                       )
-                                                    ) +
-                                                    " " +
-                                                    _vm._s(
-                                                      _vm
-                                                        .scratch_card_jackpot_available
-                                                        .qtd_raspadinhas
                                                     ) +
                                                     "\n\t\t\t\t\t\t        \t\t\t\t"
                                                 )
                                               ]
                                             )
-                                          : _vm._e()
-                                      ]
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-lg-6 col-12 col-md-6 col-sm-6 pull-left"
+                                          },
+                                          [
+                                            _c(
+                                              "a",
+                                              {
+                                                staticClass:
+                                                  "btn btn-md btn-demo",
+                                                attrs: {
+                                                  "data-id": _vm.id,
+                                                  href: "#"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    $event.preventDefault()
+                                                    _vm.handleDemo($event)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n\t\t\t\t\t\t\t        \t\t\t\tDemo\n\t\t\t\t\t\t\t        \t\t\t"
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "row" }, [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-lg-12 col-12 col-md-12 col-sm-12"
+                                          },
+                                          [
+                                            _vm.scratch_card_jackpot_available
+                                              ? _c(
+                                                  "p",
+                                                  {
+                                                    staticClass:
+                                                      "text-center number-of-cards"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n\t\t\t\t\t\t        \t\t\t\t\t" +
+                                                        _vm._s(
+                                                          _vm.trans(
+                                                            "strings.number_of_cards"
+                                                          )
+                                                        ) +
+                                                        " " +
+                                                        _vm._s(
+                                                          _vm
+                                                            .scratch_card_jackpot_available
+                                                            .qtd_raspadinhas
+                                                        ) +
+                                                        "\n\t\t\t\t\t\t        \t\t\t\t"
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e()
+                                          ]
+                                        )
+                                      ])
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "close",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("×")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal-body",
+                        staticStyle: { "padding-top": "0" }
+                      },
+                      [
+                        _c(
+                          "table",
+                          { staticClass: "table table-striped text-center" },
+                          [
+                            _c("thead", [
+                              _c("tr", [
+                                _c("th", [
+                                  _vm._v(_vm._s(_vm.trans("strings.level")))
+                                ]),
+                                _vm._v(" "),
+                                _c("th", [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.trans("strings.jackpot_available")
                                     )
-                                  ])
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("th", [
+                                  _vm._v(_vm._s(_vm.trans("strings.amount")))
                                 ])
-                              ]
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "tbody",
+                              _vm._l(
+                                _vm.scratch_card_jackpot_available
+                                  .scratch_card_winning,
+                                function(jackpot_available, key) {
+                                  return _vm.scratch_card_jackpot_available !=
+                                    null
+                                    ? _c("tr", [
+                                        _c("td", [_vm._v(_vm._s(key + 1))]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            _vm._s(jackpot_available.quantity)
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(
+                                            "$ " +
+                                              _vm._s(jackpot_available.jackpot)
+                                          )
+                                        ])
+                                      ])
+                                    : _vm._e()
+                                }
+                              )
                             )
-                          ])
-                        ]
-                      ),
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" })
+                  ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade modal-demo",
+            attrs: {
+              id: "nivel2",
+              "data-backdrop": "static",
+              tabindex: "-1",
+              "aria-labelledby": "nivel2",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c("div", { staticClass: "modal-dialog modal-xl" }, [
+              _vm.loading.modalDemo == true
+                ? _c("div", { staticClass: "modal-content" }, [
+                    _c(
+                      "div",
+                      { staticClass: "modal-body" },
+                      [_c("load-component")],
+                      1
+                    )
+                  ])
+                : _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-header" }, [
+                      _c("div", { staticClass: "col-lg-6" }, [
+                        _c("h4", { staticClass: "modal-title" }, [
+                          _vm._v("Demo de Raspadinhas sem prêmios")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-5" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-success btn-md pull-right",
+                            attrs: { href: "javascript: void(0);" }
+                          },
+                          [
+                            _vm._v(
+                              "\n\t\t\t\t        \t\t" +
+                                _vm._s(_vm.trans("strings.play_truth")) +
+                                "\n\t\t\t\t        \t"
+                            )
+                          ]
+                        )
+                      ]),
                       _vm._v(" "),
                       _c(
                         "button",
@@ -62737,513 +62912,413 @@ var render = function() {
                         },
                         [_vm._v("×")]
                       )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "modal-body",
-                      staticStyle: { "padding-top": "0" }
-                    },
-                    [
-                      _c(
-                        "table",
-                        { staticClass: "table table-striped text-center" },
-                        [
-                          _c("thead", [
-                            _c("tr", [
-                              _c("th", [
-                                _vm._v(_vm._s(_vm.trans("strings.level")))
-                              ]),
-                              _vm._v(" "),
-                              _c("th", [
-                                _vm._v(
-                                  _vm._s(_vm.trans("strings.jackpot_available"))
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("th", [
-                                _vm._v(_vm._s(_vm.trans("strings.amount")))
-                              ])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "tbody",
-                            _vm._l(
-                              _vm.scratch_card_jackpot_available
-                                .scratch_card_winning,
-                              function(jackpot_available, key) {
-                                return _vm.scratch_card_jackpot_available !=
-                                  null
-                                  ? _c("tr", [
-                                      _c("td", [_vm._v(_vm._s(key + 1))]),
-                                      _vm._v(" "),
-                                      _c("td", [
-                                        _vm._v(
-                                          _vm._s(jackpot_available.quantity)
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("td", [
-                                        _vm._v(
-                                          "$ " +
-                                            _vm._s(jackpot_available.jackpot)
-                                        )
-                                      ])
-                                    ])
-                                  : _vm._e()
-                              }
-                            )
-                          )
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" })
-                ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "modal fade modal-demo" }, [
-          _c("div", { staticClass: "modal-dialog modal-xl" }, [
-            _vm.loading.modalDemo == true
-              ? _c("div", { staticClass: "modal-content" }, [
-                  _c("div", { staticClass: "modal-header" }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "modal-body" },
-                    [_c("load-component")],
-                    1
-                  )
-                ])
-              : _c("div", { staticClass: "modal-content" }, [
-                  _c("div", { staticClass: "modal-header" }, [
-                    _c("div", { staticClass: "col-lg-6" }, [
-                      _c("h4", { staticClass: "modal-title" }, [
-                        _vm._v("Demo de Raspadinhas sem prêmios")
-                      ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-lg-5" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-success btn-md pull-right",
-                          attrs: { href: "javascript: void(0);" }
-                        },
-                        [
-                          _vm._v(
-                            "\n\t\t\t\t        \t\t" +
-                              _vm._s(_vm.trans("strings.play_truth")) +
-                              "\n\t\t\t\t        \t"
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "close",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("×")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-body" }, [
-                    _vm.scratch_card_demo.theme
-                      ? _c(
-                          "div",
-                          {
-                            staticClass: "col-lg-12 col-12 col-md-12 col-sm-12",
-                            style:
-                              "background-image: url(" +
-                              _vm.scratch_card_demo.theme.img_background_url +
-                              "); background-size: 100% 100%;"
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass: "row",
-                                staticStyle: { padding: "20px 20px 0 20px" }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-lg-6 col-12 col-md-6 col-sm-6"
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "row",
-                                        staticStyle: { height: "100%" }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-lg-12 col-12 col-md-12 col-sm-12"
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              { staticClass: "ticket-number" },
-                                              [
-                                                _vm._v(
-                                                  "ID do Bilhete: #++++DEMO++++"
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end"
-                                          },
-                                          [
-                                            _c(
-                                              "p",
-                                              {
-                                                staticClass:
-                                                  "text-center info-text",
-                                                style:
-                                                  "color: " +
-                                                  _vm.scratch_card_demo.theme
-                                                    .cor_texto_raspadinha +
-                                                  " "
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n\t\t      \t\t\t\t\t\t\t\t\t" +
-                                                    _vm._s(
-                                                      _vm.scratch_card_demo
-                                                        .theme.texto_index
-                                                    ) +
-                                                    "\n\t\t      \t\t\t\t\t\t\t\t"
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end"
-                                          },
-                                          [
-                                            _c(
-                                              "a",
-                                              {
-                                                staticClass:
-                                                  "btn btn-result invisible",
-                                                attrs: {
-                                                  href: "javascript: void(0);"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n\t\t\t\t      \t\t\t\t\t\t\t" +
-                                                    _vm._s(
-                                                      _vm.trans(
-                                                        "strings.result"
-                                                      )
-                                                    ) +
-                                                    "\n\t\t\t\t      \t\t\t\t\t\t"
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-lg-6 col-12 col-md-6 col-sm-6"
-                                  },
-                                  [
-                                    _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "modal-body" }, [
+                      _vm.scratch_card_demo.theme
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-lg-12 col-12 col-md-12 col-sm-12",
+                              style:
+                                "background-image: url(" +
+                                _vm.scratch_card_demo.theme.img_background_url +
+                                "); background-size: 100% 100%;"
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "row",
+                                  staticStyle: { padding: "20px 20px 0 20px" }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-lg-6 col-12 col-md-6 col-sm-6"
+                                    },
+                                    [
                                       _c(
                                         "div",
                                         {
-                                          staticClass:
-                                            "col-lg-4 col-4 col-md-4 col-sm-4"
+                                          staticClass: "row",
+                                          staticStyle: { height: "100%" }
                                         },
                                         [
-                                          _c("div", {
-                                            staticClass: "scratchpad"
-                                          })
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "col-lg-4 col-4 col-md-4 col-sm-4"
-                                        },
-                                        [
-                                          _c("div", {
-                                            staticClass: "scratchpad"
-                                          })
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "col-lg-4 col-4 col-md-4 col-sm-4"
-                                        },
-                                        [
-                                          _c("div", {
-                                            staticClass: "scratchpad"
-                                          })
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "col-lg-4 col-4 col-md-4 col-sm-4"
-                                        },
-                                        [
-                                          _c("div", {
-                                            staticClass: "scratchpad"
-                                          })
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "col-lg-4 col-4 col-md-4 col-sm-4"
-                                        },
-                                        [
-                                          _c("div", {
-                                            staticClass: "scratchpad"
-                                          })
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "col-lg-4 col-4 col-md-4 col-sm-4"
-                                        },
-                                        [
-                                          _c("div", {
-                                            staticClass: "scratchpad"
-                                          })
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "col-lg-4 col-4 col-md-4 col-sm-4"
-                                        },
-                                        [
-                                          _c("div", {
-                                            staticClass: "scratchpad"
-                                          })
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "col-lg-4 col-4 col-md-4 col-sm-4"
-                                        },
-                                        [
-                                          _c("div", {
-                                            staticClass: "scratchpad"
-                                          })
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "col-lg-4 col-4 col-md-4 col-sm-4"
-                                        },
-                                        [
-                                          _c("div", {
-                                            staticClass: "scratchpad"
-                                          })
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "col-lg-12 col-12 col-md-12 col-sm-12"
+                                            },
+                                            [
+                                              _c(
+                                                "span",
+                                                {
+                                                  staticClass: "ticket-number"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "ID do Bilhete: #++++DEMO++++"
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end"
+                                            },
+                                            [
+                                              _c(
+                                                "p",
+                                                {
+                                                  staticClass:
+                                                    "text-center info-text",
+                                                  style:
+                                                    "color: " +
+                                                    _vm.scratch_card_demo.theme
+                                                      .cor_texto_raspadinha +
+                                                    " "
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n\t\t      \t\t\t\t\t\t\t\t\t" +
+                                                      _vm._s(
+                                                        _vm.scratch_card_demo
+                                                          .theme.texto_index
+                                                      ) +
+                                                      "\n\t\t      \t\t\t\t\t\t\t\t"
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end"
+                                            },
+                                            [
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass:
+                                                    "btn btn-result invisible",
+                                                  attrs: {
+                                                    href: "javascript: void(0);"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n\t\t\t\t      \t\t\t\t\t\t\t" +
+                                                      _vm._s(
+                                                        _vm.trans(
+                                                          "strings.result"
+                                                        )
+                                                      ) +
+                                                      "\n\t\t\t\t      \t\t\t\t\t\t"
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
                                         ]
                                       )
-                                    ])
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "row",
-                                staticStyle: { padding: "10px 20px 10px 20px" }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-lg-6 col-12 col-md-6 col-sm-6"
-                                  },
-                                  [
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "btn remaining-tickets",
-                                        attrs: { href: "javascript: void(0);" }
-                                      },
-                                      [_vm._v("Raspadinhas restantes: ")]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-lg-6 col-12 col-md-6 col-sm-6"
-                                  },
-                                  [
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "btn btn-game btn-play",
-                                        attrs: { href: "javascript: void(0);" },
-                                        on: {
-                                          click: function($event) {
-                                            $event.preventDefault()
-                                            _vm.handlePlay($event)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n\t\t      \t\t\t\t\t\t\t" +
-                                            _vm._s(
-                                              _vm.trans(
-                                                "strings.play_scratch_card"
-                                              )
-                                            ) +
-                                            "\n\t\t      \t\t\t\t\t\t"
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-lg-6 col-12 col-md-6 col-sm-6"
+                                    },
+                                    [
+                                      _c("div", { staticClass: "row" }, [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
                                         )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass:
-                                          "btn hide btn-game btn-loading",
-                                        attrs: { href: "javascript: void(0);" },
-                                        on: {
-                                          click: function($event) {
-                                            $event.preventDefault()
-                                            _vm.handleLoading($event)
+                                      ])
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "row",
+                                  staticStyle: {
+                                    padding: "10px 20px 10px 20px"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-lg-6 col-12 col-md-6 col-sm-6"
+                                    },
+                                    [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "btn remaining-tickets",
+                                          attrs: {
+                                            href: "javascript: void(0);"
                                           }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n\t\t      \t\t\t\t\t\t\t" +
-                                            _vm._s(
-                                              _vm.trans("strings.loading") +
-                                                " ..."
-                                            ) +
-                                            "\n\t\t      \t\t\t\t\t\t"
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass:
-                                          "btn hide btn-game btn-reveal-all",
-                                        attrs: { href: "javascript: void(0);" },
-                                        on: {
-                                          click: function($event) {
-                                            $event.preventDefault()
-                                            _vm.handleReveal($event)
+                                        },
+                                        [_vm._v("Raspadinhas restantes: ")]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-lg-6 col-12 col-md-6 col-sm-6"
+                                    },
+                                    [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "btn btn-game btn-play",
+                                          attrs: {
+                                            href: "javascript: void(0);"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              $event.preventDefault()
+                                              _vm.handlePlay($event)
+                                            }
                                           }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n\t\t      \t\t\t\t\t\t\t" +
-                                            _vm._s(
-                                              _vm.trans("strings.reveal_all")
-                                            ) +
-                                            "\n\t\t      \t\t\t\t\t\t"
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass:
-                                          "btn hide btn-game btn-play-again",
-                                        attrs: { href: "javascript: void(0);" },
-                                        on: {
-                                          click: function($event) {
-                                            $event.preventDefault()
-                                            _vm.handlePlayAgain($event)
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n\t\t      \t\t\t\t\t\t\t" +
+                                              _vm._s(
+                                                _vm.trans(
+                                                  "strings.play_scratch_card"
+                                                )
+                                              ) +
+                                              "\n\t\t      \t\t\t\t\t\t"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "btn hide btn-game btn-loading",
+                                          attrs: {
+                                            href: "javascript: void(0);"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              $event.preventDefault()
+                                              _vm.handleLoading($event)
+                                            }
                                           }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n\t\t      \t\t\t\t\t\t\t" +
-                                            _vm._s(
-                                              _vm.trans("strings.play_again")
-                                            ) +
-                                            "\n\t\t      \t\t\t\t\t\t"
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      : _vm._e()
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n\t\t      \t\t\t\t\t\t\t" +
+                                              _vm._s(
+                                                _vm.trans("strings.loading") +
+                                                  " ..."
+                                              ) +
+                                              "\n\t\t      \t\t\t\t\t\t"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "btn hide btn-game btn-reveal-all",
+                                          attrs: {
+                                            href: "javascript: void(0);"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              $event.preventDefault()
+                                              _vm.handleReveal($event)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n\t\t      \t\t\t\t\t\t\t" +
+                                              _vm._s(
+                                                _vm.trans("strings.reveal_all")
+                                              ) +
+                                              "\n\t\t      \t\t\t\t\t\t"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "btn hide btn-game btn-play-again",
+                                          attrs: {
+                                            href: "javascript: void(0);"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              $event.preventDefault()
+                                              _vm.handlePlayAgain($event)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n\t\t      \t\t\t\t\t\t\t" +
+                                              _vm._s(
+                                                _vm.trans("strings.play_again")
+                                              ) +
+                                              "\n\t\t      \t\t\t\t\t\t"
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        : _vm._e()
+                    ])
                   ])
-                ])
-          ])
-        ])
+            ])
+          ]
+        )
       ])
 }
 var staticRenderFns = []
@@ -63367,22 +63442,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	routes: [{
 		path: '/es',
-		component: __webpack_require__(10),
+		component: __webpack_require__(11),
 		children: [{
 			path: '',
 			name: 'home',
-			component: __webpack_require__(12),
+			component: __webpack_require__(13),
 			props: true
 		}, {
 			path: 'login',
 			name: 'login',
 			props: true,
-			component: __webpack_require__(13)
+			component: __webpack_require__(14)
 		}, {
 			path: 'cadastri',
 			name: 'users.register',
 			props: true,
-			component: __webpack_require__(15)
+			component: __webpack_require__(16)
 		}]
 	}],
 	linkExactActiveClass: 'active'
@@ -63397,22 +63472,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	routes: [{
 		path: '/',
-		component: __webpack_require__(10),
+		component: __webpack_require__(11),
 		children: [{
 			path: '',
 			name: 'home',
-			component: __webpack_require__(12),
+			component: __webpack_require__(13),
 			props: true
 		}, {
 			path: 'login',
 			name: 'login',
 			props: true,
-			component: __webpack_require__(13)
+			component: __webpack_require__(14)
 		}, {
 			path: 'register',
 			name: 'users.register',
 			props: true,
-			component: __webpack_require__(15)
+			component: __webpack_require__(16)
 		}, {
 			path: 'scratch_cards',
 			name: 'scratch_cards.index',
@@ -63433,7 +63508,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(128);
 
@@ -70758,7 +70833,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\nmain {\n}\n#banner-01 {\n\tbackground-color: #ccc;\n\twidth: 100%;\n\theight: 480px\n}\n#banner-02 {\n\tbackground-color: #ccc;\n\twidth: 100%;\n\theight: 200px\n}\n#banner-03 {\n\tbackground-color: #ccc;\n\twidth: 100%;\n\theight: 200px\n}\n#explications {\n\tbackground-color: #ccc;\n\twidth: 100%;\n\theight: 200px\n}\n.btn-demo {\n\tdisplay: block;\n    border: 2px solid rgba(255,255,255,.2);\n    border-radius: 5px;\n    color: #fff;\n    font-weight: 700;\n    -webkit-transition: border .3s ease-in-out;\n    transition: border .3s ease-in-out;\n    font-size: 13px;\n}\n.btn-demo:hover {\n\tborder: 2px solid #fff;\n\tcolor: #fff;\n}\n.number-of-cards {\n\tpadding-top: 10px;\n    text-align: center;\n    color: white;\n}\n.modal-demo .scratchpad canvas, .scratchpad img {\n    left: 0 !important;\n    right: 0 !important;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70769,15 +70844,17 @@ exports.push([module.i, "\nmain {\n}\n#banner-01 {\n\tbackground-color: #ccc;\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__HeaderComponent__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__HeaderComponent__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__HeaderComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__HeaderComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__SliderComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselComponent__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselComponent__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__CarouselComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FooterComponent__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FooterComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__FooterComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__router__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__router__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Load__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Load__);
 //
 //
 //
@@ -70789,6 +70866,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
@@ -70797,10 +70880,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
-		return {};
+		return {
+			loading: {
+				component: true
+			}
+		};
 	},
 	methods: {},
-	created: function created() {
+	beforeCreate: function beforeCreate() {},
+	beforeMount: function beforeMount() {
+		this.loading.component = true;
+	},
+	created: function created() {},
+	mounted: function mounted() {
+
+		this.loading.component = false;
+
 		__WEBPACK_IMPORTED_MODULE_4__router__["a" /* default */].beforeEach(function (to, from, next) {
 			if (to.meta.requiresAuth == true) {
 				next();
@@ -70814,13 +70909,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				scrollTop: 0
 			}, 300);
 		});
+
+		var time = setTimeout(function () {
+			var header = $('.header');
+			$('body').css({
+				'padding-top': header[0].clientHeight
+			});
+			if (header[0].length > 0) {
+				clearInterval(time);
+			}
+		});
 	},
-	mounted: function mounted() {},
 	components: {
 		HeaderComponent: __WEBPACK_IMPORTED_MODULE_0__HeaderComponent___default.a,
 		SliderComponent: __WEBPACK_IMPORTED_MODULE_1__SliderComponent___default.a,
 		CarouselComponent: __WEBPACK_IMPORTED_MODULE_2__CarouselComponent___default.a,
-		FooterComponent: __WEBPACK_IMPORTED_MODULE_3__FooterComponent___default.a
+		FooterComponent: __WEBPACK_IMPORTED_MODULE_3__FooterComponent___default.a,
+		LoadComponent: __WEBPACK_IMPORTED_MODULE_5__Load___default.a
 	}
 });
 
@@ -71880,20 +71985,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "main",
-    { attrs: { role: "main" } },
-    [
-      _c("header-component"),
-      _vm._v(" "),
-      _c("section", { staticClass: "content" }, [_c("router-view")], 1),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("footer-component")
-    ],
-    1
-  )
+  return _vm.loading.component == true
+    ? _c("load-component")
+    : _c(
+        "main",
+        { attrs: { role: "main" } },
+        [
+          _c("header-component"),
+          _vm._v(" "),
+          _c(
+            "section",
+            { staticClass: "content" },
+            [
+              _c(
+                "transition",
+                { attrs: { name: "fade", mode: "out-in" } },
+                [_c("keep-alive", [_c("router-view")], 1)],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("footer-component")
+        ],
+        1
+      )
 }
 var staticRenderFns = []
 render._withStripped = true

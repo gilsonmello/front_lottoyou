@@ -56,6 +56,10 @@ function getParamsUrl() {
     return r;
 };
 
+$('<img/>').attr('src', '/img/load.gif').on('load', function() {
+    $(this).remove();
+});
+
 //window.QueryString = getParamsUrl();
 
 

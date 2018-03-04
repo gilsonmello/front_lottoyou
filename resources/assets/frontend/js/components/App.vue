@@ -1,8 +1,13 @@
 <template>
-	<main role="main">
+	<load-component v-if="loading.component == true"></load-component>
+	<main role="main" v-else>
 		<header-component></header-component>
 		<section class="content">
-			<router-view></router-view>
+			<transition name="fade" mode="out-in">
+	            <keep-alive>
+					<router-view></router-view>
+				</keep-alive>
+			</transition>
 		</section>
 		<br>
 		<footer-component></footer-component>
@@ -15,16 +20,31 @@
 	import CarouselComponent from './CarouselComponent'
 	import FooterComponent from './FooterComponent'
 	import router from '../router'
+	import LoadComponent from './Load'
 	export default {
 		data: function() {
 			return {
-
+				loading: {
+					component: true
+				}
 			}
 		},
 		methods: {
 
 		},
+		beforeCreate: function() {
+			
+		},
+		beforeMount: function() {
+			this.loading.component = true
+		},
 		created: function() {
+			
+		},
+		mounted: function() {
+
+			this.loading.component = false
+			
 			router.beforeEach((to, from, next) => {
 			    if(to.meta.requiresAuth == true){
 		            next()
@@ -38,70 +58,31 @@
 			        scrollTop: 0
 			    },  300);
 			});
-		},
-		mounted: function() {
+
+			var time = setTimeout(() => {
+				var header = $('.header');
+		    	$('body').css({
+		    		'padding-top': header[0].clientHeight
+		    	});
+		    	if(header[0].length > 0){
+					clearInterval(time);
+				}
+	    	});
+
 			
 		},
 		components: {
 			HeaderComponent,
 			SliderComponent,
 			CarouselComponent,
-			FooterComponent
+			FooterComponent,
+			LoadComponent
 		}
 	}
 </script>
 
 <style>
 	
-	main {
-		
-	}
-	#banner-01 {
-		background-color: #ccc;
-		width: 100%;
-		height: 480px
-	}
-	#banner-02 {
-		background-color: #ccc;
-		width: 100%;
-		height: 200px
-	}
-	#banner-03 {
-		background-color: #ccc;
-		width: 100%;
-		height: 200px
-	}
-	#explications {
-		background-color: #ccc;
-		width: 100%;
-		height: 200px
-	}	
-
-	.btn-demo {
-		display: block;
-	    border: 2px solid rgba(255,255,255,.2);
-	    border-radius: 5px;
-	    color: #fff;
-	    font-weight: 700;
-	    -webkit-transition: border .3s ease-in-out;
-	    transition: border .3s ease-in-out;
-	    font-size: 13px;
-	}
-
-	.btn-demo:hover {
-		border: 2px solid #fff;
-		color: #fff;
-	}
-
-	.number-of-cards {
-		padding-top: 10px;
-	    text-align: center;
-	    color: white;
-	}	
-
-	.modal-demo .scratchpad canvas, .scratchpad img {
-	    left: 0 !important;
-	    right: 0 !important;
-	}
+	
 
 </style>

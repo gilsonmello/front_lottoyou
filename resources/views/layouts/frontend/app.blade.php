@@ -16,6 +16,10 @@
         <link rel="icon" type="image/x-icon" href="//www.lottoland.com/skins/lottoland/images/ui/favicon-906cd6ceee89e2b3.ico" />
     </head>
     <body>
+        
+        {{-- Tag para que ao inicializar o sistema, faça o download do gif load --}}        
+       
+
         <div id="app">
         </div>
         <script>

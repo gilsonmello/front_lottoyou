@@ -7,6 +7,12 @@
 
 require('./bootstrap');
 
+$(document).on('hidden.bs.modal', '.modal', function (e) {
+	if($('.modal').is(':visible')){
+		$('body').addClass('modal-open');
+	}
+});
+
 window.Vue = require('vue')
 
 Vue.prototype.trans = (key) => {
@@ -61,9 +67,6 @@ const app = new Vue({
     	
     },
     mounted: function() {
-    	var header = $('.header')
-    	$('body').css({
-    		'padding-top': header[0].clientHeight
-    	});
+    	
     }
 });

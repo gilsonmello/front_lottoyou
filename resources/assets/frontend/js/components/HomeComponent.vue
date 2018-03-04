@@ -1,5 +1,6 @@
 <template>
-	<div>
+	<load-component v-if="loading.component == true"></load-component>
+	<div v-else>
 		<slider-component></slider-component>
 		<br>
 		<carousel-component></carousel-component>
@@ -68,24 +69,35 @@
 <script>
 	import SliderComponent from './SliderComponent'
 	import CarouselComponent from './CarouselComponent'
+	import LoadComponent from './Load'
 	export default {
 		data: function() {
 			return {
-
+				loading: {
+					component: true
+				}
 			}
+		},
+		beforeCreate: function() {
+			
+		},
+		beforeMount: function() {
+			this.loading.component = true
 		},
 		methods: {
 
 		},
-		created: function() {
 
+		created: function() {
+			
 		},
 		mounted: function() {
-			
+			this.loading.component = false
 		},
 		components: {
 			SliderComponent,
-			CarouselComponent
+			CarouselComponent,
+			LoadComponent
 		}
 	}
 </script>
