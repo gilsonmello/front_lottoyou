@@ -89,9 +89,8 @@
 			      	<div class="modal-header" style="border-bottom: none;">
 			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
 						<div class="col-lg-12 col-md-12 col-12 col-sm-12">
-		        			<div class="row" v-if="scratch_card_jackpot_available.theme">
-		        				<div class="col-lg-4 col-md-4 col-sm-12 col-12" :style="'background-image: url('+scratch_card_jackpot_available.theme.img_card_url+'); background-size: 100% 100%; padding-right: 0; padding-left: 0; min-height: 106px;'">
-					        		
+		        			<div class="row">
+		        				<div v-if="scratch_card_jackpot_available.theme" class="col-lg-4 col-md-4 col-sm-12 col-12" :style="'background-image: url(/'+scratch_card_jackpot_available.theme.img_card_url.replace(' ', '%20')+'); background-size: 100% 100%; padding-right: 0; padding-left: 0; min-height: 106px;'">
 					        	</div>
 					        	<div class="col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions" style="background-color: #155C7B">
 					        		

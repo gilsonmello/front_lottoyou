@@ -61984,7 +61984,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -62597,143 +62596,136 @@ var render = function() {
                         "div",
                         { staticClass: "col-lg-12 col-md-12 col-12 col-sm-12" },
                         [
-                          _vm.scratch_card_jackpot_available.theme
-                            ? _c("div", { staticClass: "row" }, [
-                                _c("div", {
+                          _c("div", { staticClass: "row" }, [
+                            _vm.scratch_card_jackpot_available.theme
+                              ? _c("div", {
                                   staticClass:
                                     "col-lg-4 col-md-4 col-sm-12 col-12",
                                   style:
-                                    "background-image: url(" +
-                                    _vm.scratch_card_jackpot_available.theme
-                                      .img_card_url +
+                                    "background-image: url(/" +
+                                    _vm.scratch_card_jackpot_available.theme.img_card_url.replace(
+                                      " ",
+                                      "%20"
+                                    ) +
                                     "); background-size: 100% 100%; padding-right: 0; padding-left: 0; min-height: 106px;"
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions",
-                                    staticStyle: {
-                                      "background-color": "#155C7B"
-                                    }
-                                  },
-                                  [
+                                })
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions",
+                                staticStyle: { "background-color": "#155C7B" }
+                              },
+                              [
+                                _c("div", { staticStyle: { width: "100%" } }, [
+                                  _c("div", { staticClass: "row" }, [
                                     _c(
                                       "div",
-                                      { staticStyle: { width: "100%" } },
+                                      {
+                                        staticClass:
+                                          "col-lg-6 col-12 col-md-6 col-sm-6 pull-left"
+                                      },
                                       [
-                                        _c("div", { staticClass: "row" }, [
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "col-lg-6 col-12 col-md-6 col-sm-6 pull-left"
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn btn-md btn-success",
+                                            attrs: { href: "#" },
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n\t\t\t\t\t\t        \t\t\t\t\t" +
+                                                _vm._s(
+                                                  _vm.trans("strings.play_now")
+                                                ) +
+                                                "\n\t\t\t\t\t\t        \t\t\t\t"
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-lg-6 col-12 col-md-6 col-sm-6 pull-left"
+                                      },
+                                      [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass: "btn btn-md btn-demo",
+                                            attrs: {
+                                              "data-id": _vm.id,
+                                              href: "#"
                                             },
-                                            [
-                                              _c(
-                                                "a",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-md btn-success",
-                                                  attrs: { href: "#" },
-                                                  on: {
-                                                    click: function($event) {
-                                                      $event.preventDefault()
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n\t\t\t\t\t\t        \t\t\t\t\t" +
-                                                      _vm._s(
-                                                        _vm.trans(
-                                                          "strings.play_now"
-                                                        )
-                                                      ) +
-                                                      "\n\t\t\t\t\t\t        \t\t\t\t"
-                                                  )
-                                                ]
-                                              )
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "col-lg-6 col-12 col-md-6 col-sm-6 pull-left"
-                                            },
-                                            [
-                                              _c(
-                                                "a",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-md btn-demo",
-                                                  attrs: {
-                                                    "data-id": _vm.id,
-                                                    href: "#"
-                                                  },
-                                                  on: {
-                                                    click: function($event) {
-                                                      $event.preventDefault()
-                                                      _vm.handleDemo($event)
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n\t\t\t\t\t\t\t        \t\t\t\tDemo\n\t\t\t\t\t\t\t        \t\t\t"
-                                                  )
-                                                ]
-                                              )
-                                            ]
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("div", { staticClass: "row" }, [
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "col-lg-12 col-12 col-md-12 col-sm-12"
-                                            },
-                                            [
-                                              _vm.scratch_card_jackpot_available
-                                                ? _c(
-                                                    "p",
-                                                    {
-                                                      staticClass:
-                                                        "text-center number-of-cards"
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        "\n\t\t\t\t\t\t        \t\t\t\t\t" +
-                                                          _vm._s(
-                                                            _vm.trans(
-                                                              "strings.number_of_cards"
-                                                            )
-                                                          ) +
-                                                          " " +
-                                                          _vm._s(
-                                                            _vm
-                                                              .scratch_card_jackpot_available
-                                                              .qtd_raspadinhas
-                                                          ) +
-                                                          "\n\t\t\t\t\t\t        \t\t\t\t"
-                                                      )
-                                                    ]
-                                                  )
-                                                : _vm._e()
-                                            ]
-                                          )
-                                        ])
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                _vm.handleDemo($event)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n\t\t\t\t\t\t\t        \t\t\t\tDemo\n\t\t\t\t\t\t\t        \t\t\t"
+                                            )
+                                          ]
+                                        )
                                       ]
                                     )
-                                  ]
-                                )
-                              ])
-                            : _vm._e()
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "row" }, [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-lg-12 col-12 col-md-12 col-sm-12"
+                                      },
+                                      [
+                                        _vm.scratch_card_jackpot_available
+                                          ? _c(
+                                              "p",
+                                              {
+                                                staticClass:
+                                                  "text-center number-of-cards"
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n\t\t\t\t\t\t        \t\t\t\t\t" +
+                                                    _vm._s(
+                                                      _vm.trans(
+                                                        "strings.number_of_cards"
+                                                      )
+                                                    ) +
+                                                    " " +
+                                                    _vm._s(
+                                                      _vm
+                                                        .scratch_card_jackpot_available
+                                                        .qtd_raspadinhas
+                                                    ) +
+                                                    "\n\t\t\t\t\t\t        \t\t\t\t"
+                                                )
+                                              ]
+                                            )
+                                          : _vm._e()
+                                      ]
+                                    )
+                                  ])
+                                ])
+                              ]
+                            )
+                          ])
                         ]
                       ),
                       _vm._v(" "),
