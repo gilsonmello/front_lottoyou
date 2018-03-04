@@ -88,32 +88,62 @@
 					<!-- Modal Header -->
 			      	<div class="modal-header" style="border-bottom: none;">
 			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
-			        	<div class="container-actions vcenter no-padding" style="width: 100%;">
-				        	<div class="col-lg-4" style="padding-left: 0;">
-				        		<img class="img-fluid" v-if="scratch_card_jackpot_available.theme" :src="'/'+scratch_card_jackpot_available.theme.img_card_url">
-				        	</div>
-				        	<div class="col-lg-7">
-				        		<div class="row">
-				        			<div class="col-lg-6">
-				        				<a class="btn btn-md btn-success" href="#" @click.prevent="">
-				        					{{ trans('strings.play_now') }}
-				        				</a>
-				        			</div>			        			
-				        			<div class="col-lg-6">
-				        				<a class="btn btn-md btn-demo" href="#" @click.prevent="handleDemo($event)">
-					        				Demo
-					        			</a>
-				        			</div>
-				        		</div>
-				        		<div class="row">
-				        			<div class="col-lg-12">
-				        				<p class="text-center number-of-cards">
-				        					{{ trans('strings.number_of_cards') }} 15000000
-				        				</p>
-				        			</div>
-				        		</div>
-				        	</div>
-			        	</div>
+						<div class="col-lg-12 col-md-12 col-12 col-sm-12">
+		        			<div class="row" v-if="scratch_card_jackpot_available.theme">
+		        				<div class="col-lg-4 col-md-4 col-sm-12 col-12" :style="'background-image: url('+scratch_card_jackpot_available.theme.img_card_url+'); background-size: 100% 100%; padding-right: 0; padding-left: 0; min-height: 106px;'">
+					        		
+					        	</div>
+					        	<div class="col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions" style="background-color: #155C7B">
+					        		
+					        		<div class="" style="width: 100%;">
+					        			<div class="row">
+					        				<div class="col-lg-6 col-12 col-md-6 col-sm-6 pull-left">
+						        				<a class="btn btn-md btn-success" href="#" @click.prevent="">
+						        					{{ trans('strings.play_now') }}
+						        				</a>
+						        			</div>
+
+					        				<div class="col-lg-6 col-12 col-md-6 col-sm-6 pull-left">
+						        				<a :data-id="id" class="btn btn-md btn-demo" href="#" @click.prevent="handleDemo($event)">
+							        				Demo
+							        			</a>
+						        			</div>
+					        			</div>
+					        			<div class="row">
+						        			<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+						        				<p class="text-center number-of-cards" v-if="scratch_card_jackpot_available">
+						        					{{ trans('strings.number_of_cards') }} {{  scratch_card_jackpot_available.qtd_raspadinhas}}
+						        				</p>
+						        			</div>
+						        		</div>
+					        		</div>
+					        			
+					        			<!-- <div class="row">
+						        			<div class="col-lg-6 col-12 col-md-6 col-sm-6">
+						        				<a class="btn btn-md btn-success" href="#" @click.prevent="">
+						        					{{ trans('strings.play_now') }}
+						        				</a>
+						        			</div>			        			
+						        			<div class="col-lg-6 col-12 col-md-6 col-sm-6">
+						        				<a :data-id="id" class="btn btn-md btn-demo" href="#" @click.prevent="handleDemo($event)">
+							        				Demo
+							        			</a>
+						        			</div>
+						        		</div>
+						        		<div class="row">
+						        			<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+						        				<p class="text-center number-of-cards" v-if="scratch_card_jackpot_available">
+						        					{{ trans('strings.number_of_cards') }} {{  scratch_card_jackpot_available.qtd_raspadinhas}}
+						        				</p>
+						        			</div>
+						        		</div> -->
+					        		
+					        	</div>
+		        			</div>
+		        		</div>
+			        	
+				        	
+			        	
 			        	<button type="button" class="close" data-dismiss="modal">&times;</button>
 			      	</div>
 
@@ -377,42 +407,46 @@
 			},
 			handleDemo: function(el) {
 				this.id = el.target.getAttribute('data-id');
-				$('.modal-demo').modal('toggle');
-				$('.modal-demo').off('hide.bs.modal');
-				const instance = axios.create();
-				instance.interceptors.request.use(config => {
-					this.loading.modalDemo = true;
-					return config;
-				});
-				instance.get(routes.scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(response => {
-		            if(response.status === 200) {
-		            	this.scratch_card_demo = response.data
-						this.loading.modalDemo = false;
-						this.handleScratchPad();
-					}
-		        }).catch((error) => {
-		        	$('.modal-demo').on('hide.bs.modal', function (e) {
-		        		if(error.response.data.msg) {
-							toastr.error(error.response.data.msg);
-			        	}
-		        	});
-		        	setTimeout(() => {
-						$('.modal-demo').modal('hide');
-		        	}, 500);
-		        })				
+				$('.modal-jackpot-table').modal('hide');
+				setTimeout(() => {
+					$('.modal-demo').modal('toggle');
+					$('.modal-demo').off('hide.bs.modal');
+					const instance = axios.create();
+					instance.interceptors.request.use(config => {
+						this.loading.modalDemo = true;
+						return config;
+					});
+					instance.get(routes.scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(response => {
+			            if(response.status === 200) {
+			            	this.scratch_card_demo = response.data
+							this.loading.modalDemo = false;
+							this.handleScratchPad();
+						}
+			        }).catch((error) => {
+			        	$('.modal-demo').on('hide.bs.modal', function (e) {
+			        		if(error.response.data.msg) {
+								toastr.error(error.response.data.msg);
+				        	}
+			        	});
+			        	setTimeout(() => {
+							$('.modal-demo').modal('hide');
+			        	}, 500);
+			        })
+
+				}, 500);				
 			},
 			submit: function (){
 
 			},
 			handleJackpotTable: function(el) {
-				var id = el.target.getAttribute('data-id');
+				this.id = el.target.getAttribute('data-id');
 				$('.modal-jackpot-table').modal('toggle');
 				const instance = axios.create();
 				instance.interceptors.request.use(config => {
 					this.loading.modalJackpotTable = true;
 					return config;
 				});
-				instance.get(routes.scratch_card_themes.jackpot_available.replace('{id}', id), {}).then(response => {
+				instance.get(routes.scratch_card_themes.jackpot_available.replace('{id}', this.id), {}).then(response => {
 		            if(response.status === 200){
 		            	this.scratch_card_jackpot_available = response.data
 	            		this.loading.modalJackpotTable = false;
@@ -590,11 +624,13 @@
 	    -webkit-transition: border .3s ease-in-out;
 	    transition: border .3s ease-in-out;
 	    font-size: 13px;
+    	margin: 10px 0 10px 0;
 	}
 
 	.scratch-card-body .jackpot-table a.description {
 		cursor: pointer;
     	color: #fff;
+    	margin: 10px 0 10px 0;
 	}
 	.scratch-card-body .jackpot-table a.demo:hover {
 		border: 2px solid #fff;
@@ -634,8 +670,12 @@
 
 	.modal-jackpot-table .container-actions {
 		background-color: #155C7B;
-	    margin-left: 20px;
 	    text-align: center;
+	}
+
+	.modal-jackpot-table .container-actions .btn {
+	   	margin: 10px 0 10px 0;
+	   	display: block;
 	}
 
 	.modal-demo .modal-body {
