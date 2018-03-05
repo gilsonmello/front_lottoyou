@@ -22,4 +22,5 @@ Route::group(['namespace' => 'Frontend'], function(){
 	require __DIR__.'/Frontend/ScratchCard.php';
 	require __DIR__.'/Frontend/ScratchCardTheme.php';
 	require __DIR__.'/Frontend/ScratchCardLot.php';
+	require __DIR__.'/Frontend/Country.php';
 });

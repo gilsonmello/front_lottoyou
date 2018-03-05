@@ -3,43 +3,55 @@
 		<h1 class="page-header text-center">Crie uma conta para jogar nas melhores loterias do mundo</h1>
 		<form @submit.prevent="register">
 			<div class="row">
-				<div class="col-lg-4">
-					<img class="img-fluid" src="https://www.lottoland.com/cms/5a4ca7d90eb3587d99647503/br_yellow_homepage_286x406.jpg">
-				</div>
-				<div class="col-lg-8">
+				<div class="col-lg-8 col-12 col-sm-12 col-md-8">
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-lg-6 col-12 col-sm-6 col-md-6">
 							<div class="form-group">
+								<div class="alert alert-danger" v-if="errors.email">
+								  	<div v-for="email in errors.email" >{{ email }}</div>
+								</div>
 							    <label for="email">{{ trans('strings.email') }}</label>
 							    <input v-model="email" required type="email" class="form-control" id="email" aria-describedby="email" :placeholder="trans('strings.email')">
 						  	</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-lg-6 col-12 col-sm-6 col-md-6">
 							<div class="form-group">
+								<div class="alert alert-danger" v-if="errors.password">
+								  	<div v-for="password in errors.password" >{{ password }}</div>
+								</div>
 							    <label for="password">{{ trans('strings.password') }}</label>
 							    <input v-model="password" required type="password" class="form-control" id="password" aria-describedby="password" :placeholder="trans('strings.password')">
 						  	</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-lg-6 col-12 col-sm-6 col-md-6">
 							<div class="form-group">
+								<div class="alert alert-danger" v-if="errors.name">
+								  	<div v-for="name in errors.name" >{{ name }}</div>
+								</div>
 							    <label for="name">{{ trans('strings.name') }}</label>
 							    <input v-model="name" required type="name" class="form-control" id="name" aria-describedby="name" :placeholder="trans('strings.name')">
 						  	</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-lg-6 col-12 col-sm-6 col-md-6">
 							<div class="form-group">
+								<div class="alert alert-danger" v-if="errors.last_name">
+								  	<div v-for="last_name in errors.last_name" >{{ last_name }}</div>
+								</div>
 							    <label for="last_name">{{ trans('strings.last_name') }}</label>
 							    <input v-model="last_name" required type="last_name" class="form-control" id="last_name" aria-describedby="last_name" :placeholder="trans('strings.last_name')">
 						  	</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-lg-6 col-12 col-sm-6 col-md-12">
 							<div class="row">
-								<div class="col-lg-4">
+								<div class="col-lg-4 col-sm-6 col-md-4 col-6">
 									<div class="form-group">
+										<div class="alert alert-danger" v-if="errors.birth_day">
+										  	<div v-for="birth_day in errors.birth_day" >{{ birth_day }}</div>
+										</div>
 									    <label for="birth_day">{{ trans('strings.day') }}</label>
 									    <select v-model="birth_day" class="form-control" id="birth_day">
 									      	<option :value="day" v-for="day in days">
@@ -48,8 +60,11 @@
 									    </select>
 								  	</div>
 								</div>
-								<div class="col-lg-4">
+								<div class="col-lg-4 col-sm-6 col-md-4 col-6">
 									<div class="form-group">
+										<div class="alert alert-danger" v-if="errors.birth_month">
+										  	<div v-for="birth_month in errors.birth_month" >{{ birth_month }}</div>
+										</div>
 									    <label for="birth_month">{{ trans('strings.month') }}</label>
 									    <select v-model="birth_month" class="form-control" id="birth_month" @change="changeBirthMonth">
 									      	<option :value="month.value" :data-key="key" v-for="(month, key) in months">
@@ -58,8 +73,11 @@
 									    </select>
 								  	</div>
 								</div>
-								<div class="col-lg-4">
+								<div class="col-lg-4 col-sm-12 col-md-12 col-12">
 									<div class="form-group">
+										<div class="alert alert-danger" v-if="errors.birth_year">
+										  	<div v-for="birth_year in errors.birth_year" >{{ birth_year }}</div>
+										</div>
 									    <label for="birth_year">{{ trans('strings.year') }}</label>
 									    <select v-model="birth_year" class="form-control" id="birth_year">
 									      	<option :value="val" v-for="(val, index) in rangeYear(1900, date.getFullYear() - 18)">
@@ -70,26 +88,34 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-lg-6 col-12 col-sm-6 col-md-6">
 							<div class="form-group">
+								<div class="alert alert-danger" v-if="errors.country">
+								  	<div v-for="country in errors.country" >{{ country }}</div>
+								</div>
 							    <label for="country">{{ trans('strings.country') }}</label>
 							    <select v-model="country" class="form-control" id="country">
-							      	<option value="01">1</option>
-							      	<option value="02">2</option>
-							      	<option value="03">3</option>
-							      	<option value="04">4</option>
-							      	<option value="05">5</option>
+							    	<option :value="value.id" v-for="value in countries">
+							    		{{ value.name }}
+							    	</option>
 							    </select>
 						  	</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-12">
+						<div class="col-lg-12 col-12 col-sm-12 col-md-12">
 							<button type="submit" class="pull-right btn btn-md btn-success">
-								{{trans('strings.save_button')}}
+								{{ trans('strings.save_button') }}
+							</button>
+							<button type="load" class="hide pull-right btn btn-md btn-success">
+								<i class="fa fa-refresh fa-spin"></i>
 							</button>
 						</div>
 					</div>
+					<hr>
+				</div>
+				<div class="col-lg-4 col-12 col-md-4 col-sm-12 text-center">
+					<img class="img-fluid" src="https://www.lottoland.com/cms/5a4ca7d90eb3587d99647503/br_yellow_homepage_286x406.jpg">
 				</div>
 			</div>
 		</form>
@@ -110,6 +136,7 @@
 		},
 		data: function() {
 			return {
+				countries: [],
 				months: [
 					{
 						name: this.trans('strings.jan'),
@@ -185,7 +212,10 @@
 				country: '',
 				birth_day: 1,
 				days: [],
-				errors: []
+				errors: [],
+				loading: {
+					component: true
+				}
 			}
 		},
 		mounted: function() {
@@ -193,6 +223,17 @@
 			this.birth_year = this.date.getFullYear() - 18;
 			this.birth_month = this.months[0].value;
 			this.days = this.rangeDay();
+			const instance = axios.create();
+			instance.get(routes.countries.index, {})
+			.then(response => {
+				if(response.status === 200) {
+	            	this.loading.component = false;
+	            	this.countries = response.data;
+	            	this.country = ''+this.countries[0].id;
+			    }
+			}).catch((error) => {
+
+			});
 		},
 		methods: {
 			changeBirthMonth: function(el) {
@@ -202,6 +243,7 @@
 				for(var i = 1; i <= this.months[index].finalDay; i++){
 					this.days.push(i);
 				}
+				this.birth_day = this.days[0]
 			},
 			rangeDay: function() {
 				var result = [];
@@ -227,13 +269,14 @@
 	            return result.reverse();
 	        },
 			register: function() {
-				axios.interceptors.request.use(config => {
+				var registerRequest = axios.create();
+				registerRequest.interceptors.request.use(config => {
 		        	$(this.$el).find('[type="load"]').removeClass('hide');
 		        	$(this.$el).find('[type="submit"]').addClass('hide');
 				  	return config;
 				});
 				//Fazendo requisição para criar o usuário
-				axios.post(routes.users.create, qs.stringify({
+				registerRequest.post(routes.users.create, qs.stringify({
 					name: this.name,
 					last_name: this.last_name,
 					email: this.email,
@@ -281,11 +324,13 @@
 							toastr.success('Cadastrado com sucesso');
 		                })*/
 					}
+					$(this.$el).find('[type="load"]').addClass('hide');
+		        	$(this.$el).find('[type="submit"]').removeClass('hide');
 				}).catch(error => {
 					$(this.$el).find('[type="load"]').addClass('hide');
 		        	$(this.$el).find('[type="submit"]').removeClass('hide');
 					this.errors = error.response.data.errors
-				})
+				});
 			}
 		},
 		watch: {

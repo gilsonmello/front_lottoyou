@@ -8,6 +8,9 @@ export const routes = {
 		login: host+'/oauth/token',
 		user: host+'/api/user'
 	},
+	countries: {
+		index: host+'/countries/'
+	},
 	users: {
 		create: host+'/users',
 		edit: host+'/{id}/user',
