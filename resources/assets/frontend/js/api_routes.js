@@ -2,7 +2,6 @@ export const protocol = "http://"
 export const enviroment = "production";
 export const host = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '');
 
-console.log(host)
 
 export const routes = {
 	auth: {

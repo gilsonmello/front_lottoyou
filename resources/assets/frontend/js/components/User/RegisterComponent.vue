@@ -42,23 +42,19 @@
 									<div class="form-group">
 									    <label for="birth_day">{{ trans('strings.day') }}</label>
 									    <select v-model="birth_day" class="form-control" id="birth_day">
-									      	<option>1</option>
-									      	<option>2</option>
-									      	<option>3</option>
-									      	<option>4</option>
-									      	<option>5</option>
+									      	<option :value="day" v-for="day in days">
+									      		{{ day }}
+									      	</option>
 									    </select>
 								  	</div>
 								</div>
 								<div class="col-lg-4">
 									<div class="form-group">
 									    <label for="birth_month">{{ trans('strings.month') }}</label>
-									    <select v-model="birth_month" class="form-control" id="birth_month">
-									      	<option value="01">1</option>
-									      	<option value="02">2</option>
-									      	<option value="03">3</option>
-									      	<option value="04">4</option>
-									      	<option value="05">5</option>
+									    <select v-model="birth_month" class="form-control" id="birth_month" @change="changeBirthMonth">
+									      	<option :value="month.value" :data-key="key" v-for="(month, key) in months">
+									      		{{ month.name }}
+									      	</option>
 									    </select>
 								  	</div>
 								</div>
@@ -66,11 +62,9 @@
 									<div class="form-group">
 									    <label for="birth_year">{{ trans('strings.year') }}</label>
 									    <select v-model="birth_year" class="form-control" id="birth_year">
-									      	<option value="01">1</option>
-									      	<option value="02">2</option>
-									      	<option value="03">3</option>
-									      	<option value="04">4</option>
-									      	<option value="05">5</option>
+									      	<option :value="val" v-for="(val, index) in rangeYear(1900, date.getFullYear() - 18)">
+									      		{{ val }}
+									      	</option>
 									    </select>
 								  	</div>
 								</div>
@@ -105,23 +99,133 @@
 <script>
 	import {routes} from '../../api_routes'
 	export default {
+		computed: {
+			leapYear: function() {
+				var date = this.date;
+				if((date.getFullYear() % 4 == 0) && (date.getFullYear() % 100 != 0) || (date.getFullYear() % 400 == 0)){
+					return true;
+				}
+				return false;
+			}
+		},
 		data: function() {
 			return {
+				months: [
+					{
+						name: this.trans('strings.jan'),
+						finalDay: 31,
+						value: '01',
+						index: 0
+					},
+					{
+						name: this.trans('strings.feb'),
+						finalDay: this.leapYear ? 29 : 28,
+						value: '02',
+						index: 1
+					},
+					{
+						name: this.trans('strings.mar'),
+						finalDay: 31,
+						value: '03',
+						index: 2
+					},
+					{
+						name: this.trans('strings.apr'),
+						finalDay: 30,
+						value: '04'
+					},
+					{
+						name: this.trans('strings.ma'),
+						finalDay: 31,
+						value: '05'
+					},
+					{
+						name: this.trans('strings.jun'),
+						finalDay: 30,
+						value: '06'
+					},
+					{
+						name: this.trans('strings.jul'),
+						finalDay: 31,
+						value: '07'
+					},
+					{
+						name: this.trans('strings.aug'),
+						finalDay: 31,
+						value: '08'
+					},
+					{
+						name: this.trans('strings.sep'),
+						finalDay: 30,
+						value: '09'
+					},
+					{
+						name: this.trans('strings.oct'),
+						finalDay: 31,
+						value: '10'
+					},
+					{
+						name: this.trans('strings.nov'),
+						finalDay: 30,
+						value: '11'
+					},
+					{
+						name: this.trans('strings.dec'),
+						finalDay: 31,
+						value: '12'
+					}
+				],
+				date: new Date(),
+				birth_month: null,
+				birth_year: null,
 				name: '',
 				last_name: '',
 				email: '',
 				password: '',
 				country: '',
-				birth_day: '',
-				birth_month: '',
-				birth_year: '',
+				birth_day: 1,
+				days: [],
 				errors: []
 			}
 		},
 		mounted: function() {
 			window.document.title = window.app.title +' | '+ this.trans('strings.register');
+			this.birth_year = this.date.getFullYear() - 18;
+			this.birth_month = this.months[0].value;
+			this.days = this.rangeDay();
 		},
 		methods: {
+			changeBirthMonth: function(el) {
+				var index = $('option:selected', el.target).attr('data-key');
+				//var index = el.target.getAttribute('data-key');
+				this.days = [];
+				for(var i = 1; i <= this.months[index].finalDay; i++){
+					this.days.push(i);
+				}
+			},
+			rangeDay: function() {
+				var result = [];
+				for(var i = 1; i <= this.months[0].finalDay; i++) {
+					result.push(i);
+				}
+				return result;
+			},
+			rangeMonth: function (){
+				var result = [];
+				for (var i = 0; i < this.months.length; i++) {
+					result.push(i);
+				}
+				return result;
+			},
+			rangeYear: function(begin, end) {
+	            var offset = begin > end ? end : begin;
+	            var delta = Math.abs(end - begin);
+	            var result = [];
+	            for (var i = 0; i <= delta; i++) {
+	                result.push(i + offset);
+	            };
+	            return result.reverse();
+	        },
 			register: function() {
 				axios.interceptors.request.use(config => {
 		        	$(this.$el).find('[type="load"]').removeClass('hide');
@@ -183,6 +287,9 @@
 					this.errors = error.response.data.errors
 				})
 			}
+		},
+		watch: {
+			birth_year: function(newValue, oldValue) {}
 		}
 	}
 
