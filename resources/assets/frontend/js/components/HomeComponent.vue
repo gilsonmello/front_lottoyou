@@ -93,6 +93,7 @@
 		},
 		mounted: function() {
 			this.loading.component = false
+			window.document.title = window.app.title;
 		},
 		components: {
 			SliderComponent,

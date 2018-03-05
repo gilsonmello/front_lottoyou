@@ -49,7 +49,7 @@
 
 		},
 		mounted: function() {
-			
+			window.document.title = window.app.title +' | Login';
 		},
 		methods: {
 			login: function() {

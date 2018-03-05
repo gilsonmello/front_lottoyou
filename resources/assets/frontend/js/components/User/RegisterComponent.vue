@@ -119,7 +119,7 @@
 			}
 		},
 		mounted: function() {
-			
+			window.document.title = window.app.title +' | '+ this.trans('strings.register');
 		},
 		methods: {
 			register: function() {

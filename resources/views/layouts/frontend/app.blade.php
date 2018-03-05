@@ -23,8 +23,10 @@
         <div id="app">
         </div>
         <script>
-            var query = location.hash.split('/');
-           
+            window.app = {
+                title: '{!! config('app.name') !!}'
+            }
+            var query = location.hash.split('/');           
             window.document.cookie = query[1] != undefined ? 'hash=' + query[1] : 'hash=en';
 
             if(query[1] == ''){

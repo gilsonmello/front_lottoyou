@@ -460,6 +460,7 @@
 			
 		},
 		mounted: function() {
+			window.document.title = window.app.title +' | '+ this.trans('strings.scratch_cards');
 			axios.interceptors.request.use(config => {
 				return config;
 			});
