@@ -5,6 +5,7 @@ namespace App;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -14,7 +15,7 @@ class User extends Authenticatable
      * 
      * @var array
      */
-    public $table = 'laravel_users';
+    public $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -33,4 +34,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function validateForPassportPasswordGrant($password){
+        return Hash::check($password, $this->laravel_password);
+    }
+
+    public function findForPassport($username) {
+        return $this->where('username', $username)->first();
+    }
 }

@@ -41,8 +41,11 @@ class UserController extends Controller
         $user = new User;
         $user->name = $request->get('name');
         $user->last_name = $request->get('last_name');
-        $user->email = $request->get('email');
-        $user->password = bcrypt($request->get('password'));
+        $user->username = $request->get('email');
+        $user->laravel_password = bcrypt($request->get('password'));
+        $user->password = '';
+        $user->group_id = 3;
+        $user->gel_empresa_id = 8;
         $user->birth_day = $request->get('birth_day');
         $user->birth_month = $request->get('birth_month');
         $user->birth_year = $request->get('birth_year');

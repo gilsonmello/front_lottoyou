@@ -3,18 +3,18 @@
 		<div class="container-fluid" style="background: linear-gradient(90deg,#fafafa,#f2f4f2); border-bottom: 1px solid #d9deda">  
 		    <div class="container" style="position: initial;">
 		        <div class="row">
-		            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+		            <div class="col-lg-3 col-6 col-md-3 col-sm-6">
 		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d49ce4b0d02cb5922547/18_icon@2x.png">
 		            </div>
-		            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+		            <div class="col-lg-3 col-6 col-md-3 col-sm-6">
 		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d4a6e4b0d02cb5922549/eu_icon@2x.png">
 		            </div>
-		            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+		            <div class="col-lg-3 col-6 col-md-3 col-sm-6">
 		                <a href="#">
 		                    <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d4afe4b0d02cb592254d/gibraltar-gov_icon@2x.png">
 		                </a>
 		            </div>
-		            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+		            <div class="col-lg-3 col-6 col-md-3 col-sm-6">
 		                <a href="#">
 		                    <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d4c2e4b0d02cb5922550/gbga_icon@2x.png">
 		                </a>
@@ -24,7 +24,7 @@
 		</div>
 		<div class="container" style="position: initial; background-color: white">
 		    <div class="row">
-	            <div class="col-lg-3 col-md-3 col-12 col-sm-6">
+	            <div class="col-lg-3 col-md-6 col-12 col-sm-6">
 	                <h3 class="page-header">
 	                    Loterias
 	                </h3>
@@ -66,7 +66,7 @@
 	                    </li>
 	                </ul>               
 	            </div>
-	            <div class="col-lg-3 col-md-3 col-12 col-sm-6">
+	            <div class="col-lg-3 col-md-6 col-12 col-sm-6">
 	                <h3 class="page-header">
 	                    Informações
 	                </h3>
@@ -103,7 +103,7 @@
 	                    </li>
 	                </ul>               
 	            </div>
-	            <div class="col-lg-3 col-md-3 col-12 col-sm-6">
+	            <div class="col-lg-3 col-md-6 col-12 col-sm-6">
 	                <h3 class="page-header">
 	                    Os nossos sites
 	                </h3>
@@ -145,7 +145,7 @@
 	                    </li>
 	                </ul>               
 	            </div>
-	            <div class="col-lg-3 col-md-3 col-12 col-sm-6">
+	            <div class="col-lg-3 col-md-6 col-12 col-sm-6">
 	                <h3 class="page-header">
 	                    Idioma
 	                </h3>

@@ -368,7 +368,7 @@
 	                        fg: dataScratchCard.theme.img_capa_url,
 	                        'cursor': '../img/raspadinha/coin.png") 5 5, coin',
 	                        scratchMove: function (e, percent) {
-	                            if (percent > 39) {
+	                            if (percent > 59) {
 	                            	i++;
 	                            	scratchpad.wScratchPad('clear');
 	                            	scratchpad.wScratchPad('enable', false);
