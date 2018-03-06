@@ -31,9 +31,9 @@ class CreateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|unique:laravel_users,name|regex:/^([\pL\s\ ]+)$/u',
-            'last_name' => 'required|min:3|unique:laravel_users,name|regex:/^([\pL\s\ ]+)$/u',
-            'email' => 'required|email',
+            'name' => 'required|min:3|unique:users,name|regex:/^([\pL\s\ ]+)$/u',
+            'last_name' => 'required|min:3|unique:users,name|regex:/^([\pL\s\ ]+)$/u',
+            'email' => 'required|email|unique:users,username',
             'password' => 'required|min:6',
             'birth_day' => 'required',
             'birth_month' => 'required',
@@ -57,6 +57,7 @@ class CreateUserRequest extends FormRequest
             //'cpf.min' => 'Informe o CPF com 11 números',
             'email.email' => trans('validation.user.create.email.email'),
             'email.required' => trans('validation.user.create.email.required'),
+            'email.unique' => trans('validation.user.create.email.unique'),
             'name.required' => trans('validation.user.create.name.required'),
             'name.min' => trans('validation.user.create.name.min'),
             'name.regex' => trans('validation.user.create.name.regex'),

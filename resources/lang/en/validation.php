@@ -259,7 +259,8 @@ return [
             ],
             'email' => [
                 'required' => 'O campo e-mail é obrigatório',
-                'email' => 'E-mail inválido'
+                'email' => 'E-mail inválido',
+                'unique' => 'E-mail já encontra-se em uso'
             ],
             'birth_day' => [
                 'required' => 'O campo dia é obrigatório',
