@@ -3,25 +3,26 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ScratchCardTheme extends Model
+class SoccerCategory extends Model
 {
-    //const CREATED_AT = 'created';
+    const CREATED_AT = 'created';
 
-    //const UPDATED_AT = 'modified';
+    const UPDATED_AT = 'modified';
 
     //const DELETED_AT = 'deleted_at';
-
+    
     /**
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * 
      * @var array
      */
-    public $table = 'temas_raspadinhas';
+    public $table = 'soc_categorias';
 
     /**
      * The attributes that are mass assignable.

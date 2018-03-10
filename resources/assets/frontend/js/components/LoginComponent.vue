@@ -28,7 +28,7 @@
 							<button type="submit" class="pull-right btn btn-md btn-success">
 								{{ trans('strings.login') }}
 							</button>							
-							<button type="load" class="hide pull-right btn btn-md btn-success">
+							<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
 								<i class="fa fa-refresh fa-spin"></i>
 							</button>
 						</div>
@@ -102,6 +102,8 @@
 		                });
 					}
 				}).catch((error) => {
+					$(this.$el).find('[type="load"]').addClass('hide');
+        			$(this.$el).find('[type="submit"]').removeClass('hide');
 					this.errors = {
 						credentials: 'Usuário ou Senha inválidos'
 					};

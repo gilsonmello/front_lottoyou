@@ -354,45 +354,54 @@
 				const vm = this;
 				var dataScratchCard = this.scratch_card_demo;
 				var count = 1;
-        		var time = setTimeout(() => {
-					$('.scratchpad').wScratchPad('destroy');
-					var i = 0;
-					$('.scratchpad').each(function () {
-						var verifica = 0;
-						var scratchpad = $(this);
-						$(this).css({
-							width: $(this).parent().width()
-						});
-						$(this).wScratchPad({
-	                        bg: 'img/raspadinha/'+ dataScratchCard['valor'+count] +'.png',
-	                        fg: dataScratchCard.theme.img_capa_url,
-	                        'cursor': '../img/raspadinha/coin.png") 5 5, coin',
-	                        scratchMove: function (e, percent) {
-	                            if (percent > 59) {
-	                            	i++;
-	                            	scratchpad.wScratchPad('clear');
-	                            	scratchpad.wScratchPad('enable', false);
-	                            }
-
-	                            if(i == 9) {
-	                            	if(dataScratchCard.premio > 0) {
-	                            		$('.btn-result').removeClass('invisible');
-										$('.btn-result').text('Parabéns, você ganhou: $ '+dataScratchCard.premio);
-	                            	}else{
-	                            		$('.btn-result').removeClass('invisible');
-										$('.btn-result').text(vm.trans('strings.good_luck_to_the_next'));
-	                            	}
-	                            	$('.btn-reveal-all').addClass('hide');
-	                            	$('.btn-play-again').removeClass('hide');
-	                            }
-	                        }
-	                    });
-                        count++;
-					});
-					$('.scratchpad').wScratchPad('enable', false);
-					if($('.scratchpad')[0].length > 0){
+        		var time = setInterval(() => {	
+        			//Verificando se encontrou as divs scratchpad e se seus parentes possuem largura maior do que 0
+					if($('.scratchpad').length > 0 && $('.scratchpad').parent().width() > 0){
 						clearInterval(time);
-					}
+						//Destruindo os scratchpads
+						$('.scratchpad').wScratchPad('destroy');
+						//Responsável por contar quantos quadrados foram raspados
+						var i = 0;
+						//Percorrendo todos os scratchpads
+						$('.scratchpad').each(function () {
+							var scratchpad = $(this);
+							//Colocando a largura igual ao do seu parente
+							$(this).css({
+								width: $(this).parent().width()
+							});
+							$(this).wScratchPad({
+		                        bg: 'img/raspadinha/'+ dataScratchCard['valor'+count] +'.png',
+		                        fg: dataScratchCard.theme.img_capa_url,
+		                        'cursor': '../img/raspadinha/coin.png") 5 5, coin',
+		                        scratchMove: function (e, percent) {
+		                        	//Se o usuário raspou mais do que 59%, mostra a imagem de premiação e
+		                        	//Desabilita o respectivo quadrado
+		                            if (percent > 59) {
+		                            	i++;
+		                            	scratchpad.wScratchPad('clear');
+		                            	scratchpad.wScratchPad('enable', false);
+		                            }
+
+		                            //Caso o usuário raspou 9 quadrados, verifica se o bilhete era premiado
+		                            if(i == 9) {
+		                            	if(dataScratchCard.premio > 0) {
+		                            		$('.btn-result').removeClass('invisible');
+											$('.btn-result').text('Parabéns, você ganhou: $ '+dataScratchCard.premio);
+		                            	}else{
+		                            		$('.btn-result').removeClass('invisible');
+											$('.btn-result').text(vm.trans('strings.good_luck_to_the_next'));
+		                            	}
+		                            	$('.btn-reveal-all').addClass('hide');
+		                            	$('.btn-play-again').removeClass('hide');
+		                            }
+		                        }
+		                    });
+	                        count++;
+						});
+						//Desabilitando todos os quadrados, obs: 
+						//Só será habilitado ao clicar em jogar
+						$('.scratchpad').wScratchPad('enable', false);		
+					}						
 				});
 			},
 			handleDemo: function(el) {
@@ -417,7 +426,10 @@
 							toastr.error(error.response.data.msg);
 			        	}
 		        	});
-	        		$('.modal-demo').modal('hide');
+		        	setTimeout(() => {
+		        		$('.modal-demo').modal('hide');
+		        	}, 500)
+	        		
 		        });				
 			},
 			submit: function (){

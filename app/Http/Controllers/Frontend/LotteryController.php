@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Frontend\User\CreateUserRequest;
-use App\Http\Requests\Frontend\User\UpdateUserRequest;
-use App\User;
+use App\Model\Frontend\Lottery;
 
-class UserController extends Controller
+class LotteryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $lotteries = Lottery::get();
+
+        if(!is_null($lotteries)) {
+            return response()->json($lotteries, 200);
+        }
+        return response()->json(['msg' => ''], 422);
     }
 
     /**
@@ -36,25 +39,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateUserRequest $request)
+    public function store(Request $request)
     {
-        $user = new User;
-        $user->name = $request->get('name');
-        $user->last_name = $request->get('last_name');
-        $user->username = $request->get('email');
-        $user->laravel_password = bcrypt($request->get('password'));
-        $user->password = '';
-        $user->group_id = 3;
-        $user->gel_empresa_id = 8;
-        $user->birth_day = (int) $request->get('birth_day') < 10 ? '0'.$request->get('birth_day') : $request->get('birth_day');
-        $user->birth_month = $request->get('birth_month');
-        $user->birth_year = $request->get('birth_year');
-        $user->country = $request->get('country');
-        if($user->save()){
-            return response()->json(['message' => trans('alerts.users.create.success')], 200);
-        }
-
-        return response()->json(['message' => trans('alerts.users.create.error')], 422);
+        //
     }
 
     /**
@@ -86,7 +73,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
     }

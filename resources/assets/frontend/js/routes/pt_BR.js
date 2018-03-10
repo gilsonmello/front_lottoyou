@@ -34,6 +34,12 @@ export default {
 			        name: 'soccer_expert.index', 
 			        props: true,
 			        component: require('../components/SoccerExpert/IndexComponent.vue')
+			    },
+			    {   
+			  		path: 'loterias',
+			        name: 'lotteries.index', 
+			        props: true,
+			        component: require('../components/Lottery/IndexComponent.vue')
 			    }
   			]
   		}

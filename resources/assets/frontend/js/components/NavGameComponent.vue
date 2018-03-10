@@ -15,9 +15,14 @@
 	          			{{ trans('strings.scratch_card') }}</span>
 	          		</router-link>
 	            </li>
-	             <li class="nav-item">
+	            <li class="nav-item">
 	          		<router-link class="nav-link" :to="{ name: 'soccer_expert.index' }">
 	          			{{ trans('strings.soccer_expert') }}</span>
+	          		</router-link>
+	            </li>
+	            <li class="nav-item">
+	          		<router-link class="nav-link" :to="{ name: 'lotteries.index' }">
+	          			{{ trans('strings.lotteries') }}</span>
 	          		</router-link>
 	            </li>
 	          	<!-- <li class="nav-item">

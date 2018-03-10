@@ -9,7 +9,8 @@ export const routes = {
 		user: host+'/api/user'
 	},
 	countries: {
-		index: host+'/countries/'
+		index: host+'/countries',
+		find: host+'/find/{id}'
 	},
 	users: {
 		create: host+'/users',
@@ -35,5 +36,14 @@ export const routes = {
 	scratch_card_demo: {
 		index: host+'/scratch_card_demo',
 		find: host+'/scratch_card_demo/{id}',
+	},
+	soccer_expert: {
+		index: host+'/soccer_expert'
+	},
+	soccer_categories: {
+		index: host+'/soccer_categories'
+	},
+	lotteries: {
+		index: host+'/lotteries'
 	}
 };

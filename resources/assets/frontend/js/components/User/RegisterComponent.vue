@@ -1,5 +1,6 @@
 <template>
-	<div class="container">
+	<load-component v-if="loading.component"></load-component>
+	<div class="container" v-else>
 		<h1 class="page-header text-center">Crie uma conta para jogar nas melhores loterias do mundo</h1>
 		<form @submit.prevent="register">
 			<div class="row">
@@ -107,7 +108,7 @@
 							<button type="submit" class="pull-right btn btn-md btn-success">
 								{{ trans('strings.save_button') }}
 							</button>
-							<button type="load" class="hide pull-right btn btn-md btn-success">
+							<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
 								<i class="fa fa-refresh fa-spin"></i>
 							</button>
 						</div>
@@ -124,6 +125,7 @@
 
 <script>
 	import {routes} from '../../api_routes'
+	import LoadComponent from '../Load'
 	export default {
 		computed: {
 			leapYear: function() {
@@ -141,20 +143,17 @@
 					{
 						name: this.trans('strings.jan'),
 						finalDay: 31,
-						value: '01',
-						index: 0
+						value: '01'
 					},
 					{
 						name: this.trans('strings.feb'),
 						finalDay: this.leapYear ? 29 : 28,
-						value: '02',
-						index: 1
+						value: '02'
 					},
 					{
 						name: this.trans('strings.mar'),
 						finalDay: 31,
-						value: '03',
-						index: 2
+						value: '03'
 					},
 					{
 						name: this.trans('strings.apr'),
@@ -223,16 +222,23 @@
 			this.birth_year = this.date.getFullYear() - 18;
 			this.birth_month = this.months[0].value;
 			this.days = this.rangeDay();
-			const instance = axios.create();
-			instance.get(routes.countries.index, {})
-			.then(response => {
+			const countryRequest = axios.create();
+			countryRequest.interceptors.request.use(config => {
+				this.loading.component = true
+				return config;
+			});
+			countryRequest.get(routes.countries.index, {}).then(response => {
 				if(response.status === 200) {
 	            	this.loading.component = false;
 	            	this.countries = response.data;
 	            	this.country = ''+this.countries[0].id;
+	            	setTimeout(() => {
+	            		this.loading.component = false
+	            	}, 5000)
+	            	
 			    }
 			}).catch((error) => {
-
+				this.loading.component = false
 			});
 		},
 		methods: {
@@ -299,10 +305,9 @@
 						this.$router.push({name: 'home'})
 						toastr.options.timeOut = 10000;
 						toastr.options.newestOnTop = true
-						toastr.options.positionClass = 'toast-top-full-width'
 						toastr.success(
-							'Verifique sua caixa de e-mail', 
-							'Enviamos e-mail de confirmação'
+							this.trans('alerts.users.create.success'),
+							this.trans('strings.error')
 						);
 						/*const authUser = {};
               			authUser.access_token = response.data
@@ -330,11 +335,18 @@
 					$(this.$el).find('[type="load"]').addClass('hide');
 		        	$(this.$el).find('[type="submit"]').removeClass('hide');
 					this.errors = error.response.data.errors
+					toastr.error(
+						this.trans('alerts.users.create.error'),
+						this.trans('strings.error')
+					);
 				});
 			}
 		},
 		watch: {
 			birth_year: function(newValue, oldValue) {}
+		},
+		components: {
+			LoadComponent
 		}
 	}
 

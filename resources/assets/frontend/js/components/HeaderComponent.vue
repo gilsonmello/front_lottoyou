@@ -19,42 +19,87 @@
   						</li> -->
   					</ul>
 				</div>
-			  	<div class="navbar-right">
-			  		<ul class="vcenter" style="justify-content: center;">
-			  			<li class="item-register-login">
-			  				<router-link :to="{ name: 'login' }">
-								{{ trans('strings.login') }}
-							</router-link>
-			  			</li>
-			  			<li class="item-register-login">
-			  				<router-link :to="{ name: 'users.register' }">
-								{{ trans('strings.register') }}
-							</router-link>
-			  			</li>
-			  			<li class="item-cart">
-			  				<div class="cart">
-			  					<div class="cart-left">
-			  						<div class="fa fa-shopping-cart" style="font-size: 30px;">
-			  							<span class="cart-count">
-			  								1
-			  							</span>
-			  						</div>
-			  					</div>
-			  					<div class="cart-right">
-			  						<span class="cart-value">
-			  							R$ 0,00
-			  						</span>
-			  						<span class="cart-checkout-now">
-			  							Pagar agora
-			  						</span>
-			  					</div>
-			  				</div>
-			  			</li>
-			  		</ul>
+			  	<div class="col-lg-8 col-md-8 col-sm-12 col-12 no-padding">
+			  		<div class="row">
+			  			<div class="col-lg-12 vcenter-end">
+			  				<ul class="header-items text-center">
+					  			<li class="item-register-login" v-if="!auth">
+					  				<router-link :to="{ name: 'login' }" class="pull-left" style="width: 100%;">
+					  					<div class="pull-left">
+											<span style="font-size: 14px">{{ trans('strings.login') }}</span>
+										</div>
+									</router-link>
+					  			</li>
+					  			<li class="item-register-login" v-if="!auth">
+					  				<router-link :to="{ left: 'users.register' }" class="pull-left" style="width: 100%;">
+					  					<div class="pull-right">
+											<span style="font-size: 14px">{{ trans('strings.register') }}</span>
+										</div>
+									</router-link>
+					  			</li>
+					  			<li class="item-balance">
+					  				<router-link :to="{ name: 'balances.deposit' }" class="pull-left" style="width: 100%;">
+						  				<div class="pull-left">
+						  					<i class="fa fa-credit-card-alt" style="font-size: 27px;"></i>
+						  				</div>
+						  				<div class="pull-right">
+						  					<div class="row">
+						  						<div class="col-lg-12 no-padding">
+						  							<span class="balance-amount">R$ 20,00</span>
+						  						</div>
+						  					</div>
+						  					<div class="row">
+						  						<div class="col-lg-12 no-padding">
+						  							<span class="balance-deposit">Depositar créditos</span>
+						  						</div>
+						  					</div>
+						  				</div>
+					  				</router-link>
+						  		</li>
+					  			<li class="item-account">
+					  				<router-link :to="{ name: 'users.profile' }" class="pull-left" style="width: 100%;">
+						  				<div class="pull-left vcenter">
+						  					<i class="fa fa-user-circle" style="font-size: 27px;"></i>
+						  				</div>
+						  				<div class="pull-right">
+						  					<div class="row">
+						  						<div class="col-lg-12 no-padding">
+						  							<span class="user-name">George Telles</span>
+						  						</div>
+						  					</div>
+						  					<div class="row">
+						  						<div class="col-lg-12 no-padding">
+						  							<span class="account">Conta</span>
+						  						</div>
+						  					</div>
+						  				</div>
+						  			</router-link>
+						  		</li>
+					  			<li class="item-cart">
+					  				<router-link :to="{ name: 'cart.index' }" class="cart pull-left" style="width: 100%;">
+				  						<div class="vcenter cart-left pull-left" style="justify-content: center">
+					  						<i class="fa fa-shopping-cart" style="font-size: 27px;">
+					  							<span class="cart-count">
+					  								1
+					  							</span>
+					  						</i>
+					  					</div>
+					  					<div class="cart-right pull-right">
+					  						<span class="cart-value">
+					  							R$ 0,00
+					  						</span>
+					  						<span class="cart-checkout-now">
+					  							Pagar agora
+					  						</span>
+					  					</div>					  					
+						  			</router-link>
+					  			</li>
+					  		</ul>
+			  			</div>
+			  		</div>
 			  	</div>
 			</nav>
 		</div>	
-
 		<div class="container-fluid bg-lottoyou">
 			<nav-game-component></nav-game-component>
 		</div>
@@ -67,10 +112,11 @@
 	export default {
 		data: function() {
 			return {
-
+				auth: JSON.parse(window.localStorage.getItem('authUser'))
 			}
 		},
 		methods: {
+
 		},
 		created: function() {
 
@@ -96,11 +142,23 @@
 		display: block;
 	}
 
+	.cart {
+		display: inline-block;
+		position: relative;
+	}
+
+	.cart a {
+		display: inline-flex;
+		position: relative;
+		width: 100%;
+		height: auto;
+	}
+
 	.cart-left .cart-count {
 		position: absolute;
 		border-radius: 50%;
-		top: -8px;
-		right: 3px;
+		top: -10px;
+		right: 10px;
 		width: 19px;
 		height: 19px;
 		text-align: center;
@@ -112,25 +170,66 @@
 		transition: background-color .125s ease-out;
 	}
 
+	.user-name {
+		font-weight: 500;
+	    color: #012406;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    white-space: nowrap;
+	    display: block;
+	    font-size: 14px;
+	    line-height: 18px
+	}
+
+	.account {		
+		font-weight: 700;
+		color: #69a507;
+	    font-size: 14px;
+	    line-height: 18px;
+	}
+
+	.balance-amount {
+	    font-weight: 500;
+	    color: #012406;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    white-space: nowrap;
+	    display: block;
+	    font-size: 14px;
+	    line-height: 18px
+	}
+
+	.balance-deposit {
+		font-weight: 700;
+		color: #69a507;
+	    font-size: 14px;
+	    line-height: 18px
+	}
+
 	.item-cart .cart-left {
-		float: left;
+		/*float: left;
 		padding: 2px 10px 2px 2px;
-		margin-right: 21px;
+		margin-right: 21px;*/
 		position: relative;
 		color: #69a507 !important;
 	}
 
-	.item-cart .cart-left .cart-checkout-now {
-		
+	..cart-checkout-now {		
+		font-weight: 700;
+		color: #69a507;
+	    font-size: 14px;
+	    line-height: 18px
 	}
 
 	.item-cart .cart-right {
 		float: right;
 	}
 
-	.item-cart .cart-right .cart-value {
+	.cart-value {
 		display: block;
 		line-height: 18px;
+		color: #9aa89c;
+		font-size: 14px;
 	}
 
 	.navbar-brand {
@@ -142,28 +241,29 @@
 		padding: 0
 	}
 
-	.navbar-brand ul li {
-		padding: 10px;
-		list-style: none;
-	}
-
-	.navbar-right ul {
-		margin: 0;
-		padding: 0
-	}
-
-	.navbar-right ul li {
-		padding: 15px 15px 15px 0;
+	ul li {
+		padding: 10px 20px 10px 10px;
 		margin-right: 10px;
 		position: relative;
 		list-style: none;
+		display: inline-block;
 	}
 
-	.navbar-right ul li:last-child {
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	ul li:last-child {
 		margin-right: 0;
 	}
 
-	.navbar-right ul .item-register-login:after {
+	
+	.navbar-right ul li {
+		
+	}
+
+	ul .item-account:after {
 		content: "";
 	    background-color: #d9deda;
 	    -webkit-transform: translateY(-50%);
@@ -175,12 +275,45 @@
     	top: 50%;
 	}
 
-	.navbar-right span, .navbar-right a {
+	.row {
+		margin: 0;
+	}
+
+	ul .item-balance:after {
+		content: "";
+	    background-color: #d9deda;
+	    -webkit-transform: translateY(-50%);
+	    transform: translateY(-50%);
+	    height: 21px;
+	    width: 1px;
+	    position: absolute;
+	    right: 0;
+    	top: 50%;
+	}
+
+	ul .item-register-login:after {
+		content: "";
+	    background-color: #d9deda;
+	    -webkit-transform: translateY(-50%);
+	    transform: translateY(-50%);
+	    height: 21px;
+	    width: 1px;
+	    position: absolute;
+	    right: 0;
+    	top: 50%;
+	}
+
+	span, a {
 		color: #69a507;
 		font-weight: 700;
 		font-size: 14px;
 		cursor: pointer;
 		text-decoration: none;
+	    text-align: initial;
+	}
+
+	i {
+		margin-right: 21px;
 	}
 
 	.bg-white {

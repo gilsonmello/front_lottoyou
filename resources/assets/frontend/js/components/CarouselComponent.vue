@@ -113,7 +113,11 @@
         width: 30px !important;
     }
     .slide{
-        width: 90%;
+        width: 85%;
         margin: 0 auto;
+    }
+
+    .fa {
+        font-size: 60px !important;
     }
 </style>

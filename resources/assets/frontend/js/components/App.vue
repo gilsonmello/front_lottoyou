@@ -46,10 +46,24 @@
 			this.loading.component = false
 			
 			router.beforeEach((to, from, next) => {
+				const authUser = JSON.parse(window.localStorage.getItem('authUser'));
 			    if(to.meta.requiresAuth == true){
-		            next()
+		            if(authUser){
+			            next()
+			        }else{
+			            next({
+			                name: 'login'
+			            })
+			        }
 			    }
-		        next();
+		        if(to.name == 'login' && authUser){
+			        toastr.info('Você já está logado.');
+			        next({
+			            name: 'home'
+			        });
+			    }else{
+			        next();
+			    }
 			});
 
 			router.afterEach((to, from) => {
@@ -59,12 +73,12 @@
 			    },  300);
 			});
 
-			var time = setTimeout(() => {
+			var time = setInterval(() => {
 				var header = $('.header');
 		    	$('body').css({
 		    		'padding-top': header[0].clientHeight
 		    	});
-		    	if(header[0].length > 0){
+		    	if(header.length > 0){
 					clearInterval(time);
 				}
 	    	});

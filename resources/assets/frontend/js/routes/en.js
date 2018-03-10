@@ -21,6 +21,13 @@ export default {
 			        name: 'users.register', 
 			        props: true,
 			        component: require('../components/User/RegisterComponent.vue')
+			    },  
+			    {   
+			  		path: 'users/profile',
+			        name: 'users.profile', 
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/User/ProfileComponent.vue')
 			    },
 			    {   
 			  		path: 'scratch_cards',
@@ -33,6 +40,40 @@ export default {
 			        name: 'soccer_expert.index', 
 			        props: true,
 			        component: require('../components/SoccerExpert/IndexComponent.vue')
+			    },
+			    {   
+			  		path: 'lotteries',
+			        name: 'lotteries.index', 
+			        props: true,
+			        component: require('../components/Lottery/IndexComponent.vue')
+			    },
+			    {   
+			  		path: 'cart',
+			        name: 'cart.index', 
+			        props: true,
+			        //meta: { requiresAuth: true },
+			        component: require('../components/Cart/IndexComponent.vue')
+			    },
+			    {   
+			  		path: 'balances',
+			        name: 'balances.index', 
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/Balance/IndexComponent.vue')
+			    },
+			    {   
+			  		path: 'balances/deposit',
+			        name: 'balances.deposit', 
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/Balance/DepositComponent.vue')
+			    },
+			    {   
+			  		path: 'terms',
+			        name: 'terms.index', 
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/Balance/DepositComponent.vue')
 			    }
   			]
   		}

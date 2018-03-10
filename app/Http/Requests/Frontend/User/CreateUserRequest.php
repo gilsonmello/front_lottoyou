@@ -31,8 +31,8 @@ class CreateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|unique:users,name|regex:/^([\pL\s\ ]+)$/u',
-            'last_name' => 'required|min:3|unique:users,name|regex:/^([\pL\s\ ]+)$/u',
+            'name' => 'required|min:3|regex:/^([\pL\s\ ]+)$/u',
+            'last_name' => 'required|min:3|regex:/^([\pL\s\ ]+)$/u',
             'email' => 'required|email|unique:users,username',
             'password' => 'required|min:6',
             'birth_day' => 'required',

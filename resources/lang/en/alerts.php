@@ -66,14 +66,22 @@ return [
     ],
     'users' => [
         'create' => [
+            'success' => 'Usuário criado com sucesso',
+            'error' => 'Erro ao criar usuário'
+        ],
+        'edit' => [
+            'success' => 'Usuário editado com sucesso',
+            'error' => 'Erro ao editar usuário'
+        ],
+        'delete' => [
+            'success' => 'Usuário deletado com sucesso',
+            'error' => 'Erro ao deletar usuário'
+        ],
+        'create' => [
             'success' => 'O usuário foi criado com sucesso.',
             'error' => 'Erro ao criar usuário'
         ],
         'updated' => 'O usuário foi atualizado com sucesso.',
-        'delete' => [
-            'success' => 'Usuário deletado com sucesso',
-            'error' => 'Erro ao deletar usuário.'
-        ],
         'deleted' => 'O usuário foi excluído com sucesso.',
         'deleted_permanently' => 'O usuário foi excluído permanentemente.',
         'restored' => 'O usuário foi restaurado com sucesso.',
