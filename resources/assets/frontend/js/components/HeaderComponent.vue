@@ -57,7 +57,7 @@
 					  				</router-link>
 						  		</li>
 					  			<li class="item-account">
-					  				<router-link :to="{ name: 'users.profile' }" class="pull-left" style="width: 100%;">
+					  				<router-link :to="{ name: 'users.account' }" class="pull-left" style="width: 100%;">
 						  				<div class="pull-left vcenter">
 						  					<i class="fa fa-user-circle" style="font-size: 27px;"></i>
 						  				</div>

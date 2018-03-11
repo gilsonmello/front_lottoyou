@@ -23,11 +23,11 @@ export default {
 			        component: require('../components/User/RegisterComponent.vue')
 			    },  
 			    {   
-			  		path: 'users/profile',
-			        name: 'users.profile', 
+			  		path: 'users/account',
+			        name: 'users.account',
 			        props: true,
 			        meta: { requiresAuth: true },
-			        component: require('../components/User/ProfileComponent.vue')
+			        component: require('../components/User/AccountComponent.vue')
 			    },
 			    {   
 			  		path: 'scratch_cards',

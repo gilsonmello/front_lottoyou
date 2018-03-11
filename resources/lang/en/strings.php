@@ -11,7 +11,11 @@ return [
       | found in a intuitive way.
       |
      */
+	'transactions' => 'Transações',
+	'transaction' => 'Transação',
     'january' => 'Janeiro',
+	'games' => 'Jogos',
+	'game' => 'Jogo',
     'jan' => 'Jan',
     'error' => 'Erro',
     'success' => 'Sucesso',

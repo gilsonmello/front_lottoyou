@@ -32,13 +32,21 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'laravel_password'
     ];
 
+    /**
+     * @param $password
+     * @return mixed
+     */
     public function validateForPassportPasswordGrant($password){
         return Hash::check($password, $this->laravel_password);
     }
 
+    /**
+     * @param $username
+     * @return mixed
+     */
     public function findForPassport($username) {
         return $this->where('username', $username)->first();
     }
