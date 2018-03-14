@@ -26,7 +26,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6 col-12 col-sm-6 col-md-6">
+						<div class="col-lg-5 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
 								<div class="alert alert-danger" v-if="errors.name">
 								  	<div v-for="name in errors.name" >{{ name }}</div>
@@ -35,13 +35,25 @@
 							    <input v-model="name" required type="name" class="form-control" id="name" aria-describedby="name" :placeholder="trans('strings.name')">
 						  	</div>
 						</div>
-						<div class="col-lg-6 col-12 col-sm-6 col-md-6">
+						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
 								<div class="alert alert-danger" v-if="errors.last_name">
 								  	<div v-for="last_name in errors.last_name" >{{ last_name }}</div>
 								</div>
 							    <label for="last_name">{{ trans('strings.last_name') }}</label>
 							    <input v-model="last_name" required type="last_name" class="form-control" id="last_name" aria-describedby="last_name" :placeholder="trans('strings.last_name')">
+						  	</div>
+						</div>
+						<div class="col-lg-3 col-12 col-sm-4 col-md-4">
+							<div class="form-group">
+								<div class="alert alert-danger" v-if="errors.gender">
+								  	<div v-for="gender in errors.gender" >{{ gender }}</div>
+								</div>
+							    <label for="gender">{{ trans('strings.gender') }}</label>
+							    <select v-model="gender" required class="form-control" id="gender" aria-describedby="gender" :placeholder="trans('strings.gender')">
+							    	<option value="M" selected>{{ trans('strings.male') }}</option>
+							    	<option value="F">{{ trans('strings.female') }}</option>
+							    </select>
 						  	</div>
 						</div>
 					</div>
@@ -209,6 +221,7 @@
 				email: '',
 				password: '',
 				country: '',
+				gender: 'M',
 				birth_day: 1,
 				days: [],
 				errors: [],
@@ -290,7 +303,8 @@
 					birth_day: this.birth_day,
 					birth_month: this.birth_month,
 					birth_year: this.birth_year,
-					country: this.country
+					country: this.country,
+					gender: this.gender
 				})).then((response) => {
 					if(response.status === 200){
 						this.name = '';						
@@ -301,13 +315,14 @@
 						this.birth_month = '';
 						this.birth_year = '';
 						this.country = '';
+						this.gender = '';
 				
 						this.$router.push({name: 'home'})
 						toastr.options.timeOut = 10000;
 						toastr.options.newestOnTop = true
 						toastr.success(
 							this.trans('alerts.users.create.success'),
-							this.trans('strings.error')
+							this.trans('strings.success')
 						);
 						/*const authUser = {};
               			authUser.access_token = response.data

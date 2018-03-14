@@ -16,7 +16,8 @@ export const routes = {
 		create: host+'/users',
 		edit: host+'/{id}/user',
 		logged: host+'/users/logged',
-		logout: host+'/users/logout'
+		logout: host+'/users/logout',
+		update: host+'/users/{id}'
 	},
 	packages: {
 		create: host+'/packages',
@@ -44,6 +45,7 @@ export const routes = {
 		index: host+'/soccer_categories'
 	},
 	lotteries: {
-		index: host+'/lotteries'
+		index: host+'/lotteries',
+		show: host+'/lotteries/{id}'
 	}
 };

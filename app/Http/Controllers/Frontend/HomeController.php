@@ -48,6 +48,20 @@ class HomeController extends Controller
             $filename = pathinfo($f)['filename'];
             $trans[$filename] = trans($filename);
         }
+
+
+        $loc = request()->session()->get('locale');
+
+        if(is_null($loc)){
+            \Session::put('locale', 'en');
+        }
+
+        if(isset($locale) && !empty($locale)){
+            \Session::put('locale', $locale);
+        }
+
+        //dd(request()->session()->all());
+
         return response()->json($trans, 200);
     }
 

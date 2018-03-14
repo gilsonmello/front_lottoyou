@@ -19,6 +19,7 @@ try {
     require('bootstrap-datepicker');
     require('bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css');
     window.toastr = require('toastr');
+    require('jquery-maskmoney/dist/jquery.maskMoney.min.js');
     require('toastr/build/toastr.min.css');
 } catch (e) {}
 
@@ -58,6 +59,15 @@ function getParamsUrl() {
 
 $('<img/>').attr('src', '/img/load.gif').on('load', function() {
     $(this).remove();
+});
+
+window.addEventListener('storage', function(e) {
+    if((event.key == "authUser") || (e.storageArea.length == 0 || e.newValue == null)) {
+        tokenData = "";
+        access_token = "";
+        window.localStorage.removeItem('authUser');
+        window.location.href = '/';
+    }
 });
 
 //window.QueryString = getParamsUrl();

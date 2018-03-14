@@ -8,7 +8,7 @@ export default {
   					path: '', 
   					name: 'home', 
   					component: require('../components/HomeComponent.vue'),
-			        props: true,
+			        props: true
   				},
 			  	{   
 			  		path: 'login',
@@ -46,6 +46,18 @@ export default {
 			        name: 'lotteries.index', 
 			        props: true,
 			        component: require('../components/Lottery/IndexComponent.vue')
+			    },
+			    {   
+			  		path: 'lotteries/:id',
+			        name: 'lotteries.show', 
+			        props: true,
+			        component: require('../components/Lottery/ShowComponent.vue')
+			    },
+			    {   
+			  		path: 'lotteries/results/:id',
+			        name: 'lotteries.results', 
+			        props: true,
+			        component: require('../components/Lottery/ResultComponent.vue')
 			    },
 			    {   
 			  		path: 'cart',

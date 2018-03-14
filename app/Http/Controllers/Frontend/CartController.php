@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\Lottery;
 
-class LotteryController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +14,7 @@ class LotteryController extends Controller
      */
     public function index()
     {
-        $lotteries = Lottery::get();
-
-        if(!is_null($lotteries)) {
-            return response()->json($lotteries, 200);
-        }
-        return response()->json(['msg' => ''], 422);
+        //
     }
 
     /**
@@ -52,15 +46,7 @@ class LotteryController extends Controller
      */
     public function show($id)
     {
-        $lottery = Lottery::where('id', '=', $id)
-            ->with('category')
-            ->get()
-            ->first();
-
-        if(!is_null($lottery)) {
-            return response()->json($lottery, 200);
-        }
-        return response()->json(['msg' => ''], 422);
+        //
     }
 
     /**

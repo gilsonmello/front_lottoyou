@@ -21,13 +21,28 @@
         </ul>
         <div class="tab-content" id="myTabContent">
             <div v-if="active_tab == 'edit-component'" class="tab-pane fade active show" id="edit" role="tabpanel" aria-labelledby="edit-component">
-                <br><edit-component></edit-component>
+                <br>
+                <transition name="fade" mode="out-in">
+                    <keep-alive>
+                        <edit-component></edit-component>
+                    </keep-alive>
+                </transition>
             </div>
             <div v-if="active_tab == 'game-component'" class="tab-pane fade active show" id="game" role="tabpanel" aria-labelledby="game-component">
-                <br><game-component></game-component>
+                <br>
+                <transition name="fade" mode="out-in">
+                    <keep-alive>
+                        <game-component></game-component>
+                    </keep-alive>
+                </transition>
             </div>
             <div v-if="active_tab == 'transaction-component'" class="tab-pane fade active show" id="transaction" role="tabpanel" aria-labelledby="transaction-component">
-                <br><transaction-component></transaction-component>
+                <br>
+                <transition name="fade" mode="out-in">
+                    <keep-alive>
+                        <transaction-component></transaction-component>
+                    </keep-alive>
+                </transition>
             </div>
         </div>
 	</div>
@@ -55,11 +70,11 @@
                 var vm = this;
                 if($('a[data-toggle="tab"]').length > 0) {
                     clearInterval(interval);
+                    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                        var tab = $( e.target);
+                        vm.active_tab = tab.attr('id');
+                    });
                 }
-                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                    var tab = $( e.target);
-                    vm.active_tab = tab.attr('id');
-                });
             });
 		},
 		methods: {

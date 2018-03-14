@@ -11,6 +11,18 @@ return [
       | found in a intuitive way.
       |
      */
+    'code_country' => 'Código do país',
+    'play_on_the' => 'Jogue no',
+    'pay_now' => 'Pagar agora',
+    'tell_phone' => 'Telefone',
+    'old_password' => 'Senha antiga',
+    'confirm_password' => 'Confirme a senha',
+    'account' => 'Conta',
+    'date_birth' => 'Data de Nascimento',
+    'player_number' => 'Número do Jogador',
+    'zip' => 'CEP',
+    'city' => 'Cidade',
+    'street' => 'Rua',
 	'transactions' => 'Transações',
 	'transaction' => 'Transação',
     'january' => 'Janeiro',
@@ -44,6 +56,8 @@ return [
     'play' => 'Jogar',
     'lotteries' => 'Loterias',
     'lottery' => 'Loteria',
+    'man' => 'Homem',
+    'woman' => 'Mulher',
     'soccer_expert' => 'Soccer Expert',
     'card_birth_date' => 'Data de Nascimento',
     'good_luck_to_the_next' => 'Boa sorte para a próxima',

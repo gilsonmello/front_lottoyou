@@ -69,7 +69,7 @@ return [
             'success' => 'Usuário criado com sucesso',
             'error' => 'Erro ao criar usuário'
         ],
-        'edit' => [
+        'update' => [
             'success' => 'Usuário editado com sucesso',
             'error' => 'Erro ao editar usuário'
         ],

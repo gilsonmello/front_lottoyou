@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import MoneyComponent from './components/MoneyComponent'
+import MoneyBrComponent from './components/MoneyBrComponent'
 Vue.use(Router)
 
 var routes = {};
@@ -9,6 +11,7 @@ switch (window.locale) {
 	case 'br': {
 		routes = require('./routes/pt_BR.js');
 		url = '/#/br';
+		Vue.component('money-component', MoneyBrComponent);
 		break;
 	}
 	case 'es': {
@@ -19,6 +22,7 @@ switch (window.locale) {
 	default: {
 		routes = require('./routes/en.js');
 		url = '/#/';
+		Vue.component('money-component', MoneyComponent);
 		break;
 	}
 }

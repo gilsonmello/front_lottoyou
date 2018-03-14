@@ -44,10 +44,15 @@
 		mounted: function() {
 
 			this.loading.component = false
+
+			router.onReady(() => {
+				const authUser = JSON.parse(window.localStorage.getItem('authUser'));
+				this.$store.dispatch('setUserObject', authUser);
+			});
 			
 			router.beforeEach((to, from, next) => {
 				const authUser = JSON.parse(window.localStorage.getItem('authUser'));
-			    if(to.meta.requiresAuth == true){
+				if(to.meta.requiresAuth == true){
 		            if(authUser){
 			            next()
 			        }else{
@@ -71,19 +76,12 @@
 			    $('html, body').animate({
 			        scrollTop: 0
 			    },  300);
-			});
-
-			var time = setInterval(() => {
-				var header = $('.header');
-		    	$('body').css({
-		    		'padding-top': header[0].clientHeight
-		    	});
-		    	if(header.length > 0){
-					clearInterval(time);
-				}
-	    	});
-
-			
+			    setTimeout(() => {
+			    	if(to.matched.length == 0) {
+				    	this.$router.push({name: 'home'});
+					}
+			    }, 200)
+			});			
 		},
 		components: {
 			HeaderComponent,

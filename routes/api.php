@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'auth:api', 'namespace' => 'API'], function(){
     Route::get('user', function(Request $request){
-    	return $request->user();
+    	$user = User::where('id', '=', $request->user()->id);
+    	return $user->with('country')->get()->first();
     });
 });

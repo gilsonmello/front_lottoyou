@@ -31,13 +31,13 @@
 									</router-link>
 					  			</li>
 					  			<li class="item-register-login" v-if="!auth">
-					  				<router-link :to="{ left: 'users.register' }" class="pull-left" style="width: 100%;">
+					  				<router-link :to="{ name: 'users.register' }" class="pull-left" style="width: 100%;">
 					  					<div class="pull-right">
 											<span style="font-size: 14px">{{ trans('strings.register') }}</span>
 										</div>
 									</router-link>
 					  			</li>
-					  			<li class="item-balance">
+					  			<li class="item-balance" v-if="auth">
 					  				<router-link :to="{ name: 'balances.deposit' }" class="pull-left" style="width: 100%;">
 						  				<div class="pull-left">
 						  					<i class="fa fa-credit-card-alt" style="font-size: 27px;"></i>
@@ -56,7 +56,7 @@
 						  				</div>
 					  				</router-link>
 						  		</li>
-					  			<li class="item-account">
+					  			<li class="item-account" v-if="auth">
 					  				<router-link :to="{ name: 'users.account' }" class="pull-left" style="width: 100%;">
 						  				<div class="pull-left vcenter">
 						  					<i class="fa fa-user-circle" style="font-size: 27px;"></i>
@@ -64,12 +64,14 @@
 						  				<div class="pull-right">
 						  					<div class="row">
 						  						<div class="col-lg-12 no-padding">
-						  							<span class="user-name">George Telles</span>
+						  							<span class="user-name">
+						  								{{ auth.name }} {{ auth.last_name }}
+						  							</span>
 						  						</div>
 						  					</div>
 						  					<div class="row">
 						  						<div class="col-lg-12 no-padding">
-						  							<span class="account">Conta</span>
+						  							<span class="account">{{ trans('strings.account') }}</span>
 						  						</div>
 						  					</div>
 						  				</div>
@@ -77,7 +79,8 @@
 						  		</li>
 					  			<li class="item-cart">
 					  				<router-link :to="{ name: 'cart.index' }" class="cart pull-left" style="width: 100%;">
-				  						<div class="vcenter cart-left pull-left" style="justify-content: center">
+				  						<div class="vcenter">
+				  						<div class="cart-left pull-left" style="justify-content: center">
 					  						<i class="fa fa-shopping-cart" style="font-size: 27px;">
 					  							<span class="cart-count">
 					  								1
@@ -89,9 +92,10 @@
 					  							R$ 0,00
 					  						</span>
 					  						<span class="cart-checkout-now">
-					  							Pagar agora
+					  							{{ trans('strings.pay_now') }}
 					  						</span>
-					  					</div>					  					
+					  					</div>	
+					  					</div>				  					
 						  			</router-link>
 					  			</li>
 					  		</ul>
@@ -109,10 +113,11 @@
 <script>
 	import NavGameComponent from './NavGameComponent'
 	import SliderComponent from './SliderComponent'
+	import {mapState, mapGetters} from 'vuex'
 	export default {
 		data: function() {
 			return {
-				auth: JSON.parse(window.localStorage.getItem('authUser'))
+				user: JSON.parse(window.localStorage.getItem('authUser'))
 			}
 		},
 		methods: {
@@ -122,12 +127,35 @@
 
 		},
 		mounted: function() {
-			
+			var time = setInterval(() => {
+				var header = $('.header');
+		    	$('body').css({
+		    		'padding-top': header[0].clientHeight
+		    	});
+		    	if(header.length > 0){
+					clearInterval(time);
+				}
+	    	});
 		},
 		components: {
 			NavGameComponent,
 			SliderComponent
-		}
+		},
+		computed: {
+            ...mapState({
+                User: state => state.User
+            }),
+            ...mapGetters([
+                'auth'
+            ])
+        },
+        watch: {
+        	'User.authUser': function(newValue, oldValue) {
+                if(newValue) {
+                    this.user = newValue;
+                }
+            }
+        }
 	}
 </script>
 

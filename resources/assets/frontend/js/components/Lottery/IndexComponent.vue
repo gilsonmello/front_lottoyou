@@ -32,7 +32,9 @@
                             </span>
 						</div>
 						<div class="col-lg-6">
-							<button @click.prevent="" class="btn btn-md btn-success">{{ trans('strings.play_now') }}</button>
+							<router-link :to="{ name: 'lotteries.show', params: { id: lottery.id } }" class="btn btn-md btn-success">
+								{{ trans('strings.play_now') }}
+							</router-link>
 						</div>
 					</div>
 				</div>

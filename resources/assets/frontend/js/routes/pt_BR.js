@@ -22,6 +22,13 @@ export default {
 			        name: 'users.register', 
 			        props: true,
 			        component: require('../components/User/RegisterComponent.vue')
+			    },			      
+			    {   
+			  		path: 'usuarios/conta',
+			        name: 'users.account',
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/User/AccountComponent.vue')
 			    },
 			    {   
 			  		path: 'raspadinhas',

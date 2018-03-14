@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('laravel_users', function (Blueprint $table) {
+        /*Schema::create('laravel_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('last_name');
@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
-        });
+        });*/
     }
 
     /**
@@ -36,6 +36,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laravel_users');
+        //Schema::dropIfExists('laravel_users');
     }
 }

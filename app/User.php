@@ -6,9 +6,22 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
+//use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class User extends Authenticatable
 {
+    const CREATED_AT = 'created';
+
+    const UPDATED_AT = 'modified';
+    
+    //const DELETED_AT = 'deleted_at';
+
+    /**
+     * @var bool
+     */
+    public $timestamps = true;
+
     use HasApiTokens, Notifiable;
 
     /**
@@ -50,4 +63,9 @@ class User extends Authenticatable
     public function findForPassport($username) {
         return $this->where('username', $username)->first();
     }
+
+    public function country() {
+        return $this->belongsTo(\App\Country::class, 'country_id');
+    }
+
 }

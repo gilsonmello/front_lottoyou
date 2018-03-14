@@ -19,7 +19,7 @@
 		},
 		props: ['mask', 'ph'],
 		mounted: function(){
-			this.placeholder = this.ph
+			this.placeholder = this.ph != undefined ? this.ph : '';
 			var vm = this
 			$(this.$el).inputmask({ 
 		    	mask: vm.mask,
