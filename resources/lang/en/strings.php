@@ -11,7 +11,9 @@ return [
       | found in a intuitive way.
       |
      */
+    'add_to_cart' => 'Adicionar ao carrinho',
     'code_country' => 'Código do país',
+    'sweepstake_date' => 'Data do sorteio',
     'play_on_the' => 'Jogue no',
     'pay_now' => 'Pagar agora',
     'tell_phone' => 'Telefone',

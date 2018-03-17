@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Frontend\Cart;
 
 class CartController extends Controller
 {
@@ -35,7 +36,10 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cart = new Cart;
+
+        $cart->user_id = 140;
+        $cart->
     }
 
     /**

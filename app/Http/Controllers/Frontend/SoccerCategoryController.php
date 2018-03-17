@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\SoccerCategory;
+use App\Model\Frontend\SoccerExpertCategory;
 
 class SoccerCategoryController extends Controller
 {
@@ -15,7 +15,7 @@ class SoccerCategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $soccerCategories = SoccerCategory::all();
+        $soccerCategories = SoccerExpertCategory::all();
 
         if(!is_null($soccerCategories)) {
             return response()->json($soccerCategories, 200);
@@ -52,7 +52,13 @@ class SoccerCategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $soccerCategory = SoccerExpertCategory::where('id', '=', $id)
+            ->get()
+            ->first();
+        if(!is_null($soccerCategory)) {
+            return response()->json($soccerCategory, 200);
+        }
+        return response()->json(['msg' => ''], 422);
     }
 
     /**

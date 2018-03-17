@@ -42,6 +42,19 @@ export default {
 			        component: require('../components/SoccerExpert/IndexComponent.vue')
 			    },
 			    {   
+			  		path: 'soccer_expert/:id',
+			        name: 'soccer_expert.show', 
+			        props: true,
+			        component: require('../components/SoccerExpert/ShowComponent.vue')
+			    },
+			    ,
+			    {   
+			  		path: 'soccer_expert/results/:id',
+			        name: 'soccer_expert.results', 
+			        props: true,
+			        component: require('../components/SoccerExpert/ResultComponent.vue')
+			    },
+			    {   
 			  		path: 'lotteries',
 			        name: 'lotteries.index', 
 			        props: true,

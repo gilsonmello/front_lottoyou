@@ -13,7 +13,22 @@ $(document).on('hidden.bs.modal', '.modal', function (e) {
 	}
 });
 
-window.Vue = require('vue')
+window.Vue = require('vue');
+
+Number.prototype.format = function(n, x) {
+    var re = '(\\d)(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$1,');
+};
+
+Vue.prototype.makeid = function() {
+  	var text = "";
+  	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  	for (var i = 0; i < 15; i++){
+    	text += possible.charAt(Math.floor(Math.random() * possible.length));
+  	}
+	return text;
+};
 
 Vue.prototype.trans = (key) => {
     return _.get(window.trans, key, key);

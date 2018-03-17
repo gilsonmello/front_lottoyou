@@ -21,9 +21,9 @@
 						</a>
 					</div>
 					<footer class="soccer-expert-footer">
-						<button class="btn btn-success btn-md play" @click.prevent="handlePlay">
+						<router-link class="btn btn-success btn-md play" :to="{ name: 'soccer_expert.show', params: {id: soccer_category.id} }">
 							{{ trans('strings.play') }}
-						</button>
+						</router-link>
 					</footer>
 				</div>	
 			</div>
@@ -42,9 +42,7 @@
 			
 		},
 		methods: {
-			handlePlay: function(el) {
-
-			}
+			
 		},
 		data: function() {
 			return {

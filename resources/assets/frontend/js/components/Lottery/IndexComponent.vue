@@ -12,12 +12,12 @@
 						<div class="col-lg-6">
 							<div class="pull-right">
 								<span class="text-primary" style="font-weight: bold; font-size: large;">
-									{{ lottery.sorteio }}
+									{{ lottery.nome }}
 								</span>
 								<br>
 								<span style="font-size: x-large;">
 									<b>
-										{{ lottery.premio }}
+										{{ lottery.jackpot }}
 									</b>
 								</span>
 							</div>

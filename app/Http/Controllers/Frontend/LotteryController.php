@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Frontend\Lottery;
+use App\Model\Frontend\LotterySweepstake;
+use DB;
 
 class LotteryController extends Controller
 {
@@ -15,7 +17,11 @@ class LotteryController extends Controller
      */
     public function index()
     {
-        $lotteries = Lottery::get();
+        $lotteries = Lottery::whereHas('sweepstakes', function($query) {
+            $query->where('active', '=', 1)
+                ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>', date('Y-m-d H:i:s'));
+        })
+        ->get();
 
         if(!is_null($lotteries)) {
             return response()->json($lotteries, 200);
@@ -52,8 +58,12 @@ class LotteryController extends Controller
      */
     public function show($id)
     {
-        $lottery = Lottery::where('id', '=', $id)
-            ->with('category')
+       $lottery = Lottery::where('id', '=', $id)
+            ->with('sweepstakes')
+            ->whereHas('sweepstakes', function($query) {
+                $query->where('active', '=', 1)
+                    ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>', date('Y-m-d H:i:s'));
+            })
             ->get()
             ->first();
 

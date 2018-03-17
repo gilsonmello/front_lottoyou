@@ -4,6 +4,8 @@ namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Model\Frontend\LotterySweepstake;
+use App\User;
 
 class LotteryResults extends Model
 {
@@ -48,12 +50,13 @@ class LotteryResults extends Model
         
     ];
 
-    public function lotteries() {
-    	return $this->belongsTo(\App\Model\Frontend\Lottery::class, 'lot_jogo_id');
+    
+    public function creator() {
+    	return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function creator() {
-    	return $this->belongsTo(\App\Model\Frontend\User::class, 'user_id');
+    public function sweepstake() {
+        return $this->belongsTo(Sweepstake::class, 'lot_jogo_id');
     }
 
     /*

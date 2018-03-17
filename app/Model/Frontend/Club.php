@@ -3,16 +3,15 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Database\Eloquent\SoftDeletes;
 
-class SoccerCategory extends Model
+class Club extends Model
 {
     const CREATED_AT = 'created';
 
     const UPDATED_AT = 'modified';
 
     //const DELETED_AT = 'deleted_at';
-    
+
     /**
      * @var bool
      */
@@ -22,7 +21,7 @@ class SoccerCategory extends Model
      * 
      * @var array
      */
-    public $table = 'soc_categorias';
+    public $table = 'gel_clubes';
 
     /**
      * The attributes that are mass assignable.
@@ -42,8 +41,11 @@ class SoccerCategory extends Model
         
     ];
 
-    public function lots() {
-    	return $this->hasMany(\App\Model\Frontend\ScratchCardLot::class, 'temas_raspadinha_id')
-            ->where('active', '=', 1);
+    public function house() {
+        return $this->hasMany(SoccerExpertGame::class, 'gel_clube_casa_id');
+    }
+
+    public function out() {
+        return $this->hasMany(SoccerExpertGame::class, 'gel_clube_fora_id');
     }
 }

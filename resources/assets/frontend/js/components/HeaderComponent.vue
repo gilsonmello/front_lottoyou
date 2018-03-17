@@ -83,13 +83,13 @@
 				  						<div class="cart-left pull-left" style="justify-content: center">
 					  						<i class="fa fa-shopping-cart" style="font-size: 27px;">
 					  							<span class="cart-count">
-					  								1
+					  								{{ purchase.quantity }}
 					  							</span>
 					  						</i>
 					  					</div>
 					  					<div class="cart-right pull-right">
 					  						<span class="cart-value">
-					  							R$ 0,00
+					  							$ {{ purchase.total.format(2, true) }}
 					  						</span>
 					  						<span class="cart-checkout-now">
 					  							{{ trans('strings.pay_now') }}
@@ -146,7 +146,7 @@
                 User: state => state.User
             }),
             ...mapGetters([
-                'auth'
+                'auth', 'purchase'
             ])
         },
         watch: {

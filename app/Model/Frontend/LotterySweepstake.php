@@ -4,8 +4,11 @@ namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
+use App\User;
+use App\Model\Frontend\LotteryResult;
+use App\Model\Frontend\Lottery;
 
-class LotteryCategory extends Model
+class LotterySweepstake extends Model
 {
     const CREATED_AT = 'created';
 
@@ -28,7 +31,7 @@ class LotteryCategory extends Model
      * 
      * @var array
      */
-    public $table = 'lot_categorias';
+    public $table = 'lot_jogos';
 
     /**
      * The attributes that are mass assignable.
@@ -48,8 +51,21 @@ class LotteryCategory extends Model
         
     ];
 
-    public function lotteries() {
-    	return $this->hasMany(\App\Model\Frontend\Lottery::class, 'lot_categoria_id');
+    public function category() {
+    	return $this->belongsTo(Lottery::class, 'lot_categoria_id')
+            ->where('active', '=', 1);
+    }
+
+    public function creator() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function results() {
+    	return $this->hasMany(LotteryResult::class, 'lot_jogo_id');
+    }
+
+    public function getDataFimAttribute($date) {
+        return format($date.' '.$this->hora_fim, 'd/m/Y H:i');
     }
 
     /*

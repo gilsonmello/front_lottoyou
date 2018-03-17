@@ -39,13 +39,19 @@ export const routes = {
 		find: host+'/scratch_card_demo/{id}',
 	},
 	soccer_expert: {
-		index: host+'/soccer_expert'
+		index: host+'/soccer_expert',
+		show: host+'/soccer_expert/{id}',
+		results: host+'/soccer_expert/results/:id'
 	},
 	soccer_categories: {
-		index: host+'/soccer_categories'
+		index: host+'/soccer_categories',
+		show: host+'/soccer_categories/{id}'
 	},
 	lotteries: {
 		index: host+'/lotteries',
 		show: host+'/lotteries/{id}'
+	},
+	carts: {
+		store: host+'/carts'
 	}
 };

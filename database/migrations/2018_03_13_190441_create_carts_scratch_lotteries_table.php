@@ -13,7 +13,7 @@ class CreateCartsScratchLotteriesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('lottoyou_cart')->create('carts_scratch_has_lotteries', function (Blueprint $table) {
+        Schema::create('carts_scratch_has_lotteries', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('cart_id')->unsigned();
             $table->integer('lottery_id')->unsigned();
@@ -36,6 +36,6 @@ class CreateCartsScratchLotteriesTable extends Migration
      */
     public function down()
     {
-        Schema::connection('lottoyou_cart')->dropIfExists('carts_scratch_has_lotteries');
+        Schema::dropIfExists('carts_scratch_has_lotteries');
     }
 }
