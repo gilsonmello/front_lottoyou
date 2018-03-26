@@ -39,7 +39,7 @@
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<br>
-		  	<div class="tab-pane active container-fluid" id="all" v-if="purchase.items.length > 0">
+		  	<div class="tab-pane active container-fluid tab-all" id="all" v-if="purchase.items.length > 0">
 		  		<all-component :items="purchase.items"></all-component>
 		  	</div>
 		  	<div class="tab-pane container-fluid tab-scratch_cards" id="scratch_cards" v-if="purchase.scratch_cards.items.length > 0">
@@ -55,6 +55,80 @@
 		  	</div>
 		</div>
 
+		
+		<div class="container-fluid">
+			<div class="row vcenter" style="margin: 10px -15px 10px -15px">
+				<div class="col-lg-10 col-8 col-md-10 col-sm-10">
+					<span class="pull-right">
+						Subtotal
+					</span>
+				</div>
+
+				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
+					<span>
+						$ {{ (purchase.total).format(2, true) }}
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
+				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+					<span>
+						Inserir cupom
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
+				<div class="col-lg-5 col-12 col-md-5 col-sm-6">
+					<span>
+						Saldo disponível: $ 20.00(Saldo restante: $ 0.00)
+					</span>
+				</div>
+				<div class="col-lg-5 col-6 col-md-5 col-sm-4">
+					<span class="pull-right">
+						Saldo
+					</span>
+				</div>
+				<div class="col-lg-2 col-6 col-md-2 col-sm-2">
+					<span>
+						$ 20.00
+					</span>
+				</div>
+			</div>
+				
+		</div>
+		
+		<div class="container-fluid">
+			<div class="row vcenter" style="margin: 10px -15px 10px -15px">
+				<div class="col-lg-10 col-8 col-md-10 col-sm-10">
+					<span class="pull-right">
+						Total a pagar 
+					</span>
+				</div>
+				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
+					<span>
+						R$ 100,00
+					</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container-fluid">
+			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
+				<div class="col-lg-10 col-8 col-md-10 col-sm-10">
+					
+				</div>
+				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
+					<button class="btn btn-success btn-md" @click.prevent="completePurchase($event)">		Confirmar
+					</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -78,6 +152,11 @@
 				
 			}
 		},
+		methods: {
+			completePurchase(event) {
+
+			}
+		},
 		mounted: function() {
 			window.document.title = window.app.title +' | '+ this.trans('strings.cart');
 		},
@@ -95,5 +174,12 @@
 		margin: 10px;
 	}
 
+	.row {
+		align-items: center;
+	}
 
+	.border-dotted {
+		border-bottom: 1px dotted #999;
+		padding: 10px 0 10px 0;
+	}
 </style>

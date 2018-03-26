@@ -13324,6 +13324,22 @@ button.close {
 
   .tab-lotteries .btn {
     padding: 0 !important;
+    display: block;
+  }
+
+  .tab-scratch_cards .btn {
+    padding: 0 !important;
+    display: block;
+  }
+
+  .tab-all .btn {
+    padding: 0 !important;
+    display: block;
+  }
+
+  .tab-soccer_experts .btn {
+    padding: 0 !important;
+    display: block;
   }
 }
 
@@ -13489,6 +13505,7 @@ button.close {
   background-color: #FCF914;
   text-align: center;
   padding-bottom: 5px;
+  padding-top: 5px;
 }
 
 .price {

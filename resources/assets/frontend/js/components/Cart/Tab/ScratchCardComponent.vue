@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<div class="row vcenter scratch_cars" v-for="scratch_card in scratchcards">
+		<div class="row vcenter scratch_cards" v-for="scratch_card in scratchcards">
 			<div class="col-lg-2 col-md-2 col-2 col-sm-2">
 				<img class="img-fluid" :src="app.basePath+scratch_card.scratch_card.img_card_url">
 			</div>
@@ -96,10 +96,10 @@
 
 
 <style scoped>
-	.scratch_cars:last-child{
+	.scratch_cards:last-child{
 		margin-bottom: 0;
 	}
-	.scratch_cars {
+	.scratch_cards {
 		margin-bottom: 10px;
 		padding: 10px 0 10px 0;
 	    border-bottom: 1px dotted #999;

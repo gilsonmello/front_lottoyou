@@ -22,12 +22,14 @@ class CartController extends Controller
             $cart = Cart::where('user_id', '=', $request->get('id'))
                 ->where('finished', '=', 0)
                 ->with('items')
+                ->orderBy('created_at', 'DESC')
                 ->get()
                 ->first();
         } else {
             $cart = Cart::where('visitor', '=', $request->ip())
                 ->where('finished', '=', 0)
                 ->with('items')
+                ->orderBy('created_at', 'DESC')
                 ->get()
                 ->first();
         }
@@ -235,8 +237,23 @@ class CartController extends Controller
      */
     public function destroy($hash)
     {
+
         $cartItem = CartItem::where('hash', '=', $hash)->get()->first();
 
+        $cartId = $cartItem->cart_id;
+            
+           
         $cartItem->delete();
+
+        
+        $cartItem = CartItem::where('cart_id', '=', $cartId)->get();
+        
+        if($cartItem->isEmpty()) {
+
+            $cart = Cart::find($cartId);
+
+            $cart->delete();
+        }
+
     }
 }

@@ -23,7 +23,7 @@
         </div>
         <form @submit.prevent="addToCart">
 	        <div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
-	        	<div class="col-lg-4" v-for="(round, column) in soccer_expert.rounds">
+	        	<div class="col-lg-4 col-12 col-sm-4 col-md-4" v-for="(round, column) in soccer_expert.rounds">
 	        		<div :class="'ticket'+column+' tickets '+completeOrNo(round)">
 	        			<!-- <div class="tickets-header">
 							<strong>{{ column }}</strong>
@@ -37,11 +37,11 @@
 							</div>
 						</div> -->
 						<div class="tickets-content well">
-							<div class="row vcenter text-center">
+							<!-- <div class="row vcenter text-center">
 								<div class="col-lg-12 col-12 col-sm-12 col-md-12">
 									<h3>{{ column + 'ª '+ trans('strings.round') }}</h3>
 								</div>	
-							</div>
+							</div> -->
 							<div class="row vcenter text-center" style="margin-bottom: 10px;" v-for="(game, line) in round.games">
 								<div class="col-xs-5 col-md-5 col-lg-3 no-padding">
 									

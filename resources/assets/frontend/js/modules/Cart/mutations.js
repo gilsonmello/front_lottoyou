@@ -354,7 +354,6 @@ export default {
 					type: elem.type,
 					soccer_expert: JSON.parse(elem.data)
 				})
-
 				state.purchase.soccer_expert.items.push(JSON.parse(elem.data))
 			}else if(elem.type == 'lottery') {
 				state.purchase.items.push({

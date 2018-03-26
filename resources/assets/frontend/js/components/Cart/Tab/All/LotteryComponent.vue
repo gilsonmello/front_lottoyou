@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<div class="row vcenter" :href="'#lottery_'+id" data-toggle="collapse">
+		<div class="row vcenter lotteries" :href="'#lottery_'+id" data-toggle="collapse">
 			<div class="col-lg-2 col-md-2 col-2 col-sm-2">
 				<img class="img-fluid" src="http://www.lottoland.com/pt/skins/lottoland/images/lotteryLogos/lt-elGordoPrimitiva.x2-bc4cde5fe7329ee5.png">
 			</div>
@@ -82,5 +82,14 @@
 	section {
 		margin-right: -15px;
 		margin-left: -15px;
+	}
+
+	.lotteries:last-child{
+		margin-bottom: 0;
+	}
+	.lotteries {
+		margin-bottom: 10px;
+		padding: 10px 0 10px 0;
+	    border-bottom: 1px dotted #999;
 	}
 </style>

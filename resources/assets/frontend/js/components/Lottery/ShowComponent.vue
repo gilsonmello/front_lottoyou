@@ -27,7 +27,8 @@
 				<div class="col-lg-3 col-8 col-md-5 col-sm-5" v-for="(index, column) in columns">
 					<div :class="'ticket'+column+' tickets'+' '+wow(index)">
 						<div class="tickets-header">
-							<strong>{{ column }}</strong>
+							<!-- <strong>{{ column }}</strong> -->
+							<strong>&nbsp;</strong>
 							<div class="tools">
 								<a class="" href="#" @click.prevent="selectRandom(column, $event)">
 									<i class="fa fa-random"></i>
@@ -92,7 +93,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+				<div class="col-lg-4 col-12 col-md-4 col-sm-4">
 					<div class="form-group">
 						<label for="date">{{ trans('strings.sweepstake_date') }}</label>
 					    <select v-model="lot_jogo_id" class="form-control" id="lot_jogo_id">

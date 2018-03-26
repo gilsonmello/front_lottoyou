@@ -1,7 +1,7 @@
 <template>
 	<div :id="id" class="collapse">
 		<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;" @click.prevent="editSoccerExpert(soccer_expert.id, soccer_expert.hash, $event)">
-        	<div class="col-lg-4" v-for="(round, column) in soccer_expert.rounds">
+        	<div class="col-lg-3 col-10 col-md-5 col-sm-5" v-for="(round, column) in soccer_expert.rounds">
         		<div :class="'ticket'+column+' tickets'">
         			
         			<div class="tickets-content well">
