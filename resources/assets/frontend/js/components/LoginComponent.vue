@@ -78,32 +78,36 @@
 					
 					if(response.status === 200){
 			        	const authUser = {};
-              			authUser.access_token = response.data.access_token
+			        	authUser.access_token = response.data.access_token
               			authUser.refresh_token = response.data.refresh_token
-              			window.localStorage.setItem('authUser', JSON.stringify(authUser))
-              			this.$router.push({name: 'users.account'});
-	                  	window.location.reload();
+              			//window.localStorage.setItem('authUser', JSON.stringify(authUser))
+              			//this.$router.push({name: 'users.account'});
+	                  	//window.location.reload();
 
-              			/*var loginRequest = axios.create();
+              			var loginRequest = axios.create();
 						//Fazendo busca do usuário logado, para setar na estrutura de dados
 						loginRequest.get(routes.auth.user, { headers: {
 							'Accept': 'application/json',
 	    					'Authorization': 'Bearer ' + authUser.access_token
 						}}).then(response_2 => {
 
-				        	$(this.$el).find('[type="load"]').addClass('hide');
-				        	$(this.$el).find('[type="submit"]').removeClass('hide');
-				        	response_2.data['access_token'] = authUser.access_token;
+				        	response_2.data.access_token = authUser.access_token
+		        	
+		        			response_2.data.refresh_token = authUser.refresh_token
+
 							window.localStorage.setItem('authUser', JSON.stringify(response_2.data))
+		                  	
 		                  	this.$router.push({name: 'users.account'});
+		                  	
 		                  	window.location.reload();
+		                
 		                }).catch((error_2) => {
 							this.errors = {
 								credentials: 'Usuário ou Senha inválidos'
 							};
 							$(this.$el).find('[type="load"]').addClass('hide');
 		        			$(this.$el).find('[type="submit"]').removeClass('hide');
-		                });*/
+		                });
 					}
 				}).catch((error) => {
 					$(this.$el).find('[type="load"]').addClass('hide');

@@ -3,7 +3,7 @@
 	<div class="container-fluid" v-else>
 		<h1 class="page-header">{{ trans('strings.scratch_cards') }}</h1>
 		<div class="row">
-			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="scratch_card_theme in scratch_card_themes">
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="(scratch_card_theme, index) in scratch_card_themes">
 				<div class="scratch-card">
 					<header class="scratch-card-header">
 						<div class="extras">
@@ -38,30 +38,38 @@
 					</div>
 
 					<footer class="scratch-card-footer">
-						<form>
+						<form @submit.prevent="addToCart(index, $event)">
 							<div class="row vcenter">
 								<div class="col-lg-9 col-9 col-md-9 col-sm-9">
 									<label class="">
-										<input type="radio" name="game_1_option">
-										<span>1 Jogo</span>
+										<input type="radio" v-bind:value="0" v-model="scratch_card_theme.positionSelected" :name="'game_'+index+'_option'">
+										<span>
+											1 {{ trans('strings.game') }}
+										</span>
 									</label>
 								</div>
 								<div class="col-lg-3 col-3 col-md-3 col-sm-3">
-									<span>$ 1.50</span>
+									<span>
+										$ {{ ((scratch_card_theme.value * 1)).format(2, true) }}
+									</span>
 								</div>
 							</div>
-							<div class="row vcenter">
+							<div class="row vcenter" v-for="(discount_table, ind) in scratch_card_theme.discount_tables">
 								<div class="col-lg-9 col-9 col-md-9 col-sm-9">
-									<label>
-										<input type="radio" name="game_1_option">
-										<span>2 Jogo</span>
+									<label class="">
+										<input type="radio" v-bind:value="ind+1" v-model="scratch_card_theme.positionSelected" :name="'game_'+index+'_option'">
+										<span>
+											{{ discount_table.quantity }} {{ trans('strings.game') }} {{'('+trans('strings.spare')+' '+discount_table.percentage+'%)'}}
+										</span>
 									</label>
 								</div>
 								<div class="col-lg-3 col-3 col-md-3 col-sm-3">
-									<span>$ 1.50</span>
+									<span>
+										$ {{ (scratch_card_theme.value - ((scratch_card_theme.value * discount_table.percentage) / 100)).format(2, true) }}
+									</span>
 								</div>
 							</div>
-							<div class="row vcenter">
+							<div class="row vcenter" style="margin-top: 15px; background: none;">
 								<div class="col-12 col-md-12 col-xs-12 col-sm-12 text-center">
 									<button type="submit" class="btn btn-md btn-success">
 										{{ trans('strings.play_now') }}
@@ -295,6 +303,7 @@
 	import {routes} from '../../api_routes'
 	import ModalFormComponent from '../ModalFormComponent'
 	import LoadComponent from '../Load'
+	import {mapState, mapGetters} from 'vuex'
 	export default {
 		props: [],
 		created: function() {
@@ -451,6 +460,78 @@
 		        }).catch((error) => {
 		            
 		        })
+			},
+			addToCart: function(index, $event) {
+				
+				//A posição 0 foi reservada para o valor sem desconto
+				if(this.scratch_card_themes[index].positionSelected == 0) {
+
+					//Caso o usuário tenha selecionado a opção sem desconto
+					var new_scratch_card_theme = Object.assign({}, this.scratch_card_themes[index], {})
+					
+					//Não possui tabela de desconto
+					new_scratch_card_theme.discount_tables = {}
+
+					new_scratch_card_theme.discount_tables.quantity = 1;
+
+					//Atribuindo o valor da raspadinha ao total
+					this.item.total = parseFloat(new_scratch_card_theme.value)
+
+					//Passando para a estrutura os dados preenchidos pelo o usuário
+					this.item.scratch_card = new_scratch_card_theme
+				}
+				else if(this.scratch_card_themes[index].discount_tables != undefined) {
+					
+					//Caso o usuário tenha selecionado a opção com desconto, 
+					//Preciso decrementar a posição selecionada, pois o array da tabela de descontos começa em 0
+					const positionSelected = (this.scratch_card_themes[index].positionSelected) - 1
+
+					//Pegando o item da tabela de desconto selecionada
+					var discount_tables = Object.assign(
+						{}, 
+						this.scratch_card_themes[index].discount_tables[positionSelected], 
+						{}
+					);
+
+					//Variável que irá conter os dados a ser enviado
+					var scratch_card_theme = Object.assign({}, this.scratch_card_themes[index], {});
+					
+					//Adicionando o item da tabela de desconto selecionado
+					scratch_card_theme.discount_tables = discount_tables;
+
+					//Valor da raspadinha
+					var value = scratch_card_theme.value;
+					//Quantidade que está na tabela de desconto
+					var quantity = scratch_card_theme.discount_tables.quantity;
+					//Porcentagem que está na tabela de desconto
+					var percentage = scratch_card_theme.discount_tables.percentage
+
+					//Fazendo cálculo do total
+					var total = (value - (value * percentage / 100)) * quantity
+
+					//Passando para a estrutura os dados preenchidos pelo o usuário
+					this.item.total = total
+					this.item.scratch_card = scratch_card_theme
+				}
+
+				//Atualizando os dados do carrinho
+				this.$store.dispatch('setItemScratchCard', this.item)
+				//Redirecionando para o carrinho
+				this.$router.push({name: 'cart.index'})
+
+				let addScratchCardRequest = axios.create();
+
+				addScratchCardRequest.post(routes.carts.add_scratch_cards, {
+					purchase: this.item, 
+					auth: this.auth,
+					hash: this.item.hash
+				}).then(response => {
+		            if(response.status === 200) {
+		            	
+					}
+		        }).catch((error) => {
+		        	
+		        })			
 			}
 		},
 		data: function() {
@@ -465,7 +546,12 @@
 					component: true
 				},
 				id: null,
-				scratch_card_demo: {}
+				scratch_card_demo: {},
+				item: {
+					total: 0.00,
+					hash: '',
+					scratch_card: {}
+				}
 			}
 		},
 		beforeMount: function() {
@@ -478,15 +564,24 @@
 			});
 			axios.get(routes.scratch_card_themes.index, {}).then(response => {
 	            if(response.status === 200){
+	            	this.item.hash = this.makeid();
 	            	this.scratch_card_themes = response.data
-	            	this.loading.component = false
+	            	this.scratch_card_themes = this.scratch_card_themes.filter((val) => {
+	            		//Selecionado a primeira linha
+            			val.positionSelected = 0
+            			val.hash = this.makeid();
+	            		return true;
+	            	})
+					this.loading.component = false
 			    }
 	        }).catch((error) => {
 	            
 	        })
 		},
 		computed: {
-
+			...mapGetters([
+                'auth'
+            ])
 		},
 		watch: {
 			'loading.modalDemo': function(newValue, oldValue) {}

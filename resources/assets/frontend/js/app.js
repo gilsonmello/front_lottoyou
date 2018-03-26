@@ -13,6 +13,10 @@ $(document).on('hidden.bs.modal', '.modal', function (e) {
 	}
 });
 
+Array.prototype.clone = function(){
+  return this.slice(0);
+}
+
 window.Vue = require('vue');
 
 Number.prototype.format = function(n, x) {
@@ -33,6 +37,11 @@ Vue.prototype.makeid = function() {
 Vue.prototype.trans = (key) => {
     return _.get(window.trans, key, key);
 };
+
+Vue.prototype.app = window.app;
+
+//require('./helpers');
+
 
 export function getTrans(key) {
 	var keys = key.split('.');

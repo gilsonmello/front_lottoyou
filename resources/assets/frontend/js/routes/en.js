@@ -42,7 +42,7 @@ export default {
 			        component: require('../components/SoccerExpert/IndexComponent.vue')
 			    },
 			    {   
-			  		path: 'soccer_expert/:id',
+			  		path: 'soccer_expert/:id/:hash?',
 			        name: 'soccer_expert.show', 
 			        props: true,
 			        component: require('../components/SoccerExpert/ShowComponent.vue')
@@ -61,7 +61,7 @@ export default {
 			        component: require('../components/Lottery/IndexComponent.vue')
 			    },
 			    {   
-			  		path: 'lotteries/:id',
+			  		path: 'lotteries/:id/:hash?',
 			        name: 'lotteries.show', 
 			        props: true,
 			        component: require('../components/Lottery/ShowComponent.vue')

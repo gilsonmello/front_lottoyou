@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCartsTable extends Migration
+class CreateCartScratchCardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,27 +13,26 @@ class CreateCartsTable extends Migration
      */
     public function up()
     {
-        Schema::create('carts', function (Blueprint $table) {
+        Schema::create('cart_scratch_cards', function (Blueprint $table) {
+            
             $table->integer('id')->autoIncrement();
-
+           
             $length = 11;
 
             $unsigned = true;
 
-            $nullable = true;
-
-            $table->addColumn('integer', 'user_id', compact('length', 'unsigned', 'nullable'));
-
-            $table->boolean('finished')->default(0);
+            $table->addColumn('integer', 'cart_id', compact('length'));
             
-            $table->ipAddress('visitor');
+            $table->json('data')->nullable();
+
+            $table->string('hash')->nullable();
 
             $table->timestamps();
             
             $table->softDeletes();
-            
-            $table->foreign('user_id')
-                ->on('users')
+
+            $table->foreign('cart_id')
+                ->on('carts')
                 ->references('id');
         });
     }
@@ -45,6 +44,6 @@ class CreateCartsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carts');
+        Schema::dropIfExists('cart_scratch_cards');
     }
 }

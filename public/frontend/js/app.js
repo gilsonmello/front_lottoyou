@@ -905,7 +905,12 @@ var routes = {
 		show: host + '/lotteries/{id}'
 	},
 	carts: {
-		store: host + '/carts'
+		store: host + '/carts',
+		index: host + '/carts',
+		add_scratch_cards: host + '/carts/add_scratch_cards',
+		add_soccer_experts: host + '/carts/add_soccer_experts',
+		add_lotteries: host + '/carts/add_lotteries',
+		destroy: host + '/carts/{hash}'
 	}
 };
 
@@ -11309,57 +11314,6 @@ return jQuery;
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(102)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(104)
-/* template */
-var __vue_template__ = __webpack_require__(105)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-390308d0"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/frontend/js/components/SliderComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-390308d0", Component.options)
-  } else {
-    hotAPI.reload("data-v-390308d0", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12301,6 +12255,57 @@ var index_esm = {
 
 
 /* harmony default export */ __webpack_exports__["a"] = (index_esm);
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(102)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(104)
+/* template */
+var __vue_template__ = __webpack_require__(105)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-390308d0"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/SliderComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-390308d0", Component.options)
+  } else {
+    hotAPI.reload("data-v-390308d0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
 
 
 /***/ }),
@@ -27314,13 +27319,13 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(200)
+  __webpack_require__(255)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(202)
+var __vue_script__ = __webpack_require__(257)
 /* template */
-var __vue_template__ = __webpack_require__(213)
+var __vue_template__ = __webpack_require__(268)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -27363,7 +27368,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(36);
-module.exports = __webpack_require__(247);
+module.exports = __webpack_require__(302);
 
 
 /***/ }),
@@ -27375,14 +27380,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["getTrans"] = getTrans;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_resource__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Select2Component__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Select2Component__ = __webpack_require__(278);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Select2Component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Select2Component__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_InputMaskComponent__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_InputMaskComponent__ = __webpack_require__(284);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_InputMaskComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_InputMaskComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_DatepickerComponent__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_DatepickerComponent__ = __webpack_require__(287);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_DatepickerComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_DatepickerComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_App__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_App__ = __webpack_require__(292);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_App__);
 
 /**
@@ -27398,6 +27403,10 @@ $(document).on('hidden.bs.modal', '.modal', function (e) {
     $('body').addClass('modal-open');
   }
 });
+
+Array.prototype.clone = function () {
+  return this.slice(0);
+};
 
 window.Vue = __webpack_require__(11);
 
@@ -27419,6 +27428,11 @@ Vue.prototype.makeid = function () {
 Vue.prototype.trans = function (key) {
   return _.get(window.trans, key, key);
 };
+
+Vue.prototype.app = window.app;
+
+//require('./helpers');
+
 
 function getTrans(key) {
   var keys = key.split('.');
@@ -60517,7 +60531,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__HeaderComponent__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__HeaderComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__HeaderComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__SliderComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselComponent__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__CarouselComponent__);
@@ -60597,9 +60611,9 @@ exports.push([module.i, "\nnav[data-v-7d64b6a4] {\n}\nli span[data-v-7d64b6a4] {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NavGameComponent__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NavGameComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__NavGameComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__SliderComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(8);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -62206,7 +62220,7 @@ exports.push([module.i, "\nh1[data-v-22829092] {\n\twidth: 100%;\n}\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SliderComponent__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SliderComponent__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SliderComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__SliderComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CarouselComponent__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CarouselComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__CarouselComponent__);
@@ -62541,7 +62555,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62635,29 +62649,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					var authUser = {};
 					authUser.access_token = response.data.access_token;
 					authUser.refresh_token = response.data.refresh_token;
-					window.localStorage.setItem('authUser', JSON.stringify(authUser));
-					_this.$router.push({ name: 'users.account' });
-					window.location.reload();
+					//window.localStorage.setItem('authUser', JSON.stringify(authUser))
+					//this.$router.push({name: 'users.account'});
+					//window.location.reload();
 
-					/*var loginRequest = axios.create();
-     //Fazendo busca do usuário logado, para setar na estrutura de dados
-     loginRequest.get(routes.auth.user, { headers: {
-     'Accept': 'application/json',
-     'Authorization': 'Bearer ' + authUser.access_token
-     }}).then(response_2 => {
-     $(this.$el).find('[type="load"]').addClass('hide');
-     $(this.$el).find('[type="submit"]').removeClass('hide');
-     response_2.data['access_token'] = authUser.access_token;
-     window.localStorage.setItem('authUser', JSON.stringify(response_2.data))
-        	this.$router.push({name: 'users.account'});
-        	window.location.reload();
-      }).catch((error_2) => {
-     this.errors = {
-     credentials: 'Usuário ou Senha inválidos'
-     };
-     $(this.$el).find('[type="load"]').addClass('hide');
-     $(this.$el).find('[type="submit"]').removeClass('hide');
-      });*/
+					var loginRequest = axios.create();
+					//Fazendo busca do usuário logado, para setar na estrutura de dados
+					loginRequest.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].auth.user, { headers: {
+							'Accept': 'application/json',
+							'Authorization': 'Bearer ' + authUser.access_token
+						} }).then(function (response_2) {
+
+						response_2.data.access_token = authUser.access_token;
+
+						response_2.data.refresh_token = authUser.refresh_token;
+
+						window.localStorage.setItem('authUser', JSON.stringify(response_2.data));
+
+						_this.$router.push({ name: 'users.account' });
+
+						window.location.reload();
+					}).catch(function (error_2) {
+						_this.errors = {
+							credentials: 'Usuário ou Senha inválidos'
+						};
+						$(_this.$el).find('[type="load"]').addClass('hide');
+						$(_this.$el).find('[type="submit"]').removeClass('hide');
+					});
 				}
 			}).catch(function (error) {
 				$(_this.$el).find('[type="load"]').addClass('hide');
@@ -66042,6 +66060,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ModalFormComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ModalFormComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Load__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(8);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -66335,6 +66356,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -66494,6 +66524,69 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					_this4.loading.modalJackpotTable = false;
 				}
 			}).catch(function (error) {});
+		},
+		addToCart: function addToCart(index, $event) {
+
+			//A posição 0 foi reservada para o valor sem desconto
+			if (this.scratch_card_themes[index].positionSelected == 0) {
+
+				//Caso o usuário tenha selecionado a opção sem desconto
+				var new_scratch_card_theme = Object.assign({}, this.scratch_card_themes[index], {});
+
+				//Não possui tabela de desconto
+				new_scratch_card_theme.discount_tables = {};
+
+				new_scratch_card_theme.discount_tables.quantity = 1;
+
+				//Atribuindo o valor da raspadinha ao total
+				this.item.total = parseFloat(new_scratch_card_theme.value);
+
+				//Passando para a estrutura os dados preenchidos pelo o usuário
+				this.item.scratch_card = new_scratch_card_theme;
+			} else if (this.scratch_card_themes[index].discount_tables != undefined) {
+
+				//Caso o usuário tenha selecionado a opção com desconto, 
+				//Preciso decrementar a posição selecionada, pois o array da tabela de descontos começa em 0
+				var positionSelected = this.scratch_card_themes[index].positionSelected - 1;
+
+				//Pegando o item da tabela de desconto selecionada
+				var discount_tables = Object.assign({}, this.scratch_card_themes[index].discount_tables[positionSelected], {});
+
+				//Variável que irá conter os dados a ser enviado
+				var scratch_card_theme = Object.assign({}, this.scratch_card_themes[index], {});
+
+				//Adicionando o item da tabela de desconto selecionado
+				scratch_card_theme.discount_tables = discount_tables;
+
+				//Valor da raspadinha
+				var value = scratch_card_theme.value;
+				//Quantidade que está na tabela de desconto
+				var quantity = scratch_card_theme.discount_tables.quantity;
+				//Porcentagem que está na tabela de desconto
+				var percentage = scratch_card_theme.discount_tables.percentage;
+
+				//Fazendo cálculo do total
+				var total = (value - value * percentage / 100) * quantity;
+
+				//Passando para a estrutura os dados preenchidos pelo o usuário
+				this.item.total = total;
+				this.item.scratch_card = scratch_card_theme;
+			}
+
+			//Atualizando os dados do carrinho
+			this.$store.dispatch('setItemScratchCard', this.item);
+			//Redirecionando para o carrinho
+			this.$router.push({ name: 'cart.index' });
+
+			var addScratchCardRequest = axios.create();
+
+			addScratchCardRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.add_scratch_cards, {
+				purchase: this.item,
+				auth: this.auth,
+				hash: this.item.hash
+			}).then(function (response) {
+				if (response.status === 200) {}
+			}).catch(function (error) {});
 		}
 	},
 	data: function data() {
@@ -66508,7 +66601,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				component: true
 			},
 			id: null,
-			scratch_card_demo: {}
+			scratch_card_demo: {},
+			item: {
+				total: 0.00,
+				hash: '',
+				scratch_card: {}
+			}
 		};
 	},
 	beforeMount: function beforeMount() {},
@@ -66521,12 +66619,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		});
 		axios.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].scratch_card_themes.index, {}).then(function (response) {
 			if (response.status === 200) {
+				_this5.item.hash = _this5.makeid();
 				_this5.scratch_card_themes = response.data;
+				_this5.scratch_card_themes = _this5.scratch_card_themes.filter(function (val) {
+					//Selecionado a primeira linha
+					val.positionSelected = 0;
+					val.hash = _this5.makeid();
+					return true;
+				});
 				_this5.loading.component = false;
 			}
 		}).catch(function (error) {});
 	},
-	computed: {},
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["b" /* mapGetters */])(['auth'])),
 	watch: {
 		'loading.modalDemo': function loadingModalDemo(newValue, oldValue) {}
 	},
@@ -66740,7 +66845,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "row" },
-          _vm._l(_vm.scratch_card_themes, function(scratch_card_theme) {
+          _vm._l(_vm.scratch_card_themes, function(scratch_card_theme, index) {
             return _c(
               "div",
               { staticClass: "col-12 col-md-6 col-sm-6 col-lg-4" },
@@ -66852,77 +66957,216 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("footer", { staticClass: "scratch-card-footer" }, [
-                    _c("form", [
-                      _c("div", { staticClass: "row vcenter" }, [
-                        _c(
-                          "div",
-                          { staticClass: "col-lg-9 col-9 col-md-9 col-sm-9" },
-                          [
-                            _c("label", {}, [
-                              _c("input", {
-                                attrs: { type: "radio", name: "game_1_option" }
-                              }),
-                              _vm._v(" "),
-                              _c("span", [_vm._v("1 Jogo")])
-                            ])
-                          ]
-                        ),
+                    _c(
+                      "form",
+                      {
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            _vm.addToCart(index, $event)
+                          }
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "row vcenter" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col-lg-9 col-9 col-md-9 col-sm-9" },
+                            [
+                              _c("label", {}, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        scratch_card_theme.positionSelected,
+                                      expression:
+                                        "scratch_card_theme.positionSelected"
+                                    }
+                                  ],
+                                  attrs: {
+                                    type: "radio",
+                                    name: "game_" + index + "_option"
+                                  },
+                                  domProps: {
+                                    value: 0,
+                                    checked: _vm._q(
+                                      scratch_card_theme.positionSelected,
+                                      0
+                                    )
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.$set(
+                                        scratch_card_theme,
+                                        "positionSelected",
+                                        0
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("span", [
+                                  _vm._v(
+                                    "\n\t\t\t\t\t\t\t\t\t\t\t1 " +
+                                      _vm._s(_vm.trans("strings.game")) +
+                                      "\n\t\t\t\t\t\t\t\t\t\t"
+                                  )
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "col-lg-3 col-3 col-md-3 col-sm-3" },
+                            [
+                              _c("span", [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t\t\t$ " +
+                                    _vm._s(
+                                      (scratch_card_theme.value * 1).format(
+                                        2,
+                                        true
+                                      )
+                                    ) +
+                                    "\n\t\t\t\t\t\t\t\t\t"
+                                )
+                              ])
+                            ]
+                          )
+                        ]),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-lg-3 col-3 col-md-3 col-sm-3" },
-                          [_c("span", [_vm._v("$ 1.50")])]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row vcenter" }, [
-                        _c(
-                          "div",
-                          { staticClass: "col-lg-9 col-9 col-md-9 col-sm-9" },
-                          [
-                            _c("label", [
-                              _c("input", {
-                                attrs: { type: "radio", name: "game_1_option" }
-                              }),
-                              _vm._v(" "),
-                              _c("span", [_vm._v("2 Jogo")])
-                            ])
-                          ]
-                        ),
+                        _vm._l(scratch_card_theme.discount_tables, function(
+                          discount_table,
+                          ind
+                        ) {
+                          return _c("div", { staticClass: "row vcenter" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "col-lg-9 col-9 col-md-9 col-sm-9"
+                              },
+                              [
+                                _c("label", {}, [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          scratch_card_theme.positionSelected,
+                                        expression:
+                                          "scratch_card_theme.positionSelected"
+                                      }
+                                    ],
+                                    attrs: {
+                                      type: "radio",
+                                      name: "game_" + index + "_option"
+                                    },
+                                    domProps: {
+                                      value: ind + 1,
+                                      checked: _vm._q(
+                                        scratch_card_theme.positionSelected,
+                                        ind + 1
+                                      )
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        _vm.$set(
+                                          scratch_card_theme,
+                                          "positionSelected",
+                                          ind + 1
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("span", [
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t\t\t\t" +
+                                        _vm._s(discount_table.quantity) +
+                                        " " +
+                                        _vm._s(_vm.trans("strings.game")) +
+                                        " " +
+                                        _vm._s(
+                                          "(" +
+                                            _vm.trans("strings.spare") +
+                                            " " +
+                                            discount_table.percentage +
+                                            "%)"
+                                        ) +
+                                        "\n\t\t\t\t\t\t\t\t\t\t"
+                                    )
+                                  ])
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "col-lg-3 col-3 col-md-3 col-sm-3"
+                              },
+                              [
+                                _c("span", [
+                                  _vm._v(
+                                    "\n\t\t\t\t\t\t\t\t\t\t$ " +
+                                      _vm._s(
+                                        (
+                                          scratch_card_theme.value -
+                                          scratch_card_theme.value *
+                                            discount_table.percentage /
+                                            100
+                                        ).format(2, true)
+                                      ) +
+                                      "\n\t\t\t\t\t\t\t\t\t"
+                                  )
+                                ])
+                              ]
+                            )
+                          ])
+                        }),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-lg-3 col-3 col-md-3 col-sm-3" },
-                          [_c("span", [_vm._v("$ 1.50")])]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row vcenter" }, [
                         _c(
                           "div",
                           {
-                            staticClass:
-                              "col-12 col-md-12 col-xs-12 col-sm-12 text-center"
+                            staticClass: "row vcenter",
+                            staticStyle: {
+                              "margin-top": "15px",
+                              background: "none"
+                            }
                           },
                           [
                             _c(
-                              "button",
+                              "div",
                               {
-                                staticClass: "btn btn-md btn-success",
-                                attrs: { type: "submit" }
+                                staticClass:
+                                  "col-12 col-md-12 col-xs-12 col-sm-12 text-center"
                               },
                               [
-                                _vm._v(
-                                  "\n\t\t\t\t\t\t\t\t\t\t" +
-                                    _vm._s(_vm.trans("strings.play_now")) +
-                                    "\n\t\t\t\t\t\t\t\t\t"
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-md btn-success",
+                                    attrs: { type: "submit" }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t\t\t" +
+                                        _vm._s(_vm.trans("strings.play_now")) +
+                                        "\n\t\t\t\t\t\t\t\t\t"
+                                    )
+                                  ]
                                 )
                               ]
                             )
                           ]
                         )
-                      ])
-                    ])
+                      ],
+                      2
+                    )
                   ])
                 ])
               ]
@@ -68236,7 +68480,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			props: true,
 			component: __webpack_require__(31)
 		}, {
-			path: 'soccer_expert/:id',
+			path: 'soccer_expert/:id/:hash?',
 			name: 'soccer_expert.show',
 			props: true,
 			component: __webpack_require__(166)
@@ -68251,7 +68495,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			props: true,
 			component: __webpack_require__(32)
 		}, {
-			path: 'lotteries/:id',
+			path: 'lotteries/:id/:hash?',
 			name: 'lotteries.show',
 			props: true,
 			component: __webpack_require__(176)
@@ -68271,7 +68515,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			name: 'balances.index',
 			props: true,
 			meta: { requiresAuth: true },
-			component: __webpack_require__(195)
+			component: __webpack_require__(250)
 		}, {
 			path: 'balances/deposit',
 			name: 'balances.deposit',
@@ -68375,7 +68619,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.price[data-v-5953fa40] {\n\tmargin-right: 15px;\n}\n.tickets-content[data-v-5953fa40] {\n\tpadding: 15px;\n}\n.club[data-v-5953fa40] {\n\tdisplay: block;\n}\n.input-group-addon[data-v-5953fa40] {\n\tborder-color: transparent;\t\t\t\t\t\n    background-color: transparent;\n    color: inherit;\n    opacity: 0.7;\n    padding: 0;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.complete[data-v-5953fa40] {\n\tborder: 3px solid #67be13 !important;\n}\n.incomplete[data-v-5953fa40] {\n    border: 3px solid #BF390F !important;\n}\n\n", ""]);
 
 // exports
 
@@ -68389,7 +68633,108 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Load__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(8);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -68432,26 +68777,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			},
 			soccer_expert: {},
 			id: '',
-			columns: [0],
+			rounds: [0],
 			total: 0.00,
 			item: {
 				hash: null,
 				id: null,
 				value: null,
 				name: '',
-				betting: [{
-					column: 0,
-					complete: false,
-					completeExtras: false,
-					numbers: [],
-					numbersExtras: []
-				}]
+				rounds: []
 			}
+
+			/*rounds: [
+   		{
+   			id: null,
+   			hash: null,
+   			column: 0,
+   			house_club: null,
+   			house_club_result: '',
+   			out_club: null,
+   			out_club_result: '',
+    		complete: false,
+    		games: []
+    	},
+   ]*/
 		};
 	},
 	methods: {
-		//Funão executada ao carregar
-		init: function init() {
+		completeOrNo: function completeOrNo(round) {
+			return round.complete ? 'complete' : '';
+		},
+		showRequest: function showRequest() {
 			var _this = this;
 
 			var showRequest = axios.create();
@@ -68465,8 +68820,197 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				if (response.status === 200) {
 					_this.soccer_expert = response.data;
 					_this.loading.component = false;
+					_this.item.id = _this.id;
+					_this.item.soccer_expert = _this.soccer_expert;
+					_this.item.hash = _this.makeid();
+					_this.item.value = parseFloat(_this.soccer_expert.value);
+					_this.item.name = _this.soccer_expert.nome;
+					_this.item.rounds = _this.soccer_expert.rounds;
 				}
 			}).catch(function (error) {});
+		},
+		showSoccerExpert: function showSoccerExpert() {
+			var _this2 = this;
+
+			var item = this.purchase.soccer_expert.items.filter(function (val) {
+				return _this2.$route.params.hash == val.hash;
+			});
+
+			if (item.length > 0) {
+				item = item[0];
+
+				this.soccer_expert = item.soccer_expert;
+				this.loading.component = false;
+				this.item.id = item.id;
+				this.item.soccer_expert = item.soccer_expert;
+				this.item.hash = item.hash;
+				this.item.value = parseFloat(item.soccer_expert.value);
+				this.item.name = item.soccer_expert.nome;
+				this.item.rounds = item.soccer_expert.rounds;
+				this.total = parseFloat(item.total);
+			} else {}
+		},
+
+		//Funão executada ao carregar
+		init: function init() {
+			if (this.$route.params.hash != undefined) {
+				this.showSoccerExpert();
+			} else if (this.$route.params.id != undefined) {
+				this.showRequest();
+			}
+		},
+		//Pegando todas as apostas concluídas
+		getRoundsFinished: function getRoundsFinished() {
+			var vm = this;
+			//Pegando todas as apostas feitas
+			var rounds_completed = this.item.rounds.filter(function (val) {
+				//Verificando se dezenas extras está habilitado
+				if (val.complete == true) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+			return rounds_completed;
+		},
+		//Column = rodada disponível no array
+		//Line = jogo da roda disponível no array
+		houseClubResult: function houseClubResult(column, line, event) {
+			//Pegando o valor informado pelo usuário
+			var input = $(event.currentTarget);
+
+			//Atribuindo o resultado informado para o time da casa
+			this.item.rounds[column].games[line].result_house_club = input.val();
+
+			//Serve para controlar se a rodada foi complemente preenchida
+			var complete = true;
+
+			//Serve para controlar se a rodada está completamente vazia
+			var empty = true;
+
+			//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
+			//Não foi concluído o preenchimento na rodada
+			this.item.rounds[column].games = this.item.rounds[column].games.filter(function (val) {
+
+				if (val.result_out_club == '' || val.result_out_club == undefined || val.result_house_club == '' || val.result_house_club == undefined) {
+					complete = false;
+				}
+				//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
+				if (val.result_out_club != '' || val.result_out_club == undefined || val.result_house_club != '' || val.result_house_club == undefined) {
+					empty = false;
+				}
+
+				return true;
+			});
+
+			//Se foi completado o preenchimento na rodada
+			if (complete == true) {
+				this.item.rounds[column].complete = true;
+				$('.ticket' + column).addClass('complete');
+				$('.ticket' + column).removeClass('incomplete');
+			} else {
+				this.item.rounds[column].complete = false;
+				$('.ticket' + column).addClass('incomplete');
+				$('.ticket' + column).removeClass('complete');
+			}
+
+			//Se a rodada está vazia
+			if (empty) {
+				$('.ticket' + column).removeClass('complete');
+				$('.ticket' + column).removeClass('incomplete');
+			}
+
+			//Pegando todas as rodadas finalizadas
+			var rounds = this.getRoundsFinished();
+			//Atualizando o total
+			this.total = this.item.value * rounds.length;
+		},
+		//Column = rodada disponível no array
+		//Line = jogo da roda disponível no array
+		outClubResult: function outClubResult(column, line, event) {
+			var input = $(event.currentTarget);
+			this.item.rounds[column].games[line].result_out_club = input.val();
+
+			//Serve para controlar se a rodada foi complemente preenchida
+			var complete = true;
+
+			//Serve para controlar se a rodada está completamente vazia
+			var empty = true;
+
+			//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
+			//Não foi concluído o preenchimento na rodada
+			this.item.rounds[column].games = this.item.rounds[column].games.filter(function (val) {
+
+				if (val.result_out_club == '' || val.result_out_club == undefined || val.result_house_club == '' || val.result_house_club == undefined) {
+					complete = false;
+				}
+
+				//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
+				if (val.result_out_club != '' || val.result_out_club == undefined || val.result_house_club != '' || val.result_house_club == undefined) {
+					empty = false;
+				}
+
+				return true;
+			});
+
+			//Se foi completado o preenchimento na rodada
+			if (complete == true) {
+				this.item.rounds[column].complete = true;
+				$('.ticket' + column).addClass('complete');
+				$('.ticket' + column).removeClass('incomplete');
+			} else {
+				this.item.rounds[column].complete = false;
+				$('.ticket' + column).addClass('incomplete');
+				$('.ticket' + column).removeClass('complete');
+			}
+
+			//Se a rodada está vazia
+			if (empty) {
+				$('.ticket' + column).removeClass('complete');
+				$('.ticket' + column).removeClass('incomplete');
+			}
+
+			//Pegando todas as rodadas finalizadas
+			var rounds = this.getRoundsFinished();
+			//Atualizando o total
+			this.total = this.item.value * rounds.length;
+		},
+		addToCart: function addToCart() {
+			//Pegando todas as rodadas finalizadas
+			var rounds = this.getRoundsFinished();
+
+			var item = {
+				id: this.id,
+				hash: this.item.hash,
+				soccer_expert: this.soccer_expert,
+				value: this.item.value,
+				rounds: rounds,
+				total: this.item.value * rounds.length
+			};
+
+			//Se não completou nenhuma rodada
+			if (rounds.length == 0) {
+				this.$store.dispatch('removeItemSoccerExpert', item);
+				alert('Faça pelo menos um jogo');
+			} else {
+
+				this.$store.dispatch('setItemSoccerExpert', item);
+
+				var addSoccerExpertRequest = axios.create();
+
+				addSoccerExpertRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.add_soccer_experts, {
+					purchase: item,
+					auth: this.auth,
+					hash: item.hash
+
+				}).then(function (response) {
+					if (response.status === 200) {}
+				}).catch(function (error) {});
+
+				this.$router.push({
+					name: 'cart.index'
+				});
+			}
 		}
 	},
 	mounted: function mounted() {
@@ -68474,7 +69018,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	components: {
 		LoadComponent: __WEBPACK_IMPORTED_MODULE_1__Load___default.a
-	}
+	},
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['purchase', 'auth']), {
+		totalFormated: {
+			// getter
+			get: function get() {
+				return this.total.format(2, true);
+			},
+			// setter
+			set: function set(newValue) {}
+		}
+	})
 });
 
 /***/ }),
@@ -68554,7 +69108,289 @@ var render = function() {
               [_vm._v(_vm._s(_vm.soccer_expert.nome))]
             )
           ])
-        ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                _vm.addToCart($event)
+              }
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "row container-tickets",
+                staticStyle: { overflow: "auto", "flex-wrap": "nowrap" }
+              },
+              _vm._l(_vm.soccer_expert.rounds, function(round, column) {
+                return _c("div", { staticClass: "col-lg-4" }, [
+                  _c(
+                    "div",
+                    {
+                      class:
+                        "ticket" +
+                        column +
+                        " tickets " +
+                        _vm.completeOrNo(round)
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "tickets-content well" },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "row vcenter text-center" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "col-lg-12 col-12 col-sm-12 col-md-12"
+                                },
+                                [
+                                  _c("h3", [
+                                    _vm._v(
+                                      _vm._s(
+                                        column +
+                                          "ª " +
+                                          _vm.trans("strings.round")
+                                      )
+                                    )
+                                  ])
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(round.games, function(game, line) {
+                            return _c(
+                              "div",
+                              {
+                                staticClass: "row vcenter text-center",
+                                staticStyle: { "margin-bottom": "10px" }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "col-xs-5 col-md-5 col-lg-3 no-padding"
+                                  },
+                                  [
+                                    _c("label", { staticClass: "club" }, [
+                                      _vm._v(_vm._s(game.house_club.nome))
+                                    ]),
+                                    _vm._v(" "),
+                                    game.house_club.shields != undefined &&
+                                    game.house_club.shields.length > 0
+                                      ? _c("img", {
+                                          attrs: {
+                                            width: "30",
+                                            height: "30",
+                                            src:
+                                              game.house_club.shields[0]
+                                                .dimensao
+                                          }
+                                        })
+                                      : _c("img", {
+                                          attrs: {
+                                            width: "30",
+                                            height: "30",
+                                            src:
+                                              "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/" +
+                                              game.house_club.nome.toLowerCase() +
+                                              "_60x60.png"
+                                          }
+                                        })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-lg-2 no-padding" },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: game.result_house_club,
+                                          expression: "game.result_house_club"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: { type: "number" },
+                                      domProps: {
+                                        value: game.result_house_club
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          $event.preventDefault()
+                                          _vm.houseClubResult(
+                                            column,
+                                            line,
+                                            $event
+                                          )
+                                        },
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            game,
+                                            "result_house_club",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "col-2 col-md-2 col-sm-2 col-lg-1",
+                                    staticStyle: { "text-align": "center" }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n\t\t\t\t                    x\n\t\t\t\t                "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-lg-2 no-padding" },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: game.result_out_club,
+                                          expression: "game.result_out_club"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: { type: "number", name: "" },
+                                      domProps: { value: game.result_out_club },
+                                      on: {
+                                        change: function($event) {
+                                          $event.preventDefault()
+                                          _vm.outClubResult(
+                                            column,
+                                            line,
+                                            $event
+                                          )
+                                        },
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            game,
+                                            "result_out_club",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "col-xs-5 col-md-5 col-lg-3 no-padding"
+                                  },
+                                  [
+                                    _c("label", { staticClass: "club" }, [
+                                      _vm._v(_vm._s(game.out_club.nome))
+                                    ]),
+                                    _vm._v(" "),
+                                    game.out_club.shields != undefined &&
+                                    game.out_club.shields.length > 0
+                                      ? _c("img", {
+                                          attrs: {
+                                            width: "30",
+                                            height: "30",
+                                            src:
+                                              game.out_club.shields[0].dimensao
+                                          }
+                                        })
+                                      : _c("img", {
+                                          attrs: {
+                                            width: "30",
+                                            height: "30",
+                                            src:
+                                              "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/" +
+                                              game.out_club.nome.toLowerCase() +
+                                              "_60x60.png"
+                                          }
+                                        })
+                                  ]
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]
+                  )
+                ])
+              })
+            ),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-lg-12 col-12 col-md-12 col-sm-12" },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-md btn-success pull-right",
+                      attrs: { type: "submit" }
+                    },
+                    [
+                      _vm._v(
+                        "\n\t\t\t\t\t\t" +
+                          _vm._s(_vm.trans("strings.add_to_cart")) +
+                          "\n\t\t\t\t\t"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "pull-right price" }, [
+                    _vm._v("\n\t\t\t\t\t\t$ "),
+                    _vm.total > 0
+                      ? _c("span", { staticClass: "value" }, [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t" +
+                              _vm._s(_vm.totalFormated) +
+                              "\n\t\t\t\t\t\t"
+                          )
+                        ])
+                      : _c("span", { staticClass: "value" }, [_vm._v("0.00")])
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
       ])
 }
 var staticRenderFns = []
@@ -68882,7 +69718,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.btn-xs[data-v-5771e9ce] {\n\t\tmargin: 2px;\n\t\twidth: 28px;\n    \theight: 28px;\n    \tfont-size: 12px;\n    \tborder-radius: 999px !important;\n    \t-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n\t    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n\t    -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n\t    transition: -webkit-box-shadow 0.15s ease-out;\n\t    transition: box-shadow 0.15s ease-out;\n\t    transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n\t    padding: 0;\n}\n.btn-default-color[data-v-5771e9ce] {\n\t\tbackground-color: #ffffff;\n\t    border-color: #00003f;\n\t    color: #00003f;\n}\n.btn-xs[data-v-5771e9ce]:hover {\n\t\tcolor: #969c9c;\n    \ttext-decoration: none;\n}\n.btn-checked[data-v-5771e9ce] {\n\t    background-color: #000053 !important;\n\t    border-color: #000000 !important;\n\t    color: #ffffff !important;\n}\n.tickets[data-v-5771e9ce] {\n\t\tpadding: 10px;\n\t    margin-bottom: 24px;\n    \tmargin-top: 1px;\n\t\tbackground-color: #fff;\n\t    color: #313534 !important;\n\t    border-radius: 2px;\n\t    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n\t    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n}\n.tickets-footer[data-v-5771e9ce] {\n    \tmargin-top: 10px;\n}\n.tickets-header[data-v-5771e9ce] {\n\t\tbackground-color: #FCF914;\n}\n.tickets-header strong[data-v-5771e9ce] {\n\t\tmargin-left: 10px;\n}\n.tickets-content[data-v-5771e9ce], .tickets-extras[data-v-5771e9ce] {\n\t    background-color: #FCF914;\n\t    text-align: center;\n\t    padding-bottom: 5px;\n}\n.price[data-v-5771e9ce] {\n\t\tmargin-right: 15px;\n}\n.tickets-extras .fields .btn-default-darking[data-v-5771e9ce]{\n\t\tmargin: 2px;\n    \tborder-color: #000;\n    \tbackground-color: #4CAF50;\n}\n.tickets-footer em[data-v-5771e9ce] {\n\t\tpadding-left: 0px;\n\t    text-align: center;\n\t    font-size: 12px;\n\t    display: block;\n}\n.tickets-footer em input[data-v-5771e9ce] {\n\t    width: 29px;\n\t    height: 18px;\n\t    text-align: center;\n}\n.tools[data-v-5771e9ce] {\n\t\tfloat: right;\n\t    margin-right: 10px;\n}\n.tools a[data-v-5771e9ce] {\n\t\tmargin-left: 2px;\n\t    margin-right: 2px;\n\t    color: #313534 !important;\n}\n.complete[data-v-5771e9ce] {\n\t\tborder: 3px solid #67be13 !important;\n}\n.incomplete[data-v-5771e9ce] {\n\t    border: 3px solid #BF390F !important;\n}\n", ""]);
+exports.push([module.i, "\n.btn-xs[data-v-5771e9ce] {\n        margin: 2px;\n        width: 28px;\n        height: 28px;\n        font-size: 12px;\n        border-radius: 999px !important;\n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n", ""]);
 
 // exports
 
@@ -68900,9 +69736,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PlayComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__PlayComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ResultComponent__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ResultComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__ResultComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex__ = __webpack_require__(8);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -69017,6 +69877,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	},
 	data: function data() {
 		return {
+			rawHtml: '',
 			loading: {
 				component: true
 			},
@@ -69036,6 +69897,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				value: null,
 				name: '',
 				date: '',
+				lottery: {},
 				betting: [{
 					column: 0,
 					complete: false,
@@ -69047,11 +69909,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		};
 	},
 	methods: {
-		//Funão executada ao carregar
-		init: function init() {
+		wow: function wow(bet) {
+			return bet.complete && bet.completeExtras ? 'complete' : '';
+		},
+		showRequest: function showRequest() {
 			var _this = this;
 
 			var showRequest = axios.create();
+
 			this.id = this.$route.params.id;
 
 			showRequest.interceptors.request.use(function (config) {
@@ -69067,7 +69932,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 					_this.item.hash = _this.makeid();
 					_this.item.id = _this.lottery.id;
 					_this.item.value = _this.lottery.value;
-					_this.item.name = _this.lottery.sorteio;
+					_this.item.lottery = _this.lottery;
+
+					_this.lot_jogo_id = 0;
+
 					_this.item.betting = [{
 						column: 0,
 						complete: false,
@@ -69094,6 +69962,70 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				}
 			}).catch(function (error) {});
 		},
+		verifyNumberSelected: function verifyNumberSelected(numbers, dicker) {
+			//
+			for (var i = 0; i < numbers.length; i++) {
+				if (dicker == numbers[i]) {
+					return true;
+					continue;
+				}
+			}
+		},
+		showLottery: function showLottery() {
+			var _this2 = this;
+
+			var item = this.purchase.lotteries.items.filter(function (val) {
+				return _this2.$route.params.hash == val.hash;
+			});
+
+			if (item.length > 0) {
+				item = item[0];
+
+				this.lottery = item.lottery;
+				this.lot_jogo_id = item.lot_jogo_id;
+
+				this.loading.component = false;
+
+				var columns = [];
+
+				item.betting.filter(function (val) {
+					columns.push(val);
+				});
+
+				this.columns = columns;
+				this.item.hash = item.hash;
+				this.item.id = item.id;
+				this.item.value = item.value;
+				this.item.lottery = item.lottery;
+
+				this.item.betting = item.betting;
+				this.dickers = item.dickers;
+				this.dickersMaxSel = item.dickersMaxSelect;
+				this.dickersExtras = item.dickersExtras;
+				this.dickersExtrasSelect = item.dickersExtrasMaxSelect;
+
+				this.total = this.item.value * item.betting.length;
+
+				var interval = setInterval(function () {
+					if ($(".container-tickets").length > 0) {
+						clearInterval(interval);
+						//Arrastando o scroll para a esquerda
+						$(".container-tickets").animate({
+							scrollLeft: $('.container-tickets')[0].scrollWidth
+						}, 500, 'linear', function () {});
+					}
+				});
+			} else {}
+		},
+
+		//Funcão executada ao carregar
+		init: function init() {
+			if (this.$route.params.hash != undefined) {
+				this.showLottery();
+			} else if (this.$route.params.id != undefined) {
+				this.showRequest();
+			}
+		},
 		//Removendo aposta
 		removeBet: function removeBet(event) {
 			//Remove a última coluna
@@ -69101,17 +70033,25 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			//Remove a última aposta
 			this.item.betting.pop();
 
+			//Pegando todas as apostas feitas
 			var betting = this.getBettingFinished();
 
 			this.total = this.item.value * betting.length;
 
+			var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
+
+			//this.item.lottery.sweepstakes = this.item.lottery.sweepstakes[this.lot_jogo_id]
+
 			var item = {
 				hash: this.item.hash,
 				id: this.item.id,
+				name: this.item.name,
 				value: this.item.value,
+				lottery: this.item.lottery,
 				lot_jogo_id: this.lot_jogo_id,
 				total: this.total,
-				betting: betting
+				betting: betting,
+				sweepstake: sweepstake
 			};
 
 			if (item.betting.length == 0) {
@@ -69123,8 +70063,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		//Adiciona aposta
 		addBet: function addBet(event) {
 
+			var columns = [];
+
+			this.columns.filter(function (val) {
+				columns.push(val);
+			});
+
 			//Adicionando uma nova coluna
-			this.columns.push(this.columns.length + 1);
+			this.columns.push({
+				column: this.columns.length - 1,
+				complete: false,
+				completeExtras: false,
+				numbers: [],
+				numbersExtras: []
+			});
 
 			//Adicionando uma nova aposta no array
 			this.item.betting.push({
@@ -69345,13 +70297,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 			this.total = this.item.value * betting.length;
 
+			var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
+
+			//this.item.lottery.sweepstakes = this.item.lottery.sweepstakes[this.lot_jogo_id]
+
 			var item = {
 				hash: this.item.hash,
 				id: this.item.id,
+				name: this.item.name,
 				value: this.item.value,
+				lottery: this.item.lottery,
 				lot_jogo_id: this.lot_jogo_id,
 				total: this.total,
-				betting: betting
+				betting: betting,
+				sweepstake: sweepstake
 			};
 
 			if (item.betting.length === 0) {
@@ -69363,15 +70322,26 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		//Função para adicionar item no carrinho
 		addToCart: function addToCart(event) {
 			var vm = this;
-			var betting = this.getBettingFinished();
+			var betting = this.getBettingFinished().clone();
+
+			var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
+
+			//this.item.lottery.sweepstakes = this.item.lottery.sweepstakes[this.lot_jogo_id]
 
 			var item = {
 				hash: this.item.hash,
 				id: this.item.id,
+				name: this.item.name,
 				value: this.item.value,
+				lottery: this.item.lottery,
 				lot_jogo_id: this.lot_jogo_id,
 				total: this.total,
-				betting: betting
+				betting: betting,
+				sweepstake: sweepstake,
+				dickers: this.dickers,
+				dickersMaxSelect: this.dickersMaxSel,
+				dickersExtras: this.dickersExtras,
+				dickersExtrasMaxSelect: this.dickersExtrasSelect
 			};
 
 			if (betting.length == 0) {
@@ -69379,11 +70349,30 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				//this.$store.dispatch('removeItemLottery', item);
 			} else {
 				this.$store.dispatch('setItemLottery', item);
-				var cartRequest = axios.create();
-				cartRequest.interceptors.request.use(function (config) {
-					return config;
+
+				var addLotteryRequest = axios.create();
+
+				addLotteryRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.add_lotteries, {
+					purchase: item,
+					auth: this.auth,
+					hash: item.hash
+
+				}).then(function (response) {
+					if (response.status === 200) {}
+				}).catch(function (error) {});
+
+				this.$router.push({
+					name: 'cart.index'
 				});
-				cartRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.store, {}, {}).then(function (response) {}).catch(function (error) {});
+				/*const cartRequest = axios.create();
+    cartRequest.interceptors.request.use(config => {
+          	return config;
+    });
+    cartRequest.post(routes.carts.store, {}, {}).then(response => {
+    	
+    }).catch((error) => {
+    
+    });*/
 			}
 		},
 		//Função para remover item do carrinho
@@ -69404,7 +70393,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			var item = {
 				hash: this.item.hash,
 				id: this.item.id,
+				name: this.item.name,
 				value: this.item.value,
+				lottery: this.item.lottery,
 				lot_jogo_id: this.lot_jogo_id,
 				total: this.total,
 				betting: betting
@@ -69828,7 +70819,7 @@ var render = function() {
                         "\n\t\t                    " +
                           _vm._s(_vm.trans("strings.play_on_the")) +
                           " " +
-                          _vm._s(_vm.lottery.sorteio) +
+                          _vm._s(_vm.lottery.nome) +
                           "\n\t\t                "
                       )
                     ]
@@ -69878,7 +70869,7 @@ var render = function() {
                     staticClass: "page-header",
                     staticStyle: { "margin-top": "0" }
                   },
-                  [_vm._v(_vm._s(_vm.lottery.sorteio))]
+                  [_vm._v(_vm._s(_vm.lottery.nome))]
                 )
               ])
             ]),
@@ -69891,230 +70882,380 @@ var render = function() {
               },
               [
                 _vm._l(_vm.columns, function(index, column) {
-                  return _c("div", { staticClass: "col-lg-3" }, [
-                    _c("div", { class: "ticket" + column + " tickets" }, [
-                      _c("div", { staticClass: "tickets-header" }, [
-                        _c("strong", [_vm._v(_vm._s(column))]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "tools" }, [
-                          _c(
-                            "a",
-                            {
-                              attrs: { href: "#" },
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  _vm.selectRandom(column, $event)
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fa fa-random" })]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              attrs: { href: "#" },
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  _vm.deleteNumbersChecked(column, $event)
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fa fa-close" })]
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
+                  return _c(
+                    "div",
+                    { staticClass: "col-lg-3 col-8 col-md-5 col-sm-5" },
+                    [
                       _c(
                         "div",
-                        { staticClass: "tickets-content" },
-                        _vm._l(_vm.dickers, function(dicker) {
-                          return _c("span", { staticClass: "fields" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-xs btn-default-color",
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    _vm.clickNumber(column, dicker, $event)
-                                  }
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n\t\t\t\t\t\t\t\t\t" +
-                                    _vm._s(dicker) +
-                                    "\n\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ])
-                        })
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "tickets-extras" },
-                        _vm._l(_vm.dickersExtras, function(dicker) {
-                          return _c("span", { staticClass: "fields" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-xs btn-default-darking",
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    _vm.clickNumberExtras(
-                                      column,
-                                      dicker,
-                                      $event
-                                    )
-                                  }
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n\t\t\t\t\t\t\t\t\t" +
-                                    _vm._s(dicker) +
-                                    "\n\t\t\t\t\t\t\t\t"
-                                )
-                              ]
-                            )
-                          ])
-                        })
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "tickets-footer" }, [
-                        _c("em", { staticClass: "text-caption" }, [
-                          _vm._v(
-                            "\n                        \t\tDezenas restantes - \n                    \t\t\t"
-                          ),
-                          _vm.item.betting.length > 0 &&
-                          _vm.item.betting[column].numbers != undefined
-                            ? _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value:
-                                      _vm.dickersMaxSel.length -
-                                      _vm.item.betting[column].numbers.length,
-                                    expression:
-                                      "dickersMaxSel.length - item.betting[column].numbers.length"
-                                  }
-                                ],
-                                attrs: {
-                                  name: "data[LotUserJogo][qtdNumeros1]",
-                                  id: "qtdNumeros1",
-                                  type: "text",
-                                  disabled: ""
-                                },
-                                domProps: {
-                                  value:
-                                    _vm.dickersMaxSel.length -
-                                    _vm.item.betting[column].numbers.length
-                                },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
+                        {
+                          class:
+                            "ticket" +
+                            column +
+                            " tickets" +
+                            " " +
+                            _vm.wow(index)
+                        },
+                        [
+                          _c("div", { staticClass: "tickets-header" }, [
+                            _c("strong", [_vm._v(_vm._s(column))]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "tools" }, [
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.selectRandom(column, $event)
                                     }
-                                    _vm.$set(
-                                      _vm.dickersMaxSel.length -
-                                        _vm.item.betting[column].numbers,
-                                      "length",
-                                      $event.target.value
-                                    )
                                   }
-                                }
-                              })
-                            : _vm._e(),
+                                },
+                                [_c("i", { staticClass: "fa fa-random" })]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      _vm.deleteNumbersChecked(column, $event)
+                                    }
+                                  }
+                                },
+                                [_c("i", { staticClass: "fa fa-close" })]
+                              )
+                            ])
+                          ]),
                           _vm._v(" "),
-                          _vm.item.betting.length > 0 &&
-                          _vm.dickersExtrasSelect.length > 0 &&
-                          _vm.item.betting[column].numbersExtras != undefined
-                            ? _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value:
-                                      _vm.dickersExtrasSelect.length -
-                                      _vm.item.betting[column].numbersExtras
-                                        .length,
-                                    expression:
-                                      "dickersExtrasSelect.length - item.betting[column].numbersExtras.length"
-                                  }
-                                ],
-                                attrs: {
-                                  name: "data[LotUserJogo][qtdNumerosd1]",
-                                  id: "qtdNumerosd1",
-                                  disabled: "",
-                                  type: "text"
-                                },
-                                domProps: {
-                                  value:
-                                    _vm.dickersExtrasSelect.length -
-                                    _vm.item.betting[column].numbersExtras
-                                      .length
-                                },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.dickersExtrasSelect.length -
-                                        _vm.item.betting[column].numbersExtras,
-                                      "length",
-                                      $event.target.value
+                          _vm.$route.params.hash != undefined
+                            ? _c(
+                                "div",
+                                { staticClass: "tickets-content" },
+                                _vm._l(_vm.dickers, function(dicker) {
+                                  return _c("span", { staticClass: "fields" }, [
+                                    _vm.verifyNumberSelected(
+                                      index.numbers,
+                                      dicker
                                     )
-                                  }
-                                }
-                              })
-                            : _vm._e()
-                        ])
-                      ])
-                    ])
-                  ])
+                                      ? _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-xs btn-default-color btn-checked",
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                _vm.clickNumber(
+                                                  column,
+                                                  dicker,
+                                                  $event
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n\t\t\t\t\t\t\t\t\t" +
+                                                _vm._s(dicker) +
+                                                "\n\t\t\t\t\t\t\t\t"
+                                            )
+                                          ]
+                                        )
+                                      : _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-xs btn-default-color",
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                _vm.clickNumber(
+                                                  column,
+                                                  dicker,
+                                                  $event
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n\t\t\t\t\t\t\t\t\t" +
+                                                _vm._s(dicker) +
+                                                "\n\t\t\t\t\t\t\t\t"
+                                            )
+                                          ]
+                                        )
+                                  ])
+                                })
+                              )
+                            : _c(
+                                "div",
+                                { staticClass: "tickets-content" },
+                                _vm._l(_vm.dickers, function(dicker) {
+                                  return _c("span", { staticClass: "fields" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn btn-xs btn-default-color",
+                                        on: {
+                                          click: function($event) {
+                                            $event.preventDefault()
+                                            _vm.clickNumber(
+                                              column,
+                                              dicker,
+                                              $event
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n\t\t\t\t\t\t\t\t\t" +
+                                            _vm._s(dicker) +
+                                            "\n\t\t\t\t\t\t\t\t"
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                })
+                              ),
+                          _vm._v(" "),
+                          _vm.$route.params.hash != undefined
+                            ? _c(
+                                "div",
+                                { staticClass: "tickets-extras" },
+                                _vm._l(_vm.dickersExtras, function(dicker) {
+                                  return _c("span", { staticClass: "fields" }, [
+                                    _vm.verifyNumberSelected(
+                                      index.numbersExtras,
+                                      dicker
+                                    )
+                                      ? _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-xs btn-default-darking btn-checked",
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                _vm.clickNumberExtras(
+                                                  column,
+                                                  dicker,
+                                                  $event
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n\t\t\t\t\t\t\t\t\t" +
+                                                _vm._s(dicker) +
+                                                "\n\t\t\t\t\t\t\t\t"
+                                            )
+                                          ]
+                                        )
+                                      : _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-xs btn-default-darking",
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                _vm.clickNumberExtras(
+                                                  column,
+                                                  dicker,
+                                                  $event
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n\t\t\t\t\t\t\t\t\t" +
+                                                _vm._s(dicker) +
+                                                "\n\t\t\t\t\t\t\t\t"
+                                            )
+                                          ]
+                                        )
+                                  ])
+                                })
+                              )
+                            : _c(
+                                "div",
+                                { staticClass: "tickets-extras" },
+                                _vm._l(_vm.dickersExtras, function(dicker) {
+                                  return _c("span", { staticClass: "fields" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn btn-xs btn-default-darking",
+                                        on: {
+                                          click: function($event) {
+                                            $event.preventDefault()
+                                            _vm.clickNumberExtras(
+                                              column,
+                                              dicker,
+                                              $event
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n\t\t\t\t\t\t\t\t\t" +
+                                            _vm._s(dicker) +
+                                            "\n\t\t\t\t\t\t\t\t"
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                })
+                              ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "tickets-footer" }, [
+                            _c("em", { staticClass: "text-caption" }, [
+                              _vm._v(
+                                "\n                        \t\tDezenas restantes - \n                    \t\t\t"
+                              ),
+                              _vm.item.betting.length > 0 &&
+                              _vm.item.betting[column].numbers != undefined
+                                ? _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.dickersMaxSel.length -
+                                          _vm.item.betting[column].numbers
+                                            .length,
+                                        expression:
+                                          "dickersMaxSel.length - item.betting[column].numbers.length"
+                                      }
+                                    ],
+                                    attrs: {
+                                      name: "data[LotUserJogo][qtdNumeros1]",
+                                      id: "qtdNumeros1",
+                                      type: "text",
+                                      disabled: ""
+                                    },
+                                    domProps: {
+                                      value:
+                                        _vm.dickersMaxSel.length -
+                                        _vm.item.betting[column].numbers.length
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.dickersMaxSel.length -
+                                            _vm.item.betting[column].numbers,
+                                          "length",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.item.betting.length > 0 &&
+                              _vm.dickersExtrasSelect.length > 0 &&
+                              _vm.item.betting[column].numbersExtras !=
+                                undefined
+                                ? _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value:
+                                          _vm.dickersExtrasSelect.length -
+                                          _vm.item.betting[column].numbersExtras
+                                            .length,
+                                        expression:
+                                          "dickersExtrasSelect.length - item.betting[column].numbersExtras.length"
+                                      }
+                                    ],
+                                    attrs: {
+                                      name: "data[LotUserJogo][qtdNumerosd1]",
+                                      id: "qtdNumerosd1",
+                                      disabled: "",
+                                      type: "text"
+                                    },
+                                    domProps: {
+                                      value:
+                                        _vm.dickersExtrasSelect.length -
+                                        _vm.item.betting[column].numbersExtras
+                                          .length
+                                    },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.dickersExtrasSelect.length -
+                                            _vm.item.betting[column]
+                                              .numbersExtras,
+                                          "length",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                : _vm._e()
+                            ])
+                          ])
+                        ]
+                      )
+                    ]
+                  )
                 }),
                 _vm._v(" "),
                 _c(
                   "div",
                   {
-                    staticClass: "col-lg-1 vcenter",
+                    staticClass: "col-lg-1 col-4 col-md-2 col-sm-2 vcenter",
                     staticStyle: { "justify-content": "center" },
                     attrs: { id: "btn-add-ticket" }
                   },
                   [
-                    _c("a", {
-                      staticClass: "fa fa-plus",
-                      staticStyle: { "font-size": "60px" },
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          _vm.addBet($event)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.columns.length > 1
-                      ? _c("a", {
-                          staticClass: "fa fa-minus",
-                          staticStyle: { "font-size": "60px" },
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              _vm.removeBet($event)
-                            }
+                    _c("div", [
+                      _c("a", {
+                        staticClass: "fa fa-plus",
+                        staticStyle: { "font-size": "60px" },
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.addBet($event)
                           }
-                        })
-                      : _vm._e()
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _vm.columns.length > 1
+                        ? _c("a", {
+                            staticClass: "fa fa-minus",
+                            staticStyle: { "font-size": "60px" },
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.removeBet($event)
+                              }
+                            }
+                          })
+                        : _vm._e()
+                    ])
                   ]
                 )
               ],
@@ -70122,60 +71263,67 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-lg-3 col-sm-3 col-md-3 col-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "date" } }, [
-                    _vm._v(_vm._s(_vm.trans("strings.sweepstake_date")))
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.lot_jogo_id,
-                          expression: "lot_jogo_id"
+              _c(
+                "div",
+                { staticClass: "col-lg-12 col-12 col-md-12 col-sm-12" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "date" } }, [
+                      _vm._v(_vm._s(_vm.trans("strings.sweepstake_date")))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.lot_jogo_id,
+                            expression: "lot_jogo_id"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "lot_jogo_id" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.lot_jogo_id = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
                         }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "lot_jogo_id" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.lot_jogo_id = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
-                    },
-                    _vm._l(_vm.lottery.sweepstakes, function(sweepstake, key) {
-                      return _c(
-                        "option",
-                        {
-                          attrs: { "data-key": key },
-                          domProps: { value: sweepstake.id }
-                        },
-                        [
-                          _vm._v(
-                            "\n\t\t\t\t\t      \t\t" +
-                              _vm._s(sweepstake.data_fim) +
-                              "\n\t\t\t\t\t      \t"
-                          )
-                        ]
-                      )
-                    })
-                  )
-                ])
-              ])
+                      },
+                      _vm._l(_vm.lottery.sweepstakes, function(
+                        sweepstake,
+                        key
+                      ) {
+                        return _c(
+                          "option",
+                          {
+                            attrs: { "data-key": key },
+                            domProps: { value: key }
+                          },
+                          [
+                            _vm._v(
+                              "\n\t\t\t\t\t      \t\t" +
+                                _vm._s(sweepstake.data_fim) +
+                                "\n\t\t\t\t\t      \t"
+                            )
+                          ]
+                        )
+                      })
+                    )
+                  ])
+                ]
+              )
             ]),
             _vm._v(" "),
             _c("hr"),
@@ -70242,7 +71390,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(193)
 /* template */
-var __vue_template__ = __webpack_require__(194)
+var __vue_template__ = __webpack_require__(249)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -70315,13 +71463,674 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.vcenter[data-v-57e8b9ee] {\n\tmargin: 10px;\n}\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 193 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Tab_ScratchCardComponent__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Tab_ScratchCardComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Tab_ScratchCardComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Tab_LotteryComponent__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Tab_LotteryComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Tab_LotteryComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Tab_SoccerExpertComponent__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Tab_SoccerExpertComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Tab_SoccerExpertComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Tab_AllComponent__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Tab_AllComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Tab_AllComponent__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+		User: function User(state) {
+			return state.User;
+		}
+	}), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['auth', 'purchase'])),
+	data: function data() {
+		return {};
+	},
+	mounted: function mounted() {
+		window.document.title = window.app.title + ' | ' + this.trans('strings.cart');
+	},
+	components: {
+		ScratchCardComponent: __WEBPACK_IMPORTED_MODULE_1__Tab_ScratchCardComponent___default.a,
+		LotteryComponent: __WEBPACK_IMPORTED_MODULE_2__Tab_LotteryComponent___default.a,
+		SoccerExpertComponent: __WEBPACK_IMPORTED_MODULE_3__Tab_SoccerExpertComponent___default.a,
+		AllComponent: __WEBPACK_IMPORTED_MODULE_4__Tab_AllComponent___default.a
+	}
+});
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(195)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(197)
+/* template */
+var __vue_template__ = __webpack_require__(198)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-2fbaf430"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Cart/Tab/ScratchCardComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2fbaf430", Component.options)
+  } else {
+    hotAPI.reload("data-v-2fbaf430", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 195 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(196);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("1fecdc1e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2fbaf430\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ScratchCardComponent.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2fbaf430\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ScratchCardComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.scratch_cars[data-v-2fbaf430]:last-child{\n\tmargin-bottom: 0;\n}\n.scratch_cars[data-v-2fbaf430] {\n\tmargin-bottom: 10px;\n\tpadding: 10px 0 10px 0;\n    border-bottom: 1px dotted #999;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 197 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(5);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['scratchcards'],
+	mounted: function mounted() {},
+	methods: {
+		removeItemLottery: function removeItemLottery(item) {
+			this.$store.dispatch('removeItemScratchCard', item);
+
+			var removeItemRequest = axios.create();
+			removeItemRequest.delete(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.destroy.replace('{hash}', item.hash), {}).then(function (response) {
+				if (response.status === 200) {}
+			}).catch(function (error) {});
+		}
+	}
+});
+
+/***/ }),
+/* 198 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "section",
+    _vm._l(_vm.scratchcards, function(scratch_card) {
+      return _c("div", { staticClass: "row vcenter scratch_cars" }, [
+        _c("div", { staticClass: "col-lg-2 col-md-2 col-2 col-sm-2" }, [
+          _c("img", {
+            staticClass: "img-fluid",
+            attrs: {
+              src: _vm.app.basePath + scratch_card.scratch_card.img_card_url
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-8 col-5 col-md-7 col-sm-6" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-12" }, [
+              _c("span", [_vm._v(_vm._s(scratch_card.scratch_card.nome))])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-12" }, [
+              _c("span", [
+                _vm._v(
+                  "\n\t\t\t\t\t\t" +
+                    _vm._s(scratch_card.scratch_card.discount_tables.quantity) +
+                    " " +
+                    _vm._s(_vm.trans("strings.scratch_cards")) +
+                    "\n\t\t\t\t\t"
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0, true)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-1 col-3 col-md-2 col-sm-2" }, [
+          _c("span", [
+            _vm._v(
+              "\n\t\t\t\t$ " +
+                _vm._s(scratch_card.total.format(2, true)) +
+                "\n\t\t\t"
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-1 col-2 col-md-1 col-sm-2" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-xs btn-danger",
+              staticStyle: { cursor: "pointer" },
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.removeItemLottery(scratch_card)
+                }
+              }
+            },
+            [
+              _c("i", {
+                staticClass: "fa fa-trash-o",
+                attrs: {
+                  "data-toggle": "tooltip",
+                  "data-placement": "top",
+                  title: _vm.trans("strings.delete")
+                }
+              })
+            ]
+          )
+        ])
+      ])
+    })
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("span", [_vm._v("Imediatamente jogável")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2fbaf430", module.exports)
+  }
+}
+
+/***/ }),
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(200)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(202)
+/* template */
+var __vue_template__ = __webpack_require__(208)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-78ee36f1"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Cart/Tab/LotteryComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-78ee36f1", Component.options)
+  } else {
+    hotAPI.reload("data-v-78ee36f1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(201);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("0a63da44", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-78ee36f1\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LotteryComponent.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-78ee36f1\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LotteryComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 202 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Lottery_BetComponent__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Lottery_BetComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Lottery_BetComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_routes__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(8);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['items', 'id'],
+	data: function data() {
+		return {
+			dickers: []
+		};
+	},
+	mounted: function mounted() {
+		console.log(this.items);
+	},
+	methods: {
+		removeItemLottery: function removeItemLottery(item) {
+			this.$store.dispatch('removeItemLottery', item);
+
+			var removeItemRequest = axios.create();
+			removeItemRequest.delete(__WEBPACK_IMPORTED_MODULE_1__api_routes__["a" /* routes */].carts.destroy.replace('{hash}', item.hash), {}).then(function (response) {
+				if (response.status === 200) {}
+			}).catch(function (error) {});
+		}
+	},
+	components: {
+		BetComponent: __WEBPACK_IMPORTED_MODULE_0__Lottery_BetComponent___default.a
+	}
+});
+
+/***/ }),
+/* 203 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(204)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(206)
+/* template */
+var __vue_template__ = __webpack_require__(207)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3a62164f"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Cart/Tab/Lottery/BetComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3a62164f", Component.options)
+  } else {
+    hotAPI.reload("data-v-3a62164f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 204 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(205);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("1de5c48f", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3a62164f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BetComponent.vue", function() {
+     var newContent = require("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3a62164f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BetComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 205 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.btn-xs[data-v-3a62164f] {\n        margin: 2px;\n        width: 28px;\n        height: 28px;\n        font-size: 12px;\n        border-radius: 999px !important;\n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 206 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70337,31 +72146,2880 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {
-			purchase: {
-				scratch_cards: {
-					items: []
-				},
-				soccer_expert: {
-					items: []
-				},
-				lotteries: {
-					items: []
-				},
-				count: 0,
-				total: 0.00,
-				created_at: '',
-				updated_at: ''
+	props: ['id', 'lottery'],
+	mounted: function mounted() {},
+	methods: {
+		clickNumberExtras: function clickNumberExtras(column, dicker, $event) {},
+		editLottery: function editLottery(id, hash, $event) {
+			this.$router.push({
+				name: 'lotteries.show',
+				params: {
+					id: id,
+					hash: hash
+				}
+			});
+		},
+		clickNumber: function clickNumber(colunm, dicker, event) {},
+
+		//Função para verificar comparar os números que o usuário selecionou com as dezenas
+		verifyNumberSelected: function verifyNumberSelected(numbers, dicker) {
+			//
+			for (var i = 0; i < numbers.length; i++) {
+				if (dicker == numbers[i]) {
+					return true;
+					continue;
+				}
 			}
-		};
+		}
+	},
+	data: function data() {
+		return {};
 	}
 });
 
 /***/ }),
-/* 194 */
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "collapse", attrs: { id: _vm.id } }, [
+    _c(
+      "div",
+      {
+        staticClass: "row container-tickets",
+        staticStyle: { overflow: "auto", "flex-wrap": "nowrap" },
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            _vm.editLottery(_vm.lottery.id, _vm.lottery.hash, $event)
+          }
+        }
+      },
+      _vm._l(_vm.lottery.betting, function(bet, column) {
+        return _c("div", { staticClass: "col-lg-3 col-12 col-md-5 col-sm-5" }, [
+          _c("div", { class: "ticket" + column + " tickets" }, [
+            _c("div", { staticClass: "tickets-header" }, [
+              _c("strong", [_vm._v(_vm._s(column))]),
+              _vm._v(" "),
+              _c("div", { staticClass: "tools" }, [
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.selectRandom(column, $event)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-random" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.deleteNumbersChecked(column, $event)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-close" })]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tickets-content" },
+              _vm._l(_vm.lottery.dickers, function(dicker) {
+                return _c("span", { staticClass: "fields" }, [
+                  _vm.verifyNumberSelected(bet.numbers, dicker)
+                    ? _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn btn-xs btn-default-color btn-checked",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.clickNumber(column, dicker, $event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t\t" +
+                              _vm._s(dicker) +
+                              "\n\t\t\t\t\t\t\t"
+                          )
+                        ]
+                      )
+                    : _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-xs btn-default-color",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.clickNumber(column, dicker, $event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t\t" +
+                              _vm._s(dicker) +
+                              "\n\t\t\t\t\t\t\t"
+                          )
+                        ]
+                      )
+                ])
+              })
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tickets-extras" },
+              _vm._l(_vm.lottery.dickersExtras, function(dicker) {
+                return _c("span", { staticClass: "fields" }, [
+                  _vm.verifyNumberSelected(bet.numbersExtras, dicker)
+                    ? _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn btn-xs btn-default-darking btn-checked",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.clickNumberExtras(column, dicker, $event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t\t" +
+                              _vm._s(dicker) +
+                              "\n\t\t\t\t\t\t\t"
+                          )
+                        ]
+                      )
+                    : _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-xs btn-default-darking",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.clickNumberExtras(column, dicker, $event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t\t" +
+                              _vm._s(dicker) +
+                              "\n\t\t\t\t\t\t\t"
+                          )
+                        ]
+                      )
+                ])
+              })
+            )
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3a62164f", module.exports)
+  }
+}
+
+/***/ }),
+/* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "section",
+    _vm._l(_vm.items, function(item, index) {
+      return _vm.items.length > 0
+        ? _c(
+            "div",
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "row vcenter",
+                  attrs: {
+                    href: "#lottery_" + index,
+                    "data-toggle": "collapse"
+                  }
+                },
+                [
+                  _vm._m(0, true),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-8 col-5 col-md-7 col-sm-6" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-lg-12 col-12 col-md-12 col-sm-12"
+                          },
+                          [_c("span", [_vm._v(_vm._s(item.lottery.nome))])]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-lg-12 col-12 col-md-12 col-sm-12"
+                          },
+                          [
+                            _c("span", [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\t" +
+                                  _vm._s(item.betting.length) +
+                                  " Jogos\n\t\t\t\t\t\t"
+                              )
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-lg-12 col-12 col-md-12 col-sm-12"
+                          },
+                          [
+                            _c("span", [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\tSorteio: " +
+                                  _vm._s(item.sweepstake.data_fim) +
+                                  "\n\t\t\t\t\t\t"
+                              )
+                            ])
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-1 col-3 col-md-2 col-sm-2" },
+                    [
+                      _c("span", [
+                        _vm._v(
+                          "\n\t\t\t\t\t$ " +
+                            _vm._s(item.total.format(2, true)) +
+                            "\n\t\t\t\t"
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-1 col-2 col-md-1 col-sm-2" },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-xs btn-danger",
+                          staticStyle: { cursor: "pointer" },
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.removeItemLottery(item)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fa fa-trash-o",
+                            attrs: {
+                              "data-toggle": "tooltip",
+                              "data-placement": "top",
+                              title: _vm.trans("strings.delete"),
+                              "data-original-title": "Deletar"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("bet-component", {
+                attrs: { id: "lottery_" + index, lottery: item }
+              })
+            ],
+            1
+          )
+        : _vm._e()
+    })
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-2 col-md-2 col-2 col-sm-2" }, [
+      _c("img", {
+        staticClass: "img-fluid",
+        attrs: {
+          src:
+            "http://www.lottoland.com/pt/skins/lottoland/images/lotteryLogos/lt-elGordoPrimitiva.x2-bc4cde5fe7329ee5.png"
+        }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-78ee36f1", module.exports)
+  }
+}
+
+/***/ }),
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(210)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(212)
+/* template */
+var __vue_template__ = __webpack_require__(218)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-8158c946"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Cart/Tab/SoccerExpertComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8158c946", Component.options)
+  } else {
+    hotAPI.reload("data-v-8158c946", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(211);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("4bf4237f", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8158c946\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SoccerExpertComponent.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8158c946\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SoccerExpertComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 211 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 212 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SoccerExpert_RoundComponent__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SoccerExpert_RoundComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__SoccerExpert_RoundComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_routes__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(8);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['items', 'id'],
+	data: function data() {
+		return {};
+	},
+	mounted: function mounted() {},
+	methods: {
+		removeItemSoccerExpert: function removeItemSoccerExpert(item) {
+			this.$store.dispatch('removeItemSoccerExpert', item);
+			var removeItemRequest = axios.create();
+			removeItemRequest.delete(__WEBPACK_IMPORTED_MODULE_1__api_routes__["a" /* routes */].carts.destroy.replace('{hash}', item.hash), {}).then(function (response) {
+				if (response.status === 200) {}
+			}).catch(function (error) {});
+		}
+	},
+	components: {
+		RoundComponent: __WEBPACK_IMPORTED_MODULE_0__SoccerExpert_RoundComponent___default.a
+	}
+});
+
+/***/ }),
+/* 213 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(214)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(216)
+/* template */
+var __vue_template__ = __webpack_require__(217)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-0ceebdc4"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Cart/Tab/SoccerExpert/RoundComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0ceebdc4", Component.options)
+  } else {
+    hotAPI.reload("data-v-0ceebdc4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 214 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(215);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("680b2000", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ceebdc4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RoundComponent.vue", function() {
+     var newContent = require("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ceebdc4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RoundComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 216 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['soccer_expert', 'id'],
+	mounted: function mounted() {},
+
+	methods: {
+		editSoccerExpert: function editSoccerExpert(id, hash, $event) {
+			this.$router.push({
+				name: 'soccer_expert.show',
+				params: {
+					id: id,
+					hash: hash
+				}
+			});
+		}
+	},
+	data: function data() {
+		return {};
+	}
+});
+
+/***/ }),
+/* 217 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "collapse", attrs: { id: _vm.id } }, [
+    _c(
+      "div",
+      {
+        staticClass: "row container-tickets",
+        staticStyle: { overflow: "auto", "flex-wrap": "nowrap" },
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            _vm.editSoccerExpert(
+              _vm.soccer_expert.id,
+              _vm.soccer_expert.hash,
+              $event
+            )
+          }
+        }
+      },
+      _vm._l(_vm.soccer_expert.rounds, function(round, column) {
+        return _c("div", { staticClass: "col-lg-4" }, [
+          _c("div", { class: "ticket" + column + " tickets" }, [
+            _c(
+              "div",
+              { staticClass: "tickets-content well" },
+              [
+                _c("div", { staticClass: "row vcenter text-center" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-12 col-12 col-sm-12 col-md-12" },
+                    [
+                      _c("h3", [
+                        _vm._v(
+                          _vm._s(column + "ª " + _vm.trans("strings.round"))
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._l(round.games, function(game, line) {
+                  return _c(
+                    "div",
+                    {
+                      staticClass: "row vcenter text-center",
+                      staticStyle: { "margin-bottom": "10px" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-xs-5 col-md-5 col-lg-3 no-padding"
+                        },
+                        [
+                          _c("label", { staticClass: "club" }, [
+                            _vm._v(_vm._s(game.house_club.nome))
+                          ]),
+                          _vm._v(" "),
+                          game.house_club.shields != undefined &&
+                          game.house_club.shields.length > 0
+                            ? _c("img", {
+                                attrs: {
+                                  width: "30",
+                                  height: "30",
+                                  src: game.house_club.shields[0].dimensao
+                                }
+                              })
+                            : _c("img", {
+                                attrs: {
+                                  width: "30",
+                                  height: "30",
+                                  src:
+                                    "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/" +
+                                    game.house_club.nome.toLowerCase() +
+                                    "_60x60.png"
+                                }
+                              })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-2 no-padding" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: game.result_house_club,
+                              expression: "game.result_house_club"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "number" },
+                          domProps: { value: game.result_house_club },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                game,
+                                "result_house_club",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-2 col-md-2 col-sm-2 col-lg-1",
+                          staticStyle: { "text-align": "center" }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t                    x\n\t\t\t                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-2 no-padding" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: game.result_out_club,
+                              expression: "game.result_out_club"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "number", name: "" },
+                          domProps: { value: game.result_out_club },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                game,
+                                "result_out_club",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-xs-5 col-md-5 col-lg-3 no-padding"
+                        },
+                        [
+                          _c("label", { staticClass: "club" }, [
+                            _vm._v(_vm._s(game.out_club.nome))
+                          ]),
+                          _vm._v(" "),
+                          game.out_club.shields != undefined &&
+                          game.out_club.shields.length > 0
+                            ? _c("img", {
+                                attrs: {
+                                  width: "30",
+                                  height: "30",
+                                  src: game.out_club.shields[0].dimensao
+                                }
+                              })
+                            : _c("img", {
+                                attrs: {
+                                  width: "30",
+                                  height: "30",
+                                  src:
+                                    "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/" +
+                                    game.out_club.nome.toLowerCase() +
+                                    "_60x60.png"
+                                }
+                              })
+                        ]
+                      )
+                    ]
+                  )
+                })
+              ],
+              2
+            )
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0ceebdc4", module.exports)
+  }
+}
+
+/***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "section",
+    _vm._l(_vm.items, function(item, index) {
+      return _vm.items.length > 0
+        ? _c(
+            "div",
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "row vcenter",
+                  attrs: {
+                    href: "#soccer_expert_" + index,
+                    "data-toggle": "collapse"
+                  }
+                },
+                [
+                  _vm._m(0, true),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-8 col-5 col-md-7 col-sm-6" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-lg-12 col-12 col-md-12 col-sm-12"
+                          },
+                          [
+                            _c("span", [
+                              _vm._v(_vm._s(item.soccer_expert.nome))
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-lg-12 col-12 col-md-12 col-sm-12"
+                          },
+                          [
+                            _c("span", [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\t" +
+                                  _vm._s(item.rounds.length) +
+                                  " Jogos\n\t\t\t\t\t\t"
+                              )
+                            ])
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-1 col-3 col-md-2 col-sm-2" },
+                    [
+                      _c("span", [
+                        _vm._v(
+                          "\n\t\t\t\t\t$ " +
+                            _vm._s(item.total.format(2, true)) +
+                            "\n\t\t\t\t"
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-1 col-2 col-md-1 col-sm-2" },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-xs btn-danger",
+                          staticStyle: { cursor: "pointer" },
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.removeItemSoccerExpert(item)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fa fa-trash-o",
+                            attrs: {
+                              "data-toggle": "tooltip",
+                              "data-placement": "top",
+                              title: _vm.trans("strings.delete"),
+                              "data-original-title": "Deletar"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("round-component", {
+                attrs: { id: "soccer_expert_" + index, soccer_expert: item }
+              })
+            ],
+            1
+          )
+        : _vm._e()
+    })
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-2 col-md-2 col-2 col-sm-2" }, [
+      _c("img", {
+        staticClass: "img-fluid",
+        attrs: {
+          src:
+            "http://www.lottoland.com/pt/skins/lottoland/images/lotteryLogos/lt-elGordoPrimitiva.x2-bc4cde5fe7329ee5.png"
+        }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8158c946", module.exports)
+  }
+}
+
+/***/ }),
+/* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(220)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(222)
+/* template */
+var __vue_template__ = __webpack_require__(248)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1c2783ce"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Cart/Tab/AllComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1c2783ce", Component.options)
+  } else {
+    hotAPI.reload("data-v-1c2783ce", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 220 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(221);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("ed1b9b4e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1c2783ce\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AllComponent.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1c2783ce\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AllComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 222 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__All_ScratchCardComponent__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__All_ScratchCardComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__All_ScratchCardComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__All_LotteryComponent__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__All_LotteryComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__All_LotteryComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__All_SoccerExpertComponent__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__All_SoccerExpertComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__All_SoccerExpertComponent__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['items'],
+	mounted: function mounted() {},
+	data: function data() {
+		return {};
+	},
+
+	components: {
+		ScratchCardComponent: __WEBPACK_IMPORTED_MODULE_0__All_ScratchCardComponent___default.a,
+		LotteryComponent: __WEBPACK_IMPORTED_MODULE_1__All_LotteryComponent___default.a,
+		SoccerExpertComponent: __WEBPACK_IMPORTED_MODULE_2__All_SoccerExpertComponent___default.a
+	}
+});
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(224)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(226)
+/* template */
+var __vue_template__ = __webpack_require__(227)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-57cee304"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Cart/Tab/All/ScratchCardComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-57cee304", Component.options)
+  } else {
+    hotAPI.reload("data-v-57cee304", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 224 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(225);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("616d40e0", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-57cee304\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ScratchCardComponent.vue", function() {
+     var newContent = require("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-57cee304\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ScratchCardComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.scratch_cars[data-v-57cee304]:last-child{\n\tmargin-bottom: 0;\n}\n.scratch_cars[data-v-57cee304] {\n\tmargin-bottom: 10px;\n\tpadding: 10px 0 10px 0;\n    border-bottom: 1px dotted #999;\n}\nsection[data-v-57cee304] {\n\tmargin-right: -15px;\n\tmargin-left: -15px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 226 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(5);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['item'],
+	mounted: function mounted() {},
+	methods: {
+		removeItem: function removeItem(item) {
+			this.$store.dispatch('removeItemScratchCard', item);
+
+			var removeItemRequest = axios.create();
+			removeItemRequest.delete(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.destroy.replace('{hash}', item.hash), {}).then(function (response) {
+				if (response.status === 200) {}
+			}).catch(function (error) {});
+		}
+	}
+});
+
+/***/ }),
+/* 227 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", [
+    _c("div", { staticClass: "row vcenter scratch_cars" }, [
+      _c("div", { staticClass: "col-lg-2 col-md-2 col-2 col-sm-2" }, [
+        _c("img", {
+          staticClass: "img-fluid",
+          attrs: { src: _vm.app.basePath + _vm.item.scratch_card.img_card_url }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-8 col-5 col-md-7 col-sm-6" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c("span", [_vm._v(_vm._s(_vm.item.scratch_card.nome))])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c("span", [
+              _vm._v(
+                "\n\t\t\t\t\t\t" +
+                  _vm._s(_vm.item.scratch_card.discount_tables.quantity) +
+                  " " +
+                  _vm._s(_vm.trans("strings.scratch_cards")) +
+                  "\n\t\t\t\t\t"
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-1 col-3 col-md-2 col-sm-2" }, [
+        _c("span", [
+          _vm._v(
+            "\n\t\t\t\t$ " + _vm._s(_vm.item.total.format(2, true)) + "\n\t\t\t"
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-1 col-2 col-md-1 col-sm-2" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-xs btn-danger",
+            staticStyle: { cursor: "pointer" },
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.removeItem(_vm.item)
+              }
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "fa fa-trash-o",
+              attrs: {
+                "data-toggle": "tooltip",
+                "data-placement": "top",
+                title: _vm.trans("strings.delete")
+              }
+            })
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("span", [_vm._v("Imediatamente jogável")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-57cee304", module.exports)
+  }
+}
+
+/***/ }),
+/* 228 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(229)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(231)
+/* template */
+var __vue_template__ = __webpack_require__(237)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-c43daf82"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Cart/Tab/All/LotteryComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c43daf82", Component.options)
+  } else {
+    hotAPI.reload("data-v-c43daf82", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 229 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(230);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("7b0bc072", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c43daf82\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LotteryComponent.vue", function() {
+     var newContent = require("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c43daf82\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LotteryComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 230 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nsection[data-v-c43daf82] {\n\tmargin-right: -15px;\n\tmargin-left: -15px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 231 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Lottery_BetComponent__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Lottery_BetComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Lottery_BetComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_routes__ = __webpack_require__(5);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['item', 'id'],
+	data: function data() {
+		return {
+			dickers: []
+		};
+	},
+	mounted: function mounted() {},
+	methods: {
+		removeItem: function removeItem(item) {
+			this.$store.dispatch('removeItemLottery', item);
+
+			var removeItemRequest = axios.create();
+			removeItemRequest.delete(__WEBPACK_IMPORTED_MODULE_1__api_routes__["a" /* routes */].carts.destroy.replace('{hash}', item.hash), {}).then(function (response) {
+				if (response.status === 200) {}
+			}).catch(function (error) {});
+		}
+	},
+	components: {
+		BetComponent: __WEBPACK_IMPORTED_MODULE_0__Lottery_BetComponent___default.a
+	}
+});
+
+/***/ }),
+/* 232 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(233)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(235)
+/* template */
+var __vue_template__ = __webpack_require__(236)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-42809ec6"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Cart/Tab/All/Lottery/BetComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-42809ec6", Component.options)
+  } else {
+    hotAPI.reload("data-v-42809ec6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 233 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(234);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("4a4e1a8e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-42809ec6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BetComponent.vue", function() {
+     var newContent = require("!!../../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-42809ec6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BetComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.btn-xs[data-v-42809ec6] {\n        margin: 2px;\n        width: 28px;\n        height: 28px;\n        font-size: 12px;\n        border-radius: 999px !important;\n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 235 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['id', 'lottery'],
+	mounted: function mounted() {},
+	methods: {
+		clickNumberExtras: function clickNumberExtras(column, dicker, $event) {},
+		editLottery: function editLottery(id, hash, $event) {
+			this.$router.push({
+				name: 'lotteries.show',
+				params: {
+					id: id,
+					hash: hash
+				}
+			});
+		},
+		clickNumber: function clickNumber(colunm, dicker, event) {},
+
+		//Função para verificar comparar os números que o usuário selecionou com as dezenas
+		verifyNumberSelected: function verifyNumberSelected(numbers, dicker) {
+			//
+			for (var i = 0; i < numbers.length; i++) {
+				if (dicker == numbers[i]) {
+					return true;
+					continue;
+				}
+			}
+		}
+	},
+	data: function data() {
+		return {};
+	}
+});
+
+/***/ }),
+/* 236 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "collapse", attrs: { id: _vm.id } }, [
+    _c(
+      "div",
+      {
+        staticClass: "row container-tickets",
+        staticStyle: { overflow: "auto", "flex-wrap": "nowrap" },
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            _vm.editLottery(_vm.lottery.id, _vm.lottery.hash, $event)
+          }
+        }
+      },
+      _vm._l(_vm.lottery.betting, function(bet, column) {
+        return _c("div", { staticClass: "col-lg-3 col-12 col-md-5 col-sm-5" }, [
+          _c("div", { class: "ticket" + column + " tickets" }, [
+            _c("div", { staticClass: "tickets-header" }, [
+              _c("strong", [_vm._v(_vm._s(column))]),
+              _vm._v(" "),
+              _c("div", { staticClass: "tools" }, [
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.selectRandom(column, $event)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-random" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        _vm.deleteNumbersChecked(column, $event)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-close" })]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tickets-content" },
+              _vm._l(_vm.lottery.dickers, function(dicker) {
+                return _c("span", { staticClass: "fields" }, [
+                  _vm.verifyNumberSelected(bet.numbers, dicker)
+                    ? _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn btn-xs btn-default-color btn-checked",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.clickNumber(column, dicker, $event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t\t" +
+                              _vm._s(dicker) +
+                              "\n\t\t\t\t\t\t\t"
+                          )
+                        ]
+                      )
+                    : _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-xs btn-default-color",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.clickNumber(column, dicker, $event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t\t" +
+                              _vm._s(dicker) +
+                              "\n\t\t\t\t\t\t\t"
+                          )
+                        ]
+                      )
+                ])
+              })
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tickets-extras" },
+              _vm._l(_vm.lottery.dickersExtras, function(dicker) {
+                return _c("span", { staticClass: "fields" }, [
+                  _vm.verifyNumberSelected(bet.numbersExtras, dicker)
+                    ? _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn btn-xs btn-default-darking btn-checked",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.clickNumberExtras(column, dicker, $event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t\t" +
+                              _vm._s(dicker) +
+                              "\n\t\t\t\t\t\t\t"
+                          )
+                        ]
+                      )
+                    : _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-xs btn-default-darking",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.clickNumberExtras(column, dicker, $event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\t\t" +
+                              _vm._s(dicker) +
+                              "\n\t\t\t\t\t\t\t"
+                          )
+                        ]
+                      )
+                ])
+              })
+            )
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-42809ec6", module.exports)
+  }
+}
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "section",
+    [
+      _c(
+        "div",
+        {
+          staticClass: "row vcenter",
+          attrs: { href: "#lottery_" + _vm.id, "data-toggle": "collapse" }
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-8 col-5 col-md-7 col-sm-6" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-lg-12 col-12 col-md-12 col-sm-12" },
+                [_c("span", [_vm._v(_vm._s(_vm.item.lottery.nome))])]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-lg-12 col-12 col-md-12 col-sm-12" },
+                [
+                  _c("span", [
+                    _vm._v(
+                      "\n\t\t\t\t\t\t" +
+                        _vm._s(_vm.item.betting.length) +
+                        " Jogos\n\t\t\t\t\t"
+                    )
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-lg-12 col-12 col-md-12 col-sm-12" },
+                [
+                  _c("span", [
+                    _vm._v(
+                      "\n\t\t\t\t\t\tSorteio: " +
+                        _vm._s(_vm.item.sweepstake.data_fim) +
+                        "\n\t\t\t\t\t"
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-1 col-3 col-md-2 col-sm-2" }, [
+            _c("span", [
+              _vm._v(
+                "\n\t\t\t\t$ " +
+                  _vm._s(_vm.item.total.format(2, true)) +
+                  "\n\t\t\t"
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-1 col-2 col-md-1 col-sm-2" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-xs btn-danger",
+                staticStyle: { cursor: "pointer" },
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.removeItem(_vm.item)
+                  }
+                }
+              },
+              [
+                _c("i", {
+                  staticClass: "fa fa-trash-o",
+                  attrs: {
+                    "data-toggle": "tooltip",
+                    "data-placement": "top",
+                    title: _vm.trans("strings.delete"),
+                    "data-original-title": "Deletar"
+                  }
+                })
+              ]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("bet-component", {
+        attrs: { id: "lottery_" + _vm.id, lottery: _vm.item }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-2 col-md-2 col-2 col-sm-2" }, [
+      _c("img", {
+        staticClass: "img-fluid",
+        attrs: {
+          src:
+            "http://www.lottoland.com/pt/skins/lottoland/images/lotteryLogos/lt-elGordoPrimitiva.x2-bc4cde5fe7329ee5.png"
+        }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c43daf82", module.exports)
+  }
+}
+
+/***/ }),
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(239)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(241)
+/* template */
+var __vue_template__ = __webpack_require__(247)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-b2ad6a62"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Cart/Tab/All/SoccerExpertComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b2ad6a62", Component.options)
+  } else {
+    hotAPI.reload("data-v-b2ad6a62", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(240);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("611fc130", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b2ad6a62\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SoccerExpertComponent.vue", function() {
+     var newContent = require("!!../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b2ad6a62\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./SoccerExpertComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nsection[data-v-b2ad6a62] {\n\tmargin-right: -15px;\n\tmargin-left: -15px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 241 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SoccerExpert_RoundComponent__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SoccerExpert_RoundComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__SoccerExpert_RoundComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_routes__ = __webpack_require__(5);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['item', 'id'],
+	data: function data() {
+		return {};
+	},
+	mounted: function mounted() {},
+	methods: {
+		removeItemSoccerExpert: function removeItemSoccerExpert(item) {
+			this.$store.dispatch('removeItemSoccerExpert', item);
+			var removeItemRequest = axios.create();
+			removeItemRequest.delete(__WEBPACK_IMPORTED_MODULE_1__api_routes__["a" /* routes */].carts.destroy.replace('{hash}', item.hash), {}).then(function (response) {
+				if (response.status === 200) {}
+			}).catch(function (error) {});
+		}
+	},
+	components: {
+		RoundComponent: __WEBPACK_IMPORTED_MODULE_0__SoccerExpert_RoundComponent___default.a
+	}
+});
+
+/***/ }),
+/* 242 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(243)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(245)
+/* template */
+var __vue_template__ = __webpack_require__(246)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3e257310"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Cart/Tab/All/SoccerExpert/RoundComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3e257310", Component.options)
+  } else {
+    hotAPI.reload("data-v-3e257310", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 243 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(244);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("e17b53fe", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3e257310\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RoundComponent.vue", function() {
+     var newContent = require("!!../../../../../../../../../node_modules/css-loader/index.js!../../../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3e257310\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RoundComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 244 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 245 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['soccer_expert', 'id'],
+	mounted: function mounted() {},
+
+	methods: {
+		editSoccerExpert: function editSoccerExpert(id, hash, $event) {
+			this.$router.push({
+				name: 'soccer_expert.show',
+				params: {
+					id: id,
+					hash: hash
+				}
+			});
+		}
+	},
+	data: function data() {
+		return {};
+	}
+});
+
+/***/ }),
+/* 246 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "collapse", attrs: { id: _vm.id } }, [
+    _c(
+      "div",
+      {
+        staticClass: "row container-tickets",
+        staticStyle: { overflow: "auto", "flex-wrap": "nowrap" },
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            _vm.editSoccerExpert(
+              _vm.soccer_expert.id,
+              _vm.soccer_expert.hash,
+              $event
+            )
+          }
+        }
+      },
+      _vm._l(_vm.soccer_expert.rounds, function(round, column) {
+        return _c("div", { staticClass: "col-lg-4" }, [
+          _c("div", { class: "ticket" + column + " tickets" }, [
+            _c(
+              "div",
+              { staticClass: "tickets-content well" },
+              [
+                _c("div", { staticClass: "row vcenter text-center" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-12 col-12 col-sm-12 col-md-12" },
+                    [
+                      _c("h3", [
+                        _vm._v(
+                          _vm._s(column + "ª " + _vm.trans("strings.round"))
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._l(round.games, function(game, line) {
+                  return _c(
+                    "div",
+                    {
+                      staticClass: "row vcenter text-center",
+                      staticStyle: { "margin-bottom": "10px" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-xs-5 col-md-5 col-lg-3 no-padding"
+                        },
+                        [
+                          _c("label", { staticClass: "club" }, [
+                            _vm._v(_vm._s(game.house_club.nome))
+                          ]),
+                          _vm._v(" "),
+                          game.house_club.shields != undefined &&
+                          game.house_club.shields.length > 0
+                            ? _c("img", {
+                                attrs: {
+                                  width: "30",
+                                  height: "30",
+                                  src: game.house_club.shields[0].dimensao
+                                }
+                              })
+                            : _c("img", {
+                                attrs: {
+                                  width: "30",
+                                  height: "30",
+                                  src:
+                                    "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/" +
+                                    game.house_club.nome.toLowerCase() +
+                                    "_60x60.png"
+                                }
+                              })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-2 no-padding" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: game.result_house_club,
+                              expression: "game.result_house_club"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "number" },
+                          domProps: { value: game.result_house_club },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                game,
+                                "result_house_club",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-2 col-md-2 col-sm-2 col-lg-1",
+                          staticStyle: { "text-align": "center" }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t                    x\n\t\t\t                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-2 no-padding" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: game.result_out_club,
+                              expression: "game.result_out_club"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "number", name: "" },
+                          domProps: { value: game.result_out_club },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                game,
+                                "result_out_club",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-xs-5 col-md-5 col-lg-3 no-padding"
+                        },
+                        [
+                          _c("label", { staticClass: "club" }, [
+                            _vm._v(_vm._s(game.out_club.nome))
+                          ]),
+                          _vm._v(" "),
+                          game.out_club.shields != undefined &&
+                          game.out_club.shields.length > 0
+                            ? _c("img", {
+                                attrs: {
+                                  width: "30",
+                                  height: "30",
+                                  src: game.out_club.shields[0].dimensao
+                                }
+                              })
+                            : _c("img", {
+                                attrs: {
+                                  width: "30",
+                                  height: "30",
+                                  src:
+                                    "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/" +
+                                    game.out_club.nome.toLowerCase() +
+                                    "_60x60.png"
+                                }
+                              })
+                        ]
+                      )
+                    ]
+                  )
+                })
+              ],
+              2
+            )
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3e257310", module.exports)
+  }
+}
+
+/***/ }),
+/* 247 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "section",
+    [
+      _c(
+        "div",
+        {
+          staticClass: "row vcenter",
+          attrs: { href: "#soccer_expert_" + _vm.id, "data-toggle": "collapse" }
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-8 col-5 col-md-7 col-sm-6" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-lg-12 col-12 col-md-12 col-sm-12" },
+                [_c("span", [_vm._v(_vm._s(_vm.item.soccer_expert.nome))])]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "col-lg-12 col-12 col-md-12 col-sm-12" },
+                [
+                  _c("span", [
+                    _vm._v(
+                      "\n\t\t\t\t\t\t" +
+                        _vm._s(_vm.item.rounds.length) +
+                        " Jogos\n\t\t\t\t\t"
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-1 col-3 col-md-2 col-sm-2" }, [
+            _c("span", [
+              _vm._v(
+                "\n\t\t\t\t$ " +
+                  _vm._s(_vm.item.total.format(2, true)) +
+                  "\n\t\t\t"
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-1 col-2 col-md-1 col-sm-2" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-xs btn-danger",
+                staticStyle: { cursor: "pointer" },
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.removeItemSoccerExpert(_vm.item)
+                  }
+                }
+              },
+              [
+                _c("i", {
+                  staticClass: "fa fa-trash-o",
+                  attrs: {
+                    "data-toggle": "tooltip",
+                    "data-placement": "top",
+                    title: _vm.trans("strings.delete"),
+                    "data-original-title": "Deletar"
+                  }
+                })
+              ]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("round-component", {
+        attrs: { id: "soccer_expert_" + _vm.id, soccer_expert: _vm.item }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-2 col-md-2 col-2 col-sm-2" }, [
+      _c("img", {
+        staticClass: "img-fluid",
+        attrs: {
+          src:
+            "http://www.lottoland.com/pt/skins/lottoland/images/lotteryLogos/lt-elGordoPrimitiva.x2-bc4cde5fe7329ee5.png"
+        }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b2ad6a62", module.exports)
+  }
+}
+
+/***/ }),
+/* 248 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "section",
+    _vm._l(_vm.items, function(item, index) {
+      return _vm.items.length > 0
+        ? _c(
+            "div",
+            { staticClass: "container-fluid" },
+            [
+              item.type == "soccer_expert"
+                ? _c("soccer-expert-component", {
+                    attrs: {
+                      id: "#soccer_expert_" + index,
+                      item: item.soccer_expert
+                    }
+                  })
+                : item.type == "lottery"
+                  ? _c("lottery-component", {
+                      attrs: { id: "#lottery_" + index, item: item.lottery }
+                    })
+                  : item.type == "scratch_card"
+                    ? _c("scratch-card-component", {
+                        attrs: { item: item.scratch_card }
+                      })
+                    : _vm._e()
+            ],
+            1
+          )
+        : _vm._e()
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1c2783ce", module.exports)
+  }
+}
+
+/***/ }),
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -70373,26 +75031,167 @@ var render = function() {
       _vm._v(_vm._s(_vm.trans("strings.cart")))
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-lg-12 col-md-12 col-12 col-sm-12 text-center" },
-        [
-          _vm.purchase.count == 0
-            ? _c("img", {
-                staticClass: "img-fluid",
-                attrs: {
-                  src:
-                    "https://www.lottoland.com/pt/skins/lottoland/images/checkOut/add_ticket-a9b87d1ccaa94550.jpg"
-                }
+    _c("ul", { staticClass: "nav nav-pills nav-justified" }, [
+      _vm.purchase.items.length > 0
+        ? _c("li", { staticClass: "nav-item" }, [
+            _c(
+              "a",
+              {
+                staticClass: "nav-link active",
+                attrs: { "data-toggle": "pill", href: "#all" }
+              },
+              [_vm._v(_vm._s(_vm.trans("strings.all")))]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.purchase.scratch_cards.items.length > 0
+        ? _c("li", { staticClass: "nav-item" }, [
+            _c(
+              "a",
+              {
+                staticClass: "nav-link",
+                attrs: { "data-toggle": "pill", href: "#scratch_cards" }
+              },
+              [
+                _vm._v(
+                  "\n\t\t    \t" +
+                    _vm._s(_vm.trans("strings.scratch_cards")) +
+                    "\n\t\t    "
+                )
+              ]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.purchase.lotteries.items.length > 0
+        ? _c("li", { staticClass: "nav-item" }, [
+            _c(
+              "a",
+              {
+                staticClass: "nav-link",
+                attrs: { "data-toggle": "pill", href: "#lotteries" }
+              },
+              [
+                _vm._v(
+                  "\n\t\t    \t" +
+                    _vm._s(_vm.trans("strings.lotteries")) +
+                    "\n\t\t    "
+                )
+              ]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.purchase.soccer_expert.items.length > 0
+        ? _c("li", { staticClass: "nav-item" }, [
+            _c(
+              "a",
+              {
+                staticClass: "nav-link",
+                attrs: { "data-toggle": "pill", href: "#soccer_expert" }
+              },
+              [
+                _vm._v(
+                  "\n\t\t    \t" +
+                    _vm._s(_vm.trans("strings.soccer_expert")) +
+                    "\n\t\t    "
+                )
+              ]
+            )
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _vm.purchase.items.length == 0
+      ? _c("div", { staticClass: "row" }, [_vm._m(0)])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "tab-content" }, [
+      _c("br"),
+      _vm._v(" "),
+      _vm.purchase.items.length > 0
+        ? _c(
+            "div",
+            {
+              staticClass: "tab-pane active container-fluid",
+              attrs: { id: "all" }
+            },
+            [_c("all-component", { attrs: { items: _vm.purchase.items } })],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.purchase.scratch_cards.items.length > 0
+        ? _c(
+            "div",
+            {
+              staticClass: "tab-pane container-fluid tab-scratch_cards",
+              attrs: { id: "scratch_cards" }
+            },
+            [
+              _c("scratch-card-component", {
+                attrs: { scratchcards: _vm.purchase.scratch_cards.items }
               })
-            : _vm._e()
-        ]
-      )
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.purchase.lotteries.items.length > 0
+        ? _c(
+            "div",
+            {
+              staticClass: "tab-pane container-fluid tab-lotteries",
+              attrs: { id: "lotteries" }
+            },
+            [
+              _c("lottery-component", {
+                attrs: { items: _vm.purchase.lotteries.items }
+              })
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.purchase.soccer_expert.items.length > 0
+        ? _c(
+            "div",
+            {
+              staticClass: "tab-pane container-fluid tab-soccer_experts",
+              attrs: { id: "soccer_expert" }
+            },
+            [
+              _c("soccer-expert-component", {
+                attrs: { items: _vm.purchase.soccer_expert.items }
+              })
+            ],
+            1
+          )
+        : _vm._e()
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-lg-12 col-md-12 col-12 col-sm-12 text-center" },
+      [
+        _c("img", {
+          staticClass: "img-fluid",
+          attrs: {
+            src:
+              "https://www.lottoland.com/pt/skins/lottoland/images/checkOut/add_ticket-a9b87d1ccaa94550.jpg"
+          }
+        })
+      ]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -70403,19 +75202,19 @@ if (false) {
 }
 
 /***/ }),
-/* 195 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(196)
+  __webpack_require__(251)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(198)
+var __vue_script__ = __webpack_require__(253)
 /* template */
-var __vue_template__ = __webpack_require__(199)
+var __vue_template__ = __webpack_require__(254)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -70454,13 +75253,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 196 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(197);
+var content = __webpack_require__(252);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -70480,7 +75279,7 @@ if(false) {
 }
 
 /***/ }),
-/* 197 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -70494,7 +75293,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 198 */
+/* 253 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70533,7 +75332,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 199 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -70553,13 +75352,13 @@ if (false) {
 }
 
 /***/ }),
-/* 200 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(201);
+var content = __webpack_require__(256);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -70579,7 +75378,7 @@ if(false) {
 }
 
 /***/ }),
-/* 201 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -70593,14 +75392,14 @@ exports.push([module.i, "\n.box-payment-method[data-v-883c0e24] {\n\t-webkit-tra
 
 
 /***/ }),
-/* 202 */
+/* 257 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PaymentMethod_PagseguroComponent__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PaymentMethod_PagseguroComponent__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PaymentMethod_PagseguroComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__PaymentMethod_PagseguroComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PaypalComponent__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PaypalComponent__ = __webpack_require__(263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PaypalComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PaypalComponent__);
 //
 //
@@ -70675,19 +75474,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 203 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(204)
+  __webpack_require__(259)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(206)
+var __vue_script__ = __webpack_require__(261)
 /* template */
-var __vue_template__ = __webpack_require__(207)
+var __vue_template__ = __webpack_require__(262)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -70726,13 +75525,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 204 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(205);
+var content = __webpack_require__(260);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -70752,7 +75551,7 @@ if(false) {
 }
 
 /***/ }),
-/* 205 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -70766,7 +75565,7 @@ exports.push([module.i, "\n.choice-payment-method-msg[data-v-06abe741] {\n    ba
 
 
 /***/ }),
-/* 206 */
+/* 261 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70821,7 +75620,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 207 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -70998,19 +75797,19 @@ if (false) {
 }
 
 /***/ }),
-/* 208 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(209)
+  __webpack_require__(264)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(211)
+var __vue_script__ = __webpack_require__(266)
 /* template */
-var __vue_template__ = __webpack_require__(212)
+var __vue_template__ = __webpack_require__(267)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -71049,13 +75848,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 209 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(210);
+var content = __webpack_require__(265);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -71075,7 +75874,7 @@ if(false) {
 }
 
 /***/ }),
-/* 210 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -71089,7 +75888,7 @@ exports.push([module.i, "\n.choice-payment-method-msg[data-v-ae378e7a] {\n    ba
 
 
 /***/ }),
-/* 211 */
+/* 266 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71194,7 +75993,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 212 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -71372,7 +76171,7 @@ if (false) {
 }
 
 /***/ }),
-/* 213 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -71607,15 +76406,15 @@ if (false) {
 }
 
 /***/ }),
-/* 214 */
+/* 269 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_User_main__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_Cart_main__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_User_main__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_Cart_main__ = __webpack_require__(274);
 
 
 
@@ -71634,13 +76433,13 @@ var debug = "development" == !'production';
 }));
 
 /***/ }),
-/* 215 */
+/* 270 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mutations__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mutations__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions__ = __webpack_require__(273);
 
 
 
@@ -71657,7 +76456,7 @@ var debug = "development" == !'production';
 });
 
 /***/ }),
-/* 216 */
+/* 271 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71666,7 +76465,7 @@ var debug = "development" == !'production';
 });
 
 /***/ }),
-/* 217 */
+/* 272 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71680,7 +76479,7 @@ var debug = "development" == !'production';
 });
 
 /***/ }),
-/* 218 */
+/* 273 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71698,13 +76497,13 @@ var debug = "development" == !'production';
 });
 
 /***/ }),
-/* 219 */
+/* 274 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mutations__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mutations__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions__ = __webpack_require__(277);
 
 
 
@@ -71721,7 +76520,7 @@ var debug = "development" == !'production';
 });
 
 /***/ }),
-/* 220 */
+/* 275 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71742,12 +76541,13 @@ var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMon
 		soccer_expert: {
 			total: 0.00,
 			items: []
-		}
+		},
+		items: []
 	}
 });
 
 /***/ }),
-/* 221 */
+/* 276 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71759,50 +76559,365 @@ function refreshState(state) {
 	//Total em dinheiro das loterias
 	var amountLotteries = 0;
 
+	//Total em dinheiro dos soccer expert
+	var amount_soccer_expert = 0;
+
+	//Total em dinheiro das raspadinhas
+	var amount_scratch_card = 0;
+
+	//Filtrando e somando todos os totais das loterias
 	state.lotteries.items.filter(function (val) {
-		amountLotteries += val.total;
+		if (typeof val.total == 'string') {
+			amountLotteries += parseFloat(val.total);
+		} else if (typeof val.total == 'float' || typeof val.total == 'double' || typeof val.total == 'number') {
+			amountLotteries += val.total;
+		}
 	});
 
+	//Filtrando e somando todos os totais dos soccer experts
+	state.soccer_expert.items.filter(function (val) {
+		if (typeof val.total == 'string') {
+			amount_soccer_expert += parseFloat(val.total);
+		} else if (typeof val.total == 'float' || typeof val.total == 'double' || typeof val.total == 'number') {
+			amount_soccer_expert += val.total;
+		}
+	});
+
+	//Filtrando e somando todos os totais das raspadinhas
+	state.scratch_cards.items.filter(function (val) {
+		if (typeof val.total == 'string') {
+			amount_scratch_card += parseFloat(val.total);
+		} else if (typeof val.total == 'float' || typeof val.total == 'double' || typeof val.total == 'number') {
+			amount_scratch_card += val.total;
+		}
+	});
+
+	//Total da loteria
 	state.lotteries.total = amountLotteries;
 
+	//Total do soccer expert
+	state.soccer_expert.total = amount_soccer_expert;
+
+	//Total da raspadinha
+	state.scratch_cards.total = amount_scratch_card;
+
+	//Total de todos os itens
 	state.total = state.lotteries.total + state.scratch_cards.total + state.soccer_expert.total;
 
+	//Novo estado
 	return state;
 }
 
 /* harmony default export */ __webpack_exports__["a"] = ({
 	SET_ITEM_LOTTERY: function SET_ITEM_LOTTERY(state, items) {
 
+		//Caso o usuário faça 1 aposta e adicione no carrinho e depois faça outra cartela, preciso atualizar o item
+		//Removendo o item com base no hash
+
+		var arr = [];
+
+		var idx = null;
+
+		if (state.purchase.lotteries.items.length == 0) {
+			state.purchase.lotteries.items.unshift(items);
+		} else {
+
+			state.purchase.lotteries.items.map(function (elem, index, array) {
+				if (elem.hash == items.hash) {
+					idx = index;
+				}
+			});
+
+			if (idx == null) {
+				state.purchase.lotteries.items.unshift(items);
+			} else {
+				state.purchase.lotteries.items[idx] = items;
+			}
+		}
+
+		idx = null;
+		if (state.purchase.items.length == 0) {
+			state.purchase.items.unshift({
+				type: 'lottery',
+				lottery: items
+			});
+		} else {
+
+			state.purchase.items.map(function (elem, index, array) {
+				if (elem.lottery != undefined) {
+					if (elem.lottery.hash == items.hash) {
+						idx = index;
+					}
+				}
+			});
+
+			if (idx == null) {
+				state.purchase.items.unshift({
+					type: 'lottery',
+					lottery: items
+				});
+			} else {
+				state.purchase.items[idx] = {
+					type: 'lottery',
+					lottery: items
+				};
+			}
+		}
+
+		//Atualizando os dados como totais, quantidades
+		state.purchase = refreshState(state.purchase);
+	},
+	REMOVE_ITEM_LOTTERY: function REMOVE_ITEM_LOTTERY(state, items) {
+
 		state.purchase.lotteries.items = state.purchase.lotteries.items.filter(function (val) {
 			return val.hash != items.hash;
 		});
 
-		state.purchase.lotteries.items.push(items);
-
-		state.purchase = refreshState(state.purchase);
-		//state.purchase.lotteries.total = state.purchase.lotteries.items.betting.length
-		//state.purchase.quantity = state.purchase.lotteries.items.betting.length + 
-		//	state.purchase.scratch_cards.items.length +
-		//	state.purchase.soccer_expert.items.length;
-	},
-	REMOVE_ITEM_LOTTERY: function REMOVE_ITEM_LOTTERY(state, items) {
-		state.purchase.lotteries.items = state.purchase.lotteries.items.filter(function (val) {
-			return val.hash != items.hash;
+		state.purchase.items = state.purchase.items.filter(function (val) {
+			if (val.type == 'lottery') {
+				if (val.lottery.hash != items.hash) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return true;
+			}
 		});
 
 		state.purchase = refreshState(state.purchase);
 	},
 	CLEAR_LOTTERIES: function CLEAR_LOTTERIES(state) {
-		state.purchase.items.lotteries = [];
+		state.purchase.lotteries = [];
 	},
-	CLEAR_ITEM_LOTTERY: function CLEAR_ITEM_LOTTERY(state, name) {},
-	SET_ITEM_SOCCER_EXPERT: function SET_ITEM_SOCCER_EXPERT(state, items) {},
-	REMOVE_ITEM_SOCCER_EXPERT: function REMOVE_ITEM_SOCCER_EXPERT(state, items) {},
-	CLEAR_SOCCER_EXPERT: function CLEAR_SOCCER_EXPERT(state, name) {}
+	CLEAR_ITEM_LOTTERY: function CLEAR_ITEM_LOTTERY(state, name) {
+		state.purchase.lotteries = [];
+
+		state.purchase.items = state.purchase.items.filter(function (val) {
+			if (val.type == 'lottery') return false;else return true;
+		});
+
+		state.purchase = refreshState(state.purchase);
+	},
+	SET_ITEM_SOCCER_EXPERT: function SET_ITEM_SOCCER_EXPERT(state, items) {
+
+		var idx = null;
+
+		if (state.purchase.soccer_expert.items.length == 0) {
+			state.purchase.soccer_expert.items.unshift(items);
+		} else {
+
+			state.purchase.soccer_expert.items.map(function (elem, index, array) {
+				if (elem.hash == items.hash) {
+					idx = index;
+				}
+			});
+
+			if (idx == null) {
+				state.purchase.soccer_expert.items.unshift(items);
+			} else {
+				state.purchase.soccer_expert.items[idx] = items;
+			}
+		}
+
+		idx = null;
+		if (state.purchase.items.length == 0) {
+			state.purchase.items.unshift({
+				type: 'soccer_expert',
+				soccer_expert: items
+			});
+		} else {
+
+			state.purchase.items.map(function (elem, index, array) {
+				if (elem.soccer_expert != undefined) {
+					if (elem.soccer_expert.hash == items.hash) {
+						idx = index;
+					}
+				}
+			});
+
+			if (idx == null) {
+				state.purchase.items.unshift({
+					type: 'soccer_expert',
+					soccer_expert: items
+				});
+			} else {
+				state.purchase.items[idx] = {
+					type: 'soccer_expert',
+					soccer_expert: items
+				};
+			}
+		}
+
+		//Atualizando os dados como totais, quantidades
+		state.purchase = refreshState(state.purchase);
+	},
+	REMOVE_ITEM_SOCCER_EXPERT: function REMOVE_ITEM_SOCCER_EXPERT(state, items) {
+
+		//Removendo o item com base no hash
+		state.purchase.soccer_expert.items = state.purchase.soccer_expert.items.filter(function (val) {
+			return val.hash != items.hash;
+		});
+
+		state.purchase.items = state.purchase.items.filter(function (val) {
+			if (val.type == 'soccer_expert') {
+				if (val.soccer_expert.hash != items.hash) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			return true;
+		});
+
+		//Atualizando os dados como totais, quantidades
+		state.purchase = refreshState(state.purchase);
+	},
+	CLEAR_SOCCER_EXPERT: function CLEAR_SOCCER_EXPERT(state, name) {
+		state.purchase.soccer_expert = [];
+
+		state.purchase = refreshState(state.purchase);
+	},
+	SET_ITEM_SCRATCH_CARD: function SET_ITEM_SCRATCH_CARD(state, items) {
+
+		var idx = null;
+
+		if (state.purchase.scratch_cards.items.length == 0) {
+			state.purchase.scratch_cards.items.unshift(items);
+		} else {
+
+			state.purchase.scratch_cards.items.map(function (elem, index, array) {
+				if (elem.hash == items.hash) {
+					idx = index;
+				}
+			});
+
+			if (idx == null) {
+				state.purchase.scratch_cards.items.unshift(items);
+			} else {
+				state.purchase.scratch_cards.items[idx] = items;
+			}
+		}
+
+		idx = null;
+
+		//Verificando se existe algum item
+		if (state.purchase.items.length == 0) {
+			//Caso não tenha, faço inserção do item do tipo raspadinha
+			state.purchase.items.unshift({
+				type: 'scratch_card',
+				scratch_card: items
+			});
+		} else {
+
+			//Se não é porque já possui item
+			//Verifico se o item passado no array existe
+			state.purchase.items.map(function (elem, index, array) {
+				//
+				if (elem.scratch_card != undefined) {
+					if (elem.scratch_card.hash == items.hash) {
+						idx = index;
+					}
+				}
+			});
+
+			//Se não encontrou nenhum item com o mesmo hash, é porque não existe e então insiro 
+			//O novo item de raspadinha
+			if (idx == null) {
+				state.purchase.items.unshift({
+					type: 'scratch_card',
+					scratch_card: items
+				});
+			} else {
+				//Se não faço alteração do item com base no indice que encontrei na verificação dos hash's
+				state.purchase.items[idx] = {
+					type: 'scratch_card',
+					scratch_card: items
+				};
+			}
+		}
+
+		//Atualizando os dados como totais, quantidades
+		state.purchase = refreshState(state.purchase);
+	},
+	REMOVE_ITEM_SCRATCH_CARD: function REMOVE_ITEM_SCRATCH_CARD(state, items) {
+
+		//Removendo o item com base no hash
+		state.purchase.scratch_cards.items = state.purchase.scratch_cards.items.filter(function (val) {
+			return val.hash != items.hash;
+		});
+
+		state.purchase.items = state.purchase.items.filter(function (val) {
+			if (val.type == 'scratch_card') {
+				if (val.scratch_card.hash != items.hash) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			return true;
+		});
+
+		//Atualizando os dados como totais, quantidades
+		state.purchase = refreshState(state.purchase);
+	},
+	CLEAR_SCRATCH_CARD: function CLEAR_SCRATCH_CARD() {
+		state.purchase.soccer_expert = [];
+
+		state.purchase = refreshState(state.purchase);
+	},
+	CLEAR: function CLEAR(state) {
+		state = {
+			purchase: {
+				quantity: 0,
+				total: 0.00,
+				lotteries: {
+					total: 0.00,
+					items: []
+				},
+				scratch_cards: {
+					total: 0.00,
+					items: []
+				},
+				soccer_expert: {
+					total: 0.00,
+					items: []
+				},
+				items: []
+			}
+		};
+	},
+	SET_ITEMS: function SET_ITEMS(state, items) {
+
+		items.map(function (elem, index, array) {
+			if (elem.type == 'soccer_expert') {
+				state.purchase.items.push({
+					type: elem.type,
+					soccer_expert: JSON.parse(elem.data)
+				});
+
+				state.purchase.soccer_expert.items.push(JSON.parse(elem.data));
+			} else if (elem.type == 'lottery') {
+				state.purchase.items.push({
+					type: elem.type,
+					lottery: JSON.parse(elem.data)
+				});
+				state.purchase.lotteries.items.push(JSON.parse(elem.data));
+			} else {
+				state.purchase.items.push({
+					type: elem.type,
+					scratch_card: JSON.parse(elem.data)
+				});
+				state.purchase.scratch_cards.items.push(JSON.parse(elem.data));
+			}
+		});
+
+		state.purchase = refreshState(state.purchase);
+	}
 });
 
 /***/ }),
-/* 222 */
+/* 277 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71838,23 +76953,50 @@ function refreshState(state) {
 		var commit = _ref6.commit;
 
 		commit('CLEAR_SOCCER_EXPERT');
+	},
+	setItemScratchCard: function setItemScratchCard(_ref7, items) {
+		var state = _ref7.state,
+		    commit = _ref7.commit;
+
+		commit('SET_ITEM_SCRATCH_CARD', items);
+	},
+	removeItemScratchCard: function removeItemScratchCard(_ref8, items) {
+		var commit = _ref8.commit;
+
+		commit('REMOVE_ITEM_SCRATCH_CARD', items);
+	},
+	clearScratchCard: function clearScratchCard(_ref9) {
+		var commit = _ref9.commit;
+
+		commit('CLEAR_SCRATCH_CARD');
+	},
+	clear: function clear(_ref10) {
+		var commit = _ref10.commit;
+
+		commit('CLEAR');
+	},
+	setItems: function setItems(_ref11, items) {
+		var state = _ref11.state,
+		    commit = _ref11.commit;
+
+		commit('SET_ITEMS', items);
 	}
 });
 
 /***/ }),
-/* 223 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(224)
+  __webpack_require__(279)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(226)
+var __vue_script__ = __webpack_require__(281)
 /* template */
-var __vue_template__ = __webpack_require__(228)
+var __vue_template__ = __webpack_require__(283)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -71893,13 +77035,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 224 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(225);
+var content = __webpack_require__(280);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -71919,7 +77061,7 @@ if(false) {
 }
 
 /***/ }),
-/* 225 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -71933,12 +77075,12 @@ exports.push([module.i, "\n.select2{\n\twidth: 100%;\n}\n", ""]);
 
 
 /***/ }),
-/* 226 */
+/* 281 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_select2__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_select2__ = __webpack_require__(282);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_select2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_select2__);
 //
 //
@@ -71985,7 +77127,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 227 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;/*!
@@ -77841,7 +82983,7 @@ S2.define('jquery.select2',[
 
 
 /***/ }),
-/* 228 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -77866,15 +83008,15 @@ if (false) {
 }
 
 /***/ }),
-/* 229 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(230)
+var __vue_script__ = __webpack_require__(285)
 /* template */
-var __vue_template__ = __webpack_require__(231)
+var __vue_template__ = __webpack_require__(286)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -77913,7 +83055,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 230 */
+/* 285 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77951,7 +83093,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 231 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -77971,19 +83113,19 @@ if (false) {
 }
 
 /***/ }),
-/* 232 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(233)
+  __webpack_require__(288)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(235)
+var __vue_script__ = __webpack_require__(290)
 /* template */
-var __vue_template__ = __webpack_require__(236)
+var __vue_template__ = __webpack_require__(291)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -78022,13 +83164,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 233 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(234);
+var content = __webpack_require__(289);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -78048,7 +83190,7 @@ if(false) {
 }
 
 /***/ }),
-/* 234 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -78062,7 +83204,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 235 */
+/* 290 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78102,7 +83244,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 236 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -78122,19 +83264,19 @@ if (false) {
 }
 
 /***/ }),
-/* 237 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(238)
+  __webpack_require__(293)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(240)
+var __vue_script__ = __webpack_require__(295)
 /* template */
-var __vue_template__ = __webpack_require__(246)
+var __vue_template__ = __webpack_require__(301)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -78173,13 +83315,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 238 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(239);
+var content = __webpack_require__(294);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -78199,7 +83341,7 @@ if(false) {
 }
 
 /***/ }),
-/* 239 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -78207,28 +83349,29 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 240 */
+/* 295 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__HeaderComponent__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__HeaderComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__HeaderComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SliderComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__SliderComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselComponent__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CarouselComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__CarouselComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FooterComponent__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FooterComponent__ = __webpack_require__(296);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FooterComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__FooterComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__router__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Load__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Load__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__api_routes__ = __webpack_require__(5);
 //
 //
 //
@@ -78245,6 +83388,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -78274,19 +83418,74 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		__WEBPACK_IMPORTED_MODULE_4__router__["a" /* default */].onReady(function () {
 			var authUser = JSON.parse(window.localStorage.getItem('authUser'));
 			_this.$store.dispatch('setUserObject', authUser);
+
+			//Requisição para pegar os itens do carrinho salvo
+			var cartRequest = axios.create();
+
+			//Executando a requisição
+			cartRequest.get(__WEBPACK_IMPORTED_MODULE_6__api_routes__["a" /* routes */].carts.index, {
+				params: {
+					id: authUser != null ? authUser.id : null
+				}
+			}).then(function (response) {
+				if (response.status === 200) {
+					//Caso encontrou algum item
+					//Seto os items na estruta
+					if (response.data.items.length > 0) _this.$store.dispatch('setItems', response.data.items);
+				}
+			}).catch(function (error) {});
 		});
 
 		__WEBPACK_IMPORTED_MODULE_4__router__["a" /* default */].beforeEach(function (to, from, next) {
+			//Pegando os dados do usuário no localstorage
 			var authUser = JSON.parse(window.localStorage.getItem('authUser'));
+
+			//Se a rota depende de login
 			if (to.meta.requiresAuth == true) {
-				if (authUser) {
-					next();
-				} else {
-					next({
-						name: 'login'
+
+				//Verificando se é diferente da rota para edição de conta do usuário
+				//Pois se não o fizer, a requisição será executada 2 vezes, porque
+				//Dentro do component UserAcount é executada uma requisição para pegar os dados
+				//Do usuário atualizado
+				if (to.name != 'users.account') {
+					var _authUser = JSON.parse(window.localStorage.getItem('authUser'));
+
+					var loginRequest = axios.create();
+					//Fazendo busca do usuário logado, para setar na estrutura de dados
+					loginRequest.get(__WEBPACK_IMPORTED_MODULE_6__api_routes__["a" /* routes */].auth.user, { headers: {
+							'Accept': 'application/json',
+							'Authorization': 'Bearer ' + _authUser.access_token
+						} }).then(function (response) {
+
+						response.data.access_token = _authUser.access_token;
+
+						response.data.refresh_token = _authUser.refresh_token;
+
+						window.localStorage.setItem('authUser', JSON.stringify(response.data));
+
+						_this.$store.dispatch('setUserObject', response.data);
+
+						next();
+					}).catch(function (error) {
+						next({
+							name: 'login'
+						});
 					});
+				} else {
+					//Se a rota não for para o component UserAccount,
+					//Verifica se o usuário está logado
+					//Se estiver logado, deixa passar,
+					//Se não, redireciona para o login
+					if (authUser) {
+						next();
+					} else {
+						next({
+							name: 'login'
+						});
+					}
 				}
 			}
+			//Se estou logado e estou tentando acessar a rota de login
 			if (to.name == 'login' && authUser) {
 				toastr.info('Você já está logado.');
 				next({
@@ -78319,19 +83518,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 241 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(242)
+  __webpack_require__(297)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(244)
+var __vue_script__ = __webpack_require__(299)
 /* template */
-var __vue_template__ = __webpack_require__(245)
+var __vue_template__ = __webpack_require__(300)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -78370,13 +83569,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 242 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(243);
+var content = __webpack_require__(298);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -78396,7 +83595,7 @@ if(false) {
 }
 
 /***/ }),
-/* 243 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -78410,7 +83609,7 @@ exports.push([module.i, "\n.color-green[data-v-122aca56]{\n        color: #69a50
 
 
 /***/ }),
-/* 244 */
+/* 299 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78694,7 +83893,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 245 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -79367,7 +84566,7 @@ if (false) {
 }
 
 /***/ }),
-/* 246 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -79414,7 +84613,7 @@ if (false) {
 }
 
 /***/ }),
-/* 247 */
+/* 302 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -3,10 +3,9 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Frontend\SoccerExpertGame;
-use App\Model\Frontend\ShieldClub;
+use App\Model\Frontend\Club;
 
-class Club extends Model
+class ShieldClub extends Model
 {
     const CREATED_AT = 'created';
 
@@ -23,7 +22,7 @@ class Club extends Model
      * 
      * @var array
      */
-    public $table = 'gel_clubes';
+    public $table = 'gel_escudos';
 
     /**
      * The attributes that are mass assignable.
@@ -43,15 +42,7 @@ class Club extends Model
         
     ];
 
-    public function house() {
-        return $this->hasMany(SoccerExpertGame::class, 'gel_clube_casa_id');
-    }
-
-    public function out() {
-        return $this->hasMany(SoccerExpertGame::class, 'gel_clube_fora_id');
-    }
-
-    public function shields() {
-        return $this->hasMany(ShieldClub::class, 'gel_clube_id');
+    public function club() {
+        return $this->belonsTo(Club::class, 'gel_clube_id');
     }
 }

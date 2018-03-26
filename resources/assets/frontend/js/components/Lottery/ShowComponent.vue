@@ -7,7 +7,7 @@
 	        	<div class="col-lg-12">
 	        		<div class="sub-navigation">
 	        			<router-link :to="{ name: 'lotteries.show', params: { id: lottery.id } }" class="active show" id="play-component">
-		                    {{ trans('strings.play_on_the') }} {{ lottery.sorteio }}
+		                    {{ trans('strings.play_on_the') }} {{ lottery.nome }}
 		                </router-link>
 		                <router-link :to="{ name: 'lotteries.results', params: { id: lottery.id } }" class="show" id="result-component">
 		                    Resultado 
@@ -20,12 +20,12 @@
         <form @submit.prevent="addToCart">
         	<div class="row">
 	        	<div class="col-lg-12">
-	        		<h4 class="page-header" style="margin-top: 0;">{{ lottery.sorteio }}</h4>
+	        		<h4 class="page-header" style="margin-top: 0;">{{ lottery.nome }}</h4>
 	        	</div>
 	        </div>
 			<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
-				<div class="col-lg-3" v-for="(index, column) in columns">
-					<div :class="'ticket'+column+' tickets'">
+				<div class="col-lg-3 col-8 col-md-5 col-sm-5" v-for="(index, column) in columns">
+					<div :class="'ticket'+column+' tickets'+' '+wow(index)">
 						<div class="tickets-header">
 							<strong>{{ column }}</strong>
 							<div class="tools">
@@ -37,14 +37,36 @@
 								</a>
 							</div>
 						</div>
-						<div class="tickets-content">
+
+						<div class="tickets-content" v-if="$route.params.hash != undefined">
+							<span class="fields" v-for="dicker in dickers">
+								<button v-if="verifyNumberSelected(index.numbers, dicker)" @click.prevent="clickNumber(column, dicker, $event)" class="btn btn-xs btn-default-color btn-checked">
+									{{ dicker }}
+								</button>
+							
+								<button v-else @click.prevent="clickNumber(column, dicker, $event)" class="btn btn-xs btn-default-color">
+									{{ dicker }}
+								</button>
+							</span>
+						</div>
+						<div class="tickets-content" v-else>
 							<span class="fields" v-for="dicker in dickers">
 								<button @click.prevent="clickNumber(column, dicker, $event)" class="btn btn-xs btn-default-color">
 									{{ dicker }}
 								</button>
 							</span>
 						</div>
-						<div class="tickets-extras">
+						<div class="tickets-extras" v-if="$route.params.hash != undefined">
+							<span class="fields" v-for="dicker in dickersExtras">
+								<button v-if="verifyNumberSelected(index.numbersExtras, dicker)" @click.prevent="clickNumberExtras(column, dicker, $event)" class="btn btn-xs btn-default-darking btn-checked">
+									{{ dicker }}
+								</button>
+								<button v-else @click.prevent="clickNumberExtras(column, dicker, $event)" class="btn btn-xs btn-default-darking">
+									{{ dicker }}
+								</button>
+							</span>
+						</div>
+						<div class="tickets-extras" v-else>
 							<span class="fields" v-for="dicker in dickersExtras">
 								<button @click.prevent="clickNumberExtras(column, dicker, $event)" class="btn btn-xs btn-default-darking">
 									{{ dicker }}
@@ -60,19 +82,21 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-1 vcenter" style="justify-content: center;" id="btn-add-ticket">
-					<a href="#" @click.prevent="addBet($event)" class="fa fa-plus" style="font-size: 60px;"></a>
-					<a v-if="columns.length > 1" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>
+				<div class="col-lg-1 col-4 col-md-2 col-sm-2 vcenter" style="justify-content: center;" id="btn-add-ticket">
+					<div>
+						<a href="#" @click.prevent="addBet($event)" class="fa fa-plus" style="font-size: 60px;"></a>
+						<br>
+						<a v-if="columns.length > 1" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>
+					</div>
 				</div>
 			</div>
 
 			<div class="row">
-
-				<div class="col-lg-3 col-sm-3 col-md-3 col-6">
+				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 					<div class="form-group">
 						<label for="date">{{ trans('strings.sweepstake_date') }}</label>
 					    <select v-model="lot_jogo_id" class="form-control" id="lot_jogo_id">
-					      	<option :value="sweepstake.id" :data-key="key" v-for="(sweepstake, key) in lottery.sweepstakes">
+					      	<option :value="key" :data-key="key" v-for="(sweepstake, key) in lottery.sweepstakes">
 					      		{{ sweepstake.data_fim }}
 					      	</option>
 					    </select>
@@ -114,6 +138,7 @@
         },
 		data: function() {
 			return {
+				rawHtml: '',
 				loading: {
 					component: true
 				},
@@ -133,6 +158,7 @@
 					value: null,
 					name: '',
 					date: '',
+					lottery: {},
 					betting: [
 				 		{
 				 			column: 0,
@@ -146,9 +172,12 @@
 			}
 		},
 		methods: {
-			//Funão executada ao carregar
-			init: function() {
+			wow(bet) {
+				return bet.complete && bet.completeExtras ? 'complete' : ''
+			},
+			showRequest() {
 				const showRequest = axios.create();
+
 				this.id = this.$route.params.id;
 				
 				showRequest.interceptors.request.use(config => {
@@ -164,7 +193,10 @@
 						this.item.hash = this.makeid(); 
 						this.item.id = this.lottery.id;
 						this.item.value = this.lottery.value;
-						this.item.name = this.lottery.sorteio;
+						this.item.lottery = this.lottery;
+
+						this.lot_jogo_id = 0;
+						
 						this.item.betting = [
 							{
 					 			column: 0,
@@ -196,6 +228,72 @@
 					
 				});
 			},
+			verifyNumberSelected(numbers, dicker) {
+				//
+				for(var i = 0; i < numbers.length; i++) {
+					if(dicker == numbers[i]) {
+						return true;
+						continue;
+					}
+				}
+			},
+			showLottery() {
+				var item = this.purchase.lotteries.items.filter((val) => {
+					return this.$route.params.hash == val.hash;
+				})
+
+				if(item.length > 0) {
+					item = item[0]
+
+					this.lottery = item.lottery
+					this.lot_jogo_id = item.lot_jogo_id
+
+					this.loading.component = false
+
+					var columns = []
+
+					item.betting.filter((val) => {
+						columns.push(val)
+					})
+
+					this.columns = columns;
+					this.item.hash = item.hash; 
+					this.item.id = item.id;
+					this.item.value = item.value;
+					this.item.lottery = item.lottery;
+					
+					this.item.betting = item.betting;
+					this.dickers = item.dickers;
+					this.dickersMaxSel = item.dickersMaxSelect;
+					this.dickersExtras = item.dickersExtras;
+					this.dickersExtrasSelect = item.dickersExtrasMaxSelect;
+
+					this.total = this.item.value * item.betting.length;
+
+					var interval = setInterval(() => {
+						if($(".container-tickets").length > 0) {
+							clearInterval(interval);
+							//Arrastando o scroll para a esquerda
+							$(".container-tickets").animate({ 
+								scrollLeft: $('.container-tickets')[0].scrollWidth 
+							}, 500, 'linear', function() {
+								
+							});
+						}
+					})
+					
+				} else {
+
+				}
+			},
+			//Funcão executada ao carregar
+			init: function() {
+				if(this.$route.params.hash != undefined) {
+					this.showLottery();
+				}else if(this.$route.params.id != undefined) {
+					this.showRequest();
+				}
+			},
 			//Removendo aposta
 			removeBet: function(event) {
 				//Remove a última coluna
@@ -203,17 +301,25 @@
 				//Remove a última aposta
 				this.item.betting.pop();
 
+				//Pegando todas as apostas feitas
 				var betting = this.getBettingFinished();
-
+				
 				this.total = this.item.value * betting.length;
+
+				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
+
+				//this.item.lottery.sweepstakes = this.item.lottery.sweepstakes[this.lot_jogo_id]
 
 				var item = {
 					hash: this.item.hash,
 					id: this.item.id,
+					name: this.item.name,
 					value: this.item.value,
+					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
 					total: this.total,
-					betting: betting
+					betting: betting,
+					sweepstake: sweepstake
 				};
 				
 				if(item.betting.length == 0) {
@@ -225,8 +331,20 @@
 			//Adiciona aposta
 			addBet: function(event) {
 
+				var columns = []
+
+				this.columns.filter((val) => {
+					columns.push(val)
+				})
+
 				//Adicionando uma nova coluna
-				this.columns.push(this.columns.length + 1);
+				this.columns.push({
+					column: this.columns.length - 1,
+					complete: false,
+					completeExtras: false,
+					numbers: [],
+					numbersExtras: []
+				});
 
 				//Adicionando uma nova aposta no array
 				this.item.betting.push({
@@ -418,6 +536,7 @@
 				
 				this.total = this.item.value * betting.length;
 
+
 			},
 			//Pegando todas as apostas concluídas
 			getBettingFinished: function() {
@@ -454,13 +573,20 @@
 				
 				this.total = this.item.value * betting.length;
 
+				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
+
+				//this.item.lottery.sweepstakes = this.item.lottery.sweepstakes[this.lot_jogo_id]
+
 				var item = {
 					hash: this.item.hash,
 					id: this.item.id,
+					name: this.item.name,
 					value: this.item.value,
+					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
 					total: this.total,
-					betting: betting
+					betting: betting,
+					sweepstake: sweepstake
 				};
 
 				if(item.betting.length === 0) {
@@ -472,15 +598,28 @@
 			//Função para adicionar item no carrinho
 			addToCart: function(event) {
 				var vm = this
-				var betting = this.getBettingFinished();
+				var betting = this.getBettingFinished().clone();
+
+				
+
+				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
+
+				//this.item.lottery.sweepstakes = this.item.lottery.sweepstakes[this.lot_jogo_id]
 
 				var item = {
 					hash: this.item.hash,
 					id: this.item.id,
+					name: this.item.name,
 					value: this.item.value,
+					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
 					total: this.total,
-					betting: betting
+					betting: betting,
+					sweepstake: sweepstake,
+					dickers: this.dickers,
+					dickersMaxSelect: this.dickersMaxSel,
+					dickersExtras: this.dickersExtras,
+					dickersExtrasMaxSelect: this.dickersExtrasSelect
 				};
 
 				if(betting.length == 0) {
@@ -488,7 +627,26 @@
 					//this.$store.dispatch('removeItemLottery', item);
 				}else {
 					this.$store.dispatch('setItemLottery', item);
-					const cartRequest = axios.create();
+
+					let addLotteryRequest = axios.create();
+
+					addLotteryRequest.post(routes.carts.add_lotteries, {
+						purchase: item, 
+						auth: this.auth,
+						hash: item.hash
+						
+					}).then(response => {
+			            if(response.status === 200) {
+			            	
+						}
+			        }).catch((error) => {
+			        	
+			        })		
+
+					this.$router.push({
+						name: 'cart.index'
+					})
+					/*const cartRequest = axios.create();
 					cartRequest.interceptors.request.use(config => {
 			        	return config;
 					});
@@ -496,7 +654,7 @@
 						
 					}).catch((error) => {
 					
-					});
+					});*/
 				}
 			},
 			//Função para remover item do carrinho
@@ -517,7 +675,9 @@
 				var item = {
 					hash: this.item.hash,
 					id: this.item.id,
+					name: this.item.name,
 					value: this.item.value,
+					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
 					total: this.total,
 					betting: betting
@@ -564,106 +724,17 @@
 
 <style scoped>
 	.btn-xs {
-		margin: 2px;
-		width: 28px;
-    	height: 28px;
-    	font-size: 12px;
-    	border-radius: 999px !important;
-    	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-	    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-	    -webkit-transition: -webkit-box-shadow 0.15s ease-out;
-	    -moz-transition: -moz-box-shadow 0.15s ease-out;
-	    -o-transition: -o-box-shadow 0.15s ease-out;
-	    transition: box-shadow 0.15s ease-out;
-	    padding: 0;
-	}
-
-	.btn-default-color {
-		background-color: #ffffff;
-	    border-color: #00003f;
-	    color: #00003f;
-	}
-
-	.btn-xs:hover {
-		color: #969c9c;
-    	text-decoration: none;
-	}
-
-	.btn-checked {
-	    background-color: #000053 !important;
-	    border-color: #000000 !important;
-	    color: #ffffff !important;
-	}
-
-	.tickets {
-		padding: 10px;
-	    margin-bottom: 24px;
-    	margin-top: 1px;
-		background-color: #fff;
-	    color: #313534 !important;
-	    border-radius: 2px;
-	    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-	    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
-	}
-
-	.tickets-footer {
-    	margin-top: 10px;
-	}
-
-	.tickets-header {
-		background-color: #FCF914;
-	}
-
-	.tickets-header strong {
-		margin-left: 10px;
-	}
-
-	.tickets-content, .tickets-extras {
-	    background-color: #FCF914;
-	    text-align: center;
-	    padding-bottom: 5px;
-	}
-
-	.price {
-		margin-right: 15px;
-	}
-
-
-	.tickets-extras .fields .btn-default-darking{
-		margin: 2px;
-    	border-color: #000;
-    	background-color: #4CAF50;
+        margin: 2px;
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+        border-radius: 999px !important;
+        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+        -webkit-transition: -webkit-box-shadow 0.15s ease-out;
+        -moz-transition: -moz-box-shadow 0.15s ease-out;
+        -o-transition: -o-box-shadow 0.15s ease-out;
+        transition: box-shadow 0.15s ease-out;
+        padding: 0;
     }
-
-	.tickets-footer em {
-		padding-left: 0px;
-	    text-align: center;
-	    font-size: 12px;
-	    display: block;
-	}
-
-	.tickets-footer em input {
-	    width: 29px;
-	    height: 18px;
-	    text-align: center;
-	}
-
-	.tools {
-		float: right;
-	    margin-right: 10px;
-	}
-
-	.tools a {
-		margin-left: 2px;
-	    margin-right: 2px;
-	    color: #313534 !important;
-	}
-
-	.complete {
-		border: 3px solid #67be13 !important;
-	}
-
-	.incomplete {
-	    border: 3px solid #BF390F !important;
-	}
 </style>

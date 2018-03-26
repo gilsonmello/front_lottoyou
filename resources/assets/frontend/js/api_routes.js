@@ -52,6 +52,11 @@ export const routes = {
 		show: host+'/lotteries/{id}'
 	},
 	carts: {
-		store: host+'/carts'
+		store: host+'/carts',
+		index: host+'/carts',
+		add_scratch_cards: host+'/carts/add_scratch_cards',
+		add_soccer_experts: host+'/carts/add_soccer_experts',
+		add_lotteries: host+'/carts/add_lotteries',
+		destroy: host+'/carts/{hash}',
 	}
 };

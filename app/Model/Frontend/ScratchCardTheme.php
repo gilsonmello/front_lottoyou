@@ -3,19 +3,21 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Model\Frontend\ScratchCardDiscountTable;
+use App\Model\Frontend\ScratchCardLot;
 
 class ScratchCardTheme extends Model
 {
-    //const CREATED_AT = 'created';
+    const CREATED_AT = 'created';
 
-    //const UPDATED_AT = 'modified';
+    const UPDATED_AT = 'modified';
 
     //const DELETED_AT = 'deleted_at';
 
     /**
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * 
@@ -42,7 +44,12 @@ class ScratchCardTheme extends Model
     ];
 
     public function lots() {
-    	return $this->hasMany(\App\Model\Frontend\ScratchCardLot::class, 'temas_raspadinha_id')
+    	return $this->hasMany(ScratchCardLot::class, 'temas_raspadinha_id')
+            ->where('active', '=', 1);
+    }
+
+    public function discountTables() {
+        return $this->hasMany(ScratchCardDiscountTable::class, 'tema_id')
             ->where('active', '=', 1);
     }
 }

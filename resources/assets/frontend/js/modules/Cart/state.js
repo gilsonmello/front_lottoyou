@@ -15,6 +15,7 @@ export default{
 		soccer_expert: {
 			total: 0.00,
 			items: []
-		}
+		},
+		items: []
 	}
 }

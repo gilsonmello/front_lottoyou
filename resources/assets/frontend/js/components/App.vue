@@ -21,6 +21,7 @@
 	import FooterComponent from './FooterComponent'
 	import router from '../router'
 	import LoadComponent from './Load'
+	import {routes} from '../api_routes'
 	export default {
 		data: function() {
 			return {
@@ -48,19 +49,79 @@
 			router.onReady(() => {
 				const authUser = JSON.parse(window.localStorage.getItem('authUser'));
 				this.$store.dispatch('setUserObject', authUser);
+
+
+				//Requisição para pegar os itens do carrinho salvo
+				let cartRequest = axios.create();
+
+				//Executando a requisição
+				cartRequest.get(routes.carts.index, {
+					params: {
+						id: authUser != null ? authUser.id : null
+					}
+				}).then((response) => {
+					if(response.status === 200) {
+						//Caso encontrou algum item
+						//Seto os items na estruta
+						if(response.data.items.length > 0)
+		            		this.$store.dispatch('setItems', response.data.items)
+					}
+				}).catch((error) => {
+
+				})
 			});
 			
 			router.beforeEach((to, from, next) => {
+				//Pegando os dados do usuário no localstorage
 				const authUser = JSON.parse(window.localStorage.getItem('authUser'));
-				if(to.meta.requiresAuth == true){
-		            if(authUser){
-			            next()
-			        }else{
-			            next({
-			                name: 'login'
-			            })
-			        }
+
+				//Se a rota depende de login
+				if(to.meta.requiresAuth == true) {
+
+					//Verificando se é diferente da rota para edição de conta do usuário
+					//Pois se não o fizer, a requisição será executada 2 vezes, porque
+					//Dentro do component UserAcount é executada uma requisição para pegar os dados
+					//Do usuário atualizado
+					if(to.name != 'users.account') {
+						const authUser = JSON.parse(window.localStorage.getItem('authUser'));
+
+						var loginRequest = axios.create();
+						//Fazendo busca do usuário logado, para setar na estrutura de dados
+						loginRequest.get(routes.auth.user, { headers: {
+							'Accept': 'application/json',
+							'Authorization': 'Bearer ' + authUser.access_token
+						}}).then(response => {
+
+				        	response.data.access_token = authUser.access_token
+				        	
+				        	response.data.refresh_token = authUser.refresh_token
+
+							window.localStorage.setItem('authUser', JSON.stringify(response.data))
+
+							this.$store.dispatch('setUserObject', response.data);
+
+							next()
+		                  	
+		                }).catch((error) => {
+							next({
+				                name: 'login'
+				            });
+		                });
+		            }else {
+		            	//Se a rota não for para o component UserAccount,
+		            	//Verifica se o usuário está logado
+		            	//Se estiver logado, deixa passar,
+		            	//Se não, redireciona para o login
+			            if(authUser){
+				            next()
+				        }else{
+				            next({
+				                name: 'login'
+				            })
+				        }
+				    }
 			    }
+			    //Se estou logado e estou tentando acessar a rota de login
 		        if(to.name == 'login' && authUser){
 			        toastr.info('Você já está logado.');
 			        next({

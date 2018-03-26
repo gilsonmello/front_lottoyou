@@ -3,31 +3,31 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Model\Frontend\CartItem;
-use App\Model\Frontend\Lottery;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Model\Frontend\ScratchCardTheme;
 
-class Cart extends Model
+class ScratchCardDiscountTable extends Model
 {
-    use SoftDeletes;
-    
-    /**
+    const CREATED_AT = 'created';
+
+    const UPDATED_AT = 'modified';
+
+    //const DELETED_AT = 'deleted_at';
+
+	/**
      * @var bool
      */
     public $timestamps = true;
 
-    /*
-    Função comentada para ficar de exemplo de como criar atributo personalizado
     protected $appends = [
-        'scratch_card_winning'
-    ];*/
+        
+    ];
 
     /**
      * 
      * @var array
      */
-    public $table = 'carts';
+    public $table = 'ras_tabelas_descontos';
 
     /**
      * The attributes that are mass assignable.
@@ -47,8 +47,7 @@ class Cart extends Model
         
     ];
 
-    public function items() {
-        return $this->hasMany(CartItem::class, 'cart_id');
+    public function theme() {
+    	return $this->belongsTo(ScratchCardTheme::class, 'tema_id');
     }
-
 }

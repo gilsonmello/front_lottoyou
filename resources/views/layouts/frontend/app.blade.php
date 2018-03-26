@@ -24,7 +24,8 @@
         </div>
         <script>
             window.app = {
-                title: '{!! config('app.name') !!}'
+                title: '{!! config('app.name') !!}',
+                basePath: '{!! url('/') !!}/',
             }
             var query = location.hash.split('/');           
             window.document.cookie = query[1] != undefined ? 'hash=' + query[1] : 'hash=en';

@@ -16,5 +16,20 @@ export default {
 	},
 	clearSoccerExpert: ({commit}) => {
 		commit('CLEAR_SOCCER_EXPERT')
-	}
+	},
+	setItemScratchCard: ({state, commit}, items) => {
+		commit('SET_ITEM_SCRATCH_CARD', items)
+	},
+	removeItemScratchCard: ({commit}, items) => {
+		commit('REMOVE_ITEM_SCRATCH_CARD', items)
+	},
+	clearScratchCard: ({commit}) => {
+		commit('CLEAR_SCRATCH_CARD')
+	},
+	clear: ({commit}) => {
+		commit('CLEAR')
+	},
+	setItems: ({state, commit}, items) => {
+		commit('SET_ITEMS', items)
+	},
 }
