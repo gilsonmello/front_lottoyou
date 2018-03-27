@@ -1,7 +1,7 @@
 <template>
 	<div :id="id" class="collapse">
 		<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;" @click.prevent="editSoccerExpert(soccer_expert.id, soccer_expert.hash, $event)">
-        	<div class="col-lg-3 col-10 col-md-5 col-sm-5" v-for="(round, column) in soccer_expert.rounds">
+        	<div class="col-lg-5 col-10 col-md-5 col-sm-5" v-for="(round, column) in soccer_expert.rounds">
         		<div :class="'ticket'+column+' tickets'">
         			
         			<div class="tickets-content well">
@@ -10,7 +10,7 @@
 								<h3>{{ column + 'ª '+ trans('strings.round') }}</h3>
 							</div>	
 						</div>
-						<div class="row vcenter text-center" style="margin-bottom: 10px;" v-for="(game, line) in round.games">
+						<div class="row vcenter-end text-center" style="margin-bottom: 10px;" v-for="(game, line) in round.games">
 							<div class="col-xs-5 col-md-5 col-lg-3 no-padding">
 								
 								<label class="club">{{ game.house_club.nome }}</label>		
@@ -74,5 +74,7 @@
 </script>
 
 <style scoped>
-	
+	.row label {
+		display: block;
+	}
 </style>

@@ -23,7 +23,7 @@
         </div>
         <form @submit.prevent="addToCart">
 	        <div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
-	        	<div class="col-lg-4 col-12 col-sm-4 col-md-4" v-for="(round, column) in soccer_expert.rounds">
+	        	<div class="col-lg-5 col-10 col-md-5 col-sm-5" v-for="(round, column) in soccer_expert.rounds">
 	        		<div :class="'ticket'+column+' tickets '+completeOrNo(round)">
 	        			<!-- <div class="tickets-header">
 							<strong>{{ column }}</strong>
@@ -42,7 +42,7 @@
 									<h3>{{ column + 'ª '+ trans('strings.round') }}</h3>
 								</div>	
 							</div> -->
-							<div class="row vcenter text-center" style="margin-bottom: 10px;" v-for="(game, line) in round.games">
+							<div class="row vcenter-end text-center" style="margin-bottom: 10px;" v-for="(game, line) in round.games">
 								<div class="col-xs-5 col-md-5 col-lg-3 no-padding">
 									
 									<label class="club">{{ game.house_club.nome }}</label>		
@@ -52,7 +52,7 @@
 									
 								</div>
 								<div class="col-lg-2 no-padding">
-									<input v-model="game.result_house_club" @change.prevent="houseClubResult(column, line, $event)" type="number" class="form-control">
+									<input min="0" v-model="game.result_house_club" @change.prevent="houseClubResult(column, line, $event)" type="number" class="form-control">
 								</div>
 
 								<div class="col-2 col-md-2 col-sm-2 col-lg-1" style="text-align: center">
@@ -60,7 +60,7 @@
 				                </div>
 
 				                <div class="col-lg-2 no-padding">
-									<input v-model="game.result_out_club" @change.prevent="outClubResult(column, line, $event)" type="number" class="form-control" name="">
+									<input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(column, line, $event)" type="number" class="form-control" name="">
 								</div>
 
 				                <div class="col-xs-5 col-md-5 col-lg-3 no-padding">
@@ -241,6 +241,9 @@
 				//Pegando o valor informado pelo usuário
 				var input = $(event.currentTarget);
 
+				if(input.val() < 0)
+					input.val(input.val() * -1)
+
 				//Atribuindo o resultado informado para o time da casa
 				this.item.rounds[column].games[line].result_house_club = input.val();
 
@@ -294,6 +297,10 @@
 			//Line = jogo da roda disponível no array
 			outClubResult: function(column, line, event) {
 				var input = $(event.currentTarget);
+				
+				if(input.val() < 0)
+					input.val(input.val() * -1)
+
 				this.item.rounds[column].games[line].result_out_club = input.val();
 
 				//Serve para controlar se a rodada foi complemente preenchida
@@ -419,6 +426,11 @@
 
 	.club {
 		display: block;
+	}
+
+	.no-padding {
+	    margin-left: 2px;
+    	margin-right: 2px;
 	}
 
 	.input-group-addon {

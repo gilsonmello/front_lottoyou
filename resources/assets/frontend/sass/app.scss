@@ -266,6 +266,9 @@ button.close {
         display: block;
     }
 
+    .header-items i {
+        margin-right: 0 !important;
+    }
 }
 
 .input-group-addon:not(:last-child) {

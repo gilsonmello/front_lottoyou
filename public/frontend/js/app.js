@@ -68619,7 +68619,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.price[data-v-5953fa40] {\n\tmargin-right: 15px;\n}\n.tickets-content[data-v-5953fa40] {\n\tpadding: 15px;\n}\n.club[data-v-5953fa40] {\n\tdisplay: block;\n}\n.input-group-addon[data-v-5953fa40] {\n\tborder-color: transparent;\t\t\t\t\t\n    background-color: transparent;\n    color: inherit;\n    opacity: 0.7;\n    padding: 0;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.complete[data-v-5953fa40] {\n\tborder: 3px solid #67be13 !important;\n}\n.incomplete[data-v-5953fa40] {\n    border: 3px solid #BF390F !important;\n}\n\n", ""]);
+exports.push([module.i, "\n.price[data-v-5953fa40] {\n\t\tmargin-right: 15px;\n}\n.tickets-content[data-v-5953fa40] {\n\t\tpadding: 15px;\n}\n.club[data-v-5953fa40] {\n\t\tdisplay: block;\n}\n.no-padding[data-v-5953fa40] {\n\t    margin-left: 2px;\n    \tmargin-right: 2px;\n}\n.input-group-addon[data-v-5953fa40] {\n\t\tborder-color: transparent;\t\t\t\t\t\n\t    background-color: transparent;\n\t    color: inherit;\n\t    opacity: 0.7;\n\t    padding: 0;\n\t    -webkit-box-pack: center;\n\t        -ms-flex-pack: center;\n\t            justify-content: center;\n}\n.complete[data-v-5953fa40] {\n\t\tborder: 3px solid #67be13 !important;\n}\n.incomplete[data-v-5953fa40] {\n\t    border: 3px solid #BF390F !important;\n}\n\n", ""]);
 
 // exports
 
@@ -68879,6 +68879,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			//Pegando o valor informado pelo usuário
 			var input = $(event.currentTarget);
 
+			if (input.val() < 0) input.val(input.val() * -1);
+
 			//Atribuindo o resultado informado para o time da casa
 			this.item.rounds[column].games[line].result_house_club = input.val();
 
@@ -68929,6 +68931,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		//Line = jogo da roda disponível no array
 		outClubResult: function outClubResult(column, line, event) {
 			var input = $(event.currentTarget);
+
+			if (input.val() < 0) input.val(input.val() * -1);
+
 			this.item.rounds[column].games[line].result_out_club = input.val();
 
 			//Serve para controlar se a rodada foi complemente preenchida
@@ -69130,7 +69135,7 @@ var render = function() {
               _vm._l(_vm.soccer_expert.rounds, function(round, column) {
                 return _c(
                   "div",
-                  { staticClass: "col-lg-4 col-12 col-sm-4 col-md-4" },
+                  { staticClass: "col-lg-5 col-10 col-md-5 col-sm-5" },
                   [
                     _c(
                       "div",
@@ -69149,7 +69154,7 @@ var render = function() {
                             return _c(
                               "div",
                               {
-                                staticClass: "row vcenter text-center",
+                                staticClass: "row vcenter-end text-center",
                                 staticStyle: { "margin-bottom": "10px" }
                               },
                               [
@@ -69202,7 +69207,7 @@ var render = function() {
                                         }
                                       ],
                                       staticClass: "form-control",
-                                      attrs: { type: "number" },
+                                      attrs: { min: "0", type: "number" },
                                       domProps: {
                                         value: game.result_house_club
                                       },
@@ -69258,7 +69263,11 @@ var render = function() {
                                         }
                                       ],
                                       staticClass: "form-control",
-                                      attrs: { type: "number", name: "" },
+                                      attrs: {
+                                        min: "0",
+                                        type: "number",
+                                        name: ""
+                                      },
                                       domProps: { value: game.result_out_club },
                                       on: {
                                         change: function($event) {
@@ -72817,7 +72826,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.row label[data-v-0ceebdc4] {\n\tdisplay: block;\n}\n", ""]);
 
 // exports
 
@@ -72925,7 +72934,7 @@ var render = function() {
         }
       },
       _vm._l(_vm.soccer_expert.rounds, function(round, column) {
-        return _c("div", { staticClass: "col-lg-3 col-10 col-md-5 col-sm-5" }, [
+        return _c("div", { staticClass: "col-lg-5 col-10 col-md-5 col-sm-5" }, [
           _c("div", { class: "ticket" + column + " tickets" }, [
             _c(
               "div",
@@ -72949,7 +72958,7 @@ var render = function() {
                   return _c(
                     "div",
                     {
-                      staticClass: "row vcenter text-center",
+                      staticClass: "row vcenter-end text-center",
                       staticStyle: { "margin-bottom": "10px" }
                     },
                     [
@@ -74541,7 +74550,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.row label[data-v-3e257310] {\n\tdisplay: block;\n}\n", ""]);
 
 // exports
 
@@ -74649,7 +74658,7 @@ var render = function() {
         }
       },
       _vm._l(_vm.soccer_expert.rounds, function(round, column) {
-        return _c("div", { staticClass: "col-lg-3 col-10 col-md-5 col-sm-5" }, [
+        return _c("div", { staticClass: "col-lg-5 col-10 col-md-5 col-sm-5" }, [
           _c("div", { class: "ticket" + column + " tickets" }, [
             _c(
               "div",
@@ -74673,7 +74682,7 @@ var render = function() {
                   return _c(
                     "div",
                     {
-                      staticClass: "row vcenter text-center",
+                      staticClass: "row vcenter-end text-center",
                       staticStyle: { "margin-bottom": "10px" }
                     },
                     [
