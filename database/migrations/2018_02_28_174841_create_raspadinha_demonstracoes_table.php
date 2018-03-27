@@ -13,7 +13,7 @@ class CreateRaspadinhaDemonstracoesTable extends Migration
      */
     public function up()
     {
-        Schema::create('raspadinha_demonstracoes', function (Blueprint $table) {
+        /*Schema::create('raspadinha_demonstracoes', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
             $length = 11;
             $unsigned = true;
@@ -50,7 +50,7 @@ class CreateRaspadinhaDemonstracoesTable extends Migration
             $table->foreign('temas_raspadinhas_id')
                 ->on('temas_raspadinhas')
                 ->references('id');
-        });
+        });*/
     }
 
     /**
@@ -60,6 +60,6 @@ class CreateRaspadinhaDemonstracoesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('raspadinha_capa_premiacoes');
+        //Schema::dropIfExists('raspadinha_demonstracoes');
     }
 }

@@ -26,7 +26,7 @@ class CreateCartItemsTable extends Migration
 
             $table->addColumn('integer', 'cart_id', compact('length'));
             
-            $table->json('data')->nullable();
+            $table->longText('data')->nullable();
 
             $table->timestamps();
             
