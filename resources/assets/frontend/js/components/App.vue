@@ -47,7 +47,8 @@
 			this.loading.component = false
 
 			router.onReady(() => {
-				const authUser = JSON.parse(window.localStorage.getItem('authUser'));
+				let authUser = JSON.parse(window.localStorage.getItem('authUser'));
+				
 				this.$store.dispatch('setUserObject', authUser);
 
 
@@ -69,6 +70,12 @@
 				}).catch((error) => {
 
 				})
+
+				if(this.$router.history.current.name == "orders.finish") {
+					this.$router.push({
+						name: 'orders.index'
+					})
+				}
 			});
 			
 			router.beforeEach((to, from, next) => {
@@ -83,7 +90,8 @@
 					//Dentro do component UserAcount é executada uma requisição para pegar os dados
 					//Do usuário atualizado
 					if(to.name != 'users.account') {
-						const authUser = JSON.parse(window.localStorage.getItem('authUser'));
+						let authUser = JSON.parse(window.localStorage.getItem('authUser'));
+						authUser = authUser != null ? authUser : {access_token: '', refresh_token: ''}
 
 						var loginRequest = axios.create();
 						//Fazendo busca do usuário logado, para setar na estrutura de dados

@@ -99,6 +99,27 @@ export default {
 			        props: true,
 			        meta: { requiresAuth: true },
 			        component: require('../components/Balance/DepositComponent.vue')
+			    },
+			    {   
+			  		path: '/orders',
+			        name: 'orders.index', 
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/Order/IndexComponent.vue')
+			    },
+			    {   
+			  		path: '/orders/finish',
+			        name: 'orders.finish', 
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/Order/FinishComponent.vue')
+			    },
+			    {   
+			  		path: '/orders/:id',
+			        name: 'orders.show', 
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/Order/ShowComponent.vue')
 			    }
   			]
   		}

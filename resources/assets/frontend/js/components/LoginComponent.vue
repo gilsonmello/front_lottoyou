@@ -62,7 +62,7 @@
 				const data = {
 		            grant_type: 'password',
 		            client_id: 2,
-		            client_secret: 'XopBa1RHDizN1fFhB2UPAVM80VYCr1ekGF7CeGNM',
+		            client_secret: 'e0ik4iiagLtSCWXMAym6rNOo0vS3oOvwHFpn2gEa',
 		            username: this.email,
 		            password: this.password,
 		            scope: '',

@@ -17,6 +17,8 @@ return [
     'code_country' => 'Código do país',
     'round' => 'Rodada',
     'rounds' => 'Rodadas',
+    'orders' => 'Pedidos',
+    'order' => 'Pedido',
     'sweepstake_date' => 'Data do sorteio',
     'play_on_the' => 'Jogue no',
     'pay_now' => 'Pagar agora',

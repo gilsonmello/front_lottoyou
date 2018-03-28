@@ -7,6 +7,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 //use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Balance;
+use App\Country;
 
 
 class User extends Authenticatable
@@ -56,6 +58,10 @@ class User extends Authenticatable
         return Hash::check($password, $this->laravel_password);
     }
 
+    public function balance() {
+        return $this->hasOne(Balance::class, 'user_id');
+    }
+
     /**
      * @param $username
      * @return mixed
@@ -65,7 +71,7 @@ class User extends Authenticatable
     }
 
     public function country() {
-        return $this->belongsTo(\App\Country::class, 'country_id');
+        return $this->belongsTo(Country::class, 'country_id');
     }
 
 }

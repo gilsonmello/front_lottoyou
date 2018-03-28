@@ -40,18 +40,34 @@
 		<div class="tab-content">
 			<br>
 		  	<div class="tab-pane active container-fluid tab-all" id="all" v-if="purchase.items.length > 0">
-		  		<all-component :items="purchase.items"></all-component>
+	  			<transition name="fade" mode="out-in">
+                    <keep-alive>
+		  				<all-component :items="purchase.items"></all-component>
+				  	</keep-alive>
+		  		</transition>
 		  	</div>
 		  	<div class="tab-pane container-fluid tab-scratch_cards" id="scratch_cards" v-if="purchase.scratch_cards.items.length > 0">
-		  		<scratch-card-component :scratchcards="purchase.scratch_cards.items"></scratch-card-component>
+		  		<transition name="fade" mode="out-in">
+                    <keep-alive>
+		  				<scratch-card-component :scratchcards="purchase.scratch_cards.items"></scratch-card-component>
+		  			</keep-alive>
+		  		</transition>		
 		  	</div>
 		  	
 		  	<div class="tab-pane container-fluid tab-lotteries" id="lotteries" v-if="purchase.lotteries.items.length > 0">
-		  		<lottery-component :items="purchase.lotteries.items"></lottery-component>
+		  		<transition name="fade" mode="out-in">
+                    <keep-alive>
+		  				<lottery-component :items="purchase.lotteries.items"></lottery-component>
+	  				</keep-alive>
+		  		</transition>	
 		  	</div>
 		  	
 		  	<div class="tab-pane container-fluid tab-soccer_experts" id="soccer_expert" v-if="purchase.soccer_expert.items.length > 0">
-		  		<soccer-expert-component :items="purchase.soccer_expert.items"></soccer-expert-component>
+		  		<transition name="fade" mode="out-in">
+                    <keep-alive>
+		  				<soccer-expert-component :items="purchase.soccer_expert.items"></soccer-expert-component>
+	  				</keep-alive>
+		  		</transition>
 		  	</div>
 		</div>
 
@@ -124,7 +140,8 @@
 					
 				</div>
 				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-					<button class="btn btn-success btn-md" @click.prevent="completePurchase($event)">		Confirmar
+					<button class="btn btn-success btn-md" @click.prevent="completePurchase($event)">		
+						Confirmar
 					</button>
 				</div>
 			</div>
@@ -154,7 +171,9 @@
 		},
 		methods: {
 			completePurchase(event) {
-
+				this.$router.push({
+					name: 'orders.finish'
+				});
 			}
 		},
 		mounted: function() {

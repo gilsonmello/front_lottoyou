@@ -2,25 +2,30 @@
     <load-component v-if="loading.component == true"></load-component>
 	<div class="container-fluid" v-else>
         <h3 class="">&nbsp;</h3>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <ul class="nav nav-pills nav-justified" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active show" id="edit-component" data-toggle="tab" href="#edit" role="tab" aria-controls="home" aria-selected="true">
+                <a class="nav-link active show" id="edit-component" data-toggle="pill" href="#edit">
                     {{ trans('strings.profile') }}
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="game-component" data-toggle="tab" href="#game" role="tab" aria-controls="profile" aria-selected="false">
+                <a class="nav-link" id="game-component" data-toggle="pill" href="#game">
                     {{ trans('strings.games') }}
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="transaction-component" data-toggle="tab" href="#transaction" role="tab" aria-controls="profile" aria-selected="false">
+                <a class="nav-link" id="transaction-component" data-toggle="pill" href="#transaction" >
                     {{ trans('strings.transactions') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="order-component" data-toggle="pill" href="#order" >
+                    {{ trans('strings.orders') }}
                 </a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div v-if="active_tab == 'edit-component'" class="tab-pane fade active show" id="edit" role="tabpanel" aria-labelledby="edit-component">
+            <div v-if="active_tab == 'edit-component'" class="tab-pane fade active show" id="edit">
                 <br>
                 <transition name="fade" mode="out-in">
                     <keep-alive>
@@ -28,7 +33,7 @@
                     </keep-alive>
                 </transition>
             </div>
-            <div v-if="active_tab == 'game-component'" class="tab-pane fade active show" id="game" role="tabpanel" aria-labelledby="game-component">
+            <div v-if="active_tab == 'game-component'" class="tab-pane fade active show" id="game">
                 <br>
                 <transition name="fade" mode="out-in">
                     <keep-alive>
@@ -36,11 +41,19 @@
                     </keep-alive>
                 </transition>
             </div>
-            <div v-if="active_tab == 'transaction-component'" class="tab-pane fade active show" id="transaction" role="tabpanel" aria-labelledby="transaction-component">
+            <div v-if="active_tab == 'transaction-component'" class="tab-pane fade active show" id="transaction">
                 <br>
                 <transition name="fade" mode="out-in">
                     <keep-alive>
                         <transaction-component></transaction-component>
+                    </keep-alive>
+                </transition>
+            </div>
+            <div v-if="active_tab == 'order-component'" class="tab-pane fade active show" id="order">
+                <br>
+                <transition name="fade" mode="out-in">
+                    <keep-alive>
+                        <order-component></order-component>
                     </keep-alive>
                 </transition>
             </div>
@@ -53,6 +66,7 @@
     import LoadComponent from '../Load'
     import EditComponent from './EditComponent.vue'
     import GameComponent from './GameComponent.vue'
+    import OrderComponent from '../Order/IndexComponent.vue'
     import TransactionComponent from './TransactionComponent.vue'
 	export default {
         data: function() {
@@ -68,9 +82,9 @@
             this.loading.component = false;
             var interval = setInterval(() => {
                 var vm = this;
-                if($('a[data-toggle="tab"]').length > 0) {
+                if($('a[data-toggle="pill"]').length > 0) {
                     clearInterval(interval);
-                    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    $('a[data-toggle="pill"]').on('shown.bs.tab', function (e) {
                         var tab = $( e.target);
                         vm.active_tab = tab.attr('id');
                     });
@@ -86,7 +100,8 @@
             LoadComponent,
             EditComponent,
             GameComponent,
-            TransactionComponent
+            TransactionComponent,
+            OrderComponent
         }
 	}
 

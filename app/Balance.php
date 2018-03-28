@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Model\Frontend;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\User;
-use App\Model\Frontend\Lottery;
-use App\Model\Frontend\SoccerExpert;
-use App\Model\Frontend\ScratchCardTheme;
+use App\HistoricBalance;
 
-class Order extends Model
+class Balance extends Model
 {
     use SoftDeletes;
     
@@ -28,7 +26,7 @@ class Order extends Model
      * 
      * @var array
      */
-    public $table = 'orders';
+    public $table = 'balances';
 
     /**
      * The attributes that are mass assignable.
@@ -52,15 +50,7 @@ class Order extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function lotteries() {
-        return $this->belongsToMany(Lottery::class, 'orders_has_lotteries', 'order_id', 'lottery_id');
-    }
-
-    public function soccerExperts() {
-        return $this->belongsToMany(SoccerExpert::class, 'orders_has_soccer_experts', 'order_id', 'soccer_expert_id');
-    }
-
-    public function scratchCards() {
-        return $this->belongsToMany(ScratchCardTheme::class, 'orders_has_scratch_cards', 'order_id', 'scratch_card_id');
+    public function historic() {
+        return $this->hasMany(HistoricBalance::class, 'balance_id');
     }
 }
