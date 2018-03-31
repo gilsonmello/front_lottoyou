@@ -24,7 +24,7 @@
 	        	</div>
 	        </div>
 			<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
-				<div class="col-lg-3 col-8 col-md-5 col-sm-5" v-for="(index, column) in columns">
+				<div class="col-lg-2 col-8 col-md-5 col-sm-5" v-for="(index, column) in columns">
 					<div :class="'ticket'+column+' tickets'+' '+wow(index)">
 						<div class="tickets-header">
 							<!-- <strong>{{ column }}</strong> -->
@@ -75,10 +75,12 @@
 							</span>
 						</div>
 						<div class="tickets-footer">
-							<em class="text-caption">
+							<em class="text-caption" style="display: block">
                         		Dezenas restantes - 
+                    		</em>
+                    		<em class="text-caption">
                     			<input v-if="item.betting.length > 0 && item.betting[column].numbers != undefined" v-model="dickersMaxSel.length - item.betting[column].numbers.length" name="data[LotUserJogo][qtdNumeros1]" id="qtdNumeros1" type="text" disabled>
-                    			<input v-if="item.betting.length > 0 && dickersExtrasSelect.length > 0 && item.betting[column].numbersExtras != undefined" v-model="dickersExtrasSelect.length - item.betting[column].numbersExtras.length" name="data[LotUserJogo][qtdNumerosd1]" id="qtdNumerosd1" disabled type="text">
+                    			<input v-if="item.betting.length > 0 && dickersExtrasSelect.length > 0 && item.betting[column].numbersExtras != undefined" v-model="dickersExtrasSelect.length - item.betting[column].numbersExtras.length" name="data[LotUserJogo][qtdNumerosd1]" id="qtdNumerosd1" disabled type="text">	
                     		</em>
 						</div>
 					</div>
@@ -87,7 +89,7 @@
 					<div>
 						<a href="#" @click.prevent="addBet($event)" class="fa fa-plus" style="font-size: 60px;"></a>
 						<br>
-						<a v-if="columns.length > 1" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>
+						<a v-if="columns.length > 5" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>
 					</div>
 				</div>
 			</div>
@@ -150,7 +152,7 @@
 				dickers: [],
 				dickersExtras: [],
 				dickersExtrasSelect: [],
-				columns: [0],
+				columns: [0, 1, 2, 3, 4],
 				total: 0.00,
 				lot_jogo_id: '',
 				item: {
@@ -190,7 +192,7 @@
 						this.lottery = response.data
 						this.lot_jogo_id = this.lottery.sweepstakes[0].id
 						this.loading.component = false
-						this.columns = [0];
+						this.columns = [0, 1, 2, 3, 4];
 						this.item.hash = this.makeid(); 
 						this.item.id = this.lottery.id;
 						this.item.value = this.lottery.value;
@@ -201,6 +203,34 @@
 						this.item.betting = [
 							{
 					 			column: 0,
+						 		complete: false,
+						 		completeExtras: false,
+						 		numbers: [],
+						 		numbersExtras: []
+						 	},
+						 	{
+					 			column: 1,
+						 		complete: false,
+						 		completeExtras: false,
+						 		numbers: [],
+						 		numbersExtras: []
+						 	},
+						 	{
+					 			column: 2,
+						 		complete: false,
+						 		completeExtras: false,
+						 		numbers: [],
+						 		numbersExtras: []
+						 	},
+						 	{
+					 			column: 3,
+						 		complete: false,
+						 		completeExtras: false,
+						 		numbers: [],
+						 		numbersExtras: []
+						 	},
+						 	{
+					 			column: 4,
 						 		complete: false,
 						 		completeExtras: false,
 						 		numbers: [],
@@ -239,53 +269,58 @@
 				}
 			},
 			showLottery() {
-				var item = this.purchase.lotteries.items.filter((val) => {
-					return this.$route.params.hash == val.hash;
+
+				var interval = setInterval(() => {
+					var item = this.purchase.lotteries.items.filter((val) => {
+						return this.$route.params.hash == val.hash;
+					})
+
+					if(item.length > 0) {
+						clearInterval(interval);
+
+						item = item[0]
+
+						this.lottery = item.lottery
+						this.lot_jogo_id = item.lot_jogo_id
+
+						this.loading.component = false
+
+						var columns = []
+
+						item.betting.filter((val) => {
+							columns.push(val)
+						})
+
+						this.columns = columns;
+						this.item.hash = item.hash; 
+						this.item.id = item.id;
+						this.item.value = item.value;
+						this.item.lottery = item.lottery;
+						
+						this.item.betting = item.betting;
+						this.dickers = item.dickers;
+						this.dickersMaxSel = item.dickersMaxSelect;
+						this.dickersExtras = item.dickersExtras;
+						this.dickersExtrasSelect = item.dickersExtrasMaxSelect;
+
+						this.total = this.item.value * item.betting.length;
+
+						var interval = setInterval(() => {
+							if($(".container-tickets").length > 0) {
+								clearInterval(interval);
+								//Arrastando o scroll para a esquerda
+								$(".container-tickets").animate({ 
+									scrollLeft: $('.container-tickets')[0].scrollWidth 
+								}, 500, 'linear', function() {
+									
+								});
+							}
+						})
+					} else {
+
+					}
 				})
-
-				if(item.length > 0) {
-					item = item[0]
-
-					this.lottery = item.lottery
-					this.lot_jogo_id = item.lot_jogo_id
-
-					this.loading.component = false
-
-					var columns = []
-
-					item.betting.filter((val) => {
-						columns.push(val)
-					})
-
-					this.columns = columns;
-					this.item.hash = item.hash; 
-					this.item.id = item.id;
-					this.item.value = item.value;
-					this.item.lottery = item.lottery;
-					
-					this.item.betting = item.betting;
-					this.dickers = item.dickers;
-					this.dickersMaxSel = item.dickersMaxSelect;
-					this.dickersExtras = item.dickersExtras;
-					this.dickersExtrasSelect = item.dickersExtrasMaxSelect;
-
-					this.total = this.item.value * item.betting.length;
-
-					var interval = setInterval(() => {
-						if($(".container-tickets").length > 0) {
-							clearInterval(interval);
-							//Arrastando o scroll para a esquerda
-							$(".container-tickets").animate({ 
-								scrollLeft: $('.container-tickets')[0].scrollWidth 
-							}, 500, 'linear', function() {
-								
-							});
-						}
-					})
-					
-				} else {
-
-				}
+				
 			},
 			//Funcão executada ao carregar
 			init: function() {

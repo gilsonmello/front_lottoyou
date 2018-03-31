@@ -63,9 +63,10 @@
 										</span>
 									</label>
 								</div>
+								
 								<div class="col-lg-3 col-3 col-md-3 col-sm-3">
 									<span>
-										$ {{ (scratch_card_theme.value - ((scratch_card_theme.value * discount_table.percentage) / 100)).format(2, true) }}
+										$ {{ calculatePercentage(scratch_card_theme.value, discount_table.percentage, discount_table.quantity ) }}
 									</span>
 								</div>
 							</div>
@@ -95,7 +96,7 @@
 			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
 						<div class="col-lg-12 col-md-12 col-12 col-sm-12">
 		        			<div class="row">
-		        				<div v-if="scratch_card_jackpot_available.theme" class="col-lg-4 col-md-4 col-sm-12 col-12" :style="'background-image: url(/'+scratch_card_jackpot_available.theme.img_card_url.replace(' ', '%20')+'); background-size: 100% 100%; padding-right: 0; padding-left: 0; min-height: 106px;'">
+		        				<div v-if="scratch_card_jackpot_available" class="col-lg-4 col-md-4 col-sm-12 col-12" :style="'background-image: url(/'+scratch_card_jackpot_available.img_card_url+'); background-size: 100% 100%; padding-right: 0; padding-left: 0; min-height: 106px;'">
 					        	</div>
 					        	<div class="col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions" style="background-color: #155C7B">
 					        		
@@ -115,8 +116,8 @@
 					        			</div>
 					        			<div class="row">
 						        			<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-						        				<p class="text-center number-of-cards" v-if="scratch_card_jackpot_available">
-						        					{{ trans('strings.number_of_cards') }} {{  scratch_card_jackpot_available.qtd_raspadinhas}}
+						        				<p class="text-center number-of-cards" v-if="scratch_card_jackpot_available.total_tickets">
+						        					{{ trans('strings.number_of_cards') }} {{  scratch_card_jackpot_available.total_tickets.qtd_raspadinhas}}
 						        				</p>
 						        			</div>
 						        		</div>
@@ -159,10 +160,10 @@
 		        				</tr>
 		        			</thead>
 		        			<tbody>
-		        				<tr v-if="scratch_card_jackpot_available != null" v-for="(jackpot_available, key) in scratch_card_jackpot_available.scratch_card_winning">
+		        				<tr v-if="scratch_card_jackpot_available != null" v-for="(jackpot, key) in scratch_card_jackpot_available.jackpot_tables">
 		        					<td>{{ key + 1 }}</td>
-		        					<td>{{ jackpot_available.quantity }}</td>
-		        					<td>$ {{ jackpot_available.jackpot }}</td>
+		        					<td>{{ jackpot.disponivel }}</td>
+		        					<td>$ {{ jackpot.quantia }}</td>
 		        				</tr>
 		        			</tbody>
 		        		</table>
@@ -198,7 +199,9 @@
 
 			      	<!-- Modal body -->
 			      	<div class="modal-body">
-			      		<div class="col-lg-12 col-12 col-md-12 col-sm-12" v-if="scratch_card_demo.theme" :style="'background-image: url('+scratch_card_demo.theme.img_background_url+'); background-size: 100% 100%;'">
+			      		
+			      		<div class="col-lg-12 col-12 col-md-12 col-sm-12" v-if="scratch_card_demo.theme" :style="backgroundDemo(scratch_card_demo.theme.img_background_url)">
+			      			
 		      				<div class="row" style="padding: 20px 20px 0 20px;">
 		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
 		      						<div class="row" style="height: 100%;">
@@ -313,6 +316,9 @@
 			
 		},
 		methods: {
+			backgroundDemo(background) {
+				return 'background-image: url('+background.replace(' ', '%20')+'); background-size: 100% 100%;';
+			},
 			handlePlayAgain: function (el) {
 				$('.modal-demo').off('hidden.bs.modal');
 				const instance = axios.create();
@@ -446,6 +452,7 @@
 			},
 			handleJackpotTable: function(el) {
 				this.id = el.target.getAttribute('data-id');
+				$('.modal-jackpot-table').off('hidden.bs.modal');
 				$('.modal-jackpot-table').modal('toggle');
 				const instance = axios.create();
 				instance.interceptors.request.use(config => {
@@ -453,12 +460,19 @@
 					return config;
 				});
 				instance.get(routes.scratch_card_themes.jackpot_available.replace('{id}', this.id), {}).then(response => {
-		            if(response.status === 200){
+		            if(response.status === 200) {
 		            	this.scratch_card_jackpot_available = response.data
 	            		this.loading.modalJackpotTable = false;
 		            }
 		        }).catch((error) => {
-		            
+		            $('.modal-jackpot-table').on('hidden.bs.modal', function (e) {
+		        		if(error.response.data.msg) {
+							toastr.error(error.response.data.msg);
+			        	}
+		        	});
+		        	setTimeout(() => {
+		        		$('.modal-jackpot-table').modal('hide');
+		        	}, 500)
 		        })
 			},
 			addToCart: function(index, $event) {
@@ -514,11 +528,6 @@
 					this.item.scratch_card = scratch_card_theme
 				}
 
-				//Atualizando os dados do carrinho
-				this.$store.dispatch('setItemScratchCard', this.item)
-				//Redirecionando para o carrinho
-				this.$router.push({name: 'cart.index'})
-
 				let addScratchCardRequest = axios.create();
 
 				addScratchCardRequest.post(routes.carts.add_scratch_cards, {
@@ -527,11 +536,18 @@
 					hash: this.item.hash
 				}).then(response => {
 		            if(response.status === 200) {
-		            	
+	            		//Atualizando os dados do carrinho
+						this.$store.dispatch('setItemScratchCard', this.item)
+						//Redirecionando para o carrinho
+						this.$router.push({name: 'cart.index'})
 					}
 		        }).catch((error) => {
 		        	
 		        })			
+			},
+			calculatePercentage(value, percentage, quantity) {
+				let total = value * quantity;
+				return (total - ((total * percentage) / 100)).format(2, true);
 			}
 		},
 		data: function() {
@@ -558,7 +574,7 @@
 			
 		},
 		mounted: function() {
-			window.document.title = window.app.title +' | '+ this.trans('strings.scratch_cards');
+			window.document.title = this.trans('strings.scratch_cards') +' - '+ window.app.title;
 			axios.interceptors.request.use(config => {
 				return config;
 			});
@@ -581,7 +597,17 @@
 		computed: {
 			...mapGetters([
                 'auth'
-            ])
+            ]),
+            total: {
+            	// getter
+            	get: function () {
+            		
+		    	},
+			    // setter
+			    set: function (newValue) {
+			      	
+			    }
+            }
 		},
 		watch: {
 			'loading.modalDemo': function(newValue, oldValue) {}

@@ -1,7 +1,7 @@
 <template>
 	<div :id="id" class="collapse">
 		<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;" @click.prevent="editLottery(lottery.id, lottery.hash, $event)">
-			<div class="col-lg-3 col-10 col-md-5 col-sm-5" v-for="(bet, column) in lottery.betting">
+			<div class="col-lg-2 col-10 col-md-5 col-sm-5" v-for="(bet, column) in lottery.betting">
 				<div :class="'ticket'+column+' tickets'">
 					<!-- <div class="tickets-header">
 						<strong>{{ column }}</strong>

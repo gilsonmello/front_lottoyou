@@ -56,7 +56,7 @@
 			}
 		},
 		mounted: function() {
-			console.log(this.items)
+			
 		},
 		methods: {
 			removeItemLottery(item){

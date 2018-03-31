@@ -71,7 +71,6 @@ class CartController extends Controller
      */
     public function addSoccerExpert(Request $request)
     { 
-        dd($request);
         $this->insertOrRefreshCart($request, 'soccer_expert');
         return response()->json(['msg' => 'ok'], 200);
     }

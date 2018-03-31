@@ -59,7 +59,7 @@ class ScratchCardLot extends Model
     {
         return ScratchCard::selectRaw('count(*) as quantity, premio as jackpot')
             ->where('lote', '=', $this->id)
-            ->where('ativo', '=', 3)
+            ->where('premio', '>', 0)
             ->groupBy(['jackpot'])
             ->orderBy('jackpot', 'DESC')
             ->get();

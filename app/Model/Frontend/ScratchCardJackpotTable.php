@@ -3,22 +3,31 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+//use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Model\Frontend\ScratchCardTheme;
 
-class RaspadinhaCapaPremiacao extends Model
+class ScratchCardJackpotTable extends Model
 {
-	use SoftDeletes;
-	
+    const CREATED_AT = 'created';
+
+    const UPDATED_AT = 'modified';
+
+    //const DELETED_AT = 'deleted_at';
+
 	/**
      * @var bool
      */
     public $timestamps = true;
 
+    protected $appends = [
+        
+    ];
+
     /**
      * 
      * @var array
      */
-    public $table = 'raspadinhas_capa_premiacoes';
+    public $table = 'ras_tabelas_premios';
 
     /**
      * The attributes that are mass assignable.
@@ -38,7 +47,7 @@ class RaspadinhaCapaPremiacao extends Model
         
     ];
 
-    /*public function packages(){
-        return $this->belongsToMany(\App\Model\Frontend\Package::class, 'categories_has_packages', 'category_id', 'package_id');
-    }*/
+    public function theme() {
+    	return $this->belongsTo(ScratchCardTheme::class, 'tema_raspadinha_id');
+    }
 }

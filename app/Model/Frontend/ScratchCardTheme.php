@@ -5,6 +5,7 @@ namespace App\Model\Frontend;
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Frontend\ScratchCardDiscountTable;
 use App\Model\Frontend\ScratchCardLot;
+use App\Model\Frontend\ScratchCardJackpotTable;
 
 class ScratchCardTheme extends Model
 {
@@ -43,8 +44,12 @@ class ScratchCardTheme extends Model
         
     ];
 
+    protected $appends = [
+        'total_tickets'
+    ];
+
     public function lots() {
-    	return $this->hasMany(ScratchCardLot::class, 'temas_raspadinha_id')
+    	return $this->hasOne(ScratchCardLot::class, 'temas_raspadinha_id')
             ->where('active', '=', 1);
     }
 
@@ -52,4 +57,18 @@ class ScratchCardTheme extends Model
         return $this->hasMany(ScratchCardDiscountTable::class, 'tema_id')
             ->where('active', '=', 1);
     }
+
+    public function jackpotTables() {
+        return $this->hasMany(ScratchCardJackpotTable::class, 'tema_raspadinha_id')
+            ->where('active', '=', 1);
+    }
+
+    public function getTotalTicketsAttribute()
+    {
+        return ScratchCardLot::selectRaw('qtd_raspadinhas')
+            ->where('temas_raspadinha_id', '=', $this->id)
+            ->get()
+            ->first();
+    }
+
 }

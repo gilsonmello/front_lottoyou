@@ -7,15 +7,22 @@ use App\Http\Controllers\Controller;
 use App\Model\Frontend\ScratchCardTheme;
 use App\Model\Frontend\ScratchCardLot;
 use App\Model\Frontend\ScratchCardDemo;
+use App\Model\Frontend\ScratchCardJackpotTable;
 
 class ScratchCardThemeController extends Controller
 {
     
     public function jackpotAvailable($id = null){
-        $jackpotAvailable = ScratchCardLot::with('theme')
-            ->where('temas_raspadinha_id', '=', $id)
-            ->get()
-            ->first();
+        $jackpotAvailable = ScratchCardTheme::with([
+            'jackpotTables' => function($query) {
+                $query->orderBy('quantia', 'DESC');
+            }
+        ])
+        ->whereHas('jackpotTables')
+        ->where('id', '=', $id)
+        ->get()
+        ->first();
+
         if(!is_null($jackpotAvailable)) {
             return response()->json($jackpotAvailable, 200);
         }

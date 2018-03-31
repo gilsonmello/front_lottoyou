@@ -3,16 +3,22 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ScratchCardDemo extends Model
 {
-	use SoftDeletes;
+	//use SoftDeletes;
+
+    const CREATED_AT = 'created';
+
+    const UPDATED_AT = 'modified';
+
+    //const DELETED_AT = 'deleted_at';
 	
     /**
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $appends = [
         
@@ -22,7 +28,7 @@ class ScratchCardDemo extends Model
      * 
      * @var array
      */
-    public $table = 'raspadinha_demonstracoes';
+    public $table = 'ras_demos';
 
     /**
      * The attributes that are mass assignable.
