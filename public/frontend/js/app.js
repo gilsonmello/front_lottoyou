@@ -49191,7 +49191,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
                     this.$img.show();
                 } else {
                     // Have to load image before we can use it.
-                    $(new Image()).attr('src', this.options.fg).on("load", function () {
+                    $(new Image()).attr('crossOrigin', '').attr('src', this.options.fg).on("load", function () {
                         _this.ctx.drawImage(this, 0, 0, width, height);
                         _this.$img.show();
                     });
@@ -66649,9 +66649,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 							width: $(this).parent().width()
 						});
 						$(this).wScratchPad({
-							bg: dataScratchCard['valor' + count],
+							bg: 'img/raspadinha/' + dataScratchCard['valor' + count] + '.png',
 							fg: dataScratchCard.theme.img_capa_url,
-							'cursor': '../img/raspadinha/coin.png") 5 5, coin',
+							cursor: 'crosshair',
 							scratchMove: function scratchMove(e, percent) {
 								//Se o usuário raspou mais do que 59%, mostra a imagem de premiação e
 								//Desabilita o respectivo quadrado

@@ -22,7 +22,7 @@ class ScratchCardDemo extends Model
     public $timestamps = true;
 
     protected $appends = [
-        'valor1'
+        
     ];
 
     /**

@@ -394,9 +394,9 @@
 								width: $(this).parent().width()
 							});
 							$(this).wScratchPad({
-		                        bg: dataScratchCard['valor'+count],
+		                        bg: 'img/raspadinha/'+ dataScratchCard['valor'+count] +'.png',
 		                        fg: dataScratchCard.theme.img_capa_url,
-		                        'cursor': '../img/raspadinha/coin.png") 5 5, coin',
+		                        cursor: 'crosshair',
 		                        scratchMove: function (e, percent) {
 		                        	//Se o usuário raspou mais do que 59%, mostra a imagem de premiação e
 		                        	//Desabilita o respectivo quadrado
