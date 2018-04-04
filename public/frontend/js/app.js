@@ -67861,7 +67861,7 @@ var render = function() {
                                           "div",
                                           {
                                             staticClass:
-                                              "no-padding-left col-lg-4 col-4 col-md-4 col-sm-4"
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
                                           },
                                           [
                                             _c("div", {
@@ -67874,7 +67874,7 @@ var render = function() {
                                           "div",
                                           {
                                             staticClass:
-                                              "no-padding-left col-lg-4 col-4 col-md-4 col-sm-4"
+                                              " col-lg-4 col-4 col-md-4 col-sm-4"
                                           },
                                           [
                                             _c("div", {
@@ -67900,20 +67900,7 @@ var render = function() {
                                           "div",
                                           {
                                             staticClass:
-                                              "no-padding-left col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "no-padding-left col-lg-4 col-4 col-md-4 col-sm-4"
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
                                           },
                                           [
                                             _c("div", {
@@ -67939,7 +67926,7 @@ var render = function() {
                                           "div",
                                           {
                                             staticClass:
-                                              "no-padding-left col-lg-4 col-4 col-md-4 col-sm-4"
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
                                           },
                                           [
                                             _c("div", {
@@ -67952,7 +67939,20 @@ var render = function() {
                                           "div",
                                           {
                                             staticClass:
-                                              "no-padding-left col-lg-4 col-4 col-md-4 col-sm-4"
+                                              " col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-lg-4 col-4 col-md-4 col-sm-4"
                                           },
                                           [
                                             _c("div", {
