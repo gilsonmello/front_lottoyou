@@ -817,6 +817,7 @@
 
 	.h div{
 		height: 128px !important;
+		margin-bottom: 3px;
 	}
 
 	.no-padding-left {

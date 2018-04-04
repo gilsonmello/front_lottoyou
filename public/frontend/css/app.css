@@ -13346,6 +13346,11 @@ button.close {
   .header-items i {
     margin-right: 0 !important;
   }
+
+  .h div {
+    height: 100px !important;
+    margin-bottom: 3px;
+  }
 }
 
 .input-group-addon:not(:last-child) {
