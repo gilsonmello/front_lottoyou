@@ -9,7 +9,7 @@
 						<div class="extras">
 							<img src="https://www.grandesloterias.com/images/badges/new-badge_pt.png" alt="Novo" class="game-badge">
 						</div>
-						<img class="header-image img-fluid" alt="Halloween" :src="'/'+scratch_card_theme.img_background_url">
+						<img class="header-image img-fluid" alt="Halloween" :src="src(scratch_card_theme.img_background_url)">
 						<div class="descript">
                             <h2 class="ng-binding">{{ scratch_card_theme.nome }}</h2>
                             <p class="ng-binding">{{ scratch_card_theme.texto_raspadinha }}</p>
@@ -96,7 +96,7 @@
 			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
 						<div class="col-lg-12 col-md-12 col-12 col-sm-12">
 		        			<div class="row">
-		        				<div v-if="scratch_card_jackpot_available" class="col-lg-4 col-md-4 col-sm-12 col-12" :style="'background-image: url(/'+scratch_card_jackpot_available.img_card_url+'); background-size: 100% 100%; padding-right: 0; padding-left: 0; min-height: 106px;'">
+		        				<div v-if="scratch_card_jackpot_available.img_card_url" class="col-lg-4 col-md-4 col-sm-12 col-12" :style="backgroundDemo(scratch_card_jackpot_available.img_card_url)+' padding-right: 0; padding-left: 0; min-height: 106px;'">
 					        	</div>
 					        	<div class="col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions" style="background-color: #155C7B">
 					        		
@@ -272,7 +272,7 @@
 		      				</div>
 		      				<div class="row" style="padding: 10px 20px 10px 20px;">
 		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
-		      						<a href="javascript: void(0);" class="btn remaining-tickets">Raspadinhas restantes: </a>
+		      						<a href="javascript: void(0);" class="btn remaining-tickets">Raspadinhas restantes: {{ demoAttempts }}</a>
 		      					</div>
 		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
 		      						<a @click.prevent="handlePlay($event)" href="javascript: void(0);" class="btn btn-game btn-play">
@@ -316,35 +316,43 @@
 			
 		},
 		methods: {
+			src(src) {
+				return src.replace(' ', '%20');
+			},
 			backgroundDemo(background) {
 				return 'background-image: url('+background.replace(' ', '%20')+'); background-size: 100% 100%;';
 			},
 			handlePlayAgain: function (el) {
 				$('.modal-demo').off('hidden.bs.modal');
-				const instance = axios.create();
-				instance.interceptors.request.use(config => {
-					$('.btn-result').addClass('invisible');
-					this.loading.modalDemo = true;
-					return config;
-				});
-				instance.get(routes.scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(response => {
-		            if(response.status === 200) {
-		            	this.scratch_card_demo = response.data
-						this.loading.modalDemo = false;
-						$(el.target).addClass('hide');
-						$('.btn-play').removeClass('hide');
-						this.handleScratchPad();
-					}
-		        }).catch((error) => {
-		        	$('.modal-demo').on('hidden.bs.modal', function (e) {
-		        		if(error.response.data.msg) {
-							toastr.error(error.response.data.msg);
-			        	}
-		        	});
-		        	setTimeout(() => {
-						$('.modal-demo').modal('hide');
-		        	}, 500);
-		        })			
+				
+				if(this.demoAttempts == 0) {
+					$('.modal-demo').modal('hide');
+				} else {
+					const instance = axios.create();
+					instance.interceptors.request.use(config => {
+						$('.btn-result').addClass('invisible');
+						this.loading.modalDemo = true;
+						return config;
+					});
+					instance.get(routes.scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(response => {
+			            if(response.status === 200) {
+			            	this.scratch_card_demo = response.data
+							this.loading.modalDemo = false;
+							$(el.target).addClass('hide');
+							$('.btn-play').removeClass('hide');
+							this.handleScratchPad();
+						}
+			        }).catch((error) => {
+			        	$('.modal-demo').on('hidden.bs.modal', function (e) {
+			        		if(error.response.data.msg) {
+								toastr.error(error.response.data.msg);
+				        	}
+			        	});
+			        	setTimeout(() => {
+							$('.modal-demo').modal('hide');
+			        	}, 500);
+			        });
+		        }		
 			},
 			handlePlay: function (el){
 				$(el.target).addClass('hide');
@@ -363,10 +371,11 @@
 					$(el.target).addClass('hide');
 					$('.btn-result').removeClass('invisible');
                 	$('.btn-play-again').removeClass('hide');
+                	this.demoAttempts -= 1;
 				}, 200);
 			},
 			handleScratchPad: function() {
-				const vm = this;
+				let vm = this;
 				var dataScratchCard = this.scratch_card_demo;
 				var count = 1;
         		var time = setInterval(() => {	
@@ -399,6 +408,7 @@
 
 		                            //Caso o usuário raspou 9 quadrados, verifica se o bilhete era premiado
 		                            if(i == 9) {
+		                            	vm.demoAttempts -= 1;
 		                            	if(dataScratchCard.premio > 0) {
 		                            		$('.btn-result').removeClass('invisible');
 											$('.btn-result').text('Parabéns, você ganhou: $ '+dataScratchCard.premio);
@@ -434,6 +444,7 @@
 		            	this.scratch_card_demo = response.data
 						this.loading.modalDemo = false;
 						this.handleScratchPad();
+						this.demoAttempts = 5;
 					}
 		        }).catch((error) => {
 		        	$('.modal-demo').on('hidden.bs.modal', function (e) {
@@ -567,7 +578,8 @@
 					total: 0.00,
 					hash: '',
 					scratch_card: {}
-				}
+				},
+				demoAttempts: 5
 			}
 		},
 		beforeMount: function() {

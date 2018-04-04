@@ -66562,6 +66562,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	created: function created() {},
 	activated: function activated() {},
 	methods: {
+		src: function src(_src) {
+			return _src.replace(' ', '%20');
+		},
 		backgroundDemo: function backgroundDemo(background) {
 			return 'background-image: url(' + background.replace(' ', '%20') + '); background-size: 100% 100%;';
 		},
@@ -66570,30 +66573,35 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			var _this = this;
 
 			$('.modal-demo').off('hidden.bs.modal');
-			var instance = axios.create();
-			instance.interceptors.request.use(function (config) {
-				$('.btn-result').addClass('invisible');
-				_this.loading.modalDemo = true;
-				return config;
-			});
-			instance.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(function (response) {
-				if (response.status === 200) {
-					_this.scratch_card_demo = response.data;
-					_this.loading.modalDemo = false;
-					$(el.target).addClass('hide');
-					$('.btn-play').removeClass('hide');
-					_this.handleScratchPad();
-				}
-			}).catch(function (error) {
-				$('.modal-demo').on('hidden.bs.modal', function (e) {
-					if (error.response.data.msg) {
-						toastr.error(error.response.data.msg);
-					}
+
+			if (this.demoAttempts == 0) {
+				$('.modal-demo').modal('hide');
+			} else {
+				var instance = axios.create();
+				instance.interceptors.request.use(function (config) {
+					$('.btn-result').addClass('invisible');
+					_this.loading.modalDemo = true;
+					return config;
 				});
-				setTimeout(function () {
-					$('.modal-demo').modal('hide');
-				}, 500);
-			});
+				instance.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(function (response) {
+					if (response.status === 200) {
+						_this.scratch_card_demo = response.data;
+						_this.loading.modalDemo = false;
+						$(el.target).addClass('hide');
+						$('.btn-play').removeClass('hide');
+						_this.handleScratchPad();
+					}
+				}).catch(function (error) {
+					$('.modal-demo').on('hidden.bs.modal', function (e) {
+						if (error.response.data.msg) {
+							toastr.error(error.response.data.msg);
+						}
+					});
+					setTimeout(function () {
+						$('.modal-demo').modal('hide');
+					}, 500);
+				});
+			}
 		},
 		handlePlay: function handlePlay(el) {
 			$(el.target).addClass('hide');
@@ -66614,6 +66622,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				$(el.target).addClass('hide');
 				$('.btn-result').removeClass('invisible');
 				$('.btn-play-again').removeClass('hide');
+				_this2.demoAttempts -= 1;
 			}, 200);
 		},
 		handleScratchPad: function handleScratchPad() {
@@ -66650,6 +66659,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 								//Caso o usuário raspou 9 quadrados, verifica se o bilhete era premiado
 								if (i == 9) {
+									vm.demoAttempts -= 1;
 									if (dataScratchCard.premio > 0) {
 										$('.btn-result').removeClass('invisible');
 										$('.btn-result').text('Parabéns, você ganhou: $ ' + dataScratchCard.premio);
@@ -66687,6 +66697,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 					_this3.scratch_card_demo = response.data;
 					_this3.loading.modalDemo = false;
 					_this3.handleScratchPad();
+					_this3.demoAttempts = 5;
 				}
 			}).catch(function (error) {
 				$('.modal-demo').on('hidden.bs.modal', function (e) {
@@ -66813,7 +66824,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				total: 0.00,
 				hash: '',
 				scratch_card: {}
-			}
+			},
+			demoAttempts: 5
 		};
 	},
 	beforeMount: function beforeMount() {},
@@ -67081,7 +67093,7 @@ var render = function() {
                       staticClass: "header-image img-fluid",
                       attrs: {
                         alt: "Halloween",
-                        src: "/" + scratch_card_theme.img_background_url
+                        src: _vm.src(scratch_card_theme.img_background_url)
                       }
                     }),
                     _vm._v(" "),
@@ -67425,15 +67437,16 @@ var render = function() {
                           },
                           [
                             _c("div", { staticClass: "row" }, [
-                              _vm.scratch_card_jackpot_available
+                              _vm.scratch_card_jackpot_available.img_card_url
                                 ? _c("div", {
                                     staticClass:
                                       "col-lg-4 col-md-4 col-sm-12 col-12",
                                     style:
-                                      "background-image: url(/" +
-                                      _vm.scratch_card_jackpot_available
-                                        .img_card_url +
-                                      "); background-size: 100% 100%; padding-right: 0; padding-left: 0; min-height: 106px;"
+                                      _vm.backgroundDemo(
+                                        _vm.scratch_card_jackpot_available
+                                          .img_card_url
+                                      ) +
+                                      " padding-right: 0; padding-left: 0; min-height: 106px;"
                                   })
                                 : _vm._e(),
                               _vm._v(" "),
@@ -67973,7 +67986,12 @@ var render = function() {
                                             href: "javascript: void(0);"
                                           }
                                         },
-                                        [_vm._v("Raspadinhas restantes: ")]
+                                        [
+                                          _vm._v(
+                                            "Raspadinhas restantes: " +
+                                              _vm._s(_vm.demoAttempts)
+                                          )
+                                        ]
                                       )
                                     ]
                                   ),

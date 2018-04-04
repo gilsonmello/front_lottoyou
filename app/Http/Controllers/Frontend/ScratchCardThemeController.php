@@ -48,11 +48,13 @@ class ScratchCardThemeController extends Controller
      */
     public function index()
     {
-        return ScratchCardTheme::whereHas('lots', function($query) {
+        /*return ScratchCardTheme::whereHas('lots', function($query) {
             $query->where('active', '=', 1);
         })
         ->with('discountTables')
-        ->get();
+        ->get();*/
+        return ScratchCardTheme::with('discountTables')
+            ->get();
     }
 
     /**

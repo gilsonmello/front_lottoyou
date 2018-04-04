@@ -2,7 +2,8 @@
 SQLyog Ultimate v12.09 (64 bit)
 MySQL - 5.7.19 : Database - lottoyou
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -12,9 +13,6 @@ MySQL - 5.7.19 : Database - lottoyou
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`lottoyou` /*!40100 DEFAULT CHARACTER SET latin1 */;
-
-USE `lottoyou`;
 
 /*Table structure for table `anexos` */
 
@@ -1532,9 +1530,7 @@ insert  into `users`(`id`,`group_id`,`gel_empresa_id`,`username`,`password`,`nam
 
 DELIMITER $$
 
-/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `lot_jogos_resultados_after_insert` */$$
-
-/*!50003 CREATE */ /*!50003 TRIGGER `lot_jogos_resultados_after_insert` AFTER INSERT ON `lot_jogos_resultados` FOR EACH ROW BEGIN
+CREATE TRIGGER `lot_jogos_resultados_after_insert` AFTER INSERT ON `lot_jogos_resultados` FOR EACH ROW BEGIN
 Declare lot_jogo int default 0;
 Declare numeros varchar(100);
 Declare inicio int default 1;
@@ -1589,18 +1585,17 @@ if (inicio > 1) then
       and POSITION(numero in substring(lot_users_jogos.numeros,1,POSITION("+" in lot_users_jogos.numeros)-1)) > 0;
   
 end if; 
-END */$$
+END $$
 
 
 DELIMITER ;
 
 /* Procedure structure for procedure `sp_criar_raspadinha` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `sp_criar_raspadinha` */;
 
 DELIMITER $$
 
-/*!50003 CREATE PROCEDURE `sp_criar_raspadinha`(IN `lote` INT, IN `qtd_premiadas` INT, IN `qtd_geradas` INT, IN `usuario` INT, IN `valor_premiado` FLOAT, IN `tema_id` INT)
+CREATE PROCEDURE `sp_criar_raspadinha`(IN `lote` INT, IN `qtd_premiadas` INT, IN `qtd_geradas` INT, IN `usuario` INT, IN `valor_premiado` FLOAT, IN `tema_id` INT)
 BEGIN
 Declare qtd_prem_aux int default 1;
 Declare qtd_total int default 1;
@@ -1815,7 +1810,7 @@ while (qtd_total <= qtd_geradas) do
   set qtd_total = qtd_total + 1;
     
 end while;  
-END */$$
+END $$
 DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

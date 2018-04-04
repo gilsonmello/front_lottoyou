@@ -71,4 +71,18 @@ class ScratchCardTheme extends Model
             ->first();
     }
 
+    public function getImgBackgroundUrlAttribute()
+    {        
+        return env('APP_CDN'). $this->attributes['img_background_url'];
+    }
+
+    public function getImgCapaUrlAttribute()
+    {        
+        return env('APP_CDN'). $this->attributes['img_capa_url'];
+    }
+
+    public function getImgCardUrlAttribute()
+    {        
+        return env('APP_CDN'). $this->attributes['img_card_url'];
+    }
 }

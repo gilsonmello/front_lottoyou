@@ -46,4 +46,9 @@ class SoccerExpert extends Model
     public function rounds() {
     	return $this->hasMany(SoccerExpertRound::class, 'soc_categoria_id');
     }
+
+    public function getImagemCapaAttribute()
+    {        
+        return env('APP_CDN'). $this->attributes['imagem_capa'];
+    }
 }

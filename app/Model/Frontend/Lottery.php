@@ -54,4 +54,9 @@ class Lottery extends Model
         return $this->hasMany(LotterySweepstake::class, 'lot_categoria_id');
     }
 
+    public function getImgLoteriaAttribute()
+    {        
+        return env('APP_CDN'). $this->attributes['img_loteria'];
+    }
+
 }
