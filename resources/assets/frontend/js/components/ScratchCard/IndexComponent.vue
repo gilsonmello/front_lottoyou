@@ -816,7 +816,7 @@
 	}
 
 	.h div{
-		height: 128px !important;
+		height: 128px;
 		margin-bottom: 3px;
 	}
 
