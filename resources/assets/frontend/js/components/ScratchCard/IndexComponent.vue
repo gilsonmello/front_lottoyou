@@ -394,7 +394,7 @@
 								width: $(this).parent().width()
 							});
 							$(this).wScratchPad({
-		                        bg: 'img/raspadinha/'+ dataScratchCard['valor'+count] +'.png',
+		                        bg: dataScratchCard['valor'+count],
 		                        fg: dataScratchCard.theme.img_capa_url,
 		                        cursor: 'crosshair',
 		                        scratchMove: function (e, percent) {
