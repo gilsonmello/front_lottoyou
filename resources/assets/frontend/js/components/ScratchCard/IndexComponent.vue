@@ -205,15 +205,15 @@
 		      				<div class="row" style="padding: 20px 20px 0 20px;">
 		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
 		      						<div class="row" style="height: 100%;">
-		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12" style="padding: 0 5px 0 5px;">
 		      								<span class="ticket-number">ID do Bilhete: #++++DEMO++++</span>
 		      							</div>
-		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end">
+		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end" style="padding: 0 5px 0 5px;">
 		      								<p :style="'color: '+scratch_card_demo.theme.cor_texto_raspadinha+' '" class="text-center info-text">
 		      									{{ scratch_card_demo.theme.texto_index }}
 		      								</p>
 		      							</div>
-		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end">
+		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end" style="padding: 0 5px 0 5px;">
 		      								<a href="javascript: void(0);" class="btn btn-result invisible">
 				      							{{ trans('strings.result') }}
 				      						</a>

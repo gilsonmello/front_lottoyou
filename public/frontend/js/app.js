@@ -67752,7 +67752,10 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "col-lg-12 col-12 col-md-12 col-sm-12"
+                                                "col-lg-12 col-12 col-md-12 col-sm-12",
+                                              staticStyle: {
+                                                padding: "0 5px 0 5px"
+                                              }
                                             },
                                             [
                                               _c(
@@ -67773,7 +67776,10 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end"
+                                                "col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end",
+                                              staticStyle: {
+                                                padding: "0 5px 0 5px"
+                                              }
                                             },
                                             [
                                               _c(
@@ -67805,7 +67811,10 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end"
+                                                "col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end",
+                                              staticStyle: {
+                                                padding: "0 5px 0 5px"
+                                              }
                                             },
                                             [
                                               _c(
