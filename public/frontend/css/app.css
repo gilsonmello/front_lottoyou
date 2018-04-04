@@ -13128,7 +13128,7 @@ body {
 .scratchpad img {
   left: 0 !important;
   right: 0 !important;
-  min-heigth: 128px !important;
+  heigth: 128px !important;
 }
 
 .loading {

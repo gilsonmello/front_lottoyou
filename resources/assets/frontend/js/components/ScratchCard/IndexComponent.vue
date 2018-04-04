@@ -227,7 +227,12 @@
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="no-padding-left col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      								<div class="scratchpad">
+		      									
+		      								</div>
+		      							</div>
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
@@ -237,7 +242,12 @@
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="no-padding-left col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      								<div class="scratchpad">
+		      									
+		      								</div>
+		      							</div>
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
@@ -247,22 +257,12 @@
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="no-padding-left col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="no-padding-left col-lg-4 col-4 col-md-4 col-sm-4">
-		      								<div class="scratchpad">
-		      									
-		      								</div>
-		      							</div>
-		      							<div class="no-padding-left col-lg-4 col-4 col-md-4 col-sm-4">
-		      								<div class="scratchpad">
-		      									
-		      								</div>
-		      							</div>
-		      							<div class="no-padding-left col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
