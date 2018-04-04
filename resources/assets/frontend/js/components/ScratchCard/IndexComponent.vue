@@ -220,49 +220,49 @@
 		      							</div>
 		      						</div>
 		      					</div>
-		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6" style="padding-left: 0">
-		      						<div class="row">
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
+		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
+		      						<div class="row h">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
@@ -815,5 +815,8 @@
 		padding: 20px;
 	}
 
+	.h div{
+		min-height: 128px !important;
+	}
 	
 </style>
