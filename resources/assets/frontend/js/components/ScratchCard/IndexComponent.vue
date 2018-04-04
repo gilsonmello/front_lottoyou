@@ -271,10 +271,10 @@
 		      					</div>
 		      				</div>
 		      				<div class="row" style="padding: 10px 20px 10px 20px;">
-		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
+		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6" style="padding: 0 5px 0 5px;">
 		      						<a href="javascript: void(0);" class="btn remaining-tickets">Raspadinhas restantes: {{ demoAttempts }}</a>
 		      					</div>
-		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
+		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6" style="padding: 0 5px 0 5px;">
 		      						<a @click.prevent="handlePlay($event)" href="javascript: void(0);" class="btn btn-game btn-play">
 		      							{{ trans('strings.play_scratch_card') }}
 		      						</a>

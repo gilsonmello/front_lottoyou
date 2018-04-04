@@ -67979,7 +67979,8 @@ var render = function() {
                                     "div",
                                     {
                                       staticClass:
-                                        "col-lg-6 col-12 col-md-6 col-sm-6"
+                                        "col-lg-6 col-12 col-md-6 col-sm-6",
+                                      staticStyle: { padding: "0 5px 0 5px" }
                                     },
                                     [
                                       _c(
@@ -68004,7 +68005,8 @@ var render = function() {
                                     "div",
                                     {
                                       staticClass:
-                                        "col-lg-6 col-12 col-md-6 col-sm-6"
+                                        "col-lg-6 col-12 col-md-6 col-sm-6",
+                                      staticStyle: { padding: "0 5px 0 5px" }
                                     },
                                     [
                                       _c(
