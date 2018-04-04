@@ -200,7 +200,7 @@
 			      	<!-- Modal body -->
 			      	<div class="modal-body">
 			      		
-			      		<div class="col-lg-12 col-12 col-md-12 col-sm-12" v-if="scratch_card_demo.theme" :style="backgroundDemo(scratch_card_demo.theme.img_background_url)">
+			      		<div class="col-lg-12 col-12 col-md-12 col-sm-12 no-padding" v-if="scratch_card_demo.theme" :style="backgroundDemo(scratch_card_demo.theme.img_background_url)">
 			      			
 		      				<div class="row" style="padding: 20px 20px 0 20px;">
 		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
@@ -220,49 +220,49 @@
 		      							</div>
 		      						</div>
 		      					</div>
-		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
+		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6" style="padding-left: 0">
 		      						<div class="row">
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
 		      							</div>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
+		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4 no-padding">
 		      								<div class="scratchpad">
 		      									
 		      								</div>
