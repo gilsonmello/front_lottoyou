@@ -34,6 +34,10 @@ Vue.prototype.makeid = function() {
 	return text;
 };
 
+Vue.prototype.src = function(src) {
+	return src.replace(' ', '%20');
+};
+
 Vue.prototype.trans = (key) => {
     return _.get(window.trans, key, key);
 };

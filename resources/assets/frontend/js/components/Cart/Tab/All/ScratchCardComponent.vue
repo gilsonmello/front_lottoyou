@@ -2,7 +2,7 @@
 	<section>
 		<div class="row vcenter scratch_cars">
 			<div class="col-lg-2 col-md-2 col-2 col-sm-2">
-				<img class="img-fluid" :src="app.basePath+item.scratch_card.img_card_url">
+				<img class="img-fluid" :src="src(item.scratch_card.img_card_url)">
 			</div>
 			<div class="col-lg-8 col-5 col-md-7 col-sm-6">
 				<div class="row">

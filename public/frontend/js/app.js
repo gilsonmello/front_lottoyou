@@ -27476,6 +27476,10 @@ Vue.prototype.makeid = function () {
   return text;
 };
 
+Vue.prototype.src = function (src) {
+  return src.replace(' ', '%20');
+};
+
 Vue.prototype.trans = function (key) {
   return _.get(window.trans, key, key);
 };
@@ -72131,9 +72135,7 @@ var render = function() {
         _c("div", { staticClass: "col-lg-2 col-md-2 col-2 col-sm-2" }, [
           _c("img", {
             staticClass: "img-fluid",
-            attrs: {
-              src: _vm.app.basePath + scratch_card.scratch_card.img_card_url
-            }
+            attrs: { src: _vm.src(scratch_card.scratch_card.img_card_url) }
           })
         ]),
         _vm._v(" "),
@@ -73897,7 +73899,7 @@ var render = function() {
       _c("div", { staticClass: "col-lg-2 col-md-2 col-2 col-sm-2" }, [
         _c("img", {
           staticClass: "img-fluid",
-          attrs: { src: _vm.app.basePath + _vm.item.scratch_card.img_card_url }
+          attrs: { src: _vm.src(_vm.item.scratch_card.img_card_url) }
         })
       ]),
       _vm._v(" "),
