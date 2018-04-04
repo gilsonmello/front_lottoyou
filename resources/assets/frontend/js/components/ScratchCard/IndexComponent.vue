@@ -818,6 +818,7 @@
 	.h div{
 		height: 128px;
 		margin-bottom: 3px;
+		padding: 0 5px 0 5px;
 	}
 
 	.no-padding-left {
