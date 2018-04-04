@@ -66233,7 +66233,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.remaining-tickets[data-v-fc188428] {\n\t    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;\n\t    border-color: #baa359;\n\t    color: #f2d472;\n\t    text-align: left;\n\t    line-height: 48px;\n\t    padding: 0 15px;\n\t    width: 100%;\n}\n.info-text[data-v-fc188428] {\n\t\tcolor: #fff;\n    \tfont-size: 15px;\n\t    margin: 0;\n\t    padding: 0 8px;\n\t    line-height: 22px;\n\t    text-shadow: 0 2px 3px rgba(0,0,0,.8);\n}\n.ticket-number[data-v-fc188428] {\n\t    color: #fff;\n\t    font-family: courier;\n}\n.btn-result[data-v-fc188428] {\n\t\tborder-color: #baa359;\n\t    line-height: 36px;\n\t    font-weight: bold;\n\t    text-align: center;\n        color: #f2d472;\n        border-color: #baa359;\n\t    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;\n\t    font-size: 21px;\n\t    width: 100%;\n}\n.btn-game[data-v-fc188428]:not([disabled]):not(.disabled):active {\n\t\tbackground: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0 !important;\n}\n.btn-game[data-v-fc188428] {\n\t\tbackground: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0;\n\t    border: 0 none;\n\t    width: 100%;\n\t    border-radius: 5px;\n\t    -webkit-box-shadow: 0 -4px 0 -2px #708f00 inset;\n\t            box-shadow: 0 -4px 0 -2px #708f00 inset;\n\t    -webkit-box-sizing: border-box;\n\t            box-sizing: border-box;\n\t    color: #fff;\n\t    cursor: pointer;\n\t    font-family: \"kievit\",arial,sans-serif;\n\t    font-size: 24px;\n\t    font-weight: 700;\n\t    line-height: 48px;\n\t    padding: 0 15px;\n\t    text-align: center;\n\t    text-decoration: none;\n\t    text-shadow: 1px 1px 2px #586e00;\n\t    vertical-align: bottom;\n}\n.scratch-card[data-v-fc188428] {\n\t\tbackground: #efefef;\n\t    border-radius: 5px;\n\t    padding: 15px;\n\t    margin-bottom: 30px;\n\t    position: relative;\n}\n.extras img[data-v-fc188428] {\n\t\tposition: absolute;\n\t\ttop: -15px;\n\t    left: -5px;\n\t    z-index: 4;\n}\ninput[type=radio][data-v-fc188428] {\n\t\tmargin: 0;\n    \tmargin-right: 10px;\n}\n.scratch-card-footer label[data-v-fc188428] {\n\t\tpadding: 13px 10px;\n\t    margin: 0;\n\t    width: 100%;\n\t    cursor: pointer;\n}\n.scratch-card-footer form .row[data-v-fc188428] {\n\t\tcolor: #666;\n\t    background: rgba(255,255,255,.3);\n\t    border-bottom: 1px solid #eee;\n\t    font-size: 15px;\n\t    cursor: pointer;\n}\n.scratch-card-body .amount[data-v-fc188428] {\n\t\tbackground: linear-gradient(87.71deg, #1DB2E0 0%, #6AD1ED 50.77%, #1DB2E0 100%);\n\t    height: 46px;\n\t    color: #FFFFFF;\n\t    font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n\t    font-size: 15px;\n\t    font-weight: bold;\n\t    line-height: 46px;\n\t    text-align: center;\n\t    -webkit-box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t            box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t    position: relative;\n}\n.scratch-card-body .jackpot-table[data-v-fc188428] {\n\t\tbackground: #0f546d;\n\t    color: #fff;\n\t    padding: 10px;\n\t    font-size: 13px;\n\t    font-weight: 700;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428] {\n\t\tdisplay: block;\n\t    border: 2px solid rgba(255,255,255,.2);\n\t    border-radius: 5px;\n\t    color: #fff;\n\t    font-weight: 700;\n\t    -webkit-transition: border .3s ease-in-out;\n\t    transition: border .3s ease-in-out;\n\t    font-size: 13px;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.description[data-v-fc188428] {\n\t\tcursor: pointer;\n    \tcolor: #fff;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428]:hover {\n\t\tborder: 2px solid #fff;\n}\n.scratch-card-body .btn[data-v-fc188428] {\n\t\tpadding: 0\n}\n.scratch-card-header[data-v-fc188428] {\n\t\tposition: relative;\n}\n.scratch-card-header .header-image[data-v-fc188428] { \n\t\twidth: 100%;\n}\n.scratch-card-header:hover .descript[data-v-fc188428] {\n\t    opacity: 1;\n}\n.scratch-card-header .descript[data-v-fc188428] {\n\t    position: absolute;\n\t    left: 0;\n\t    top: 0;\n\t    width: 100%;\n\t    height: 100%;\n\t    background-color: rgba(239,239,239,.95);\n\t    z-index: 2;\n\t    opacity: 0;\n\t    -webkit-transition: opacity .3s ease-in-out;\n\t    transition: opacity .3s ease-in-out;\n\t    padding: 20px;\n\t    text-align: center;\n\t    color: #666;\n}\n.modal-jackpot-table .container-actions[data-v-fc188428] {\n\t\tbackground-color: #155C7B;\n\t    text-align: center;\n}\n.modal-jackpot-table .container-actions .btn[data-v-fc188428] {\n\t   \tmargin: 10px 0 10px 0;\n\t   \tdisplay: block;\n}\n.modal-demo .modal-body[data-v-fc188428] {\n\t\tpadding: 20px;\n}\n.h div[data-v-fc188428]{\n\t\tmin-height: 128px !important;\n}\n.no-padding-left[data-v-fc188428] {\n\t\tpadding-left: 0;\n}\n\t\n", ""]);
+exports.push([module.i, "\n.remaining-tickets[data-v-fc188428] {\n\t    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;\n\t    border-color: #baa359;\n\t    color: #f2d472;\n\t    text-align: left;\n\t    line-height: 48px;\n\t    padding: 0 15px;\n\t    width: 100%;\n}\n.info-text[data-v-fc188428] {\n\t\tcolor: #fff;\n    \tfont-size: 15px;\n\t    margin: 0;\n\t    padding: 0 8px;\n\t    line-height: 22px;\n\t    text-shadow: 0 2px 3px rgba(0,0,0,.8);\n}\n.ticket-number[data-v-fc188428] {\n\t    color: #fff;\n\t    font-family: courier;\n}\n.btn-result[data-v-fc188428] {\n\t\tborder-color: #baa359;\n\t    line-height: 36px;\n\t    font-weight: bold;\n\t    text-align: center;\n        color: #f2d472;\n        border-color: #baa359;\n\t    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;\n\t    font-size: 21px;\n\t    width: 100%;\n}\n.btn-game[data-v-fc188428]:not([disabled]):not(.disabled):active {\n\t\tbackground: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0 !important;\n}\n.btn-game[data-v-fc188428] {\n\t\tbackground: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0;\n\t    border: 0 none;\n\t    width: 100%;\n\t    border-radius: 5px;\n\t    -webkit-box-shadow: 0 -4px 0 -2px #708f00 inset;\n\t            box-shadow: 0 -4px 0 -2px #708f00 inset;\n\t    -webkit-box-sizing: border-box;\n\t            box-sizing: border-box;\n\t    color: #fff;\n\t    cursor: pointer;\n\t    font-family: \"kievit\",arial,sans-serif;\n\t    font-size: 24px;\n\t    font-weight: 700;\n\t    line-height: 48px;\n\t    padding: 0 15px;\n\t    text-align: center;\n\t    text-decoration: none;\n\t    text-shadow: 1px 1px 2px #586e00;\n\t    vertical-align: bottom;\n}\n.scratch-card[data-v-fc188428] {\n\t\tbackground: #efefef;\n\t    border-radius: 5px;\n\t    padding: 15px;\n\t    margin-bottom: 30px;\n\t    position: relative;\n}\n.extras img[data-v-fc188428] {\n\t\tposition: absolute;\n\t\ttop: -15px;\n\t    left: -5px;\n\t    z-index: 4;\n}\ninput[type=radio][data-v-fc188428] {\n\t\tmargin: 0;\n    \tmargin-right: 10px;\n}\n.scratch-card-footer label[data-v-fc188428] {\n\t\tpadding: 13px 10px;\n\t    margin: 0;\n\t    width: 100%;\n\t    cursor: pointer;\n}\n.scratch-card-footer form .row[data-v-fc188428] {\n\t\tcolor: #666;\n\t    background: rgba(255,255,255,.3);\n\t    border-bottom: 1px solid #eee;\n\t    font-size: 15px;\n\t    cursor: pointer;\n}\n.scratch-card-body .amount[data-v-fc188428] {\n\t\tbackground: linear-gradient(87.71deg, #1DB2E0 0%, #6AD1ED 50.77%, #1DB2E0 100%);\n\t    height: 46px;\n\t    color: #FFFFFF;\n\t    font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n\t    font-size: 15px;\n\t    font-weight: bold;\n\t    line-height: 46px;\n\t    text-align: center;\n\t    -webkit-box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t            box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t    position: relative;\n}\n.scratch-card-body .jackpot-table[data-v-fc188428] {\n\t\tbackground: #0f546d;\n\t    color: #fff;\n\t    padding: 10px;\n\t    font-size: 13px;\n\t    font-weight: 700;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428] {\n\t\tdisplay: block;\n\t    border: 2px solid rgba(255,255,255,.2);\n\t    border-radius: 5px;\n\t    color: #fff;\n\t    font-weight: 700;\n\t    -webkit-transition: border .3s ease-in-out;\n\t    transition: border .3s ease-in-out;\n\t    font-size: 13px;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.description[data-v-fc188428] {\n\t\tcursor: pointer;\n    \tcolor: #fff;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428]:hover {\n\t\tborder: 2px solid #fff;\n}\n.scratch-card-body .btn[data-v-fc188428] {\n\t\tpadding: 0\n}\n.scratch-card-header[data-v-fc188428] {\n\t\tposition: relative;\n}\n.scratch-card-header .header-image[data-v-fc188428] { \n\t\twidth: 100%;\n}\n.scratch-card-header:hover .descript[data-v-fc188428] {\n\t    opacity: 1;\n}\n.scratch-card-header .descript[data-v-fc188428] {\n\t    position: absolute;\n\t    left: 0;\n\t    top: 0;\n\t    width: 100%;\n\t    height: 100%;\n\t    background-color: rgba(239,239,239,.95);\n\t    z-index: 2;\n\t    opacity: 0;\n\t    -webkit-transition: opacity .3s ease-in-out;\n\t    transition: opacity .3s ease-in-out;\n\t    padding: 20px;\n\t    text-align: center;\n\t    color: #666;\n}\n.modal-jackpot-table .container-actions[data-v-fc188428] {\n\t\tbackground-color: #155C7B;\n\t    text-align: center;\n}\n.modal-jackpot-table .container-actions .btn[data-v-fc188428] {\n\t   \tmargin: 10px 0 10px 0;\n\t   \tdisplay: block;\n}\n.modal-demo .modal-body[data-v-fc188428] {\n\t\tpadding: 20px;\n}\n.h div[data-v-fc188428]{\n\t\theight: 128px !important;\n}\n.no-padding-left[data-v-fc188428] {\n\t\tpadding-left: 0;\n}\n\t\n", ""]);
 
 // exports
 
@@ -67848,32 +67848,6 @@ var render = function() {
                                           "div",
                                           {
                                             staticClass:
-                                              "no-padding-left col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
                                               "col-lg-4 col-4 col-md-4 col-sm-4"
                                           },
                                           [
@@ -67888,32 +67862,6 @@ var render = function() {
                                           {
                                             staticClass:
                                               "no-padding-left col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-lg-4 col-4 col-md-4 col-sm-4"
                                           },
                                           [
                                             _c("div", {
@@ -67952,7 +67900,59 @@ var render = function() {
                                           "div",
                                           {
                                             staticClass:
+                                              "no-padding-left col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "no-padding-left col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
                                               "col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "no-padding-left col-lg-4 col-4 col-md-4 col-sm-4"
+                                          },
+                                          [
+                                            _c("div", {
+                                              staticClass: "scratchpad"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "no-padding-left col-lg-4 col-4 col-md-4 col-sm-4"
                                           },
                                           [
                                             _c("div", {
