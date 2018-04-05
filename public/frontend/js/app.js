@@ -67722,60 +67722,126 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "modal-body" }, [
-                      _vm.scratch_card_demo.theme
-                        ? _c(
-                            "div",
-                            {
-                              staticClass:
-                                "col-lg-12 col-12 col-md-12 col-sm-12 no-padding",
-                              style: _vm.backgroundDemo(
-                                _vm.scratch_card_demo.theme.img_background_url
-                              )
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "row",
-                                  staticStyle: { padding: "20px 20px 0 20px" }
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-lg-6 col-12 col-md-6 col-sm-6"
-                                    },
-                                    [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "row",
-                                          staticStyle: { height: "100%" }
-                                        },
-                                        [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal-body",
+                        staticStyle: { padding: "0" }
+                      },
+                      [
+                        _vm.scratch_card_demo.theme
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "col-lg-12 col-12 col-md-12 col-sm-12 no-padding",
+                                style: _vm.backgroundDemo(
+                                  _vm.scratch_card_demo.theme.img_background_url
+                                )
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "row",
+                                    staticStyle: { padding: "20px 20px 0 20px" }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-lg-6 col-12 col-md-6 col-sm-6"
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass: "row",
+                                            staticStyle: { height: "100%" }
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "col-lg-12 col-12 col-md-12 col-sm-12",
+                                                staticStyle: {
+                                                  padding: "0 5px 0 5px"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass: "ticket-number"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "ID do Bilhete: #++++DEMO++++"
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end",
+                                                staticStyle: {
+                                                  padding: "0 5px 0 5px"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "a",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-result invisible",
+                                                    attrs: {
+                                                      href:
+                                                        "javascript: void(0);"
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n\t\t\t\t      \t\t\t\t\t\t\t" +
+                                                        _vm._s(
+                                                          _vm.trans(
+                                                            "strings.result"
+                                                          )
+                                                        ) +
+                                                        "\n\t\t\t\t      \t\t\t\t\t\t"
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-lg-6 col-12 col-md-6 col-sm-6"
+                                      },
+                                      [
+                                        _c("div", { staticClass: "row h" }, [
                                           _c(
                                             "div",
                                             {
                                               staticClass:
-                                                "col-lg-12 col-12 col-md-12 col-sm-12",
-                                              staticStyle: {
-                                                padding: "0 5px 0 5px"
-                                              }
+                                                "col-lg-4 col-4 col-md-4 col-sm-4"
                                             },
                                             [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass: "ticket-number"
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "ID do Bilhete: #++++DEMO++++"
-                                                  )
-                                                ]
-                                              )
+                                              _c("div", {
+                                                staticClass: "scratchpad"
+                                              })
                                             ]
                                           ),
                                           _vm._v(" "),
@@ -67783,326 +67849,274 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end",
-                                              staticStyle: {
-                                                padding: "0 5px 0 5px"
-                                              }
+                                                "col-lg-4 col-4 col-md-4 col-sm-4"
                                             },
                                             [
-                                              _c(
-                                                "a",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-result invisible",
-                                                  attrs: {
-                                                    href: "javascript: void(0);"
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n\t\t\t\t      \t\t\t\t\t\t\t" +
-                                                      _vm._s(
-                                                        _vm.trans(
-                                                          "strings.result"
-                                                        )
-                                                      ) +
-                                                      "\n\t\t\t\t      \t\t\t\t\t\t"
-                                                  )
-                                                ]
-                                              )
+                                              _c("div", {
+                                                staticClass: "scratchpad"
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                " col-lg-4 col-4 col-md-4 col-sm-4"
+                                            },
+                                            [
+                                              _c("div", {
+                                                staticClass: "scratchpad"
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "col-lg-4 col-4 col-md-4 col-sm-4"
+                                            },
+                                            [
+                                              _c("div", {
+                                                staticClass: "scratchpad"
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "col-lg-4 col-4 col-md-4 col-sm-4"
+                                            },
+                                            [
+                                              _c("div", {
+                                                staticClass: "scratchpad"
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "col-lg-4 col-4 col-md-4 col-sm-4"
+                                            },
+                                            [
+                                              _c("div", {
+                                                staticClass: "scratchpad"
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "col-lg-4 col-4 col-md-4 col-sm-4"
+                                            },
+                                            [
+                                              _c("div", {
+                                                staticClass: "scratchpad"
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                " col-lg-4 col-4 col-md-4 col-sm-4"
+                                            },
+                                            [
+                                              _c("div", {
+                                                staticClass: "scratchpad"
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "col-lg-4 col-4 col-md-4 col-sm-4"
+                                            },
+                                            [
+                                              _c("div", {
+                                                staticClass: "scratchpad"
+                                              })
                                             ]
                                           )
-                                        ]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-lg-6 col-12 col-md-6 col-sm-6"
-                                    },
-                                    [
-                                      _c("div", { staticClass: "row h" }, [
+                                        ])
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "row",
+                                    staticStyle: {
+                                      padding: "10px 20px 10px 20px"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-lg-6 col-12 col-md-6 col-sm-6",
+                                        staticStyle: { padding: "0 5px 0 5px" }
+                                      },
+                                      [
                                         _c(
-                                          "div",
+                                          "a",
                                           {
                                             staticClass:
-                                              "col-lg-4 col-4 col-md-4 col-sm-4"
+                                              "btn remaining-tickets",
+                                            attrs: {
+                                              href: "javascript: void(0);"
+                                            }
                                           },
                                           [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              " col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              " col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-lg-4 col-4 col-md-4 col-sm-4"
-                                          },
-                                          [
-                                            _c("div", {
-                                              staticClass: "scratchpad"
-                                            })
+                                            _vm._v(
+                                              "Raspadinhas restantes: " +
+                                                _vm._s(_vm.demoAttempts)
+                                            )
                                           ]
                                         )
-                                      ])
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "row",
-                                  staticStyle: {
-                                    padding: "10px 20px 10px 20px"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-lg-6 col-12 col-md-6 col-sm-6",
-                                      staticStyle: { padding: "0 5px 0 5px" }
-                                    },
-                                    [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "btn remaining-tickets",
-                                          attrs: {
-                                            href: "javascript: void(0);"
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "Raspadinhas restantes: " +
-                                              _vm._s(_vm.demoAttempts)
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-lg-6 col-12 col-md-6 col-sm-6",
-                                      staticStyle: { padding: "0 5px 0 5px" }
-                                    },
-                                    [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "btn btn-game btn-play",
-                                          attrs: {
-                                            href: "javascript: void(0);"
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              _vm.handlePlay($event)
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-lg-6 col-12 col-md-6 col-sm-6",
+                                        staticStyle: { padding: "0 5px 0 5px" }
+                                      },
+                                      [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn btn-game btn-play",
+                                            attrs: {
+                                              href: "javascript: void(0);"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                _vm.handlePlay($event)
+                                              }
                                             }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n\t\t      \t\t\t\t\t\t\t" +
-                                              _vm._s(
-                                                _vm.trans(
-                                                  "strings.play_scratch_card"
-                                                )
-                                              ) +
-                                              "\n\t\t      \t\t\t\t\t\t"
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass:
-                                            "btn hide btn-game btn-loading",
-                                          attrs: {
-                                            href: "javascript: void(0);"
                                           },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              _vm.handleLoading($event)
+                                          [
+                                            _vm._v(
+                                              "\n\t\t      \t\t\t\t\t\t\t" +
+                                                _vm._s(
+                                                  _vm.trans(
+                                                    "strings.play_scratch_card"
+                                                  )
+                                                ) +
+                                                "\n\t\t      \t\t\t\t\t\t"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn hide btn-game btn-loading",
+                                            attrs: {
+                                              href: "javascript: void(0);"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                _vm.handleLoading($event)
+                                              }
                                             }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n\t\t      \t\t\t\t\t\t\t" +
-                                              _vm._s(
-                                                _vm.trans("strings.loading") +
-                                                  " ..."
-                                              ) +
-                                              "\n\t\t      \t\t\t\t\t\t"
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass:
-                                            "btn hide btn-game btn-reveal-all",
-                                          attrs: {
-                                            href: "javascript: void(0);"
                                           },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              _vm.handleReveal($event)
+                                          [
+                                            _vm._v(
+                                              "\n\t\t      \t\t\t\t\t\t\t" +
+                                                _vm._s(
+                                                  _vm.trans("strings.loading") +
+                                                    " ..."
+                                                ) +
+                                                "\n\t\t      \t\t\t\t\t\t"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn hide btn-game btn-reveal-all",
+                                            attrs: {
+                                              href: "javascript: void(0);"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                _vm.handleReveal($event)
+                                              }
                                             }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n\t\t      \t\t\t\t\t\t\t" +
-                                              _vm._s(
-                                                _vm.trans("strings.reveal_all")
-                                              ) +
-                                              "\n\t\t      \t\t\t\t\t\t"
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass:
-                                            "btn hide btn-game btn-play-again",
-                                          attrs: {
-                                            href: "javascript: void(0);"
                                           },
-                                          on: {
-                                            click: function($event) {
-                                              $event.preventDefault()
-                                              _vm.handlePlayAgain($event)
+                                          [
+                                            _vm._v(
+                                              "\n\t\t      \t\t\t\t\t\t\t" +
+                                                _vm._s(
+                                                  _vm.trans(
+                                                    "strings.reveal_all"
+                                                  )
+                                                ) +
+                                                "\n\t\t      \t\t\t\t\t\t"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn hide btn-game btn-play-again",
+                                            attrs: {
+                                              href: "javascript: void(0);"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                _vm.handlePlayAgain($event)
+                                              }
                                             }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n\t\t      \t\t\t\t\t\t\t" +
-                                              _vm._s(
-                                                _vm.trans("strings.play_again")
-                                              ) +
-                                              "\n\t\t      \t\t\t\t\t\t"
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        : _vm._e()
-                    ])
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n\t\t      \t\t\t\t\t\t\t" +
+                                                _vm._s(
+                                                  _vm.trans(
+                                                    "strings.play_again"
+                                                  )
+                                                ) +
+                                                "\n\t\t      \t\t\t\t\t\t"
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ]
+                    )
                   ])
             ])
           ]

@@ -198,7 +198,7 @@
 			      	</div>
 
 			      	<!-- Modal body -->
-			      	<div class="modal-body">
+			      	<div class="modal-body" style="padding: 0;">
 			      		
 			      		<div class="col-lg-12 col-12 col-md-12 col-sm-12 no-padding" v-if="scratch_card_demo.theme" :style="backgroundDemo(scratch_card_demo.theme.img_background_url)">
 			      			
