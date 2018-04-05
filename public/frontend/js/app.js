@@ -67683,7 +67683,7 @@ var render = function() {
                 : _c("div", { staticClass: "modal-content" }, [
                     _c("div", { staticClass: "modal-header" }, [
                       _c("div", { staticClass: "col-lg-6" }, [
-                        _c("h4", { staticClass: "modal-title" }, [
+                        _c("h5", { staticClass: "modal-title" }, [
                           _vm._v("Demo de Raspadinhas sem prêmios")
                         ])
                       ]),
@@ -67692,7 +67692,7 @@ var render = function() {
                         _c(
                           "a",
                           {
-                            staticClass: "btn btn-success btn-md pull-right",
+                            staticClass: "btn btn-success btn-xs pull-right",
                             attrs: { href: "javascript: void(0);" }
                           },
                           [

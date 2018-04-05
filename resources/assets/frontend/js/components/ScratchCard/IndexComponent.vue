@@ -187,10 +187,10 @@
 					<!-- Modal Header -->
 			      	<div class="modal-header">
 			      		<div class="col-lg-6">
-				        	<h4 class="modal-title">Demo de Raspadinhas sem prêmios</h4> 
+				        	<h5 class="modal-title">Demo de Raspadinhas sem prêmios</h5> 
 				        </div>
 			        	<div class="col-lg-5">
-			        		<a href="javascript: void(0);" class="btn btn-success btn-md pull-right">
+			        		<a href="javascript: void(0);" class="btn btn-success btn-xs pull-right">
 				        		{{ trans('strings.play_truth') }}
 				        	</a>  
 			        	</div> 	
