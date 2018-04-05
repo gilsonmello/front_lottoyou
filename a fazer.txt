@@ -1,0 +1,6 @@
+- após escolher a imagem do número do lote, mostrar o nome da imagem selecionada no canto direito
+- não fechar modal ao gerar raspadinhas demo
+- em cadastro de tema, remover obrigatoriedade do campo texto da raspadinha
+- mensagem para o usuário comprar raspadinha ao terminar as demos
+- remover a opção padrão de o usuário selecionar 1 jogo da raspadinha
+- adicionar opção de mostrar porcentagem ou não da raspadinha
