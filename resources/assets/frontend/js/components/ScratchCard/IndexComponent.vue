@@ -208,11 +208,11 @@
 		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12" style="padding: 0 5px 0 5px;">
 		      								<span class="ticket-number">ID do Bilhete: #++++DEMO++++</span>
 		      							</div>
-		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end" style="padding: 0 5px 0 5px;">
+		      							<!-- <div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end" style="padding: 0 5px 0 5px;">
 		      								<p :style="'color: '+scratch_card_demo.theme.cor_texto_raspadinha+' '" class="text-center info-text">
 		      									{{ scratch_card_demo.theme.texto_index }}
 		      								</p>
-		      							</div>
+		      							</div> -->
 		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end" style="padding: 0 5px 0 5px;">
 		      								<a href="javascript: void(0);" class="btn btn-result invisible">
 				      							{{ trans('strings.result') }}
@@ -816,7 +816,7 @@
 	}
 
 	.h div{
-		height: 128px;
+		height: 148px;
 		margin-bottom: 3px;
 		padding: 0 5px 0 5px;
 	}
