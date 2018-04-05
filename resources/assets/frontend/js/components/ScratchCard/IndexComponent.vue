@@ -9,7 +9,7 @@
 						<div class="extras">
 							<img src="https://www.grandesloterias.com/images/badges/new-badge_pt.png" alt="Novo" class="game-badge">
 						</div>
-						<img class="header-image img-fluid" alt="Halloween" :src="src(scratch_card_theme.img_background_url)">
+						<img class="header-image img-fluid" alt="Halloween" :src="src(scratch_card_theme.img_card_url)">
 						<div class="descript">
                             <h2 class="ng-binding">{{ scratch_card_theme.nome }}</h2>
                             <p class="ng-binding">{{ scratch_card_theme.texto_raspadinha }}</p>

@@ -67097,7 +67097,7 @@ var render = function() {
                       staticClass: "header-image img-fluid",
                       attrs: {
                         alt: "Halloween",
-                        src: _vm.src(scratch_card_theme.img_background_url)
+                        src: _vm.src(scratch_card_theme.img_card_url)
                       }
                     }),
                     _vm._v(" "),
