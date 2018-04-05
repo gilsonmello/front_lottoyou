@@ -67681,39 +67681,46 @@ var render = function() {
                     )
                   ])
                 : _c("div", { staticClass: "modal-content" }, [
-                    _c("div", { staticClass: "modal-header" }, [
-                      _c("div", { staticClass: "col-lg-6" }, [
-                        _c("h5", { staticClass: "modal-title" }, [
-                          _vm._v("Demo de Raspadinhas sem prêmios")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-5" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal-header",
+                        staticStyle: { padding: "5px" }
+                      },
+                      [
+                        _c("div", { staticClass: "col-lg-6" }, [
+                          _c("h5", { staticClass: "modal-title" }, [
+                            _vm._v("Demo de Raspadinhas sem prêmios")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-lg-5" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-success btn-xs pull-right",
+                              attrs: { href: "javascript: void(0);" }
+                            },
+                            [
+                              _vm._v(
+                                "\n\t\t\t\t        \t\t" +
+                                  _vm._s(_vm.trans("strings.play_truth")) +
+                                  "\n\t\t\t\t        \t"
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
                         _c(
-                          "a",
+                          "button",
                           {
-                            staticClass: "btn btn-success btn-xs pull-right",
-                            attrs: { href: "javascript: void(0);" }
+                            staticClass: "close",
+                            attrs: { type: "button", "data-dismiss": "modal" }
                           },
-                          [
-                            _vm._v(
-                              "\n\t\t\t\t        \t\t" +
-                                _vm._s(_vm.trans("strings.play_truth")) +
-                                "\n\t\t\t\t        \t"
-                            )
-                          ]
+                          [_vm._v("×")]
                         )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "close",
-                          attrs: { type: "button", "data-dismiss": "modal" }
-                        },
-                        [_vm._v("×")]
-                      )
-                    ]),
+                      ]
+                    ),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-body" }, [
                       _vm.scratch_card_demo.theme

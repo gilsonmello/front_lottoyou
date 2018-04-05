@@ -185,7 +185,7 @@
 		  		</div>
 			    <div class="modal-content" v-else>
 					<!-- Modal Header -->
-			      	<div class="modal-header">
+			      	<div class="modal-header" style="padding: 5px;">
 			      		<div class="col-lg-6">
 				        	<h5 class="modal-title">Demo de Raspadinhas sem prêmios</h5> 
 				        </div>
