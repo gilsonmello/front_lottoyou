@@ -64,10 +64,10 @@
         </div>
     </div>
     <div class="row" id="conteudo" style="">
-                <div class="col-lg-12" style="min-height: 50px; background-color: #ccc;">
-                      
-                </div>
-            </div>
+        <div class="col-lg-12" style="min-height: 50px; background-color: #fff;">
+              
+        </div>
+    </div>
 </div>
 </template>
 

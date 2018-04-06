@@ -13049,6 +13049,14 @@ a.text-dark:focus {
   clip: auto;
 }
 
+.carousel-indicators .active {
+  background-color: #000;
+}
+
+.carousel-indicators li {
+  background: #949393;
+}
+
 body {
   padding-top: 9.7rem;
   min-height: 100vh;

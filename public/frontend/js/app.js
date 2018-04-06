@@ -61908,7 +61908,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "row", attrs: { id: "conteudo" } }, [
         _c("div", {
           staticClass: "col-lg-12",
-          staticStyle: { "min-height": "50px", "background-color": "#ccc" }
+          staticStyle: { "min-height": "50px", "background-color": "#fff" }
         })
       ])
     ])
