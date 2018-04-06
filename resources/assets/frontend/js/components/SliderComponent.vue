@@ -1,6 +1,6 @@
 <template>	
 	<div class="container-fluid">
-		<div class="container">
+		<!--<div class="container">
 			<div class="row">
 				<div class="col-lg-9 col-9 col-md-5 col-sm-5" style="min-height: 260px; padding: 21px;">
 					<h1>
@@ -16,7 +16,7 @@
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
-			<!--<div class="row vcenter" style="background-color: yellow;">
+			<div class="row vcenter" style="background-color: yellow;">
 				<div class="col-lg-1 col-2 col-sm-1 col-md-2">
 					<img class="img-fluid" src="https://www.lottoland.com/skins/lottoland/images/lotteryLogos/lt-megaSena-46abf10e66bb8829.png">
 				</div>
@@ -33,8 +33,8 @@
 					<span class="pull-right">ao comprar 3 jogos da Mega-Sena</span><br>
 					<a href="#" class="btn btn-md btn-success pull-right">Jogar agora</a>
 				</div>
-			</div> -->
-		</div>
+			</div> 
+		</div>-->
 	</div>
 </template>
 <script>
@@ -50,8 +50,9 @@
 
 <style scoped>
 	.container-fluid {
-		background-image: url("//www.lottoland.com/cms/596f7a190eb3583efd184b4c/br_ms_stage.jpg");
+		background-image: url("/img/banner_principal_83.jpg");
 		background-size: 100% 100%;
+		height: 360px;
 	}
 	h1 {
 		font-size: 47px;

@@ -6,7 +6,7 @@
   					<ul class="vcenter" style="justify-content: center;">
   						<li>
   							<router-link :to="{ name: 'home' }">
-  								<img class="img-fluid" style="height: 80px;width: 210px;" src="/imgs/logo.png">
+  								<img class="img-fluid" style="height: 85px;width: 200px;" src="/imgs/logo.png">
   							</router-link>
   						</li>
   						<!-- <li>

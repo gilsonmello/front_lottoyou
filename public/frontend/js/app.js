@@ -61149,7 +61149,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.container-fluid[data-v-390308d0] {\n\t\tbackground-image: url(\"//www.lottoland.com/cms/596f7a190eb3583efd184b4c/br_ms_stage.jpg\");\n\t\tbackground-size: 100% 100%;\n}\nh1[data-v-390308d0] {\n\t\tfont-size: 47px;\n\t\tline-height: 47px;\n\t\ttext-align: center;\n    \tmax-width: 500px;\n    \tcolor: #012406;\n    \ttext-transform: uppercase;\n    \tfont-weight: 900;\n}\n.jackpot-translation[data-v-390308d0] {\n\t\tcolor: #fff;\n\t\theight: 60px;\n\t\tfont-weight: 900;\n\t\tfont-size: 40px;\n\t\ttext-align: left;\n\t\tline-height: 30px;\n}\n.jackpot-pitch[data-v-390308d0] {\n\t\tcolor: #012406;\n\t\tfont-weight: 500;\n\t\tfont-size: 14px;\n\t\tdisplay: block;\n\t\tline-height: 20px;\n\t\ttext-align: left;\n}\n.jackpot-currency[data-v-390308d0] {\n\t    margin-left: 0;\n\t    margin-right: 0;\n\t    font-weight: 900;\n\t    font-size: 40px;\n\t    line-height: 60px;\n\t    height: 60px;\n\t    color: #fff;\n}\n.jackpot-million[data-v-390308d0] {\n\t\tdisplay: inline-block;\n\t\t-webkit-box-align: end;\n\t\t    -ms-flex-align: end;\n\t\t        align-items: flex-end;\n\t\t-webkit-align-items: flex-end;\n}\n.jackpot-amount[data-v-390308d0]{\n\t\tfont-weight: 900;\n\t\tfont-size: 80px;\n\t\tcolor: #fff\n}\n", ""]);
+exports.push([module.i, "\n.container-fluid[data-v-390308d0] {\n\t\tbackground-image: url(\"/img/banner_principal_83.jpg\");\n\t\tbackground-size: 100% 100%;\n\t\theight: 360px;\n}\nh1[data-v-390308d0] {\n\t\tfont-size: 47px;\n\t\tline-height: 47px;\n\t\ttext-align: center;\n    \tmax-width: 500px;\n    \tcolor: #012406;\n    \ttext-transform: uppercase;\n    \tfont-weight: 900;\n}\n.jackpot-translation[data-v-390308d0] {\n\t\tcolor: #fff;\n\t\theight: 60px;\n\t\tfont-weight: 900;\n\t\tfont-size: 40px;\n\t\ttext-align: left;\n\t\tline-height: 30px;\n}\n.jackpot-pitch[data-v-390308d0] {\n\t\tcolor: #012406;\n\t\tfont-weight: 500;\n\t\tfont-size: 14px;\n\t\tdisplay: block;\n\t\tline-height: 20px;\n\t\ttext-align: left;\n}\n.jackpot-currency[data-v-390308d0] {\n\t    margin-left: 0;\n\t    margin-right: 0;\n\t    font-weight: 900;\n\t    font-size: 40px;\n\t    line-height: 60px;\n\t    height: 60px;\n\t    color: #fff;\n}\n.jackpot-million[data-v-390308d0] {\n\t\tdisplay: inline-block;\n\t\t-webkit-box-align: end;\n\t\t    -ms-flex-align: end;\n\t\t        align-items: flex-end;\n\t\t-webkit-align-items: flex-end;\n}\n.jackpot-amount[data-v-390308d0]{\n\t\tfont-weight: 900;\n\t\tfont-size: 80px;\n\t\tcolor: #fff\n}\n", ""]);
 
 // exports
 
@@ -61213,70 +61213,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container-fluid" })
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            {
-              staticClass: "col-lg-9 col-9 col-md-5 col-sm-5",
-              staticStyle: { "min-height": "260px", padding: "21px" }
-            },
-            [
-              _c("h1", [
-                _vm._v("\n\t\t\t\t\tA FESTA APENAS\n\t\t\t\t\t"),
-                _c(
-                  "span",
-                  { staticStyle: { color: "#E6B00F", "text-align": "center" } },
-                  [_vm._v("COMEÇOU!")]
-                ),
-                _vm._v(" "),
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: {
-                    src:
-                      "https://www.lottoland.com/cms/59706a8c0eb3583efd1b422c/br_ms_stage_smile.png"
-                  }
-                })
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "col-lg-3 col-3 col-md-3 col-sm-3",
-              staticStyle: { "padding-top": "31px" }
-            },
-            [
-              _c("img", {
-                staticClass:
-                  "img-fluid l-stageTemplate-banner-iconContainer-floatingBall l-stageTemplate-banner-iconContainer-icon",
-                attrs: {
-                  src:
-                    "https://www.lottoland.com/cms/599fd29b0eb35855e66e8e7f/br_sticker_3_137px_desktop_bubble_2jogos.png"
-                }
-              })
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [_vm._v(" ")]),
-        _vm._v(" "),
-        _c("p", [_vm._v(" ")]),
-        _vm._v(" "),
-        _c("p", [_vm._v(" ")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -61317,7 +61256,7 @@ var render = function() {
                     _c("router-link", { attrs: { to: { name: "home" } } }, [
                       _c("img", {
                         staticClass: "img-fluid",
-                        staticStyle: { height: "80px", width: "210px" },
+                        staticStyle: { height: "85px", width: "200px" },
                         attrs: { src: "/imgs/logo.png" }
                       })
                     ])
@@ -61739,21 +61678,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     created: function created() {},
@@ -61809,13 +61733,6 @@ var staticRenderFns = [
                       "data-target": "#carouselExampleIndicators",
                       "data-slide-to": "1"
                     }
-                  }),
-                  _vm._v(" "),
-                  _c("li", {
-                    attrs: {
-                      "data-target": "#carouselExampleIndicators",
-                      "data-slide-to": "2"
-                    }
                   })
                 ]
               ),
@@ -61832,21 +61749,15 @@ var staticRenderFns = [
                           staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
                         },
                         [
-                          _c("h2", [_vm._v("Heading")]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c(
-                              "a",
-                              { staticClass: "btn", attrs: { href: "#" } },
-                              [_vm._v("View details »")]
-                            )
-                          ])
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: {
+                              width: "100%",
+                              height: "150px",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { src: "/img/index_easy_money.png" }
+                          })
                         ]
                       ),
                       _vm._v(" "),
@@ -61856,21 +61767,15 @@ var staticRenderFns = [
                           staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
                         },
                         [
-                          _c("h2", [_vm._v("Heading")]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c(
-                              "a",
-                              { staticClass: "btn", attrs: { href: "#" } },
-                              [_vm._v("View details »")]
-                            )
-                          ])
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: {
+                              width: "100%",
+                              height: "150px",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { src: "/img/index_easy_money.png" }
+                          })
                         ]
                       ),
                       _vm._v(" "),
@@ -61880,21 +61785,15 @@ var staticRenderFns = [
                           staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
                         },
                         [
-                          _c("h2", [_vm._v("Heading")]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c(
-                              "a",
-                              { staticClass: "btn", attrs: { href: "#" } },
-                              [_vm._v("View details »")]
-                            )
-                          ])
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: {
+                              width: "100%",
+                              height: "150px",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { src: "/img/index_soccer_expert.png" }
+                          })
                         ]
                       )
                     ])
@@ -61908,21 +61807,15 @@ var staticRenderFns = [
                           staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
                         },
                         [
-                          _c("h2", [_vm._v("Heading")]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c(
-                              "a",
-                              { staticClass: "btn", attrs: { href: "#" } },
-                              [_vm._v("View details »")]
-                            )
-                          ])
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: {
+                              width: "100%",
+                              height: "150px",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { src: "/img/index_se_custom.png" }
+                          })
                         ]
                       ),
                       _vm._v(" "),
@@ -61932,21 +61825,15 @@ var staticRenderFns = [
                           staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
                         },
                         [
-                          _c("h2", [_vm._v("Heading")]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c(
-                              "a",
-                              { staticClass: "btn", attrs: { href: "#" } },
-                              [_vm._v("View details »")]
-                            )
-                          ])
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: {
+                              width: "100%",
+                              height: "150px",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { src: "/img/index_se_special.png" }
+                          })
                         ]
                       ),
                       _vm._v(" "),
@@ -61956,97 +61843,15 @@ var staticRenderFns = [
                           staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
                         },
                         [
-                          _c("h2", [_vm._v("Heading")]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c(
-                              "a",
-                              { staticClass: "btn", attrs: { href: "#" } },
-                              [_vm._v("View details »")]
-                            )
-                          ])
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "carousel-item" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
-                        },
-                        [
-                          _c("h2", [_vm._v("Heading")]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c(
-                              "a",
-                              { staticClass: "btn", attrs: { href: "#" } },
-                              [_vm._v("View details »")]
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
-                        },
-                        [
-                          _c("h2", [_vm._v("Heading")]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c(
-                              "a",
-                              { staticClass: "btn", attrs: { href: "#" } },
-                              [_vm._v("View details »")]
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
-                        },
-                        [
-                          _c("h2", [_vm._v("Heading")]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(
-                              "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c(
-                              "a",
-                              { staticClass: "btn", attrs: { href: "#" } },
-                              [_vm._v("View details »")]
-                            )
-                          ])
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: {
+                              width: "100%",
+                              height: "150px",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { src: "/img/index_se_world.png" }
+                          })
                         ]
                       )
                     ])
@@ -62349,6 +62154,64 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -62406,15 +62269,14 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12",
-                  attrs: { id: "banner-01" }
+                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
                 },
                 [
-                  _c("h1", { staticClass: "text-center" }, [
-                    _vm._v("Banner 01"),
-                    _c("br"),
-                    _vm._v("960 x 481px")
-                  ])
+                  _c("img", {
+                    staticClass: "img-fluid",
+                    staticStyle: { width: "100%", height: "300px" },
+                    attrs: { src: "/img/banner_medio_soccer.jpg" }
+                  })
                 ]
               )
             ])
@@ -62428,15 +62290,14 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12",
-                  attrs: { id: "banner-02" }
+                    "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
                 },
                 [
-                  _c("h1", { staticClass: "text-center" }, [
-                    _vm._v("Banner 02"),
-                    _c("br"),
-                    _vm._v("960 x 200px")
-                  ])
+                  _c("img", {
+                    staticClass: "img-fluid",
+                    staticStyle: { width: "100%", height: "300px" },
+                    attrs: { src: "/img/banner_medio_raspadinhas.jpg" }
+                  })
                 ]
               )
             ])
@@ -62450,15 +62311,35 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter",
-                  attrs: { id: "banner-03" }
+                    "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
                 },
                 [
-                  _c("h1", { staticClass: "text-center" }, [
-                    _vm._v("Banner 03"),
-                    _c("br"),
-                    _vm._v("960 x 200px")
-                  ])
+                  _c("img", {
+                    staticClass: "img-fluid",
+                    staticStyle: { width: "100%", height: "300px" },
+                    attrs: { src: "/img/banner_medio_raspadinha.jpg" }
+                  })
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
+                },
+                [
+                  _c("img", {
+                    staticClass: "img-fluid",
+                    staticStyle: { width: "100%", height: "300px" },
+                    attrs: { src: "/img/golden_goal.jpg" }
+                  })
                 ]
               )
             ])
@@ -62548,15 +62429,52 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12",
-                  attrs: { id: "explications" }
+                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
                 },
                 [
-                  _c("h1", { staticClass: "text-center" }, [
-                    _vm._v("Explicações"),
-                    _c("br"),
-                    _vm._v("960 x 300px")
-                  ])
+                  _c("img", {
+                    staticClass: "img-fluid",
+                    staticStyle: { width: "100%", height: "300px" },
+                    attrs: { src: "/img/explic_easy.jpg" }
+                  })
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
+                },
+                [
+                  _c("img", {
+                    staticClass: "img-fluid",
+                    staticStyle: { width: "100%", height: "300px" },
+                    attrs: { src: "/img/explic_piratas.jpg" }
+                  })
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
+                },
+                [
+                  _c("img", {
+                    staticClass: "img-fluid",
+                    staticStyle: { width: "100%", height: "300px" },
+                    attrs: { src: "/img/explic_soccer.jpg" }
+                  })
                 ]
               )
             ])
