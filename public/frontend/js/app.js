@@ -67460,23 +67460,25 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(" "),
-                                  _c("span", [
-                                    _vm._v(
-                                      "\n\t\t\t\t\t\t\t\t\t\t\t" +
-                                        _vm._s(discount_table.quantity) +
-                                        " " +
-                                        _vm._s(_vm.trans("strings.game")) +
-                                        " " +
-                                        _vm._s(
-                                          "(" +
-                                            _vm.trans("strings.spare") +
+                                  discount_table.is_discount
+                                    ? _c("span", [
+                                        _vm._v(
+                                          "\n\t\t\t\t\t\t\t\t\t\t\t" +
+                                            _vm._s(discount_table.quantity) +
                                             " " +
-                                            discount_table.percentage +
-                                            "%)"
-                                        ) +
-                                        "\n\t\t\t\t\t\t\t\t\t\t"
-                                    )
-                                  ])
+                                            _vm._s(_vm.trans("strings.game")) +
+                                            " " +
+                                            _vm._s(
+                                              "(" +
+                                                _vm.trans("strings.spare") +
+                                                " " +
+                                                discount_table.percentage +
+                                                "%)"
+                                            ) +
+                                            "\n\t\t\t\t\t\t\t\t\t\t"
+                                        )
+                                      ])
+                                    : _vm._e()
                                 ])
                               ]
                             ),

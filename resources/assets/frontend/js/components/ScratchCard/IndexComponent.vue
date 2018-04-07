@@ -58,7 +58,7 @@
 								<div class="col-lg-9 col-9 col-md-9 col-sm-9">
 									<label class="">
 										<input type="radio" v-bind:value="ind+1" v-model="scratch_card_theme.positionSelected" :name="'game_'+index+'_option'">
-										<span>
+										<span v-if="discount_table.is_discount">
 											{{ discount_table.quantity }} {{ trans('strings.game') }} {{'('+trans('strings.spare')+' '+discount_table.percentage+'%)'}}
 										</span>
 									</label>

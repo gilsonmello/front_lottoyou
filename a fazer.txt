@@ -3,7 +3,7 @@
 - em cadastro de tema, remover obrigatoriedade do campo texto da raspadinha
 - mensagem para o usuário comprar raspadinha ao terminar as demos
 - remover a opção padrão de o usuário selecionar 1 jogo da raspadinha
-- adicionar opção de mostrar porcentagem ou não da raspadinha
+- adicionar opção de mostrar porcentagem ou não da raspadinha  -----> ok
 - criar subdominio para o domínio principal dev.lottoyou.bet ----------> ok
 - alterar da logo height: 85px; width: 200px;                ----------> ok
 - colocar a imagem banner-principal no lugar do banner atual   --------> ok
@@ -11,5 +11,5 @@
 - colocar a imagem index-SE-custom, index-SE-special, index-SE-world para o carousel -----> ok
 - no banner-02 e 03, colocar banner medio Soccer.jpg, Banner medio RASPADINHAS.jpg, Banner Medio raspadinha.jpg, golden-goal.jpg             ---------------> ok
 - no banner-explicação, colocar as imagens explic_easy.jpg, explic_piratas.jpg, explic_soccer.jpg  ----> ok
-- procurar imagem de campo de futebol para colocar no fundo do soccer expert
-- colocar as fontes do menu em negrito e aumentar o padding-rigth
+- procurar imagem de campo de futebol para colocar no fundo do soccer expert  
+- colocar as fontes do menu em negrito e aumentar o padding-rigth ----> ok
