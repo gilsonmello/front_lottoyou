@@ -50,4 +50,13 @@
 	ul li {
 		display: inline-block;
 	}
+
+	.nav-item a {
+		font-weight: bold;
+		color: rgb(255, 255, 255);
+	}
+
+	.nav-item {
+		padding-right: 20px;
+	}
 </style>

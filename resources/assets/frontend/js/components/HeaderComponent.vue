@@ -2,27 +2,31 @@
 	<div class="header fixed-top bg-white">
 		<div class="container-fluid">
 			<nav class="navbar navbar-toggleable-md navbar-light bg-inverse" style="padding: 0;">
-  				<div class="navbar-brand">
-  					<ul class="vcenter" style="justify-content: center;">
-  						<li>
-  							<router-link :to="{ name: 'home' }">
-  								<img class="img-fluid" style="height: 54px; width: 127px;" src="/imgs/logo.png">
-  							</router-link>
-  						</li>
-  						<!-- <li>
-  							<img class="img-fluid" width="60" src="//www.lottoland.com/cms/5a8d7f7a0eb3587e04426c35/multi_60px.png">
-  						</li>
-  						<li>
-  							<span>Novidade: Loteria Multi Keno</span>
-							<span>Ganhe até R$ 24 milhões</span>
-							<span>Tente aqui a sua sorte!</span>
-  						</li> -->
-  					</ul>
+  				<div class="col-lg-4 col-md-8 col-sm-12 col-12">
+  					<div class="row">
+  						<div class="col-lg-12 vcenter-end" style="justify-content: left">
+		  					<ul class="vcenter">
+		  						<li>
+		  							<router-link :to="{ name: 'home' }">
+		  								<img class="img-fluid" style="height: 54px; width: 127px;" src="/imgs/logo.png">
+		  							</router-link>
+		  						</li>
+		  						<!-- <li>
+		  							<img class="img-fluid" width="60" src="//www.lottoland.com/cms/5a8d7f7a0eb3587e04426c35/multi_60px.png">
+		  						</li>
+		  						<li>
+		  							<span>Novidade: Loteria Multi Keno</span>
+									<span>Ganhe até R$ 24 milhões</span>
+									<span>Tente aqui a sua sorte!</span>
+		  						</li> -->
+		  					</ul>
+  						</div>
+					</div>
 				</div>
-			  	<div class="col-lg-8 col-md-8 col-sm-12 col-12 no-padding">
+			  	<div class="col-lg-4 col-md-8 col-sm-12 col-12 no-padding">
 			  		<div class="row">
-			  			<div class="col-lg-12 vcenter-end">
-			  				<ul class="header-items text-center">
+			  			<div class="col-lg-12 vcenter-end" style="justify-content: right">
+			  				<ul class="header-items text-center" style="width: 100%">
 					  			<li class="item-register-login" v-if="!auth">
 					  				<router-link :to="{ name: 'login' }" class="pull-left" style="width: 100%;">
 					  					<div class="pull-left">

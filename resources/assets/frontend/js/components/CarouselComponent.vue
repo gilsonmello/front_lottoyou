@@ -24,7 +24,7 @@
                 <div class="carousel-item">
                     <div class="row">
                         <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/index_se_custom.png">
+                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_4.png">
                         </div>
                         <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/index_se_special.png">
