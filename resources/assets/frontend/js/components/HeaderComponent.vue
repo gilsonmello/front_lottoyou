@@ -366,10 +366,6 @@
 		
 	}
 
-	.header .logo{
-		padding: 20px;
-	}
-
 	.bg-lottoyou {
 		background-color: #64a407;
 		background-image: linear-gradient(90deg,#a4cc25,#64a407);
