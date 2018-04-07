@@ -2,13 +2,8 @@
 	<div class="container-fluid">
 		<p>&nbsp;</p>
 			<p>&nbsp;</p>
-			<p>&nbsp;</p><p>&nbsp;</p>
 			<p>&nbsp;</p>
-			<p>&nbsp;</p><p>&nbsp;</p>
 			<p>&nbsp;</p>
-			<p>&nbsp;</p><p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p><p>&nbsp;</p>
 			<p>&nbsp;</p>
 			<p>&nbsp;</p>
 		<!--<div class="container">
