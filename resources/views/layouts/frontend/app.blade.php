@@ -13,7 +13,7 @@
         <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet" type="text/css">
         {{-- <link rel="shortcut icon" type="image/png" href="/favicon.ico"/> --}}
 
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
     </head>
     <body>
         
