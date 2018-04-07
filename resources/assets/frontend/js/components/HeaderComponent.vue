@@ -127,7 +127,7 @@
 		methods: {
 			col() {
 				if(this.user != null) {
-					return 'col-lg-6 col-md-8 col-sm-12 col-12 no-padding'
+					return 'col-lg-8 col-md-8 col-sm-12 col-12 no-padding'
 				}
 				return 'col-lg-4 col-md-8 col-sm-12 col-12 no-padding'
 			}
