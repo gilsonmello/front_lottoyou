@@ -25,7 +25,7 @@
 				</div>
 			  	<div :class="col()">
 			  		<div class="row">
-			  			<div class="col-lg-12 vcenter-end" style="justify-content: right">
+			  			<div class="col-lg-12 vcenter-end header" style="justify-content: right">
 			  				<ul class="header-items text-center" style="width: 100%">
 					  			<li class="item-register-login" v-if="!auth">
 					  				<router-link :to="{ name: 'login' }" class="pull-left" style="width: 100%;">
@@ -393,5 +393,11 @@
 
 	.no-padding-top {
 		padding-top: 0;
+	}
+
+	@media (max-width: 576px) {
+		.header, .header .header-items{
+			padding: 0 !important
+		}
 	}
 </style>
