@@ -23,7 +23,7 @@
   						</div>
 					</div>
 				</div>
-			  	<div class="col-lg-4 col-md-8 col-sm-12 col-12 no-padding">
+			  	<div :class="col()">
 			  		<div class="row">
 			  			<div class="col-lg-12 vcenter-end" style="justify-content: right">
 			  				<ul class="header-items text-center" style="width: 100%">
@@ -125,7 +125,12 @@
 			}
 		},
 		methods: {
-
+			col() {
+				if(this.user != null) {
+					return 'col-lg-6 col-md-8 col-sm-12 col-12 no-padding'
+				}
+				return 'col-lg-4 col-md-8 col-sm-12 col-12 no-padding'
+			}
 		},
 		created: function() {
 

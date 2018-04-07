@@ -60797,7 +60797,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			user: JSON.parse(window.localStorage.getItem('authUser'))
 		};
 	},
-	methods: {},
+	methods: {
+		col: function col() {
+			if (this.user != null) {
+				return 'col-lg-6 col-md-8 col-sm-12 col-12 no-padding';
+			}
+			return 'col-lg-4 col-md-8 col-sm-12 col-12 no-padding';
+		}
+	},
 	created: function created() {},
 	mounted: function mounted() {
 		var time = setInterval(function () {
@@ -61292,329 +61299,298 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-lg-4 col-md-8 col-sm-12 col-12 no-padding" },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-lg-12 vcenter-end",
-                    staticStyle: { "justify-content": "right" }
-                  },
-                  [
-                    _c(
-                      "ul",
-                      {
-                        staticClass: "header-items text-center",
-                        staticStyle: { width: "100%" }
-                      },
-                      [
-                        !_vm.auth
-                          ? _c(
-                              "li",
-                              { staticClass: "item-register-login" },
-                              [
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "pull-left",
-                                    staticStyle: { width: "100%" },
-                                    attrs: { to: { name: "login" } }
-                                  },
-                                  [
-                                    _c("div", { staticClass: "pull-left" }, [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticStyle: { "font-size": "14px" }
-                                        },
-                                        [
-                                          _vm._v(
-                                            _vm._s(_vm.trans("strings.login"))
-                                          )
-                                        ]
-                                      )
-                                    ])
-                                  ]
-                                )
-                              ],
-                              1
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        !_vm.auth
-                          ? _c(
-                              "li",
-                              { staticClass: "item-register-login" },
-                              [
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "pull-left",
-                                    staticStyle: { width: "100%" },
-                                    attrs: { to: { name: "users.register" } }
-                                  },
-                                  [
-                                    _c("div", { staticClass: "pull-right" }, [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticStyle: { "font-size": "14px" }
-                                        },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              _vm.trans("strings.register")
-                                            )
-                                          )
-                                        ]
-                                      )
-                                    ])
-                                  ]
-                                )
-                              ],
-                              1
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.auth
-                          ? _c(
-                              "li",
-                              { staticClass: "item-balance" },
-                              [
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "pull-left",
-                                    staticStyle: { width: "100%" },
-                                    attrs: { to: { name: "balances.deposit" } }
-                                  },
-                                  [
-                                    _c("div", { staticClass: "pull-left" }, [
-                                      _c("i", {
-                                        staticClass: "fa fa-credit-card-alt",
-                                        staticStyle: { "font-size": "27px" }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "pull-right" }, [
-                                      _c("div", { staticClass: "row" }, [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass: "col-lg-12 no-padding"
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              { staticClass: "balance-amount" },
-                                              [_vm._v("R$ 20,00")]
-                                            )
-                                          ]
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "row" }, [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass: "col-lg-12 no-padding"
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass: "balance-deposit"
-                                              },
-                                              [_vm._v("Depositar créditos")]
-                                            )
-                                          ]
-                                        )
-                                      ])
-                                    ])
-                                  ]
-                                )
-                              ],
-                              1
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.auth
-                          ? _c(
-                              "li",
-                              { staticClass: "item-account" },
-                              [
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "pull-left",
-                                    staticStyle: { width: "100%" },
-                                    attrs: { to: { name: "users.account" } }
-                                  },
-                                  [
+          _c("div", { class: _vm.col() }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "col-lg-12 vcenter-end",
+                  staticStyle: { "justify-content": "right" }
+                },
+                [
+                  _c(
+                    "ul",
+                    {
+                      staticClass: "header-items text-center",
+                      staticStyle: { width: "100%" }
+                    },
+                    [
+                      !_vm.auth
+                        ? _c(
+                            "li",
+                            { staticClass: "item-register-login" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "pull-left",
+                                  staticStyle: { width: "100%" },
+                                  attrs: { to: { name: "login" } }
+                                },
+                                [
+                                  _c("div", { staticClass: "pull-left" }, [
                                     _c(
-                                      "div",
-                                      { staticClass: "pull-left vcenter" },
+                                      "span",
+                                      { staticStyle: { "font-size": "14px" } },
                                       [
-                                        _c("i", {
-                                          staticClass: "fa fa-user-circle",
-                                          staticStyle: { "font-size": "27px" }
-                                        })
+                                        _vm._v(
+                                          _vm._s(_vm.trans("strings.login"))
+                                        )
                                       ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "pull-right" }, [
-                                      _c("div", { staticClass: "row" }, [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass: "col-lg-12 no-padding"
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              { staticClass: "user-name" },
-                                              [
-                                                _vm._v(
-                                                  "\n\t\t\t\t\t\t  \t\t\t\t\t\t\t\t" +
-                                                    _vm._s(_vm.auth.name) +
-                                                    " " +
-                                                    _vm._s(_vm.auth.last_name) +
-                                                    "\n\t\t\t\t\t\t  \t\t\t\t\t\t\t"
-                                                )
-                                              ]
-                                            )
-                                          ]
+                                    )
+                                  ])
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !_vm.auth
+                        ? _c(
+                            "li",
+                            { staticClass: "item-register-login" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "pull-left",
+                                  staticStyle: { width: "100%" },
+                                  attrs: { to: { name: "users.register" } }
+                                },
+                                [
+                                  _c("div", { staticClass: "pull-right" }, [
+                                    _c(
+                                      "span",
+                                      { staticStyle: { "font-size": "14px" } },
+                                      [
+                                        _vm._v(
+                                          _vm._s(_vm.trans("strings.register"))
                                         )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "row" }, [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass: "col-lg-12 no-padding"
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              { staticClass: "account" },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(
-                                                    _vm.trans("strings.account")
-                                                  )
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ])
-                                    ])
-                                  ]
-                                )
-                              ],
-                              1
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "item-cart" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "cart pull-left",
-                                staticStyle: { width: "100%" },
-                                attrs: { to: { name: "cart.index" } }
-                              },
-                              [
-                                _c("div", { staticClass: "vcenter" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "cart-left pull-left",
-                                      staticStyle: {
-                                        "justify-content": "center"
-                                      }
-                                    },
-                                    [
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.auth
+                        ? _c(
+                            "li",
+                            { staticClass: "item-balance" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "pull-left",
+                                  staticStyle: { width: "100%" },
+                                  attrs: { to: { name: "balances.deposit" } }
+                                },
+                                [
+                                  _c("div", { staticClass: "pull-left" }, [
+                                    _c("i", {
+                                      staticClass: "fa fa-credit-card-alt",
+                                      staticStyle: { "font-size": "27px" }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "pull-right" }, [
+                                    _c("div", { staticClass: "row" }, [
                                       _c(
-                                        "i",
-                                        {
-                                          staticClass: "fa fa-shopping-cart",
-                                          staticStyle: { "font-size": "27px" }
-                                        },
+                                        "div",
+                                        { staticClass: "col-lg-12 no-padding" },
                                         [
                                           _c(
                                             "span",
-                                            { staticClass: "cart-count" },
+                                            { staticClass: "balance-amount" },
+                                            [_vm._v("R$ 20,00")]
+                                          )
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "row" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-lg-12 no-padding" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "balance-deposit" },
+                                            [_vm._v("Depositar créditos")]
+                                          )
+                                        ]
+                                      )
+                                    ])
+                                  ])
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.auth
+                        ? _c(
+                            "li",
+                            { staticClass: "item-account" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "pull-left",
+                                  staticStyle: { width: "100%" },
+                                  attrs: { to: { name: "users.account" } }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "pull-left vcenter" },
+                                    [
+                                      _c("i", {
+                                        staticClass: "fa fa-user-circle",
+                                        staticStyle: { "font-size": "27px" }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "pull-right" }, [
+                                    _c("div", { staticClass: "row" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-lg-12 no-padding" },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "user-name" },
                                             [
                                               _vm._v(
-                                                "\n\t\t\t\t\t  \t\t\t\t\t\t\t\t" +
-                                                  _vm._s(
-                                                    _vm.purchase.quantity
-                                                  ) +
-                                                  "\n\t\t\t\t\t  \t\t\t\t\t\t\t"
+                                                "\n\t\t\t\t\t\t  \t\t\t\t\t\t\t\t" +
+                                                  _vm._s(_vm.auth.name) +
+                                                  " " +
+                                                  _vm._s(_vm.auth.last_name) +
+                                                  "\n\t\t\t\t\t\t  \t\t\t\t\t\t\t"
                                               )
                                             ]
                                           )
                                         ]
                                       )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "cart-right pull-right" },
-                                    [
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "row" }, [
                                       _c(
-                                        "span",
-                                        { staticClass: "cart-value" },
+                                        "div",
+                                        { staticClass: "col-lg-12 no-padding" },
                                         [
-                                          _vm._v(
-                                            "\n\t\t\t\t\t  \t\t\t\t\t\t\t$ " +
-                                              _vm._s(
-                                                _vm.purchase.total.format(
-                                                  2,
-                                                  true
+                                          _c(
+                                            "span",
+                                            { staticClass: "account" },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.trans("strings.account")
                                                 )
-                                              ) +
-                                              "\n\t\t\t\t\t  \t\t\t\t\t\t"
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        { staticClass: "cart-checkout-now" },
-                                        [
-                                          _vm._v(
-                                            "\n\t\t\t\t\t  \t\t\t\t\t\t\t" +
-                                              _vm._s(
-                                                _vm.trans("strings.pay_now")
-                                              ) +
-                                              "\n\t\t\t\t\t  \t\t\t\t\t\t"
+                                              )
+                                            ]
                                           )
                                         ]
                                       )
-                                    ]
-                                  )
-                                ])
-                              ]
-                            )
-                          ],
-                          1
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ]
-          )
+                                    ])
+                                  ])
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        { staticClass: "item-cart" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "cart pull-left",
+                              staticStyle: { width: "100%" },
+                              attrs: { to: { name: "cart.index" } }
+                            },
+                            [
+                              _c("div", { staticClass: "vcenter" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "cart-left pull-left",
+                                    staticStyle: { "justify-content": "center" }
+                                  },
+                                  [
+                                    _c(
+                                      "i",
+                                      {
+                                        staticClass: "fa fa-shopping-cart",
+                                        staticStyle: { "font-size": "27px" }
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "cart-count" },
+                                          [
+                                            _vm._v(
+                                              "\n\t\t\t\t\t  \t\t\t\t\t\t\t\t" +
+                                                _vm._s(_vm.purchase.quantity) +
+                                                "\n\t\t\t\t\t  \t\t\t\t\t\t\t"
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "cart-right pull-right" },
+                                  [
+                                    _c("span", { staticClass: "cart-value" }, [
+                                      _vm._v(
+                                        "\n\t\t\t\t\t  \t\t\t\t\t\t\t$ " +
+                                          _vm._s(
+                                            _vm.purchase.total.format(2, true)
+                                          ) +
+                                          "\n\t\t\t\t\t  \t\t\t\t\t\t"
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "span",
+                                      { staticClass: "cart-checkout-now" },
+                                      [
+                                        _vm._v(
+                                          "\n\t\t\t\t\t  \t\t\t\t\t\t\t" +
+                                            _vm._s(
+                                              _vm.trans("strings.pay_now")
+                                            ) +
+                                            "\n\t\t\t\t\t  \t\t\t\t\t\t"
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ])
         ]
       )
     ]),
