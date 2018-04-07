@@ -60973,7 +60973,7 @@ var render = function() {
     "nav",
     {
       staticClass: "navbar navbar-expand-md navbar-dark bg-lottoyou",
-      staticStyle: { paddin: "0" }
+      staticStyle: { padding: "0" }
     },
     [
       _vm._m(0),
