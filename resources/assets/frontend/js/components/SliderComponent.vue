@@ -1,11 +1,6 @@
 <template>	
 	<div class="container-fluid">
-		<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<p>&nbsp;</p>
+		<img src="/img/banner_principal_83.jpg" class="img-fluid">
 		<!--<div class="container">
 			<div class="row">
 				<div class="col-lg-9 col-9 col-md-5 col-sm-5" style="min-height: 260px; padding: 21px;">
@@ -55,11 +50,7 @@
 </script>
 
 <style scoped>
-	.container-fluid {
-		background-image: url("/img/banner_principal_83.jpg");
-		background-size: 100% 100%;
-		
-	}
+	
 	h1 {
 		font-size: 47px;
 		line-height: 47px;
