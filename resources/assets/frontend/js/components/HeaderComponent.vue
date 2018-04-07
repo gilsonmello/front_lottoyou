@@ -395,7 +395,7 @@
 		padding-top: 0;
 	}
 
-	@media (max-width: 576px) {
+	@media (max-width: 767px) {
 		.header, .header .header-items{
 			padding: 0 !important
 		}
