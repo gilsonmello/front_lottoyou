@@ -61228,7 +61228,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container-fluid no-padding" }, [
       _c("img", {
         staticClass: "img-fluid",
-        attrs: { src: "/img/banner_principal_83.jpg" }
+        attrs: { src: "/img/banner-principal-copia.jpg" }
       })
     ])
   }
