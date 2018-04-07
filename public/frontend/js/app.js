@@ -61152,7 +61152,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.container-fluid img[data-v-390308d0] {\n\t\n\t\twidth: 100% 100%;\n}\nh1[data-v-390308d0] {\n\t\tfont-size: 47px;\n\t\tline-height: 47px;\n\t\ttext-align: center;\n    \tmax-width: 500px;\n    \tcolor: #012406;\n    \ttext-transform: uppercase;\n    \tfont-weight: 900;\n}\n.jackpot-translation[data-v-390308d0] {\n\t\tcolor: #fff;\n\t\theight: 60px;\n\t\tfont-weight: 900;\n\t\tfont-size: 40px;\n\t\ttext-align: left;\n\t\tline-height: 30px;\n}\n.jackpot-pitch[data-v-390308d0] {\n\t\tcolor: #012406;\n\t\tfont-weight: 500;\n\t\tfont-size: 14px;\n\t\tdisplay: block;\n\t\tline-height: 20px;\n\t\ttext-align: left;\n}\n.jackpot-currency[data-v-390308d0] {\n\t    margin-left: 0;\n\t    margin-right: 0;\n\t    font-weight: 900;\n\t    font-size: 40px;\n\t    line-height: 60px;\n\t    height: 60px;\n\t    color: #fff;\n}\n.jackpot-million[data-v-390308d0] {\n\t\tdisplay: inline-block;\n\t\t-webkit-box-align: end;\n\t\t    -ms-flex-align: end;\n\t\t        align-items: flex-end;\n\t\t-webkit-align-items: flex-end;\n}\n.jackpot-amount[data-v-390308d0]{\n\t\tfont-weight: 900;\n\t\tfont-size: 80px;\n\t\tcolor: #fff\n}\n", ""]);
+exports.push([module.i, "\n.container-fluid img[data-v-390308d0] {\n\t\n\t\twidth: 100%;\n}\nh1[data-v-390308d0] {\n\t\tfont-size: 47px;\n\t\tline-height: 47px;\n\t\ttext-align: center;\n    \tmax-width: 500px;\n    \tcolor: #012406;\n    \ttext-transform: uppercase;\n    \tfont-weight: 900;\n}\n.jackpot-translation[data-v-390308d0] {\n\t\tcolor: #fff;\n\t\theight: 60px;\n\t\tfont-weight: 900;\n\t\tfont-size: 40px;\n\t\ttext-align: left;\n\t\tline-height: 30px;\n}\n.jackpot-pitch[data-v-390308d0] {\n\t\tcolor: #012406;\n\t\tfont-weight: 500;\n\t\tfont-size: 14px;\n\t\tdisplay: block;\n\t\tline-height: 20px;\n\t\ttext-align: left;\n}\n.jackpot-currency[data-v-390308d0] {\n\t    margin-left: 0;\n\t    margin-right: 0;\n\t    font-weight: 900;\n\t    font-size: 40px;\n\t    line-height: 60px;\n\t    height: 60px;\n\t    color: #fff;\n}\n.jackpot-million[data-v-390308d0] {\n\t\tdisplay: inline-block;\n\t\t-webkit-box-align: end;\n\t\t    -ms-flex-align: end;\n\t\t        align-items: flex-end;\n\t\t-webkit-align-items: flex-end;\n}\n.jackpot-amount[data-v-390308d0]{\n\t\tfont-weight: 900;\n\t\tfont-size: 80px;\n\t\tcolor: #fff\n}\n", ""]);
 
 // exports
 
@@ -61163,11 +61163,6 @@ exports.push([module.i, "\n.container-fluid img[data-v-390308d0] {\n\t\n\t\twidt
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
 //
 //
 //
@@ -61234,19 +61229,7 @@ var staticRenderFns = [
       _c("img", {
         staticClass: "img-fluid",
         attrs: { src: "/img/banner_principal_83.jpg" }
-      }),
-      _vm._v(" "),
-      _c("p", [_vm._v(" ")]),
-      _vm._v(" "),
-      _c("p", [_vm._v(" ")]),
-      _vm._v(" "),
-      _c("p", [_vm._v(" ")]),
-      _vm._v(" "),
-      _c("p", [_vm._v(" ")]),
-      _vm._v(" "),
-      _c("p", [_vm._v(" ")]),
-      _vm._v(" "),
-      _c("p", [_vm._v(" ")])
+      })
     ])
   }
 ]
