@@ -283,7 +283,8 @@
 
 	ul {
 		margin: 0;
-		padding: 0;
+	    padding-right: 15px;
+    	padding-left: 15px;
 	}
 
 	ul li:last-child {
