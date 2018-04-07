@@ -61270,7 +61270,7 @@ var render = function() {
           staticStyle: { padding: "0" }
         },
         [
-          _c("div", { staticClass: "col-lg-4 col-md-8 col-sm-12 col-12" }, [
+          _c("div", { staticClass: "col-lg-4 col-md-4 col-sm-12 col-12" }, [
             _c("div", { staticClass: "row" }, [
               _c(
                 "div",

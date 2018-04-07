@@ -2,7 +2,7 @@
 	<div class="header fixed-top bg-white">
 		<div class="container-fluid container-fluid-header">
 			<nav class="navbar navbar-toggleable-md navbar-light bg-inverse" style="padding: 0;">
-  				<div class="col-lg-4 col-md-8 col-sm-12 col-12">
+  				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
   					<div class="row">
   						<div class="col-lg-12 vcenter-end" style="justify-content: left">
 		  					<ul class="vcenter">
