@@ -62435,6 +62435,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -62483,6 +62495,27 @@ var render = function() {
           _c("br"),
           _vm._v(" "),
           _c("carousel-component"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
+                },
+                [
+                  _c("img", {
+                    staticClass: "img-fluid",
+                    staticStyle: { width: "100%" },
+                    attrs: { src: "/img/banner_medio_soccer.jpg" }
+                  })
+                ]
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),

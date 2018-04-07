@@ -10,6 +10,16 @@
 			<div class="row">
 				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 					<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
+					<img style="width: 100%; " class="img-fluid" src="/img/banner_medio_soccer.jpg">
+				</div>
+			</div>
+		</div>
+
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+					<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
 					<img style="width: 100%; " class="img-fluid" src="/img/new/banner_1.jpg">
 				</div>
 			</div>
@@ -108,11 +118,13 @@
 					<img class="img-fluid" style="width: 100%; " src="/img/new/explic_easy.jpg">
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 					<img class="img-fluid" style="width: 100%; " src="/img/new/explic_raspadinhas.jpg">
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 					<img class="img-fluid" style="width: 100%; " src="/img/new/explic_soccer.jpg">
