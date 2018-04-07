@@ -1,6 +1,12 @@
 <template>	
-	<div class="container-fluid no-padding">
+	<div class="container-fluid">
 		<img src="/img/banner_principal_83.jpg" class="img-fluid">
+		<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
 		<!--<div class="container">
 			<div class="row">
 				<div class="col-lg-9 col-9 col-md-5 col-sm-5" style="min-height: 260px; padding: 21px;">
@@ -50,6 +56,10 @@
 </script>
 
 <style scoped>
+	.container-fluid img {
+	
+		width: 100% 100%;
+	}
 	
 	h1 {
 		font-size: 47px;
