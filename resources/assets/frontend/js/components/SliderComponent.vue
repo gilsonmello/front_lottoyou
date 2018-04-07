@@ -1,5 +1,5 @@
 <template>	
-	<div class="container-fluid">
+	<div class="container-fluid no-padding">
 		<img src="/img/banner_principal_83.jpg" class="img-fluid">
 		<p>&nbsp;</p>
 			<p>&nbsp;</p>
