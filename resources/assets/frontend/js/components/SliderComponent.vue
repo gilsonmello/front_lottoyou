@@ -52,7 +52,7 @@
 	.container-fluid {
 		background-image: url("/img/banner_principal_83.jpg");
 		background-size: 100% 100%;
-		height: 350px;
+		
 	}
 	h1 {
 		font-size: 47px;

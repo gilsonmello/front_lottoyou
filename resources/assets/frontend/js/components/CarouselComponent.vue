@@ -11,26 +11,26 @@
                 <div class="carousel-item active">
                     <div class="row">
                         <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <img style="width: 100%; height: 150px; margin-bottom: 10px" class="img-fluid" src="/img/index_easy_money.png">
+                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/index_easy_money.png">
                         </div>
                         <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <img style="width: 100%; height: 150px; margin-bottom: 10px" class="img-fluid" src="/img/index_easy_money.png">
+                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/index_easy_money.png">
                         </div>
                         <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <img style="width: 100%; height: 150px; margin-bottom: 10px" class="img-fluid" src="/img/index_soccer_expert.png">
+                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/index_soccer_expert.png">
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="row">
                         <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <img style="width: 100%; height: 150px; margin-bottom: 10px" class="img-fluid" src="/img/index_se_custom.png">
+                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/index_se_custom.png">
                         </div>
                         <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <img style="width: 100%; height: 150px; margin-bottom: 10px" class="img-fluid" src="/img/index_se_special.png">
+                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/index_se_special.png">
                         </div>
                         <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <img style="width: 100%; height: 150px; margin-bottom: 10px" class="img-fluid" src="/img/index_se_world.png">
+                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/index_se_world.png">
                         </div>
                     </div>
                     <!-- <div class="row">
