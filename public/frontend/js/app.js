@@ -61256,7 +61256,7 @@ var render = function() {
                     _c("router-link", { attrs: { to: { name: "home" } } }, [
                       _c("img", {
                         staticClass: "img-fluid",
-                        staticStyle: { height: "85px", width: "200px" },
+                        staticStyle: { height: "75px", width: "176px" },
                         attrs: { src: "/imgs/logo.png" }
                       })
                     ])
