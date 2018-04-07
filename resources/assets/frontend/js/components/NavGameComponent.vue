@@ -51,9 +51,17 @@
 		display: inline-block;
 	}
 
-	.nav-item a {
+	.navbar-dark .navbar-nav .nav-link {
 		font-weight: bold;
-		color: rgb(255, 255, 255) !important;
+		color: white;
+	}
+
+	.navbar-dark .navbar-nav .nav-link.active {
+		color: #535353;
+	    cursor: default;
+	    text-shadow: none;
+	    background: #ffe066;
+	    box-shadow: inset 0 3px 0 -1px rgba(0,0,0,.2);
 	}
 
 	.nav-item {

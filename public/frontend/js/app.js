@@ -60914,7 +60914,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\nul[data-v-8c035078] {\n\twidth: 100%;\n\ttext-align: center;\n\tdisplay: initial;\n}\nul li[data-v-8c035078] {\n\tdisplay: inline-block;\n}\n.nav-item a[data-v-8c035078] {\n\tfont-weight: bold;\n\tcolor: rgb(255, 255, 255) !important;\n}\n.nav-item[data-v-8c035078] {\n\tpadding-right: 20px;\n}\n", ""]);
+exports.push([module.i, "\nul[data-v-8c035078] {\n\twidth: 100%;\n\ttext-align: center;\n\tdisplay: initial;\n}\nul li[data-v-8c035078] {\n\tdisplay: inline-block;\n}\n.navbar-dark .navbar-nav .nav-link[data-v-8c035078] {\n\tfont-weight: bold;\n\tcolor: white;\n}\n.navbar-dark .navbar-nav .nav-link.active[data-v-8c035078] {\n\tcolor: #535353;\n    cursor: default;\n    text-shadow: none;\n    background: #ffe066;\n    -webkit-box-shadow: inset 0 3px 0 -1px rgba(0,0,0,.2);\n            box-shadow: inset 0 3px 0 -1px rgba(0,0,0,.2);\n}\n.nav-item[data-v-8c035078] {\n\tpadding-right: 20px;\n}\n", ""]);
 
 // exports
 
