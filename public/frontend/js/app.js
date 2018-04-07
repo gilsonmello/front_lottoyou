@@ -62447,6 +62447,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -62510,7 +62511,7 @@ var render = function() {
                   _c("img", {
                     staticClass: "img-fluid",
                     staticStyle: { width: "100%" },
-                    attrs: { src: "/img/banner_medio_soccer.jpg" }
+                    attrs: { src: "/img/new/banner_1.jpg" }
                   })
                 ]
               )
@@ -62531,7 +62532,7 @@ var render = function() {
                   _c("img", {
                     staticClass: "img-fluid",
                     staticStyle: { width: "100%" },
-                    attrs: { src: "/img/new/banner_1.jpg" }
+                    attrs: { src: "/img/banner_medio_soccer.jpg" }
                   })
                 ]
               )
