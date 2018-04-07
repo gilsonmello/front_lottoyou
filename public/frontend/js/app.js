@@ -60971,7 +60971,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "nav",
-    { staticClass: "navbar navbar-expand-md navbar-dark bg-lottoyou" },
+    {
+      staticClass: "navbar navbar-expand-md navbar-dark bg-lottoyou",
+      staticStyle: { paddin: "0" }
+    },
     [
       _vm._m(0),
       _vm._v(" "),
