@@ -1,6 +1,6 @@
 <template>	
 	<div class="container-fluid no-padding">
-		<img src="/img/banner-principal-copia.jpg" class="img-fluid">
+		<img src="/img/banner_principal_83.jpg" class="img-fluid">
 		
 		<!--<div class="container">
 			<div class="row">
