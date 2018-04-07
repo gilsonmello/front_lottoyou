@@ -53,7 +53,7 @@
 
 	.nav-item a {
 		font-weight: bold;
-		color: rgb(255, 255, 255);
+		color: rgb(255, 255, 255) !important;
 	}
 
 	.nav-item {

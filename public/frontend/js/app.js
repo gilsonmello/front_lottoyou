@@ -60914,7 +60914,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\nul[data-v-8c035078] {\n\twidth: 100%;\n\ttext-align: center;\n\tdisplay: initial;\n}\nul li[data-v-8c035078] {\n\tdisplay: inline-block;\n}\n.nav-item a[data-v-8c035078] {\n\tfont-weight: bold;\n\tcolor: rgb(255, 255, 255);\n}\n.nav-item[data-v-8c035078] {\n\tpadding-right: 20px;\n}\n", ""]);
+exports.push([module.i, "\nul[data-v-8c035078] {\n\twidth: 100%;\n\ttext-align: center;\n\tdisplay: initial;\n}\nul li[data-v-8c035078] {\n\tdisplay: inline-block;\n}\n.nav-item a[data-v-8c035078] {\n\tfont-weight: bold;\n\tcolor: rgb(255, 255, 255) !important;\n}\n.nav-item[data-v-8c035078] {\n\tpadding-right: 20px;\n}\n", ""]);
 
 // exports
 
@@ -61756,6 +61756,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     created: function created() {},
@@ -61811,6 +61840,20 @@ var staticRenderFns = [
                       "data-target": "#carouselExampleIndicators",
                       "data-slide-to": "1"
                     }
+                  }),
+                  _vm._v(" "),
+                  _c("li", {
+                    attrs: {
+                      "data-target": "#carouselExampleIndicators",
+                      "data-slide-to": "2"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("li", {
+                    attrs: {
+                      "data-target": "#carouselExampleIndicators",
+                      "data-slide-to": "3"
+                    }
                   })
                 ]
               ),
@@ -61833,7 +61876,7 @@ var staticRenderFns = [
                               width: "100%",
                               "margin-bottom": "10px"
                             },
-                            attrs: { src: "/img/index_easy_money.png" }
+                            attrs: { src: "/img/new/index_2.jpeg" }
                           })
                         ]
                       ),
@@ -61867,7 +61910,117 @@ var staticRenderFns = [
                               width: "100%",
                               "margin-bottom": "10px"
                             },
-                            attrs: { src: "/img/index_soccer_expert.png" }
+                            attrs: { src: "/img/new/index_golden_goal.png" }
+                          })
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "carousel-item" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: {
+                              width: "100%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { src: "/img/index_se_custom.png" }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: {
+                              width: "100%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { src: "/img/index_se_special.png" }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: {
+                              width: "100%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { src: "/img/index_se_world.png" }
+                          })
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "carousel-item" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: {
+                              width: "100%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { src: "/img/new/slide_6.png" }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: {
+                              width: "100%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { src: "/img/new/slide_1.jpg" }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "img-fluid",
+                            staticStyle: {
+                              width: "100%",
+                              "margin-bottom": "10px"
+                            },
+                            attrs: { src: "/img/new/slide_2.png" }
                           })
                         ]
                       )
@@ -61905,7 +62058,7 @@ var staticRenderFns = [
                               width: "100%",
                               "margin-bottom": "10px"
                             },
-                            attrs: { src: "/img/index_se_special.png" }
+                            attrs: { src: "/img/new/slide_3.png" }
                           })
                         ]
                       ),
@@ -61922,7 +62075,7 @@ var staticRenderFns = [
                               width: "100%",
                               "margin-bottom": "10px"
                             },
-                            attrs: { src: "/img/index_se_world.png" }
+                            attrs: { src: "/img/new/slide_5.png" }
                           })
                         ]
                       )
