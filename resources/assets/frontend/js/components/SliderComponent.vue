@@ -53,7 +53,7 @@
 <style scoped>
 	.container-fluid img {
 	
-		
+		width: 100%;
 	}
 	
 	h1 {

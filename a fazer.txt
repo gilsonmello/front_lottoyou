@@ -12,3 +12,4 @@
 - no banner-02 e 03, colocar banner medio Soccer.jpg, Banner medio RASPADINHAS.jpg, Banner Medio raspadinha.jpg, golden-goal.jpg             ---------------> ok
 - no banner-explicação, colocar as imagens explic_easy.jpg, explic_piratas.jpg, explic_soccer.jpg  ----> ok
 - procurar imagem de campo de futebol para colocar no fundo do soccer expert
+- colocar as fontes do menu em negrito e aumentar o padding-rigth

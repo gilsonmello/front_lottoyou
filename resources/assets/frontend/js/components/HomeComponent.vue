@@ -105,19 +105,19 @@
 			</div> -->
 			<div class="row">
 				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-					<img class="img-fluid" style="width: 100%; " src="/img/explic_easy.jpg">
+					<img class="img-fluid" style="width: 100%; " src="/img/new/explic_easy.jpg">
 				</div>
 			</div>
 			<br>
 			<div class="row">
 				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-					<img class="img-fluid" style="width: 100%; " src="/img/explic_piratas.jpg">
+					<img class="img-fluid" style="width: 100%; " src="/img/new/explic_raspadinhas.jpg">
 				</div>
 			</div>
 			<br>
 			<div class="row">
 				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-					<img class="img-fluid" style="width: 100%; " src="/img/explic_soccer.jpg">
+					<img class="img-fluid" style="width: 100%; " src="/img/new/explic_soccer.jpg">
 				</div>
 			</div>
 		</div>
