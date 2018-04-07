@@ -4,11 +4,11 @@
 			<nav class="navbar navbar-toggleable-md navbar-light bg-inverse" style="padding: 0;">
   				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
   					<div class="row">
-  						<div class="col-lg-12 vcenter-end" style="justify-content: left">
+  						<div class="col-lg-12 vcenter-end header-container-logo" style="justify-content: left">
 		  					<ul class="vcenter">
 		  						<li>
 		  							<router-link :to="{ name: 'home' }">
-		  								<img class="img-fluid" style="height: 54px; width: 127px;" src="/imgs/logo.png">
+		  								<img class="img-fluid logo" style="height: 54px; width: 127px;" src="/imgs/logo.png">
 		  							</router-link>
 		  						</li>
 		  						<!-- <li>
@@ -400,4 +400,12 @@
 			padding: 0 !important
 		}
 	}
+
+	@media (max-width: 767px) {
+		.header-container-logo {
+			justify-content: center !important;
+		}
+	}
+
+	
 </style>
