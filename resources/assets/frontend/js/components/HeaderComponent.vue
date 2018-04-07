@@ -1,6 +1,6 @@
 <template>
 	<div class="header fixed-top bg-white">
-		<div class="container-fluid">
+		<div class="container-fluid container-fluid-header">
 			<nav class="navbar navbar-toggleable-md navbar-light bg-inverse" style="padding: 0;">
   				<div class="col-lg-4 col-md-8 col-sm-12 col-12">
   					<div class="row">
@@ -25,7 +25,7 @@
 				</div>
 			  	<div :class="col()">
 			  		<div class="row">
-			  			<div class="col-lg-12 vcenter-end header" style="justify-content: right">
+			  			<div class="col-lg-12 vcenter-end header-container" style="justify-content: right">
 			  				<ul class="header-items text-center" style="width: 100%">
 					  			<li class="item-register-login" v-if="!auth">
 					  				<router-link :to="{ name: 'login' }" class="pull-left" style="width: 100%;">
@@ -396,7 +396,7 @@
 	}
 
 	@media (max-width: 992px) {
-		.header, .header .header-items{
+		.header-container, .container-fluid-header, .header-container .header-items{
 			padding: 0 !important
 		}
 	}
