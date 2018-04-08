@@ -67430,7 +67430,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(" "),
-                                  discount_table.is_discount
+                                  discount_table.is_discount == 1
                                     ? _c("span", [
                                         _vm._v(
                                           "\n\t\t\t\t\t\t\t\t\t\t\t" +
