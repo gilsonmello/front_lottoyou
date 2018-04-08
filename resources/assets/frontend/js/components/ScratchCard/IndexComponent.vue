@@ -70,7 +70,8 @@
 								
 								<div class="col-lg-3 col-3 col-md-3 col-sm-3">
 									<span>
-										$ {{ calculatePercentage(scratch_card_theme.value, discount_table.percentage, discount_table.quantity ) }}
+
+										$ {{ calculatePercentage(scratch_card_theme.lot.value, discount_table.percentage, discount_table.quantity ) }}
 									</span>
 								</div>
 							</div>
@@ -520,7 +521,7 @@
 			addToCart: function(index, $event) {
 				
 				//A posição 0 foi reservada para o valor sem desconto
-				if(this.scratch_card_themes[index].positionSelected == 0) {
+				/*if(this.scratch_card_themes[index].positionSelected == 0) {
 
 					//Caso o usuário tenha selecionado a opção sem desconto
 					var new_scratch_card_theme = Object.assign({}, this.scratch_card_themes[index], {})
@@ -536,7 +537,8 @@
 					//Passando para a estrutura os dados preenchidos pelo o usuário
 					this.item.scratch_card = new_scratch_card_theme
 				}
-				else if(this.scratch_card_themes[index].discount_tables != undefined) {
+				else*/ 
+				if(this.scratch_card_themes[index].discount_tables != undefined) {
 					
 					//Caso o usuário tenha selecionado a opção com desconto, 
 					//Preciso decrementar a posição selecionada, pois o array da tabela de descontos começa em 0
@@ -556,7 +558,7 @@
 					scratch_card_theme.discount_tables = discount_tables;
 
 					//Valor da raspadinha
-					var value = scratch_card_theme.value;
+					var value = scratch_card_theme.lot.value;
 					//Quantidade que está na tabela de desconto
 					var quantity = scratch_card_theme.discount_tables.quantity;
 					//Porcentagem que está na tabela de desconto

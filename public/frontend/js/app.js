@@ -66727,6 +66727,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -66928,22 +66929,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			var _this5 = this;
 
 			//A posição 0 foi reservada para o valor sem desconto
-			if (this.scratch_card_themes[index].positionSelected == 0) {
-
-				//Caso o usuário tenha selecionado a opção sem desconto
-				var new_scratch_card_theme = Object.assign({}, this.scratch_card_themes[index], {});
-
-				//Não possui tabela de desconto
-				new_scratch_card_theme.discount_tables = {};
-
-				new_scratch_card_theme.discount_tables.quantity = 1;
-
-				//Atribuindo o valor da raspadinha ao total
-				this.item.total = parseFloat(new_scratch_card_theme.value);
-
-				//Passando para a estrutura os dados preenchidos pelo o usuário
-				this.item.scratch_card = new_scratch_card_theme;
-			} else if (this.scratch_card_themes[index].discount_tables != undefined) {
+			/*if(this.scratch_card_themes[index].positionSelected == 0) {
+   		//Caso o usuário tenha selecionado a opção sem desconto
+   	var new_scratch_card_theme = Object.assign({}, this.scratch_card_themes[index], {})
+   	
+   	//Não possui tabela de desconto
+   	new_scratch_card_theme.discount_tables = {}
+   		new_scratch_card_theme.discount_tables.quantity = 1;
+   		//Atribuindo o valor da raspadinha ao total
+   	this.item.total = parseFloat(new_scratch_card_theme.value)
+   		//Passando para a estrutura os dados preenchidos pelo o usuário
+   	this.item.scratch_card = new_scratch_card_theme
+   }
+   else*/
+			if (this.scratch_card_themes[index].discount_tables != undefined) {
 
 				//Caso o usuário tenha selecionado a opção com desconto, 
 				//Preciso decrementar a posição selecionada, pois o array da tabela de descontos começa em 0
@@ -66959,7 +66958,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				scratch_card_theme.discount_tables = discount_tables;
 
 				//Valor da raspadinha
-				var value = scratch_card_theme.value;
+				var value = scratch_card_theme.lot.value;
 				//Quantidade que está na tabela de desconto
 				var quantity = scratch_card_theme.discount_tables.quantity;
 				//Porcentagem que está na tabela de desconto
@@ -67469,10 +67468,10 @@ var render = function() {
                               [
                                 _c("span", [
                                   _vm._v(
-                                    "\n\t\t\t\t\t\t\t\t\t\t$ " +
+                                    "\n\n\t\t\t\t\t\t\t\t\t\t$ " +
                                       _vm._s(
                                         _vm.calculatePercentage(
-                                          scratch_card_theme.value,
+                                          scratch_card_theme.lot.value,
                                           discount_table.percentage,
                                           discount_table.quantity
                                         )

@@ -48,7 +48,7 @@ class ScratchCardTheme extends Model
         'total_tickets'
     ];
 
-    public function lots() {
+    public function lot() {
     	return $this->hasOne(ScratchCardLot::class, 'temas_raspadinha_id')
             ->where('active', '=', 1);
     }
