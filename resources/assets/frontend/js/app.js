@@ -44,6 +44,10 @@ Vue.prototype.trans = (key) => {
 
 Vue.prototype.app = window.app;
 
+Vue.prototype.app.reload = function() {
+	window.location.reload();
+}
+
 //require('./helpers');
 
 

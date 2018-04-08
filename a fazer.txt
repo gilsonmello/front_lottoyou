@@ -1,8 +1,8 @@
-- após escolher a imagem do número do lote, mostrar o nome da imagem selecionada no canto direito
-- não fechar modal ao gerar raspadinhas demo
-- em cadastro de tema, remover obrigatoriedade do campo texto da raspadinha
-- mensagem para o usuário comprar raspadinha ao terminar as demos
-- remover a opção padrão de o usuário selecionar 1 jogo da raspadinha
+- após escolher a imagem do número do lote, mostrar o nome da imagem selecionada no canto direito  ---> ok
+- não fechar modal ao gerar raspadinhas demo   ------> ok
+- em cadastro de tema, remover obrigatoriedade do campo texto da raspadinha   -----> ok
+- mensagem para o usuário comprar raspadinha ao terminar as demos   ----> ok
+- remover a opção padrão de o usuário selecionar 1 jogo da raspadinha  -----> ok
 - adicionar opção de mostrar porcentagem ou não da raspadinha  -----> ok
 - criar subdominio para o domínio principal dev.lottoyou.bet ----------> ok
 - alterar da logo height: 85px; width: 200px;                ----------> ok

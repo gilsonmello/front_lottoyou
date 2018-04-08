@@ -40,26 +40,30 @@
 					<footer class="scratch-card-footer">
 						<form @submit.prevent="addToCart(index, $event)">
 							<div class="row vcenter">
-								<div class="col-lg-9 col-9 col-md-9 col-sm-9">
+								<!-- <div class="col-lg-9 col-9 col-md-9 col-sm-9">
 									<label class="">
 										<input type="radio" v-bind:value="0" v-model="scratch_card_theme.positionSelected" :name="'game_'+index+'_option'">
 										<span>
 											1 {{ trans('strings.game') }}
 										</span>
 									</label>
-								</div>
+								</div> 
 								<div class="col-lg-3 col-3 col-md-3 col-sm-3">
 									<span>
 										$ {{ ((scratch_card_theme.value * 1)).format(2, true) }}
 									</span>
-								</div>
+								</div>-->
 							</div>
 							<div class="row vcenter" v-for="(discount_table, ind) in scratch_card_theme.discount_tables">
 								<div class="col-lg-9 col-9 col-md-9 col-sm-9">
 									<label class="">
-										<input type="radio" v-bind:value="ind+1" v-model="scratch_card_theme.positionSelected" :name="'game_'+index+'_option'">
+										<input type="radio" v-bind:value="ind" v-model="scratch_card_theme.positionSelected" :name="'game_'+index+'_option'">
 										<span v-if="discount_table.is_discount">
 											{{ discount_table.quantity }} {{ trans('strings.game') }} {{'('+trans('strings.spare')+' '+discount_table.percentage+'%)'}}
+										</span>
+
+										<span v-else>
+											{{ discount_table.quantity }} {{ trans('strings.game') }} 
 										</span>
 									</label>
 								</div>
@@ -221,6 +225,15 @@
 		      						</div>
 		      					</div>
 		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
+		      						<div class="no-tickets-container hide">
+		      							<div class="vert-align">
+		      								<h3>Não restam raspadinhas.</h3>
+		      								<p>Tens de comprar mais raspadinhas para voltar a jogar.</p>
+		      								<div @click="app.reload" class="btn btn-primary btn-mini buy-more-btn">
+		      									Comprar mais bilhetes.
+		      								</div>
+	      								</div>
+		      						</div>
 		      						<div class="row h">
 		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4">
 		      								<div class="scratchpad">
@@ -274,18 +287,25 @@
 		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6" style="padding: 0 5px 0 5px;">
 		      						<a href="javascript: void(0);" class="btn remaining-tickets">Raspadinhas restantes: {{ demoAttempts }}</a>
 		      					</div>
-		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6" style="padding: 0 5px 0 5px;">
-		      						<a @click.prevent="handlePlay($event)" href="javascript: void(0);" class="btn btn-game btn-play">
+		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6 btn-container" style="padding: 0 5px 0 5px;">
+		      						
+		      						<a v-if="demoAttempts > 0" @click.prevent="handlePlay($event)" href="javascript: void(0);" class="btn btn-game btn-play">
 		      							{{ trans('strings.play_scratch_card') }}
 		      						</a>
-		      						<a @click.prevent="handleLoading($event)" href="javascript: void(0);" class="btn hide btn-game btn-loading">
+		      						
+		      						<a v-if="demoAttempts > 0" @click.prevent="handleLoading($event)" href="javascript: void(0);" class="btn hide btn-game btn-loading">
 		      							{{ trans('strings.loading') + ' ...' }}
 		      						</a>
-		      						<a @click.prevent="handleReveal($event)" href="javascript: void(0);" class="btn hide btn-game btn-reveal-all">
+		      						<a v-if="demoAttempts > 0" @click.prevent="handleReveal($event)" href="javascript: void(0);" class="btn hide btn-game btn-reveal-all">
 		      							{{ trans('strings.reveal_all') }}
 		      						</a>
-		      						<a @click.prevent="handlePlayAgain($event)" href="javascript: void(0);" class="btn hide btn-game btn-play-again">
+		      						
+		      						<a v-if="demoAttempts > 0" @click.prevent="handlePlayAgain($event)" href="javascript: void(0);" class="btn hide btn-game btn-play-again">
 		      							{{ trans('strings.play_again') }}
+		      						</a>
+		      						
+		      						<a v-else @click.prevent="handleBuyNow($event)" href="javascript: void(0);" class="btn btn-game btn-buy-now">
+		      							{{ trans('strings.buy_now') }}
 		      						</a>
 		      					</div>
 		      				</div>
@@ -321,6 +341,17 @@
 			},
 			backgroundDemo(background) {
 				return 'background-image: url('+background.replace(' ', '%20')+'); background-size: 100% 100%;';
+			},
+			handleBuyNow(el) {
+				$('.no-tickets-container').removeClass('hide');
+				$('.h').css({
+					opacity: 0.5
+				});
+				$('.btn-container').css({
+					opacity: 0.5
+				});
+				//Removendo evento click do botão
+				this.$off(el);
 			},
 			handlePlayAgain: function (el) {
 				$('.modal-demo').off('hidden.bs.modal');
@@ -444,7 +475,7 @@
 		            	this.scratch_card_demo = response.data
 						this.loading.modalDemo = false;
 						this.handleScratchPad();
-						this.demoAttempts = 5;
+						this.demoAttempts = 1;
 					}
 		        }).catch((error) => {
 		        	$('.modal-demo').on('hidden.bs.modal', function (e) {
@@ -622,7 +653,10 @@
             }
 		},
 		watch: {
-			'loading.modalDemo': function(newValue, oldValue) {}
+			'loading.modalDemo': function(newValue, oldValue) {},
+			demoAttempts: function(newValue, oldValue) {
+				console.log('demoAttempts '+newValue)
+			}
 		},
 		components: {
 			ModalFormComponent,
@@ -823,6 +857,23 @@
 
 	.no-padding-left {
 		padding-left: 0;
+	}
+
+	.no-tickets-container {
+		position: absolute;
+		top: 30.3%;
+		right: 0;
+		z-index: 1000;
+		left: 0;
+	}
+
+	.no-tickets-container .vert-align {
+	    color: #fff;
+	    text-align: center;
+	    background-color: rgba(0,0,0,.9);
+	    padding: 30px;
+	    border-radius: 5px;
+	    border: 1px solid #000;
 	}
 	
 </style>

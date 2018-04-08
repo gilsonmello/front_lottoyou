@@ -27486,6 +27486,10 @@ Vue.prototype.trans = function (key) {
 
 Vue.prototype.app = window.app;
 
+Vue.prototype.app.reload = function () {
+  window.location.reload();
+};
+
 //require('./helpers');
 
 
@@ -66380,7 +66384,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.remaining-tickets[data-v-fc188428] {\n\t    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;\n\t    border-color: #baa359;\n\t    color: #f2d472;\n\t    text-align: left;\n\t    line-height: 48px;\n\t    padding: 0 15px;\n\t    width: 100%;\n}\n.info-text[data-v-fc188428] {\n\t\tcolor: #fff;\n    \tfont-size: 15px;\n\t    margin: 0;\n\t    padding: 0 8px;\n\t    line-height: 22px;\n\t    text-shadow: 0 2px 3px rgba(0,0,0,.8);\n}\n.ticket-number[data-v-fc188428] {\n\t    color: #fff;\n\t    font-family: courier;\n}\n.btn-result[data-v-fc188428] {\n\t\tborder-color: #baa359;\n\t    line-height: 36px;\n\t    font-weight: bold;\n\t    text-align: center;\n        color: #f2d472;\n        border-color: #baa359;\n\t    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;\n\t    font-size: 21px;\n\t    width: 100%;\n}\n.btn-game[data-v-fc188428]:not([disabled]):not(.disabled):active {\n\t\tbackground: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0 !important;\n}\n.btn-game[data-v-fc188428] {\n\t\tbackground: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0;\n\t    border: 0 none;\n\t    width: 100%;\n\t    border-radius: 5px;\n\t    -webkit-box-shadow: 0 -4px 0 -2px #708f00 inset;\n\t            box-shadow: 0 -4px 0 -2px #708f00 inset;\n\t    -webkit-box-sizing: border-box;\n\t            box-sizing: border-box;\n\t    color: #fff;\n\t    cursor: pointer;\n\t    font-family: \"kievit\",arial,sans-serif;\n\t    font-size: 24px;\n\t    font-weight: 700;\n\t    line-height: 48px;\n\t    padding: 0 15px;\n\t    text-align: center;\n\t    text-decoration: none;\n\t    text-shadow: 1px 1px 2px #586e00;\n\t    vertical-align: bottom;\n}\n.scratch-card[data-v-fc188428] {\n\t\tbackground: #efefef;\n\t    border-radius: 5px;\n\t    padding: 15px;\n\t    margin-bottom: 30px;\n\t    position: relative;\n}\n.extras img[data-v-fc188428] {\n\t\tposition: absolute;\n\t\ttop: -15px;\n\t    left: -5px;\n\t    z-index: 4;\n}\ninput[type=radio][data-v-fc188428] {\n\t\tmargin: 0;\n    \tmargin-right: 10px;\n}\n.scratch-card-footer label[data-v-fc188428] {\n\t\tpadding: 13px 10px;\n\t    margin: 0;\n\t    width: 100%;\n\t    cursor: pointer;\n}\n.scratch-card-footer form .row[data-v-fc188428] {\n\t\tcolor: #666;\n\t    background: rgba(255,255,255,.3);\n\t    border-bottom: 1px solid #eee;\n\t    font-size: 15px;\n\t    cursor: pointer;\n}\n.scratch-card-body .amount[data-v-fc188428] {\n\t\tbackground: linear-gradient(87.71deg, #1DB2E0 0%, #6AD1ED 50.77%, #1DB2E0 100%);\n\t    height: 46px;\n\t    color: #FFFFFF;\n\t    font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n\t    font-size: 15px;\n\t    font-weight: bold;\n\t    line-height: 46px;\n\t    text-align: center;\n\t    -webkit-box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t            box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t    position: relative;\n}\n.scratch-card-body .jackpot-table[data-v-fc188428] {\n\t\tbackground: #0f546d;\n\t    color: #fff;\n\t    padding: 10px;\n\t    font-size: 13px;\n\t    font-weight: 700;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428] {\n\t\tdisplay: block;\n\t    border: 2px solid rgba(255,255,255,.2);\n\t    border-radius: 5px;\n\t    color: #fff;\n\t    font-weight: 700;\n\t    -webkit-transition: border .3s ease-in-out;\n\t    transition: border .3s ease-in-out;\n\t    font-size: 13px;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.description[data-v-fc188428] {\n\t\tcursor: pointer;\n    \tcolor: #fff;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428]:hover {\n\t\tborder: 2px solid #fff;\n}\n.scratch-card-body .btn[data-v-fc188428] {\n\t\tpadding: 0\n}\n.scratch-card-header[data-v-fc188428] {\n\t\tposition: relative;\n}\n.scratch-card-header .header-image[data-v-fc188428] { \n\t\twidth: 100%;\n}\n.scratch-card-header:hover .descript[data-v-fc188428] {\n\t    opacity: 1;\n}\n.scratch-card-header .descript[data-v-fc188428] {\n\t    position: absolute;\n\t    left: 0;\n\t    top: 0;\n\t    width: 100%;\n\t    height: 100%;\n\t    background-color: rgba(239,239,239,.95);\n\t    z-index: 2;\n\t    opacity: 0;\n\t    -webkit-transition: opacity .3s ease-in-out;\n\t    transition: opacity .3s ease-in-out;\n\t    padding: 20px;\n\t    text-align: center;\n\t    color: #666;\n}\n.modal-jackpot-table .container-actions[data-v-fc188428] {\n\t\tbackground-color: #155C7B;\n\t    text-align: center;\n}\n.modal-jackpot-table .container-actions .btn[data-v-fc188428] {\n\t   \tmargin: 10px 0 10px 0;\n\t   \tdisplay: block;\n}\n.modal-demo .modal-body[data-v-fc188428] {\n\t\tpadding: 20px;\n}\n.h div[data-v-fc188428]{\n\t\theight: 146px;\n\t\tmargin-bottom: 3px;\n\t\tpadding: 0 5px 0 5px;\n}\n.no-padding-left[data-v-fc188428] {\n\t\tpadding-left: 0;\n}\n\t\n", ""]);
+exports.push([module.i, "\n.remaining-tickets[data-v-fc188428] {\n\t    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;\n\t    border-color: #baa359;\n\t    color: #f2d472;\n\t    text-align: left;\n\t    line-height: 48px;\n\t    padding: 0 15px;\n\t    width: 100%;\n}\n.info-text[data-v-fc188428] {\n\t\tcolor: #fff;\n    \tfont-size: 15px;\n\t    margin: 0;\n\t    padding: 0 8px;\n\t    line-height: 22px;\n\t    text-shadow: 0 2px 3px rgba(0,0,0,.8);\n}\n.ticket-number[data-v-fc188428] {\n\t    color: #fff;\n\t    font-family: courier;\n}\n.btn-result[data-v-fc188428] {\n\t\tborder-color: #baa359;\n\t    line-height: 36px;\n\t    font-weight: bold;\n\t    text-align: center;\n        color: #f2d472;\n        border-color: #baa359;\n\t    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;\n\t    font-size: 21px;\n\t    width: 100%;\n}\n.btn-game[data-v-fc188428]:not([disabled]):not(.disabled):active {\n\t\tbackground: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0 !important;\n}\n.btn-game[data-v-fc188428] {\n\t\tbackground: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0;\n\t    border: 0 none;\n\t    width: 100%;\n\t    border-radius: 5px;\n\t    -webkit-box-shadow: 0 -4px 0 -2px #708f00 inset;\n\t            box-shadow: 0 -4px 0 -2px #708f00 inset;\n\t    -webkit-box-sizing: border-box;\n\t            box-sizing: border-box;\n\t    color: #fff;\n\t    cursor: pointer;\n\t    font-family: \"kievit\",arial,sans-serif;\n\t    font-size: 24px;\n\t    font-weight: 700;\n\t    line-height: 48px;\n\t    padding: 0 15px;\n\t    text-align: center;\n\t    text-decoration: none;\n\t    text-shadow: 1px 1px 2px #586e00;\n\t    vertical-align: bottom;\n}\n.scratch-card[data-v-fc188428] {\n\t\tbackground: #efefef;\n\t    border-radius: 5px;\n\t    padding: 15px;\n\t    margin-bottom: 30px;\n\t    position: relative;\n}\n.extras img[data-v-fc188428] {\n\t\tposition: absolute;\n\t\ttop: -15px;\n\t    left: -5px;\n\t    z-index: 4;\n}\ninput[type=radio][data-v-fc188428] {\n\t\tmargin: 0;\n    \tmargin-right: 10px;\n}\n.scratch-card-footer label[data-v-fc188428] {\n\t\tpadding: 13px 10px;\n\t    margin: 0;\n\t    width: 100%;\n\t    cursor: pointer;\n}\n.scratch-card-footer form .row[data-v-fc188428] {\n\t\tcolor: #666;\n\t    background: rgba(255,255,255,.3);\n\t    border-bottom: 1px solid #eee;\n\t    font-size: 15px;\n\t    cursor: pointer;\n}\n.scratch-card-body .amount[data-v-fc188428] {\n\t\tbackground: linear-gradient(87.71deg, #1DB2E0 0%, #6AD1ED 50.77%, #1DB2E0 100%);\n\t    height: 46px;\n\t    color: #FFFFFF;\n\t    font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n\t    font-size: 15px;\n\t    font-weight: bold;\n\t    line-height: 46px;\n\t    text-align: center;\n\t    -webkit-box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t            box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t    position: relative;\n}\n.scratch-card-body .jackpot-table[data-v-fc188428] {\n\t\tbackground: #0f546d;\n\t    color: #fff;\n\t    padding: 10px;\n\t    font-size: 13px;\n\t    font-weight: 700;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428] {\n\t\tdisplay: block;\n\t    border: 2px solid rgba(255,255,255,.2);\n\t    border-radius: 5px;\n\t    color: #fff;\n\t    font-weight: 700;\n\t    -webkit-transition: border .3s ease-in-out;\n\t    transition: border .3s ease-in-out;\n\t    font-size: 13px;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.description[data-v-fc188428] {\n\t\tcursor: pointer;\n    \tcolor: #fff;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428]:hover {\n\t\tborder: 2px solid #fff;\n}\n.scratch-card-body .btn[data-v-fc188428] {\n\t\tpadding: 0\n}\n.scratch-card-header[data-v-fc188428] {\n\t\tposition: relative;\n}\n.scratch-card-header .header-image[data-v-fc188428] { \n\t\twidth: 100%;\n}\n.scratch-card-header:hover .descript[data-v-fc188428] {\n\t    opacity: 1;\n}\n.scratch-card-header .descript[data-v-fc188428] {\n\t    position: absolute;\n\t    left: 0;\n\t    top: 0;\n\t    width: 100%;\n\t    height: 100%;\n\t    background-color: rgba(239,239,239,.95);\n\t    z-index: 2;\n\t    opacity: 0;\n\t    -webkit-transition: opacity .3s ease-in-out;\n\t    transition: opacity .3s ease-in-out;\n\t    padding: 20px;\n\t    text-align: center;\n\t    color: #666;\n}\n.modal-jackpot-table .container-actions[data-v-fc188428] {\n\t\tbackground-color: #155C7B;\n\t    text-align: center;\n}\n.modal-jackpot-table .container-actions .btn[data-v-fc188428] {\n\t   \tmargin: 10px 0 10px 0;\n\t   \tdisplay: block;\n}\n.modal-demo .modal-body[data-v-fc188428] {\n\t\tpadding: 20px;\n}\n.h div[data-v-fc188428]{\n\t\theight: 146px;\n\t\tmargin-bottom: 3px;\n\t\tpadding: 0 5px 0 5px;\n}\n.no-padding-left[data-v-fc188428] {\n\t\tpadding-left: 0;\n}\n.no-tickets-container[data-v-fc188428] {\n\t\tposition: absolute;\n\t\ttop: 30.3%;\n\t\tright: 0;\n\t\tz-index: 1000;\n\t\tleft: 0;\n}\n.no-tickets-container .vert-align[data-v-fc188428] {\n\t    color: #fff;\n\t    text-align: center;\n\t    background-color: rgba(0,0,0,.9);\n\t    padding: 30px;\n\t    border-radius: 5px;\n\t    border: 1px solid #000;\n}\n\t\n", ""]);
 
 // exports
 
@@ -66703,6 +66707,26 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -66718,6 +66742,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		},
 		backgroundDemo: function backgroundDemo(background) {
 			return 'background-image: url(' + background.replace(' ', '%20') + '); background-size: 100% 100%;';
+		},
+		handleBuyNow: function handleBuyNow(el) {
+			$('.no-tickets-container').removeClass('hide');
+			$('.h').css({
+				opacity: 0.5
+			});
+			$('.btn-container').css({
+				opacity: 0.5
+			});
+			//Removendo evento click do botão
+			this.$off(el);
 		},
 
 		handlePlayAgain: function handlePlayAgain(el) {
@@ -66848,7 +66883,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 					_this3.scratch_card_demo = response.data;
 					_this3.loading.modalDemo = false;
 					_this3.handleScratchPad();
-					_this3.demoAttempts = 5;
+					_this3.demoAttempts = 1;
 				}
 			}).catch(function (error) {
 				$('.modal-demo').on('hidden.bs.modal', function (e) {
@@ -67010,7 +67045,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		}
 	}),
 	watch: {
-		'loading.modalDemo': function loadingModalDemo(newValue, oldValue) {}
+		'loading.modalDemo': function loadingModalDemo(newValue, oldValue) {},
+		demoAttempts: function demoAttempts(newValue, oldValue) {
+			console.log('demoAttempts ' + newValue);
+		}
 	},
 	components: {
 		ModalFormComponent: __WEBPACK_IMPORTED_MODULE_1__ModalFormComponent___default.a,
@@ -67345,75 +67383,7 @@ var render = function() {
                         }
                       },
                       [
-                        _c("div", { staticClass: "row vcenter" }, [
-                          _c(
-                            "div",
-                            { staticClass: "col-lg-9 col-9 col-md-9 col-sm-9" },
-                            [
-                              _c("label", {}, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value:
-                                        scratch_card_theme.positionSelected,
-                                      expression:
-                                        "scratch_card_theme.positionSelected"
-                                    }
-                                  ],
-                                  attrs: {
-                                    type: "radio",
-                                    name: "game_" + index + "_option"
-                                  },
-                                  domProps: {
-                                    value: 0,
-                                    checked: _vm._q(
-                                      scratch_card_theme.positionSelected,
-                                      0
-                                    )
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      _vm.$set(
-                                        scratch_card_theme,
-                                        "positionSelected",
-                                        0
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c("span", [
-                                  _vm._v(
-                                    "\n\t\t\t\t\t\t\t\t\t\t\t1 " +
-                                      _vm._s(_vm.trans("strings.game")) +
-                                      "\n\t\t\t\t\t\t\t\t\t\t"
-                                  )
-                                ])
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "col-lg-3 col-3 col-md-3 col-sm-3" },
-                            [
-                              _c("span", [
-                                _vm._v(
-                                  "\n\t\t\t\t\t\t\t\t\t\t$ " +
-                                    _vm._s(
-                                      (scratch_card_theme.value * 1).format(
-                                        2,
-                                        true
-                                      )
-                                    ) +
-                                    "\n\t\t\t\t\t\t\t\t\t"
-                                )
-                              ])
-                            ]
-                          )
-                        ]),
+                        _c("div", { staticClass: "row vcenter" }),
                         _vm._v(" "),
                         _vm._l(scratch_card_theme.discount_tables, function(
                           discount_table,
@@ -67443,10 +67413,10 @@ var render = function() {
                                       name: "game_" + index + "_option"
                                     },
                                     domProps: {
-                                      value: ind + 1,
+                                      value: ind,
                                       checked: _vm._q(
                                         scratch_card_theme.positionSelected,
-                                        ind + 1
+                                        ind
                                       )
                                     },
                                     on: {
@@ -67454,7 +67424,7 @@ var render = function() {
                                         _vm.$set(
                                           scratch_card_theme,
                                           "positionSelected",
-                                          ind + 1
+                                          ind
                                         )
                                       }
                                     }
@@ -67478,7 +67448,15 @@ var render = function() {
                                             "\n\t\t\t\t\t\t\t\t\t\t"
                                         )
                                       ])
-                                    : _vm._e()
+                                    : _c("span", [
+                                        _vm._v(
+                                          "\n\t\t\t\t\t\t\t\t\t\t\t" +
+                                            _vm._s(discount_table.quantity) +
+                                            " " +
+                                            _vm._s(_vm.trans("strings.game")) +
+                                            " \n\t\t\t\t\t\t\t\t\t\t"
+                                        )
+                                      ])
                                 ])
                               ]
                             ),
@@ -67980,6 +67958,49 @@ var render = function() {
                                           "col-lg-6 col-12 col-md-6 col-sm-6"
                                       },
                                       [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "no-tickets-container hide"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "vert-align" },
+                                              [
+                                                _c("h3", [
+                                                  _vm._v(
+                                                    "Não restam raspadinhas."
+                                                  )
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("p", [
+                                                  _vm._v(
+                                                    "Tens de comprar mais raspadinhas para voltar a jogar."
+                                                  )
+                                                ]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-primary btn-mini buy-more-btn",
+                                                    on: {
+                                                      click: _vm.app.reload
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n\t\t      \t\t\t\t\t\t\t\t\tComprar mais bilhetes.\n\t\t      \t\t\t\t\t\t\t\t"
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
                                         _c("div", { staticClass: "row h" }, [
                                           _c(
                                             "div",
@@ -68143,120 +68164,155 @@ var render = function() {
                                       "div",
                                       {
                                         staticClass:
-                                          "col-lg-6 col-12 col-md-6 col-sm-6",
+                                          "col-lg-6 col-12 col-md-6 col-sm-6 btn-container",
                                         staticStyle: { padding: "0 5px 0 5px" }
                                       },
                                       [
-                                        _c(
-                                          "a",
-                                          {
-                                            staticClass:
-                                              "btn btn-game btn-play",
-                                            attrs: {
-                                              href: "javascript: void(0);"
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                $event.preventDefault()
-                                                _vm.handlePlay($event)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n\t\t      \t\t\t\t\t\t\t" +
-                                                _vm._s(
-                                                  _vm.trans(
-                                                    "strings.play_scratch_card"
-                                                  )
-                                                ) +
-                                                "\n\t\t      \t\t\t\t\t\t"
+                                        _vm.demoAttempts > 0
+                                          ? _c(
+                                              "a",
+                                              {
+                                                staticClass:
+                                                  "btn btn-game btn-play",
+                                                attrs: {
+                                                  href: "javascript: void(0);"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    $event.preventDefault()
+                                                    _vm.handlePlay($event)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n\t\t      \t\t\t\t\t\t\t" +
+                                                    _vm._s(
+                                                      _vm.trans(
+                                                        "strings.play_scratch_card"
+                                                      )
+                                                    ) +
+                                                    "\n\t\t      \t\t\t\t\t\t"
+                                                )
+                                              ]
                                             )
-                                          ]
-                                        ),
+                                          : _vm._e(),
                                         _vm._v(" "),
-                                        _c(
-                                          "a",
-                                          {
-                                            staticClass:
-                                              "btn hide btn-game btn-loading",
-                                            attrs: {
-                                              href: "javascript: void(0);"
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                $event.preventDefault()
-                                                _vm.handleLoading($event)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n\t\t      \t\t\t\t\t\t\t" +
-                                                _vm._s(
-                                                  _vm.trans("strings.loading") +
-                                                    " ..."
-                                                ) +
-                                                "\n\t\t      \t\t\t\t\t\t"
+                                        _vm.demoAttempts > 0
+                                          ? _c(
+                                              "a",
+                                              {
+                                                staticClass:
+                                                  "btn hide btn-game btn-loading",
+                                                attrs: {
+                                                  href: "javascript: void(0);"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    $event.preventDefault()
+                                                    _vm.handleLoading($event)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n\t\t      \t\t\t\t\t\t\t" +
+                                                    _vm._s(
+                                                      _vm.trans(
+                                                        "strings.loading"
+                                                      ) + " ..."
+                                                    ) +
+                                                    "\n\t\t      \t\t\t\t\t\t"
+                                                )
+                                              ]
                                             )
-                                          ]
-                                        ),
+                                          : _vm._e(),
                                         _vm._v(" "),
-                                        _c(
-                                          "a",
-                                          {
-                                            staticClass:
-                                              "btn hide btn-game btn-reveal-all",
-                                            attrs: {
-                                              href: "javascript: void(0);"
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                $event.preventDefault()
-                                                _vm.handleReveal($event)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n\t\t      \t\t\t\t\t\t\t" +
-                                                _vm._s(
-                                                  _vm.trans(
-                                                    "strings.reveal_all"
-                                                  )
-                                                ) +
-                                                "\n\t\t      \t\t\t\t\t\t"
+                                        _vm.demoAttempts > 0
+                                          ? _c(
+                                              "a",
+                                              {
+                                                staticClass:
+                                                  "btn hide btn-game btn-reveal-all",
+                                                attrs: {
+                                                  href: "javascript: void(0);"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    $event.preventDefault()
+                                                    _vm.handleReveal($event)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n\t\t      \t\t\t\t\t\t\t" +
+                                                    _vm._s(
+                                                      _vm.trans(
+                                                        "strings.reveal_all"
+                                                      )
+                                                    ) +
+                                                    "\n\t\t      \t\t\t\t\t\t"
+                                                )
+                                              ]
                                             )
-                                          ]
-                                        ),
+                                          : _vm._e(),
                                         _vm._v(" "),
-                                        _c(
-                                          "a",
-                                          {
-                                            staticClass:
-                                              "btn hide btn-game btn-play-again",
-                                            attrs: {
-                                              href: "javascript: void(0);"
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                $event.preventDefault()
-                                                _vm.handlePlayAgain($event)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n\t\t      \t\t\t\t\t\t\t" +
-                                                _vm._s(
-                                                  _vm.trans(
-                                                    "strings.play_again"
-                                                  )
-                                                ) +
-                                                "\n\t\t      \t\t\t\t\t\t"
+                                        _vm.demoAttempts > 0
+                                          ? _c(
+                                              "a",
+                                              {
+                                                staticClass:
+                                                  "btn hide btn-game btn-play-again",
+                                                attrs: {
+                                                  href: "javascript: void(0);"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    $event.preventDefault()
+                                                    _vm.handlePlayAgain($event)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n\t\t      \t\t\t\t\t\t\t" +
+                                                    _vm._s(
+                                                      _vm.trans(
+                                                        "strings.play_again"
+                                                      )
+                                                    ) +
+                                                    "\n\t\t      \t\t\t\t\t\t"
+                                                )
+                                              ]
                                             )
-                                          ]
-                                        )
+                                          : _c(
+                                              "a",
+                                              {
+                                                staticClass:
+                                                  "btn btn-game btn-buy-now",
+                                                attrs: {
+                                                  href: "javascript: void(0);"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    $event.preventDefault()
+                                                    _vm.handleBuyNow($event)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n\t\t      \t\t\t\t\t\t\t" +
+                                                    _vm._s(
+                                                      _vm.trans(
+                                                        "strings.buy_now"
+                                                      )
+                                                    ) +
+                                                    "\n\t\t      \t\t\t\t\t\t"
+                                                )
+                                              ]
+                                            )
                                       ]
                                     )
                                   ]
