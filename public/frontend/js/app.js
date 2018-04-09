@@ -67266,21 +67266,22 @@ var render = function() {
               [
                 _c("div", { staticClass: "scratch-card" }, [
                   _c("header", { staticClass: "scratch-card-header" }, [
-                    _c("div", { staticClass: "extras" }, [
-                      _c("img", {
-                        staticClass: "game-badge",
-                        attrs: {
-                          src:
-                            "https://www.grandesloterias.com/images/badges/new-badge_pt.png",
-                          alt: "Novo"
-                        }
-                      })
-                    ]),
+                    scratch_card_theme.lot.new == 1
+                      ? _c("div", { staticClass: "extras" }, [
+                          _c("img", {
+                            staticClass: "game-badge",
+                            attrs: {
+                              src: _vm.app.basePath + "img/new.png",
+                              alt: "new"
+                            }
+                          })
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
                     _c("img", {
                       staticClass: "header-image img-fluid",
                       attrs: {
-                        alt: "Halloween",
+                        alt: scratch_card_theme.nome,
                         src: _vm.src(scratch_card_theme.img_card_url)
                       }
                     }),
@@ -68495,16 +68496,17 @@ var render = function() {
               [
                 _c("div", { staticClass: "soccer-expert-card" }, [
                   _c("header", { staticClass: "soccer-expert-header" }, [
-                    _c("div", { staticClass: "extras" }, [
-                      _c("img", {
-                        staticClass: "game-badge",
-                        attrs: {
-                          src:
-                            "https://www.grandesloterias.com/images/badges/new-badge_pt.png",
-                          alt: "Novo"
-                        }
-                      })
-                    ]),
+                    soccer_category.novo == 1
+                      ? _c("div", { staticClass: "extras" }, [
+                          _c("img", {
+                            staticClass: "game-badge",
+                            attrs: {
+                              src: _vm.app.basePath + "img/new.png",
+                              alt: "Novo"
+                            }
+                          })
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
                     _c("img", {
                       staticClass: "header-image img-fluid",

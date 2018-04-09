@@ -6,8 +6,8 @@
 			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="soccer_category in soccer_categories">
 				<div class="soccer-expert-card">
 					<header class="soccer-expert-header">
-						<div class="extras">
-							<img src="https://www.grandesloterias.com/images/badges/new-badge_pt.png" alt="Novo" class="game-badge">
+						<div class="extras" v-if="soccer_category.novo == 1">
+							<img :src="app.basePath+'img/new.png'" alt="Novo" class="game-badge">
 						</div>
 						<img class="header-image img-fluid" alt="" src="http://www.gopontoaponto.com.br/grupo3/img/soccer-expert/categoria/3.jpg">
 						<div class="descript">

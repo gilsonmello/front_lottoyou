@@ -6,10 +6,10 @@
 			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="(scratch_card_theme, index) in scratch_card_themes">
 				<div class="scratch-card">
 					<header class="scratch-card-header">
-						<div class="extras">
-							<img src="https://www.grandesloterias.com/images/badges/new-badge_pt.png" alt="Novo" class="game-badge">
+						<div class="extras" v-if="scratch_card_theme.lot.new == 1">
+							<img :src="app.basePath+'img/new.png'" alt="new" class="game-badge">
 						</div>
-						<img class="header-image img-fluid" alt="Halloween" :src="src(scratch_card_theme.img_card_url)">
+						<img class="header-image img-fluid" :alt="scratch_card_theme.nome" :src="src(scratch_card_theme.img_card_url)">
 						<div class="descript">
                             <h2 class="ng-binding">{{ scratch_card_theme.nome }}</h2>
                             <p class="ng-binding">{{ scratch_card_theme.texto_raspadinha }}</p>
