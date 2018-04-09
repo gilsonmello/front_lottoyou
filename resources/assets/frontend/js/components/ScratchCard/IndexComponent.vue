@@ -63,7 +63,7 @@
 										</span>
 
 										<span v-else>
-											{{ discount_table.quantity }} {{ trans('strings.game') }} 
+											{{ discount_table.quantity }} {{ discount_table.quantity == 1 ? trans('strings.game') : trans('strings.games') }} 
 										</span>
 									</label>
 								</div>
