@@ -1,6 +1,6 @@
 <template>
 	<load-component v-if="loading.component == true"></load-component>
-	<div class="container-fluid" v-else>
+	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.scratch_cards') }}</h1>
 		<div class="row">
 			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="(scratch_card_theme, index) in scratch_card_themes">
@@ -79,6 +79,9 @@
 								<div class="col-12 col-md-12 col-xs-12 col-sm-12 text-center">
 									<button type="submit" class="btn btn-md btn-success">
 										{{ trans('strings.play_now') }}
+									</button>
+									<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
+										<i class="fa fa-refresh fa-spin"></i>
 									</button>
 								</div>
 							</div>
@@ -542,7 +545,7 @@
 					
 					//Caso o usuário tenha selecionado a opção com desconto, 
 					//Preciso decrementar a posição selecionada, pois o array da tabela de descontos começa em 0
-					const positionSelected = (this.scratch_card_themes[index].positionSelected) - 1
+					const positionSelected = this.scratch_card_themes[index].positionSelected
 
 					//Pegando o item da tabela de desconto selecionada
 					var discount_tables = Object.assign(
@@ -559,6 +562,7 @@
 
 					//Valor da raspadinha
 					var value = scratch_card_theme.lot.value;
+
 					//Quantidade que está na tabela de desconto
 					var quantity = scratch_card_theme.discount_tables.quantity;
 					//Porcentagem que está na tabela de desconto
@@ -569,10 +573,17 @@
 
 					//Passando para a estrutura os dados preenchidos pelo o usuário
 					this.item.total = total
+
 					this.item.scratch_card = scratch_card_theme
 				}
 
 				let addScratchCardRequest = axios.create();
+
+				addScratchCardRequest.interceptors.request.use(config => {
+		        	$(event.currentTarget).find('[type="load"]').removeClass('hide');
+		        	$(event.currentTarget).find('[type="submit"]').addClass('hide');
+				  	return config;
+				});
 
 				addScratchCardRequest.post(routes.carts.add_scratch_cards, {
 					purchase: this.item, 

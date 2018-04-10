@@ -1,5 +1,5 @@
 <template>
-	<div class="container-fluid">
+	<div class="container">
 		<h1 class="page-header">{{ trans('strings.cart') }}</h1>
 		<!-- <div class="row">
 			<div class="col-lg-12 col-md-12 col-12 col-sm-12 text-center">

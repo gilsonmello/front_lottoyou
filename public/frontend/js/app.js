@@ -60657,7 +60657,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\nnav[data-v-7d64b6a4] {\n}\nli span[data-v-7d64b6a4] {\n\t\tfont-size: 12px;\n\t\tdisplay: block;\n}\n.cart[data-v-7d64b6a4] {\n\t\tdisplay: inline-block;\n\t\tposition: relative;\n}\n.cart a[data-v-7d64b6a4] {\n\t\tdisplay: -webkit-inline-box;\n\t\tdisplay: -ms-inline-flexbox;\n\t\tdisplay: inline-flex;\n\t\tposition: relative;\n\t\twidth: 100%;\n\t\theight: auto;\n}\n.cart-left .cart-count[data-v-7d64b6a4] {\n\t\tposition: absolute;\n\t\tborder-radius: 50%;\n\t\ttop: -10px;\n\t\tright: 10px;\n\t\twidth: 19px;\n\t\theight: 19px;\n\t\ttext-align: center;\n\t\tbackground-color: #d9deda;\n\t\tfont-weight: 900;\n\t\tcolor: white;\n\t\tfont-size: 12px;\n\t\tline-height: 20px;\n\t\t-webkit-transition: background-color .125s ease-out;\n\t\ttransition: background-color .125s ease-out;\n}\n.user-name[data-v-7d64b6a4] {\n\t\tfont-weight: 500;\n\t    color: #012406;\n\t    text-overflow: ellipsis;\n\t    overflow: hidden;\n\t    white-space: nowrap;\n\t    display: block;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.account[data-v-7d64b6a4] {\t\t\n\t\tfont-weight: 700;\n\t\tcolor: #69a507;\n\t    font-size: 14px;\n\t    line-height: 18px;\n}\n.balance-amount[data-v-7d64b6a4] {\n\t    font-weight: 500;\n\t    color: #012406;\n\t    text-overflow: ellipsis;\n\t    overflow: hidden;\n\t    white-space: nowrap;\n\t    display: block;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.balance-deposit[data-v-7d64b6a4] {\n\t\tfont-weight: 700;\n\t\tcolor: #69a507;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.item-cart .cart-left[data-v-7d64b6a4] {\n\t\t/*float: left;\n\t\tpadding: 2px 10px 2px 2px;\n\t\tmargin-right: 21px;*/\n\t\tposition: relative;\n\t\tcolor: #69a507 !important;\n}\n..cart-checkout-now[data-v-7d64b6a4] {\t\t\n\t\tfont-weight: 700;\n\t\tcolor: #69a507;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.item-cart .cart-right[data-v-7d64b6a4] {\n\t\tfloat: right;\n}\n.cart-value[data-v-7d64b6a4] {\n\t\tdisplay: block;\n\t\tline-height: 18px;\n\t\tcolor: #9aa89c;\n\t\tfont-size: 14px;\n}\n.navbar-brand[data-v-7d64b6a4] {\n\t\tpadding: 0;\n}\n.navbar-brand ul[data-v-7d64b6a4] {\n\t\tmargin: 0;\n\t\tpadding: 0\n}\nul li[data-v-7d64b6a4] {\n\t\tpadding: 10px 20px 10px 10px;\n\t\tmargin-right: 10px;\n\t\tposition: relative;\n\t\tlist-style: none;\n\t\tdisplay: inline-block;\n}\nul[data-v-7d64b6a4] {\n\t\tmargin: 0;\n\t    padding-right: 15px;\n    \tpadding-left: 15px;\n}\nul li[data-v-7d64b6a4]:last-child {\n\t\tmargin-right: 0;\n}\n.navbar-right ul li[data-v-7d64b6a4] {\n}\nul .item-account[data-v-7d64b6a4]:after {\n\t\tcontent: \"\";\n\t    background-color: #d9deda;\n\t    -webkit-transform: translateY(-50%);\n\t    transform: translateY(-50%);\n\t    height: 21px;\n\t    width: 1px;\n\t    position: absolute;\n\t    right: 0;\n    \ttop: 50%;\n}\n.row[data-v-7d64b6a4] {\n\t\tmargin: 0;\n}\nul .item-balance[data-v-7d64b6a4]:after {\n\t\tcontent: \"\";\n\t    background-color: #d9deda;\n\t    -webkit-transform: translateY(-50%);\n\t    transform: translateY(-50%);\n\t    height: 21px;\n\t    width: 1px;\n\t    position: absolute;\n\t    right: 0;\n    \ttop: 50%;\n}\nul .item-register-login[data-v-7d64b6a4]:after {\n\t\tcontent: \"\";\n\t    background-color: #d9deda;\n\t    -webkit-transform: translateY(-50%);\n\t    transform: translateY(-50%);\n\t    height: 21px;\n\t    width: 1px;\n\t    position: absolute;\n\t    right: 0;\n    \ttop: 50%;\n}\nspan[data-v-7d64b6a4], a[data-v-7d64b6a4] {\n\t\tcolor: #69a507;\n\t\tfont-weight: 700;\n\t\tfont-size: 14px;\n\t\tcursor: pointer;\n\t\ttext-decoration: none;\n\t    text-align: initial;\n}\ni[data-v-7d64b6a4] {\n\t\tmargin-right: 21px;\n}\n.bg-white[data-v-7d64b6a4] {\n\t\tbackground-color: white;\n}\n.header[data-v-7d64b6a4] {\n\t\twidth: 100%;\n}\n.header .container[data-v-7d64b6a4] {\n}\n.bg-lottoyou[data-v-7d64b6a4] {\n\t\tbackground-color: #64a407;\n\t\tbackground-image: -webkit-gradient(linear,left top, right top,from(#a4cc25),to(#64a407));\n\t\tbackground-image: linear-gradient(90deg,#a4cc25,#64a407);\n}\n.navigation-header header[data-v-7d64b6a4]{\n}\n.no-padding-left[data-v-7d64b6a4] {\n\t\tpadding-left: 0\n}\n.no-padding-right[data-v-7d64b6a4] {\n\t\tpadding-right: 0;\n}\n.no-padding-bottom[data-v-7d64b6a4] {\n\t\tpadding-bottom: 0;\n}\n.no-padding-top[data-v-7d64b6a4] {\n\t\tpadding-top: 0;\n}\n@media (max-width: 992px) {\n.header-container[data-v-7d64b6a4], .container-fluid-header[data-v-7d64b6a4], .header-container .header-items[data-v-7d64b6a4]{\n\t\t\tpadding: 0 !important\n}\n}\n@media (max-width: 767px) {\n.header-container-logo[data-v-7d64b6a4] {\n\t\t\t-webkit-box-pack: center !important;\n\t\t\t    -ms-flex-pack: center !important;\n\t\t\t        justify-content: center !important;\n}\n}\n\n\t\n", ""]);
+exports.push([module.i, "\nnav[data-v-7d64b6a4] {\n}\nli span[data-v-7d64b6a4] {\n\t\tfont-size: 12px;\n\t\tdisplay: block;\n}\n.cart[data-v-7d64b6a4] {\n\t\tdisplay: inline-block;\n\t\tposition: relative;\n}\n.cart a[data-v-7d64b6a4] {\n\t\tdisplay: -webkit-inline-box;\n\t\tdisplay: -ms-inline-flexbox;\n\t\tdisplay: inline-flex;\n\t\tposition: relative;\n\t\twidth: 100%;\n\t\theight: auto;\n}\n.cart-left .cart-count[data-v-7d64b6a4] {\n\t\tposition: absolute;\n\t\tborder-radius: 50%;\n\t\ttop: -10px;\n\t\tright: 10px;\n\t\twidth: 19px;\n\t\theight: 19px;\n\t\ttext-align: center;\n\t\tbackground-color: #d9deda;\n\t\tfont-weight: 900;\n\t\tcolor: white;\n\t\tfont-size: 12px;\n\t\tline-height: 20px;\n\t\t-webkit-transition: background-color .125s ease-out;\n\t\ttransition: background-color .125s ease-out;\n}\n.user-name[data-v-7d64b6a4] {\n\t\tfont-weight: 500;\n\t    color: #012406;\n\t    text-overflow: ellipsis;\n\t    overflow: hidden;\n\t    white-space: nowrap;\n\t    display: block;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.account[data-v-7d64b6a4] {\t\t\n\t\tfont-weight: 700;\n\t\tcolor: #69a507;\n\t    font-size: 14px;\n\t    line-height: 18px;\n}\n.balance-amount[data-v-7d64b6a4] {\n\t    font-weight: 500;\n\t    color: #012406;\n\t    text-overflow: ellipsis;\n\t    overflow: hidden;\n\t    white-space: nowrap;\n\t    display: block;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.balance-deposit[data-v-7d64b6a4] {\n\t\tfont-weight: 700;\n\t\tcolor: #69a507;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.item-cart[data-v-7d64b6a4] {\n\t\tpadding-right: 0;\n}\n.item-cart .cart-left[data-v-7d64b6a4] {\n\t\t/*float: left;\n\t\tpadding: 2px 10px 2px 2px;\n\t\tmargin-right: 21px;*/\n\t\tposition: relative;\n\t\tcolor: #69a507 !important;\n}\n.cart-checkout-now[data-v-7d64b6a4] {\t\t\n\t\tfont-weight: 700;\n\t\tcolor: #69a507;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.item-cart .cart-right[data-v-7d64b6a4] {\n\t\tfloat: right;\n}\n.cart-value[data-v-7d64b6a4] {\n\t\tdisplay: block;\n\t\tline-height: 18px;\n\t\tcolor: #9aa89c;\n\t\tfont-size: 14px;\n}\n.navbar-brand[data-v-7d64b6a4] {\n\t\tpadding: 0;\n}\n.navbar-brand ul[data-v-7d64b6a4] {\n\t\tmargin: 0;\n\t\tpadding: 0\n}\nul li[data-v-7d64b6a4] {\n\t\tpadding: 20px 20px 10px 10px;\n\t\tmargin-right: 10px;\n\t\tposition: relative;\n\t\tlist-style: none;\n\t\tdisplay: inline-block;\n}\nul[data-v-7d64b6a4] {\n\t\tmargin: 0;\n\t\tpadding: 0\n}\nul li[data-v-7d64b6a4]:last-child {\n\t\tmargin-right: 0;\n}\n.navbar-right ul li[data-v-7d64b6a4] {\n}\nul .item-account[data-v-7d64b6a4]:after {\n\t\tcontent: \"\";\n\t    background-color: #d9deda;\n\t    -webkit-transform: translateY(-50%);\n\t    transform: translateY(-50%);\n\t    height: 21px;\n\t    width: 1px;\n\t    position: absolute;\n\t    right: 0;\n    \ttop: 50%;\n}\n.row[data-v-7d64b6a4] {\n\t\tmargin: 0;\n}\nul .item-balance[data-v-7d64b6a4]:after {\n\t\tcontent: \"\";\n\t    background-color: #d9deda;\n\t    -webkit-transform: translateY(-50%);\n\t    transform: translateY(-50%);\n\t    height: 21px;\n\t    width: 1px;\n\t    position: absolute;\n\t    right: 0;\n    \ttop: 50%;\n}\nul .item-register-login[data-v-7d64b6a4]:after {\n\t\tcontent: \"\";\n\t    background-color: #d9deda;\n\t    -webkit-transform: translateY(-50%);\n\t    transform: translateY(-50%);\n\t    height: 21px;\n\t    width: 1px;\n\t    position: absolute;\n\t    right: 0;\n    \ttop: 50%;\n}\nspan[data-v-7d64b6a4], a[data-v-7d64b6a4] {\n\t\tcolor: #69a507;\n\t\tfont-weight: 700;\n\t\tfont-size: 14px;\n\t\tcursor: pointer;\n\t\ttext-decoration: none;\n\t    text-align: initial;\n}\ni[data-v-7d64b6a4] {\n\t\tmargin-right: 21px;\n}\n.bg-white[data-v-7d64b6a4] {\n\t\tbackground-color: white;\n}\n.header[data-v-7d64b6a4] {\n\t\twidth: 100%;\n}\n.header .container[data-v-7d64b6a4] {\n}\n.bg-lottoyou[data-v-7d64b6a4] {\n\t\tbackground-color: #64a407;\n\t\tbackground-image: -webkit-gradient(linear,left top, right top,from(#a4cc25),to(#64a407));\n\t\tbackground-image: linear-gradient(90deg,#a4cc25,#64a407);\n}\n.navigation-header header[data-v-7d64b6a4]{\n}\n.no-padding-left[data-v-7d64b6a4] {\n\t\tpadding-left: 0\n}\n.no-padding-right[data-v-7d64b6a4] {\n\t\tpadding-right: 0;\n}\n.no-padding-bottom[data-v-7d64b6a4] {\n\t\tpadding-bottom: 0;\n}\n.no-padding-top[data-v-7d64b6a4] {\n\t\tpadding-top: 0;\n}\n.header-items[data-v-7d64b6a4] {\n\t\ttext-align: right;\n}\n@media (max-width: 992px) {\n.header-container[data-v-7d64b6a4], .container-fluid-header[data-v-7d64b6a4], .header-container .header-items[data-v-7d64b6a4]{\n\t\t\tpadding: 0 !important\n}\n}\n@media (max-width: 767px) {\n.header-container-logo[data-v-7d64b6a4] {\n\t\t\t-webkit-box-pack: center !important;\n\t\t\t    -ms-flex-pack: center !important;\n\t\t\t        justify-content: center !important;\n}\n.header-brand[data-v-7d64b6a4] {\n\t\t\t-webkit-box-pack: center;\n\t\t\t    -ms-flex-pack: center;\n\t\t\t        justify-content: center;\n}\n}\n@media (max-width: 576px) {\n.header-items[data-v-7d64b6a4] {\n\t\t\ttext-align: center;\n}\nul li[data-v-7d64b6a4] {\n\t\t    padding-bottom: 0 !important;\n    \t\tpadding-top: 5px !important;\n}\n}\n\n\t\n", ""]);
 
 // exports
 
@@ -60789,8 +60789,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 
@@ -60804,9 +60802,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	methods: {
 		col: function col() {
 			if (this.user != null) {
-				return 'col-lg-8 col-md-8 col-sm-12 col-12 no-padding';
+				return 'col-lg-9 col-md-9 col-sm-12 col-12 no-padding';
 			}
-			return 'col-lg-4 col-md-8 col-sm-12 col-12 no-padding';
+			return 'col-lg-9 col-md-9 col-sm-12 col-12 no-padding';
 		}
 	},
 	created: function created() {},
@@ -61266,7 +61264,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "header fixed-top bg-white" }, [
-    _c("div", { staticClass: "container-fluid container-fluid-header" }, [
+    _c("div", { staticClass: "container container-fluid-header" }, [
       _c(
         "nav",
         {
@@ -61274,34 +61272,28 @@ var render = function() {
           staticStyle: { padding: "0" }
         },
         [
-          _c("div", { staticClass: "col-lg-4 col-md-4 col-sm-12 col-12" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "col-lg-12 vcenter-end header-container-logo",
-                  staticStyle: { "justify-content": "left" }
-                },
-                [
-                  _c("ul", { staticClass: "vcenter" }, [
-                    _c(
-                      "li",
-                      [
-                        _c("router-link", { attrs: { to: { name: "home" } } }, [
-                          _c("img", {
-                            staticClass: "img-fluid logo",
-                            staticStyle: { height: "54px", width: "127px" },
-                            attrs: { src: "/imgs/logo.png" }
-                          })
-                        ])
-                      ],
-                      1
-                    )
-                  ])
-                ]
-              )
-            ])
-          ]),
+          _c(
+            "div",
+            { staticClass: "col-lg-3 col-md-3 col-sm-12 col-12 no-padding" },
+            [
+              _c("ul", { staticClass: "vcenter header-brand" }, [
+                _c(
+                  "li",
+                  { staticStyle: { padding: "0" } },
+                  [
+                    _c("router-link", { attrs: { to: { name: "home" } } }, [
+                      _c("img", {
+                        staticClass: "img-fluid logo",
+                        staticStyle: { height: "54px", width: "127px" },
+                        attrs: { src: "/imgs/logo.png" }
+                      })
+                    ])
+                  ],
+                  1
+                )
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c("div", { class: _vm.col() }, [
             _c("div", { staticClass: "row" }, [
@@ -61315,7 +61307,7 @@ var render = function() {
                   _c(
                     "ul",
                     {
-                      staticClass: "header-items text-center",
+                      staticClass: "header-items",
                       staticStyle: { width: "100%" }
                     },
                     [
@@ -64782,7 +64774,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid" }, [
+  return _c("div", { staticClass: "container" }, [
     _c(
       "form",
       {
@@ -66152,7 +66144,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.loading.component == true
     ? _c("load-component")
-    : _c("div", { staticClass: "container-fluid" }, [
+    : _c("div", { staticClass: "container" }, [
         _c("h3", {}, [_vm._v(" ")]),
         _vm._v(" "),
         _c(
@@ -66728,6 +66720,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -66946,7 +66941,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 				//Caso o usuário tenha selecionado a opção com desconto, 
 				//Preciso decrementar a posição selecionada, pois o array da tabela de descontos começa em 0
-				var positionSelected = this.scratch_card_themes[index].positionSelected - 1;
+				var positionSelected = this.scratch_card_themes[index].positionSelected;
 
 				//Pegando o item da tabela de desconto selecionada
 				var discount_tables = Object.assign({}, this.scratch_card_themes[index].discount_tables[positionSelected], {});
@@ -66959,6 +66954,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 				//Valor da raspadinha
 				var value = scratch_card_theme.lot.value;
+
 				//Quantidade que está na tabela de desconto
 				var quantity = scratch_card_theme.discount_tables.quantity;
 				//Porcentagem que está na tabela de desconto
@@ -66969,10 +66965,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 				//Passando para a estrutura os dados preenchidos pelo o usuário
 				this.item.total = total;
+
 				this.item.scratch_card = scratch_card_theme;
 			}
 
 			var addScratchCardRequest = axios.create();
+
+			addScratchCardRequest.interceptors.request.use(function (config) {
+				$(event.currentTarget).find('[type="load"]').removeClass('hide');
+				$(event.currentTarget).find('[type="submit"]').addClass('hide');
+				return config;
+			});
 
 			addScratchCardRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.add_scratch_cards, {
 				purchase: this.item,
@@ -67251,7 +67254,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.loading.component == true
     ? _c("load-component")
-    : _c("div", { staticClass: "container-fluid" }, [
+    : _c("div", { staticClass: "container" }, [
         _c("h1", { staticClass: "page-header" }, [
           _vm._v(_vm._s(_vm.trans("strings.scratch_cards")))
         ]),
@@ -67518,6 +67521,25 @@ var render = function() {
                                         _vm._s(_vm.trans("strings.play_now")) +
                                         "\n\t\t\t\t\t\t\t\t\t"
                                     )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "hide pull-right btn btn-md btn-success",
+                                    attrs: { type: "load" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fa fa-refresh fa-spin"
+                                    })
                                   ]
                                 )
                               ]
@@ -68485,7 +68507,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.loading.component == true
     ? _c("load-component")
-    : _c("div", { staticClass: "container-fluid" }, [
+    : _c("div", { staticClass: "container" }, [
         _c("h1", { staticClass: "page-header" }, [
           _vm._v(_vm._s(_vm.trans("strings.soccer_expert")))
         ]),
@@ -68506,7 +68528,7 @@ var render = function() {
                             staticClass: "game-badge",
                             attrs: {
                               src: _vm.app.basePath + "img/new.png",
-                              alt: "Novo"
+                              alt: "new"
                             }
                           })
                         ])
@@ -68515,9 +68537,8 @@ var render = function() {
                     _c("img", {
                       staticClass: "header-image img-fluid",
                       attrs: {
-                        alt: "",
-                        src:
-                          "http://www.gopontoaponto.com.br/grupo3/img/soccer-expert/categoria/3.jpg"
+                        alt: soccer_category.nome,
+                        src: soccer_category.imagem_capa
                       }
                     }),
                     _vm._v(" "),
@@ -68732,7 +68753,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.loading.component == true
     ? _c("load-component")
-    : _c("div", { staticClass: "container-fluid" }, [
+    : _c("div", { staticClass: "container" }, [
         _c("h1", { staticClass: "page-header" }, [
           _vm._v(_vm._s(_vm.trans("strings.lotteries")))
         ]),
@@ -69073,7 +69094,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.price[data-v-5953fa40] {\n\t\tmargin-right: 15px;\n}\n.tickets-content[data-v-5953fa40] {\n\t\tpadding: 15px;\n}\n.club[data-v-5953fa40] {\n\t\tdisplay: block;\n}\n.no-padding[data-v-5953fa40] {\n\t    margin-left: 2px;\n    \tmargin-right: 2px;\n}\n.input-group-addon[data-v-5953fa40] {\n\t\tborder-color: transparent;\t\t\t\t\t\n\t    background-color: transparent;\n\t    color: inherit;\n\t    opacity: 0.7;\n\t    padding: 0;\n\t    -webkit-box-pack: center;\n\t        -ms-flex-pack: center;\n\t            justify-content: center;\n}\n.complete[data-v-5953fa40] {\n\t\tborder: 3px solid #67be13 !important;\n}\n.incomplete[data-v-5953fa40] {\n\t    border: 3px solid #BF390F !important;\n}\n\n", ""]);
+exports.push([module.i, "\n.price[data-v-5953fa40] {\n\t\tmargin-right: 15px;\n}\n.tickets-content[data-v-5953fa40] {\n\t\tpadding: 15px;\n\t\tbackground-color: initial;\n}\n.club[data-v-5953fa40] {\n\t\tdisplay: block;\n}\n.no-padding[data-v-5953fa40] {\n\t    margin-left: 2px;\n    \tmargin-right: 2px;\n}\n.input-group-addon[data-v-5953fa40] {\n\t\tborder-color: transparent;\t\t\t\t\t\n\t    background-color: transparent;\n\t    color: inherit;\n\t    opacity: 0.7;\n\t    padding: 0;\n\t    -webkit-box-pack: center;\n\t        -ms-flex-pack: center;\n\t            justify-content: center;\n}\n.complete[data-v-5953fa40] {\n\t\tborder: 3px solid #67be13 !important;\n}\n.incomplete[data-v-5953fa40] {\n\t    border: 3px solid #BF390F !important;\n}\n\n", ""]);
 
 // exports
 
@@ -69257,6 +69278,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		};
 	},
 	methods: {
+		backgroundTicket: function backgroundTicket(background) {
+			return 'background-image: url(' + background + ')';
+		},
 		completeOrNo: function completeOrNo(round) {
 			return round.complete ? 'complete' : '';
 		},
@@ -69434,7 +69458,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			//Atualizando o total
 			this.total = this.item.value * rounds.length;
 		},
-		addToCart: function addToCart() {
+		addToCart: function addToCart(event) {
 			//Pegando todas as rodadas finalizadas
 			var rounds = this.getRoundsFinished();
 
@@ -69456,6 +69480,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				this.$store.dispatch('setItemSoccerExpert', item);
 
 				var addSoccerExpertRequest = axios.create();
+
+				addSoccerExpertRequest.interceptors.request.use(function (config) {
+					$(event.currentTarget).find('[type="load"]').removeClass('hide');
+					$(event.currentTarget).find('[type="submit"]').addClass('hide');
+					return config;
+				});
 
 				addSoccerExpertRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.add_soccer_experts, {
 					purchase: item,
@@ -69500,59 +69530,57 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.loading.component == true
     ? _c("load-component")
-    : _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-12" }, [
-              _c(
-                "div",
-                { staticClass: "sub-navigation" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "active show",
-                      attrs: {
-                        to: {
-                          name: "soccer_expert.show",
-                          params: { id: _vm.soccer_expert.id }
-                        },
-                        id: "play-component"
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n\t\t                    " +
-                          _vm._s(_vm.trans("strings.play_on_the")) +
-                          " " +
-                          _vm._s(_vm.soccer_expert.nome) +
-                          "\n\t\t                "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "show",
-                      attrs: {
-                        to: {
-                          name: "soccer_expert.results",
-                          params: { id: _vm.soccer_expert.id }
-                        },
-                        id: "result-component"
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n\t\t                    Resultado \n\t\t               \t"
-                      )
-                    ]
-                  )
-                ],
-                1
-              )
-            ])
+    : _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c(
+              "div",
+              { staticClass: "sub-navigation" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "active show",
+                    attrs: {
+                      to: {
+                        name: "soccer_expert.show",
+                        params: { id: _vm.soccer_expert.id }
+                      },
+                      id: "play-component"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n\t                    " +
+                        _vm._s(_vm.trans("strings.play_on_the")) +
+                        " " +
+                        _vm._s(_vm.soccer_expert.nome) +
+                        "\n\t                "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "show",
+                    attrs: {
+                      to: {
+                        name: "soccer_expert.results",
+                        params: { id: _vm.soccer_expert.id }
+                      },
+                      id: "result-component"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n\t                    Resultado \n\t               \t"
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
         ]),
         _vm._v(" "),
@@ -69598,7 +69626,8 @@ var render = function() {
                           "ticket" +
                           column +
                           " tickets " +
-                          _vm.completeOrNo(round)
+                          _vm.completeOrNo(round),
+                        style: _vm.backgroundTicket(round.imagem_capa)
                       },
                       [
                         _c(
@@ -70822,6 +70851,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 				var addLotteryRequest = axios.create();
 
+				addLotteryRequest.interceptors.request.use(function (config) {
+					$(event.currentTarget).find('[type="load"]').removeClass('hide');
+					$(event.currentTarget).find('[type="submit"]').addClass('hide');
+					return config;
+				});
+
 				addLotteryRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.add_lotteries, {
 					purchase: item,
 					auth: this.auth,
@@ -71264,59 +71299,57 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.loading.component == true
     ? _c("load-component")
-    : _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-12" }, [
-              _c(
-                "div",
-                { staticClass: "sub-navigation" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "active show",
-                      attrs: {
-                        to: {
-                          name: "lotteries.show",
-                          params: { id: _vm.lottery.id }
-                        },
-                        id: "play-component"
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n\t\t                    " +
-                          _vm._s(_vm.trans("strings.play_on_the")) +
-                          " " +
-                          _vm._s(_vm.lottery.nome) +
-                          "\n\t\t                "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "show",
-                      attrs: {
-                        to: {
-                          name: "lotteries.results",
-                          params: { id: _vm.lottery.id }
-                        },
-                        id: "result-component"
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n\t\t                    Resultado \n\t\t               \t"
-                      )
-                    ]
-                  )
-                ],
-                1
-              )
-            ])
+    : _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c(
+              "div",
+              { staticClass: "sub-navigation" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "active show",
+                    attrs: {
+                      to: {
+                        name: "lotteries.show",
+                        params: { id: _vm.lottery.id }
+                      },
+                      id: "play-component"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n\t                    " +
+                        _vm._s(_vm.trans("strings.play_on_the")) +
+                        " " +
+                        _vm._s(_vm.lottery.nome) +
+                        "\n\t                "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "show",
+                    attrs: {
+                      to: {
+                        name: "lotteries.results",
+                        params: { id: _vm.lottery.id }
+                      },
+                      id: "result-component"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n\t                    Resultado \n\t               \t"
+                    )
+                  ]
+                )
+              ],
+              1
+            )
           ])
         ]),
         _vm._v(" "),
@@ -75526,7 +75559,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid" }, [
+  return _c("div", { staticClass: "container" }, [
     _c("h1", { staticClass: "page-header" }, [
       _vm._v(_vm._s(_vm.trans("strings.cart")))
     ]),
@@ -76881,7 +76914,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid" }, [
+  return _c("div", { staticClass: "container" }, [
     _c("h1", { staticClass: "page-header" }, [_vm._v("Depositar fundos")]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [

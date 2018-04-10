@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container">
         <form class="user-edit" @submit.prevent="handleEdit" enctype="multipart/form-data">
             <input type="hidden" name="id" v-model="id">
             <div class="row">

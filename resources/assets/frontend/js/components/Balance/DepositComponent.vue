@@ -1,5 +1,5 @@
 <template>
-	<div class="container-fluid">
+	<div class="container">
 		<h1 class="page-header">Depositar fundos</h1>
 		<div class="row">
 			<div class="col-lg-10 col-12 col-md-8 col-sm-12">

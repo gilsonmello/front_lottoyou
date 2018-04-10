@@ -1,15 +1,15 @@
 <template>
 	<load-component v-if="loading.component == true"></load-component>
-	<div class="container-fluid" v-else>
+	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.soccer_expert') }}</h1>
 		<div class="row">
 			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="soccer_category in soccer_categories">
 				<div class="soccer-expert-card">
 					<header class="soccer-expert-header">
 						<div class="extras" v-if="soccer_category.novo == 1">
-							<img :src="app.basePath+'img/new.png'" alt="Novo" class="game-badge">
+							<img :src="app.basePath+'img/new.png'" alt="new" class="game-badge">
 						</div>
-						<img class="header-image img-fluid" alt="" src="http://www.gopontoaponto.com.br/grupo3/img/soccer-expert/categoria/3.jpg">
+						<img class="header-image img-fluid" :alt="soccer_category.nome" :src="soccer_category.imagem_capa">
 						<div class="descript">
 						</div>
 					</header>

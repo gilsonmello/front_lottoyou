@@ -1,32 +1,30 @@
 <template>
 	<div class="header fixed-top bg-white">
-		<div class="container-fluid container-fluid-header">
+		<div class="container container-fluid-header">
 			<nav class="navbar navbar-toggleable-md navbar-light bg-inverse" style="padding: 0;">
-  				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
-  					<div class="row">
-  						<div class="col-lg-12 vcenter-end header-container-logo" style="justify-content: left">
-		  					<ul class="vcenter">
-		  						<li>
-		  							<router-link :to="{ name: 'home' }">
-		  								<img class="img-fluid logo" style="height: 54px; width: 127px;" src="/imgs/logo.png">
-		  							</router-link>
-		  						</li>
-		  						<!-- <li>
-		  							<img class="img-fluid" width="60" src="//www.lottoland.com/cms/5a8d7f7a0eb3587e04426c35/multi_60px.png">
-		  						</li>
-		  						<li>
-		  							<span>Novidade: Loteria Multi Keno</span>
-									<span>Ganhe até R$ 24 milhões</span>
-									<span>Tente aqui a sua sorte!</span>
-		  						</li> -->
-		  					</ul>
-  						</div>
-					</div>
-				</div>
+				
+  				<div class="col-lg-3 col-md-3 col-sm-12 col-12 no-padding">
+					<ul class="vcenter header-brand">
+  						<li style="padding: 0;">
+  							<router-link :to="{ name: 'home' }">
+  								<img class="img-fluid logo" style="height: 54px; width: 127px;" src="/imgs/logo.png">
+  							</router-link>
+  						</li>
+  						<!-- <li>
+  							<img class="img-fluid" width="60" src="//www.lottoland.com/cms/5a8d7f7a0eb3587e04426c35/multi_60px.png">
+  						</li>
+  						<li>
+  							<span>Novidade: Loteria Multi Keno</span>
+							<span>Ganhe até R$ 24 milhões</span>
+							<span>Tente aqui a sua sorte!</span>
+  						</li> -->
+  					</ul>
+  				</div>
+				
 			  	<div :class="col()">
 			  		<div class="row">
 			  			<div class="col-lg-12 vcenter-end header-container" style="justify-content: right">
-			  				<ul class="header-items text-center" style="width: 100%">
+			  				<ul class="header-items" style="width: 100%">
 					  			<li class="item-register-login" v-if="!auth">
 					  				<router-link :to="{ name: 'login' }" class="pull-left" style="width: 100%;">
 					  					<div class="pull-left">
@@ -127,9 +125,9 @@
 		methods: {
 			col() {
 				if(this.user != null) {
-					return 'col-lg-8 col-md-8 col-sm-12 col-12 no-padding'
+					return 'col-lg-9 col-md-9 col-sm-12 col-12 no-padding'
 				}
-				return 'col-lg-4 col-md-8 col-sm-12 col-12 no-padding'
+				return 'col-lg-9 col-md-9 col-sm-12 col-12 no-padding'
 			}
 		},
 		created: function() {
@@ -243,6 +241,10 @@
 	    line-height: 18px
 	}
 
+	.item-cart {
+		padding-right: 0;
+	}
+
 	.item-cart .cart-left {
 		/*float: left;
 		padding: 2px 10px 2px 2px;
@@ -251,7 +253,7 @@
 		color: #69a507 !important;
 	}
 
-	..cart-checkout-now {		
+	.cart-checkout-now {		
 		font-weight: 700;
 		color: #69a507;
 	    font-size: 14px;
@@ -279,7 +281,7 @@
 	}
 
 	ul li {
-		padding: 10px 20px 10px 10px;
+		padding: 20px 20px 10px 10px;
 		margin-right: 10px;
 		position: relative;
 		list-style: none;
@@ -288,8 +290,7 @@
 
 	ul {
 		margin: 0;
-	    padding-right: 15px;
-    	padding-left: 15px;
+		padding: 0
 	}
 
 	ul li:last-child {
@@ -391,6 +392,10 @@
 		padding-top: 0;
 	}
 
+	.header-items {
+		text-align: right;
+	}
+
 	@media (max-width: 992px) {
 		.header-container, .container-fluid-header, .header-container .header-items{
 			padding: 0 !important
@@ -400,6 +405,21 @@
 	@media (max-width: 767px) {
 		.header-container-logo {
 			justify-content: center !important;
+		}
+
+		.header-brand {
+			justify-content: center;
+		}
+	}
+
+	@media (max-width: 576px) {
+		.header-items {
+			text-align: center;
+		}
+
+		ul li {
+		    padding-bottom: 0 !important;
+    		padding-top: 5px !important;
 		}
 	}
 

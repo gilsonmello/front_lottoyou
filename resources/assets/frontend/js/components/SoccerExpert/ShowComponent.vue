@@ -1,21 +1,21 @@
 <template>
 	<load-component v-if="loading.component == true"></load-component>
-	<div class="container-fluid" v-else>
+	<div class="container" v-else>
 		<!-- <h3 class="">&nbsp;</h3> -->
-		<div class="container">
-	        <div class="row">
-	        	<div class="col-lg-12">
-	        		<div class="sub-navigation">
-	        			<router-link :to="{ name: 'soccer_expert.show', params: { id: soccer_expert.id } }" class="active show" id="play-component">
-		                    {{ trans('strings.play_on_the') }} {{ soccer_expert.nome }}
-		                </router-link>
-		                <router-link :to="{ name: 'soccer_expert.results', params: { id: soccer_expert.id } }" class="show" id="result-component">
-		                    Resultado 
-		               	</router-link>
-	        		</div>
-	        	</div>
-	        </div>	
-		</div>
+		
+        <div class="row">
+        	<div class="col-lg-12">
+        		<div class="sub-navigation">
+        			<router-link :to="{ name: 'soccer_expert.show', params: { id: soccer_expert.id } }" class="active show" id="play-component">
+	                    {{ trans('strings.play_on_the') }} {{ soccer_expert.nome }}
+	                </router-link>
+	                <router-link :to="{ name: 'soccer_expert.results', params: { id: soccer_expert.id } }" class="show" id="result-component">
+	                    Resultado 
+	               	</router-link>
+        		</div>
+        	</div>
+        </div>	
+		
 		<div class="row">
         	<div class="col-lg-12">
         		<h4 class="page-header" style="margin-top: 0;">{{ soccer_expert.nome }}</h4>
@@ -24,7 +24,7 @@
         <form @submit.prevent="addToCart">
 	        <div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
 	        	<div class="col-lg-4 col-10 col-md-4 col-sm-4" v-for="(round, column) in soccer_expert.rounds">
-	        		<div :class="'ticket'+column+' tickets '+completeOrNo(round)">
+	        		<div :class="'ticket'+column+' tickets '+completeOrNo(round)" :style="backgroundTicket(round.imagem_capa)">
 	        			<!-- <div class="tickets-header">
 							<strong>{{ column }}</strong>
 							<div class="tools">
@@ -166,6 +166,9 @@
         	}
         },
         methods: {
+        	backgroundTicket(background) {
+        		return 'background-image: url('+background+')';
+        	},
         	completeOrNo(round) {
 				return round.complete ? 'complete' : ''
 			},
@@ -349,7 +352,7 @@
 				//Atualizando o total
 				this.total = this.item.value * rounds.length; 
 			},
-			addToCart: function() {
+			addToCart: function(event) {
 				//Pegando todas as rodadas finalizadas
 				var rounds = this.getRoundsFinished();
 
@@ -371,6 +374,12 @@
 					this.$store.dispatch('setItemSoccerExpert', item);
 
 					let addSoccerExpertRequest = axios.create();
+
+					addSoccerExpertRequest.interceptors.request.use(config => {
+			        	$(event.currentTarget).find('[type="load"]').removeClass('hide');
+			        	$(event.currentTarget).find('[type="submit"]').addClass('hide');
+					  	return config;
+					});
 
 					addSoccerExpertRequest.post(routes.carts.add_soccer_experts, {
 						purchase: item, 
@@ -422,6 +431,7 @@
 
 	.tickets-content {
 		padding: 15px;
+		background-color: initial;
 	}
 
 	.club {

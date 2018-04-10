@@ -62,4 +62,9 @@ class SoccerExpertRound extends Model
     	return $this->belongsTo(SoccerExpertSweepstake::class, 'soc_bolao_id')
             ->where('active', '=', 1);
     }
+
+    public function getImagemCapaAttribute()
+    {        
+        return env('APP_CDN'). $this->attributes['imagem_capa'];
+    }
 }

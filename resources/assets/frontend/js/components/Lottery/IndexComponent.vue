@@ -1,6 +1,6 @@
 <template>
 	<load-component v-if="loading.component == true"></load-component>
-	<div class="container-fluid" v-else>
+	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.lotteries') }}</h1>
 		<div class="row">
 			<div class="col-lg-4" v-for="lottery in lotteries">				

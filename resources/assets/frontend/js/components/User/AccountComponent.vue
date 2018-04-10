@@ -1,6 +1,6 @@
 <template>
     <load-component v-if="loading.component == true"></load-component>
-	<div class="container-fluid" v-else>
+	<div class="container" v-else>
         <h3 class="">&nbsp;</h3>
         <ul class="nav nav-pills nav-justified" id="myTab" role="tablist">
             <li class="nav-item">
