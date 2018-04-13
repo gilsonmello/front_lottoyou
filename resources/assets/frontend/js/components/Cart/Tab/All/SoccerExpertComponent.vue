@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<div class="row vcenter soccer_experts" :href="'#soccer_expert_'+id" data-toggle="collapse">
+		<div class="row vcenter soccer_experts" :href="'#'+id" data-toggle="collapse">
 			<div class="col-lg-2 col-md-2 col-2 col-sm-2">
 				<img class="img-fluid" src="http://www.lottoland.com/pt/skins/lottoland/images/lotteryLogos/lt-elGordoPrimitiva.x2-bc4cde5fe7329ee5.png">
 			</div>
@@ -31,12 +31,13 @@
 				</a>
 			</div>
 		</div>
-		<round-component :id="'soccer_expert_'+id" :soccer_expert="item"></round-component>
+		<slide-component :id="id" :soccer_expert="item"></slide-component>
 	</section>
 </template>
 
 <script>
 	import RoundComponent from './SoccerExpert/RoundComponent'
+	import SlideComponent from './SoccerExpert/SlideComponent'
 	import {routes} from '../../../../api_routes'
 	export default {
 		props: ['item', 'id'],
@@ -63,7 +64,8 @@
 			},
 		},
 		components: {
-			RoundComponent
+			RoundComponent,
+			SlideComponent
 		}
 	}
 </script>

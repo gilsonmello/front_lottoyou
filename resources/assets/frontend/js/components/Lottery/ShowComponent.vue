@@ -24,7 +24,7 @@
 	        	</div>
 	        </div>
 			<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
-				<div class="col-lg-2 col-8 col-md-5 col-sm-5" v-for="(index, column) in columns">
+				<div class="col-lg-3 col-8 col-md-5 col-sm-5" v-for="(index, column) in columns">
 					<div :class="'ticket'+column+' tickets'+' '+wow(index)">
 						<div class="tickets-header">
 							<!-- <strong>{{ column }}</strong> -->

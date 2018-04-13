@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Frontend\SoccerExpert;
+use App\Model\Frontend\SoccerExpertRound;
 use DB;
 
 class SoccerExpertController extends Controller
@@ -16,8 +17,14 @@ class SoccerExpertController extends Controller
      */
     public function index()
     {
+        /*$soccerCategories = SoccerExpert::whereHas('rounds', function($query) {
+            $query->where(
+                DB::raw("concat(data_termino,' ',hora_termino)"), 
+                '>', 
+                DB::raw('ADDDATE(NOW(), INTERVAL 7 DAY)')
+            );
+        });*/
         $soccerCategories = SoccerExpert::all();
-
         if(!is_null($soccerCategories)) {
             return response()->json($soccerCategories, 200);
         }
@@ -53,19 +60,53 @@ class SoccerExpertController extends Controller
      */
     public function show($id)
     {
-        $soccerCategory = SoccerExpert::where('id', '=', $id)
-            ->with(['rounds', 'rounds.games'])
+        $soccerExpert = SoccerExpert::find($id);
+
+
+        $roundsWeek = SoccerExpertRound::where('soc_categoria_id', '=', $id)
+            ->with(['games'])
+            ->where(
+                DB::raw("concat(data_termino,' ',hora_termino)"), 
+                '<', 
+                DB::raw('ADDDATE(NOW(), INTERVAL 7 DAY)')
+            )
+            ->get()
+            ->take(3);
+
+        $roundsNextWeek = SoccerExpertRound::where('soc_categoria_id', '=', $id)
+            ->with(['games'])
+            ->where(
+                DB::raw("concat(data_termino,' ',hora_termino)"), 
+                '<', 
+                DB::raw('ADDDATE(NOW(), INTERVAL 14 DAY)')
+            )
+            ->whereNotIn('id', $roundsWeek->pluck('id')->all())
+            ->get()
+            ->take(3);
+
+        $concatenated = $roundsWeek->concat($roundsNextWeek);
+
+        $soccerExpert->rounds = $concatenated;
+
+        return response()->json($soccerExpert); 
+
+
+
+        /*$soccerExpertNextWeek = SoccerExpert::where('id', '=', $id)
+            ->with(['rounds' => function($query) {
+                
+            }, 'rounds.games'])
             ->whereHas('rounds', function($query) {
                 $query->where(
                     DB::raw("concat(data_termino,' ',hora_termino)"), 
                     '>', 
-                    DB::raw('DATE_SUB(NOW(), INTERVAL 1 WEEK)')
+                    DB::raw('ADDDATE(NOW(), INTERVAL 14 DAY)')
                 );
             })
             ->get()
-            ->first();
-        if(!is_null($soccerCategory)) {
-            return response()->json($soccerCategory, 200);
+            ->first();*/
+        if(!is_null($soccerExpert)) {
+            return response()->json($soccerExpert, 200);
         }
         return response()->json(['msg' => ''], 422);
     }

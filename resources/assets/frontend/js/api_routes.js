@@ -38,10 +38,10 @@ export const routes = {
 		index: host+'/scratch_card_demo',
 		find: host+'/scratch_card_demo/{id}',
 	},
-	soccer_expert: {
-		index: host+'/soccer_expert',
-		show: host+'/soccer_expert/{id}',
-		results: host+'/soccer_expert/results/:id'
+	soccer_experts: {
+		index: host+'/soccer_experts',
+		show: host+'/soccer_experts/{id}',
+		results: host+'/soccer_experts/results/:id'
 	},
 	soccer_categories: {
 		index: host+'/soccer_categories',

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Model\Frontend\SoccerExpert;
 use App\Model\Frontend\SoccerExpertSweepstake;
 use App\Model\Frontend\SoccerExpertGame;
+use DB;
 
 class SoccerExpertRound extends Model
 {
@@ -45,15 +46,24 @@ class SoccerExpertRound extends Model
         
     ];
 
-    public function bets() {
-        return $this->hasMany(SoccerExpertBet::class, 'soc_rodada_id');
+    protected $appends = [
+        
+    ];
+
+    public function bets() 
+    {
+        return $this->hasMany(SoccerExpertBet::class, 'soc_rodada_id')
+            ->where('active', '=', 1);
     }
 
-    public function games() {
-        return $this->hasMany(SoccerExpertGame::class, 'soc_rodada_id');
+    public function games() 
+    {
+        return $this->hasMany(SoccerExpertGame::class, 'soc_rodada_id')
+            ->where('active', '=', 1);
     }
 
-    public function category() {
+    public function category() 
+    {
     	return $this->belongsTo(SoccerExpert::class, 'soc_categoria_id')
             ->where('active', '=', 1);
     }
@@ -66,5 +76,10 @@ class SoccerExpertRound extends Model
     public function getImagemCapaAttribute()
     {        
         return env('APP_CDN'). $this->attributes['imagem_capa'];
+    }
+
+    public function getDataTerminoAttribute($date) 
+    {
+        return format($date.' '.$this->hora_termino, 'd/m/Y H:i');
     }
 }

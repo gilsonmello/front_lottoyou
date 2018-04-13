@@ -1,7 +1,9 @@
 <template>
 	<load-component v-if="loading.component == true"></load-component>
 	<div class="container" v-else>
-		<div class="row">
+		<!-- <h3 class="">&nbsp;</h3> -->
+		
+        <div class="row">
         	<div class="col-lg-12">
         		<div class="sub-navigation">
         			<router-link :to="{ name: 'soccer_expert.show', params: { id: soccer_expert.id } }" class="active show" id="play-component">
@@ -13,15 +15,97 @@
         		</div>
         	</div>
         </div>	
-       	<div class="row">
+		
+		<div class="row">
         	<div class="col-lg-12">
         		<h4 class="page-header" style="margin-top: 0;">{{ soccer_expert.nome }}</h4>
         	</div>
         </div>
-    	<form @submit.prevent="addToCart">
-	    	<slide-component :soccer_expert="soccer_expert" v-on:houseClubResult="houseClubResult" v-on:outClubResult="outClubResult"></slide-component>
+        <form @submit.prevent="addToCart">
+	        <div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
+	        	<div class="col-lg-4 col-10 col-md-4 col-sm-4" v-for="(round, column) in soccer_expert.rounds">
+	        		<div :class="'ticket'+column+' tickets '+completeOrNo(round)">
+	        			<!-- <div class="tickets-header">
+							<strong>{{ column }}</strong>
+							<div class="tools">
+								<a class="" href="#" @click.prevent="">
+									<i class="fa fa-random"></i>
+								</a>
+								<a class="" href="#" @click.prevent="">
+									<i class="fa fa-close"></i>
+								</a>
+							</div>
+						</div> -->
+						<div class="tickets-content well" :style="backgroundTicket(round.imagem_capa)">
+							<!-- <div class="row vcenter text-center">
+								<div class="col-lg-12 col-12 col-sm-12 col-md-12">
+									<h3>{{ column + 'ª '+ trans('strings.round') }}</h3>
+								</div>	
+							</div> -->
+							<div class="row vcenter-end text-center" style="margin-bottom: 10px;" v-for="(game, line) in round.games">
+								<div class="col-xs-5 col-md-5 col-lg-3 no-padding">
+									
+									<!-- <label class="club">{{ game.house_club.nome }}</label>	 -->	
+									<img v-if="game.house_club.shields != undefined && game.house_club.shields.length > 0" style="width: 30px; height: 30px" :title="game.house_club.nome" :src="game.house_club.shields[0].dimensao">
 
-	    	<hr>
+									<img v-else style="width: 30px; height: 30px" :title="game.house_club.nome" :src="'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/'+game.house_club.nome.toLowerCase()+'_60x60.png'">
+									
+								</div>
+								<div class="col-lg-2 no-padding">
+									<input min="0" v-model="game.result_house_club" @change.prevent="houseClubResult(column, line, $event)" type="number" class="form-control">
+								</div>
+
+								<div class="col-2 col-md-2 col-sm-2 col-lg-1" style="text-align: center">
+				                    x
+				                </div>
+
+				                <div class="col-lg-2 no-padding">
+									<input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(column, line, $event)" type="number" class="form-control" name="">
+								</div>
+
+				                <div class="col-xs-5 col-md-5 col-lg-3 no-padding">
+									
+									<!-- <label class="club">{{ game.out_club.nome }}</label> -->
+									<img v-if="game.out_club.shields != undefined && game.out_club.shields.length > 0" style="width: 30px; height: 30px" :title="game.out_club.nome" :src="game.out_club.shields[0].dimensao">
+
+									<img v-else style="width: 30px; height: 30px" :title="game.out_club.nome" :src="'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/'+game.out_club.nome.toLowerCase()+'_60x60.png'">
+
+								</div>
+								
+								<!-- <input type="text" class="form-control" name="">
+								
+								<div class="col-lg-2">
+									X
+								</div>
+								<div class="col-lg-1">
+									<input type="text" class="form-control" name="">
+								</div>
+								<div class="col-xs-5 col-md-5 col-lg-5">
+									<span class="club">{{ game.out_club.nome }}</span>
+									<img height="30" width="30" v-if="game.out_club.shields != undefined && game.out_club.shields.length > 0" :src="game.out_club.shields[0].dimensao">
+									<img v-else :src="'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/'+game.out_club.nome.toLowerCase()+'_60x60.png'">
+								</div> -->
+							</div>
+						</div>
+						<!-- <div class="tickets-extras">
+							<span class="fields">
+								<button @click.prevent="" class="btn btn-xs btn-default-darking">
+									
+								</button>
+							</span>
+						</div>
+						<div class="tickets-footer">
+							
+						</div> -->
+	        		</div>
+	        		
+	        	</div>
+	        	<!-- <div class="col-lg-1 vcenter" style="justify-content: center;" id="btn-add-ticket">
+					<a href="#" @click.prevent="addBet($event)" class="fa fa-plus" style="font-size: 60px;"></a>
+					<a v-if="rounds.length > 1" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>
+				</div> -->
+	        </div>
+			<hr>
 			<div class="row">
 				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 					<button type="submit" class="btn btn-md btn-success pull-right">
@@ -35,8 +119,7 @@
 					</span>
 				</div>
 			</div>
-
-		</form>
+        </form>
 	</div>
 </template>
 
@@ -44,7 +127,6 @@
 	import {routes} from '../../api_routes'
 	import LoadComponent from '../Load'
 	import {mapState, mapGetters} from 'vuex'
-	import SlideComponent from './SlideComponent'
 	export default {
 		beforeRouteUpdate: function(to, from, next) {
 			next();
@@ -84,28 +166,89 @@
         	}
         },
         methods: {
-        	//Pegando todas as apostas concluídas
+        	backgroundTicket(background) {
+        		return 'background-image: url('+background+')';
+        	},
+        	completeOrNo(round) {
+				return round.complete ? 'complete' : ''
+			},
+        	showRequest() {
+        		const showRequest = axios.create();
+				this.id = this.$route.params.id;
+				
+				showRequest.interceptors.request.use(config => {
+		        	this.loading.component = true
+				  	return config;
+				});
+				showRequest.get(routes.soccer_expert.show.replace('{id}', this.id), {}, {}).then(response => {
+					if(response.status === 200){
+						this.soccer_expert = response.data
+						this.loading.component = false
+						this.item.id = this.id;
+						this.item.soccer_expert = this.soccer_expert;
+						this.item.hash = this.makeid();
+						this.item.value = parseFloat(this.soccer_expert.value);
+						this.item.name = this.soccer_expert.nome;
+						this.item.rounds = this.soccer_expert.rounds;
+					}
+				}).catch((error) => {
+					
+				});
+        	},
+        	showSoccerExpert() {
+				var item = this.purchase.soccer_expert.items.filter((val) => {
+					return this.$route.params.hash == val.hash;
+				})
+
+				if(item.length > 0) {
+					item = item[0]
+
+					this.soccer_expert = item.soccer_expert;
+					this.loading.component = false
+					this.item.id = item.id;
+					this.item.soccer_expert = item.soccer_expert;
+					this.item.hash = item.hash;
+					this.item.value = parseFloat(item.soccer_expert.value);
+					this.item.name = item.soccer_expert.nome;
+					this.item.rounds = item.soccer_expert.rounds;
+					this.total = parseFloat(item.total);
+				} else {
+
+				}
+			},
+			//Funão executada ao carregar
+			init: function() {
+				if(this.$route.params.hash != undefined) {
+					this.showSoccerExpert();
+				}else if(this.$route.params.id != undefined) {
+					this.showRequest();
+				}
+			},
+			//Pegando todas as apostas concluídas
 			getRoundsFinished: function() {
 				const vm = this
-				let total = 0.00;
 				//Pegando todas as apostas feitas
-				var rounds_completed = this.item.rounds.filter((val) => {
-					//Verificando se a cartela está completa
+				var rounds_completed = this.item.rounds.filter(function(val) {
+					//Verificando se dezenas extras está habilitado
 					if(val.complete == true) {
-						total += val.valor
 						return true;
 					}else { 
 						return false;
 					}
 				});
-				//Atualizando o total
-				this.total = parseFloat(total);
 				return rounds_completed;
 			},
-        	houseClubResult(value, column, line, event) {
+			//Column = rodada disponível no array
+			//Line = jogo da roda disponível no array
+			houseClubResult: function(column, line, event) {
+				//Pegando o valor informado pelo usuário
+				var input = $(event.currentTarget);
 
-        		//Atribuindo o resultado informado para o time da casa
-				this.item.rounds[column].games[line].result_house_club = value;
+				if(input.val() < 0)
+					input.val(input.val() * -1)
+
+				//Atribuindo o resultado informado para o time da casa
+				this.item.rounds[column].games[line].result_house_club = input.val();
 
 				//Serve para controlar se a rodada foi complemente preenchida
 				var complete = true
@@ -150,10 +293,18 @@
 
 				//Pegando todas as rodadas finalizadas
 				var rounds = this.getRoundsFinished();
-				
+				//Atualizando o total
+				this.total =this.item.value * rounds.length; 
 			},
-        	outClubResult(value, column, line, event) {
-				this.item.rounds[column].games[line].result_out_club = value;
+			//Column = rodada disponível no array
+			//Line = jogo da roda disponível no array
+			outClubResult: function(column, line, event) {
+				var input = $(event.currentTarget);
+				
+				if(input.val() < 0)
+					input.val(input.val() * -1)
+
+				this.item.rounds[column].games[line].result_out_club = input.val();
 
 				//Serve para controlar se a rodada foi complemente preenchida
 				var complete = true
@@ -198,63 +349,8 @@
 
 				//Pegando todas as rodadas finalizadas
 				var rounds = this.getRoundsFinished();
-
-        	},
-        	showRequest() {
-        		const showRequest = axios.create();
-				this.id = this.$route.params.id;
-				
-				showRequest.interceptors.request.use(config => {
-		        	this.loading.component = true
-				  	return config;
-				});
-				showRequest.get(routes.soccer_experts.show.replace('{id}', this.id), {}, {}).then(response => {
-					if(response.status === 200){
-						this.soccer_expert = response.data
-						this.loading.component = false
-						this.item.id = this.id;
-						this.item.soccer_expert = this.soccer_expert;
-						this.item.hash = this.makeid();
-						this.item.value = parseFloat(this.soccer_expert.value);
-						this.item.name = this.soccer_expert.nome;
-						this.item.rounds = this.soccer_expert.rounds;
-					}
-				}).catch((error) => {
-					
-				});
-        	},
-        	showSoccerExpert() {
-        		var interval = setInterval(() => {
-					var item = this.purchase.soccer_expert.items.filter((val) => {
-						return this.$route.params.hash == val.hash;
-					})
-
-					if(item.length > 0) {
-						clearInterval(interval);
-						item = item[0]
-
-						this.soccer_expert = item.soccer_expert;
-						this.loading.component = false
-						this.item.id = item.id;
-						this.item.soccer_expert = item.soccer_expert;
-						this.item.hash = item.hash;
-						this.item.value = parseFloat(item.soccer_expert.value);
-						this.item.name = item.soccer_expert.nome;
-						this.item.rounds = item.soccer_expert.rounds;
-						this.total = parseFloat(item.total);
-
-					} else {
-
-					}
-				});
-			},
-			//Funão executada ao carregar
-			init: function() {
-				if(this.$route.params.hash != undefined) {
-					this.showSoccerExpert();
-				} else if(this.$route.params.id != undefined) {
-					this.showRequest();
-				}
+				//Atualizando o total
+				this.total = this.item.value * rounds.length; 
 			},
 			addToCart: function(event) {
 				//Pegando todas as rodadas finalizadas
@@ -264,8 +360,9 @@
 					id: this.id,
 					hash: this.item.hash,
 					soccer_expert: this.soccer_expert,
+					value: this.item.value,
 					rounds: rounds,
-					total: this.total
+					total: this.item.value * rounds.length
 				};
 
 				//Se não completou nenhuma rodada
@@ -291,13 +388,15 @@
 						
 					}).then(response => {
 			            if(response.status === 200) {
-			            	this.$router.push({
-								name: 'cart.index'
-							})
+			            	
 						}
 			        }).catch((error) => {
 			        	
 			        })		
+
+					this.$router.push({
+						name: 'cart.index'
+					})
 				}
 			}
 		},
@@ -305,8 +404,7 @@
 			this.init();
 		},
 		components: {
-			LoadComponent,
-			SlideComponent
+			LoadComponent
 		},
 		computed: {
 			...mapGetters([

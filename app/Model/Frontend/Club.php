@@ -54,4 +54,9 @@ class Club extends Model
     public function shields() {
         return $this->hasMany(ShieldClub::class, 'gel_clube_id');
     }
+
+    public function getEscudoAttribute()
+    {        
+        return env('APP_CDN') . $this->attributes['escudo'];
+    }
 }

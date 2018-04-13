@@ -7,10 +7,10 @@
 			</div>
 		</div> -->
 		<ul class="nav nav-pills nav-justified">
-		  	<li class="nav-item" v-if="purchase.items.length > 0">
+		  	<!--<li class="nav-item" v-if="purchase.items.length > 0">
 			    <a class="nav-link active" data-toggle="pill" href="#all">{{ trans('strings.all') }}</a>
 		  	</li>
-		  	<li class="nav-item" v-if="purchase.scratch_cards.items.length > 0">
+		  	 <li class="nav-item" v-if="purchase.scratch_cards.items.length > 0">
 			    <a class="nav-link" data-toggle="pill" href="#scratch_cards">
 			    	{{ trans('strings.scratch_cards') }}
 			    </a>
@@ -25,7 +25,7 @@
 			    <a class="nav-link" data-toggle="pill" href="#soccer_expert">
 			    	{{ trans('strings.soccer_expert') }}
 			    </a>
-		  	</li>
+		  	</li> -->
 		</ul>
 
 		
@@ -46,7 +46,8 @@
 				  	</keep-alive>
 		  		</transition>
 		  	</div>
-		  	<div class="tab-pane container-fluid tab-scratch_cards" id="scratch_cards" v-if="purchase.scratch_cards.items.length > 0">
+		  	
+		  	<!-- <div class="tab-pane container-fluid tab-scratch_cards" id="scratch_cards" v-if="purchase.scratch_cards.items.length > 0">
 		  		<transition name="fade" mode="out-in">
                     <keep-alive>
 		  				<scratch-card-component :scratchcards="purchase.scratch_cards.items"></scratch-card-component>
@@ -68,7 +69,8 @@
 		  				<soccer-expert-component :items="purchase.soccer_expert.items"></soccer-expert-component>
 	  				</keep-alive>
 		  		</transition>
-		  	</div>
+		  	</div> -->
+		  	
 		</div>
 
 		
@@ -177,7 +179,7 @@
 			}
 		},
 		mounted: function() {
-			window.document.title = window.app.title +' | '+ this.trans('strings.cart');
+			window.document.title = this.trans('strings.cart')+ ' | ' +window.app.title;
 		},
 		components: {
 			ScratchCardComponent,

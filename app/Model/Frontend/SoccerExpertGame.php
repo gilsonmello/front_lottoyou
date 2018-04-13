@@ -75,7 +75,8 @@ class SoccerExpertGame extends Model
     public function getHouseClubAttribute()
     {
         return Club::where('id', '=', $this->gel_clube_casa_id)
-            ->with(['shields'])
+            ->select('id', 'nome', 'escudo', 'abreviacao', 'created', 'modified')
+            ->where('active', '=', 1)
             ->get()
             ->first();
     }
@@ -83,7 +84,8 @@ class SoccerExpertGame extends Model
     public function getOutClubAttribute()
     {
         return Club::where('id', '=', $this->gel_clube_fora_id)
-            ->with(['shields'])
+            ->select('id', 'nome', 'escudo', 'abreviacao', 'created', 'modified')
+            ->where('active', '=', 1)
             ->get()
             ->first();
     }

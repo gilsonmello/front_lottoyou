@@ -1,13 +1,13 @@
 <?php
 
-Route::resource('soccer_expert', 'SoccerExpertController', [
+Route::resource('soccer_experts', 'SoccerExpertController', [
     'names' => [
-        'index' => 'frontend.soccer_expert.index',
-        'create' => 'frontend.soccer_expert.create',
-        'store' => 'frontend.soccer_expert.store',
-        'edit' => 'frontend.soccer_expert.edit',
-        'update' => 'frontend.soccer_expert.update',
-        'destroy' => 'frontend.soccer_expert.destroy',
-        'show' => 'frontend.soccer_expert.show'
+        'index' => 'frontend.soccer_experts.index',
+        'create' => 'frontend.soccer_experts.create',
+        'store' => 'frontend.soccer_experts.store',
+        'edit' => 'frontend.soccer_experts.edit',
+        'update' => 'frontend.soccer_experts.update',
+        'destroy' => 'frontend.soccer_experts.destroy',
+        'show' => 'frontend.soccer_experts.show'
     ]
 ]);

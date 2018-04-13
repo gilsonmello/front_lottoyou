@@ -1,11 +1,10 @@
 <template>
 	<section>
 		<div class="container-fluid" v-for="(item, index) in items" v-if="items.length > 0">
-			<soccer-expert-component v-if="item.type == 'soccer_expert'" :id="'#soccer_expert_'+index" :item="item.soccer_expert"></soccer-expert-component>
+			<soccer-expert-component v-if="item.type == 'soccer_expert'" :id="'soccer_expert_'+index" :item="item.soccer_expert"></soccer-expert-component>
 			<lottery-component v-else-if="item.type == 'lottery'" :id="'#lottery_'+index" :item="item.lottery"></lottery-component> 
 			<scratch-card-component v-else-if="item.type == 'scratch_card'" :item="item.scratch_card"></scratch-card-component>
 		</div>
-
 	</section>
 </template>
 

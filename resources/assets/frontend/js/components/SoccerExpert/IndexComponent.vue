@@ -3,25 +3,25 @@
 	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.soccer_expert') }}</h1>
 		<div class="row">
-			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="soccer_category in soccer_categories">
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="soccer_expert in soccer_experts">
 				<div class="soccer-expert-card">
 					<header class="soccer-expert-header">
-						<div class="extras" v-if="soccer_category.novo == 1">
+						<div class="extras" v-if="soccer_expert.novo == 1">
 							<img :src="app.basePath+'img/new.png'" alt="new" class="game-badge">
 						</div>
-						<img class="header-image img-fluid" :alt="soccer_category.nome" :src="soccer_category.imagem_capa">
+						<img class="header-image img-fluid" :alt="soccer_expert.nome" :src="soccer_expert.imagem_capa">
 						<div class="descript">
 						</div>
 					</header>
 					<div class="soccer-expert-body">
-						<a :data-id="soccer_category.id" href="#" @click.prevent="" class="btn description">
+						<a :data-id="soccer_expert.id" href="#" @click.prevent="" class="btn description">
 							<i class="fa fa-money" aria-hidden="true"></i>
 							&nbsp;
-							{{ soccer_category.nome }}
+							{{ soccer_expert.nome }}
 						</a>
 					</div>
 					<footer class="soccer-expert-footer">
-						<router-link class="btn btn-success btn-md play" :to="{ name: 'soccer_expert.show', params: {id: soccer_category.id} }">
+						<router-link class="btn btn-success btn-md play" :to="{ name: 'soccer_expert.show', params: {id: soccer_expert.id} }">
 							{{ trans('strings.play') }}
 						</router-link>
 					</footer>
@@ -49,7 +49,7 @@
 				loading: {
 					component: true
 				},
-				soccer_categories: []
+				soccer_experts: []
 			}
 		},
 		mounted: function() {
@@ -68,10 +68,10 @@
 			soccerExpertRequest.interceptors.request.use(config => {
 				return config;
 			});
-			soccerExpertRequest.get(routes.soccer_categories.index, {}).then(response => {
+			soccerExpertRequest.get(routes.soccer_experts.index, {}).then(response => {
 	            if(response.status === 200) {
 	            	this.loading.component = false
-	            	this.soccer_categories = response.data
+	            	this.soccer_experts = response.data
 				}
 	        }).catch((error) => {
 	        	if(error.response.data.msg) {
