@@ -67,4 +67,43 @@
 	.nav-item {
 		padding-right: 20px;
 	}
+
+	@media (max-width: 992px) {
+		
+	}
+
+	@media (max-width: 767px) {
+		
+		.nav-link {
+			padding: 10px;
+		}
+
+		.navbar-toggler {
+			margin-top: 10px;
+		    margin-bottom: 10px;
+		}
+
+		ul {
+			display: block;
+		}
+	}
+
+	@media (max-width: 576px) {
+		ul {
+			display: flex;
+		}
+
+		.navbar-toggler {
+			margin-top: 10px;
+		    margin-bottom: 10px;
+		}
+		
+		.nav-item {
+			padding: 0 !important;
+		}
+
+		.navbar-collapse {
+			margin-top: 5px;
+		}
+	}
 </style>

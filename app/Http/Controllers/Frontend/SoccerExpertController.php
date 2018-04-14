@@ -76,8 +76,8 @@ class SoccerExpertController extends Controller
             ->with(['games'])
             ->where(
                 DB::raw("concat(data_termino,' ',hora_termino)"), 
-                '<', 
-                DB::raw('ADDDATE(NOW(), INTERVAL 7 DAY)')
+                '>', 
+                DB::raw('NOW()')
             )
             ->get()
             ->take(3);
@@ -86,8 +86,8 @@ class SoccerExpertController extends Controller
             ->with(['games'])
             ->where(
                 DB::raw("concat(data_termino,' ',hora_termino)"), 
-                '<', 
-                DB::raw('ADDDATE(NOW(), INTERVAL 14 DAY)')
+                '>', 
+                DB::raw('NOW()')
             )
             ->whereNotIn('id', $roundsWeek->pluck('id')->all())
             ->get()

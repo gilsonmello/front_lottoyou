@@ -1,10 +1,5 @@
 <template>	
 	<div class="tickets" :style="backgroundTicket(ticket.imagem_capa)">
-		<div class="row">
-            <div class="col-lg-12">
-                {{ ticket.data_termino }}
-            </div>
-        </div>
 		<div class="tickets-content" v-for="(game, index) in ticket.games">
 			<game-component :game="game" v-on:updateTicket="updateTicket" :index="index"></game-component>
 		</div>
@@ -87,5 +82,9 @@
 <style scoped>
 	.tickets-content {
 		background-color: initial;
+	}
+
+	.tickets {
+		padding: 0 20px 10px 20px;
 	}
 </style>

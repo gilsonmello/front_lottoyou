@@ -99,4 +99,9 @@ class SoccerExpertGame extends Model
     {   
         return '';
     }
+
+    public function getDataAttribute()
+    {   
+        return format($this->attributes['data'] . ' '. $this->attributes['hora'], 'd/m/Y H:i');
+    }
 }

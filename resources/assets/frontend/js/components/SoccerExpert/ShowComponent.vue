@@ -24,8 +24,9 @@
 		    	<slide-component :item="item"></slide-component>
 			</div>
 
+	    	
+	    	<br>
 	    	<hr>
-
 			<div class="row">
 				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 					<button type="submit" class="btn btn-md btn-success pull-right">

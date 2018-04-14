@@ -1,7 +1,7 @@
 <template>
 	<div class="col-lg-12">
         <div id="carouselExampleIndicators" data-interval="false" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators" style="bottom: -46px;">
+            <ol class="carousel-indicators" style="bottom: -20px;">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>  
                 <li data-target="#carouselExampleIndicators" v-if="item.soccer_expert.ticketsNextWeek.length > 0" data-slide-to="1" class=""></li>               
             </ol>
@@ -9,6 +9,11 @@
                 <div class="carousel-item active">
                     <div class="row">
                         <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.soccer_expert.ticketsWeek">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p class="text-center">{{ ticket.data_termino }}</p>
+                                </div>
+                            </div>
                             <ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket" :index="index">
                                 
                             </ticket-component>
@@ -19,6 +24,11 @@
                 <div class="carousel-item" v-if="item.soccer_expert.ticketsNextWeek.length > 0">
                     <div class="row">
                         <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.soccer_expert.ticketsNextWeek">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p class="text-center">{{ ticket.data_termino }}</p>
+                                </div>
+                            </div>
                             <ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket" :index="index">
                                 
                             </ticket-component>
