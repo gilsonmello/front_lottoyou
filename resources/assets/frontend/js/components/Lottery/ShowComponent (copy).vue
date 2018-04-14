@@ -24,7 +24,7 @@
 	        	</div>
 	        </div>
 			<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
-				<div class="col-lg-2 col-8 col-md-5 col-sm-5" v-for="(index, column) in columns">
+				<div class="col-lg-3 col-8 col-md-5 col-sm-5" v-for="(index, column) in columns">
 					<div :class="'ticket'+column+' tickets'+' '+wow(index)">
 						<div class="tickets-header">
 							<!-- <strong>{{ column }}</strong> -->
@@ -111,9 +111,6 @@
 				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 					<button type="submit" class="btn btn-md btn-success pull-right">
 						{{ trans('strings.add_to_cart') }}
-					</button>
-					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
-						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">
 						$ <span class="value" v-if="total > 0">
@@ -682,14 +679,15 @@
 						
 					}).then(response => {
 			            if(response.status === 200) {
-			            	this.$router.push({
-								name: 'cart.index'
-							})
+			            	
 						}
 			        }).catch((error) => {
 			        	
-			        })	
-					
+			        })		
+
+					this.$router.push({
+						name: 'cart.index'
+					})
 					/*const cartRequest = axios.create();
 					cartRequest.interceptors.request.use(config => {
 			        	return config;

@@ -56,7 +56,7 @@ class Lottery extends Model
 
     public function getImgLoteriaAttribute()
     {        
-        return env('APP_CDN'). $this->attributes['img_loteria'];
+        return env('APP_CDN') . $this->attributes['img_loteria'];
     }
 
 }

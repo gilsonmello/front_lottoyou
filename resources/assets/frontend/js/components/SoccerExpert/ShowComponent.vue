@@ -4,10 +4,10 @@
 		<div class="row">
         	<div class="col-lg-12">
         		<div class="sub-navigation">
-        			<router-link :to="{ name: 'soccer_expert.show', params: { id: soccer_expert.id } }" class="active show" id="play-component">
-	                    {{ trans('strings.play_on_the') }} {{ soccer_expert.nome }}
+        			<router-link :to="{ name: 'soccer_expert.show', params: { id: item.soccer_expert.id } }" class="active show" id="play-component">
+	                    {{ trans('strings.play_on_the') }} {{ item.soccer_expert.nome }}
 	                </router-link>
-	                <router-link :to="{ name: 'soccer_expert.results', params: { id: soccer_expert.id } }" class="show" id="result-component">
+	                <router-link :to="{ name: 'soccer_expert.results', params: { id: item.soccer_expert.id } }" class="show" id="result-component">
 	                    Resultado 
 	               	</router-link>
         		</div>
@@ -15,27 +15,33 @@
         </div>	
        	<div class="row">
         	<div class="col-lg-12">
-        		<h4 class="page-header" style="margin-top: 0;">{{ soccer_expert.nome }}</h4>
+        		<h4 class="page-header" style="margin-top: 0;">{{ item.soccer_expert.nome }}</h4>
         	</div>
         </div>
+    	
     	<form @submit.prevent="addToCart">
-	    	<slide-component :soccer_expert="soccer_expert" v-on:houseClubResult="houseClubResult" v-on:outClubResult="outClubResult"></slide-component>
+	    	<div class="row">
+		    	<slide-component :item="item"></slide-component>
+			</div>
 
 	    	<hr>
+
 			<div class="row">
 				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 					<button type="submit" class="btn btn-md btn-success pull-right">
 						{{ trans('strings.add_to_cart') }}
 					</button>
+					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
+						<i class="fa fa-refresh fa-spin"></i>
+					</button>
 					<span class="pull-right price">
-						$ <span class="value" v-if="total > 0">
+						$ <span class="value" v-if="item.total > 0">
 							{{ totalFormated }}
 						</span>
 						<span class="value" v-else>0.00</span>
 					</span>
 				</div>
-			</div>
-
+			</div>		
 		</form>
 	</div>
 </template>
@@ -55,221 +61,61 @@
         		loading: {
 					component: true
 				},
-				soccer_expert: {},
-				id: '',
-				rounds: [0],
-				total: 0.00,
 				item: {
-					hash: null,
-					id: null,
-					value: null,
-					name: '',
-					rounds: []
-				},
-
-
-				/*rounds: [
-			 		{
-			 			id: null,
-			 			hash: null,
-			 			column: 0,
-			 			house_club: null,
-			 			house_club_result: '',
-			 			out_club: null,
-			 			out_club_result: '',
-				 		complete: false,
-				 		games: []
-				 	},
-				]*/
+					soccer_expert: {},
+					hash: '',
+					total: 0.00
+				}
         	}
         },
         methods: {
         	//Pegando todas as apostas concluídas
-			getRoundsFinished: function() {
+			getTicketsWeekFinished: function() {
 				const vm = this
-				let total = 0.00;
+				
 				//Pegando todas as apostas feitas
-				var rounds_completed = this.item.rounds.filter((val) => {
-					//Verificando se a cartela está completa
+				var ticketsWeekComplete = this.item.soccer_expert.ticketsWeek.filter(function(val) {
+					//Verificando se dezenas extras está habilitado
 					if(val.complete == true) {
-						total += val.valor
 						return true;
 					}else { 
 						return false;
 					}
 				});
-				//Atualizando o total
-				this.total = parseFloat(total);
-				return rounds_completed;
-			},
-        	houseClubResult(value, column, line, event) {
-
-        		//Atribuindo o resultado informado para o time da casa
-				this.item.rounds[column].games[line].result_house_club = value;
-
-				//Serve para controlar se a rodada foi complemente preenchida
-				var complete = true
-
-				//Serve para controlar se a rodada está completamente vazia
-				var empty = true;
-
-				//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
-				//Não foi concluído o preenchimento na rodada
-				this.item.rounds[column].games = this.item.rounds[column].games.filter((val) => {
-					
-					if((val.result_out_club == '' || val.result_out_club == undefined) 
-						|| (val.result_house_club == '' || val.result_house_club == undefined)) {
-						complete = false
-						
-					}
-					//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
-					if((val.result_out_club != '' || val.result_out_club == undefined) 
-						|| (val.result_house_club != '' || val.result_house_club == undefined)) {
-						empty = false;
-					}
-
-					return true;
-				});
-
-				//Se foi completado o preenchimento na rodada
-				if(complete == true) {
-					this.item.rounds[column].complete = true;
-					$('.ticket'+column).addClass('complete');
-					$('.ticket'+column).removeClass('incomplete');
-				} else {
-					this.item.rounds[column].complete = false;
-					$('.ticket'+column).addClass('incomplete');
-					$('.ticket'+column).removeClass('complete');
-				}
-
-				//Se a rodada está vazia
-				if(empty) {
-					$('.ticket'+column).removeClass('complete');
-					$('.ticket'+column).removeClass('incomplete');
-				}
-
-				//Pegando todas as rodadas finalizadas
-				var rounds = this.getRoundsFinished();
 				
+				return ticketsWeekComplete;
 			},
-        	outClubResult(value, column, line, event) {
-				this.item.rounds[column].games[line].result_out_club = value;
-
-				//Serve para controlar se a rodada foi complemente preenchida
-				var complete = true
-
-				//Serve para controlar se a rodada está completamente vazia
-				var empty = true;
-
-				//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
-				//Não foi concluído o preenchimento na rodada
-				this.item.rounds[column].games = this.item.rounds[column].games.filter((val) => {
-					
-					if((val.result_out_club == '' || val.result_out_club == undefined) 
-						|| (val.result_house_club == '' || val.result_house_club == undefined)) {
-						complete = false
-					}
-
-					//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
-					if((val.result_out_club != '' || val.result_out_club == undefined) 
-						|| (val.result_house_club != '' || val.result_house_club == undefined)) {
-						empty = false;
-					}
-
-					return true;
-				});
-
-				//Se foi completado o preenchimento na rodada
-				if(complete == true) {
-					this.item.rounds[column].complete = true;
-					$('.ticket'+column).addClass('complete');
-					$('.ticket'+column).removeClass('incomplete');
-				} else {
-					this.item.rounds[column].complete = false;
-					$('.ticket'+column).addClass('incomplete');
-					$('.ticket'+column).removeClass('complete');
-				}
-
-				//Se a rodada está vazia
-				if(empty) {
-					$('.ticket'+column).removeClass('complete');
-					$('.ticket'+column).removeClass('incomplete');
-				}
-
-				//Pegando todas as rodadas finalizadas
-				var rounds = this.getRoundsFinished();
-
-        	},
-        	showRequest() {
-        		const showRequest = axios.create();
-				this.id = this.$route.params.id;
+			//Pegando todas as apostas concluídas
+			getTicketsNextWeekFinished: function() {
+				const vm = this
 				
-				showRequest.interceptors.request.use(config => {
-		        	this.loading.component = true
-				  	return config;
-				});
-				showRequest.get(routes.soccer_experts.show.replace('{id}', this.id), {}, {}).then(response => {
-					if(response.status === 200){
-						this.soccer_expert = response.data
-						this.loading.component = false
-						this.item.id = this.id;
-						this.item.soccer_expert = this.soccer_expert;
-						this.item.hash = this.makeid();
-						this.item.value = parseFloat(this.soccer_expert.value);
-						this.item.name = this.soccer_expert.nome;
-						this.item.rounds = this.soccer_expert.rounds;
-					}
-				}).catch((error) => {
-					
-				});
-        	},
-        	showSoccerExpert() {
-        		var interval = setInterval(() => {
-					var item = this.purchase.soccer_expert.items.filter((val) => {
-						return this.$route.params.hash == val.hash;
-					})
-
-					if(item.length > 0) {
-						clearInterval(interval);
-						item = item[0]
-
-						this.soccer_expert = item.soccer_expert;
-						this.loading.component = false
-						this.item.id = item.id;
-						this.item.soccer_expert = item.soccer_expert;
-						this.item.hash = item.hash;
-						this.item.value = parseFloat(item.soccer_expert.value);
-						this.item.name = item.soccer_expert.nome;
-						this.item.rounds = item.soccer_expert.rounds;
-						this.total = parseFloat(item.total);
-
-					} else {
-
+				//Pegando todas as apostas feitas
+				var ticketsNextWeekComplete = this.item.soccer_expert.ticketsNextWeek.filter(function(val) {
+					//Verificando se dezenas extras está habilitado
+					if(val.complete == true) {
+						return true;
+					}else { 
+						return false;
 					}
 				});
+				
+				return ticketsNextWeekComplete;
 			},
-			//Funão executada ao carregar
-			init: function() {
-				if(this.$route.params.hash != undefined) {
-					this.showSoccerExpert();
-				} else if(this.$route.params.id != undefined) {
-					this.showRequest();
-				}
-			},
-			addToCart: function(event) {
-				//Pegando todas as rodadas finalizadas
-				var rounds = this.getRoundsFinished();
+        	addToCart() {
+        		//Pegando todas as rodadas finalizadas
+				var ticketsWeek = this.getTicketsWeekFinished();
+				var ticketsNextWeek = this.getTicketsNextWeekFinished();
 
 				var item = {
-					id: this.id,
 					hash: this.item.hash,
-					soccer_expert: this.soccer_expert,
-					rounds: rounds,
-					total: this.total
+					total: this.item.total,
+					soccer_expert: this.item.soccer_expert,
+					ticketsWeek: ticketsWeek,
+					ticketsNextWeek: ticketsNextWeek
 				};
 
 				//Se não completou nenhuma rodada
-				if(rounds.length == 0) {
+				if(ticketsWeek.length == 0) {
 					this.$store.dispatch('removeItemSoccerExpert', item);
 					alert('Faça pelo menos um jogo');
 				} else {
@@ -297,9 +143,51 @@
 						}
 			        }).catch((error) => {
 			        	
-			        })		
+			        })	
 				}
-			}
+        	},
+        	showRequest() {
+        		const showRequest = axios.create();
+				let id = this.$route.params.id;
+				
+				showRequest.interceptors.request.use(config => {
+		        	this.loading.component = true
+				  	return config;
+				});
+				showRequest.get(routes.soccer_experts.show.replace('{id}', id), {}, {}).then(response => {
+					if(response.status === 200) {
+						this.loading.component = false
+						this.item.hash = this.makeid();
+						this.item.soccer_expert = response.data;
+					}
+				}).catch((error) => {
+					
+				});
+        	},
+        	showSoccerExpert() {
+        		var interval = setInterval(() => {
+					var item = this.purchase.soccer_expert.items.filter((val) => {
+						return this.$route.params.hash == val.hash;
+					})
+
+					if(item.length > 0) {
+						clearInterval(interval);
+						this.loading.component = false
+						this.item = item[0]
+					} else {
+
+					}
+				});
+			},
+			//Função executada ao carregar
+			init: function() {
+				if(this.$route.params.hash != undefined) {
+					this.showSoccerExpert();
+				} else if(this.$route.params.id != undefined) {
+					this.showRequest();
+				}
+			},
+			
 		},
 		mounted: function() {
 			this.init();
@@ -315,7 +203,8 @@
 			totalFormated: {
             	// getter
             	get: function () {
-            		return this.total.format(2, true);
+            		let tot = parseFloat(this.item.total);
+            		return tot.format(2, true);
 		    	},
 			    // setter
 			    set: function (newValue) {

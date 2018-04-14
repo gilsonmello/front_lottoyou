@@ -479,7 +479,7 @@
 		            	this.scratch_card_demo = response.data
 						this.loading.modalDemo = false;
 						this.handleScratchPad();
-						this.demoAttempts = 1;
+						this.demoAttempts = 5;
 					}
 		        }).catch((error) => {
 		        	$('.modal-demo').on('hidden.bs.modal', function (e) {
@@ -668,7 +668,7 @@
 		watch: {
 			'loading.modalDemo': function(newValue, oldValue) {},
 			demoAttempts: function(newValue, oldValue) {
-				console.log('demoAttempts '+newValue)
+				
 			}
 		},
 		components: {

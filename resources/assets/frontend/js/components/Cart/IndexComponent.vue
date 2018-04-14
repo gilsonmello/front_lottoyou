@@ -38,13 +38,13 @@
 
 		<!-- Tab panes -->
 		<div class="tab-content">
-			<br>
-		  	<div class="tab-pane active container-fluid tab-all" id="all" v-if="purchase.items.length > 0">
-	  			<transition name="fade" mode="out-in">
-                    <keep-alive>
-		  				<all-component :items="purchase.items"></all-component>
-				  	</keep-alive>
-		  		</transition>
+			<div class="tab-pane active tab-all" id="all" v-if="purchase.items.length > 0">
+	  			
+            	<div class="container" v-for="(item, index) in purchase.items">
+					<soccer-expert-component v-if="item.type == 'soccer_expert'" :id="'soccer_expert_'+index" :item="item.soccer_expert"></soccer-expert-component>
+					<lottery-component v-else-if="item.type == 'lottery'" :id="'lottery_'+index" :item="item.lottery"></lottery-component> 
+					<scratch-card-component v-else-if="item.type == 'scratch_card'" :item="item.scratch_card"></scratch-card-component>
+				</div>		
 		  	</div>
 		  	
 		  	<!-- <div class="tab-pane container-fluid tab-scratch_cards" id="scratch_cards" v-if="purchase.scratch_cards.items.length > 0">
@@ -74,7 +74,7 @@
 		</div>
 
 		
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row vcenter" style="margin: 10px -15px 10px -15px">
 				<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 					<span class="pull-right">
@@ -90,7 +90,7 @@
 			</div>
 		</div>
 
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
 				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 					<span>
@@ -100,7 +100,7 @@
 			</div>
 		</div>
 
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
 				<div class="col-lg-5 col-12 col-md-5 col-sm-6">
 					<span>
@@ -121,7 +121,7 @@
 				
 		</div>
 		
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row vcenter" style="margin: 10px -15px 10px -15px">
 				<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 					<span class="pull-right">
@@ -136,7 +136,7 @@
 			</div>
 		</div>
 		
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
 				<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 					
@@ -153,10 +153,11 @@
 
 <script>
 	import {mapState, mapGetters} from 'vuex'
-	import ScratchCardComponent from './Tab/ScratchCardComponent'
-	import LotteryComponent from './Tab/LotteryComponent'
-	import SoccerExpertComponent from './Tab/SoccerExpertComponent'
+	import ScratchCardComponent from './Tab/All/ScratchCardComponent'
+	import LotteryComponent from './Tab/All/LotteryComponent'
+	//import SoccerExpertComponent from './Tab/SoccerExpertComponent'
 	import AllComponent from './Tab/AllComponent'
+	import SoccerExpertComponent from './Tab/All/SoccerExpertComponent'
 	export default {
 		computed: {
 			...mapState({

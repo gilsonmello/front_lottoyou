@@ -1,8 +1,8 @@
 <template>
-	<section>
-		<div class="row vcenter soccer_experts" :href="'#'+id" data-toggle="collapse">
+	<section style="margin-left: -15px; margin-right: -15px">
+		<div class="vcenter soccer_experts" :href="'#'+id" data-toggle="collapse">
 			<div class="col-lg-2 col-md-2 col-2 col-sm-2">
-				<img class="img-fluid" src="http://www.lottoland.com/pt/skins/lottoland/images/lotteryLogos/lt-elGordoPrimitiva.x2-bc4cde5fe7329ee5.png">
+				<img class="img-fluid" :alt="item.soccer_expert.nome" :src="item.soccer_expert.imagem_capa">
 			</div>
 			<div class="col-lg-8 col-5 col-md-7 col-sm-6">
 				<div class="row">
@@ -13,7 +13,7 @@
 				<div class="row">
 					<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 						<span>
-							{{ item.rounds.length }} Jogos
+							{{ item.ticketsWeek.length + item.ticketsNextWeek.length }} Jogos
 						</span>
 					</div>
 				</div>
@@ -31,12 +31,12 @@
 				</a>
 			</div>
 		</div>
-		<slide-component :id="id" :soccer_expert="item"></slide-component>
+		<slide-component :id="id" :item="item"></slide-component>
 	</section>
 </template>
 
 <script>
-	import RoundComponent from './SoccerExpert/RoundComponent'
+	
 	import SlideComponent from './SoccerExpert/SlideComponent'
 	import {routes} from '../../../../api_routes'
 	export default {
@@ -47,6 +47,7 @@
 			}
 		},
 		mounted: function() {
+			
 		},
 		methods: {
 			removeItemSoccerExpert(item){
@@ -64,7 +65,6 @@
 			},
 		},
 		components: {
-			RoundComponent,
 			SlideComponent
 		}
 	}

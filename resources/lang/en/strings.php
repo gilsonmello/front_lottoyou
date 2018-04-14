@@ -12,6 +12,7 @@ return [
       |
      */
     'spare' => 'Poupar',
+    'buy_now' => 'Compre Agora',
     'quantity' => 'Quantidade',
     'add_to_cart' => 'Adicionar ao carrinho',
     'code_country' => 'Código do país',

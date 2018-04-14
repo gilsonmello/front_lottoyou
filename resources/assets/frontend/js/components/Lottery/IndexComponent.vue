@@ -7,7 +7,7 @@
 				<div class="lottery-card">
 					<div class="row">
 						<div class="col-lg-6">
-							<img src="http://www.lottoland.com/pt/skins/lottoland/images/lotteryLogos/lt-elGordoPrimitiva.x2-bc4cde5fe7329ee5.png" class="img-fluid">
+							<img :alt="lottery.nome" :src="lottery.img_loteria" class="img-fluid">
 						</div>
 						<div class="col-lg-6">
 							<div class="pull-right">

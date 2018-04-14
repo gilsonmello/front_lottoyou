@@ -47,7 +47,7 @@ class SoccerExpertGame extends Model
     ];
 
     protected $appends = [
-        'house_club', 'out_club'
+        'house_club', 'out_club', 'result_house_club', 'result_out_club'
     ];
 
     /*public function houseClub() {
@@ -88,5 +88,15 @@ class SoccerExpertGame extends Model
             ->where('active', '=', 1)
             ->get()
             ->first();
+    }
+
+    public function getResultHouseClubAttribute()
+    {   
+        return '';
+    }
+
+    public function getResultOutClubAttribute()
+    {   
+        return '';
     }
 }

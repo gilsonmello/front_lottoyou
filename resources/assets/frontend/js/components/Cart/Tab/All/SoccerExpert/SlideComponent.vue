@@ -1,26 +1,49 @@
 <template>
-	<div class="row collapse" :id="id">
-        <div class="col-lg-12 no-padding">
-	        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" @click.prevent="editSoccerExpert">
-	            <ol class="carousel-indicators" style="bottom: -46px;">
-	                <li data-target="#carouselExampleIndicators" :data-slide-to="index" v-for="(to, index) in quantity_slide" :class="indicatorsClass(index)"></li>                
-	            </ol>
-	            <div class="carousel-inner" role="listbox">
-					<div :class="carouselItemClass(index)" v-for="(round, index) in soccer_expert.rounds">
-	                    <ticket-component :round="round" :column="index"></ticket-component>
-	                </div>
-	            </div>
-	        </div>
-            <a class="carousel-control-prev" id="prev-slide-content" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="fa fa-angle-left" style="color: black"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" id="next-slide-content" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="fa fa-angle-right" style="color: black"></span>
-                <span class="sr-only">Next</span>
-            </a>
+	<div class="col-lg-12 collapse" :id="id"  @click.prevent="editSoccerExpert($event)">
+        <div id="carouselExampleIndicators" data-interval="false" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators" style="bottom: -46px;">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>  
+                <li data-target="#carouselExampleIndicators" v-if="item.soccer_expert.ticketsNextWeek.length > 0" data-slide-to="1" class=""></li>               
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.soccer_expert.ticketsWeek">
+                            <ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket" :index="index">
+                                
+                            </ticket-component>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" v-if="item.soccer_expert.ticketsNextWeek.length > 0">
+                    <div class="row">
+                        <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.soccer_expert.ticketsNextWeek">
+                            <ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket" :index="index">
+                                
+                            </ticket-component>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div :class="carouselItemClass(index)" v-for="(round, index) in soccer_expert.rounds">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            {{ round.data_termino }}
+                        </div>
+                    </div>
+                    <ticket-component :round="round" :column="index" v-on:houseClubResult="houseClubResult" v-on:outClubResult="outClubResult"></ticket-component>
+                </div> -->
+            </div>
         </div>
-    </div>
+        <a class="carousel-control-prev" id="prev-slide-content" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="fa fa-angle-left" style="color: black"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" id="next-slide-content" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="fa fa-angle-right" style="color: black"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>    
 </template>
 
 <script>
@@ -29,7 +52,7 @@
 		components: {
 			TicketComponent
 		},
-		props: ['soccer_expert', 'id'],
+		props: ['item', 'id'],
 		created: function () {
 
         },
@@ -37,32 +60,54 @@
             
         },
         activated: function() {
-            this.indicators();
+            
         },
         methods: {
-            editSoccerExpert(id, hash, $event) {
-                this.$router.push({
-                    name: 'soccer_expert.show',
-                    params: {
-                        id: this.soccer_expert.id,
-                        hash: this.soccer_expert.hash
-                    }
-                })
+            editSoccerExpert(event) {
+                var el = $(event.target);
+
+                //Verificando se não está clicando nos botões de controle do slide
+                //Caso não, volto para tela de edição
+                if(!el.parent().hasClass('carousel-indicators') && !el.parent().hasClass('carousel-control-prev')
+                    && !el.parent().hasClass('carousel-control-next')
+                    ) {
+                    this.$router.push({
+                        name: 'soccer_expert.show',
+                        params: {
+                            id: this.item.soccer_expert.id,
+                            hash: this.item.hash
+                        }
+                    });
+                }
             },
-        	carouselItemClass(index){
-        		return index == 0 ? 'carousel-item active' :  'carousel-item';
-        	},
-        	indicatorsClass(index) {
-        		return index == 0 ? 'active' :  '';
-        	},
-        	dataSlideTo(index) {
-        		
-        	},
-        	indicators() {
-        		for(var i = 0; i < this.soccer_expert.rounds.length; i++) {
-        			this.quantity_slide.push(i);
-        		}
-        	}
+            updateSoccerExpert() {
+                this.updateTotal();
+            },
+            //Atualizando o total de todas as cartelas feitas
+            updateTotal: function() {              
+                this.item.total = this.getTotalTicketsNextWeek() + this.getTotalTicketsWeek();
+            },
+            getTotalTicketsWeek() {
+                var total = 0.00;
+                this.item.soccer_expert.ticketsWeek.filter(function(val) {
+                    //Verificando se dezenas extras está habilitado
+                    if(val.complete == true) {
+                        total += parseFloat(val.valor);
+                    }
+                });
+                return total;
+            },
+            getTotalTicketsNextWeek() {
+                var total = 0.00;
+                //Pegando todas as apostas feitas
+                this.item.soccer_expert.ticketsNextWeek.filter(function(val) {
+                    //Verificando se dezenas extras está habilitado
+                    if(val.complete == true) {
+                        total += parseFloat(val.valor);
+                    }
+                });
+                return total;
+            }
         },
         data: function() {
         	return {
