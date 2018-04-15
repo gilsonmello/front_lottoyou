@@ -61,13 +61,21 @@
             <div class="modal-dialog modal-xl">
                 <div class="modal-content" v-if="ticket != null">
                     <!-- Modal Header -->
-                    <div class="modal-header" style="border-bottom: none;">
+                    <div class="modal-header">
+                        
+                        <div class="col-lg-12">
+                            <h1 class="text-center">{{ ticket.sweepstake.nome }}</h1>
+                            <h1 class="text-center">{{ ticket.nome }}</h1>
+                            <p class="text-center">$ {{ formatValue(ticket.valor) }} | {{ ticket.data_termino }}</p>
+                        </div>
+                        
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
                     <!-- Modal body -->
                     <div class="modal-body" style="padding-top: 0;">
-                       <modal-ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket"></modal-ticket-component>
+
+                        <modal-ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket"></modal-ticket-component>
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">

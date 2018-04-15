@@ -73,7 +73,7 @@ class SoccerExpertController extends Controller
 
 
         $roundsWeek = SoccerExpertRound::where('soc_categoria_id', '=', $id)
-            ->with(['games'])
+            ->with(['games', 'sweepstake'])
             ->where(
                 DB::raw("concat(data_termino,' ',hora_termino)"), 
                 '>', 
@@ -83,7 +83,7 @@ class SoccerExpertController extends Controller
             ->take(3);
 
         $roundsNextWeek = SoccerExpertRound::where('soc_categoria_id', '=', $id)
-            ->with(['games'])
+            ->with(['games', 'sweepstake'])
             ->where(
                 DB::raw("concat(data_termino,' ',hora_termino)"), 
                 '>', 

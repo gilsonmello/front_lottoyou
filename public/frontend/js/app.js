@@ -69664,6 +69664,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -70331,7 +70339,35 @@ var render = function() {
         _c("div", { staticClass: "modal-dialog modal-xl" }, [
           _vm.ticket != null
             ? _c("div", { staticClass: "modal-content" }, [
-                _vm._m(2),
+                _c("div", { staticClass: "modal-header" }, [
+                  _c("div", { staticClass: "col-lg-12" }, [
+                    _c("h1", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(_vm.ticket.sweepstake.nome))
+                    ]),
+                    _vm._v(" "),
+                    _c("h1", { staticClass: "text-center" }, [
+                      _vm._v(_vm._s(_vm.ticket.nome))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-center" }, [
+                      _vm._v(
+                        "$ " +
+                          _vm._s(_vm.formatValue(_vm.ticket.valor)) +
+                          " | " +
+                          _vm._s(_vm.ticket.data_termino)
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("×")]
+                  )
+                ]),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -70404,25 +70440,6 @@ var staticRenderFns = [
         }),
         _vm._v(" "),
         _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "modal-header", staticStyle: { "border-bottom": "none" } },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "close",
-            attrs: { type: "button", "data-dismiss": "modal" }
-          },
-          [_vm._v("×")]
-        )
       ]
     )
   }
