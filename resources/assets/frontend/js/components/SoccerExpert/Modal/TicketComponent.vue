@@ -1,8 +1,15 @@
 <template>	
-	<div class="tickets" :style="backgroundTicket(ticket.imagem_capa)" @click.prevent="openModal">
-		<div class="tickets-content" v-for="(game, index) in ticket.games">
-			<game-component :game="game" v-on:updateTicket="updateTicket" :index="index"></game-component>
-		</div> 
+	<div class="tickets" :style="backgroundTicket(ticket.imagem_capa)">
+		<div class="tickets-content">
+			<div class="row">
+				<div :class="verifyCol(ticket.games)" v-for="(game, index) in ticket.games">
+					<game-component :game="game" v-on:updateTicket="updateTicket" :index="index"></game-component>
+					<div class="separator" v-if="index % 2 == 0 && ticket.games.length > 1">
+						|
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>		
 </template>
 
@@ -17,8 +24,14 @@
         	}
         },
         methods: {
+        	verifyCol(game) {
+        		if(game.length > 1) {
+        			return 'col-lg-6 col-sm-6 col-md-6 col-12'
+        		}
+        		return 'col-lg-12 col-sm-6 col-md-6 col-12'
+        	},
         	openModal() {
-		     	this.$eventBus.$emit('openModal', this.ticket);	
+        		this.$emit('openModal', this.index, this.type);       		
         	},
         	backgroundTicket(background) {
         		return 'background-image: url('+background+'); background-size: 100% 100%; background-repeat: no-repeat;';
@@ -88,5 +101,19 @@
 
 	.tickets {
 		padding: 0 20px 10px 20px;
+	}
+
+	.separator {
+		position: absolute;
+	    top: 30%;
+	    right: -3px;
+	    color: white;
+	    font-size: 30px;
+	}
+
+	@media (max-width: 576px) {
+		.separator {
+			display: none;
+		}
 	}
 </style>

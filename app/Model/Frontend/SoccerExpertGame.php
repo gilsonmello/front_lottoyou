@@ -55,20 +55,26 @@ class SoccerExpertGame extends Model
             ->where('active', '=', 1);
     }*/
 
-    public function outClub() {
+    public function outClub() 
+    {
         return $this->belongsTo(Club::class, 'gel_clube_fora_id')
             ->where('active', '=', 1);
     }
 
-    public function round() {
-    	return $this->belongsTo(SoccerExpertRound::class, 'soc_rodada_id');
+    public function round() 
+    {
+    	return $this->belongsTo(SoccerExpertRound::class, 'soc_rodada_id')
+            ->where('active', '=', 1);
     }
 
-    public function sweepstake() {
-        return $this->belongsTo(SoccerExpertSweepstake::class, 'soc_bolao_id');
+    public function sweepstake() 
+    {
+        return $this->belongsTo(SoccerExpertSweepstake::class, 'soc_bolao_id')
+            ->where('active', '=', 1);
     }
 
-    public function creator() {
+    public function creator() 
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 

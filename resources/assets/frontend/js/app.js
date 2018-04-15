@@ -34,6 +34,8 @@ Vue.prototype.makeid = function() {
 	return text;
 };
 
+Vue.prototype.$eventBus = new Vue();
+
 Vue.prototype.src = function(src) {
 	return src.replace(' ', '%20');
 };

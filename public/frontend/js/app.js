@@ -27629,6 +27629,8 @@ Vue.prototype.makeid = function () {
   return text;
 };
 
+Vue.prototype.$eventBus = new Vue();
+
 Vue.prototype.src = function (src) {
   return src.replace(' ', '%20');
 };
@@ -69259,6 +69261,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SlideComponent__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SlideComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__SlideComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__TicketComponent__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__TicketComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__TicketComponent__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -69310,6 +69314,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+
 
 
 
@@ -69459,7 +69466,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	},
 	components: {
 		LoadComponent: __WEBPACK_IMPORTED_MODULE_1__Load___default.a,
-		SlideComponent: __WEBPACK_IMPORTED_MODULE_3__SlideComponent___default.a
+		SlideComponent: __WEBPACK_IMPORTED_MODULE_3__SlideComponent___default.a,
+		TicketComponent: __WEBPACK_IMPORTED_MODULE_4__TicketComponent___default.a
 	},
 	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['purchase', 'auth']), {
 		totalFormated: {
@@ -69573,6 +69581,8 @@ exports.push([module.i, "\n#prev-slide-content[data-v-84bee288]{\n        left: 
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TicketComponent__ = __webpack_require__(182);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TicketComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__TicketComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Modal_TicketComponent__ = __webpack_require__(325);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Modal_TicketComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Modal_TicketComponent__);
 //
 //
 //
@@ -69631,17 +69641,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
-        TicketComponent: __WEBPACK_IMPORTED_MODULE_0__TicketComponent___default.a
+        TicketComponent: __WEBPACK_IMPORTED_MODULE_0__TicketComponent___default.a,
+        ModalTicketComponent: __WEBPACK_IMPORTED_MODULE_1__Modal_TicketComponent___default.a
     },
     props: ['item'],
     created: function created() {},
-    mounted: function mounted() {},
+    mounted: function mounted() {
+        var _this = this;
+
+        this.$eventBus.$on('openModal', function (ticket) {
+            _this.ticket = ticket;
+
+            $(_this.$el).find('.modal').modal('toggle');
+        });
+    },
+    beforeDestroy: function beforeDestroy() {
+        this.$eventBus.$off('openModal');
+    },
     activated: function activated() {},
+
     methods: {
+        formatValue: function formatValue(value) {
+            value = parseFloat(value);
+            return value.format(2, true);
+        },
+        backgroundTicket: function backgroundTicket(background) {
+            return 'background-image: url(' + background + ')';
+        },
         updateSoccerExpert: function updateSoccerExpert() {
             this.updateTotal();
         },
@@ -69674,7 +69728,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            quantity_slide: []
+            quantity_slide: [],
+            ticket: null
         };
     },
     computed: {}
@@ -69787,18 +69842,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['ticket', 'index'],
+	props: ['ticket', 'index', 'type'],
 	data: function data() {
 		return {};
 	},
 	methods: {
+		openModal: function openModal() {
+			this.$eventBus.$emit('openModal', this.ticket);
+		},
 		backgroundTicket: function backgroundTicket(background) {
-			return 'background-image: url(' + background + ')';
+			return 'background-image: url(' + background + '); background-size: 100% 100%; background-repeat: no-repeat;';
 		},
 		updateTicket: function updateTicket() {
 			//Atribuindo o resultado informado para o time da casa
@@ -69936,7 +69993,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.row[data-v-5ddd012a] {\n\tcolor: white;\n}\n.x[data-v-5ddd012a] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n", ""]);
+exports.push([module.i, "\n.row[data-v-5ddd012a] {\n\tcolor: white;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n}\n.x[data-v-5ddd012a] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n", ""]);
 
 // exports
 
@@ -69947,8 +70004,6 @@ exports.push([module.i, "\n.row[data-v-5ddd012a] {\n\tcolor: white;\n}\n.x[data-
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -70034,10 +70089,6 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "col-2 col-md-5 col-lg-3 no-padding" }, [
-      _c("label", { staticClass: "club" }, [
-        _vm._v(_vm._s(_vm.game.house_club.abreviacao))
-      ]),
-      _vm._v(" "),
       _vm.game.house_club != undefined
         ? _c("img", {
             staticStyle: { width: "30px", height: "30px" },
@@ -70049,63 +70100,7 @@ var render = function() {
         : _vm._e()
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-lg-2 col-2 no-padding" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.game.result_house_club,
-            expression: "game.result_house_club"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { min: "0", type: "number" },
-        domProps: { value: _vm.game.result_house_club },
-        on: {
-          change: function($event) {
-            $event.preventDefault()
-            _vm.houseClubResult(_vm.index, $event)
-          },
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.game, "result_house_club", $event.target.value)
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
     _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-lg-2 col-2 no-padding" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.game.result_out_club,
-            expression: "game.result_out_club"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { min: "0", type: "number", name: "" },
-        domProps: { value: _vm.game.result_out_club },
-        on: {
-          change: function($event) {
-            $event.preventDefault()
-            _vm.outClubResult(_vm.index, $event)
-          },
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.game, "result_out_club", $event.target.value)
-          }
-        }
-      })
-    ]),
     _vm._v(" "),
     _c("div", { staticClass: "col-2 col-md-5 col-lg-3 no-padding" }, [
       _vm.game.out_club.escudo != undefined
@@ -70116,11 +70111,7 @@ var render = function() {
               src: _vm.game.out_club.escudo
             }
           })
-        : _vm._e(),
-      _vm._v(" "),
-      _c("label", { staticClass: "club" }, [
-        _vm._v(_vm._s(_vm.game.out_club.abreviacao))
-      ])
+        : _vm._e()
     ])
   ])
 }
@@ -70160,7 +70151,13 @@ var render = function() {
     "div",
     {
       staticClass: "tickets",
-      style: _vm.backgroundTicket(_vm.ticket.imagem_capa)
+      style: _vm.backgroundTicket(_vm.ticket.imagem_capa),
+      on: {
+        click: function($event) {
+          $event.preventDefault()
+          _vm.openModal($event)
+        }
+      }
     },
     _vm._l(_vm.ticket.games, function(game, index) {
       return _c(
@@ -70252,7 +70249,16 @@ var render = function() {
                       _c("div", { staticClass: "row" }, [
                         _c("div", { staticClass: "col-lg-12" }, [
                           _c("p", { staticClass: "text-center" }, [
-                            _vm._v(_vm._s(ticket.data_termino))
+                            _vm._v(_vm._s(ticket.nome))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "text-center" }, [
+                            _vm._v(
+                              "$ " +
+                                _vm._s(_vm.formatValue(ticket.valor)) +
+                                " | " +
+                                _vm._s(ticket.data_termino)
+                            )
                           ])
                         ])
                       ]),
@@ -70284,7 +70290,16 @@ var render = function() {
                           _c("div", { staticClass: "row" }, [
                             _c("div", { staticClass: "col-lg-12" }, [
                               _c("p", { staticClass: "text-center" }, [
-                                _vm._v(_vm._s(ticket.data_termino))
+                                _vm._v(_vm._s(ticket.nome))
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "text-center" }, [
+                                _vm._v(
+                                  "$ " +
+                                    _vm._s(_vm.formatValue(ticket.valor)) +
+                                    " | " +
+                                    _vm._s(ticket.data_termino)
+                                )
                               ])
                             ])
                           ]),
@@ -70307,7 +70322,38 @@ var render = function() {
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _vm._m(1)
+    _vm._m(1),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "modal fade", attrs: { "data-backdrop": "static" } },
+      [
+        _c("div", { staticClass: "modal-dialog modal-xl" }, [
+          _vm.ticket != null
+            ? _c("div", { staticClass: "modal-content" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "modal-body",
+                    staticStyle: { "padding-top": "0" }
+                  },
+                  [
+                    _c("modal-ticket-component", {
+                      attrs: { ticket: _vm.ticket },
+                      on: { updateSoccerExpert: _vm.updateSoccerExpert }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" })
+              ])
+            : _vm._e()
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -70358,6 +70404,25 @@ var staticRenderFns = [
         }),
         _vm._v(" "),
         _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal-header", staticStyle: { "border-bottom": "none" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("×")]
+        )
       ]
     )
   }
@@ -83609,7 +83674,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -83648,6 +83713,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -83661,10 +83727,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			loading: {
 				component: true
+			},
+			modal: {
+				param: null,
+				type: ''
 			}
 		};
 	},
-	methods: {},
+	methods: {
+		openModal: function openModal() {
+			console.log('s');
+		}
+	},
+	watch: {},
 	beforeCreate: function beforeCreate() {},
 	beforeMount: function beforeMount() {
 		this.loading.component = true;
@@ -84885,6 +84960,548 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(326)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(328)
+/* template */
+var __vue_template__ = __webpack_require__(334)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-260d980f"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/SoccerExpert/Modal/TicketComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-260d980f", Component.options)
+  } else {
+    hotAPI.reload("data-v-260d980f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 326 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(327);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("266a12fa", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-260d980f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TicketComponent.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-260d980f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TicketComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 327 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.tickets-content[data-v-260d980f] {\n\tbackground-color: initial;\n}\n.tickets[data-v-260d980f] {\n\tpadding: 0 20px 10px 20px;\n}\n.separator[data-v-260d980f] {\n\tposition: absolute;\n    top: 30%;\n    right: -3px;\n    color: white;\n    font-size: 30px;\n}\n@media (max-width: 576px) {\n.separator[data-v-260d980f] {\n\t\tdisplay: none;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 328 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__GameComponent__ = __webpack_require__(329);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__GameComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__GameComponent__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['ticket', 'index', 'type'],
+	data: function data() {
+		return {};
+	},
+	methods: {
+		verifyCol: function verifyCol(game) {
+			if (game.length > 1) {
+				return 'col-lg-6 col-sm-6 col-md-6 col-12';
+			}
+			return 'col-lg-12 col-sm-6 col-md-6 col-12';
+		},
+		openModal: function openModal() {
+			this.$emit('openModal', this.index, this.type);
+		},
+		backgroundTicket: function backgroundTicket(background) {
+			return 'background-image: url(' + background + '); background-size: 100% 100%; background-repeat: no-repeat;';
+		},
+		updateTicket: function updateTicket() {
+			//Atribuindo o resultado informado para o time da casa
+			//Serve para controlar se a rodada foi complemente preenchida
+			var complete = true;
+
+			//Serve para controlar se a rodada está completamente vazia
+			var empty = true;
+
+			//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
+			//Não foi concluído o preenchimento na rodada
+			this.ticket.games.filter(function (val) {
+
+				if (val.result_out_club == '' || val.result_out_club == undefined || val.result_house_club == '' || val.result_house_club == undefined) {
+					complete = false;
+				}
+				//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
+				if (val.result_out_club != '' || val.result_out_club == undefined || val.result_house_club != '' || val.result_house_club == undefined) {
+					empty = false;
+				}
+
+				return true;
+			});
+
+			//Se foi completado o preenchimento na rodada
+			if (complete == true) {
+				this.ticket.complete = true;
+				$(this.$el).addClass('complete');
+				$(this.$el).removeClass('incomplete');
+			} else {
+				this.ticket.complete = false;
+				$(this.$el).addClass('incomplete');
+				$(this.$el).removeClass('complete');
+			}
+
+			//Se a rodada está vazia
+			if (empty) {
+				$(this.$el).removeClass('complete');
+				$(this.$el).removeClass('incomplete');
+			}
+
+			this.$emit('updateSoccerExpert');
+		}
+	},
+	mounted: function mounted() {},
+	components: {
+		GameComponent: __WEBPACK_IMPORTED_MODULE_0__GameComponent___default.a
+	},
+	computed: {}
+});
+
+/***/ }),
+/* 329 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(330)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(332)
+/* template */
+var __vue_template__ = __webpack_require__(333)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-732e4e69"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/SoccerExpert/Modal/GameComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-732e4e69", Component.options)
+  } else {
+    hotAPI.reload("data-v-732e4e69", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 330 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(331);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("64291a0e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-732e4e69\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GameComponent.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-732e4e69\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./GameComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.row[data-v-732e4e69] {\n\tcolor: white;\n}\n.x[data-v-732e4e69] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 332 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['game', 'index'],
+	created: function created() {},
+	mounted: function mounted() {},
+	activated: function activated() {},
+	methods: {
+		houseClubResult: function houseClubResult(index, event) {
+
+			//Pegando o valor informado pelo usuário
+			var input = $(event.currentTarget);
+
+			if (input.val() < 0) input.val(input.val() * -1);
+
+			//this.$emit('houseClubResult', this.game, index);
+
+			this.game.result_house_club = input.val();
+
+			this.$emit('updateTicket');
+		},
+		//Column = rodada disponível no array
+		//Line = jogo da roda disponível no array
+		outClubResult: function outClubResult(index, event) {
+			var input = $(event.currentTarget);
+
+			if (input.val() < 0) input.val(input.val() * -1);
+
+			this.game.result_out_club = input.val();
+
+			this.$emit('updateTicket');
+			//this.$emit('outClubResult', this.game, index);
+		}
+	},
+	data: function data() {
+		return {};
+	},
+	computed: {}
+});
+
+/***/ }),
+/* 333 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row vcenter text-center" }, [
+    _c("div", { staticClass: "col-lg-12" }, [
+      _c("strong", [_vm._v(_vm._s(_vm.game.data))]),
+      _vm._v("   " + _vm._s(_vm.game.local) + "\n        ")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-3 col-md-3 col-lg-3 no-padding" }, [
+      _c("label", { staticClass: "club" }, [
+        _vm._v(_vm._s(_vm.game.house_club.abreviacao))
+      ]),
+      _vm._v(" "),
+      _vm.game.house_club != undefined
+        ? _c("img", {
+            staticStyle: { width: "30px", height: "30px" },
+            attrs: {
+              title: _vm.game.house_club.nome,
+              src: _vm.game.house_club.escudo
+            }
+          })
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-lg-2 col-2 no-padding" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.game.result_house_club,
+            expression: "game.result_house_club"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { min: "0", type: "number" },
+        domProps: { value: _vm.game.result_house_club },
+        on: {
+          change: function($event) {
+            $event.preventDefault()
+            _vm.houseClubResult(_vm.index, $event)
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.game, "result_house_club", $event.target.value)
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-lg-2 col-2 no-padding" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.game.result_out_club,
+            expression: "game.result_out_club"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { min: "0", type: "number", name: "" },
+        domProps: { value: _vm.game.result_out_club },
+        on: {
+          change: function($event) {
+            $event.preventDefault()
+            _vm.outClubResult(_vm.index, $event)
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.game, "result_out_club", $event.target.value)
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-3 col-md-3 col-lg-3 no-padding" }, [
+      _vm.game.out_club.escudo != undefined
+        ? _c("img", {
+            staticStyle: { width: "30px", height: "30px" },
+            attrs: {
+              title: _vm.game.out_club.nome,
+              src: _vm.game.out_club.escudo
+            }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _c("label", { staticClass: "club" }, [
+        _vm._v(_vm._s(_vm.game.out_club.abreviacao))
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "col-2 col-md-2 col-sm-2 col-lg-2",
+        staticStyle: { "text-align": "center" }
+      },
+      [_c("span", { staticClass: "x" }, [_vm._v("X")])]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-732e4e69", module.exports)
+  }
+}
+
+/***/ }),
+/* 334 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "tickets",
+      style: _vm.backgroundTicket(_vm.ticket.imagem_capa)
+    },
+    [
+      _c("div", { staticClass: "tickets-content" }, [
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.ticket.games, function(game, index) {
+            return _c(
+              "div",
+              { class: _vm.verifyCol(_vm.ticket.games) },
+              [
+                _c("game-component", {
+                  attrs: { game: game, index: index },
+                  on: { updateTicket: _vm.updateTicket }
+                }),
+                _vm._v(" "),
+                index % 2 == 0 && _vm.ticket.games.length > 1
+                  ? _c("div", { staticClass: "separator" }, [
+                      _vm._v("\n\t\t\t\t\t|\n\t\t\t\t")
+                    ])
+                  : _vm._e()
+              ],
+              1
+            )
+          })
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-260d980f", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -11,6 +11,7 @@
 		</section>
 		<br>
 		<footer-component></footer-component>
+
 	</main>
 </template>
 
@@ -27,10 +28,19 @@
 			return {
 				loading: {
 					component: true
+				},
+				modal: {
+					param: null,
+					type: ''					
 				}
 			}
 		},
 		methods: {
+			openModal() {
+				console.log('s');
+			}
+		},
+		watch: {
 
 		},
 		beforeCreate: function() {

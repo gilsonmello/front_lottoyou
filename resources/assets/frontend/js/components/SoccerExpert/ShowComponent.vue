@@ -43,8 +43,10 @@
 					</span>
 				</div>
 			</div>		
-		</form>
-	</div>
+		</form>		
+
+
+    </div>
 </template>
 
 <script>
@@ -52,6 +54,7 @@
 	import LoadComponent from '../Load'
 	import {mapState, mapGetters} from 'vuex'
 	import SlideComponent from './SlideComponent'
+	import TicketComponent from './TicketComponent'
 	export default {
 		beforeRouteUpdate: function(to, from, next) {
 			next();
@@ -192,10 +195,11 @@
 		},
 		mounted: function() {
 			this.init();
-		},
-		components: {
+    	},
+    	components: {
 			LoadComponent,
-			SlideComponent
+			SlideComponent,
+			TicketComponent
 		},
 		computed: {
 			...mapGetters([

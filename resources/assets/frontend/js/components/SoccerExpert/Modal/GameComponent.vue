@@ -1,30 +1,31 @@
 <template>
 	<div class="row vcenter text-center">
-
         <div class="col-lg-12">
             <strong>{{ game.data }}</strong> &nbsp; {{ game.local }}
         </div>
         
-		<div class="col-2 col-md-5 col-lg-3 no-padding">
+		<div class="col-3 col-md-3 col-lg-3 no-padding">
+			<label class="club">{{ game.house_club.abreviacao }}</label>
 			<img v-if="game.house_club != undefined" style="width: 30px; height: 30px" :title="game.house_club.nome" :src="game.house_club.escudo">			
 		</div>
 
-		<!-- <div class="col-lg-2 col-2 no-padding">
+		<div class="col-lg-2 col-2 no-padding">
 			<input min="0" v-model="game.result_house_club" @change.prevent="houseClubResult(index, $event)" type="number" class="form-control">
-		</div> -->
+		</div>
 
 		<div class="col-2 col-md-2 col-sm-2 col-lg-2" style="text-align: center">
             <span class="x">X</span>
         </div>
 
-        <!-- <div class="col-lg-2 col-2 no-padding">
+        <div class="col-lg-2 col-2 no-padding">
 			<input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(index, $event)" type="number" class="form-control" name="">
-		</div> -->
+		</div>
 
-        <div class="col-2 col-md-5 col-lg-3 no-padding">
+        <div class="col-3 col-md-3 col-lg-3 no-padding">
 			
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<img v-if="game.out_club.escudo != undefined" style="width: 30px; height: 30px" :title="game.out_club.nome" :src="game.out_club.escudo">
+			<label class="club">{{ game.out_club.abreviacao }}</label>
 		</div>
 	</div>
 </template>
@@ -82,7 +83,6 @@
 <style scoped>
 	.row {
 		color: white;
-		justify-content: center;
 	}
 
 	.x {

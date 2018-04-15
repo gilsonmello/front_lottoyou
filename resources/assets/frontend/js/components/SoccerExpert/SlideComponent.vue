@@ -11,7 +11,8 @@
                         <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.soccer_expert.ticketsWeek">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <p class="text-center">{{ ticket.data_termino }}</p>
+                                    <p class="text-center">{{ ticket.nome }}</p>
+                                    <p class="text-center">$ {{ formatValue(ticket.valor) }} | {{ ticket.data_termino }}</p>
                                 </div>
                             </div>
                             <ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket" :index="index">
@@ -26,7 +27,8 @@
                         <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.soccer_expert.ticketsNextWeek">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <p class="text-center">{{ ticket.data_termino }}</p>
+                                    <p class="text-center">{{ ticket.nome }}</p>
+                                    <p class="text-center">$ {{ formatValue(ticket.valor) }} | {{ ticket.data_termino }}</p>
                                 </div>
                             </div>
                             <ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket" :index="index">
@@ -53,26 +55,63 @@
             <span class="fa fa-angle-right" style="color: black"></span>
             <span class="sr-only">Next</span>
         </a>
+
+
+        <div class="modal fade" data-backdrop="static">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content" v-if="ticket != null">
+                    <!-- Modal Header -->
+                    <div class="modal-header" style="border-bottom: none;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" style="padding-top: 0;">
+                       <modal-ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket"></modal-ticket-component>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>    
 </template>
 
 <script>
 	import TicketComponent from './TicketComponent'
+    import ModalTicketComponent from './Modal/TicketComponent'
 	export default {
 		components: {
-			TicketComponent
+			TicketComponent,
+            ModalTicketComponent
 		},
 		props: ['item'],
 		created: function () {
 
         },
         mounted: function() {
-            
+            this.$eventBus.$on('openModal',  (ticket) => {
+                this.ticket = ticket
+
+                $(this.$el).find('.modal').modal('toggle');
+            });
         },
-        activated: function() {
+        beforeDestroy() {
+            this.$eventBus.$off('openModal');
+        },
+        activated() {
             
         },
         methods: {
+            formatValue(value) {
+                value = parseFloat(value);
+                return value.format(2, true);
+            },
+            backgroundTicket(background) {
+                return 'background-image: url('+background+')';
+            },
             updateSoccerExpert() {
                 this.updateTotal();
             },
@@ -104,7 +143,8 @@
         },
         data: function() {
         	return {
-        		quantity_slide: []
+        		quantity_slide: [],
+                ticket: null,
         	}
         },
         computed: {
