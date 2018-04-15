@@ -69829,7 +69829,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.tickets-content[data-v-d02edede] {\n\tbackground-color: initial;\n}\n.tickets[data-v-d02edede] {\n\tpadding: 0 20px 10px 20px;\n}\n", ""]);
+exports.push([module.i, "\n.tickets-content[data-v-d02edede] {\n\tbackground-color: initial;\n}\n.tickets[data-v-d02edede] {\n\tpadding: 10px 20px 10px 20px;\n}\n", ""]);
 
 // exports
 
@@ -70040,9 +70040,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['game', 'index'],
@@ -70091,12 +70088,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row vcenter text-center" }, [
-    _c("div", { staticClass: "col-lg-12" }, [
-      _c("strong", [_vm._v(_vm._s(_vm.game.data))]),
-      _vm._v("   " + _vm._s(_vm.game.local) + "\n        ")
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-2 col-md-5 col-lg-3 no-padding" }, [
+    _c("div", { staticClass: "col-2 col-md-5 col-lg-5 no-padding" }, [
+      _c("span", { staticStyle: { display: "block" } }, [
+        _vm._v(_vm._s(_vm.game.house_club.nome))
+      ]),
+      _vm._v(" "),
       _vm.game.house_club != undefined
         ? _c("img", {
             staticStyle: { width: "30px", height: "30px" },
@@ -70110,7 +70106,11 @@ var render = function() {
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "col-2 col-md-5 col-lg-3 no-padding" }, [
+    _c("div", { staticClass: "col-2 col-md-5 col-lg-5 no-padding" }, [
+      _c("span", { staticStyle: { display: "block" } }, [
+        _vm._v(_vm._s(_vm.game.out_club.nome))
+      ]),
+      _vm._v(" "),
       _vm.game.out_club.escudo != undefined
         ? _c("img", {
             staticStyle: { width: "30px", height: "30px" },

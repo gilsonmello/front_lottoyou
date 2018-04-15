@@ -1,11 +1,8 @@
 <template>
 	<div class="row vcenter text-center">
 
-        <div class="col-lg-12">
-            <strong>{{ game.data }}</strong> &nbsp; {{ game.local }}
-        </div>
-        
-		<div class="col-2 col-md-5 col-lg-3 no-padding">
+        <div class="col-2 col-md-5 col-lg-5 no-padding">
+			<span style="display: block;">{{ game.house_club.nome }}</span>
 			<img v-if="game.house_club != undefined" style="width: 30px; height: 30px" :title="game.house_club.nome" :src="game.house_club.escudo">			
 		</div>
 
@@ -21,8 +18,8 @@
 			<input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(index, $event)" type="number" class="form-control" name="">
 		</div> -->
 
-        <div class="col-2 col-md-5 col-lg-3 no-padding">
-			
+        <div class="col-2 col-md-5 col-lg-5 no-padding">
+			<span style="display: block;">{{ game.out_club.nome }}</span>
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<img v-if="game.out_club.escudo != undefined" style="width: 30px; height: 30px" :title="game.out_club.nome" :src="game.out_club.escudo">
 		</div>
