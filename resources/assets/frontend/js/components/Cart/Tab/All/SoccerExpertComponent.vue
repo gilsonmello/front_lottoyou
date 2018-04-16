@@ -35,7 +35,7 @@
 		<div class="collapse" :id="id">
 			
 		
-		<div class="row">
+		<div class="row" @click.prevent="editTickets">
             <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.ticketsWeek">
                 <ticket-component :ticket="ticket" :index="index">
                     
@@ -69,6 +69,15 @@
 			
 		},
 		methods: {
+			editTickets() {
+				this.$router.push({
+                    name: 'soccer_expert.show',
+                    params: {
+                        id: this.item.soccer_expert.id,
+                        hash: this.item.hash
+                    }
+                });
+        	},
 			removeItemSoccerExpert(item){
 				this.$store.dispatch('removeItemSoccerExpert', item)
 				let removeItemRequest = axios.create();

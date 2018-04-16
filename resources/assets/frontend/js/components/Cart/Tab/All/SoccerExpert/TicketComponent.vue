@@ -1,5 +1,5 @@
 <template>	
-	<div class="tickets" :style="backgroundTicket(ticket.imagem_capa)" @click.prevent="openModal">
+	<div class="tickets" :style="backgroundTicket(ticket.imagem_capa)">
 		<div class="tickets-content" v-for="(game, index) in ticket.games">
 			<game-component :game="game" :index="index"></game-component>
 		</div> 
@@ -17,9 +17,6 @@
         	}
         },
         methods: {
-        	openModal() {
-
-        	},
         	backgroundTicket(background) {
         		return 'background-image: url('+background+'); background-size: 100% 100%; background-repeat: no-repeat;';
         	},

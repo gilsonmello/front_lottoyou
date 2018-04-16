@@ -69738,8 +69738,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.$eventBus.$on('openModal', function (ticket) {
             _this.ticket = ticket;
-
-            $(_this.$el).find('.modal').modal('toggle');
+            $('.modal-ticket').modal('toggle');
         });
     },
     beforeDestroy: function beforeDestroy() {
@@ -69877,11 +69876,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			//Não foi concluído o preenchimento na rodada
 			this.ticket.games.filter(function (val) {
 
-				if (val.result_out_club == '' || val.result_out_club == undefined || val.result_house_club == '' || val.result_house_club == undefined) {
+				if (val.result_out_club === '' || val.result_out_club === null || val.result_house_club === '' || val.result_house_club === null) {
 					complete = false;
 				}
+
 				//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
-				if (val.result_out_club != '' || val.result_out_club == undefined || val.result_house_club != '' || val.result_house_club == undefined) {
+				if (val.result_out_club !== '' && val.result_out_club !== null || val.result_house_club !== '' && val.result_house_club !== null) {
 					empty = false;
 				}
 
@@ -69889,7 +69889,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			});
 
 			//Se foi completado o preenchimento na rodada
-			if (complete == true) {
+			if (complete === true) {
 				this.ticket.complete = true;
 				$(this.$el).addClass('complete');
 				$(this.$el).removeClass('incomplete');
@@ -69908,7 +69908,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.$emit('updateSoccerExpert');
 		}
 	},
-	mounted: function mounted() {},
+	mounted: function mounted() {
+
+		var vm = this;
+		$('.modal-ticket').on('hidden.bs.modal', function (e) {
+			vm.updateTicket();
+		});
+
+		this.updateTicket();
+	},
 	components: {
 		GameComponent: __WEBPACK_IMPORTED_MODULE_0__GameComponent___default.a
 	},
@@ -70044,7 +70052,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['game', 'index'],
 	created: function created() {},
-	mounted: function mounted() {},
+	mounted: function mounted() {
+		this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : '';
+		this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
+	},
 	activated: function activated() {},
 	methods: {
 		houseClubResult: function houseClubResult(index, event) {
@@ -70339,11 +70350,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			//Não foi concluído o preenchimento na rodada
 			this.ticket.games.filter(function (val) {
 
-				if (val.result_out_club == '' || val.result_out_club == undefined || val.result_house_club == '' || val.result_house_club == undefined) {
+				if (val.result_out_club === '' || val.result_house_club === '') {
 					complete = false;
 				}
+
 				//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
-				if (val.result_out_club != '' || val.result_out_club == undefined || val.result_house_club != '' || val.result_house_club == undefined) {
+				if (val.result_out_club !== '' || val.result_house_club !== '') {
 					empty = false;
 				}
 
@@ -70370,7 +70382,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.$emit('updateSoccerExpert');
 		}
 	},
-	mounted: function mounted() {},
+	mounted: function mounted() {
+		this.updateTicket();
+	},
 	components: {
 		GameComponent: __WEBPACK_IMPORTED_MODULE_0__GameComponent___default.a
 	},
@@ -70510,7 +70524,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['game', 'index'],
 	created: function created() {},
-	mounted: function mounted() {},
+	mounted: function mounted() {
+		this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : '';
+		this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
+	},
 	activated: function activated() {},
 	methods: {
 		houseClubResult: function houseClubResult(index, event) {
@@ -70869,7 +70886,10 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "modal fade", attrs: { "data-backdrop": "static" } },
+      {
+        staticClass: "modal fade modal-ticket",
+        attrs: { "data-backdrop": "static" }
+      },
       [
         _c("div", { staticClass: "modal-dialog modal-xl" }, [
           _vm.ticket != null
@@ -74524,6 +74544,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	mounted: function mounted() {},
 	methods: {
+		editTickets: function editTickets() {
+			this.$router.push({
+				name: 'soccer_expert.show',
+				params: {
+					id: this.item.soccer_expert.id,
+					hash: this.item.hash
+				}
+			});
+		},
 		removeItemSoccerExpert: function removeItemSoccerExpert(item) {
 			this.$store.dispatch('removeItemSoccerExpert', item);
 			var removeItemRequest = axios.create();
@@ -74865,7 +74894,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {};
 	},
 	methods: {
-		openModal: function openModal() {},
 		backgroundTicket: function backgroundTicket(background) {
 			return 'background-image: url(' + background + '); background-size: 100% 100%; background-repeat: no-repeat;';
 		}
@@ -75147,13 +75175,7 @@ var render = function() {
     "div",
     {
       staticClass: "tickets",
-      style: _vm.backgroundTicket(_vm.ticket.imagem_capa),
-      on: {
-        click: function($event) {
-          $event.preventDefault()
-          _vm.openModal($event)
-        }
-      }
+      style: _vm.backgroundTicket(_vm.ticket.imagem_capa)
     },
     _vm._l(_vm.ticket.games, function(game, index) {
       return _c(
@@ -75457,7 +75479,15 @@ var render = function() {
       _c("div", { staticClass: "collapse", attrs: { id: _vm.id } }, [
         _c(
           "div",
-          { staticClass: "row" },
+          {
+            staticClass: "row",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.editTickets($event)
+              }
+            }
+          },
           [
             _vm._l(_vm.item.ticketsWeek, function(ticket, index) {
               return _c(

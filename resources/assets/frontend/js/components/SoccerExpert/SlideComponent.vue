@@ -57,7 +57,7 @@
         </a>
 
 
-        <div class="modal fade" data-backdrop="static">
+        <div class="modal fade modal-ticket" data-backdrop="static">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content" v-if="ticket != null">
                     <!-- Modal Header -->
@@ -102,9 +102,10 @@
         mounted: function() {
             this.$eventBus.$on('openModal',  (ticket) => {
                 this.ticket = ticket
-
-                $(this.$el).find('.modal').modal('toggle');
+                $('.modal-ticket').modal('toggle');
             });
+
+            
         },
         beforeDestroy() {
             this.$eventBus.$off('openModal');

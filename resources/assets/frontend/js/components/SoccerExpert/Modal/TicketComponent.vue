@@ -48,14 +48,15 @@
 				//Não foi concluído o preenchimento na rodada
 				this.ticket.games.filter((val) => {
 					
-					if((val.result_out_club == '' || val.result_out_club == undefined) 
-						|| (val.result_house_club == '' || val.result_house_club == undefined)) {
+					if((val.result_out_club === '') 
+						|| (val.result_house_club === '')) {
 						complete = false
 						
 					}
+					
 					//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
-					if((val.result_out_club != '' || val.result_out_club == undefined) 
-						|| (val.result_house_club != '' || val.result_house_club == undefined)) {
+					if((val.result_out_club !== '') 
+						|| (val.result_house_club !== '')) {
 						empty = false;
 					}
 
@@ -83,7 +84,7 @@
 			}
         },
         mounted: function() {
-			
+			this.updateTicket();
 		},
 		components: {
 			GameComponent
