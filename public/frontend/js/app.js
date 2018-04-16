@@ -70299,7 +70299,7 @@ var render = function() {
                   on: { updateTicket: _vm.updateTicket }
                 }),
                 _vm._v(" "),
-                _c("br")
+                _vm.ticket.games.length - 1 != index ? _c("br") : _vm._e()
               ],
               1
             )

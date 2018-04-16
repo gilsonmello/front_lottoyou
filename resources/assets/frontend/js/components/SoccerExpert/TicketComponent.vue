@@ -14,7 +14,7 @@
 			<div class="row">
 				<div :class="verifyCol(ticket.games)" v-for="(game, index) in ticket.games">
 					<game-component :game="game" v-on:updateTicket="updateTicket" :index="index"></game-component>
-					<br>
+					<br v-if="(ticket.games.length - 1) != index">
 				</div>
 			</div>
 			<br>
