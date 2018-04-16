@@ -69919,6 +69919,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -70296,7 +70297,9 @@ var render = function() {
                 _c("game-component", {
                   attrs: { game: game, index: index },
                   on: { updateTicket: _vm.updateTicket }
-                })
+                }),
+                _vm._v(" "),
+                _c("br")
               ],
               1
             )
