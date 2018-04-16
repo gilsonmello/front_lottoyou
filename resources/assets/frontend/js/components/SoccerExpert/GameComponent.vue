@@ -81,6 +81,7 @@
 	.row {
 		color: white;
 		justify-content: center;
+		align-items: flex-end;
 	}
 
 	.x {
