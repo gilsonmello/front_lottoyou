@@ -13,11 +13,12 @@
         		</div>
         	</div>
         </div>	
-       	<div class="row">
+       	
+       	<!-- <div class="row">
         	<div class="col-lg-12">
         		<h4 class="page-header" style="margin-top: 0;">{{ item.soccer_expert.nome }}</h4>
         	</div>
-        </div>
+        </div> -->
     	
     	<form @submit.prevent="addToCart">
 	    	<div class="row">

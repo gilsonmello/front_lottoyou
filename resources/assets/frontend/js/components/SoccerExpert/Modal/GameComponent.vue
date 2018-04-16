@@ -1,11 +1,7 @@
 <template>
 	<div class="row vcenter text-center">
-        <div class="col-lg-12">
-            <strong>{{ game.data }}</strong> &nbsp; {{ game.local }}
-        </div>
-        
-		<div class="col-3 col-md-3 col-lg-3 no-padding">
-			<label class="club">{{ game.house_club.abreviacao }}</label>
+        <div class="col-3 col-md-3 col-lg-3 no-padding">
+			<label class="club" :title="game.house_club.nome">{{ game.house_club.abreviacao }}</label>
 			<img v-if="game.house_club != undefined" style="width: 30px; height: 30px" :title="game.house_club.nome" :src="game.house_club.escudo">			
 		</div>
 
@@ -25,8 +21,13 @@
 			
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<img v-if="game.out_club.escudo != undefined" style="width: 30px; height: 30px" :title="game.out_club.nome" :src="game.out_club.escudo">
-			<label class="club">{{ game.out_club.abreviacao }}</label>
+			<label class="club" :title="game.out_club.nome">{{ game.out_club.abreviacao }}</label>
 		</div>
+
+		<div class="col-lg-12">
+            <strong class="info-date">{{ game.day }}, {{ game.data }}</strong> 
+            <strong class="info-local">{{ game.local }}</strong>
+        </div>
 	</div>
 </template>
 
@@ -84,6 +85,17 @@
 <style scoped>
 	.row {
 		color: white;
+		margin-bottom: 5px;
+	}
+
+	.info-date {
+		display: block;
+
+	}
+
+	.info-local {
+		display: block;
+		font-size: 16px
 	}
 
 	.x {

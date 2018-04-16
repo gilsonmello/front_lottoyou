@@ -11,7 +11,10 @@ return [
       | found in a intuitive way.
       |
      */
+    'to_close' => 'Fechar',
     'spare' => 'Poupar',
+    'to_update' => 'Atualizar',
+    'to_play' => 'Jogar',
     'buy_now' => 'Compre Agora',
     'quantity' => 'Quantidade',
     'add_to_cart' => 'Adicionar ao carrinho',

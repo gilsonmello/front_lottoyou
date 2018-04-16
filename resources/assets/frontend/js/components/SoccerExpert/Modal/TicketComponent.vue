@@ -1,15 +1,32 @@
 <template>	
-	<div class="tickets" :style="backgroundTicket(ticket.imagem_capa)">
-		<div class="tickets-content">
+	<div class="tickets">
+		<header class="tickets-header">			
+            <span class="text-center tickets-name">{{ ticket.nome }} - ${{ value }}</span>   
+            <span class="text-center tickets-limit">
+				{{ ticket.limite == null ? 'Ilimitado' : ticket.limite }}
+            	<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Quantidade de Jogadores"></i>
+            </span>       
+            <span class="ticket-categories">
+            	{{ category.nome }}
+            </span>     
+		</header>
+		<div class="tickets-content" :style="backgroundTicket(ticket.imagem_capa)">
 			<div class="row">
 				<div :class="verifyCol(ticket.games)" v-for="(game, index) in ticket.games">
 					<game-component :game="game" v-on:updateTicket="updateTicket" :index="index"></game-component>
 					<div class="separator" v-if="index % 2 == 0 && ticket.games.length > 1">
-						|
+						
 					</div>
 				</div>
 			</div>
 		</div>
+		<footer class="tickets-footer">
+			<div class="row">
+				<div class="col-lg-12">
+					<em class="text-caption">Termina em: {{ ticket.data_termino }} às {{ ticket.hora_termino }} hrs</em>
+				</div>
+			</div>
+		</footer>
 	</div>		
 </template>
 
@@ -17,10 +34,10 @@
 	
 	import GameComponent from './GameComponent'
 	export default {
-		props: ['ticket', 'index', 'type'],
+		props: ['ticket', 'index', 'type', 'category'],
 		data: function() {
         	return {
-    			
+    			value: 0.00
         	}
         },
         methods: {
@@ -47,16 +64,16 @@
 				//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
 				//Não foi concluído o preenchimento na rodada
 				this.ticket.games.filter((val) => {
-					
-					if((val.result_out_club === '') 
-						|| (val.result_house_club === '')) {
+
+					if((val.result_out_club === '' || val.result_out_club === null) 
+						|| (val.result_house_club === '' || val.result_house_club === null)) {
 						complete = false
 						
 					}
 					
 					//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
-					if((val.result_out_club !== '') 
-						|| (val.result_house_club !== '')) {
+					if((val.result_out_club !== '' && val.result_out_club !== null) 
+						|| (val.result_house_club !== '' && val.result_house_club !== null)) {
 						empty = false;
 					}
 
@@ -85,6 +102,15 @@
         },
         mounted: function() {
 			this.updateTicket();
+
+			//Callback executado ao abrir modal para atualizar o ticket do modal
+			$(".modal-ticket")
+				.on('shown.bs.modal', (event) => {
+					this.updateTicket();
+				})
+
+			let value = parseFloat(this.ticket.valor);
+            this.value = value.format(2, true);
 		},
 		components: {
 			GameComponent
@@ -98,23 +124,66 @@
 <style scoped>
 	.tickets-content {
 		background-color: initial;
+		text-align: center;
+	    padding-bottom: 5px;
+	    padding-top: 20px;
 	}
 
 	.tickets {
-		padding: 0 20px 10px 20px;
+		
+		padding: 5px;
 	}
 
 	.separator {
 		position: absolute;
-	    top: 30%;
-	    right: -3px;
-	    color: white;
-	    font-size: 30px;
+	    top: 0;
+	    right: -8px;
+	    width: 20px;
+	    height: 100%;
+	}
+
+	.separator:after {
+		width: 100%;
+	    content: '|';
+    	font-size: 80px;
+    	line-height: 1;
+    	color: white;
 	}
 
 	@media (max-width: 576px) {
 		.separator {
 			display: none;
 		}
+	}
+
+	.tickets-header {
+		padding: 5px 0 0 0;
+		background-color: initial;
+	}
+
+	.tickets-header .ticket-categories {
+		font-weight: bold;
+		text-align: center;
+		background-color: #fad7d4;
+	    border-color: #f7bec3;
+	    color: #a94442;
+        padding: 15px 25px 15px 25px;
+	    border: 1px solid transparent;
+	    border-radius: 2px;
+	    display: block;
+	    text-transform: uppercase;
+	}
+
+	.tickets-header .tickets-limit {
+		display: block;
+	}
+
+	.tickets-header .tickets-name {
+	    padding: 11px 24px;
+	    display: block;
+	    vertical-align: middle;
+	    line-height: 17px;
+	    font-size: 20px;
+	    color: #000
 	}
 </style>

@@ -47,7 +47,7 @@ class SoccerExpertGame extends Model
     ];
 
     protected $appends = [
-        'house_club', 'out_club', 'result_house_club', 'result_out_club'
+        'house_club', 'out_club', 'result_house_club', 'result_out_club', 'day'
     ];
 
     /*public function houseClub() {
@@ -109,5 +109,17 @@ class SoccerExpertGame extends Model
     public function getDataAttribute()
     {   
         return format($this->attributes['data'] . ' '. $this->attributes['hora'], 'd/m/Y H:i');
+    }
+
+    public function getDayAttribute() 
+    {
+        // Array com os dias da semana
+        $diasemana = array('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado');
+
+        // Varivel que recebe o dia da semana (0 = Domingo, 1 = Segunda ...)
+        $diasemana_numero = date('w', strtotime($this->attributes['data']));
+
+        // Exibe o dia da semana com o Array
+        return $diasemana[$diasemana_numero];
     }
 }

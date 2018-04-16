@@ -9,13 +9,7 @@
                 <div class="carousel-item active">
                     <div class="row">
                         <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.soccer_expert.ticketsWeek">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <p class="text-center">{{ ticket.nome }}</p>
-                                    <p class="text-center">$ {{ formatValue(ticket.valor) }} | {{ ticket.data_termino }}</p>
-                                </div>
-                            </div>
-                            <ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket" :index="index">
+                            <ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :category="item.soccer_expert" :ticket="ticket" :index="index">
                                 
                             </ticket-component>
                         </div>
@@ -25,13 +19,7 @@
                 <div class="carousel-item" v-if="item.soccer_expert.ticketsNextWeek.length > 0">
                     <div class="row">
                         <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.soccer_expert.ticketsNextWeek">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <p class="text-center">{{ ticket.nome }}</p>
-                                    <p class="text-center">$ {{ formatValue(ticket.valor) }} | {{ ticket.data_termino }}</p>
-                                </div>
-                            </div>
-                            <ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket" :index="index">
+                            <ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :category="item.soccer_expert" :ticket="ticket" :index="index">
                                 
                             </ticket-component>
                         </div>
@@ -57,29 +45,24 @@
         </a>
 
 
-        <div class="modal fade modal-ticket" data-backdrop="static">
+        <div class="modal fade modal-ticket" data-backdrop="static" tabindex="-1" aria-labelledby="nivel2" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content" v-if="ticket != null">
                     <!-- Modal Header -->
-                    <div class="modal-header">
-                        
-                        <div class="col-lg-12">
-                            <h1 class="text-center">{{ ticket.sweepstake.nome }}</h1>
-                            <h1 class="text-center">{{ ticket.nome }}</h1>
-                            <p class="text-center">$ {{ formatValue(ticket.valor) }} | {{ ticket.data_termino }}</p>
-                        </div>
-                        
+                    <div class="modal-header" style="border-bottom: none;">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
                     <!-- Modal body -->
                     <div class="modal-body" style="padding-top: 0;">
 
-                        <modal-ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket"></modal-ticket-component>
+                        <modal-ticket-component :category="item.soccer_expert" v-on:updateSoccerExpert="updateSoccerExpert" :ticket="ticket"></modal-ticket-component>
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            {{ trans('strings.to_close') }}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -100,12 +83,13 @@
 
         },
         mounted: function() {
+            //Escutando evento, que será executado pelo TicektComponent
             this.$eventBus.$on('openModal',  (ticket) => {
+                //Pegando o ticket passado como parâmetro
                 this.ticket = ticket
+                //Abrindo o modal
                 $('.modal-ticket').modal('toggle');
-            });
-
-            
+            });            
         },
         beforeDestroy() {
             this.$eventBus.$off('openModal');
@@ -163,6 +147,11 @@
 </script>
 
 <style scoped>
+
+    .ticket-sweepstake-name {
+        display: block;
+    }
+
 	#prev-slide-content{
         left: -50px; 
         right: auto;
