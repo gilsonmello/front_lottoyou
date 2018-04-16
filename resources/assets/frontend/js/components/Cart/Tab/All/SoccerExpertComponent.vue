@@ -31,12 +31,31 @@
 				</a>
 			</div>
 		</div>
-		<slide-component :id="id" :item="item"></slide-component>
+
+		<div class="collapse" :id="id">
+			
+		
+		<div class="row">
+            <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.ticketsWeek">
+                <ticket-component :ticket="ticket" :index="index">
+                    
+                </ticket-component>
+            </div>
+            <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.ticketsNextWeek">
+                <ticket-component :ticket="ticket" :index="index">
+                    
+                </ticket-component>
+            </div>
+        </div>
+
+        </div>
+
 	</section>
+
 </template>
 
 <script>
-	
+	import TicketComponent from './SoccerExpert/TicketComponent'
 	import SlideComponent from './SoccerExpert/SlideComponent'
 	import {routes} from '../../../../api_routes'
 	export default {
@@ -65,7 +84,8 @@
 			},
 		},
 		components: {
-			SlideComponent
+			SlideComponent,
+			TicketComponent
 		}
 	}
 </script>
