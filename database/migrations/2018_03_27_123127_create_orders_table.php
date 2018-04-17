@@ -22,6 +22,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('total');
             $table->decimal('sub_total')->nullable();
             $table->integer('number_items')->nullable();
+            $table->integer('status')->default(1);
             $table->addColumn('integer', 'coupon_id', compact('length', 'nullable'));
             $table->timestamps();
             $table->softDeletes();
@@ -47,6 +48,36 @@ class CreateOrdersTable extends Migration
                 ->on('lot_categorias')
                 ->references('id');
         });
+
+        Schema::create('orders_has_soccer_experts', function (Blueprint $table) {
+            $table->integer('id')->autoIncrement();
+            $unsigned = true;
+            $nullable = true;
+            $table->addColumn('integer', 'order_id', compact('length'));
+            $table->addColumn('integer', 'soccer_expert_id', compact('length'));
+            $table->longText('data')->nullable();
+            $table->foreign('order_id')
+                ->on('orders')
+                ->references('id');
+            $table->foreign('soccer_expert_id')
+                ->on('soc_categorias')
+                ->references('id');
+        });
+
+        Schema::create('orders_has_scratch_cards', function (Blueprint $table) {
+            $table->integer('id')->autoIncrement();
+            $unsigned = true;
+            $nullable = true;
+            $table->addColumn('integer', 'order_id', compact('length'));
+            $table->addColumn('integer', 'scratch_card_id', compact('length'));
+            $table->longText('data')->nullable();
+            $table->foreign('order_id')
+                ->on('orders')
+                ->references('id');
+            $table->foreign('scratch_card_id')
+                ->on('temas_raspadinhas')
+                ->references('id');
+        });
     }
 
     /**
@@ -56,6 +87,8 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('orders_has_scratch_cards');
+        Schema::dropIfExists('orders_has_soccer_experts');
         Schema::dropIfExists('orders_has_lotteries');
         Schema::dropIfExists('orders');
     }

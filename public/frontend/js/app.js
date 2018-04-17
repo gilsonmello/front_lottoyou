@@ -69920,6 +69920,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -70359,11 +70361,11 @@ var render = function() {
         _c("div", { staticClass: "col-lg-12" }, [
           _c("em", { staticClass: "text-caption" }, [
             _vm._v(
-              "Termina em: " +
+              "\n\t\t\t\t\t\tTermina em: " +
                 _vm._s(_vm.ticket.data_termino) +
                 " às " +
                 _vm._s(_vm.ticket.hora_termino) +
-                " hrs"
+                " hrs\n\t\t\t\t\t"
             )
           ])
         ])
