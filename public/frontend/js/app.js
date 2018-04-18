@@ -69938,6 +69938,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -70011,7 +70017,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		countdown: function countdown() {
 			var date = this.ticket.data_termino.split('/');
 			var day = date[0];
-			var month = date[1];
+			var month = parseInt(date[1]) - 1;
 			var year = date[2].split(' ')[0];
 
 			var arrHour = date[2].split(' ')[1].split(':');
@@ -70026,9 +70032,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var currentTime = now.getTime();
 			var eventTime = eventDate.getTime();
 
-			var remTime = eventTime - currentTime;
+			var distance = eventTime - currentTime;
 
-			var s = Math.floor(remTime / 1000);
+			var s = Math.floor(distance / 1000);
 
 			var m = Math.floor(s / 60);
 			var h = Math.floor(m / 60);
@@ -70047,7 +70053,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.minutes = m;
 			this.seconds = s;
 
-			setTimeout(this.countdown, 1000);
+			var timeOut = setTimeout(this.countdown, 1000);
+
+			if (distance < 0) {
+				clearInterval(timeOut);
+			}
 		}
 	},
 	mounted: function mounted() {
@@ -70358,11 +70368,29 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("span", { staticClass: "countdown" }, [
+        _vm.days > 1
+          ? _c("span", [
+              _vm._v(
+                "\n\t\t\t\t\t" +
+                  _vm._s(_vm.days) +
+                  " " +
+                  _vm._s(_vm.trans("strings.days")) +
+                  " e\n\t\t\t\t"
+              )
+            ])
+          : _vm.days == 1
+            ? _c("span", [
+                _vm._v(
+                  "\n\t\t\t\t\t" +
+                    _vm._s(_vm.days) +
+                    " " +
+                    _vm._s(_vm.trans("strings.day")) +
+                    " e\n\t\t\t\t"
+                )
+              ])
+            : _vm._e(),
         _vm._v(
-          "\n\t\t\t\t" +
-            _vm._s(_vm.days) +
-            _vm._s(_vm.trans("strings.days")) +
-            " " +
+          "\t\t\t\t\n\t\t\t\t" +
             _vm._s(_vm.hours) +
             ":" +
             _vm._s(_vm.minutes) +

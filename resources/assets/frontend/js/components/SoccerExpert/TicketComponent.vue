@@ -5,7 +5,13 @@
             	{{ ticket.nome }} - ${{ value }}
             </span>   
 			<span class="countdown">
-				{{ days }}{{ trans('strings.days') }} {{ hours }}:{{ minutes }}:{{ seconds }} {{ trans('strings.hours_left') }}
+				<span v-if="days > 1">
+					{{ days }} {{ trans('strings.days') }} e
+				</span>
+				<span v-else-if="days == 1">
+					{{ days }} {{ trans('strings.day') }} e
+				</span>				
+				{{ hours }}:{{ minutes }}:{{ seconds }} {{ trans('strings.hours_left') }}
 			</span>
 			<span class="text-center tickets-limit" v-if="ticket.limite == null">
 				Ilimitado
@@ -126,7 +132,7 @@
 			countdown() {
 				var date = this.ticket.data_termino.split('/');
 				var day = date[0];
-				var month = date[1];
+				var month = parseInt(date[1]) - 1;
 				var year = date[2].split(' ')[0];
 
 				var arrHour = date[2].split(' ')[1].split(':');
@@ -135,19 +141,24 @@
 				var minute = arrHour[1];
 				
 				var now = new Date();
+
+				
 				
 				var eventDate = new Date(year, month, day, hour, minute);
 
 				var currentTime = now.getTime();
 				var eventTime = eventDate.getTime();
 
-				var remTime = eventTime - currentTime;
+				var distance = eventTime - currentTime;
 
-				var s = Math.floor(remTime / 1000);
+				var s = Math.floor(distance / 1000);
 
 				var m = Math.floor(s / 60);
 				var h = Math.floor(m / 60);
 				var d = Math.floor(h / 24);
+
+
+				
 				
 				h %= 24;
 				s %= 60;
@@ -162,7 +173,13 @@
 				this.minutes = m;
 				this.seconds = s;
 
-				setTimeout(this.countdown, 1000);
+				var timeOut = setTimeout(this.countdown, 1000);
+
+				if(distance < 0) {
+					clearInterval(timeOut);
+				}
+
+
 			}
         },
         mounted: function() {
