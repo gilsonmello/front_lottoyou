@@ -1,16 +1,19 @@
 <template>
 	<div class="row vcenter text-center">
 
-        <div class="col-2 col-md-5 col-lg-5 no-padding">
-			<span style="display: block;">{{ game.house_club.nome }}</span>
-			<img v-if="game.house_club != undefined" style="width: 30px; height: 30px" :title="game.house_club.nome" :src="game.house_club.escudo">			
+		<div class="col-2 col-md-5 col-lg-5">
+			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
+			<div class="container-club" style="justify-content: flex-end;">
+				<span style="line-height: 1; text-align: right;">{{ game.house_club.nome }}</span>
+				<img v-if="game.house_club.escudo != undefined" style="width: 30px; height: 30px; margin-left: 5px;" :title="game.house_club.nome" :src="game.house_club.escudo">				
+			</div>
 		</div>
 
 		<!-- <div class="col-lg-2 col-2 no-padding">
 			<input min="0" v-model="game.result_house_club" @change.prevent="houseClubResult(index, $event)" type="number" class="form-control">
 		</div> -->
 
-		<div class="col-2 col-md-2 col-sm-2 col-lg-2" style="text-align: center">
+		<div class="col-2 col-md-2 col-sm-2 col-lg-1 no-padding" style="text-align: center">
             <span class="x">X</span>
         </div>
 
@@ -18,11 +21,15 @@
 			<input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(index, $event)" type="number" class="form-control" name="">
 		</div> -->
 
-        <div class="col-2 col-md-5 col-lg-5 no-padding">
-			<span style="display: block;">{{ game.out_club.nome }}</span>
+		
+        <div class="col-2 col-md-5 col-lg-5">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
-			<img v-if="game.out_club.escudo != undefined" style="width: 30px; height: 30px" :title="game.out_club.nome" :src="game.out_club.escudo">
+			<div class="container-club" style="justify-content: flex-start;">
+				<img v-if="game.out_club.escudo != undefined" style="width: 30px; height: 30px; margin-right: 5px;" :title="game.out_club.nome" :src="game.out_club.escudo">
+				<span style="line-height: 1; text-align: left;">{{ game.out_club.nome }}</span>
+			</div>
 		</div>
+				
 	</div>
 </template>
 
@@ -81,7 +88,12 @@
 	.row {
 		color: white;
 		justify-content: center;
-		align-items: flex-end;
+		align-items: center;
+	}
+
+	.container-club {
+		display: flex; 
+		align-items: center; 
 	}
 
 	.x {

@@ -122,11 +122,13 @@
 </script>
 
 <style scoped>
+
 	.tickets-content {
 		background-color: initial;
 		text-align: center;
-	    padding-bottom: 5px;
+	    padding-bottom: 20px;
 	    padding-top: 20px;
+	    cursor: default;
 	}
 
 	.tickets {
@@ -179,7 +181,6 @@
 	}
 
 	.tickets-header .tickets-name {
-	    padding: 11px 24px;
 	    display: block;
 	    vertical-align: middle;
 	    line-height: 17px;
