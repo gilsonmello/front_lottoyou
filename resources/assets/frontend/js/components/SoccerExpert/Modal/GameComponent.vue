@@ -1,5 +1,5 @@
 <template>
-	<div class="row vcenter text-center">
+	<div class="row vcenter text-center games">
         
        <div class="col-2 col-md-5 col-lg-4">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
@@ -38,7 +38,7 @@
 
 <script>
 	export default {
-		props: ['game', 'index'],
+		props: ['game', 'index', 'ticket'],
 		created: function () {
 
         },

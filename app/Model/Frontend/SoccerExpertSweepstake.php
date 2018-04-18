@@ -4,6 +4,7 @@ namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Model\Frontend\SoccerExpertRound;
 
 class SoccerExpertSweepstake extends Model
 {
@@ -43,6 +44,6 @@ class SoccerExpertSweepstake extends Model
     ];
     
     public function rounds() {
-    	return $this->hasMany(\App\Model\Frontend\SoccerExpertRound::class, 'soc_bolao_id');
+    	return $this->hasMany(SoccerExpertRound::class, 'soc_bolao_id');
     }    
 }

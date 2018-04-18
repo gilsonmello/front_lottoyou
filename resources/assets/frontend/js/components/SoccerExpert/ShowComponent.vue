@@ -20,7 +20,7 @@
         	</div>
         </div> -->
     	
-    	<form @submit.prevent="addToCart">
+    	<form @submit.prevent="addToCart($event)">
 	    	<div class="row">
 		    	<slide-component :item="item"></slide-component>
 			</div>
@@ -106,7 +106,7 @@
 				
 				return ticketsNextWeekComplete;
 			},
-        	addToCart() {
+        	addToCart(event) {
         		//Pegando todas as rodadas finalizadas
 				var ticketsWeek = this.getTicketsWeekFinished();
 				var ticketsNextWeek = this.getTicketsNextWeekFinished();
@@ -120,7 +120,7 @@
 				};
 
 				//Se não completou nenhuma rodada
-				if(ticketsWeek.length == 0) {
+				if(ticketsWeek.length == 0 && ticketsNextWeek.length == 0) {
 					this.$store.dispatch('removeItemSoccerExpert', item);
 					alert('Faça pelo menos um jogo');
 				} else {
@@ -130,7 +130,7 @@
 					let addSoccerExpertRequest = axios.create();
 
 					addSoccerExpertRequest.interceptors.request.use(config => {
-			        	$(event.currentTarget).find('[type="load"]').removeClass('hide');
+						$(event.currentTarget).find('[type="load"]').removeClass('hide');
 			        	$(event.currentTarget).find('[type="submit"]').addClass('hide');
 					  	return config;
 					});
@@ -141,13 +141,13 @@
 						hash: item.hash
 						
 					}).then(response => {
-			            if(response.status === 200) {
+						if(response.status === 200) {
 			            	this.$router.push({
 								name: 'cart.index'
 							})
 						}
 			        }).catch((error) => {
-			        	
+			        	console.log(error);
 			        })	
 				}
         	},

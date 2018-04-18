@@ -209,7 +209,7 @@ export default {
 		//Atualizando os dados como totais, quantidades
 		state.purchase = refreshState(state.purchase);
 
-		console.log(state.purchase.items)
+		//console.log(state.purchase.items)
 	},
 	REMOVE_ITEM_SOCCER_EXPERT(state, items){
 		

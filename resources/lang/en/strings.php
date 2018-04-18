@@ -13,6 +13,7 @@ return [
      */
     'to_close' => 'Fechar',
     'spare' => 'Poupar',
+    'hours_left' => 'Horas Restantes',
     'to_update' => 'Atualizar',
     'to_play' => 'Jogar',
     'buy_now' => 'Compre Agora',

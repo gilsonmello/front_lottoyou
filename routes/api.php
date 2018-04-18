@@ -20,7 +20,9 @@ use App\User;
 
 Route::group(['middleware' => 'auth:api', 'namespace' => 'API'], function(){
     Route::get('user', function(Request $request){
-    	$user = User::where('id', '=', $request->user()->id);
-    	return $user->with('country')->get()->first();
+    	return User::where('id', '=', $request->user()->id)
+    		->with('country', 'balance')
+    		->get()
+    		->first();
     });
 });

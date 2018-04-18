@@ -1,7 +1,7 @@
 <template>
-	<section style="margin-left: -15px; margin-right: -15px">
-		<div class="vcenter soccer_experts" :href="'#'+id" data-toggle="collapse">
-			<div class="col-lg-2 col-md-2 col-2 col-sm-2">
+	<section>
+		<div class="vcenter soccer_experts no-padding item" :href="'#'+id" data-toggle="collapse">
+			<div class="col-lg-2 col-md-2 col-2 col-sm-2" style="padding-left: 0;">
 				<img class="img-fluid" :alt="item.soccer_expert.nome" :src="item.soccer_expert.imagem_capa">
 			</div>
 			<div class="col-lg-8 col-5 col-md-7 col-sm-6">
@@ -26,29 +26,31 @@
 			</div>
 
 			<div class="col-lg-1 col-2 col-md-1 col-sm-2">
-				<a class="btn btn-xs btn-danger" @click.prevent="removeItemSoccerExpert(item)" href="#" style="cursor:pointer;">
+				<a class="btn btn-xs btn-danger" type="trigger" @click.prevent="removeItemSoccerExpert(item, $event)" href="#" style="cursor:pointer;">
 					<i class="fa fa-trash-o" data-toggle="tooltip" data-placement="top" :title="trans('strings.delete')" data-original-title="Deletar"></i>
+				</a>
+				<a @click.prevent="" type="load" class="hide btn btn-xs btn-danger">
+					<i class="fa fa-refresh fa-spin"></i>
 				</a>
 			</div>
 		</div>
 
-		<div class="collapse" :id="id">
-			
-		
-		<div class="row" @click.prevent="editTickets">
-            <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.ticketsWeek">
-                <ticket-component :ticket="ticket" :index="index">
+		<div class="collapse item" :id="id" @click.prevent="editTickets">		
+			<div class="col-lg-4 col-12 col-md-4 col-sm-4 no-padding" v-for="(ticket, index) in item.ticketsWeek">
+                <ticket-component :category="item.soccer_expert" :ticket="ticket" :index="index">
                     
                 </ticket-component>
             </div>
-            <div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.ticketsNextWeek">
-                <ticket-component :ticket="ticket" :index="index">
+            <div class="col-lg-4 col-12 col-md-4 col-sm-4 no-padding" v-for="(ticket, index) in item.ticketsNextWeek">
+                <ticket-component :category="item.soccer_expert" :ticket="ticket" :index="index">
                     
                 </ticket-component>
-            </div>
-        </div>
+            </div>      
+		</div>
 
-        </div>
+		<div style="border-bottom: 1px dotted #999;">
+			
+		</div>
 
 	</section>
 
@@ -78,14 +80,20 @@
                     }
                 });
         	},
-			removeItemSoccerExpert(item){
-				this.$store.dispatch('removeItemSoccerExpert', item)
+			removeItemSoccerExpert(item, event){
 				let removeItemRequest = axios.create();
+
+				removeItemRequest.interceptors.request.use(config => {
+		        	$(this.$el).find('[type="load"]').removeClass('hide');
+		        	$(this.$el).find('[type="trigger"]').addClass('hide');
+				  	return config;
+				});
+
 				removeItemRequest.delete(routes.carts.destroy.replace('{hash}', item.hash), {
 					
 				}).then((response) => {
 					if(response.status === 200) {
-						
+						this.$store.dispatch('removeItemSoccerExpert', item)
 					}
 				}).catch((error) => {
 
@@ -101,17 +109,16 @@
 
 
 <style scoped>
-	section {
-		margin-right: -15px;
-		margin-left: -15px;
-	}
 
+	.item {
+		cursor: pointer;
+	}
+	
 	.soccer_experts:last-child{
 		margin-bottom: 0;
 	}
 	.soccer_experts {
 		margin-bottom: 10px;
 		padding: 10px 0 10px 0;
-	    border-bottom: 1px dotted #999;
 	}
 </style>

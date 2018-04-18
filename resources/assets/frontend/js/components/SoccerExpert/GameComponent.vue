@@ -1,11 +1,10 @@
 <template>
-	<div class="row vcenter text-center">
-
+	<div class="row vcenter text-center games">
 		<div class="col-2 col-md-5 col-lg-5">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-end;">
 				<span style="line-height: 1; text-align: right;">{{ game.house_club.nome }}</span>
-				<img v-if="game.house_club.escudo != undefined" style="width: 30px; height: 30px; margin-left: 5px;" :title="game.house_club.nome" :src="game.house_club.escudo">				
+				<img v-if="game.house_club.escudo != undefined" width="30" height="30" style="margin-left: 5px;" :title="game.house_club.nome" :src="game.house_club.escudo">				
 			</div>
 		</div>
 
@@ -25,7 +24,7 @@
         <div class="col-2 col-md-5 col-lg-5">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-start;">
-				<img v-if="game.out_club.escudo != undefined" style="width: 30px; height: 30px; margin-right: 5px;" :title="game.out_club.nome" :src="game.out_club.escudo">
+				<img v-if="game.out_club.escudo != undefined"  width="30" height="30" style="margin-right: 5px;" :title="game.out_club.nome" :src="game.out_club.escudo">
 				<span style="line-height: 1; text-align: left;">{{ game.out_club.nome }}</span>
 			</div>
 		</div>
@@ -35,7 +34,7 @@
 
 <script>
 	export default {
-		props: ['game', 'index'],
+		props: ['game', 'index', 'ticket'],
 		created: function () {
 
         },
@@ -91,6 +90,10 @@
 		align-items: center;
 	}
 
+	.games{
+		margin-bottom: 5px;
+	}
+	
 	.container-club {
 		display: flex; 
 		align-items: center; 

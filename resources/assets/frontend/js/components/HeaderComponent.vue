@@ -47,7 +47,7 @@
 						  				<div class="pull-right">
 						  					<div class="row">
 						  						<div class="col-lg-12 no-padding">
-						  							<span class="balance-amount">R$ 20,00</span>
+						  							<span class="balance-amount">$ {{ auth.balance.value }}</span>
 						  						</div>
 						  					</div>
 						  					<div class="row">
@@ -82,21 +82,21 @@
 					  			<li class="item-cart">
 					  				<router-link :to="{ name: 'cart.index' }" class="cart pull-left" style="width: 100%;">
 				  						<div class="vcenter">
-				  						<div class="cart-left pull-left" style="justify-content: center">
-					  						<i class="fa fa-shopping-cart" style="font-size: 27px;">
-					  							<span class="cart-count">
-					  								{{ purchase.quantity }}
-					  							</span>
-					  						</i>
-					  					</div>
-					  					<div class="cart-right pull-right">
-					  						<span class="cart-value">
-					  							$ {{ purchase.total.format(2, true) }}
-					  						</span>
-					  						<span class="cart-checkout-now">
-					  							{{ trans('strings.pay_now') }}
-					  						</span>
-					  					</div>	
+					  						<div class="cart-left pull-left" style="justify-content: center">
+						  						<i class="fa fa-shopping-cart" style="font-size: 27px;">
+						  							<span class="cart-count">
+						  								{{ purchase.quantity }}
+						  							</span>
+						  						</i>
+						  					</div>
+						  					<div class="cart-right pull-right">
+						  						<span class="cart-value">
+						  							$ {{ purchase.total.format(2, true) }}
+						  						</span>
+						  						<span class="cart-checkout-now">
+						  							{{ trans('strings.pay_now') }}
+						  						</span>
+						  					</div>	
 					  					</div>				  					
 						  			</router-link>
 					  			</li>

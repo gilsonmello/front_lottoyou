@@ -60,7 +60,8 @@ class SoccerExpertController extends Controller
      */
     public function show($id)
     {
-        $soccerExpert = SoccerExpert::where('id', '=', $id)->select(
+        $soccerExpert = SoccerExpert::where('id', '=', $id)
+        ->select(
             'id', 
             'nome',
             'imagem_capa',
@@ -69,11 +70,12 @@ class SoccerExpertController extends Controller
             'novo',
             'created',
             'modified'
-        )->get()->first();
+        )->get()
+        ->first();
 
 
         $roundsWeek = SoccerExpertRound::where('soc_categoria_id', '=', $id)
-            ->with(['games', 'sweepstake'])
+            ->with(['games', 'sweepstake', 'group'])
             ->where(
                 DB::raw("concat(data_termino,' ',hora_termino)"), 
                 '>', 
@@ -83,7 +85,7 @@ class SoccerExpertController extends Controller
             ->take(3);
 
         $roundsNextWeek = SoccerExpertRound::where('soc_categoria_id', '=', $id)
-            ->with(['games', 'sweepstake'])
+            ->with(['games', 'sweepstake', 'group'])
             ->where(
                 DB::raw("concat(data_termino,' ',hora_termino)"), 
                 '>', 

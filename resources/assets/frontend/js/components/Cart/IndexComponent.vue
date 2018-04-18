@@ -1,5 +1,6 @@
 <template>
-	<div class="container">
+	<load-component v-if="loading.component == true"></load-component>
+	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.cart') }}</h1>
 		<!-- <div class="row">
 			<div class="col-lg-12 col-md-12 col-12 col-sm-12 text-center">
@@ -40,7 +41,7 @@
 		<div class="tab-content">
 			<div class="tab-pane active tab-all" id="all" v-if="purchase.items.length > 0">
 	  			
-            	<div class="container" v-for="(item, index) in purchase.items">
+            	<div class="container no-padding" v-for="(item, index) in purchase.items">
 					<soccer-expert-component v-if="item.type == 'soccer_expert'" :id="'soccer_expert_'+index" :item="item.soccer_expert"></soccer-expert-component>
 					<lottery-component v-else-if="item.type == 'lottery'" :id="'lottery_'+index" :item="item.lottery"></lottery-component> 
 					<scratch-card-component v-else-if="item.type == 'scratch_card'" :item="item.scratch_card"></scratch-card-component>
@@ -158,6 +159,7 @@
 	//import SoccerExpertComponent from './Tab/SoccerExpertComponent'
 	import AllComponent from './Tab/AllComponent'
 	import SoccerExpertComponent from './Tab/All/SoccerExpertComponent'
+	import LoadComponent from '../Load'
 	export default {
 		computed: {
 			...mapState({
@@ -169,7 +171,9 @@
 		},
 		data: function() {
 			return {
-				
+				loading: {
+					component: true
+				},
 			}
 		},
 		methods: {
@@ -181,12 +185,14 @@
 		},
 		mounted: function() {
 			window.document.title = this.trans('strings.cart')+ ' | ' +window.app.title;
+			this.loading.component = false;
 		},
 		components: {
 			ScratchCardComponent,
 			LotteryComponent,
 			SoccerExpertComponent,
-			AllComponent
+			AllComponent,
+			LoadComponent
 		}
 	}
 </script>

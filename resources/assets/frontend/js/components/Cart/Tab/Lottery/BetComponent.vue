@@ -79,7 +79,7 @@
 				for(var i = 0; i < numbers.length; i++) {
 					if(dicker == numbers[i]) {
 						return true;
-						continue;
+						//continue;
 					}
 				}
 			}

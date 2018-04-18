@@ -1,24 +1,33 @@
 <template>	
 	<div class="tickets">
-		<header class="tickets-header">			
-            <span class="text-center tickets-name">{{ ticket.nome }} - ${{ value }}</span>   
-            <span class="text-center tickets-limit">
-				{{ ticket.limite == null ? 'Ilimitado' : ticket.limite }}
+		<header class="tickets-header">	
+            <span class="text-center tickets-name">
+            	{{ ticket.nome }} - ${{ value }}
+            </span>   
+			<span class="countdown">
+				{{ days }}{{ trans('strings.days') }} {{ hours }}:{{ minutes }}:{{ seconds }} {{ trans('strings.hours_left') }}
+			</span>
+			<span class="text-center tickets-limit" v-if="ticket.limite == null">
+				Ilimitado
             	<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Quantidade de Jogadores"></i>
-            </span>       
-            <span class="ticket-categories">
+            </span>        	
+			<span class="text-center tickets-limit" v-else>				
+				{{ ticket.group.count }} / {{ ticket.limite }}
+            	<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Quantidade de Jogadores"></i>
+            </span> 
+		    <span class="ticket-categories">
             	{{ category.nome }}
             </span>     
-		</header>
+        </header>
 		<div class="tickets-content" @click.prevent="openModal" :style="backgroundTicket(ticket.imagem_capa)">
 			<div class="row">
 				<div :class="verifyCol(ticket.games)" v-for="(game, index) in ticket.games">
-					<game-component :game="game" v-on:updateTicket="updateTicket" :index="index"></game-component>
-					<br v-if="(ticket.games.length - 1) != index">
+					<game-component :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index"></game-component>
+					<!-- <br v-if="(ticket.games.length - 1) != index"> -->
 				</div>
 			</div>
-			<br>
-			<div class="row">
+			
+			<div class="row" style="margin-top: 5px;">
 				<div class="col-lg-12">
 					<button class="btn btn-success btn-md" @click.prevent="openModal">
 						{{ trans('strings.to_play') }}
@@ -48,7 +57,11 @@
 		props: ['ticket', 'index', 'type', 'category'],
 		data: function() {
         	return {
-    			value: 0.00
+    			value: 0.00,
+    			days: '',
+    			hours: '',
+    			minutes: '',
+    			seconds: ''
         	}
         },
         methods: {
@@ -109,6 +122,47 @@
 				}
 				
 				this.$emit('updateSoccerExpert');
+			},
+			countdown() {
+				var date = this.ticket.data_termino.split('/');
+				var day = date[0];
+				var month = date[1];
+				var year = date[2].split(' ')[0];
+
+				var arrHour = date[2].split(' ')[1].split(':');
+
+				var hour = arrHour[0];
+				var minute = arrHour[1];
+				
+				var now = new Date();
+				
+				var eventDate = new Date(year, month, day, hour, minute);
+
+				var currentTime = now.getTime();
+				var eventTime = eventDate.getTime();
+
+				var remTime = eventTime - currentTime;
+
+				var s = Math.floor(remTime / 1000);
+
+				var m = Math.floor(s / 60);
+				var h = Math.floor(m / 60);
+				var d = Math.floor(h / 24);
+				
+				h %= 24;
+				s %= 60;
+				m %= 60;
+
+				h = (h < 10) ? "0"+ h : h;
+				s = (s < 10) ? "0"+ s : s;
+				m = (m < 10) ? "0"+ m : m;
+
+				this.days = d;
+				this.hours = h;
+				this.minutes = m;
+				this.seconds = s;
+
+				setTimeout(this.countdown, 1000);
 			}
         },
         mounted: function() {
@@ -122,6 +176,8 @@
 			this.updateTicket();
 			let value = parseFloat(this.ticket.valor);
             this.value = value.format(2, true);
+
+            this.countdown();
 		},
 		components: {
 			GameComponent
@@ -156,8 +212,7 @@
 		background-color: #fad7d4;
 	    border-color: #f7bec3;
 	    color: #a94442;
-        padding: 15px 25px 15px 25px;
-	    border: 1px solid transparent;
+        border: 1px solid transparent;
 	    border-radius: 2px;
 	    display: block;
 	    text-transform: uppercase;
@@ -173,5 +228,11 @@
 	    line-height: 17px;
 	    font-size: 20px;
 	    color: #000
+	}
+
+	.countdown {
+		display: block;
+		text-transform: lowercase;
+		text-align: center;
 	}
 </style>

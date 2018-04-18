@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Model\Frontend\SoccerExpert;
 use App\Model\Frontend\SoccerExpertSweepstake;
 use App\Model\Frontend\SoccerExpertGame;
+use App\Model\Frontend\SoccerExpertRoundGroup;
 use DB;
 
 class SoccerExpertRound extends Model
@@ -81,5 +82,11 @@ class SoccerExpertRound extends Model
     public function getDataTerminoAttribute($date) 
     {
         return format($date.' '.$this->hora_termino, 'd/m/Y H:i');
+    }
+
+    public function group() 
+    {
+        return $this->hasOne(SoccerExpertRoundGroup::class, 'soc_rodada_id')
+            ->where('status', '=', 1);
     }
 }
