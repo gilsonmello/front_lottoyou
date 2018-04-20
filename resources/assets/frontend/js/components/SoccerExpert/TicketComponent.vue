@@ -38,9 +38,9 @@
 					<button class="btn btn-success btn-md" @click.prevent="openModal">
 						{{ trans('strings.to_play') }}
 					</button>
-					<button class="btn btn-danger btn-md" @click.prevent="openModal">
+					<!-- <button class="btn btn-danger btn-md" @click.prevent="openModal">
 						{{ trans('strings.to_update') }}
-					</button>
+					</button> -->
 				</div>
 			</div>
 		</div> 		
