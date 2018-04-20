@@ -1,7 +1,16 @@
 <template>	
 	<div class="tickets">
 		<header class="tickets-header">			
-            <span class="text-center tickets-name">{{ ticket.nome }} - ${{ value }}</span>   
+            <span class="text-center tickets-name">{{ ticket.nome }} - ${{ value }}</span>
+            <span class="countdown">
+				<span v-if="days > 1">
+					{{ days }} {{ trans('strings.days') }} e
+				</span>
+				<span v-else-if="days == 1">
+					{{ days }} {{ trans('strings.day') }} e
+				</span>				
+				{{ hours }}:{{ minutes }}:{{ seconds }} {{ trans('strings.hours_left') }}
+			</span>
             <span class="text-center tickets-limit">
 				{{ ticket.limite == null ? 'Ilimitado' : ticket.limite }}
             	<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Quantidade de Jogadores"></i>
@@ -34,10 +43,14 @@
 	
 	import GameComponent from './GameComponent'
 	export default {
-		props: ['ticket', 'index', 'type', 'category'],
+		props: ['ticket', 'index', 'type', 'category', 'item'],
 		data: function() {
         	return {
-    			value: 0.00
+    			value: 0.00,
+    			days: '',
+    			hours: '',
+    			minutes: '',
+    			seconds: ''
         	}
         },
         methods: {
@@ -85,10 +98,14 @@
 					this.ticket.complete = true;
 					$(this.$el).addClass('complete');
 					$(this.$el).removeClass('incomplete');
+					this.item.tickets.unshift(this.ticket);
 				} else {
 					this.ticket.complete = false;
 					$(this.$el).addClass('incomplete');
 					$(this.$el).removeClass('complete');
+					this.item.tickets = this.item.tickets.filter((val) => {
+						return this.ticket.id != val.id
+					});
 				}
 
 				//Se a rodada está vazia
@@ -98,19 +115,29 @@
 				}
 				
 				this.$emit('updateSoccerExpert');
+			},
+			init() {
+				var date = this.formatDate(this.ticket.data_termino);
+    			var timeOut = setInterval(() => {
+    				this.countdown(date, (d, h, m, s, distance) => {
+		            	this.days = d;
+						this.hours = h;
+						this.minutes = m;
+						this.seconds = s;
+						if(distance < 0) {
+							clearInterval(timeOut);
+						}
+		            });
+    			}, 1000);
 			}
         },
         mounted: function() {
-			this.updateTicket();
-
-			//Callback executado ao abrir modal para atualizar o ticket do modal
+        	//Callback executado ao abrir modal para atualizar o ticket do modal
 			$(".modal-ticket")
 				.on('shown.bs.modal', (event) => {
+					this.init();
 					this.updateTicket();
-				})
-
-			let value = parseFloat(this.ticket.valor);
-            this.value = value.format(2, true);
+				})			
 		},
 		components: {
 			GameComponent
@@ -186,4 +213,11 @@
 	    font-size: 20px;
 	    color: #000
 	}
+
+	.countdown {
+		display: block;
+		text-transform: lowercase;
+		text-align: center;
+	}
+	
 </style>

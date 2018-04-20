@@ -50,7 +50,7 @@ Vue.prototype.app.reload = function() {
 	window.location.reload();
 }
 
-//require('./helpers');
+require('./helpers');
 
 
 export function getTrans(key) {

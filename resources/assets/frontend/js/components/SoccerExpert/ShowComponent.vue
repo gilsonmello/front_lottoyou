@@ -22,9 +22,27 @@
     	
     	<form @submit.prevent="addToCart($event)">
 	    	<div class="row">
-		    	<slide-component :item="item"></slide-component>
+				<div class="col-lg-12">
+			        <div id="carouselExampleIndicators" data-interval="false" class="carousel slide" data-ride="carousel">
+			            <ol class="carousel-indicators" style="bottom: -20px;">
+			                <li data-target="#carouselExampleIndicators" :data-slide-to="index" :class="index == 0 ? 'active' : ''" v-for="(cycle, index) in item.soccer_expert.cycles"></li>  
+			            </ol>
+			            <div class="carousel-inner" role="listbox">
+			                <div :class="index == 0 ? 'carousel-item active' : 'carousel-item'" v-for="(cycle, index) in item.soccer_expert.cycles">
+			                    <cycle-component :index="index" :item="item" :cycle="cycle"></cycle-component>
+			                </div>
+						</div>
+			        </div>
+			        <a class="carousel-control-prev" id="prev-slide-content" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			            <span class="fa fa-angle-left" style="color: black"></span>
+			            <span class="sr-only">Previous</span>
+			        </a>
+			        <a class="carousel-control-next" id="next-slide-content" href="#carouselExampleIndicators" role="button" data-slide="next">
+			            <span class="fa fa-angle-right" style="color: black"></span>
+			            <span class="sr-only">Next</span>
+			        </a>
+			    </div>   
 			</div>
-
 	    	
 	    	<br>
 	    	<hr>
@@ -33,7 +51,7 @@
 					<button type="submit" class="btn btn-md btn-success pull-right">
 						{{ trans('strings.add_to_cart') }}
 					</button>
-					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
+					<button @click.prevent="" type="load" class="hide pull-right btn btn-xs btn-success">
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">
@@ -44,7 +62,30 @@
 					</span>
 				</div>
 			</div>		
-		</form>		
+		</form>	
+
+
+		<div class="modal fade modal-ticket" data-backdrop="static" tabindex="-1" aria-labelledby="nivel2" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content" v-if="ticket != null">
+                    <!-- Modal Header -->
+                    <div class="modal-header" style="border-bottom: none;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" style="padding-top: 0;">
+                        <modal-ticket-component :item="item" :category="item.soccer_expert" :ticket="ticket"></modal-ticket-component>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            {{ trans('strings.to_close') }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>	
 
 
     </div>
@@ -54,8 +95,9 @@
 	import {routes} from '../../api_routes'
 	import LoadComponent from '../Load'
 	import {mapState, mapGetters} from 'vuex'
-	import SlideComponent from './SlideComponent'
+	import CycleComponent from './CycleComponent'
 	import TicketComponent from './TicketComponent'
+	import ModalTicketComponent from './Modal/TicketComponent'
 	export default {
 		beforeRouteUpdate: function(to, from, next) {
 			next();
@@ -69,58 +111,24 @@
 				item: {
 					soccer_expert: {},
 					hash: '',
-					total: 0.00
-				}
+					total: 0.00,
+					tickets: []
+				},
+				ticket: null,
         	}
         },
         methods: {
-        	//Pegando todas as apostas concluídas
-			getTicketsWeekFinished: function() {
-				const vm = this
-				
-				//Pegando todas as apostas feitas
-				var ticketsWeekComplete = this.item.soccer_expert.ticketsWeek.filter(function(val) {
-					//Verificando se dezenas extras está habilitado
-					if(val.complete == true) {
-						return true;
-					}else { 
-						return false;
-					}
-				});
-				
-				return ticketsWeekComplete;
-			},
-			//Pegando todas as apostas concluídas
-			getTicketsNextWeekFinished: function() {
-				const vm = this
-				
-				//Pegando todas as apostas feitas
-				var ticketsNextWeekComplete = this.item.soccer_expert.ticketsNextWeek.filter(function(val) {
-					//Verificando se dezenas extras está habilitado
-					if(val.complete == true) {
-						return true;
-					}else { 
-						return false;
-					}
-				});
-				
-				return ticketsNextWeekComplete;
-			},
         	addToCart(event) {
-        		//Pegando todas as rodadas finalizadas
-				var ticketsWeek = this.getTicketsWeekFinished();
-				var ticketsNextWeek = this.getTicketsNextWeekFinished();
-
+        		
 				var item = {
 					hash: this.item.hash,
 					total: this.item.total,
 					soccer_expert: this.item.soccer_expert,
-					ticketsWeek: ticketsWeek,
-					ticketsNextWeek: ticketsNextWeek
+					tickets: this.item.tickets
 				};
 
 				//Se não completou nenhuma rodada
-				if(ticketsWeek.length == 0 && ticketsNextWeek.length == 0) {
+				if(this.item.tickets.length == 0) {
 					this.$store.dispatch('removeItemSoccerExpert', item);
 					alert('Faça pelo menos um jogo');
 				} else {
@@ -196,11 +204,25 @@
 		},
 		mounted: function() {
 			this.init();
+
+			//Escutando evento, que será executado pelo TicektComponent
+            this.$eventBus.$on('openModal',  (ticket) => {
+                //Pegando o ticket passado como parâmetro
+                this.ticket = ticket
+                //Abrindo o modal
+                $('.modal-ticket').on('hidden.bs.modal', (event) => {
+	            	this.ticket = null
+	            }).modal('toggle');
+            }); 
     	},
+    	beforeDestroy() {
+            this.$eventBus.$off('openModal');
+        },
     	components: {
 			LoadComponent,
-			SlideComponent,
-			TicketComponent
+			CycleComponent,
+			TicketComponent,
+			ModalTicketComponent,
 		},
 		computed: {
 			...mapGetters([
@@ -222,6 +244,48 @@
 </script>
 
 <style scoped>
+
+ 	.ticket-sweepstake-name {
+        display: block;
+    }
+
+	#prev-slide-content{
+        left: -50px; 
+        right: auto;
+        width: 30px !important;
+    }
+
+    #next-slide-content{
+        left: auto; 
+        right: -50px;
+        width: 30px !important;
+    }
+    .slide{
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .fa {
+        font-size: 60px !important;
+    }
+
+    @media (max-width: 576px) {
+    	.slide{
+	        width: 90%;
+	        margin: 0 auto;
+	    }
+	    #prev-slide-content{
+	        left: 0; 
+	        right: auto;
+	        width: 30px !important;
+	    }
+
+	    #next-slide-content{
+	        left: auto; 
+	        right: 0;
+	        width: 30px !important;
+	    }
+    }
 	.price {
 		margin-right: 15px;
 	}

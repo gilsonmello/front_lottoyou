@@ -13,7 +13,7 @@
 				<div class="row">
 					<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 						<span>
-							{{ item.ticketsWeek.length + item.ticketsNextWeek.length }} Jogos
+							{{ item.tickets.length}} Jogos
 						</span>
 					</div>
 				</div>
@@ -35,13 +35,8 @@
 			</div>
 		</div>
 
-		<div class="collapse item" :id="id" @click.prevent="editTickets">		
-			<div class="col-lg-4 col-12 col-md-4 col-sm-4 no-padding" v-for="(ticket, index) in item.ticketsWeek">
-                <ticket-component :category="item.soccer_expert" :ticket="ticket" :index="index">
-                    
-                </ticket-component>
-            </div>
-            <div class="col-lg-4 col-12 col-md-4 col-sm-4 no-padding" v-for="(ticket, index) in item.ticketsNextWeek">
+		<div class="collapse item row" :id="id" @click.prevent="editTickets">		
+			<div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.tickets">
                 <ticket-component :category="item.soccer_expert" :ticket="ticket" :index="index">
                     
                 </ticket-component>
@@ -112,6 +107,10 @@
 
 	.item {
 		cursor: pointer;
+	}
+
+	.collapse.show {
+		display: flex !important;
 	}
 	
 	.soccer_experts:last-child{

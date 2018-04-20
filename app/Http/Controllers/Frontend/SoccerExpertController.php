@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Frontend\SoccerExpert;
 use App\Model\Frontend\SoccerExpertRound;
+use App\Model\Frontend\SoccerExpertCycle;
 use DB;
 
 class SoccerExpertController extends Controller
@@ -61,28 +62,89 @@ class SoccerExpertController extends Controller
     public function show($id)
     {
         $soccerExpert = SoccerExpert::where('id', '=', $id)
-        ->select(
-            'id', 
-            'nome',
-            'imagem_capa',
-            'active',
-            'ordem',
-            'novo',
-            'created',
-            'modified'
-        )->get()
-        ->first();
+            ->select(
+                'id', 
+                'nome',
+                'imagem_capa',
+                'active',
+                'ordem',
+                'novo',
+                'created',
+                'modified'
+            )->get()
+            ->first();
 
 
-        $roundsWeek = SoccerExpertRound::where('soc_categoria_id', '=', $id)
-            ->with(['games', 'sweepstake', 'group'])
+        $cycles = SoccerExpertCycle::where('soc_categoria_id', '=', $id)
+            ->whereHas('rounds', function ($query) {
+                $query->where(
+                    DB::raw("concat(data_termino,' ',hora_termino)"), 
+                    '>=', 
+                    date('Y-m-d H:i:s')
+                );
+            })
+            ->with([
+                'rounds' => function($query) {
+                    $query->select([
+                        'id', 
+                        'soc_bolao_id',
+                        'tipo',
+                        'nome',
+                        'imagem_capa',
+                        'valor',
+                        'data_termino',
+                        'hora_termino',
+                        'limite',
+                        'minimo',
+                        'active',
+                        'created',
+                        'modified',
+                        'soc_categoria_id',
+                        'soc_ciclo_id',
+                    ])
+                    ->where(
+                        DB::raw("concat(data_termino,' ',hora_termino)"), 
+                        '>=', 
+                        date('Y-m-d H:i:s')
+                    );
+                },
+                'rounds.games' => function($query) {
+                    $query->select([
+                        'id', 
+                        'user_id',
+                        'soc_rodada_id',
+                        'soc_bolao_id',
+                        'gel_clube_casa_id',
+                        'gel_clube_fora_id',
+                        'resultado_clube_casa',
+                        'resultado_clube_fora',
+                        'local',
+                        'data',
+                        'hora',
+                        'data_termino',
+                        'hora_termino',
+                        'active',
+                        'created',
+                        'modified',
+                    ]);
+                },
+                'rounds.sweepstake',
+                'rounds.group',
+            ])
             ->where(
-                DB::raw("concat(data_termino,' ',hora_termino)"), 
-                '>', 
+                DB::raw("concat(data_inicio,' ',hora_inicio)"), 
+                '<=', 
                 date('Y-m-d H:i:s')
             )
-            ->get()
-            ->take(3);
+            ->where(
+                DB::raw("concat(data_fim,' ',hora_fim)"), 
+                '>=', 
+                date('Y-m-d H:i:s')
+            )
+            ->where('active', '=', 1)
+            ->get();
+
+        /*return response()->json($cycles, 200);
 
         $roundsNextWeek = SoccerExpertRound::where('soc_categoria_id', '=', $id)
             ->with(['games', 'sweepstake', 'group'])
@@ -98,7 +160,8 @@ class SoccerExpertController extends Controller
         //$concatenated = $roundsWeek->concat($roundsNextWeek);
 
         $soccerExpert->ticketsWeek = $roundsWeek;
-        $soccerExpert->ticketsNextWeek = $roundsNextWeek;
+        $soccerExpert->ticketsNextWeek = $roundsNextWeek;*/
+        $soccerExpert->cycles = $cycles;
 
         /*$soccerExpertNextWeek = SoccerExpert::where('id', '=', $id)
             ->with(['rounds' => function($query) {

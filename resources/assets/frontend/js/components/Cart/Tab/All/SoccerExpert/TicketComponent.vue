@@ -1,7 +1,16 @@
 <template>		
 	<div class="tickets">
 		<header class="tickets-header">			
-            <span class="text-center tickets-name">{{ ticket.nome }} - ${{ value }}</span>   
+            <span class="text-center tickets-name">{{ ticket.nome }} - ${{ value }}</span> 
+            <span class="countdown">
+				<span v-if="days > 1">
+					{{ days }} {{ trans('strings.days') }} e
+				</span>
+				<span v-else-if="days == 1">
+					{{ days }} {{ trans('strings.day') }} e
+				</span>				
+				{{ hours }}:{{ minutes }}:{{ seconds }} {{ trans('strings.hours_left') }}
+			</span>  
             <span class="text-center tickets-limit" v-if="ticket.limite == null">
 				Ilimitado
             	<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Quantidade de Jogadores"></i>
@@ -41,17 +50,36 @@
 		props: ['ticket', 'index', 'type', 'category'],
 		data: function() {
         	return {
-    			value: 0.00
+    			value: 0.00,
+    			days: '',
+    			hours: '',
+    			minutes: '',
+    			seconds: ''
         	}
         },
         methods: {
         	backgroundTicket(background) {
         		return 'background-image: url('+background+'); background-size: 100% 100%; background-repeat: no-repeat;';
         	},
+        	init() {
+    			var date = this.formatDate(this.ticket.data_termino);
+    			var timeOut = setInterval(() => {
+    				this.countdown(date, (d, h, m, s, distance) => {
+		            	this.days = d;
+						this.hours = h;
+						this.minutes = m;
+						this.seconds = s;
+						if(distance < 0) {
+							clearInterval(timeOut);
+						}
+		            });
+    			}, 1000);
+        	}
         },
         mounted: function() {
 			let value = parseFloat(this.ticket.valor);
-            this.value = value.format(2, true);
+            this.value = value.format(2, true);     	
+            this.init();
 		},
 		components: {
 			GameComponent
@@ -63,12 +91,12 @@
 </script>
 
 <style scoped>
+
 	.tickets-content {
 		background-color: initial;
 		text-align: center;
 	    padding-bottom: 20px;
 	    padding-top: 20px;
-	    cursor: default;
 	}
 
 	.tickets {
@@ -103,5 +131,11 @@
 	    line-height: 17px;
 	    font-size: 20px;
 	    color: #000
+	}
+
+	.countdown {
+		display: block;
+		text-transform: lowercase;
+		text-align: center;
 	}
 </style>

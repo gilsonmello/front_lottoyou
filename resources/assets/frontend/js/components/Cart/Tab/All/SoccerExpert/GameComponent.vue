@@ -1,7 +1,7 @@
 <template>
-	<div class="row vcenter text-center">
+	<div class="row vcenter text-center games">
 
-		<div class="col-2 col-md-5 col-lg-4">
+		<div class="col-2 col-md-5 col-lg-4" style="padding-left: 0; padding-right: 2px;">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-end;">
 				<span style="line-height: 1;">{{ game.house_club.nome }}</span>
@@ -21,7 +21,7 @@
 			<input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(index, $event)" type="number" class="form-control no-padding" name="">
 		</div>
 
-        <div class="col-2 col-md-5 col-lg-4">
+        <div class="col-2 col-md-5 col-lg-4" style="padding-right: 0; padding-left: 2px;">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-start;">
 				<img v-if="game.out_club.escudo != undefined" style="width: 30px; height: 30px; margin-right: 5px;" :title="game.out_club.nome" :src="game.out_club.escudo">
@@ -39,7 +39,7 @@
 
 <script>
 	export default {
-		props: ['game', 'index'],
+		props: ['game', 'index', 'ticket'],
 		created: function () {
 
         },
@@ -70,14 +70,8 @@
 		line-height: 1;
 	}
 
-	.row {
-		color: white;
-		justify-content: center;
-	}
-
 	.info-date {
 		display: block;
-
 	}
 
 	.info-local {
@@ -85,6 +79,16 @@
 		font-size: 16px
 	}
 
+	.row {
+		color: white;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.games{
+		margin-bottom: 5px;
+	}
+	
 	.container-club {
 		display: flex; 
 		align-items: center; 

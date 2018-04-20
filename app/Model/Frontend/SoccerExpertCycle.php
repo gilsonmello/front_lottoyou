@@ -3,10 +3,10 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Model\Frontend\SoccerExpertRound;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 
-class SoccerExpertCategory extends Model
+class SoccerExpertCycle extends Model
 {
     const CREATED_AT = 'created';
 
@@ -23,7 +23,7 @@ class SoccerExpertCategory extends Model
      * 
      * @var array
      */
-    public $table = 'soc_categorias';
+    public $table = 'soc_ciclos';
 
     /**
      * The attributes that are mass assignable.
@@ -44,6 +44,6 @@ class SoccerExpertCategory extends Model
     ];
 
     public function rounds() {
-    	return $this->hasMany(SoccerExpertRound::class, 'soc_categoria_id');
+    	return $this->hasMany(SoccerExpertRound::class, 'soc_ciclo_id');
     }
 }

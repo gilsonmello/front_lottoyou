@@ -129,73 +129,36 @@
 				
 				this.$emit('updateSoccerExpert');
 			},
-			countdown() {
-				var date = this.ticket.data_termino.split('/');
-				var day = date[0];
-				var month = parseInt(date[1]) - 1;
-				var year = date[2].split(' ')[0];
-
-				var arrHour = date[2].split(' ')[1].split(':');
-
-				var hour = arrHour[0];
-				var minute = arrHour[1];
-				
-				var now = new Date();
-
-				
-				
-				var eventDate = new Date(year, month, day, hour, minute);
-
-				var currentTime = now.getTime();
-				var eventTime = eventDate.getTime();
-
-				var distance = eventTime - currentTime;
-
-				var s = Math.floor(distance / 1000);
-
-				var m = Math.floor(s / 60);
-				var h = Math.floor(m / 60);
-				var d = Math.floor(h / 24);
-
-
-				
-				
-				h %= 24;
-				s %= 60;
-				m %= 60;
-
-				h = (h < 10) ? "0"+ h : h;
-				s = (s < 10) ? "0"+ s : s;
-				m = (m < 10) ? "0"+ m : m;
-
-				this.days = d;
-				this.hours = h;
-				this.minutes = m;
-				this.seconds = s;
-
-				var timeOut = setTimeout(this.countdown, 1000);
-
-				if(distance < 0) {
-					clearInterval(timeOut);
-				}
-
-
+			init() {
+				var date = this.formatDate(this.ticket.data_termino);
+				var timeOut = setInterval(() => {
+					this.countdown(date, (d, h, m, s, distance) => {
+		            	this.days = d;
+						this.hours = h;
+						this.minutes = m;
+						this.seconds = s;
+						if(distance < 0) {
+							clearInterval(timeOut);
+						}
+		            });
+				}, 1000);
 			}
         },
         mounted: function() {
+
+        	this.init();
 
         	//Escutando o close do modal, para atualizar os tickets na tela do usuário
             $('.modal-ticket')
 	            .on('hidden.bs.modal', (event) => {
 	                this.updateTicket();
 	            });
+	        
 
 			this.updateTicket();
 			let value = parseFloat(this.ticket.valor);
             this.value = value.format(2, true);
-
-            this.countdown();
-		},
+        },
 		components: {
 			GameComponent
 		},

@@ -8,6 +8,7 @@ use App\Model\Frontend\SoccerExpert;
 use App\Model\Frontend\SoccerExpertSweepstake;
 use App\Model\Frontend\SoccerExpertGame;
 use App\Model\Frontend\SoccerExpertRoundGroup;
+use App\Model\Frontend\SoccerExpertCycle;
 use DB;
 
 class SoccerExpertRound extends Model
@@ -69,6 +70,12 @@ class SoccerExpertRound extends Model
             ->where('active', '=', 1);
     }
 
+    public function cycle() 
+    {
+        return $this->belongsTo(SoccerExpertCycle::class, 'soc_ciclo_id')
+            ->where('active', '=', 1);
+    }
+
     public function sweepstake() {
     	return $this->belongsTo(SoccerExpertSweepstake::class, 'soc_bolao_id')
             ->where('active', '=', 1);
@@ -87,6 +94,7 @@ class SoccerExpertRound extends Model
     public function group() 
     {
         return $this->hasOne(SoccerExpertRoundGroup::class, 'soc_rodada_id')
+            ->where('active', '=', 1)
             ->where('status', '=', 1);
     }
 }
