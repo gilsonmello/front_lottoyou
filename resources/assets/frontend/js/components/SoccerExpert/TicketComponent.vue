@@ -46,7 +46,9 @@
 		</div> 		
 		<footer class="tickets-footer">
 			<div class="row">
-				<em class="text-caption">Termina em: {{ ticket.data_termino }}</em>
+				<div class="col-lg-12">
+					<em class="text-caption">Termina em: {{ ticket.data_termino }}</em>
+				</div>
 			</div>
 		</footer>	
 	</div>		

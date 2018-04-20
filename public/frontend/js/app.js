@@ -69989,6 +69989,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -70518,8 +70520,10 @@ var render = function() {
     _vm._v(" "),
     _c("footer", { staticClass: "tickets-footer" }, [
       _c("div", { staticClass: "row" }, [
-        _c("em", { staticClass: "text-caption" }, [
-          _vm._v("Termina em: " + _vm._s(_vm.ticket.data_termino))
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("em", { staticClass: "text-caption" }, [
+            _vm._v("Termina em: " + _vm._s(_vm.ticket.data_termino))
+          ])
         ])
       ])
     ])
