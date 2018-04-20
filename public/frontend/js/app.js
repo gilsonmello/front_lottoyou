@@ -69989,10 +69989,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -70522,16 +70518,8 @@ var render = function() {
     _vm._v(" "),
     _c("footer", { staticClass: "tickets-footer" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c("em", { staticClass: "text-caption" }, [
-            _vm._v(
-              "\n\t\t\t\t\t\tTermina em: " +
-                _vm._s(_vm.ticket.data_termino) +
-                " às " +
-                _vm._s(_vm.ticket.hora_termino) +
-                " hrs\n\t\t\t\t\t"
-            )
-          ])
+        _c("em", { staticClass: "text-caption" }, [
+          _vm._v("Termina em: " + _vm._s(_vm.ticket.data_termino))
         ])
       ])
     ])
@@ -71194,13 +71182,7 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-lg-12" }, [
           _c("em", { staticClass: "text-caption" }, [
-            _vm._v(
-              "Termina em: " +
-                _vm._s(_vm.ticket.data_termino) +
-                " às " +
-                _vm._s(_vm.ticket.hora_termino) +
-                " hrs"
-            )
+            _vm._v("Termina em: " + _vm._s(_vm.ticket.data_termino))
           ])
         ])
       ])
@@ -75088,8 +75070,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -75565,13 +75545,7 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-lg-12" }, [
           _c("em", { staticClass: "text-caption" }, [
-            _vm._v(
-              "\n\t\t\t\t\t\tTermina em: " +
-                _vm._s(_vm.ticket.data_termino) +
-                " às " +
-                _vm._s(_vm.ticket.hora_termino) +
-                " hrs\n\t\t\t\t\t"
-            )
+            _vm._v("Termina em: " + _vm._s(_vm.ticket.data_termino))
           ])
         ])
       ])

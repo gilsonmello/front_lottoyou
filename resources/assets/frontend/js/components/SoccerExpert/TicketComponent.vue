@@ -46,11 +46,7 @@
 		</div> 		
 		<footer class="tickets-footer">
 			<div class="row">
-				<div class="col-lg-12">
-					<em class="text-caption">
-						Termina em: {{ ticket.data_termino }} às {{ ticket.hora_termino }} hrs
-					</em>
-				</div>
+				<em class="text-caption">Termina em: {{ ticket.data_termino }}</em>
 			</div>
 		</footer>	
 	</div>		
