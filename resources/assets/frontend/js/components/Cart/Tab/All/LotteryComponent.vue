@@ -1,6 +1,6 @@
 <template>
-	<section style="margin-left: -15px; margin-right: -15px">
-		<div class="vcenter lotteries" :href="'#'+id" data-toggle="collapse">
+	<section>
+		<div class="vcenter lotteries no-padding" :href="'#'+id" data-toggle="collapse">
 			<div class="col-lg-2 col-md-2 col-2 col-sm-2">
 				<img class="img-fluid" :alt="item.lottery.nome" :src="item.lottery.img_loteria">
 			</div>
@@ -38,7 +38,19 @@
 				</a>
 			</div>
 		</div>
-		<bet-component :id="id" :lottery="item"></bet-component>		
+
+
+		<div :id="id" class="collapse">
+			<div class="container-tickets" style="display: flex;" @click.prevent="editLottery(item.id, item.hash, $event)">
+				<div :style="column == 0 ? 'margin: 0 5px 0 15px;' : 'margin: 0 5px 0 5px;'" class="no-padding col-lg-2 col-10 col-md-5 col-sm-5" v-for="(bet, column) in item.betting">
+					<bet-component :id="id" :bet="bet" :column="column" :lottery="item"></bet-component>
+				</div>
+			</div>
+		</div>
+
+		<div style="border-bottom: 1px dotted #999;">
+			
+		</div>		
 	</section>
 </template>
 
@@ -56,6 +68,15 @@
 			
 		},
 		methods: {
+			editLottery(id, hash, $event) {
+				this.$router.push({
+					name: 'lotteries.show',
+					params: {
+						id: id,
+						hash: hash
+					}
+				})
+			},
 			removeItem(item){
 				this.$store.dispatch('removeItemLottery', item)
 
@@ -79,17 +100,15 @@
 
 
 <style scoped>
-	section {
-		margin-right: -15px;
-		margin-left: -15px;
-	}
-
 	.lotteries:last-child{
 		margin-bottom: 0;
 	}
 	.lotteries {
 		margin-bottom: 10px;
 		padding: 10px 0 10px 0;
-	    border-bottom: 1px dotted #999;
+	}
+
+	.collapse.show {
+		display: flex !important;
 	}
 </style>

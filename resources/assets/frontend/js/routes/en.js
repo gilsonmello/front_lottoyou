@@ -23,11 +23,38 @@ export default {
 			        component: require('../components/User/RegisterComponent.vue')
 			    },  
 			    {   
+			  		path: 'users/forgot_password',
+			        name: 'users.forgot_password', 
+			        props: true,
+			        component: require('../components/User/ForgotPasswordComponent.vue')
+			    }, 
+			    {   
 			  		path: 'users/account',
 			        name: 'users.account',
 			        props: true,
 			        meta: { requiresAuth: true },
 			        component: require('../components/User/AccountComponent.vue')
+			    },
+			    {   
+			  		path: 'users/games',
+			        name: 'users.games',
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/User/GameComponent.vue')
+			    },
+			    {   
+			  		path: 'users/logout',
+			        name: 'users.logout',
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/User/LogoutComponent.vue')
+			    },
+			    {   
+			  		path: 'users/transactions',
+			        name: 'users.transactions',
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/User/TransactionComponent.vue')
 			    },
 			    {   
 			  		path: 'scratch_cards',

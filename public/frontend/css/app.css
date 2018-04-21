@@ -13068,6 +13068,15 @@ body {
   margin-bottom: 0;
 }
 
+.items-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 #banner-01 {
   background-color: #ccc;
   width: 100%;
@@ -13498,7 +13507,6 @@ button.close {
 .tickets {
   padding: 5px;
   margin-bottom: 24px;
-  margin-top: 1px;
   background-color: #fff;
   color: #313534 !important;
   border-radius: 2px;
@@ -13510,17 +13518,12 @@ button.close {
   margin-top: 10px;
 }
 
-.tickets-header {
-  background-color: #FCF914;
-}
-
 .tickets-header strong {
   margin-left: 10px;
 }
 
 .tickets-content,
 .tickets-extras {
-  background-color: #FCF914;
   text-align: center;
   padding-bottom: 5px;
   padding-top: 5px;
@@ -13534,7 +13537,6 @@ button.close {
 .tickets-extras .fields .btn-default-darking {
   margin: 2px;
   border-color: #000;
-  background-color: #4CAF50;
 }
 
 .tickets-footer em {
@@ -13562,11 +13564,11 @@ button.close {
 }
 
 .complete {
-  border: 3px solid #67be13 !important;
+  border: 1px solid #67be13 !important;
 }
 
 .incomplete {
-  border: 3px solid #BF390F !important;
+  border: 1px solid #BF390F !important;
 }
 
 .btn-xs {
@@ -13576,5 +13578,63 @@ button.close {
   border-radius: 0px;
   font-size: 12px;
   border-radius: 3px;
+}
+
+.tab-content [data-toggle=collapse] {
+  cursor: pointer;
+}
+
+.animate-zoom {
+  -webkit-animation: animatezoom 0.6s;
+          animation: animatezoom 0.6s;
+}
+
+.fade-in {
+  -webkit-animation: opac 0.8s;
+          animation: opac 0.8s;
+}
+
+@-webkit-keyframes opac {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opac {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes animatezoom {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes animatezoom {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 

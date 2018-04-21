@@ -25,12 +25,19 @@
 			  		<div class="row">
 			  			<div class="col-lg-12 vcenter-end header-container" style="justify-content: right">
 			  				<ul class="header-items" style="width: 100%">
-					  			<li class="item-register-login" v-if="!auth">
+					  			<!-- <li class="item-register-login" v-if="!auth">
 					  				<router-link :to="{ name: 'login' }" class="pull-left" style="width: 100%;">
 					  					<div class="pull-left">
 											<span style="font-size: 14px">{{ trans('strings.login') }}</span>
 										</div>
 									</router-link>
+					  			</li> -->
+					  			<li class="item-register-login" v-if="!auth">
+					  				<a href="#" @click.prevent="login" class="pull-left" style="width: 100%;">
+					  					<div class="pull-left">
+											<span style="font-size: 14px">{{ trans('strings.login') }}</span>
+										</div>
+									</a>
 					  			</li>
 					  			<li class="item-register-login" v-if="!auth">
 					  				<router-link :to="{ name: 'users.register' }" class="pull-left" style="width: 100%;">
@@ -39,7 +46,7 @@
 										</div>
 									</router-link>
 					  			</li>
-					  			<li class="item-balance" v-if="auth">
+					  			<li class="item-balance" v-if="auth && auth.balance">
 					  				<router-link :to="{ name: 'balances.deposit' }" class="pull-left" style="width: 100%;">
 						  				<div class="pull-left">
 						  					<i class="fa fa-credit-card-alt" style="font-size: 27px;"></i>
@@ -57,8 +64,9 @@
 						  					</div>
 						  				</div>
 					  				</router-link>
+					  				
 						  		</li>
-					  			<li class="item-account" v-if="auth">
+					  			<li class="item-account" data-toggle="tooltip" v-if="auth" @mouseover="openTooltip" @mouseleave="closeTooltip">
 					  				<router-link :to="{ name: 'users.account' }" class="pull-left" style="width: 100%;">
 						  				<div class="pull-left vcenter">
 						  					<i class="fa fa-user-circle" style="font-size: 27px;"></i>
@@ -78,6 +86,71 @@
 						  					</div>
 						  				</div>
 						  			</router-link>
+						  			<div class="tooltip-item-account">
+						  				<div class="tooltip-item-account-header">
+						  					<div class="row">
+						  						<div class="col-lg-8">
+						  							<span class="title">Minha Lottoyou</span>
+						  						</div>
+						  						<div class="col-lg-4">
+						  							<span class="balance">Crédito: $ 0.00</span>
+						  						</div>
+						  					</div>
+						  				</div>
+						  				<div class="tooltip-item-account-content">
+						  					<ul class="account">
+						  						<li class="account-item">
+						  							<div class="row">
+						  								<div class="col-lg-2">
+						  									<i class="fa fa-user-circle" style="font-size: 27px; color: initial;"></i>
+						  								</div>
+						  								<div class="col-lg-10">
+						  									<router-link :to="{ name: 'users.account' }" class="">
+							  									{{ trans('strings.account') }}
+							  								</router-link>
+						  								</div>
+						  							</div>
+						  						</li>
+						  						<li class="account-item">
+						  							<div class="row">
+						  								<div class="col-lg-2">
+						  									<i class="fa fa-gamepad" style="font-size: 27px; color: initial;"></i>
+						  								</div>
+						  								<div class="col-lg-10">
+						  									<router-link :to="{ name: 'users.games' }" class="">
+							  									{{ trans('strings.games') }}
+							  								</router-link>
+						  								</div>
+						  							</div>
+						  						</li>
+						  						<li class="account-item">
+						  							<div class="row">
+						  								<div class="col-lg-2">
+						  									<i class="fa fa fa-credit-card-alt" style="font-size: 27px; color: initial;"></i>
+						  								</div>
+						  								<div class="col-lg-10">
+						  									<router-link :to="{ name: 'users.transactions' }" class="">
+							  									{{ trans('strings.transactions') }}
+							  								</router-link>
+						  								</div>
+						  							</div>
+						  						</li>
+						  						<li class="account-item">
+						  							<div class="row">
+						  								<div class="col-lg-12">
+						  									<span class="answer">Não é {{ auth.name }} ?</span>
+						  									<a href="#" @click.prevent="logout" class="">
+						  										{{ trans('strings.logout') }}
+						  									</a>
+						  								</div>
+						  							</div>
+						  						</li>
+						  					</ul>
+						  				</div>
+						  				<div class="tooltip-item-account-footer">
+						  					
+						  				</div>
+						  			</div>
 						  		</li>
 					  			<li class="item-cart">
 					  				<router-link :to="{ name: 'cart.index' }" class="cart pull-left" style="width: 100%;">
@@ -128,6 +201,30 @@
 					return 'col-lg-9 col-md-9 col-sm-12 col-12 no-padding'
 				}
 				return 'col-lg-9 col-md-9 col-sm-12 col-12 no-padding'
+			},
+			openTooltip() {
+				$('.tooltip-item-account')
+					.addClass('open');
+			},
+			logout() {
+				
+				if(confirm('Deseja realmente deslogar?')) { 
+					this.$store.dispatch('clearAuthUser');
+					window.localStorage.removeItem('authUser');
+					window.localStorage.removeItem('access_token');
+					window.localStorage.removeItem('refresh_token');
+
+					this.$router.push({
+						name: 'home'
+					});
+				}
+			},
+			login() {
+				$('.modal-login').modal('toggle');
+			},
+			closeTooltip() {
+				$('.tooltip-item-account')
+					.removeClass('open');
 			}
 		},
 		created: function() {
@@ -139,10 +236,11 @@
 		    	$('body').css({
 		    		'padding-top': header[0].clientHeight
 		    	});
+		    	
 		    	if(header.length > 0){
 					clearInterval(time);
 				}
-	    	});
+	    	});	    	
 		},
 		components: {
 			NavGameComponent,
@@ -423,5 +521,78 @@
 		}
 	}
 
+	.tooltip-item-account {
+		display: none;
+	}
+	.item-account .open:before {
+		content: "";
+	    position: absolute;
+	    height: 9px;
+	    z-index: 102;
+	    width: 9px;
+	    border-top: 1px solid #d9deda;
+	    border-right: 1px solid #d9deda;
+	    -webkit-transform: rotate(-44deg);
+	    transform: rotate(-44deg);
+	    background: #fff;
+	    top: -5px;
+	    right: 66px;
+	}
+
+	.item-account .open {
+	    right: 0;	
+	    bottom: -217px;
+    	background: white;
+    	width: 363px;
+    	display: block !important;
+    	z-index: 9999;
+    	position: absolute;
+        border: 1px solid #ccc;
+	    border-radius: 4px;
+	    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.6);
+	    box-shadow: 0 1px 3px 0 rgba(0,0,0,.6);
+	    /* background: none repeat scroll 0 0 #fff; */
+	    font-weight: 400;
+	}
+
+	.tooltip-item-account-header {
+	    padding: 5px;
+    	border-bottom: 1px #ccc solid;
+	}
+
+	.tooltip-item-account-header .title {
+		font-weight: 900;
+	    font-size: 17px;
+	    color: #012406;
+	    text-align: left;
+	}
+
+	.tooltip-item-account-header .balance {
+		font-weight: 200;
+	    font-size: 12px;
+	    color: #012406;
+	    text-align: right;
+	    line-height: 18px;
+	}
+
+	.tooltip-item-account .account {
+		text-align: left;
+	}
+
+	.tooltip-item-account .account .account-item {
+		display: block;
+		border-bottom: 1px #ccc solid;
+	    padding: 10px 10px 10px 10px;
+	    margin-right: 0;
+	}
+
+	.tooltip-item-account .account .account-item .answer {
+		display: initial;
+		color: initial;
+	}
+
+	.tooltip-item-account .account .account-item:last-child {
+		border: none;
+	}
 	
 </style>

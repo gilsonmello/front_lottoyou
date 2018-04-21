@@ -24,7 +24,7 @@
 	        	</div>
 	        </div>
 			<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
-				<div class="col-lg-2 col-8 col-md-5 col-sm-5" v-for="(index, column) in columns">
+				<div :style="column == 0 ? 'margin: 0 5px 0 15px;' : 'margin: 0 5px 0 5px;'" class="no-padding col-lg-2 col-8 col-md-5 col-sm-5" v-for="(index, column) in columns">
 					<div :class="'ticket'+column+' tickets'+' '+wow(index)">
 						<div class="tickets-header">
 							<!-- <strong>{{ column }}</strong> -->
@@ -79,8 +79,8 @@
                         		Dezenas restantes - 
                     		</em>
                     		<em class="text-caption">
-                    			<input v-if="item.betting.length > 0 && item.betting[column].numbers != undefined" v-model="dickersMaxSel.length - item.betting[column].numbers.length" name="data[LotUserJogo][qtdNumeros1]" id="qtdNumeros1" type="text" disabled>
-                    			<input v-if="item.betting.length > 0 && dickersExtrasSelect.length > 0 && item.betting[column].numbersExtras != undefined" v-model="dickersExtrasSelect.length - item.betting[column].numbersExtras.length" name="data[LotUserJogo][qtdNumerosd1]" id="qtdNumerosd1" disabled type="text">	
+                    			<input v-if="item.betting.length > 0 && item.betting[column].numbers != undefined && dickersMaxSel != undefined" v-model="dickersMaxSel.length - item.betting[column].numbers.length" name="data[LotUserJogo][qtdNumeros1]" id="qtdNumeros1" type="text" disabled>
+                    			<input v-if="item.betting.length > 0 && item.betting[column].numbersExtras != undefined && dickersExtrasSelect != undefined" v-model="dickersExtrasSelect.length - item.betting[column].numbersExtras.length" disabled type="text">	
                     		</em>
 						</div>
 					</div>
@@ -273,13 +273,16 @@
 			},
 			showLottery() {
 
-				var interval = setInterval(() => {
+				//Esperando a busca do item
+				var loopFindItem = setInterval(() => {
+					//Pegando o item que seja igual ao hash passado como parâmetro
 					var item = this.purchase.lotteries.items.filter((val) => {
 						return this.$route.params.hash == val.hash;
 					})
 
+					//Se encontrou o item, paro a busca e sigo com o processo
 					if(item.length > 0) {
-						clearInterval(interval);
+						clearInterval(loopFindItem);
 
 						item = item[0]
 
@@ -288,10 +291,17 @@
 
 						this.loading.component = false
 
-						var columns = []
+						var columns = [];
 
-						item.betting.filter((val) => {
-							columns.push(val)
+						item.betting.map((elem, index, array) => {
+							columns.push(elem)
+
+							var loopFindTicket = setInterval(() => {
+								if($('.ticket'+index).length > 0) {
+									clearInterval(loopFindTicket);
+									$('.ticket'+index).addClass('complete');
+								}
+							});
 						})
 
 						this.columns = columns;
@@ -308,19 +318,21 @@
 
 						this.total = this.item.value * item.betting.length;
 
-						var interval = setInterval(() => {
-							if($(".container-tickets").length > 0) {
-								clearInterval(interval);
-								//Arrastando o scroll para a esquerda
-								$(".container-tickets").animate({ 
-									scrollLeft: $('.container-tickets')[0].scrollWidth 
-								}, 500, 'linear', function() {
-									
-								});
-							}
-						})
+						
 					} else {
 
+					}
+				})
+
+				var loopFindTicket = setInterval(() => {
+					if($(".container-tickets").length > 0) {
+						clearInterval(loopFindTicket);
+						//Arrastando o scroll para a esquerda
+						$(".container-tickets").animate({ 
+							scrollLeft: $('.container-tickets')[0].scrollWidth 
+						}, 500, 'linear', function() {
+							
+						});
 					}
 				})
 				
@@ -335,10 +347,15 @@
 			},
 			//Removendo aposta
 			removeBet: function(event) {
+
 				//Remove a última coluna
 				this.columns.pop();
+				
+
 				//Remove a última aposta
 				this.item.betting.pop();
+
+
 
 				//Pegando todas as apostas feitas
 				var betting = this.getBettingFinished();
@@ -361,11 +378,14 @@
 					sweepstake: sweepstake
 				};
 				
+				
 				if(item.betting.length == 0) {
 					this.$store.dispatch('removeItemLottery', item);
 				} else {
 					this.$store.dispatch('setItemLottery', item);	
 				}
+
+				
 			},
 			//Adiciona aposta
 			addBet: function(event) {
@@ -594,6 +614,7 @@
 					}					
 					return false;
 				});
+
 				return betting;
 			},
 			//Deletando números selecionados na aposta clicada

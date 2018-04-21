@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\CreateUserRequest;
 use App\Http\Requests\Frontend\User\UpdateUserRequest;
 use App\User;
+use App\Balance;
 
 class UserController extends Controller
 {
@@ -51,7 +52,13 @@ class UserController extends Controller
         $user->birth_year = $request->get('birth_year');
         $user->country_id = $request->get('country');
         $user->gender = $request->get('gender');
-        if($user->save()){
+        if($user->save()) {
+
+            Balance::create([
+                'user_id' => $user->id,
+                'value' => 0.00,
+            ]);
+            
             return response()->json(['message' => trans('alerts.users.create.success')], 200);
         }
 

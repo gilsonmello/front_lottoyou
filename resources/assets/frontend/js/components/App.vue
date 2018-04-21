@@ -12,6 +12,7 @@
 		<br>
 		<footer-component></footer-component>
 
+		<login-component></login-component>
 	</main>
 </template>
 
@@ -20,6 +21,7 @@
 	import SliderComponent from './SliderComponent'
 	import CarouselComponent from './CarouselComponent'
 	import FooterComponent from './FooterComponent'
+	import LoginComponent from './LoginComponent'
 	import router from '../router'
 	import LoadComponent from './Load'
 	import {routes} from '../api_routes'
@@ -91,6 +93,8 @@
 			router.beforeEach((to, from, next) => {
 				//Pegando os dados do usuário no localstorage
 				const authUser = JSON.parse(window.localStorage.getItem('authUser'));
+				var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+				access_token = access_token != null ? access_token : null;
 
 				//Se a rota depende de login
 				if(to.meta.requiresAuth == true) {
@@ -100,19 +104,21 @@
 					//Dentro do component UserAcount é executada uma requisição para pegar os dados
 					//Do usuário atualizado
 					if(to.name != 'users.account') {
-						let authUser = JSON.parse(window.localStorage.getItem('authUser'));
-						authUser = authUser != null ? authUser : {access_token: '', refresh_token: ''}
+						
+
+						let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+						refresh_token = refresh_token != null ? refresh_token : '';
 
 						var loginRequest = axios.create();
 						//Fazendo busca do usuário logado, para setar na estrutura de dados
 						loginRequest.get(routes.auth.user, { headers: {
 							'Accept': 'application/json',
-							'Authorization': 'Bearer ' + authUser.access_token
+							'Authorization': 'Bearer ' + access_token
 						}}).then(response => {
 
-				        	response.data.access_token = authUser.access_token
+				        	response.data.access_token = access_token
 				        	
-				        	response.data.refresh_token = authUser.refresh_token
+				        	response.data.refresh_token = refresh_token
 
 							window.localStorage.setItem('authUser', JSON.stringify(response.data))
 
@@ -125,12 +131,12 @@
 				                name: 'login'
 				            });
 		                });
-		            }else {
+		            } else {
 		            	//Se a rota não for para o component UserAccount,
 		            	//Verifica se o usuário está logado
 		            	//Se estiver logado, deixa passar,
 		            	//Se não, redireciona para o login
-			            if(authUser){
+			            if(access_token){
 				            next()
 				        }else{
 				            next({
@@ -148,6 +154,7 @@
 			    }else{
 			        next();
 			    }
+			    $('.modal-login').modal('hide');
 			});
 
 			router.afterEach((to, from) => {
@@ -167,7 +174,8 @@
 			SliderComponent,
 			CarouselComponent,
 			FooterComponent,
-			LoadComponent
+			LoadComponent,
+			LoginComponent
 		}
 	}
 </script>

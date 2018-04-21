@@ -11,6 +11,8 @@ return [
       | found in a intuitive way.
       |
      */
+    'to_enter' => 'Entrar',
+    'logout' => 'Deslogar',
     'to_close' => 'Fechar',
     'spare' => 'Poupar',
     'hours_left' => 'Horas Restantes',
@@ -92,7 +94,7 @@ return [
     'register' => 'Cadastro',
     'registers' => 'Cadastros',
     'cart' => 'Carrinho',
-    'last_name' => 'Sobre Nome',
+    'last_name' => 'Sobrenome',
     'tags' => 'Tags',
     'categories' => 'Categorias',
     'permissions' => 'Permissões',

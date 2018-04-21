@@ -85,6 +85,5 @@
             window.QueryString = <?php echo json_encode($_GET); ?>;
         </script>
         <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}"></script>
-        
     </body>
 </html>

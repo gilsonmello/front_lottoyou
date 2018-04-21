@@ -4,12 +4,17 @@ namespace App\Http\Requests\Frontend\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Factory;
+use Illuminate\Support\Facades\Log;
 
 class CreateUserRequest extends FormRequest
 {
     public function __construct(Factory $factory){
-        $factory->extend('greater_than_field', function ($attribute, $value, $parameters){
+        $factory->extend('greater_than_field', function ($attribute, $value, $parameters) {
             return $value > 0;
+        });
+        
+        $factory->extend('another', function ($attribute, $value, $parameters) {
+            return $value != $parameters[0];
         });
     }
 
@@ -38,9 +43,10 @@ class CreateUserRequest extends FormRequest
             'birth_day' => 'required',
             'birth_month' => 'required',
             'birth_year' => 'required',
+            'terms' => 'another:false',
             'country' => 'required',
             //'birth_day' => 'required',
-            //'confirm_password' => 'required|min:6|same:password',
+            'confirm_password' => 'required|min:6|same:password',
             //'birth_date' => 'required',
             //'supplier_id'  => 'required|greater_than_field:1',
         ];
@@ -68,9 +74,10 @@ class CreateUserRequest extends FormRequest
             'birth_year.required' => trans('validation.user.create.birth_year.required'),
             'country.required' => trans('validation.user.create.country.required'),
             //'role_id.required' => 'O campo perfil é obrigatório',
-            //'confirm_password.required' => 'O campo Confirme a senha é obrigatório',
-            //'confirm_password.same' => 'O campo Confirme a senha deverá ser igual a senha',
-            //'confirm_password.min' => 'O campo Confirme a senha deverá conter no mínimo 6 caracteres.',
+            'confirm_password.required' => 'O campo Confirme a senha é obrigatório',
+            'confirm_password.same' => 'O campo Confirme a senha deverá ser igual a senha',
+            'confirm_password.min' => 'O campo Confirme a senha deverá conter no mínimo 6 caracteres.',
+            'terms.another' => 'O campo Termo de uso é obrigatório',
             //'birth_date.required' => 'O campo Data de Nascimento é obrigatório',
             //'supplier_id.required' => 'O campo Academia é Obrigatório',
             //'supplier_id.greater_than_field' => 'O campo Academia é Obrigatório',

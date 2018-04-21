@@ -82,6 +82,7 @@ import store from './store'
 import Select2 from './components/Select2Component'
 import InputMask from './components/InputMaskComponent'
 import DatepickerComponent from './components/DatepickerComponent'
+
 import App from './components/App'
 
 Vue.use(VueResource);

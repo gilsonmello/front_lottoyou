@@ -34,7 +34,7 @@ class Balance extends Model
      * @var array
      */
     protected $fillable = [
-        
+        'user_id', 'value'
     ];
 
     /**

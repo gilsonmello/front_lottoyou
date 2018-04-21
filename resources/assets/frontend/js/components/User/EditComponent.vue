@@ -1,5 +1,6 @@
 <template>
-    <div class="container">
+    <load-component v-if="loading.component == true"></load-component>
+    <div class="container" v-else>
         <form class="user-edit" @submit.prevent="handleEdit" enctype="multipart/form-data">
             <input type="hidden" name="id" v-model="id">
             <div class="row">
@@ -213,6 +214,7 @@
 
 <script>
     import {routes} from '../../api_routes'
+    import LoadComponent from '../Load'
     export default {
         methods: {
             changePhoto: function(event) {
@@ -236,23 +238,27 @@
                 var updateRequest = axios.create();
 
                 updateRequest.interceptors.request.use(config => {
+                    this.loading.component = true
                     $(this.$el).find('[type="load"]').removeClass('hide');
                     $(this.$el).find('[type="submit"]').addClass('hide');
                     return config;
                 });
                 updateRequest.put(routes.users.update.replace('{id}', this.id), form.serialize()).then(response => {
                     if(response.status === 200) {
+                        const access_token = JSON.parse(window.localStorage.getItem('access_token'));
+                        const refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
                         const authUser = this.user;
                         var authRequest = axios.create();
                         //Fazendo busca do usuário logado, para setar na estrutura de dados
                         authRequest.get(routes.auth.user, { headers: {
                             'Accept': 'application/json',
-                            'Authorization': 'Bearer ' + authUser.access_token
+                            'Authorization': 'Bearer ' + access_token
                         }}).then(response_2 => {
 
                             $(this.$el).find('[type="load"]').addClass('hide');
                             $(this.$el).find('[type="submit"]').removeClass('hide');
-                            response_2.data['access_token'] = authUser.access_token;
+                            response_2.data['access_token'] = access_token;
+                            response_2.data['refresh_token'] = refresh_token;
                             window.localStorage.setItem('authUser', JSON.stringify(response_2.data))
                             this.$store.dispatch('setUserObject', response_2.data);
                             toastr.success(this.trans('alerts.users.update.success'));
@@ -262,10 +268,13 @@
                         }).catch((error_2) => {
                             $(this.$el).find('[type="load"]').addClass('hide');
                             $(this.$el).find('[type="submit"]').removeClass('hide');
+                            this.loading.component = false
                         });
                         this.errors = [];
+                        this.loading.component = false
                     }
                 }).catch((error) => {
+                    this.loading.component = false
                     this.errors = error.response.data.errors
                     toastr.success(this.trans('alerts.users.update.error'));
                     $(this.$el).find('[type="load"]').addClass('hide');
@@ -275,7 +284,6 @@
         },
         data: function() {
             return {
-                user: JSON.parse(window.localStorage.getItem('authUser')),
                 gender: '',
                 name: '',
                 last_name: '',
@@ -319,19 +327,23 @@
 
         },
         activated: function() {
-            const authUser = JSON.parse(window.localStorage.getItem('authUser'));
+            const access_token = JSON.parse(window.localStorage.getItem('access_token'));            
+
             var authRequest = axios.create();
+            authRequest.interceptors.request.use(config => {
+                this.loading.component = true
+                return config;
+            });
+
             //Fazendo busca do usuário logado, para setar na estrutura de dados
             authRequest.get(routes.auth.user, { headers: {
                 'Accept': 'application/json',
-                'Authorization': 'Bearer ' + authUser.access_token
+                'Authorization': 'Bearer ' + access_token
             }}).then(response => {
-                response.data['access_token'] = authUser.access_token;
+                response.data['access_token'] = access_token;
+                window.localStorage.setItem('authUser', JSON.stringify(response.data))
                 this.$store.dispatch('setUserObject', response.data)
-                this.user = response.data
-
-
-                            
+                this.user = response.data                            
 
                 this.errors = [];
 
@@ -350,9 +362,15 @@
                 this.complement = this.user.complement
                 this.country = this.user.country.name
                 this.phone_code = '+'+this.user.country.phonecode
+
+                this.loading.component = false
             }).catch((error) => {
-            
+                this.loading.component = false
             });
+
+        },
+        components: {
+            LoadComponent
         }
     }
 </script>

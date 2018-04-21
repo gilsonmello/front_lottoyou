@@ -1,59 +1,71 @@
 <template>
 	<load-component v-if="loading.component"></load-component>
 	<div class="container" v-else>
-		<h1 class="page-header text-center">Crie uma conta para jogar nas melhores loterias do mundo</h1>
+		<h1 class="page-header text-center">Crie uma conta para desfrutar de infinitas possibilidades</h1>
 		<form @submit.prevent="register">
 			<div class="row">
-				<div class="col-lg-8 col-12 col-sm-12 col-md-8">
+				<div class="col-lg-12 col-12 col-sm-12 col-md-12">
 					<div class="row">
-						<div class="col-lg-6 col-12 col-sm-6 col-md-6">
+						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
-								<div class="alert alert-danger" v-if="errors.email">
+								<label for="email">{{ trans('strings.email') }}</label>
+							    <input v-model="email" required type="email" class="form-control" id="email" aria-describedby="email" :placeholder="trans('strings.email')">
+							    <div class="alert alert-danger" v-if="errors.email">
 								  	<div v-for="email in errors.email" >{{ email }}</div>
 								</div>
-							    <label for="email">{{ trans('strings.email') }}</label>
-							    <input v-model="email" required type="email" class="form-control" id="email" aria-describedby="email" :placeholder="trans('strings.email')">
 						  	</div>
 						</div>
-						<div class="col-lg-6 col-12 col-sm-6 col-md-6">
+						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
-								<div class="alert alert-danger" v-if="errors.password">
-								  	<div v-for="password in errors.password" >{{ password }}</div>
-								</div>
 							    <label for="password">{{ trans('strings.password') }}</label>
 							    <input v-model="password" required type="password" class="form-control" id="password" aria-describedby="password" :placeholder="trans('strings.password')">
+								<div class="alert alert-danger" v-if="errors.password">
+								  	<div v-for="password in errors.password">
+								  		{{ password }}
+								  	</div>
+								</div>
+						  	</div>
+						</div>
+						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
+							<div class="form-group">
+								<label for="confirm_password">{{ trans('strings.confirm_password') }}</label>
+							    <input v-model="confirm_password" required type="password" class="form-control" id="confirm_password" aria-describedby="confirm_password" :placeholder="trans('strings.confirm_password')">
+							    <div class="alert alert-danger" v-if="errors.confirm_password">
+								  	<div v-for="confirm_password in errors.confirm_password">
+								  	{{ confirm_password }}</div>
+								</div>
 						  	</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-5 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
-								<div class="alert alert-danger" v-if="errors.name">
+								<label for="name">{{ trans('strings.name') }}</label>
+							    <input v-model="name" required type="name" class="form-control" id="name" aria-describedby="name" :placeholder="trans('strings.name')">
+							    <div class="alert alert-danger" v-if="errors.name">
 								  	<div v-for="name in errors.name" >{{ name }}</div>
 								</div>
-							    <label for="name">{{ trans('strings.name') }}</label>
-							    <input v-model="name" required type="name" class="form-control" id="name" aria-describedby="name" :placeholder="trans('strings.name')">
 						  	</div>
 						</div>
 						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
-								<div class="alert alert-danger" v-if="errors.last_name">
+								<label for="last_name">{{ trans('strings.last_name') }}</label>
+							    <input v-model="last_name" required type="last_name" class="form-control" id="last_name" aria-describedby="last_name" :placeholder="trans('strings.last_name')">
+							    <div class="alert alert-danger" v-if="errors.last_name">
 								  	<div v-for="last_name in errors.last_name" >{{ last_name }}</div>
 								</div>
-							    <label for="last_name">{{ trans('strings.last_name') }}</label>
-							    <input v-model="last_name" required type="last_name" class="form-control" id="last_name" aria-describedby="last_name" :placeholder="trans('strings.last_name')">
 						  	</div>
 						</div>
 						<div class="col-lg-3 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
-								<div class="alert alert-danger" v-if="errors.gender">
-								  	<div v-for="gender in errors.gender" >{{ gender }}</div>
-								</div>
-							    <label for="gender">{{ trans('strings.gender') }}</label>
+								<label for="gender">{{ trans('strings.gender') }}</label>
 							    <select v-model="gender" required class="form-control" id="gender" aria-describedby="gender" :placeholder="trans('strings.gender')">
 							    	<option value="M" selected>{{ trans('strings.male') }}</option>
 							    	<option value="F">{{ trans('strings.female') }}</option>
 							    </select>
+							    <div class="alert alert-danger" v-if="errors.gender">
+								  	<div v-for="gender in errors.gender" >{{ gender }}</div>
+								</div>
 						  	</div>
 						</div>
 					</div>
@@ -62,57 +74,70 @@
 							<div class="row">
 								<div class="col-lg-4 col-sm-6 col-md-4 col-6">
 									<div class="form-group">
-										<div class="alert alert-danger" v-if="errors.birth_day">
-										  	<div v-for="birth_day in errors.birth_day" >{{ birth_day }}</div>
-										</div>
-									    <label for="birth_day">{{ trans('strings.day') }}</label>
+										<label for="birth_day">{{ trans('strings.day') }}</label>
 									    <select v-model="birth_day" class="form-control" id="birth_day">
 									      	<option :value="day" v-for="day in days">
 									      		{{ day }}
 									      	</option>
 									    </select>
+									    <div class="alert alert-danger" v-if="errors.birth_day">
+										  	<div v-for="birth_day in errors.birth_day" >{{ birth_day }}</div>
+										</div>
 								  	</div>
 								</div>
 								<div class="col-lg-4 col-sm-6 col-md-4 col-6">
 									<div class="form-group">
-										<div class="alert alert-danger" v-if="errors.birth_month">
-										  	<div v-for="birth_month in errors.birth_month" >{{ birth_month }}</div>
-										</div>
-									    <label for="birth_month">{{ trans('strings.month') }}</label>
+										<label for="birth_month">{{ trans('strings.month') }}</label>
 									    <select v-model="birth_month" class="form-control" id="birth_month" @change="changeBirthMonth">
 									      	<option :value="month.value" :data-key="key" v-for="(month, key) in months">
 									      		{{ month.name }}
 									      	</option>
 									    </select>
+									    <div class="alert alert-danger" v-if="errors.birth_month">
+										  	<div v-for="birth_month in errors.birth_month" >{{ birth_month }}</div>
+										</div>
 								  	</div>
 								</div>
 								<div class="col-lg-4 col-sm-12 col-md-12 col-12">
 									<div class="form-group">
-										<div class="alert alert-danger" v-if="errors.birth_year">
-										  	<div v-for="birth_year in errors.birth_year" >{{ birth_year }}</div>
-										</div>
-									    <label for="birth_year">{{ trans('strings.year') }}</label>
+										<label for="birth_year">{{ trans('strings.year') }}</label>
 									    <select v-model="birth_year" class="form-control" id="birth_year">
 									      	<option :value="val" v-for="(val, index) in rangeYear(1900, date.getFullYear() - 18)">
 									      		{{ val }}
 									      	</option>
 									    </select>
+									    <div class="alert alert-danger" v-if="errors.birth_year">
+										  	<div v-for="birth_year in errors.birth_year" >{{ birth_year }}</div>
+										</div>
 								  	</div>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-6 col-12 col-sm-6 col-md-6">
 							<div class="form-group">
-								<div class="alert alert-danger" v-if="errors.country">
-								  	<div v-for="country in errors.country" >{{ country }}</div>
-								</div>
-							    <label for="country">{{ trans('strings.country') }}</label>
+								<label for="country">{{ trans('strings.country') }}</label>
 							    <select v-model="country" class="form-control" id="country">
 							    	<option :value="value.id" v-for="value in countries">
 							    		{{ value.name }}
 							    	</option>
 							    </select>
+							    <div class="alert alert-danger" v-if="errors.country">
+								  	<div v-for="country in errors.country" >{{ country }}</div>
+								</div>
 						  	</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
+							<div class="form-group">
+								<label class="" for="terms">
+									<input type="checkbox" v-model="terms" name="terms" id="terms"> 
+										Li e aceito os <a href="#">Termos de Uso</a> 
+								</label>
+								<div class="alert alert-danger" v-if="errors.terms">
+								  	<div v-for="term in errors.terms" >{{ term }}</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="row">
@@ -127,9 +152,9 @@
 					</div>
 					<hr>
 				</div>
-				<div class="col-lg-4 col-12 col-md-4 col-sm-12 text-center">
+				<!-- <div class="col-lg-4 col-12 col-md-4 col-sm-12 text-center">
 					<img class="img-fluid" src="https://www.lottoland.com/cms/5a4ca7d90eb3587d99647503/br_yellow_homepage_286x406.jpg">
-				</div>
+				</div> -->
 			</div>
 		</form>
 	</div>
@@ -220,7 +245,9 @@
 				last_name: '',
 				email: '',
 				password: '',
+				confirm_password: '',
 				country: '',
+				terms: false,
 				gender: 'M',
 				birth_day: 1,
 				days: [],
@@ -300,11 +327,13 @@
 					last_name: this.last_name,
 					email: this.email,
 					password: this.password,
+					confirm_password: this.confirm_password,
 					birth_day: this.birth_day,
 					birth_month: this.birth_month,
 					birth_year: this.birth_year,
 					country: this.country,
-					gender: this.gender
+					gender: this.gender,
+					terms: this.terms
 				})).then((response) => {
 					if(response.status === 200){
 						this.name = '';						
@@ -316,6 +345,8 @@
 						this.birth_year = '';
 						this.country = '';
 						this.gender = '';
+						this.terms = '';
+						this.confirm_password = '';
 				
 						this.$router.push({name: 'home'})
 						toastr.options.timeOut = 10000;
@@ -368,5 +399,8 @@
 </script>
 
 <style scoped>
+	.form-group {
+		position: relative;
+	}
 	
 </style>

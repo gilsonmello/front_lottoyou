@@ -24,9 +24,15 @@ body {
     background-color: #fff
 }
 
+
 .alert {
     padding: 7px;
     margin-bottom: 0;
+}
+
+.items-center {
+    align-items: center;
+    justify-content: center;
 }
 
 main {
@@ -421,7 +427,6 @@ button.close {
 .tickets {
     padding: 5px;
     margin-bottom: 24px;
-    margin-top: 1px;
     background-color: #fff;
     color: #313534 !important;
     border-radius: 2px;
@@ -434,7 +439,7 @@ button.close {
 }
 
 .tickets-header {
-    background-color: #FCF914;
+    
 }
 
 .tickets-header strong {
@@ -442,7 +447,7 @@ button.close {
 }
 
 .tickets-content, .tickets-extras {
-    background-color: #FCF914;
+    
     text-align: center;
     padding-bottom: 5px;
     padding-top: 5px;
@@ -457,7 +462,7 @@ button.close {
 .tickets-extras .fields .btn-default-darking{
     margin: 2px;
     border-color: #000;
-    background-color: #4CAF50;
+    
 }
 
 .tickets-footer em {
@@ -485,11 +490,11 @@ button.close {
 }
 
 .complete {
-    border: 3px solid #67be13 !important;
+    border: 1px solid #67be13 !important;
 }
 
 .incomplete {
-    border: 3px solid #BF390F !important;
+    border: 1px solid #BF390F !important;
 }
 
 .btn-xs {
@@ -499,4 +504,35 @@ button.close {
     border-radius: 0px;
     font-size: 12px;
     border-radius: 3px;
+}
+
+.tab-content [data-toggle=collapse] {
+    cursor: pointer;
+}
+
+
+.animate-zoom {
+    animation: animatezoom 0.6s;
+}
+
+.fade-in {
+    animation: opac 0.8s;
+}
+
+@keyframes opac {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes animatezoom {
+       0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

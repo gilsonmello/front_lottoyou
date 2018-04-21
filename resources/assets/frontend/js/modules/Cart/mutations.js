@@ -68,6 +68,8 @@ export default {
 
 		let idx = null
 
+		
+
 		if(state.purchase.lotteries.items.length == 0) {
 			state.purchase.lotteries.items.unshift(items);
 		}else {
@@ -76,6 +78,7 @@ export default {
 				if(elem.hash == items.hash) {
 					idx = index
 				}
+				return true;
 			});
 
 			if(idx == null) {
@@ -101,6 +104,7 @@ export default {
 						idx = index
 					}	
 				}
+				return true;
 			});
 
 			if(idx == null) {
