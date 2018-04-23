@@ -1,18 +1,18 @@
 <template>
 	<div class="modal fade modal-login" data-backdrop="static" tabindex="-1" aria-labelledby="nivel2" aria-hidden="true">
         <div class="modal-dialog modal-md">
-        	<div class="modal-content" v-if="loading.component == true">
-        		
-        	</div>
-            <div class="modal-content" v-else>
+        	<div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header items-center" style="border-bottom: none;">
                 	<img src="/imgs/logo.png" style="width: 125px; height: 50;">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
+                <div class="modal-body" v-if="loading.component == true">
+                	Carregando...
+                </div>
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body" v-else>
                     <form @submit.prevent="login" class="login-form">
                     	<div class="row">
                     		<div class="col-lg-12">

@@ -63827,12 +63827,14 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "modal-dialog modal-md" }, [
-        _vm.loading.component == true
-          ? _c("div", { staticClass: "modal-content" })
-          : _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm.loading.component == true
+            ? _c("div", { staticClass: "modal-body" }, [
+                _vm._v("\n                \tCarregando...\n                ")
+              ])
+            : _c("div", { staticClass: "modal-body" }, [
                 _c(
                   "form",
                   {
@@ -64029,9 +64031,9 @@ var render = function() {
                   ]
                 )
               ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" })
-            ])
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-footer" })
+        ])
       ])
     ]
   )
