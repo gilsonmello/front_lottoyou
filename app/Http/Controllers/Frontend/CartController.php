@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Frontend\Cart;
 use App\Model\Frontend\CartItem;
+use App\Model\Frontend\Order;
+use App\Model\Frontend\OrderItem;
+use App\Model\Frontend\SoccerExpert;
+use App\Model\Frontend\Lottery;
+use App\Model\Frontend\ScratchCardTheme;
 
 class CartController extends Controller
 {
@@ -182,6 +187,83 @@ class CartController extends Controller
     {   
         $this->insertOrRefreshCart($request, 'scratch_card');
         return response()->json(['msg' => 'ok'], 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function completePurchase(Request $request)
+    {
+        $order = new Order;
+
+        $order->user_id = $request->get('user_id');
+        $order->total = $request->get('total');
+        $order->sub_total = $request->get('sub_total');
+        $order->number_items = $request->get('quantity');
+        $order->status = 1;
+        
+        $coupon = $request->get('coupon') != null ? $request->get('coupon') : null;
+        
+        $order->coupon_id = $coupon != null ? $coupon['id'] : null;
+
+        $items = $request->get('items');
+
+        if($order->save()) {
+            foreach($items as $key => $value) {
+                $orderItem = new OrderItem;
+                $orderItem->order_id = $order->id;
+                $orderItem->type = $value['type'];
+                $data = null;
+                if($value['type'] == 'lottery') {
+                    $data = json_encode($value['lottery']);
+                    $orderItem->data = $data;
+                    $orderItem->hash = $value['lottery']['hash'];
+                    $order->lotteries()->attach($value['lottery']['id'], [
+                        'data' => $data
+                    ]);
+                } else if($value['type'] == 'soccer_expert') {
+                    $data = json_encode($value['soccer_expert']);
+                    $orderItem->data = $data;
+                    $orderItem->hash = $value['soccer_expert']['hash'];
+                    $order->soccerExperts()->attach($value['soccer_expert']['soccer_expert']['id'], [
+                        'data' => $data
+                    ]);
+                } else if($value['type'] == 'scratch_card') {
+                    $data = json_encode($value['scratch_card']);
+                    $orderItem->data = $data;
+                    $orderItem->hash = $value['scratch_card']['hash'];
+                    $order->scratchCards()->attach($value['scratch_card']['scratch_card']['id'], [
+                        'data' => $data
+                    ]);
+                }
+
+                $orderItem->save();
+            }
+
+            $cart = Cart::where('user_id', '=', $request->get('user_id'))
+                ->where('finished', '=', 0)
+                ->get()
+                ->first();
+                
+            $cart->finished = 1;
+            $cart->save();
+
+            $cart = Cart::where('visitor', '=', $request->ip())
+                ->where('finished', '=', 0)
+                ->get()
+                ->first();
+
+            $cart->finished = 1;
+
+            $cart->save();
+
+            return response()->json(['msg' => 'ok'], 200);
+        }
+
+        return response()->json(['msg' => 'error'], 422);
     }
 
     /**

@@ -4,6 +4,9 @@ export default{
 	purchase: {
 		quantity: 0,
 		total: 0.00,
+		coupon: {},
+		user_id: null,
+		sub_total: 0.00,
 		lotteries: {
 			total: 0.00,
 			items: []

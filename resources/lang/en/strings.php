@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'complete_purchase' => 'Concluir Compra',
     'to_enter' => 'Entrar',
     'logout' => 'Deslogar',
     'to_close' => 'Fechar',

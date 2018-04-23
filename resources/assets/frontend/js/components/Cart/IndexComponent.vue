@@ -85,7 +85,7 @@
 
 				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
 					<span>
-						$ {{ (purchase.total).format(2, true) }}
+						$ {{ (purchase.sub_total).format(2, true) }}
 					</span>
 				</div>
 			</div>
@@ -104,8 +104,11 @@
 		<div class="container">
 			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
 				<div class="col-lg-5 col-12 col-md-5 col-sm-6">
-					<span>
-						Saldo disponível: $ 20.00(Saldo restante: $ 0.00)
+					<span v-if="(auth.balance.value - purchase.total) >= 0">
+						Saldo disponível: ${{ auth.balance.value }}(Saldo restante: $ {{ (auth.balance.value - purchase.total).format(2, true) }})
+					</span>
+					<span v-else>
+						Saldo disponível: ${{ auth.balance.value }}(Saldo restante: $ 0.00)
 					</span>
 				</div>
 				<div class="col-lg-5 col-6 col-md-5 col-sm-4">
@@ -115,7 +118,7 @@
 				</div>
 				<div class="col-lg-2 col-6 col-md-2 col-sm-2">
 					<span>
-						$ 20.00
+						$ {{ auth.balance.value }}
 					</span>
 				</div>
 			</div>
@@ -131,20 +134,23 @@
 				</div>
 				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
 					<span>
-						R$ 100,00
+						$ {{ (purchase.total).format(2, true) }}
 					</span>
 				</div>
 			</div>
 		</div>
 		
-		<div class="container">
+		<div class="container" v-if="auth.balance.value >= purchase.total">
 			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
 				<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 					
 				</div>
 				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-					<button class="btn btn-success btn-md" @click.prevent="completePurchase($event)">		
-						Confirmar
+					<button class="btn btn-success btn-md" type="submit" @click.prevent="completePurchase($event)">		
+						{{ trans('strings.complete_purchase') }}
+					</button>
+					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
+						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 				</div>
 			</div>
@@ -160,6 +166,7 @@
 	import AllComponent from './Tab/AllComponent'
 	import SoccerExpertComponent from './Tab/All/SoccerExpertComponent'
 	import LoadComponent from '../Load'
+	import {routes} from '../../api_routes'
 	export default {
 		computed: {
 			...mapState({
@@ -178,13 +185,36 @@
 		},
 		methods: {
 			completePurchase(event) {
-				this.$router.push({
-					name: 'orders.finish'
+
+				const completePurchaseRequest = axios.create();
+
+				completePurchaseRequest.interceptors.request.use(config => {
+					$(this.$el).find('[type="load"]').removeClass('hide');
+		        	$(this.$el).find('[type="submit"]').addClass('hide');
+		          	return config;
 				});
+
+				this.purchase['user_id'] = this.auth.id;
+
+				completePurchaseRequest.post(
+					routes.carts.complete_purchase, 
+					this.purchase, 
+					{}
+				).then(response => {
+					if(response.status === 200) {
+						this.$store.dispatch('clearPurchase');
+						this.$router.push({
+							name: 'orders.finish'
+						});
+					}
+				}).catch((error) => {
+					
+				});				
 			}
 		},
 		mounted: function() {
-			window.document.title = this.trans('strings.cart')+ ' | ' +window.app.title;
+			//window.document.title = this.trans('strings.cart')+ ' | ' +window.app.title;
+			window.document.title = this.trans('strings.cart');
 			this.loading.component = false;
 		},
 		components: {

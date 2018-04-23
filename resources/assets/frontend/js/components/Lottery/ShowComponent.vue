@@ -79,7 +79,7 @@
                         		Dezenas restantes - 
                     		</em>
                     		<em class="text-caption">
-                    			<input v-if="item.betting.length > 0 && item.betting[column].numbers != undefined && dickersMaxSel != undefined" v-model="dickersMaxSel.length - item.betting[column].numbers.length" name="data[LotUserJogo][qtdNumeros1]" id="qtdNumeros1" type="text" disabled>
+                    			<input v-if="item.betting.length > 0 && item.betting[column].numbers != undefined && dickersMaxSel != undefined" v-model="dickersMaxSel.length - item.betting[column].numbers.length" name="data[LotUserJogo][qtdNumeros1]" type="text" disabled>
                     			<input v-if="item.betting.length > 0 && item.betting[column].numbersExtras != undefined && dickersExtrasSelect != undefined" v-model="dickersExtrasSelect.length - item.betting[column].numbersExtras.length" disabled type="text">	
                     		</em>
 						</div>

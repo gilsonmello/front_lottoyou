@@ -124,7 +124,7 @@
 					hash: this.item.hash,
 					total: this.item.total,
 					soccer_expert: this.item.soccer_expert,
-					tickets: this.item.tickets
+					tickets: this.item.tickets,
 				};
 
 				//Se não completou nenhuma rodada

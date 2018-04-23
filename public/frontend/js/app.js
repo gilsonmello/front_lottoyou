@@ -600,7 +600,8 @@ var routes = {
 		add_scratch_cards: host + '/carts/add_scratch_cards',
 		add_soccer_experts: host + '/carts/add_soccer_experts',
 		add_lotteries: host + '/carts/add_lotteries',
-		destroy: host + '/carts/{hash}'
+		destroy: host + '/carts/{hash}',
+		complete_purchase: host + '/carts/complete_purchase'
 	}
 };
 
@@ -63205,18 +63206,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -63269,124 +63258,112 @@ var render = function() {
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    staticStyle: { width: "100%" },
-                    attrs: { src: "/img/new/banner_1.jpg" }
-                  })
-                ]
-              )
-            ])
+            _c(
+              "div",
+              {
+                staticClass:
+                  "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  staticStyle: { width: "100%" },
+                  attrs: { src: "/img/new/banner_1.jpg" }
+                })
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    staticStyle: { width: "100%" },
-                    attrs: { src: "/img/banner_medio_soccer.jpg" }
-                  })
-                ]
-              )
-            ])
+            _c(
+              "div",
+              {
+                staticClass:
+                  "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  staticStyle: { width: "100%" },
+                  attrs: { src: "/img/banner_medio_soccer.jpg" }
+                })
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    staticStyle: { width: "100%" },
-                    attrs: { src: "/img/banner_medio_raspadinhas.jpg" }
-                  })
-                ]
-              )
-            ])
+            _c(
+              "div",
+              {
+                staticClass:
+                  "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  staticStyle: { width: "100%" },
+                  attrs: { src: "/img/banner_medio_raspadinhas.jpg" }
+                })
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    staticStyle: { width: "100%" },
-                    attrs: { src: "/img/banner_medio_raspadinha.jpg" }
-                  })
-                ]
-              )
-            ])
+            _c(
+              "div",
+              {
+                staticClass:
+                  "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  staticStyle: { width: "100%" },
+                  attrs: { src: "/img/banner_medio_raspadinha.jpg" }
+                })
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    staticStyle: { width: "100%" },
-                    attrs: { src: "/img/golden_goal.jpg" }
-                  })
-                ]
-              )
-            ])
+            _c(
+              "div",
+              {
+                staticClass:
+                  "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  staticStyle: { width: "100%" },
+                  attrs: { src: "/img/golden_goal.jpg" }
+                })
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                { staticClass: "col-lg-12 col-md-12 col-xs-12 col-sm-12" },
-                [
-                  _c("div", { attrs: { id: "how-to-play" } }, [
-                    _c("h1", { staticClass: "text-center" }, [
-                      _vm._v("Como jogar")
-                    ])
+            _c(
+              "div",
+              { staticClass: "col-lg-12 col-md-12 col-xs-12 col-sm-12" },
+              [
+                _c("div", { attrs: { id: "how-to-play" } }, [
+                  _c("h1", { staticClass: "text-center" }, [
+                    _vm._v("Como jogar")
                   ])
-                ]
-              )
-            ]),
+                ])
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -63450,56 +63427,50 @@ var render = function() {
           _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    staticStyle: { width: "100%" },
-                    attrs: { src: "/img/new/explic_easy.jpg" }
-                  })
-                ]
-              )
-            ]),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  staticStyle: { width: "100%" },
+                  attrs: { src: "/img/new/explic_easy.jpg" }
+                })
+              ]
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    staticStyle: { width: "100%" },
-                    attrs: { src: "/img/new/explic_raspadinhas.jpg" }
-                  })
-                ]
-              )
-            ]),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  staticStyle: { width: "100%" },
+                  attrs: { src: "/img/new/explic_raspadinhas.jpg" }
+                })
+              ]
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    staticStyle: { width: "100%" },
-                    attrs: { src: "/img/new/explic_soccer.jpg" }
-                  })
-                ]
-              )
-            ])
+            _c(
+              "div",
+              {
+                staticClass:
+                  "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  staticStyle: { width: "100%" },
+                  attrs: { src: "/img/new/explic_soccer.jpg" }
+                })
+              ]
+            )
           ])
         ],
         1
@@ -71089,7 +71060,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.ticket-sweepstake-name[data-v-1292d1a7] {\n    display: block;\n}\n#prev-slide-content[data-v-1292d1a7]{\n    left: -50px; \n    right: auto;\n    width: 30px !important;\n}\n#next-slide-content[data-v-1292d1a7]{\n    left: auto; \n    right: -50px;\n    width: 30px !important;\n}\n.slide[data-v-1292d1a7]{\n    width: 100%;\n    margin: 0 auto;\n}\n.fa[data-v-1292d1a7] {\n    font-size: 60px !important;\n}\n@media (max-width: 576px) {\n.slide[data-v-1292d1a7]{\n        width: 90%;\n        margin: 0 auto;\n}\n#prev-slide-content[data-v-1292d1a7]{\n        left: 0; \n        right: auto;\n        width: 30px !important;\n}\n#next-slide-content[data-v-1292d1a7]{\n        left: auto; \n        right: 0;\n        width: 30px !important;\n}\n}\n", ""]);
+exports.push([module.i, "\n.row[data-v-1292d1a7] {\n}\n.ticket-sweepstake-name[data-v-1292d1a7] {\n    display: block;\n}\n#prev-slide-content[data-v-1292d1a7]{\n    left: -50px; \n    right: auto;\n    width: 30px !important;\n}\n#next-slide-content[data-v-1292d1a7]{\n    left: auto; \n    right: -50px;\n    width: 30px !important;\n}\n.slide[data-v-1292d1a7]{\n    width: 100%;\n    margin: 0 auto;\n}\n.fa[data-v-1292d1a7] {\n    font-size: 60px !important;\n}\n@media (max-width: 576px) {\n.slide[data-v-1292d1a7]{\n        width: 90%;\n        margin: 0 auto;\n}\n#prev-slide-content[data-v-1292d1a7]{\n        left: 0; \n        right: auto;\n        width: 30px !important;\n}\n#next-slide-content[data-v-1292d1a7]{\n        left: auto; \n        right: 0;\n        width: 30px !important;\n}\n}\n", ""]);
 
 // exports
 
@@ -71192,7 +71163,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.tickets-content[data-v-d02edede] {\n\t\tbackground-color: initial;\n\t    text-align: center;\n\t    padding-bottom: 20px;\n\t    padding-top: 20px;\n}\n.tickets[data-v-d02edede] {\n\t\t/*padding: 10px 20px 10px 20px;*/\n\t\tpadding: 5px;\n}\n.tickets-header[data-v-d02edede] {\n\t\tpadding: 5px 0 0 0;\n\t\tbackground-color: initial;\n}\n.tickets-header .ticket-categories[data-v-d02edede] {\n\t\tfont-weight: bold;\n\t\ttext-align: center;\n\t\tbackground-color: #fad7d4;\n\t    border-color: #f7bec3;\n\t    color: #a94442;\n        border: 1px solid transparent;\n\t    border-radius: 2px;\n\t    display: block;\n\t    text-transform: uppercase;\n}\n.tickets-header .tickets-limit[data-v-d02edede] {\n\t\tdisplay: block;\n}\n.tickets-header .tickets-name[data-v-d02edede] {\n\t    display: block;\n\t    vertical-align: middle;\n\t    line-height: 17px;\n\t    font-size: 20px;\n\t    color: #000\n}\n.countdown[data-v-d02edede] {\n\t\tdisplay: block;\n\t\ttext-transform: lowercase;\n\t\ttext-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.tickets-content[data-v-d02edede] {\n\t\tbackground-color: initial;\n\t    text-align: center;\n\t    padding-bottom: 20px;\n\t    padding-top: 20px;\n}\n.tickets[data-v-d02edede] {\n\t\t/*padding: 10px 20px 10px 20px;*/\n\t\tcolor: #000;\n    \tborder: 1px solid #00000054;\n    \t-webkit-box-shadow: none;\n    \t        box-shadow: none;\n}\n.tickets-header[data-v-d02edede] {\n\t\tpadding: 5px 0 0 0;\n\t\tbackground-color: initial;\n}\n.tickets-header .ticket-categories[data-v-d02edede] {\n\t\tfont-weight: bold;\n\t\ttext-align: center;\n\t\tbackground-color: #fad7d4;\n\t    border-color: #f7bec3;\n\t    color: #a94442;\n        border: 1px solid transparent;\n\t    border-radius: 2px;\n\t    display: block;\n\t    text-transform: uppercase;\n}\n.tickets-header .tickets-limit[data-v-d02edede] {\n\t\tdisplay: block;\n}\n.tickets-header .tickets-name[data-v-d02edede] {\n\t    display: block;\n\t    vertical-align: middle;\n\t    line-height: 17px;\n\t    font-size: 20px;\n\t    color: #000\n}\n.countdown[data-v-d02edede] {\n\t\tdisplay: block;\n\t\ttext-transform: lowercase;\n\t\ttext-align: center;\n}\n", ""]);
 
 // exports
 
@@ -71460,7 +71431,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.row[data-v-5ddd012a] {\n\tcolor: white;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.games[data-v-5ddd012a]{\n\tmargin-bottom: 5px;\n}\n.container-club[data-v-5ddd012a] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex; \n\t-webkit-box-align: center; \n\t    -ms-flex-align: center; \n\t        align-items: center;\n}\n.x[data-v-5ddd012a] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n", ""]);
+exports.push([module.i, "\n.row[data-v-5ddd012a] {\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.games[data-v-5ddd012a]{\n\tmargin-bottom: 5px;\n}\n.container-club[data-v-5ddd012a] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex; \n\t-webkit-box-align: center; \n\t    -ms-flex-align: center; \n\t        align-items: center;\n}\n.x[data-v-5ddd012a] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n", ""]);
 
 // exports
 
@@ -71737,7 +71708,6 @@ var render = function() {
       "div",
       {
         staticClass: "tickets-content",
-        style: _vm.backgroundTicket(_vm.ticket.imagem_capa),
         on: {
           click: function($event) {
             $event.preventDefault()
@@ -74671,7 +74641,6 @@ var render = function() {
                                     ],
                                     attrs: {
                                       name: "data[LotUserJogo][qtdNumeros1]",
-                                      id: "qtdNumeros1",
                                       type: "text",
                                       disabled: ""
                                     },
@@ -75017,8 +74986,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Tab_All_SoccerExpertComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Tab_All_SoccerExpertComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Load__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Load__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__api_routes__ = __webpack_require__(4);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -75181,6 +75157,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
 	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
 		User: function User(state) {
@@ -75196,13 +75173,31 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	},
 	methods: {
 		completePurchase: function completePurchase(event) {
-			this.$router.push({
-				name: 'orders.finish'
+			var _this = this;
+
+			var completePurchaseRequest = axios.create();
+
+			completePurchaseRequest.interceptors.request.use(function (config) {
+				$(_this.$el).find('[type="load"]').removeClass('hide');
+				$(_this.$el).find('[type="submit"]').addClass('hide');
+				return config;
 			});
+
+			this.purchase['user_id'] = this.auth.id;
+
+			completePurchaseRequest.post(__WEBPACK_IMPORTED_MODULE_6__api_routes__["a" /* routes */].carts.complete_purchase, this.purchase, {}).then(function (response) {
+				if (response.status === 200) {
+					_this.$store.dispatch('clearPurchase');
+					_this.$router.push({
+						name: 'orders.finish'
+					});
+				}
+			}).catch(function (error) {});
 		}
 	},
 	mounted: function mounted() {
-		window.document.title = this.trans('strings.cart') + ' | ' + window.app.title;
+		//window.document.title = this.trans('strings.cart')+ ' | ' +window.app.title;
+		window.document.title = this.trans('strings.cart');
 		this.loading.component = false;
 	},
 	components: {
@@ -77566,7 +77561,7 @@ var render = function() {
                 _c("span", [
                   _vm._v(
                     "\n\t\t\t\t\t\t$ " +
-                      _vm._s(_vm.purchase.total.format(2, true)) +
+                      _vm._s(_vm.purchase.sub_total.format(2, true)) +
                       "\n\t\t\t\t\t"
                   )
                 ])
@@ -77605,11 +77600,27 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "col-lg-5 col-12 col-md-5 col-sm-6" }, [
-                _c("span", [
-                  _vm._v(
-                    "\n\t\t\t\t\t\tSaldo disponível: $ 20.00(Saldo restante: $ 0.00)\n\t\t\t\t\t"
-                  )
-                ])
+                _vm.auth.balance.value - _vm.purchase.total >= 0
+                  ? _c("span", [
+                      _vm._v(
+                        "\n\t\t\t\t\t\tSaldo disponível: $" +
+                          _vm._s(_vm.auth.balance.value) +
+                          "(Saldo restante: $ " +
+                          _vm._s(
+                            (
+                              _vm.auth.balance.value - _vm.purchase.total
+                            ).format(2, true)
+                          ) +
+                          ")\n\t\t\t\t\t"
+                      )
+                    ])
+                  : _c("span", [
+                      _vm._v(
+                        "\n\t\t\t\t\t\tSaldo disponível: $" +
+                          _vm._s(_vm.auth.balance.value) +
+                          "(Saldo restante: $ 0.00)\n\t\t\t\t\t"
+                      )
+                    ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-lg-5 col-6 col-md-5 col-sm-4" }, [
@@ -77619,7 +77630,13 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-lg-2 col-6 col-md-2 col-sm-2" }, [
-                _c("span", [_vm._v("\n\t\t\t\t\t\t$ 20.00\n\t\t\t\t\t")])
+                _c("span", [
+                  _vm._v(
+                    "\n\t\t\t\t\t\t$ " +
+                      _vm._s(_vm.auth.balance.value) +
+                      "\n\t\t\t\t\t"
+                  )
+                ])
               ])
             ]
           )
@@ -77644,40 +77661,75 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("div", { staticClass: "col-lg-2 col-4 col-md-2 col-sm-2" }, [
-                _c("span", [_vm._v("\n\t\t\t\t\t\tR$ 100,00\n\t\t\t\t\t")])
+                _c("span", [
+                  _vm._v(
+                    "\n\t\t\t\t\t\t$ " +
+                      _vm._s(_vm.purchase.total.format(2, true)) +
+                      "\n\t\t\t\t\t"
+                  )
+                ])
               ])
             ]
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "container" }, [
-          _c(
-            "div",
-            {
-              staticClass: "row vcenter border-dotted",
-              staticStyle: { margin: "10px -15px 10px -15px" }
-            },
-            [
-              _c("div", { staticClass: "col-lg-10 col-8 col-md-10 col-sm-10" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-4 col-md-2 col-sm-2" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success btn-md",
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.completePurchase($event)
-                      }
-                    }
-                  },
-                  [_vm._v("\t\t\n\t\t\t\t\t\tConfirmar\n\t\t\t\t\t")]
-                )
-              ])
-            ]
-          )
-        ])
+        _vm.auth.balance.value >= _vm.purchase.total
+          ? _c("div", { staticClass: "container" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "row vcenter border-dotted",
+                  staticStyle: { margin: "10px -15px 10px -15px" }
+                },
+                [
+                  _c("div", {
+                    staticClass: "col-lg-10 col-8 col-md-10 col-sm-10"
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-2 col-4 col-md-2 col-sm-2" },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success btn-md",
+                          attrs: { type: "submit" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.completePurchase($event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\t\t\n\t\t\t\t\t\t" +
+                              _vm._s(_vm.trans("strings.complete_purchase")) +
+                              "\n\t\t\t\t\t"
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "hide pull-right btn btn-md btn-success",
+                          attrs: { type: "load" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          : _vm._e()
       ])
 }
 var staticRenderFns = []
@@ -79292,6 +79344,9 @@ var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMon
 	purchase: {
 		quantity: 0,
 		total: 0.00,
+		coupon: {},
+		user_id: null,
+		sub_total: 0.00,
 		lotteries: {
 			total: 0.00,
 			items: []
@@ -79365,6 +79420,9 @@ function refreshState(state) {
 
 	//Total de todos os itens
 	state.total = state.lotteries.total + state.scratch_cards.total + state.soccer_expert.total;
+
+	//Total de todos os itens
+	state.sub_total = state.lotteries.total + state.scratch_cards.total + state.soccer_expert.total;
 
 	//Novo estado
 	return state;
@@ -79632,25 +79690,26 @@ function refreshState(state) {
 
 		state.purchase = refreshState(state.purchase);
 	},
-	CLEAR: function CLEAR(state) {
-		state = {
-			purchase: {
-				quantity: 0,
+	CLEAR_PURCHASE: function CLEAR_PURCHASE(state) {
+		state.purchase = {
+			quantity: 0,
+			total: 0.00,
+			coupon: {},
+			user_id: null,
+			sub_total: 0.00,
+			lotteries: {
 				total: 0.00,
-				lotteries: {
-					total: 0.00,
-					items: []
-				},
-				scratch_cards: {
-					total: 0.00,
-					items: []
-				},
-				soccer_expert: {
-					total: 0.00,
-					items: []
-				},
 				items: []
-			}
+			},
+			scratch_cards: {
+				total: 0.00,
+				items: []
+			},
+			soccer_expert: {
+				total: 0.00,
+				items: []
+			},
+			items: []
 		};
 	},
 	SET_ITEMS: function SET_ITEMS(state, items) {
@@ -79735,10 +79794,10 @@ function refreshState(state) {
 
 		commit('CLEAR_SCRATCH_CARD');
 	},
-	clear: function clear(_ref10) {
+	clearPurchase: function clearPurchase(_ref10) {
 		var commit = _ref10.commit;
 
-		commit('CLEAR');
+		commit('CLEAR_PURCHASE');
 	},
 	setItems: function setItems(_ref11, items) {
 		var state = _ref11.state,

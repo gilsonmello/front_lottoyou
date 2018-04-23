@@ -8,6 +8,7 @@ use App\User;
 use App\Model\Frontend\Lottery;
 use App\Model\Frontend\SoccerExpert;
 use App\Model\Frontend\ScratchCardTheme;
+use App\Model\Frontend\OrderItem;
 
 class Order extends Model
 {
@@ -47,6 +48,22 @@ class Order extends Model
     protected $hidden = [
         
     ];
+
+    public function afterSave() 
+    {
+        
+    }
+
+    public function purchase()
+    {
+
+    }
+
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class, 'order_id')
+            ->orderBy('created_at', 'DESC');
+    }
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');

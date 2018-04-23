@@ -25,7 +25,7 @@
             	{{ category.nome }}
             </span>     
         </header>
-		<div class="tickets-content" @click.prevent="openModal" :style="backgroundTicket(ticket.imagem_capa)">
+		<div class="tickets-content" @click.prevent="openModal">
 			<div class="row">
 				<div :class="verifyCol(ticket.games)" v-for="(game, index) in ticket.games">
 					<game-component :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index"></game-component>
@@ -178,7 +178,9 @@
 
 	.tickets {
 		/*padding: 10px 20px 10px 20px;*/
-		padding: 5px;
+		color: #000;
+    	border: 1px solid #00000054;
+    	box-shadow: none;
 	}
 
 	.tickets-header {

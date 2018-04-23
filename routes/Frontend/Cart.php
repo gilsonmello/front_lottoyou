@@ -9,6 +9,9 @@ Route::post('/carts/add_soccer_experts', 'CartController@addSoccerExpert')
 Route::post('/carts/add_lotteries', 'CartController@addLottery')
     ->name('frontend.carts.add_lotteries');
 
+Route::post('/carts/complete_purchase', 'CartController@completePurchase')
+    ->name('frontend.carts.complete_purchase');
+
 Route::resource('carts', 'CartController', [
     'names' => [
         'index' => 'frontend.carts.index',

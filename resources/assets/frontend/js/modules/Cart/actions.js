@@ -26,8 +26,8 @@ export default {
 	clearScratchCard: ({commit}) => {
 		commit('CLEAR_SCRATCH_CARD')
 	},
-	clear: ({commit}) => {
-		commit('CLEAR')
+	clearPurchase: ({commit}) => {
+		commit('CLEAR_PURCHASE')
 	},
 	setItems: ({state, commit}, items) => {
 		commit('SET_ITEMS', items)

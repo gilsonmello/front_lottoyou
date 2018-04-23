@@ -64,6 +64,10 @@
 
 <style scoped>
 
+    .row {
+        
+    }
+
     .ticket-sweepstake-name {
         display: block;
     }

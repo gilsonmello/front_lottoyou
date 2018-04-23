@@ -3,10 +3,10 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Frontend\Cart;
+use App\Model\Frontend\Order;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CartItem extends Model
+class OrderItem extends Model
 {
     use SoftDeletes;
     
@@ -23,7 +23,7 @@ class CartItem extends Model
      * 
      * @var array
      */
-    public $table = 'cart_items';
+    public $table = 'order_items';
 
     /**
      * The attributes that are mass assignable.
@@ -43,7 +43,8 @@ class CartItem extends Model
         
     ];
 
-    public function cart() {
-        return $this->belongsTo(Cart::class, 'cart_id');
+    public function order() {
+        return $this->belongsTo(Order::class, 'order_id');
     }
+    
 }

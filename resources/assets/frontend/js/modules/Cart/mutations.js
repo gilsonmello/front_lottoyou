@@ -54,6 +54,9 @@ function refreshState (state) {
 	//Total de todos os itens
 	state.total = state.lotteries.total + state.scratch_cards.total + state.soccer_expert.total;
 
+	//Total de todos os itens
+	state.sub_total = state.lotteries.total + state.scratch_cards.total + state.soccer_expert.total;
+
 	//Novo estado
 	return state;
 }
@@ -72,7 +75,7 @@ export default {
 
 		if(state.purchase.lotteries.items.length == 0) {
 			state.purchase.lotteries.items.unshift(items);
-		}else {
+		} else {
 
 			state.purchase.lotteries.items.map(function( elem, index, array ) {
 				if(elem.hash == items.hash) {
@@ -96,7 +99,7 @@ export default {
 				type: 'lottery',
 				lottery: items
 			});
-		}else {
+		} else {
 
 			state.purchase.items.map(function( elem, index, array ) {
 				if(elem.lottery != undefined) {
@@ -112,7 +115,7 @@ export default {
 					type: 'lottery',
 					lottery: items
 				});
-			}else {
+			} else {
 				state.purchase.items[idx] = {
 					type: 'lottery',
 					lottery: items
@@ -134,10 +137,10 @@ export default {
 			if(val.type == 'lottery') {
 				if(val.lottery.hash != items.hash) {
 					return true
-				}else{
+				} else{
 					return false
 				}
-			}else {
+			} else {
 				return true;
 			}
 		});
@@ -165,7 +168,7 @@ export default {
 
 		if(state.purchase.soccer_expert.items.length == 0) {
 			state.purchase.soccer_expert.items.unshift(items);
-		}else {
+		} else {
 
 			state.purchase.soccer_expert.items.map(function( elem, index, array ) {
 				if(elem.hash == items.hash) {
@@ -175,7 +178,7 @@ export default {
 
 			if(idx == null) {
 				state.purchase.soccer_expert.items.unshift(items);
-			}else {
+			} else {
 				state.purchase.soccer_expert.items[idx] = items	
 			}
 
@@ -187,7 +190,7 @@ export default {
 				type: 'soccer_expert',
 				soccer_expert: items
 			});
-		}else {
+		} else {
 
 			state.purchase.items.map(function( elem, index, array ) {
 				if(elem.soccer_expert != undefined) {
@@ -226,7 +229,7 @@ export default {
 			if(val.type == 'soccer_expert') {
 				if(val.soccer_expert.hash != items.hash) {
 					return true
-				}else{
+				} else{
 					return false
 				}
 			}
@@ -331,25 +334,26 @@ export default {
 
 		state.purchase = refreshState(state.purchase);
 	},
-	CLEAR(state) {
-		state = {
-			purchase: {
-				quantity: 0,
+	CLEAR_PURCHASE(state) {
+		state.purchase = {
+			quantity: 0,
+			total: 0.00,
+			coupon: {},
+			user_id: null,
+			sub_total: 0.00,
+			lotteries: {
 				total: 0.00,
-				lotteries: {
-					total: 0.00,
-					items: []
-				},
-				scratch_cards: {
-					total: 0.00,
-					items: []
-				},
-				soccer_expert: {
-					total: 0.00,
-					items: []
-				},
 				items: []
-			}
+			},
+			scratch_cards: {
+				total: 0.00,
+				items: []
+			},
+			soccer_expert: {
+				total: 0.00,
+				items: []
+			},
+			items: []
 		};
 	},
 	SET_ITEMS(state, items) {

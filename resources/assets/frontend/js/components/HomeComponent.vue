@@ -8,51 +8,41 @@
 
 		<br>
 		<div class="container">
-			<div class="row">
-				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-					<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
-					<img style="width: 100%; " class="img-fluid" src="/img/new/banner_1.jpg">
-				</div>
-			</div>
+			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
+				<img style="width: 100%; " class="img-fluid" src="/img/new/banner_1.jpg">
+			</div>			
 		</div>
 		
 		<br>
 		<div class="container">
-			<div class="row">
-				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-					<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
-					<img style="width: 100%; " class="img-fluid" src="/img/banner_medio_soccer.jpg">
-				</div>
+			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
+				<img style="width: 100%; " class="img-fluid" src="/img/banner_medio_soccer.jpg">
 			</div>
 		</div>
 
 		<br>
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
-					<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
-					<img style="width: 100%; " class="img-fluid" src="/img/banner_medio_raspadinhas.jpg">
-				</div>
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
+				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
+				<img style="width: 100%; " class="img-fluid" src="/img/banner_medio_raspadinhas.jpg">
 			</div>
 		</div>
 
 		<br>
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
-					<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
-					<img style="width: 100%; " class="img-fluid" src="/img/banner_medio_raspadinha.jpg">
-				</div>
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
+				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
+				<img style="width: 100%; " class="img-fluid" src="/img/banner_medio_raspadinha.jpg">
 			</div>
 		</div>
 
 		<br>
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
-					<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
-					<img style="width: 100%; " class="img-fluid" src="/img/golden_goal.jpg">
-				</div>
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
+				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
+				<img style="width: 100%; " class="img-fluid" src="/img/golden_goal.jpg">
 			</div>
 		</div>
 
@@ -84,11 +74,9 @@
 
 		<br>
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-					<div id="how-to-play">
-						<h1 class="text-center">Como jogar</h1>
-					</div>
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+				<div id="how-to-play">
+					<h1 class="text-center">Como jogar</h1>
 				</div>
 			</div>
 			<div class="row" style="background-image: url(//www.lottoland.com/cms/5554aadbe4b06bf49b4e071e/br_homepage_step-icons2.jpg); height: 300px; background-size: 100% auto; background-repeat: no-repeat; padding: 200px 0 0 130px;">
@@ -114,23 +102,23 @@
 					<h1 class="text-center">Explicações<br>960 x 300px</h1>
 				</div>
 			</div> -->
-			<div class="row">
-				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-					<img class="img-fluid" style="width: 100%; " src="/img/new/explic_easy.jpg">
-				</div>
+			
+			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+				<img class="img-fluid" style="width: 100%; " src="/img/new/explic_easy.jpg">
 			</div>
+			
 
-			<div class="row">
-				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-					<img class="img-fluid" style="width: 100%; " src="/img/new/explic_raspadinhas.jpg">
-				</div>
+		
+			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+				<img class="img-fluid" style="width: 100%; " src="/img/new/explic_raspadinhas.jpg">
 			</div>
+		
 
-			<div class="row">
-				<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-					<img class="img-fluid" style="width: 100%; " src="/img/new/explic_soccer.jpg">
-				</div>
+			
+			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+				<img class="img-fluid" style="width: 100%; " src="/img/new/explic_soccer.jpg">
 			</div>
+			
 		</div>
 	</div>
 </template>
