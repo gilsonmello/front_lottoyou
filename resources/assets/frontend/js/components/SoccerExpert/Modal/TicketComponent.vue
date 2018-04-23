@@ -116,18 +116,22 @@
 				
 				this.$emit('updateSoccerExpert');
 			},
+			setCountdown(date) {
+				this.countdown(date, (d, h, m, s, distance) => {
+	            	this.days = d;
+					this.hours = h;
+					this.minutes = m;
+					this.seconds = s;
+					if(distance < 0) {
+						clearInterval(timeOut);
+					}
+	            });
+			},
 			init() {
-				var date = this.formatDate(this.ticket.data_termino);
+				var date = this.formatDate(this.ticket.data_termino);				
+				this.setCountdown(date);
     			var timeOut = setInterval(() => {
-    				this.countdown(date, (d, h, m, s, distance) => {
-		            	this.days = d;
-						this.hours = h;
-						this.minutes = m;
-						this.seconds = s;
-						if(distance < 0) {
-							clearInterval(timeOut);
-						}
-		            });
+    				this.setCountdown(date);
     			}, 1000);
 			}
         },
@@ -138,6 +142,9 @@
 					this.init();
 					this.updateTicket();
 				})			
+
+			let value = parseFloat(this.ticket.valor);
+            this.value = value.format(2, true);
 		},
 		components: {
 			GameComponent

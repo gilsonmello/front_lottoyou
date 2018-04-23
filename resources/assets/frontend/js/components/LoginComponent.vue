@@ -1,7 +1,10 @@
 <template>
 	<div class="modal fade modal-login" data-backdrop="static" tabindex="-1" aria-labelledby="nivel2" aria-hidden="true">
         <div class="modal-dialog modal-md">
-            <div class="modal-content">
+        	<div class="modal-content" v-if="loading.component == true">
+        		
+        	</div>
+            <div class="modal-content" v-else>
                 <!-- Modal Header -->
                 <div class="modal-header items-center" style="border-bottom: none;">
                 	<img src="/imgs/logo.png" style="width: 125px; height: 50;">
@@ -113,19 +116,35 @@
 </template>
 <script>
 	import {routes} from '../api_routes'
+	import LoadComponent from './Load'
 	export default {
 		data: function() {
 			return {
 				email: '',
 				password: '',
-				errors: []
+				errors: [],
+				loading: {
+					component: true
+				},
 			}
 		},
 		watch: {
 
 		},
 		mounted: function() {
-			
+			this.loading.component = false;
+			var interval = setInterval(() => {
+				if($('.modal-login').length > 0) {
+					clearInterval(interval);
+					$('.modal-login').on('shown.bs.modal', (event) => {
+						this.loading.component = false;
+					});
+
+					$('.modal-login').on('hidden.bs.modal', (event) => {
+						this.loading.component = true;
+					});
+				}
+			})
 		},
 		methods: {
 			viewPassword(event) {
@@ -224,6 +243,9 @@
 		},
 		activated: function() {
 
+		},
+		components: {
+			LoadComponent
 		}
 	}
 </script>

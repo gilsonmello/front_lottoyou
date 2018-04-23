@@ -43,7 +43,8 @@ class SoccerExpertCycle extends Model
         
     ];
 
-    public function rounds() {
+    public function rounds() 
+    {
     	return $this->hasMany(SoccerExpertRound::class, 'soc_ciclo_id');
     }
 }

@@ -9,7 +9,7 @@
 						<div class="extras" v-if="soccer_expert.novo == 1">
 							<img :src="app.basePath+'img/new.png'" alt="new" class="game-badge">
 						</div>
-						<img class="header-image img-fluid" :alt="soccer_expert.nome" :src="soccer_expert.imagem_capa">
+						<img class="header-image img-fluid" style="width: 100%" :alt="soccer_expert.nome" :src="soccer_expert.imagem_capa">
 						<div class="descript">
 						</div>
 					</header>
@@ -53,7 +53,7 @@
 			}
 		},
 		mounted: function() {
-			window.document.title = window.app.title +' | '+ this.trans('strings.soccer_expert');
+			window.document.title = this.trans('strings.soccer_expert');
 			/*$(this.$el).find('.scratchpad').each(function () {
 				$(this).wScratchPad({
 					bg: '/img/raspadinha/0.01.png',

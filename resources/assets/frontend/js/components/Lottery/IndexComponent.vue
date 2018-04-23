@@ -3,41 +3,8 @@
 	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.lotteries') }}</h1>
 		<div class="row">
-			<div class="col-lg-4" v-for="lottery in lotteries">				
-				<div class="lottery-card">
-					<div class="row">
-						<div class="col-lg-6">
-							<img :alt="lottery.nome" :src="lottery.img_loteria" class="img-fluid">
-						</div>
-						<div class="col-lg-6">
-							<div class="pull-right">
-								<span class="text-primary" style="font-weight: bold; font-size: large;">
-									{{ lottery.nome }}
-								</span>
-								<br>
-								<span style="font-size: x-large;">
-									<b>
-										{{ lottery.jackpot }}
-									</b>
-								</span>
-							</div>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-lg-6">
-							<span class="countdown i iHourglass">
-                                <i class="md md-alarm"></i>
-                                295 Dias, 13H e 9M                                                        
-                            </span>
-						</div>
-						<div class="col-lg-6">
-							<router-link :to="{ name: 'lotteries.show', params: { id: lottery.id } }" class="btn btn-md btn-success">
-								{{ trans('strings.play_now') }}
-							</router-link>
-						</div>
-					</div>
-				</div>
+			<div class="col-lg-4 col-12 col-md-6 col-sm-6" v-for="lottery in lotteries">				
+				<card-component :lottery="lottery"></card-component>
 			</div>
 		</div>
 	</div>
@@ -46,6 +13,7 @@
 <script>
 	import {routes} from '../../api_routes'
 	import LoadComponent from '../Load'
+	import CardComponent from './CardComponent'
 	export default {
 		data: function() {
 			return {
@@ -55,8 +23,12 @@
 				lotteries: []
 			}
 		},
+		methods: {
+			
+		},
 		mounted: function() {
-			window.document.title = window.app.title +' | '+ this.trans('strings.lotteries');
+			//window.document.title = window.app.title +' | '+ this.trans('strings.lotteries');
+			window.document.title = this.trans('strings.lotteries');
 			
 			var lotteriesRequest = axios.create();
 	        lotteriesRequest.interceptors.request.use(config => {
@@ -73,7 +45,8 @@
 			});
 		},
 		components: {
-			LoadComponent
+			LoadComponent,
+			CardComponent
 		},
 		watch: {
 

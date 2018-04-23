@@ -25,7 +25,9 @@ class SoccerExpertController extends Controller
                 DB::raw('ADDDATE(NOW(), INTERVAL 7 DAY)')
             );
         });*/
-        $soccerCategories = SoccerExpert::all();
+        $soccerCategories = SoccerExpert::whereHas('cycles.rounds')
+            ->where('active', '=', 1)
+            ->get();
         if(!is_null($soccerCategories)) {
             return response()->json($soccerCategories, 200);
         }

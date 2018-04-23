@@ -14,15 +14,12 @@
                 <div class="col-lg-3">
                     <img src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
                     <label for="photo">Selecione a imagem do perfil</label>
-                    <input @change.prevent="changePhoto" type="file" name="photo" id="photo">
+                    <input accept="image/*" @change.prevent="changePhoto" type="file" name="photo" id="photo">
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
                         <div class="col-lg-2 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <div class="alert alert-danger" v-if="errors.email">
-                                    <div v-for="email in errors.email" >{{ email }}</div>
-                                </div>
                                 <label for="gender">{{ trans('strings.title') }}</label>
                                 <select readyonly disabled name="gender" v-model="gender" class="form-control" id="gender">
                                     <option value="M">{{ trans('strings.man') }}</option>
@@ -32,18 +29,12 @@
                         </div>
                         <div class="col-lg-4 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <div class="alert alert-danger" v-if="errors.email">
-                                    <div v-for="email in errors.email" >{{ email }}</div>
-                                </div>
                                 <label for="name">{{ trans('strings.name') }}</label>
                                 <input readonly disabled v-model="name" type="text" class="form-control" id="name" aria-describedby="name" name="name" :placeholder="trans('strings.name')">
                             </div>
                         </div>
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <div class="alert alert-danger" v-if="errors.email">
-                                    <div v-for="email in errors.email" >{{ email }}</div>
-                                </div>
                                 <label for="last_name">{{ trans('strings.last_name') }}</label>
                                 <input disabled readonly v-model="last_name" type="text" class="form-control" id="last_name" aria-describedby="last_name" name="last_name" :placeholder="trans('strings.last_name')">
                             </div>
@@ -234,7 +225,33 @@
                 }            
             },
             handleEdit: function(event) {
+                var vm = this;
                 var form = $(event.currentTarget);
+                var formData = new FormData(form[0]);
+                formData.append('_method', 'put');
+
+                /*var contentType = 'multipart/form-data';
+                $.ajax({
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: routes.users.update.replace('{id}', vm.id),
+                    data:  formData,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function() {
+                        
+                    },
+                    success: function(result) {
+
+                    },
+                    error: function(data) {
+                    
+                    }
+                });
+*/
+
                 var updateRequest = axios.create();
 
                 updateRequest.interceptors.request.use(config => {
@@ -243,7 +260,15 @@
                     $(this.$el).find('[type="submit"]').addClass('hide');
                     return config;
                 });
-                updateRequest.put(routes.users.update.replace('{id}', this.id), form.serialize()).then(response => {
+                updateRequest.post(
+                    routes.users.update.replace('{id}', this.id), 
+                    formData, 
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    }
+                ).then(response => {
                     if(response.status === 200) {
                         const access_token = JSON.parse(window.localStorage.getItem('access_token'));
                         const refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
@@ -262,7 +287,7 @@
                             window.localStorage.setItem('authUser', JSON.stringify(response_2.data))
                             this.$store.dispatch('setUserObject', response_2.data);
                             toastr.success(this.trans('alerts.users.update.success'));
-                            
+                            this.loading.component = false
                             //window.location.href = "/painel"
                             //this.$router.push({name: 'home'});
                         }).catch((error_2) => {
@@ -271,7 +296,6 @@
                             this.loading.component = false
                         });
                         this.errors = [];
-                        this.loading.component = false
                     }
                 }).catch((error) => {
                     this.loading.component = false

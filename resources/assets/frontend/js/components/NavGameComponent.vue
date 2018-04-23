@@ -4,27 +4,28 @@
         <span class="navbar-toggler-icon"></span>
       	</button>
       	<div class="collapse navbar-collapse" id="navbarCollapse">
-	        <ul class="navbar-nav" style="text-align: center;">
-	          	<li class="nav-item">
-	          		<router-link class="nav-link" :to="{ name: 'home' }">
-	          			{{ trans('strings.home') }} <span class="sr-only">(current)</span>
-	          		</router-link>
-	            </li>
-	            <li class="nav-item">
-	          		<router-link class="nav-link" :to="{ name: 'scratch_cards.index' }">
-	          			{{ trans('strings.scratch_card') }}</span>
-	          		</router-link>
-	            </li>
-	            <li class="nav-item">
-	          		<router-link class="nav-link" :to="{ name: 'soccer_expert.index' }">
-	          			{{ trans('strings.soccer_expert') }}</span>
-	          		</router-link>
-	            </li>
-	            <li class="nav-item">
+	        <ul class="navbar-nav" style="">
+
+	        	<router-link tag="li" :to="{ name: 'home' }">
+          			<a class="nav-link">{{ trans('strings.home') }}</a>
+				</router-link>
+
+	            <router-link tag="li" :to="{ name: 'scratch_cards.index' }">
+          			<a class="nav-link">{{ trans('strings.scratch_card') }}</a>
+				</router-link>
+
+          		<router-link tag="li" :to="{ name: 'soccer_expert.index' }">
+          			<a class="nav-link">{{ trans('strings.soccer_expert') }}</a>
+				</router-link>
+	            
+	            <router-link tag="li" :to="{ name: 'lotteries.index' }">
+	            	<a class="nav-link">{{ trans('strings.lotteries') }}</a>
+            	</router-link>
+	            <!-- <li class="nav-item">
 	          		<router-link class="nav-link" :to="{ name: 'lotteries.index' }">
 	          			{{ trans('strings.lotteries') }}</span>
 	          		</router-link>
-	            </li>
+	            </li> -->
 	          	<!-- <li class="nav-item">
 	            	<a class="nav-link" href="#">Link</a>
 	          	</li>
@@ -42,21 +43,30 @@
 </script>
 
 <style scoped>
-	ul {
-		width: 100%;
+	.navbar-nav {
 		text-align: center;
-		display: initial;
 	}
-	ul li {
-		display: inline-block;
+
+	.nav-link {
+	    color: inherit !important;
 	}
 
 	.navbar-dark .navbar-nav .nav-link {
 		font-weight: bold;
-		color: white;
 	}
 
-	.navbar-dark .navbar-nav .nav-link.active {
+	.navbar-nav {
+		width: 100%;
+		text-align: center;
+		display: initial;
+	}
+
+	.navbar-nav li {
+		color: white;
+		display: inline-block;
+	}
+
+	.navbar-nav li.active {
 		color: #535353;
 	    cursor: default;
 	    text-shadow: none;
@@ -64,8 +74,9 @@
 	    box-shadow: inset 0 3px 0 -1px rgba(0,0,0,.2);
 	}
 
-	.nav-item {
-		padding-right: 20px;
+	.navbar-nav li {
+		padding-right: 10px;
+		padding-left: 10px;
 	}
 
 	@media (max-width: 992px) {
@@ -81,16 +92,22 @@
 		.navbar-toggler {
 			margin-top: 10px;
 		    margin-bottom: 10px;
+		    margin-left: 15px;
 		}
 
-		ul {
+		.navbar-nav {
 			display: block;
 		}
 	}
 
 	@media (max-width: 576px) {
-		ul {
+		.navbar-nav {
 			display: flex;
+			text-align: left;
+		}
+
+		.navbar-nav li {
+			padding-left: 15px !important;
 		}
 
 		.navbar-toggler {
@@ -98,12 +115,9 @@
 		    margin-bottom: 10px;
 		}
 		
-		.nav-item {
-			padding: 0 !important;
-		}
-
+		
 		.navbar-collapse {
-			margin-top: 5px;
+			
 		}
 	}
 </style>

@@ -5,6 +5,7 @@ namespace App\Model\Frontend;
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Model\Frontend\SoccerExpertRound;
+use App\Model\Frontend\SoccerExpertCycle;
 
 class SoccerExpert extends Model
 {
@@ -43,7 +44,13 @@ class SoccerExpert extends Model
         
     ];
 
-    public function rounds() {
+    public function cycles() 
+    {
+        return $this->hasMany(SoccerExpertCycle::class, 'soc_categoria_id');
+    }
+
+    public function rounds() 
+    {
     	return $this->hasMany(SoccerExpertRound::class, 'soc_categoria_id');
     }
 

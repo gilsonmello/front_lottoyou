@@ -154,7 +154,6 @@
 			    }else{
 			        next();
 			    }
-			    $('.modal-login').modal('hide');
 			});
 
 			router.afterEach((to, from) => {
@@ -167,6 +166,9 @@
 				    	this.$router.push({name: 'home'});
 					}
 			    }, 200)
+
+			    //Fechando o modal de login
+			    $('.modal-login').modal('hide');
 			});			
 		},
 		components: {

@@ -64,8 +64,7 @@
 						  					</div>
 						  				</div>
 					  				</router-link>
-					  				
-						  		</li>
+					  			</li>
 					  			<li class="item-account" data-toggle="tooltip" v-if="auth" @mouseover="openTooltip" @mouseleave="closeTooltip">
 					  				<router-link :to="{ name: 'users.account' }" class="pull-left" style="width: 100%;">
 						  				<div class="pull-left vcenter">
@@ -88,7 +87,7 @@
 						  			</router-link>
 						  			<div class="tooltip-item-account">
 						  				<div class="tooltip-item-account-header">
-						  					<div class="row">
+						  					<div class="row vcenter">
 						  						<div class="col-lg-8">
 						  							<span class="title">Minha Lottoyou</span>
 						  						</div>
@@ -100,7 +99,7 @@
 						  				<div class="tooltip-item-account-content">
 						  					<ul class="account">
 						  						<li class="account-item">
-						  							<div class="row">
+						  							<div class="row vcenter">
 						  								<div class="col-lg-2">
 						  									<i class="fa fa-user-circle" style="font-size: 27px; color: initial;"></i>
 						  								</div>
@@ -112,7 +111,7 @@
 						  							</div>
 						  						</li>
 						  						<li class="account-item">
-						  							<div class="row">
+						  							<div class="row vcenter">
 						  								<div class="col-lg-2">
 						  									<i class="fa fa-gamepad" style="font-size: 27px; color: initial;"></i>
 						  								</div>
@@ -124,7 +123,7 @@
 						  							</div>
 						  						</li>
 						  						<li class="account-item">
-						  							<div class="row">
+						  							<div class="row vcenter">
 						  								<div class="col-lg-2">
 						  									<i class="fa fa fa-credit-card-alt" style="font-size: 27px; color: initial;"></i>
 						  								</div>
@@ -136,7 +135,7 @@
 						  							</div>
 						  						</li>
 						  						<li class="account-item">
-						  							<div class="row">
+						  							<div class="row vcenter">
 						  								<div class="col-lg-12">
 						  									<span class="answer">Não é {{ auth.name }} ?</span>
 						  									<a href="#" @click.prevent="logout" class="">
@@ -179,7 +178,7 @@
 			  	</div>
 			</nav>
 		</div>	
-		<div class="container-fluid bg-lottoyou">
+		<div class="container-fluid bg-lottoyou" style="padding: 0;">
 			<nav-game-component></nav-game-component>
 		</div>
 	</div>
@@ -234,7 +233,7 @@
 			var time = setInterval(() => {
 				var header = $('.header');
 		    	$('body').css({
-		    		'padding-top': header[0].clientHeight
+		    		'padding-top': header[0].clientHeight - 1
 		    	});
 		    	
 		    	if(header.length > 0){

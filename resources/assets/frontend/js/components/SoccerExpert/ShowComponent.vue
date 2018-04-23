@@ -33,11 +33,11 @@
 			                </div>
 						</div>
 			        </div>
-			        <a class="carousel-control-prev" id="prev-slide-content" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			        <a class="carousel-control-prev" v-if="item.soccer_expert.cycles.length > 1" id="prev-slide-content" href="#carouselExampleIndicators" role="button" data-slide="prev">
 			            <span class="fa fa-angle-left" style="color: black"></span>
 			            <span class="sr-only">Previous</span>
 			        </a>
-			        <a class="carousel-control-next" id="next-slide-content" href="#carouselExampleIndicators" role="button" data-slide="next">
+			        <a class="carousel-control-next" v-if="item.soccer_expert.cycles.length > 1" id="next-slide-content" href="#carouselExampleIndicators" role="button" data-slide="next">
 			            <span class="fa fa-angle-right" style="color: black"></span>
 			            <span class="sr-only">Next</span>
 			        </a>
@@ -199,6 +199,7 @@
 				} else if(this.$route.params.id != undefined) {
 					this.showRequest();
 				}
+				window.document.title = this.trans('strings.soccer_expert');
 			},
 			
 		},

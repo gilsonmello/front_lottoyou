@@ -198,10 +198,7 @@
 </script>
 
 <style scoped>
-	.vcenter {
-		margin: 10px;
-	}
-
+	
 	.row {
 		align-items: center;
 	}

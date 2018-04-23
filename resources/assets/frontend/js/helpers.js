@@ -12,7 +12,7 @@ import Vue from 'vue'
 	return numbers;
 };*/
 
-var countdown = Vue.prototype.countdown = function(date, callback) {
+Vue.prototype.countdown = function(date, callback) {
 	
 	var now = new Date();	
 	
@@ -40,6 +40,8 @@ var countdown = Vue.prototype.countdown = function(date, callback) {
 	
 	if(callback != undefined && typeof callback === 'function')
 		callback(d, h, m, s, distance);
+
+	return [d, h, m, s, distance];
 }
 
 Vue.prototype.formatDate = function(dateBR) {

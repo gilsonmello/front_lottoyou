@@ -344,6 +344,7 @@
 				}else if(this.$route.params.id != undefined) {
 					this.showRequest();
 				}
+				window.document.title = this.trans('strings.lotteries');
 			},
 			//Removendo aposta
 			removeBet: function(event) {

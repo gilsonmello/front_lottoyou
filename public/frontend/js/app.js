@@ -56390,7 +56390,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	return numbers;
 };*/
 
-var countdown = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.countdown = function (date, callback) {
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.countdown = function (date, callback) {
 
 	var now = new Date();
 
@@ -56416,6 +56416,8 @@ var countdown = __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.countdown 
 	m = m < 10 ? "0" + m : m;
 
 	if (callback != undefined && typeof callback === 'function') callback(d, h, m, s, distance);
+
+	return [d, h, m, s, distance];
 };
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.formatDate = function (dateBR) {
@@ -61336,7 +61338,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -61382,7 +61383,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		var time = setInterval(function () {
 			var header = $('.header');
 			$('body').css({
-				'padding-top': header[0].clientHeight
+				'padding-top': header[0].clientHeight - 1
 			});
 
 			if (header.length > 0) {
@@ -61494,7 +61495,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\nul[data-v-8c035078] {\n\twidth: 100%;\n\ttext-align: center;\n\tdisplay: initial;\n}\nul li[data-v-8c035078] {\n\tdisplay: inline-block;\n}\n.navbar-dark .navbar-nav .nav-link[data-v-8c035078] {\n\tfont-weight: bold;\n\tcolor: white;\n}\n.navbar-dark .navbar-nav .nav-link.active[data-v-8c035078] {\n\tcolor: #535353;\n    cursor: default;\n    text-shadow: none;\n    background: #ffe066;\n    -webkit-box-shadow: inset 0 3px 0 -1px rgba(0,0,0,.2);\n            box-shadow: inset 0 3px 0 -1px rgba(0,0,0,.2);\n}\n.nav-item[data-v-8c035078] {\n\tpadding-right: 20px;\n}\n@media (max-width: 992px) {\n}\n@media (max-width: 767px) {\n.nav-link[data-v-8c035078] {\n\t\tpadding: 10px;\n}\n.navbar-toggler[data-v-8c035078] {\n\t\tmargin-top: 10px;\n\t    margin-bottom: 10px;\n}\nul[data-v-8c035078] {\n\t\tdisplay: block;\n}\n}\n@media (max-width: 576px) {\nul[data-v-8c035078] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -ms-flexbox;\n\t\tdisplay: flex;\n}\n.navbar-toggler[data-v-8c035078] {\n\t\tmargin-top: 10px;\n\t    margin-bottom: 10px;\n}\n.nav-item[data-v-8c035078] {\n\t\tpadding: 0 !important;\n}\n.navbar-collapse[data-v-8c035078] {\n\t\tmargin-top: 5px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.navbar-nav[data-v-8c035078] {\n\ttext-align: center;\n}\n.nav-link[data-v-8c035078] {\n    color: inherit !important;\n}\n.navbar-dark .navbar-nav .nav-link[data-v-8c035078] {\n\tfont-weight: bold;\n}\n.navbar-nav[data-v-8c035078] {\n\twidth: 100%;\n\ttext-align: center;\n\tdisplay: initial;\n}\n.navbar-nav li[data-v-8c035078] {\n\tcolor: white;\n\tdisplay: inline-block;\n}\n.navbar-nav li.active[data-v-8c035078] {\n\tcolor: #535353;\n    cursor: default;\n    text-shadow: none;\n    background: #ffe066;\n    -webkit-box-shadow: inset 0 3px 0 -1px rgba(0,0,0,.2);\n            box-shadow: inset 0 3px 0 -1px rgba(0,0,0,.2);\n}\n.navbar-nav li[data-v-8c035078] {\n\tpadding-right: 10px;\n\tpadding-left: 10px;\n}\n@media (max-width: 992px) {\n}\n@media (max-width: 767px) {\n.nav-link[data-v-8c035078] {\n\t\tpadding: 10px;\n}\n.navbar-toggler[data-v-8c035078] {\n\t\tmargin-top: 10px;\n\t    margin-bottom: 10px;\n\t    margin-left: 15px;\n}\n.navbar-nav[data-v-8c035078] {\n\t\tdisplay: block;\n}\n}\n@media (max-width: 576px) {\n.navbar-nav[data-v-8c035078] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -ms-flexbox;\n\t\tdisplay: flex;\n\t\ttext-align: left;\n}\n.navbar-nav li[data-v-8c035078] {\n\t\tpadding-left: 15px !important;\n}\n.navbar-toggler[data-v-8c035078] {\n\t\tmargin-top: 10px;\n\t    margin-bottom: 10px;\n}\n.navbar-collapse[data-v-8c035078] {\n}\n}\n", ""]);
 
 // exports
 
@@ -61505,6 +61506,7 @@ exports.push([module.i, "\nul[data-v-8c035078] {\n\twidth: 100%;\n\ttext-align: 
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -61571,99 +61573,49 @@ var render = function() {
         [
           _c(
             "ul",
-            {
-              staticClass: "navbar-nav",
-              staticStyle: { "text-align": "center" }
-            },
+            { staticClass: "navbar-nav" },
             [
               _c(
-                "li",
-                { staticClass: "nav-item" },
+                "router-link",
+                { attrs: { tag: "li", to: { name: "home" } } },
                 [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "home" } }
-                    },
-                    [
-                      _vm._v(
-                        "\n\t          \t\t\t" +
-                          _vm._s(_vm.trans("strings.home")) +
-                          " "
-                      ),
-                      _c("span", { staticClass: "sr-only" }, [
-                        _vm._v("(current)")
-                      ])
-                    ]
-                  )
-                ],
-                1
+                  _c("a", { staticClass: "nav-link" }, [
+                    _vm._v(_vm._s(_vm.trans("strings.home")))
+                  ])
+                ]
               ),
               _vm._v(" "),
               _c(
-                "li",
-                { staticClass: "nav-item" },
+                "router-link",
+                { attrs: { tag: "li", to: { name: "scratch_cards.index" } } },
                 [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "scratch_cards.index" } }
-                    },
-                    [
-                      _vm._v(
-                        "\n\t          \t\t\t" +
-                          _vm._s(_vm.trans("strings.scratch_card"))
-                      )
-                    ]
-                  )
-                ],
-                1
+                  _c("a", { staticClass: "nav-link" }, [
+                    _vm._v(_vm._s(_vm.trans("strings.scratch_card")))
+                  ])
+                ]
               ),
               _vm._v(" "),
               _c(
-                "li",
-                { staticClass: "nav-item" },
+                "router-link",
+                { attrs: { tag: "li", to: { name: "soccer_expert.index" } } },
                 [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "soccer_expert.index" } }
-                    },
-                    [
-                      _vm._v(
-                        "\n\t          \t\t\t" +
-                          _vm._s(_vm.trans("strings.soccer_expert"))
-                      )
-                    ]
-                  )
-                ],
-                1
+                  _c("a", { staticClass: "nav-link" }, [
+                    _vm._v(_vm._s(_vm.trans("strings.soccer_expert")))
+                  ])
+                ]
               ),
               _vm._v(" "),
               _c(
-                "li",
-                { staticClass: "nav-item" },
+                "router-link",
+                { attrs: { tag: "li", to: { name: "lotteries.index" } } },
                 [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "lotteries.index" } }
-                    },
-                    [
-                      _vm._v(
-                        "\n\t          \t\t\t" +
-                          _vm._s(_vm.trans("strings.lotteries"))
-                      )
-                    ]
-                  )
-                ],
-                1
+                  _c("a", { staticClass: "nav-link" }, [
+                    _vm._v(_vm._s(_vm.trans("strings.lotteries")))
+                  ])
+                ]
               )
-            ]
+            ],
+            1
           )
         ]
       )
@@ -62097,38 +62049,43 @@ var render = function() {
                                           "li",
                                           { staticClass: "account-item" },
                                           [
-                                            _c("div", { staticClass: "row" }, [
-                                              _vm._m(1),
-                                              _vm._v(" "),
-                                              _c(
-                                                "div",
-                                                { staticClass: "col-lg-10" },
-                                                [
-                                                  _c(
-                                                    "router-link",
-                                                    {
-                                                      attrs: {
-                                                        to: {
-                                                          name: "users.account"
+                                            _c(
+                                              "div",
+                                              { staticClass: "row vcenter" },
+                                              [
+                                                _vm._m(1),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "col-lg-10" },
+                                                  [
+                                                    _c(
+                                                      "router-link",
+                                                      {
+                                                        attrs: {
+                                                          to: {
+                                                            name:
+                                                              "users.account"
+                                                          }
                                                         }
-                                                      }
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t" +
-                                                          _vm._s(
-                                                            _vm.trans(
-                                                              "strings.account"
-                                                            )
-                                                          ) +
-                                                          "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t"
-                                                      )
-                                                    ]
-                                                  )
-                                                ],
-                                                1
-                                              )
-                                            ])
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t" +
+                                                            _vm._s(
+                                                              _vm.trans(
+                                                                "strings.account"
+                                                              )
+                                                            ) +
+                                                            "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t"
+                                                        )
+                                                      ]
+                                                    )
+                                                  ],
+                                                  1
+                                                )
+                                              ]
+                                            )
                                           ]
                                         ),
                                         _vm._v(" "),
@@ -62136,38 +62093,42 @@ var render = function() {
                                           "li",
                                           { staticClass: "account-item" },
                                           [
-                                            _c("div", { staticClass: "row" }, [
-                                              _vm._m(2),
-                                              _vm._v(" "),
-                                              _c(
-                                                "div",
-                                                { staticClass: "col-lg-10" },
-                                                [
-                                                  _c(
-                                                    "router-link",
-                                                    {
-                                                      attrs: {
-                                                        to: {
-                                                          name: "users.games"
+                                            _c(
+                                              "div",
+                                              { staticClass: "row vcenter" },
+                                              [
+                                                _vm._m(2),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "col-lg-10" },
+                                                  [
+                                                    _c(
+                                                      "router-link",
+                                                      {
+                                                        attrs: {
+                                                          to: {
+                                                            name: "users.games"
+                                                          }
                                                         }
-                                                      }
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t" +
-                                                          _vm._s(
-                                                            _vm.trans(
-                                                              "strings.games"
-                                                            )
-                                                          ) +
-                                                          "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t"
-                                                      )
-                                                    ]
-                                                  )
-                                                ],
-                                                1
-                                              )
-                                            ])
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t" +
+                                                            _vm._s(
+                                                              _vm.trans(
+                                                                "strings.games"
+                                                              )
+                                                            ) +
+                                                            "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t"
+                                                        )
+                                                      ]
+                                                    )
+                                                  ],
+                                                  1
+                                                )
+                                              ]
+                                            )
                                           ]
                                         ),
                                         _vm._v(" "),
@@ -62175,39 +62136,43 @@ var render = function() {
                                           "li",
                                           { staticClass: "account-item" },
                                           [
-                                            _c("div", { staticClass: "row" }, [
-                                              _vm._m(3),
-                                              _vm._v(" "),
-                                              _c(
-                                                "div",
-                                                { staticClass: "col-lg-10" },
-                                                [
-                                                  _c(
-                                                    "router-link",
-                                                    {
-                                                      attrs: {
-                                                        to: {
-                                                          name:
-                                                            "users.transactions"
+                                            _c(
+                                              "div",
+                                              { staticClass: "row vcenter" },
+                                              [
+                                                _vm._m(3),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "col-lg-10" },
+                                                  [
+                                                    _c(
+                                                      "router-link",
+                                                      {
+                                                        attrs: {
+                                                          to: {
+                                                            name:
+                                                              "users.transactions"
+                                                          }
                                                         }
-                                                      }
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t" +
-                                                          _vm._s(
-                                                            _vm.trans(
-                                                              "strings.transactions"
-                                                            )
-                                                          ) +
-                                                          "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t"
-                                                      )
-                                                    ]
-                                                  )
-                                                ],
-                                                1
-                                              )
-                                            ])
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t" +
+                                                            _vm._s(
+                                                              _vm.trans(
+                                                                "strings.transactions"
+                                                              )
+                                                            ) +
+                                                            "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t"
+                                                        )
+                                                      ]
+                                                    )
+                                                  ],
+                                                  1
+                                                )
+                                              ]
+                                            )
                                           ]
                                         ),
                                         _vm._v(" "),
@@ -62215,53 +62180,57 @@ var render = function() {
                                           "li",
                                           { staticClass: "account-item" },
                                           [
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                { staticClass: "col-lg-12" },
-                                                [
-                                                  _c(
-                                                    "span",
-                                                    { staticClass: "answer" },
-                                                    [
-                                                      _vm._v(
-                                                        "Não é " +
-                                                          _vm._s(
-                                                            _vm.auth.name
-                                                          ) +
-                                                          " ?"
-                                                      )
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "a",
-                                                    {
-                                                      attrs: { href: "#" },
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          $event.preventDefault()
-                                                          _vm.logout($event)
+                                            _c(
+                                              "div",
+                                              { staticClass: "row vcenter" },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "col-lg-12" },
+                                                  [
+                                                    _c(
+                                                      "span",
+                                                      { staticClass: "answer" },
+                                                      [
+                                                        _vm._v(
+                                                          "Não é " +
+                                                            _vm._s(
+                                                              _vm.auth.name
+                                                            ) +
+                                                            " ?"
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "a",
+                                                      {
+                                                        attrs: { href: "#" },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            $event.preventDefault()
+                                                            _vm.logout($event)
+                                                          }
                                                         }
-                                                      }
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        "\n\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t\t" +
-                                                          _vm._s(
-                                                            _vm.trans(
-                                                              "strings.logout"
-                                                            )
-                                                          ) +
-                                                          "\n\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t"
-                                                      )
-                                                    ]
-                                                  )
-                                                ]
-                                              )
-                                            ])
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t\t" +
+                                                            _vm._s(
+                                                              _vm.trans(
+                                                                "strings.logout"
+                                                              )
+                                                            ) +
+                                                            "\n\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t"
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
                                           ]
                                         )
                                       ])
@@ -62368,7 +62337,10 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "container-fluid bg-lottoyou" },
+      {
+        staticClass: "container-fluid bg-lottoyou",
+        staticStyle: { padding: "0" }
+      },
       [_c("nav-game-component")],
       1
     )
@@ -62380,7 +62352,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "tooltip-item-account-header" }, [
-      _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "row vcenter" }, [
         _c("div", { staticClass: "col-lg-8" }, [
           _c("span", { staticClass: "title" }, [_vm._v("Minha Lottoyou")])
         ]),
@@ -63590,6 +63562,8 @@ exports.push([module.i, "\n.login-form[data-v-253114e0] {\n}\n.view-password[dat
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Load__);
 //
 //
 //
@@ -63703,6 +63677,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -63710,11 +63688,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			email: '',
 			password: '',
-			errors: []
+			errors: [],
+			loading: {
+				component: true
+			}
 		};
 	},
 	watch: {},
-	mounted: function mounted() {},
+	mounted: function mounted() {
+		var _this = this;
+
+		this.loading.component = false;
+		var interval = setInterval(function () {
+			if ($('.modal-login').length > 0) {
+				clearInterval(interval);
+				$('.modal-login').on('shown.bs.modal', function (event) {
+					_this.loading.component = false;
+				});
+
+				$('.modal-login').on('hidden.bs.modal', function (event) {
+					_this.loading.component = true;
+				});
+			}
+		});
+	},
 	methods: {
 		viewPassword: function viewPassword(event) {
 			var target = $(event.target);
@@ -63739,7 +63736,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 
 		login: function login() {
-			var _this = this;
+			var _this2 = this;
 
 			var data = {
 				grant_type: 'password',
@@ -63751,8 +63748,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			};
 			var loginRequest = axios.create();
 			loginRequest.interceptors.request.use(function (config) {
-				$(_this.$el).find('[type="load"]').removeClass('hide');
-				$(_this.$el).find('[type="submit"]').addClass('hide');
+				$(_this2.$el).find('[type="load"]').removeClass('hide');
+				$(_this2.$el).find('[type="submit"]').addClass('hide');
 				return config;
 			});
 
@@ -63763,7 +63760,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
 					window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
 
-					_this.$router.push({ name: 'users.account' });
+					_this2.$router.push({ name: 'users.account' });
 					/*
      var access_token = response.data.access_token
        			var refresh_token = response.data.refresh_token
@@ -63795,15 +63792,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
            */
 				}
 			}).catch(function (error) {
-				$(_this.$el).find('[type="load"]').addClass('hide');
-				$(_this.$el).find('[type="submit"]').removeClass('hide');
-				_this.errors = {
+				$(_this2.$el).find('[type="load"]').addClass('hide');
+				$(_this2.$el).find('[type="submit"]').removeClass('hide');
+				_this2.errors = {
 					credentials: 'Usuário ou Senha inválidos'
 				};
 			});
 		}
 	},
-	activated: function activated() {}
+	activated: function activated() {},
+	components: {
+		LoadComponent: __WEBPACK_IMPORTED_MODULE_1__Load___default.a
+	}
 });
 
 /***/ }),
@@ -63827,209 +63827,212 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "modal-dialog modal-md" }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-body" }, [
-            _c(
-              "form",
-              {
-                staticClass: "login-form",
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    _vm.login($event)
-                  }
-                }
-              },
-              [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _vm.errors.credentials
-                    ? _c("div", { staticClass: "col-12 col-lg-12" }, [
-                        _c("div", { staticClass: "alert alert-danger" }, [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t\t\t" +
-                              _vm._s(_vm.errors.credentials) +
-                              "\n\t\t\t\t\t\t\t\t"
-                          )
+        _vm.loading.component == true
+          ? _c("div", { staticClass: "modal-content" })
+          : _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass: "login-form",
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        _vm.login($event)
+                      }
+                    }
+                  },
+                  [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _vm.errors.credentials
+                        ? _c("div", { staticClass: "col-12 col-lg-12" }, [
+                            _c("div", { staticClass: "alert alert-danger" }, [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\t\t\t" +
+                                  _vm._s(_vm.errors.credentials) +
+                                  "\n\t\t\t\t\t\t\t\t"
+                              )
+                            ])
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-12" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "email" } }, [
+                            _vm._v(_vm._s(_vm.trans("strings.email")))
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.email,
+                                expression: "email"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              required: "",
+                              type: "email",
+                              id: "email",
+                              "aria-describedby": "email",
+                              placeholder: _vm.trans("strings.email")
+                            },
+                            domProps: { value: _vm.email },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.email = $event.target.value
+                              }
+                            }
+                          })
                         ])
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-lg-12" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "email" } }, [
-                        _vm._v(_vm._s(_vm.trans("strings.email")))
                       ]),
                       _vm._v(" "),
-                      _c("input", {
-                        directives: [
+                      _c("div", { staticClass: "col-lg-12" }, [
+                        _c(
+                          "div",
                           {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.email,
-                            expression: "email"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          required: "",
-                          type: "email",
-                          id: "email",
-                          "aria-describedby": "email",
-                          placeholder: _vm.trans("strings.email")
-                        },
-                        domProps: { value: _vm.email },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.email = $event.target.value
-                          }
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-lg-12" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "form-group",
-                        staticStyle: { position: "relative" }
-                      },
-                      [
-                        _c("label", { attrs: { for: "password" } }, [
-                          _vm._v(_vm._s(_vm.trans("strings.password")))
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.password,
-                              expression: "password"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            required: "",
-                            type: "password",
-                            id: "password",
-                            "aria-describedby": "password",
-                            placeholder: _vm.trans("strings.password")
+                            staticClass: "form-group",
+                            staticStyle: { position: "relative" }
                           },
-                          domProps: { value: _vm.password },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                          [
+                            _c("label", { attrs: { for: "password" } }, [
+                              _vm._v(_vm._s(_vm.trans("strings.password")))
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.password,
+                                  expression: "password"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                required: "",
+                                type: "password",
+                                id: "password",
+                                "aria-describedby": "password",
+                                placeholder: _vm.trans("strings.password")
+                              },
+                              domProps: { value: _vm.password },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.password = $event.target.value
+                                }
                               }
-                              _vm.password = $event.target.value
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("span", {
-                          staticClass: "fa fa-eye view-password animate-zoom",
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              _vm.viewPassword($event)
-                            }
-                          }
-                        })
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-lg-12" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "pull-right",
-                          attrs: { to: { name: "users.forgot_password" } }
-                        },
-                        [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t\t\t" +
-                              _vm._s(
-                                _vm.trans("strings.I_forgot_my_password")
-                              ) +
-                              "\n\t\t\t\t\t\t\t\t"
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "pull-right",
-                          staticStyle: { "margin-right": "10px" },
-                          attrs: { to: { name: "users.register" } }
-                        },
-                        [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t\t\t" +
-                              _vm._s(_vm.trans("strings.register")) +
-                              "\n\t\t\t\t\t\t\t\t"
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-lg-12" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-md btn-success",
-                        staticStyle: { width: "100%" },
-                        attrs: { type: "submit" }
-                      },
-                      [
-                        _vm._v(
-                          "\n\t\t\t\t\t\t\t\t\t" +
-                            _vm._s(_vm.trans("strings.to_enter")) +
-                            "\n\t\t\t\t\t\t\t\t"
+                            }),
+                            _vm._v(" "),
+                            _c("span", {
+                              staticClass:
+                                "fa fa-eye view-password animate-zoom",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  _vm.viewPassword($event)
+                                }
+                              }
+                            })
+                          ]
                         )
-                      ]
-                    ),
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "hide btn btn-md btn-success",
-                        staticStyle: { width: "100%" },
-                        attrs: { type: "load" },
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                          }
-                        }
-                      },
-                      [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
-                    )
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-footer" })
-        ])
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "col-lg-12" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "pull-right",
+                              attrs: { to: { name: "users.forgot_password" } }
+                            },
+                            [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\t\t\t" +
+                                  _vm._s(
+                                    _vm.trans("strings.I_forgot_my_password")
+                                  ) +
+                                  "\n\t\t\t\t\t\t\t\t"
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "pull-right",
+                              staticStyle: { "margin-right": "10px" },
+                              attrs: { to: { name: "users.register" } }
+                            },
+                            [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\t\t\t" +
+                                  _vm._s(_vm.trans("strings.register")) +
+                                  "\n\t\t\t\t\t\t\t\t"
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-lg-12" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-md btn-success",
+                            staticStyle: { width: "100%" },
+                            attrs: { type: "submit" }
+                          },
+                          [
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\t\t" +
+                                _vm._s(_vm.trans("strings.to_enter")) +
+                                "\n\t\t\t\t\t\t\t\t"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "hide btn btn-md btn-success",
+                            staticStyle: { width: "100%" },
+                            attrs: { type: "load" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" })
+            ])
       ])
     ]
   )
@@ -65575,7 +65578,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -65589,15 +65592,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Load__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -65826,7 +65820,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleEdit: function handleEdit(event) {
             var _this = this;
 
+            var vm = this;
             var form = $(event.currentTarget);
+            var formData = new FormData(form[0]);
+            formData.append('_method', 'put');
+
+            /*var contentType = 'multipart/form-data';
+            $.ajax({
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: routes.users.update.replace('{id}', vm.id),
+                data:  formData,
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    
+                },
+                success: function(result) {
+                 },
+                error: function(data) {
+                
+                }
+            });
+            */
+
             var updateRequest = axios.create();
 
             updateRequest.interceptors.request.use(function (config) {
@@ -65835,7 +65854,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 $(_this.$el).find('[type="submit"]').addClass('hide');
                 return config;
             });
-            updateRequest.put(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].users.update.replace('{id}', this.id), form.serialize()).then(function (response) {
+            updateRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].users.update.replace('{id}', this.id), formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(function (response) {
                 if (response.status === 200) {
                     var access_token = JSON.parse(window.localStorage.getItem('access_token'));
                     var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
@@ -65854,7 +65877,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         window.localStorage.setItem('authUser', JSON.stringify(response_2.data));
                         _this.$store.dispatch('setUserObject', response_2.data);
                         toastr.success(_this.trans('alerts.users.update.success'));
-
+                        _this.loading.component = false;
                         //window.location.href = "/painel"
                         //this.$router.push({name: 'home'});
                     }).catch(function (error_2) {
@@ -65863,7 +65886,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         _this.loading.component = false;
                     });
                     _this.errors = [];
-                    _this.loading.component = false;
                 }
             }).catch(function (error) {
                 _this.loading.component = false;
@@ -66052,7 +66074,12 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("input", {
-                  attrs: { type: "file", name: "photo", id: "photo" },
+                  attrs: {
+                    accept: "image/*",
+                    type: "file",
+                    name: "photo",
+                    id: "photo"
+                  },
                   on: {
                     change: function($event) {
                       $event.preventDefault()
@@ -66069,16 +66096,6 @@ var render = function() {
                     { staticClass: "col-lg-2 col-12 col-sm-6 col-md-6" },
                     [
                       _c("div", { staticClass: "form-group" }, [
-                        _vm.errors.email
-                          ? _c(
-                              "div",
-                              { staticClass: "alert alert-danger" },
-                              _vm._l(_vm.errors.email, function(email) {
-                                return _c("div", [_vm._v(_vm._s(email))])
-                              })
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
                         _c("label", { attrs: { for: "gender" } }, [
                           _vm._v(_vm._s(_vm.trans("strings.title")))
                         ]),
@@ -66136,16 +66153,6 @@ var render = function() {
                     { staticClass: "col-lg-4 col-12 col-sm-6 col-md-6" },
                     [
                       _c("div", { staticClass: "form-group" }, [
-                        _vm.errors.email
-                          ? _c(
-                              "div",
-                              { staticClass: "alert alert-danger" },
-                              _vm._l(_vm.errors.email, function(email) {
-                                return _c("div", [_vm._v(_vm._s(email))])
-                              })
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
                         _c("label", { attrs: { for: "name" } }, [
                           _vm._v(_vm._s(_vm.trans("strings.name")))
                         ]),
@@ -66188,16 +66195,6 @@ var render = function() {
                     { staticClass: "col-lg-6 col-12 col-sm-6 col-md-6" },
                     [
                       _c("div", { staticClass: "form-group" }, [
-                        _vm.errors.email
-                          ? _c(
-                              "div",
-                              { staticClass: "alert alert-danger" },
-                              _vm._l(_vm.errors.email, function(email) {
-                                return _c("div", [_vm._v(_vm._s(email))])
-                              })
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
                         _c("label", { attrs: { for: "last_name" } }, [
                           _vm._v(_vm._s(_vm.trans("strings.last_name")))
                         ]),
@@ -68208,7 +68205,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	mounted: function mounted() {
 		var _this6 = this;
 
-		window.document.title = this.trans('strings.scratch_cards') + ' - ' + window.app.title;
+		//window.document.title = this.trans('strings.scratch_cards') +' - '+ window.app.title;
+		window.document.title = this.trans('strings.scratch_cards');
 		axios.interceptors.request.use(function (config) {
 			return config;
 		});
@@ -69650,7 +69648,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	mounted: function mounted() {
 		var _this = this;
 
-		window.document.title = window.app.title + ' | ' + this.trans('strings.soccer_expert');
+		window.document.title = this.trans('strings.soccer_expert');
 		/*$(this.$el).find('.scratchpad').each(function () {
   	$(this).wScratchPad({
   		bg: '/img/raspadinha/0.01.png',
@@ -69722,6 +69720,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("img", {
                       staticClass: "header-image img-fluid",
+                      staticStyle: { width: "100%" },
                       attrs: {
                         alt: soccer_expert.nome,
                         src: soccer_expert.imagem_capa
@@ -69849,6 +69848,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Load__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CardComponent__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CardComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__CardComponent__);
 //
 //
 //
@@ -69861,39 +69862,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
@@ -69906,10 +69875,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			lotteries: []
 		};
 	},
+	methods: {},
 	mounted: function mounted() {
 		var _this = this;
 
-		window.document.title = window.app.title + ' | ' + this.trans('strings.lotteries');
+		//window.document.title = window.app.title +' | '+ this.trans('strings.lotteries');
+		window.document.title = this.trans('strings.lotteries');
 
 		var lotteriesRequest = axios.create();
 		lotteriesRequest.interceptors.request.use(function (config) {
@@ -69924,7 +69895,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}).catch(function (error) {});
 	},
 	components: {
-		LoadComponent: __WEBPACK_IMPORTED_MODULE_1__Load___default.a
+		LoadComponent: __WEBPACK_IMPORTED_MODULE_1__Load___default.a,
+		CardComponent: __WEBPACK_IMPORTED_MODULE_2__CardComponent___default.a
 	},
 	watch: {}
 });
@@ -69948,92 +69920,12 @@ var render = function() {
           "div",
           { staticClass: "row" },
           _vm._l(_vm.lotteries, function(lottery) {
-            return _c("div", { staticClass: "col-lg-4" }, [
-              _c("div", { staticClass: "lottery-card" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-lg-6" }, [
-                    _c("img", {
-                      staticClass: "img-fluid",
-                      attrs: { alt: lottery.nome, src: lottery.img_loteria }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-lg-6" }, [
-                    _c("div", { staticClass: "pull-right" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "text-primary",
-                          staticStyle: {
-                            "font-weight": "bold",
-                            "font-size": "large"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t\t\t" +
-                              _vm._s(lottery.nome) +
-                              "\n\t\t\t\t\t\t\t\t"
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("span", { staticStyle: { "font-size": "x-large" } }, [
-                        _c("b", [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t\t\t\t" +
-                              _vm._s(lottery.jackpot) +
-                              "\n\t\t\t\t\t\t\t\t\t"
-                          )
-                        ])
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-lg-6" }, [
-                    _c("span", { staticClass: "countdown i iHourglass" }, [
-                      _c("i", { staticClass: "md md-alarm" }),
-                      _vm._v(
-                        "\n                                295 Dias, 13H e 9M                                                        \n                            "
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-lg-6" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "btn btn-md btn-success",
-                          attrs: {
-                            to: {
-                              name: "lotteries.show",
-                              params: { id: lottery.id }
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t\t" +
-                              _vm._s(_vm.trans("strings.play_now")) +
-                              "\n\t\t\t\t\t\t\t"
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ])
-              ])
-            ])
+            return _c(
+              "div",
+              { staticClass: "col-lg-4 col-12 col-md-6 col-sm-6" },
+              [_c("card-component", { attrs: { lottery: lottery } })],
+              1
+            )
           })
         )
       ])
@@ -70774,6 +70666,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			} else if (this.$route.params.id != undefined) {
 				this.showRequest();
 			}
+			window.document.title = this.trans('strings.soccer_expert');
 		}
 
 	},
@@ -71143,31 +71036,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			this.$emit('updateSoccerExpert');
 		},
-		init: function init() {
+		setCountdown: function setCountdown(date, timeOut) {
 			var _this = this;
+
+			this.countdown(date, function (d, h, m, s, distance) {
+				_this.days = d;
+				_this.hours = h;
+				_this.minutes = m;
+				_this.seconds = s;
+				if (distance < 0) {
+					clearInterval(timeOut);
+				}
+			});
+		},
+		init: function init() {
+			var _this2 = this;
 
 			var date = this.formatDate(this.ticket.data_termino);
 			var timeOut = setInterval(function () {
-				_this.countdown(date, function (d, h, m, s, distance) {
-					_this.days = d;
-					_this.hours = h;
-					_this.minutes = m;
-					_this.seconds = s;
-					if (distance < 0) {
-						clearInterval(timeOut);
-					}
-				});
+				_this2.setCountdown(date, timeOut);
 			}, 1000);
+			this.setCountdown(date, timeOut);
 		}
 	},
 	mounted: function mounted() {
-		var _this2 = this;
+		var _this3 = this;
 
 		this.init();
 
 		//Escutando o close do modal, para atualizar os tickets na tela do usuário
 		$('.modal-ticket').on('hidden.bs.modal', function (event) {
-			_this2.updateTicket();
+			_this3.updateTicket();
 		});
 
 		this.updateTicket();
@@ -71786,31 +71685,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			this.$emit('updateSoccerExpert');
 		},
-		init: function init() {
+		setCountdown: function setCountdown(date) {
 			var _this2 = this;
 
+			this.countdown(date, function (d, h, m, s, distance) {
+				_this2.days = d;
+				_this2.hours = h;
+				_this2.minutes = m;
+				_this2.seconds = s;
+				if (distance < 0) {
+					clearInterval(timeOut);
+				}
+			});
+		},
+		init: function init() {
+			var _this3 = this;
+
 			var date = this.formatDate(this.ticket.data_termino);
+			this.setCountdown(date);
 			var timeOut = setInterval(function () {
-				_this2.countdown(date, function (d, h, m, s, distance) {
-					_this2.days = d;
-					_this2.hours = h;
-					_this2.minutes = m;
-					_this2.seconds = s;
-					if (distance < 0) {
-						clearInterval(timeOut);
-					}
-				});
+				_this3.setCountdown(date);
 			}, 1000);
 		}
 	},
 	mounted: function mounted() {
-		var _this3 = this;
+		var _this4 = this;
 
 		//Callback executado ao abrir modal para atualizar o ticket do modal
 		$(".modal-ticket").on('shown.bs.modal', function (event) {
-			_this3.init();
-			_this3.updateTicket();
+			_this4.init();
+			_this4.updateTicket();
 		});
+
+		var value = parseFloat(this.ticket.valor);
+		this.value = value.format(2, true);
 	},
 	components: {
 		GameComponent: __WEBPACK_IMPORTED_MODULE_0__GameComponent___default.a
@@ -72467,47 +72375,53 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "carousel-control-prev",
-                    attrs: {
-                      id: "prev-slide-content",
-                      href: "#carouselExampleIndicators",
-                      role: "button",
-                      "data-slide": "prev"
-                    }
-                  },
-                  [
-                    _c("span", {
-                      staticClass: "fa fa-angle-left",
-                      staticStyle: { color: "black" }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
-                  ]
-                ),
+                _vm.item.soccer_expert.cycles.length > 1
+                  ? _c(
+                      "a",
+                      {
+                        staticClass: "carousel-control-prev",
+                        attrs: {
+                          id: "prev-slide-content",
+                          href: "#carouselExampleIndicators",
+                          role: "button",
+                          "data-slide": "prev"
+                        }
+                      },
+                      [
+                        _c("span", {
+                          staticClass: "fa fa-angle-left",
+                          staticStyle: { color: "black" }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "sr-only" }, [
+                          _vm._v("Previous")
+                        ])
+                      ]
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "carousel-control-next",
-                    attrs: {
-                      id: "next-slide-content",
-                      href: "#carouselExampleIndicators",
-                      role: "button",
-                      "data-slide": "next"
-                    }
-                  },
-                  [
-                    _c("span", {
-                      staticClass: "fa fa-angle-right",
-                      staticStyle: { color: "black" }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-                  ]
-                )
+                _vm.item.soccer_expert.cycles.length > 1
+                  ? _c(
+                      "a",
+                      {
+                        staticClass: "carousel-control-next",
+                        attrs: {
+                          id: "next-slide-content",
+                          href: "#carouselExampleIndicators",
+                          role: "button",
+                          "data-slide": "next"
+                        }
+                      },
+                      [
+                        _c("span", {
+                          staticClass: "fa fa-angle-right",
+                          staticStyle: { color: "black" }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+                      ]
+                    )
+                  : _vm._e()
               ])
             ]),
             _vm._v(" "),
@@ -73317,6 +73231,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			} else if (this.$route.params.id != undefined) {
 				this.showRequest();
 			}
+			window.document.title = this.trans('strings.lotteries');
 		},
 		//Removendo aposta
 		removeBet: function removeBet(event) {
@@ -74785,7 +74700,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.vcenter[data-v-57e8b9ee] {\n\tmargin: 10px;\n}\n.row[data-v-57e8b9ee] {\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.border-dotted[data-v-57e8b9ee] {\n\tborder-bottom: 1px dotted #999;\n\tpadding: 10px 0 10px 0;\n}\n", ""]);
+exports.push([module.i, "\n.row[data-v-57e8b9ee] {\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.border-dotted[data-v-57e8b9ee] {\n\tborder-bottom: 1px dotted #999;\n\tpadding: 10px 0 10px 0;\n}\n", ""]);
 
 // exports
 
@@ -75039,7 +74954,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.scratch_cars[data-v-57cee304]:last-child{\n\tmargin-bottom: 0;\n}\n.scratch_cars[data-v-57cee304] {\n\tmargin-bottom: 10px;\n\tpadding: 10px 0 10px 0;\n    border-bottom: 1px dotted #999;\n}\nsection[data-v-57cee304] {\n\tmargin-right: -15px;\n\tmargin-left: -15px;\n}\n", ""]);
+exports.push([module.i, "\n.scratch_cards[data-v-57cee304]:last-child{\n\tmargin-bottom: 0;\n}\n.scratch_cards[data-v-57cee304] {\n\tpadding: 10px 0 10px 0;\n}\n", ""]);
 
 // exports
 
@@ -75121,6 +75036,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -75128,11 +75049,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	mounted: function mounted() {},
 	methods: {
 		removeItem: function removeItem(item) {
-			this.$store.dispatch('removeItemScratchCard', item);
+			var _this = this;
 
 			var removeItemRequest = axios.create();
+
+			removeItemRequest.interceptors.request.use(function (config) {
+				$(_this.$el).find('[type="load"]').removeClass('hide');
+				$(_this.$el).find('[type="trigger"]').addClass('hide');
+				return config;
+			});
+
 			removeItemRequest.delete(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.destroy.replace('{hash}', item.hash), {}).then(function (response) {
-				if (response.status === 200) {}
+				if (response.status === 200) {
+					_this.$store.dispatch('removeItemScratchCard', item);
+				}
 			}).catch(function (error) {});
 		}
 	}
@@ -75146,8 +75076,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticStyle: { display: "block" } }, [
-    _c("div", { staticClass: "vcenter scratch_cars" }, [
+  return _c("section", [
+    _c("div", { staticClass: "vcenter scratch_cards" }, [
       _c("div", { staticClass: "col-lg-2 col-md-2 col-2 col-sm-2" }, [
         _c("img", {
           staticClass: "img-fluid",
@@ -75166,11 +75096,11 @@ var render = function() {
           _c("div", { staticClass: "col-lg-12" }, [
             _c("span", [
               _vm._v(
-                "\n\t\t\t\t\t" +
+                "\n\t\t\t\t\t\t" +
                   _vm._s(_vm.item.scratch_card.discount_tables.quantity) +
                   " " +
                   _vm._s(_vm.trans("strings.scratch_cards")) +
-                  "\n\t\t\t\t"
+                  "\n\t\t\t\t\t"
               )
             ])
           ])
@@ -75182,7 +75112,7 @@ var render = function() {
       _c("div", { staticClass: "col-lg-1 col-3 col-md-2 col-sm-2" }, [
         _c("span", [
           _vm._v(
-            "\n\t\t\t$ " + _vm._s(_vm.item.total.format(2, true)) + "\n\t\t"
+            "\n\t\t\t\t$ " + _vm._s(_vm.item.total.format(2, true)) + "\n\t\t\t"
           )
         ])
       ]),
@@ -75193,11 +75123,11 @@ var render = function() {
           {
             staticClass: "btn btn-xs btn-danger",
             staticStyle: { cursor: "pointer" },
-            attrs: { href: "#" },
+            attrs: { type: "trigger", href: "#" },
             on: {
               click: function($event) {
                 $event.preventDefault()
-                _vm.removeItem(_vm.item)
+                _vm.removeItem(_vm.item, $event)
               }
             }
           },
@@ -75211,9 +75141,25 @@ var render = function() {
               }
             })
           ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "hide btn btn-xs btn-danger",
+            attrs: { type: "load" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+              }
+            }
+          },
+          [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
         )
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticStyle: { "border-bottom": "1px dotted #999" } })
   ])
 }
 var staticRenderFns = [
@@ -75272,7 +75218,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.lotteries[data-v-c43daf82]:last-child{\n\tmargin-bottom: 0;\n}\n.lotteries[data-v-c43daf82] {\n\tmargin-bottom: 10px;\n\tpadding: 10px 0 10px 0;\n}\n.collapse.show[data-v-c43daf82] {\n\tdisplay: -webkit-box !important;\n\tdisplay: -ms-flexbox !important;\n\tdisplay: flex !important;\n}\n", ""]);
+exports.push([module.i, "\n.lotteries[data-v-c43daf82]:last-child{\n\tmargin-bottom: 0;\n}\n.lotteries[data-v-c43daf82] {\n\tpadding: 10px 0 10px 0;\n}\n.collapse.show[data-v-c43daf82] {\n\tdisplay: -webkit-box !important;\n\tdisplay: -ms-flexbox !important;\n\tdisplay: flex !important;\n}\n", ""]);
 
 // exports
 
@@ -75286,6 +75232,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Lottery_BetComponent__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Lottery_BetComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Lottery_BetComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_routes__ = __webpack_require__(4);
+//
+//
+//
 //
 //
 //
@@ -75363,12 +75312,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}
 			});
 		},
-		removeItem: function removeItem(item) {
-			this.$store.dispatch('removeItemLottery', item);
+		removeItem: function removeItem(item, event) {
+			var _this = this;
 
 			var removeItemRequest = axios.create();
+
+			removeItemRequest.interceptors.request.use(function (config) {
+				$(_this.$el).find('[type="load"]').removeClass('hide');
+				$(_this.$el).find('[type="trigger"]').addClass('hide');
+				return config;
+			});
+
 			removeItemRequest.delete(__WEBPACK_IMPORTED_MODULE_1__api_routes__["a" /* routes */].carts.destroy.replace('{hash}', item.hash), {}).then(function (response) {
-				if (response.status === 200) {}
+				if (response.status === 200) {
+					_this.$store.dispatch('removeItemLottery', item);
+				}
 			}).catch(function (error) {});
 		}
 	},
@@ -75671,11 +75629,11 @@ var render = function() {
             {
               staticClass: "btn btn-xs btn-danger",
               staticStyle: { cursor: "pointer" },
-              attrs: { href: "#" },
+              attrs: { type: "trigger", href: "#" },
               on: {
                 click: function($event) {
                   $event.preventDefault()
-                  _vm.removeItem(_vm.item)
+                  _vm.removeItem(_vm.item, $event)
                 }
               }
             },
@@ -75690,6 +75648,20 @@ var render = function() {
                 }
               })
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "hide btn btn-xs btn-danger",
+              attrs: { type: "load" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                }
+              }
+            },
+            [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
           )
         ])
       ]
@@ -85847,7 +85819,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -86017,7 +85989,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			} else {
 				next();
 			}
-			$('.modal-login').modal('hide');
 		});
 
 		__WEBPACK_IMPORTED_MODULE_5__router__["a" /* default */].afterEach(function (to, from) {
@@ -86030,6 +86001,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					_this.$router.push({ name: 'home' });
 				}
 			}, 200);
+
+			//Fechando o modal de login
+			$('.modal-login').modal('hide');
 		});
 	},
 	components: {
@@ -87144,6 +87118,312 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(352)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(354)
+/* template */
+var __vue_template__ = __webpack_require__(355)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-6bf3409b"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/Lottery/CardComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6bf3409b", Component.options)
+  } else {
+    hotAPI.reload("data-v-6bf3409b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 352 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(353);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("47a3812e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bf3409b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CardComponent.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6bf3409b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CardComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 353 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.lottery-card[data-v-6bf3409b] {\n\tposition: relative;\n    padding: 24px;\n    margin-bottom: 15px;\n    background: #ffffff;\n    color: #313534;\n    border-radius: 3px;\n    border: 1px solid rgba(83, 88, 88, 0.15)\n}\n.lottery-card[data-v-6bf3409b]:before {\n\tcontent: '';\n    position: absolute;\n    display: block;\n    width: 4px;\n    left: -1px;\n    top: -1px;\n    bottom: -1px;\n\tbackground: #2196f3;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 354 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['lottery'],
+	data: function data() {
+		return {
+			days: '',
+			hours: '',
+			minutes: '',
+			seconds: ''
+		};
+	},
+	methods: {
+		setCountdown: function setCountdown(date, timeOut) {
+			var _this = this;
+
+			this.countdown(date, function (d, h, m, s, distance) {
+				_this.days = d;
+				_this.hours = h;
+				_this.minutes = m;
+				_this.seconds = s;
+				if (distance < 0) {
+					clearInterval(timeOut);
+				}
+			});
+		}
+	},
+	mounted: function mounted() {
+		/*var date = this.formatDate(this.ticket.data_termino);				
+  var timeOut = setInterval(() => {
+  	this.setCountdown(date, timeOut);
+  }, 1000);
+  this.setCountdown(date, timeOut);*/
+	},
+	components: {},
+	watch: {}
+});
+
+/***/ }),
+/* 355 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "lottery-card" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-6 col-md-6 col-6 col-sm-6" }, [
+        _c("img", {
+          staticClass: "img-fluid",
+          attrs: { alt: _vm.lottery.nome, src: _vm.lottery.img_loteria }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-6 col-md-6 col-6 col-sm-6" }, [
+        _c(
+          "span",
+          {
+            staticClass: "text-primary",
+            staticStyle: { "font-weight": "bold", "font-size": "large" }
+          },
+          [_vm._v("\n\t\t\t\t\t" + _vm._s(_vm.lottery.nome) + "\n\t\t\t\t")]
+        ),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("span", { staticStyle: { "font-size": "x-large" } }, [
+          _c("b", [
+            _vm._v(
+              "\n\t\t\t\t\t\t$" + _vm._s(_vm.lottery.value) + "\n\t\t\t\t\t"
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-6 col-md-6 col-12 col-sm-12" }, [
+        _c("span", { staticClass: "countdown i iHourglass" }, [
+          _c("i", { staticClass: "md md-alarm" }),
+          _vm._v(" "),
+          _c("span", { staticClass: "countdown" }, [
+            _vm.days > 1
+              ? _c("span", [
+                  _vm._v(
+                    "\n\t\t\t\t\t\t\t" +
+                      _vm._s(_vm.days) +
+                      " " +
+                      _vm._s(_vm.trans("strings.days")) +
+                      " e\n\t\t\t\t\t\t"
+                  )
+                ])
+              : _vm.days == 1
+                ? _c("span", [
+                    _vm._v(
+                      "\n\t\t\t\t\t\t\t" +
+                        _vm._s(_vm.days) +
+                        " " +
+                        _vm._s(_vm.trans("strings.day")) +
+                        " e\n\t\t\t\t\t\t"
+                    )
+                  ])
+                : _vm._e(),
+            _vm._v(
+              "\t\t\t\t\n\t\t\t\t\t\t" +
+                _vm._s(_vm.hours) +
+                ":" +
+                _vm._s(_vm.minutes) +
+                ":" +
+                _vm._s(_vm.seconds) +
+                " " +
+                _vm._s(_vm.trans("strings.hours_left")) +
+                "\n\t\t\t\t\t"
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-lg-6 col-md-6 col-12 col-sm-12" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-md btn-success",
+              attrs: {
+                to: { name: "lotteries.show", params: { id: _vm.lottery.id } }
+              }
+            },
+            [
+              _vm._v(
+                "\n\t\t\t\t\t" +
+                  _vm._s(_vm.trans("strings.play_now")) +
+                  "\n\t\t\t\t"
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6bf3409b", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

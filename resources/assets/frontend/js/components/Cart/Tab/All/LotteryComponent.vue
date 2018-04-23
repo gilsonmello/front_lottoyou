@@ -33,8 +33,11 @@
 			</div>
 
 			<div class="col-lg-1 col-2 col-md-1 col-sm-2">
-				<a class="btn btn-xs btn-danger" @click.prevent="removeItem(item)" href="#" style="cursor:pointer;">
+				<a class="btn btn-xs btn-danger" type="trigger" @click.prevent="removeItem(item, $event)" href="#" style="cursor:pointer;">
 					<i class="fa fa-trash-o" data-toggle="tooltip" data-placement="top" :title="trans('strings.delete')" data-original-title="Deletar"></i>
+				</a>
+				<a @click.prevent="" type="load" class="hide btn btn-xs btn-danger">
+					<i class="fa fa-refresh fa-spin"></i>
 				</a>
 			</div>
 		</div>
@@ -77,15 +80,20 @@
 					}
 				})
 			},
-			removeItem(item){
-				this.$store.dispatch('removeItemLottery', item)
-
+			removeItem(item, event){
 				let removeItemRequest = axios.create();
+
+				removeItemRequest.interceptors.request.use(config => {
+		        	$(this.$el).find('[type="load"]').removeClass('hide');
+		        	$(this.$el).find('[type="trigger"]').addClass('hide');
+				  	return config;
+				});
+
 				removeItemRequest.delete(routes.carts.destroy.replace('{hash}', item.hash), {
 					
 				}).then((response) => {
 					if(response.status === 200) {
-						
+						this.$store.dispatch('removeItemLottery', item)
 					}
 				}).catch((error) => {
 
@@ -104,7 +112,6 @@
 		margin-bottom: 0;
 	}
 	.lotteries {
-		margin-bottom: 10px;
 		padding: 10px 0 10px 0;
 	}
 

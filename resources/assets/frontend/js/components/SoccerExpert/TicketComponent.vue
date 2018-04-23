@@ -127,23 +127,26 @@
 				
 				this.$emit('updateSoccerExpert');
 			},
+			setCountdown(date, timeOut) {
+				this.countdown(date, (d, h, m, s, distance) => {
+	            	this.days = d;
+					this.hours = h;
+					this.minutes = m;
+					this.seconds = s;
+					if(distance < 0) {
+						clearInterval(timeOut);
+					}
+	            });
+			},
 			init() {
-				var date = this.formatDate(this.ticket.data_termino);
+				var date = this.formatDate(this.ticket.data_termino);				
 				var timeOut = setInterval(() => {
-					this.countdown(date, (d, h, m, s, distance) => {
-		            	this.days = d;
-						this.hours = h;
-						this.minutes = m;
-						this.seconds = s;
-						if(distance < 0) {
-							clearInterval(timeOut);
-						}
-		            });
-				}, 1000);
+    				this.setCountdown(date, timeOut);
+    			}, 1000);
+    			this.setCountdown(date, timeOut);
 			}
         },
         mounted: function() {
-
         	this.init();
 
         	//Escutando o close do modal, para atualizar os tickets na tela do usuário
@@ -152,8 +155,7 @@
 	                this.updateTicket();
 	            });
 	        
-
-			this.updateTicket();
+            this.updateTicket();
 			let value = parseFloat(this.ticket.valor);
             this.value = value.format(2, true);
         },

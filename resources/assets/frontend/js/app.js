@@ -8,7 +8,7 @@
 require('./bootstrap');
 
 $(document).on('hidden.bs.modal', '.modal', function (e) {
-	if($('.modal').is(':visible')){
+	if($('.modal').is(':visible')) {
 		$('body').addClass('modal-open');
 	}
 });
