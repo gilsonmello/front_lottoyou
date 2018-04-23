@@ -35,7 +35,7 @@
 								<div class="form-group" style="position: relative;">
 								    <label for="password">{{ trans('strings.password') }}</label>
 								    <input v-model="password" required type="password" class="form-control" id="password" aria-describedby="password" :placeholder="trans('strings.password')">
-								    <span class="fa fa-eye view-password animate-zoom" @click.prevent="viewPassword($event)">
+								    <span class="fa fa-eye view-password" @click.prevent="viewPassword($event)">
 								    	
 								    </span>
 							  	</div>
