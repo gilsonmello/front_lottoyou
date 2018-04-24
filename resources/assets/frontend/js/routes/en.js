@@ -50,6 +50,13 @@ export default {
 			        component: require('../components/User/LogoutComponent.vue')
 			    },
 			    {   
+			  		path: 'users/orders',
+			        name: 'users.orders', 
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/User/OrderComponent.vue')
+			    },
+			    {   
 			  		path: 'users/transactions',
 			        name: 'users.transactions',
 			        props: true,

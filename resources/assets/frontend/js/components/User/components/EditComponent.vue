@@ -204,8 +204,8 @@
 </template>
 
 <script>
-    import {routes} from '../../api_routes'
-    import LoadComponent from '../Load'
+    import {routes} from '../../../api_routes'
+    import LoadComponent from '../../Load'
     export default {
         methods: {
             changePhoto: function(event) {
@@ -215,7 +215,8 @@
                 if(window.FileReader){
                     if(file.type.indexOf('image') >= 0){
                         var reader = new FileReader();
-                        reader.onprogress = function(evt){
+                        reader.onprogress = function(evt) {
+                            
                         };
                         reader.onloadend = function(e){
                             form.find('#user-edit-photo').attr('src', e.target.result);
@@ -372,6 +373,7 @@
                 this.phone_code = '+'+this.user.country.phonecode
 
                 this.loading.component = false
+                
             }).catch((error) => {
                 this.loading.component = false
             });

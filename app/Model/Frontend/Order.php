@@ -49,11 +49,6 @@ class Order extends Model
         
     ];
 
-    public function afterSave() 
-    {
-        
-    }
-
     public function purchase()
     {
 
@@ -65,19 +60,23 @@ class Order extends Model
             ->orderBy('created_at', 'DESC');
     }
 
-    public function user() {
+    public function user() 
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function lotteries() {
+    public function lotteries() 
+    {
         return $this->belongsToMany(Lottery::class, 'orders_has_lotteries', 'order_id', 'lottery_id');
     }
 
-    public function soccerExperts() {
+    public function soccerExperts() 
+    {
         return $this->belongsToMany(SoccerExpert::class, 'orders_has_soccer_experts', 'order_id', 'soccer_expert_id');
     }
 
-    public function scratchCards() {
+    public function scratchCards() 
+    {
         return $this->belongsToMany(ScratchCardTheme::class, 'orders_has_scratch_cards', 'order_id', 'scratch_card_id');
     }
 }
