@@ -107,7 +107,7 @@
 
 					return true;
 				});
-
+				
 				//Se foi completado o preenchimento na rodada
 				if(complete === true) {
 					this.ticket.complete = true;

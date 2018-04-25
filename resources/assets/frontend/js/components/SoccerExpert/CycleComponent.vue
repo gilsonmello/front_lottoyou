@@ -2,8 +2,7 @@
     <div class="row">
         <div class="col-lg-4" v-for="(ticket, index) in cycle.rounds">
             <ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :category="item.soccer_expert" :ticket="ticket" :index="index">
-                
-            </ticket-component>
+           </ticket-component>
         </div>
     </div>
 </template>
@@ -43,10 +42,10 @@
             //Atualizando o total de todas as cartelas feitas
             updateTotal: function() {  
                 var total = 0.00;
+                var value = null;
                 //Pegando todas as apostas feitas
                 this.item.tickets.filter(function(val) {
-                    let value = parseFloat(val.valor);
-                    total += value;
+                    console.log(val)
                 });
                 return total;            
             },
