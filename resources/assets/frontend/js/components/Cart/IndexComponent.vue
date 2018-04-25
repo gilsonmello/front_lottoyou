@@ -103,7 +103,7 @@
 
 		<div class="container">
 			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
-				<div class="col-lg-5 col-12 col-md-5 col-sm-6">
+				<div class="col-lg-5 col-12 col-md-5 col-sm-6" v-if="auth != undefined">
 					<span v-if="(auth.balance.value - purchase.total) >= 0">
 						Saldo disponível: ${{ auth.balance.value }}(Saldo restante: $ {{ (auth.balance.value - purchase.total).format(2, true) }})
 					</span>
@@ -111,14 +111,24 @@
 						Saldo disponível: ${{ auth.balance.value }}(Saldo restante: $ 0.00)
 					</span>
 				</div>
+				<div class="col-lg-5 col-12 col-md-5 col-sm-6" v-else>
+					<span>
+						Saldo disponível: $0.00(Saldo restante: $ 0.00 }})
+					</span>
+				</div>
 				<div class="col-lg-5 col-6 col-md-5 col-sm-4">
 					<span class="pull-right">
 						Saldo
 					</span>
 				</div>
-				<div class="col-lg-2 col-6 col-md-2 col-sm-2">
+				<div class="col-lg-2 col-6 col-md-2 col-sm-2" v-if="auth">
 					<span>
 						$ {{ auth.balance.value }}
+					</span>
+				</div>
+				<div class="col-lg-2 col-6 col-md-2 col-sm-2" v-else>
+					<span>
+						$ 0.00
 					</span>
 				</div>
 			</div>
@@ -140,14 +150,13 @@
 			</div>
 		</div>
 		
-		<div class="container" v-if="auth.balance.value >= purchase.total">
-			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
+		<div class="container" v-if="auth">
+			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px" v-if="auth.balance.value >= purchase.total">
 				<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 					
 				</div>
 				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-					<button class="btn btn-success btn-md" type="submit" @click.prevent="completePurchase($event)">		
-						{{ trans('strings.complete_purchase') }}
+					<button class="btn btn-success btn-md" type="submit" @click.prevent="completePurchase($event)">		{{ trans('strings.complete_purchase') }}
 					</button>
 					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
 						<i class="fa fa-refresh fa-spin"></i>

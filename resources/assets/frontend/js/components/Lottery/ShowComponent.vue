@@ -24,78 +24,23 @@
 	        	</div>
 	        </div>
 			<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
-				<div :style="column == 0 ? 'margin: 0 5px 0 15px;' : 'margin: 0 5px 0 5px;'" class="no-padding col-lg-2 col-8 col-md-5 col-sm-5" v-for="(index, column) in columns">
-					<div :class="'ticket'+column+' tickets'+' '+wow(index)">
-						<div class="tickets-header">
-							<!-- <strong>{{ column }}</strong> -->
-							<strong>&nbsp;</strong>
-							<div class="tools">
-								<a class="" href="#" @click.prevent="selectRandom(column, $event)">
-									<i class="fa fa-random"></i>
-								</a>
-								<a class="" href="#" @click.prevent="deleteNumbersChecked(column, $event)">
-									<i class="fa fa-close"></i>
-								</a>
-							</div>
-						</div>
+				<ticket-component v-for="(ticket, index) in item.tickets" :tickets="tickets" :dickers="dickers" :dickersMaxSel="dickersMaxSel" :dickersExtras="dickersExtras" :item="item" :dickersExtrasSelect="dickersExtrasSelect" :ticket="ticket" :index="index" :key="index" v-on:refreshTickes="refreshTickes" v-on:refreshNumbersChecked="refreshNumbersChecked" v-on:deleteTicket="deleteTicket">
+					
+				</ticket-component>
 
-						<div class="tickets-content" v-if="$route.params.hash != undefined">
-							<span class="fields" v-for="dicker in dickers">
-								<button v-if="verifyNumberSelected(index.numbers, dicker)" @click.prevent="clickNumber(column, dicker, $event)" class="btn btn-xs btn-default-color btn-checked">
-									{{ dicker }}
-								</button>
-							
-								<button v-else @click.prevent="clickNumber(column, dicker, $event)" class="btn btn-xs btn-default-color">
-									{{ dicker }}
-								</button>
-							</span>
-						</div>
-						<div class="tickets-content" v-else>
-							<span class="fields" v-for="dicker in dickers">
-								<button @click.prevent="clickNumber(column, dicker, $event)" class="btn btn-xs btn-default-color">
-									{{ dicker }}
-								</button>
-							</span>
-						</div>
-						<div class="tickets-extras" v-if="$route.params.hash != undefined">
-							<span class="fields" v-for="dicker in dickersExtras">
-								<button v-if="verifyNumberSelected(index.numbersExtras, dicker)" @click.prevent="clickNumberExtras(column, dicker, $event)" class="btn btn-xs btn-default-darking btn-checked">
-									{{ dicker }}
-								</button>
-								<button v-else @click.prevent="clickNumberExtras(column, dicker, $event)" class="btn btn-xs btn-default-darking">
-									{{ dicker }}
-								</button>
-							</span>
-						</div>
-						<div class="tickets-extras" v-else>
-							<span class="fields" v-for="dicker in dickersExtras">
-								<button @click.prevent="clickNumberExtras(column, dicker, $event)" class="btn btn-xs btn-default-darking">
-									{{ dicker }}
-								</button>
-							</span>
-						</div>
-						<div class="tickets-footer">
-							<em class="text-caption" style="display: block">
-                        		Dezenas restantes - 
-                    		</em>
-                    		<em class="text-caption">
-                    			<input v-if="item.betting.length > 0 && item.betting[column].numbers != undefined && dickersMaxSel != undefined" v-model="dickersMaxSel.length - item.betting[column].numbers.length" name="data[LotUserJogo][qtdNumeros1]" type="text" disabled>
-                    			<input v-if="item.betting.length > 0 && item.betting[column].numbersExtras != undefined && dickersExtrasSelect != undefined" v-model="dickersExtrasSelect.length - item.betting[column].numbersExtras.length" disabled type="text">	
-                    		</em>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-1 col-4 col-md-2 col-sm-2 vcenter" style="justify-content: center;" id="btn-add-ticket">
+				 <div class="col-lg-1 col-4 col-md-2 col-sm-2 vcenter" style="justify-content: center;" id="btn-add-ticket">
 					<div>
+
 						<a href="#" @click.prevent="addBet($event)" class="fa fa-plus" style="font-size: 60px;"></a>
+						<!--
 						<br>
-						<a v-if="columns.length > 5" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>
+						<a v-if="tickets.length > 5" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>-->
 					</div>
-				</div>
+				</div> 
 			</div>
 
 			<div class="row">
-				<div class="col-lg-4 col-12 col-md-4 col-sm-4">
+				<div class="col-lg-3 col-12 col-md-4 col-sm-4">
 					<div class="form-group">
 						<label for="date">{{ trans('strings.sweepstake_date') }}</label>
 					    <select v-model="lot_jogo_id" class="form-control" id="lot_jogo_id">
@@ -104,6 +49,20 @@
 					      	</option>
 					    </select>
 				  	</div>
+				</div>
+				<div class="col-lg-3 col-12 col-md-4 col-sm-4">
+					<div class="form-group">
+						<label for="date">{{ trans('strings.next_lottery') }}</label>
+						<span class="countdown form-control">
+							<span v-if="next_lottery.days > 1">
+								{{ next_lottery.days }} {{ trans('strings.days') }} e
+							</span>
+							<span v-else-if="next_lottery.days == 1">
+								{{ next_lottery.days }} {{ trans('strings.day') }} e
+							</span>				
+							{{ next_lottery.hours }}:{{ next_lottery.minutes }}:{{ next_lottery.seconds }}
+						</span>
+					</div>
 				</div>
 			</div>
 			<hr>
@@ -134,6 +93,7 @@
 	import PlayComponent from './PlayComponent'
 	import ResultComponent from './ResultComponent'
 	import {mapState, mapGetters} from 'vuex'
+	import TicketComponent from './TicketComponent'
 	export default {
 		activated: function() {
 
@@ -150,12 +110,18 @@
 				},
 				lottery: {},
 				id: '',
+				next_lottery: {
+					days: '',
+	    			hours: '',
+	    			minutes: '',
+	    			seconds: ''
+				},
 				//Dezenas máxima a ser selecionada
 				dickersMaxSel: [],
 				dickers: [],
 				dickersExtras: [],
 				dickersExtrasSelect: [],
-				columns: [0, 1, 2, 3, 4],
+				tickets: [0, 1, 2, 3, 4],
 				total: 0.00,
 				lot_jogo_id: '',
 				item: {
@@ -165,9 +131,9 @@
 					name: '',
 					date: '',
 					lottery: {},
-					betting: [
+					tickets: [
 				 		{
-				 			column: 0,
+				 			ticket: 0,
 					 		complete: false,
 					 		completeExtras: false,
 					 		numbers: [],
@@ -180,6 +146,17 @@
 		methods: {
 			wow(bet) {
 				return bet.complete && bet.completeExtras ? 'complete' : ''
+			},
+			deleteTicket(index) {
+				/*this.tickets = item.tickets.map((elem, idx, array) => {
+					if(index != idx) {
+						return true;
+					}
+				})*/
+				this.item.tickets.splice(index, 1);
+				//Pegando todas as apostas feitas
+				var tickets = this.getTicketsFinished();
+				this.total = this.item.value * tickets.length;
 			},
 			showRequest() {
 				const showRequest = axios.create();
@@ -195,7 +172,7 @@
 						this.lottery = response.data
 						this.lot_jogo_id = this.lottery.sweepstakes[0].id
 						this.loading.component = false
-						this.columns = [0, 1, 2, 3, 4];
+						this.tickets = [0, 1, 2, 3, 4];
 						this.item.hash = this.makeid(); 
 						this.item.id = this.lottery.id;
 						this.item.value = this.lottery.value;
@@ -203,37 +180,37 @@
 
 						this.lot_jogo_id = 0;
 						
-						this.item.betting = [
+						this.item.tickets = [
 							{
-					 			column: 0,
+					 			ticket: 0,
 						 		complete: false,
 						 		completeExtras: false,
 						 		numbers: [],
 						 		numbersExtras: []
 						 	},
 						 	{
-					 			column: 1,
+					 			ticket: 1,
 						 		complete: false,
 						 		completeExtras: false,
 						 		numbers: [],
 						 		numbersExtras: []
 						 	},
 						 	{
-					 			column: 2,
+					 			ticket: 2,
 						 		complete: false,
 						 		completeExtras: false,
 						 		numbers: [],
 						 		numbersExtras: []
 						 	},
 						 	{
-					 			column: 3,
+					 			ticket: 3,
 						 		complete: false,
 						 		completeExtras: false,
 						 		numbers: [],
 						 		numbersExtras: []
 						 	},
 						 	{
-					 			column: 4,
+					 			ticket: 4,
 						 		complete: false,
 						 		completeExtras: false,
 						 		numbers: [],
@@ -256,6 +233,12 @@
 			            for (var i = 1; i <= this.lottery.dezena_extra_sel; i++) {
 			            	this.dickersExtrasSelect.push(i);
 			            }
+						
+						var date = this.formatDate(this.lottery.sweepstakes[0].data_fim);				
+						var timeOut = setInterval(() => {
+		    				this.setCountdown(date, timeOut);
+		    			}, 1000);
+		    			this.setCountdown(date, timeOut);
 					
 					}
 				}).catch((error) => {
@@ -291,10 +274,10 @@
 
 						this.loading.component = false
 
-						var columns = [];
+						var tickets = [];
 
-						item.betting.map((elem, index, array) => {
-							columns.push(elem)
+						item.tickets.map((elem, index, array) => {
+							tickets.push(elem)
 
 							var loopFindTicket = setInterval(() => {
 								if($('.ticket'+index).length > 0) {
@@ -304,19 +287,25 @@
 							});
 						})
 
-						this.columns = columns;
+						this.tickets = tickets;
 						this.item.hash = item.hash; 
 						this.item.id = item.id;
 						this.item.value = item.value;
 						this.item.lottery = item.lottery;
 						
-						this.item.betting = item.betting;
+						this.item.tickets = item.tickets;
 						this.dickers = item.dickers;
 						this.dickersMaxSel = item.dickersMaxSelect;
 						this.dickersExtras = item.dickersExtras;
 						this.dickersExtrasSelect = item.dickersExtrasMaxSelect;
 
-						this.total = this.item.value * item.betting.length;
+						this.total = this.item.value * item.tickets.length;
+
+						var date = this.formatDate(this.lottery.sweepstakes[0].data_fim);				
+						var timeOut = setInterval(() => {
+		    				this.setCountdown(date, timeOut);
+		    			}, 1000);
+		    			this.setCountdown(date, timeOut);
 
 						
 					} else {
@@ -341,27 +330,38 @@
 			init: function() {
 				if(this.$route.params.hash != undefined) {
 					this.showLottery();
-				}else if(this.$route.params.id != undefined) {
+				} else if(this.$route.params.id != undefined) {
 					this.showRequest();
 				}
 				window.document.title = this.trans('strings.lotteries');
+			},
+			setCountdown(date, timeOut) {
+				this.countdown(date, (d, h, m, s, distance) => {
+	            	this.next_lottery.days = d;
+					this.next_lottery.hours = h;
+					this.next_lottery.minutes = m;
+					this.next_lottery.seconds = s;
+					if(distance < 0) {
+						clearInterval(timeOut);
+					}
+	            });
 			},
 			//Removendo aposta
 			removeBet: function(event) {
 
 				//Remove a última coluna
-				this.columns.pop();
+				this.tickets.pop();
 				
 
 				//Remove a última aposta
-				this.item.betting.pop();
+				this.item.tickets.pop();
 
 
 
 				//Pegando todas as apostas feitas
-				var betting = this.getBettingFinished();
+				var tickets = this.getTicketsFinished();
 				
-				this.total = this.item.value * betting.length;
+				this.total = this.item.value * tickets.length;
 
 				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
 
@@ -375,12 +375,12 @@
 					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
 					total: this.total,
-					betting: betting,
+					tickets: tickets,
 					sweepstake: sweepstake
 				};
 				
 				
-				if(item.betting.length == 0) {
+				if(item.tickets.length == 0) {
 					this.$store.dispatch('removeItemLottery', item);
 				} else {
 					this.$store.dispatch('setItemLottery', item);	
@@ -391,15 +391,15 @@
 			//Adiciona aposta
 			addBet: function(event) {
 
-				var columns = []
+				var tickets = []
 
-				this.columns.filter((val) => {
-					columns.push(val)
+				this.tickets.filter((val) => {
+					tickets.push(val)
 				})
 
 				//Adicionando uma nova coluna
-				this.columns.push({
-					column: this.columns.length - 1,
+				this.tickets.push({
+					ticket: this.tickets.length - 1,
 					complete: false,
 					completeExtras: false,
 					numbers: [],
@@ -407,8 +407,8 @@
 				});
 
 				//Adicionando uma nova aposta no array
-				this.item.betting.push({
-					column: this.columns.length - 1,
+				this.item.tickets.push({
+					ticket: this.tickets.length - 1,
 					complete: false,
 					completeExtras: false,
 					numbers: [],
@@ -422,47 +422,47 @@
 					
 				});
 			},
-			clickNumberExtras: function(column, number, event) {
+			clickNumberExtras: function(ticket, number, event) {
 				var btn = $(event.currentTarget);					
 
 				if(btn.hasClass('btn-checked')){
 					btn.removeClass('btn-checked');
-					this.item.betting[column].numbersExtras = this.item.betting[column].numbersExtras.filter((val) => {
+					this.item.tickets[ticket].numbersExtras = this.item.tickets[ticket].numbersExtras.filter((val) => {
 						return val != number;
 					});
 				} else {
 					//Verifica se já selecionou todos as dezenas
-					if(this.item.betting[column].numbersExtras.length != this.dickersExtrasSelect.length) {
+					if(this.item.tickets[ticket].numbersExtras.length != this.dickersExtrasSelect.length) {
 						btn.addClass('btn-checked');
-						this.item.betting[column].numbersExtras.push(number);
+						this.item.tickets[ticket].numbersExtras.push(number);
 					}
 				}
 
 				//Se o número de dezenas extras selecionada for igual ao número de dezenas extras possíveis
-				if(this.item.betting[column].numbersExtras.length == this.dickersExtrasSelect.length) {
-					this.item.betting[column].completeExtras = true
+				if(this.item.tickets[ticket].numbersExtras.length == this.dickersExtrasSelect.length) {
+					this.item.tickets[ticket].completeExtras = true
 				} else {
-					this.item.betting[column].completeExtras = false
+					this.item.tickets[ticket].completeExtras = false
 				}
 
 				
 				//Se a aposta foi selecionada
-				if(this.item.betting[column].complete === true && this.item.betting[column].completeExtras === true) {
-					$('.ticket'+column).addClass('complete');
-					$('.ticket'+column).removeClass('incomplete');
+				if(this.item.tickets[ticket].complete === true && this.item.tickets[ticket].completeExtras === true) {
+					$('.ticket'+ticket).addClass('complete');
+					$('.ticket'+ticket).removeClass('incomplete');
 				}else {
-					$('.ticket'+column).addClass('incomplete');
-					$('.ticket'+column).removeClass('complete');
+					$('.ticket'+ticket).addClass('incomplete');
+					$('.ticket'+ticket).removeClass('complete');
 				}	
 
-				if(this.item.betting[column].numbersExtras.length == 0 && this.item.betting[column].numbers.length == 0) {
-					$('.ticket'+column).removeClass('complete');
-					$('.ticket'+column).removeClass('incomplete');
+				if(this.item.tickets[ticket].numbersExtras.length == 0 && this.item.tickets[ticket].numbers.length == 0) {
+					$('.ticket'+ticket).removeClass('complete');
+					$('.ticket'+ticket).removeClass('incomplete');
 				}
 
 				//Pegando todas as apostas feitas
-				var betting = this.getBettingFinished();
-				this.total = this.item.value * betting.length;
+				var tickets = this.getTicketsFinished();
+				this.total = this.item.value * tickets.length;
 			},
 			isEnabledDickersExtras: function() {
 				if(this.dickersExtrasSelect.length > 0) {
@@ -471,63 +471,63 @@
 				return false
 			},
 			//Função executada ao clicar em algum número da aposta 
-			//column significa a aposta clicada
-			clickNumber: function(column, number, event) {
+			//ticket significa a aposta clicada
+			clickNumber: function(ticket, number, event) {
 				var btn = $(event.currentTarget);
 				
 				//
 				if(btn.hasClass('btn-checked')){
 					btn.removeClass('btn-checked');
-					this.item.betting[column].numbers = this.item.betting[column].numbers.filter(function(val) {
+					this.item.tickets[ticket].numbers = this.item.tickets[ticket].numbers.filter(function(val) {
 						return val != number;
 					});
 				} else {
 					//Verifica se já selecionou todos as dezenas
-					if(this.item.betting[column].numbers.length != this.dickersMaxSel.length) {
+					if(this.item.tickets[ticket].numbers.length != this.dickersMaxSel.length) {
 						btn.addClass('btn-checked');
-						this.item.betting[column].numbers.push(number);
+						this.item.tickets[ticket].numbers.push(number);
 					}
 				}
 
 
 				//Se o usuário selecionou todas as dezenas possíveis
-				if(this.item.betting[column].numbers.length == this.dickersMaxSel.length) {
-					this.item.betting[column].complete = true
+				if(this.item.tickets[ticket].numbers.length == this.dickersMaxSel.length) {
+					this.item.tickets[ticket].complete = true
 				} else {
-					this.item.betting[column].complete = false
+					this.item.tickets[ticket].complete = false
 				}
 
 				//Verifico se existe dezenas extras,
 				//Caso não, faço a verificação somente nas dezenas
 				if(this.isEnabledDickersExtras()) {
-					if(this.item.betting[column].complete === true && this.item.betting[column].completeExtras === true) {
-						$('.ticket'+column).addClass('complete');
-						$('.ticket'+column).removeClass('incomplete');
+					if(this.item.tickets[ticket].complete === true && this.item.tickets[ticket].completeExtras === true) {
+						$('.ticket'+ticket).addClass('complete');
+						$('.ticket'+ticket).removeClass('incomplete');
 					}else {
-						$('.ticket'+column).addClass('incomplete');
-						$('.ticket'+column).removeClass('complete');
+						$('.ticket'+ticket).addClass('incomplete');
+						$('.ticket'+ticket).removeClass('complete');
 					}	
 				}else{
-					if(this.item.betting[column].complete === true) {
-						$('.ticket'+column).addClass('complete');
-						$('.ticket'+column).removeClass('incomplete');
+					if(this.item.tickets[ticket].complete === true) {
+						$('.ticket'+ticket).addClass('complete');
+						$('.ticket'+ticket).removeClass('incomplete');
 					}else {
-						$('.ticket'+column).addClass('incomplete');
-						$('.ticket'+column).removeClass('complete');
+						$('.ticket'+ticket).addClass('incomplete');
+						$('.ticket'+ticket).removeClass('complete');
 					}	
 				}
 
 
 				//Se não tem nenhuma dezena selecionada
-				if(this.item.betting[column].numbersExtras.length == 0 && this.item.betting[column].numbers.length == 0) {
-					$('.ticket'+column).removeClass('complete');
-					$('.ticket'+column).removeClass('incomplete');
+				if(this.item.tickets[ticket].numbersExtras.length == 0 && this.item.tickets[ticket].numbers.length == 0) {
+					$('.ticket'+ticket).removeClass('complete');
+					$('.ticket'+ticket).removeClass('incomplete');
 				}
 
 				//Pegando apostas concluídas
-				var betting = this.getBettingFinished();
+				var tickets = this.getTicketsFinished();
 				//Atualizando o total
-				this.total = this.item.value * betting.length;
+				this.total = this.item.value * tickets.length;
 			},
 			//Função para remover números duplicados em um array
 			removeRepeatedNumbers: function(numbers, value) {
@@ -541,7 +541,7 @@
 				}
 				return numbers;
 			},
-			selectRandom: function(column, event) {
+			selectRandom: function(ticket, event) {
 				//Números randomicos
 				var numbersRand = [];
 
@@ -554,14 +554,14 @@
 					numbersRand.push(rand);
 				}
 
-				this.item.betting[column].numbers = this.removeRepeatedNumbers(numbersRand);
-				this.item.betting[column].complete = true;
+				this.item.tickets[ticket].numbers = this.removeRepeatedNumbers(numbersRand);
+				this.item.tickets[ticket].complete = true;
 
-				$('.ticket'+column).find('button').removeClass('btn-checked');
+				$('.ticket'+ticket).find('button').removeClass('btn-checked');
 				
 				//Percorrendo os números e adicionando a classe btn-checked
 				for(var i = 0; i < numbersRand.length; i++) {
-					var btn = $('.ticket'+column+' .tickets-content').find('button')[numbersRand[i] - 1];
+					var btn = $('.ticket'+ticket+' .tickets-content').find('button')[numbersRand[i] - 1];
 					$(btn).addClass('btn-checked');
 				}
 
@@ -577,32 +577,32 @@
 					numbersExtrasRand.push(rand);
 				}
 				
-				this.item.betting[column].numbersExtras = this.removeRepeatedNumbers(numbersExtrasRand);
+				this.item.tickets[ticket].numbersExtras = this.removeRepeatedNumbers(numbersExtrasRand);
 				if(this.isEnabledDickersExtras()) {
-					this.item.betting[column].completeExtras = true;
+					this.item.tickets[ticket].completeExtras = true;
 				}
 
 				//Percorrendo os números extras e adicionando a classe btn-checked
 				for(var i = 0; i < numbersExtrasRand.length; i++) {
-					var btn = $('.ticket'+column+' .tickets-extras').find('button')[numbersExtrasRand[i] - 1];
+					var btn = $('.ticket'+ticket+' .tickets-extras').find('button')[numbersExtrasRand[i] - 1];
 					$(btn).addClass('btn-checked');
 				}
-				$('.ticket'+column).removeClass('incomplete');
-				$('.ticket'+column).addClass('complete');
+				$('.ticket'+ticket).removeClass('incomplete');
+				$('.ticket'+ticket).addClass('complete');
 
 
 				//Pegando todas as apostas feitas
-				var betting = this.getBettingFinished();
+				var tickets = this.getTicketsFinished();
 				
-				this.total = this.item.value * betting.length;
+				this.total = this.item.value * tickets.length;
 
 
 			},
 			//Pegando todas as apostas concluídas
-			getBettingFinished: function() {
+			getTicketsFinished: function() {
 				const vm = this
 				//Pegando todas as apostas feitas
-				var betting = this.item.betting.filter(function(val) {
+				var tickets = this.item.tickets.filter(function(val) {
 					//Verificando se dezenas extras está habilitado
 					if(vm.isEnabledDickersExtras()) {
 						if(val.complete == true && val.completeExtras == true) {
@@ -616,23 +616,13 @@
 					return false;
 				});
 
-				return betting;
+				return tickets;
 			},
-			//Deletando números selecionados na aposta clicada
-			//
-			deleteNumbersChecked: function(column, event) {
-				$('.ticket'+column).find('.btn-checked').removeClass('btn-checked');
-				$('.ticket'+column).removeClass('incomplete');
-				$('.ticket'+column).removeClass('complete');
-				this.item.betting[column].numbers = [];
-				this.item.betting[column].numbersExtras = [];
-				this.item.betting[column].completeExtras = false;
-				this.item.betting[column].complete = false;
-
+			refreshNumbersChecked() {
 				//Pegando todas as apostas feitas
-				var betting = this.getBettingFinished();
+				var tickets = this.getTicketsFinished();
 				
-				this.total = this.item.value * betting.length;
+				this.total = this.item.value * tickets.length;
 
 				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
 
@@ -646,11 +636,49 @@
 					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
 					total: this.total,
-					betting: betting,
+					tickets: tickets,
 					sweepstake: sweepstake
 				};
 
-				if(item.betting.length === 0) {
+				if(item.tickets.length === 0) {
+					this.$store.dispatch('removeItemLottery', item);
+				} else {
+					this.$store.dispatch('setItemLottery', item);	
+				}
+			},
+			//Deletando números selecionados na aposta clicada
+			//
+			deleteNumbersChecked: function(ticket, event) {
+				$('.ticket'+ticket).find('.btn-checked').removeClass('btn-checked');
+				$('.ticket'+ticket).removeClass('incomplete');
+				$('.ticket'+ticket).removeClass('complete');
+				this.item.tickets[ticket].numbers = [];
+				this.item.tickets[ticket].numbersExtras = [];
+				this.item.tickets[ticket].completeExtras = false;
+				this.item.tickets[ticket].complete = false;
+
+				//Pegando todas as apostas feitas
+				var tickets = this.getTicketsFinished();
+				
+				this.total = this.item.value * tickets.length;
+
+				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
+
+				//this.item.lottery.sweepstakes = this.item.lottery.sweepstakes[this.lot_jogo_id]
+
+				var item = {
+					hash: this.item.hash,
+					id: this.item.id,
+					name: this.item.name,
+					value: this.item.value,
+					lottery: this.item.lottery,
+					lot_jogo_id: this.lot_jogo_id,
+					total: this.total,
+					tickets: tickets,
+					sweepstake: sweepstake
+				};
+
+				if(item.tickets.length === 0) {
 					this.$store.dispatch('removeItemLottery', item);
 				} else {
 					this.$store.dispatch('setItemLottery', item);	
@@ -659,7 +687,7 @@
 			//Função para adicionar item no carrinho
 			addToCart: function(event) {
 				var vm = this
-				var betting = this.getBettingFinished().clone();
+				var tickets = this.getTicketsFinished().clone();
 
 				
 
@@ -675,7 +703,7 @@
 					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
 					total: this.total,
-					betting: betting,
+					tickets: tickets,
 					sweepstake: sweepstake,
 					dickers: this.dickers,
 					dickersMaxSelect: this.dickersMaxSel,
@@ -683,7 +711,7 @@
 					dickersExtrasMaxSelect: this.dickersExtrasSelect
 				};
 
-				if(betting.length == 0) {
+				if(tickets.length == 0) {
 					alert('Faça pelo menos um jogo');
 					//this.$store.dispatch('removeItemLottery', item);
 				}else {
@@ -726,7 +754,7 @@
 			//Função para remover item do carrinho
 			removeToCart: function() {
 				var vm = this
-				var betting = this.item.betting.filter(function(val) {
+				var tickets = this.item.tickets.filter(function(val) {
 					if(vm.isEnabledDickersExtras()) {
 						if(val.complete == true && val.completeExtras == true) {
 							return true;
@@ -746,9 +774,15 @@
 					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
 					total: this.total,
-					betting: betting
+					tickets: tickets
 				};
 				this.$store.dispatch('removeItemLottery', item);
+			},
+			refreshTickes() {
+				//Pegando todas as apostas feitas
+				var tickets = this.getTicketsFinished();
+				
+				this.total = this.item.value * tickets.length;
 			}
  		},
  		mounted: function() {
@@ -775,20 +809,29 @@
 		components: {
 			LoadComponent,
 			PlayComponent,
-			ResultComponent
+			ResultComponent,
+			TicketComponent
 		},
 		watch: {
 			purchase: {
-				handler:function (newValue, oldValue) {
+				handler(newValue, oldValue) {
 			      	
 			    },
 			    deep:true
+			},
+			'tickets': function(newValue, oldValue) {
+				
 			}
 		}
 	}
 </script>
 
 <style scoped>
+	
+	.countdown {
+
+	}
+
 	.btn-xs {
         margin: 2px;
         width: 28px;

@@ -13,7 +13,7 @@
 				<div class="row">
 					<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 						<span>
-							{{ item.betting.length }} Jogos
+							{{ item.tickets.length }} Jogos
 						</span>
 					</div>
 				</div>
@@ -45,9 +45,9 @@
 
 		<div :id="id" class="collapse">
 			<div class="container-tickets" style="display: flex;" @click.prevent="editLottery(item.id, item.hash, $event)">
-				<div :style="column == 0 ? 'margin: 0 5px 0 15px;' : 'margin: 0 5px 0 5px;'" class="no-padding col-lg-2 col-10 col-md-5 col-sm-5" v-for="(bet, column) in item.betting">
-					<bet-component :id="id" :bet="bet" :column="column" :lottery="item"></bet-component>
-				</div>
+				<ticket-component v-for="(ticket, index) in item.tickets" :tickets="item.tickets" :dickers="dickers" :dickersMaxSel="dickersMaxSel" :dickersExtras="dickersExtras" :item="item" :dickersExtrasSelect="dickersExtrasSelect" :ticket="ticket" :index="index" :key="index">
+					
+				</ticket-component>
 			</div>
 		</div>
 
@@ -59,16 +59,31 @@
 
 <script>
 	import BetComponent from './Lottery/BetComponent'
+	import TicketComponent from './Lottery/TicketComponent'
 	import {routes} from '../../../../api_routes'
 	export default {
 		props: ['item', 'id'],
 		data: function() {
 			return {
-				dickers: []
+				dickers: [],
+				dickersMaxSel: [],
+				dickersExtras: [],
+				dickersExtrasSelect: []
 			}
 		},
-		mounted: function() {
-			
+		mounted() {
+		 	for (var i = 1; i <= this.item.lottery.dezena; i++) {
+            	this.dickers.push(i);
+            }
+            for (var i = 1; i <= this.item.lottery.dezena_sel; i++) {
+            	this.dickersMaxSel.push(i);
+            }
+            for (var i = 1; i <= this.item.lottery.dezena_extra; i++) {
+            	this.dickersExtras.push(i);
+            }
+            for (var i = 1; i <= this.item.lottery.dezena_extra_sel; i++) {
+            	this.dickersExtrasSelect.push(i);
+            }
 		},
 		methods: {
 			editLottery(id, hash, $event) {
@@ -101,7 +116,8 @@
 			},
 		},
 		components: {
-			BetComponent
+			BetComponent,
+			TicketComponent
 		}
 	}
 </script>

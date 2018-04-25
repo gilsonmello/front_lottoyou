@@ -37,14 +37,16 @@
 				<img style="width: 100%; " class="img-fluid" src="/img/banner_medio_raspadinha.jpg">
 			</div>
 		</div>
-
+		
+		<!-- 
 		<br>
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
-				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
+				<h1 class="text-center">Banner 03<br>960 x 200px</h1> 
 				<img style="width: 100%; " class="img-fluid" src="/img/golden_goal.jpg">
 			</div>
 		</div>
+		-->
 
 		<!-- <br>
 		<div class="container">

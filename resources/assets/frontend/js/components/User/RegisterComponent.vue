@@ -4,7 +4,7 @@
 		<h1 class="page-header text-center">Crie uma conta para desfrutar de infinitas possibilidades</h1>
 		<form @submit.prevent="register">
 			<div class="row">
-				<div class="col-lg-12 col-12 col-sm-12 col-md-12">
+				<div class="col-lg-8 col-12 col-sm-12 col-md-12">
 					<div class="row">
 						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
@@ -38,6 +38,15 @@
 						</div>
 					</div>
 					<div class="row">
+						<div class="col-lg-2 col-12 col-sm-4 col-md-4" style="padding-right: 0;">
+							<div class="form-group">
+								<label for="gender">&nbsp;</label>
+							    <select v-model="gender" required class="form-control" id="gender" aria-describedby="gender" :placeholder="trans('strings.gender')">
+							    	<option value="M" selected>Sr.</option>
+							    	<option value="F">Srª</option>
+							    </select>
+						  	</div>
+						</div>
 						<div class="col-lg-5 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
 								<label for="name">{{ trans('strings.name') }}</label>
@@ -47,24 +56,12 @@
 								</div>
 						  	</div>
 						</div>
-						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
+						<div class="col-lg-5 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
 								<label for="last_name">{{ trans('strings.last_name') }}</label>
 							    <input v-model="last_name" required type="last_name" class="form-control" id="last_name" aria-describedby="last_name" :placeholder="trans('strings.last_name')">
 							    <div class="alert alert-danger" v-if="errors.last_name">
 								  	<div v-for="last_name in errors.last_name" >{{ last_name }}</div>
-								</div>
-						  	</div>
-						</div>
-						<div class="col-lg-3 col-12 col-sm-4 col-md-4">
-							<div class="form-group">
-								<label for="gender">{{ trans('strings.gender') }}</label>
-							    <select v-model="gender" required class="form-control" id="gender" aria-describedby="gender" :placeholder="trans('strings.gender')">
-							    	<option value="M" selected>{{ trans('strings.male') }}</option>
-							    	<option value="F">{{ trans('strings.female') }}</option>
-							    </select>
-							    <div class="alert alert-danger" v-if="errors.gender">
-								  	<div v-for="gender in errors.gender" >{{ gender }}</div>
 								</div>
 						  	</div>
 						</div>
@@ -74,7 +71,7 @@
 							<div class="row">
 								<div class="col-lg-4 col-sm-6 col-md-4 col-6">
 									<div class="form-group">
-										<label for="birth_day">{{ trans('strings.day') }}</label>
+										<label for="birth_day">Data nasc.</label>
 									    <select v-model="birth_day" class="form-control" id="birth_day">
 									      	<option :value="day" v-for="day in days">
 									      		{{ day }}
@@ -87,7 +84,7 @@
 								</div>
 								<div class="col-lg-4 col-sm-6 col-md-4 col-6">
 									<div class="form-group">
-										<label for="birth_month">{{ trans('strings.month') }}</label>
+										<label for="birth_month">&nbsp;</label>
 									    <select v-model="birth_month" class="form-control" id="birth_month" @change="changeBirthMonth">
 									      	<option :value="month.value" :data-key="key" v-for="(month, key) in months">
 									      		{{ month.name }}
@@ -100,7 +97,7 @@
 								</div>
 								<div class="col-lg-4 col-sm-12 col-md-12 col-12">
 									<div class="form-group">
-										<label for="birth_year">{{ trans('strings.year') }}</label>
+										<label for="birth_year">&nbsp;</label>
 									    <select v-model="birth_year" class="form-control" id="birth_year">
 									      	<option :value="val" v-for="(val, index) in rangeYear(1900, date.getFullYear() - 18)">
 									      		{{ val }}
@@ -152,9 +149,9 @@
 					</div>
 					<hr>
 				</div>
-				<!-- <div class="col-lg-4 col-12 col-md-4 col-sm-12 text-center">
+				<div class="col-lg-4 col-12 col-md-4 col-sm-12 text-center">
 					<img class="img-fluid" src="https://www.lottoland.com/cms/5a4ca7d90eb3587d99647503/br_yellow_homepage_286x406.jpg">
-				</div> -->
+				</div>
 			</div>
 		</form>
 	</div>

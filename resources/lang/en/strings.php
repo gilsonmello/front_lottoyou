@@ -11,9 +11,12 @@ return [
       | found in a intuitive way.
       |
      */
+    'next_lottery' => 'Próximo Sorteio',
     'complete_purchase' => 'Concluir Compra',
     'to_enter' => 'Entrar',
     'logout' => 'Deslogar',
+    'product' => 'Produto',
+    'products' => 'Produtos',
     'to_close' => 'Fechar',
     'spare' => 'Poupar',
     'hours_left' => 'Horas Restantes',
