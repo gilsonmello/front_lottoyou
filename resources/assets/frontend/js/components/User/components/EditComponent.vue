@@ -1,6 +1,6 @@
 <template>
     <load-component v-if="loading.component == true"></load-component>
-    <div class="container" v-else>
+    <div class="container no-padding" v-else>
         <form class="user-edit" @submit.prevent="handleEdit" enctype="multipart/form-data">
             <input type="hidden" name="id" v-model="id">
             <div class="row">

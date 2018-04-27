@@ -315,7 +315,7 @@
 
 	.account {		
 		font-weight: 700;
-		color: #69a507;
+		color: #0056b1;
 	    font-size: 14px;
 	    line-height: 18px;
 	}
@@ -333,7 +333,7 @@
 
 	.balance-deposit {
 		font-weight: 700;
-		color: #69a507;
+		color: #0056b1;
 	    font-size: 14px;
 	    line-height: 18px
 	}
@@ -347,12 +347,12 @@
 		padding: 2px 10px 2px 2px;
 		margin-right: 21px;*/
 		position: relative;
-		color: #69a507 !important;
+		color: #0056b1 !important;
 	}
 
 	.cart-checkout-now {		
 		font-weight: 700;
-		color: #69a507;
+		color: #0056b1;
 	    font-size: 14px;
 	    line-height: 18px
 	}
@@ -440,7 +440,7 @@
 	}
 
 	span, a {
-		color: #69a507;
+		color: #0056b1;
 		font-weight: 700;
 		font-size: 14px;
 		cursor: pointer;
