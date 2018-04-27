@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Model\Frontend\ScratchCardDiscountTable;
 use App\Model\Frontend\ScratchCardLot;
 use App\Model\Frontend\ScratchCardJackpotTable;
+use App\Model\Frontend\ScratchCard;
 
 class ScratchCardTheme extends Model
 {
@@ -47,6 +48,10 @@ class ScratchCardTheme extends Model
     protected $appends = [
         'total_tickets'
     ];
+
+    public function scratchCards() {
+        return $this->hasMany(ScratchCard::class, 'temas_raspadinha_id');
+    }
 
     public function lot() {
     	return $this->hasOne(ScratchCardLot::class, 'temas_raspadinha_id')

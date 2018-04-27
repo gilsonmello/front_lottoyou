@@ -13142,7 +13142,8 @@ body {
 }
 
 .modal-demo .scratchpad canvas,
-.scratchpad img {
+.scratchpad img,
+.modal-scratch-card .scratchpad canvas {
   left: 0 !important;
   right: 0 !important;
   heigth: 128px !important;
@@ -13645,5 +13646,63 @@ button.close {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
+}
+
+.btn-game:not([disabled]):not(.disabled):active {
+  background: transparent linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0 !important;
+}
+
+.btn-game {
+  background: transparent linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0;
+  border: 0 none;
+  width: 100%;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 -4px 0 -2px #708f00 inset;
+          box-shadow: 0 -4px 0 -2px #708f00 inset;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "kievit",arial,sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 48px;
+  padding: 0 15px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px #586e00;
+  vertical-align: bottom;
+}
+
+.btn-result {
+  border-color: #baa359;
+  line-height: 36px;
+  font-weight: bold;
+  text-align: center;
+  color: #f2d472;
+  border-color: #baa359;
+  background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+  font-size: 21px;
+  width: 100%;
+}
+
+.remaining-tickets {
+  background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+  border-color: #baa359;
+  color: #f2d472;
+  text-align: left;
+  line-height: 48px;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.ticket-number {
+  color: #fff;
+  font-family: courier;
+  font-size: 25px;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  line-height: 1;
 }
 

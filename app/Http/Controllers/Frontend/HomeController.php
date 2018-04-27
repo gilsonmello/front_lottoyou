@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index(Request $request)         
     {
 
-       /* $vet = [
+        /* $vet = [
             0 => 1, 
             1 => 2, 
             2 => 3, 

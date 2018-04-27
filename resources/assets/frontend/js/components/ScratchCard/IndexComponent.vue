@@ -77,6 +77,9 @@
 							</div>
 							<div class="row vcenter" style="margin-top: 15px; background: none;">
 								<div class="col-12 col-md-12 col-xs-12 col-sm-12 text-center">
+									<button type="buttom" @click.prevent="handleScratchCard(index, $event)" class="btn btn-md btn-success" v-if="scratch_card_theme.has_scratch_card">
+										{{ trans('strings.to_play') }}
+									</button>
 									<button type="submit" class="btn btn-md btn-success">
 										{{ trans('strings.play_now') }}
 									</button>
@@ -323,12 +326,15 @@
 		  	</div>
 		</div>
 
+		<modal-component></modal-component>
+
 	</div>
 </template>
 
 <script>
 	import {routes} from '../../api_routes'
 	import ModalFormComponent from '../ModalFormComponent'
+	import ModalComponent from './ModalComponent'
 	import LoadComponent from '../Load'
 	import {mapState, mapGetters} from 'vuex'
 	export default {
@@ -340,6 +346,11 @@
 			
 		},
 		methods: {
+			handleScratchCard(index, $event) {
+				let theme = this.scratch_card_themes[index];
+				this.$eventBus.$emit('openModal', theme);
+			},
+			//Função para remover o espaço de uma url
 			src(src) {
 				return src.replace(' ', '%20');
 			},
@@ -635,7 +646,12 @@
 			axios.interceptors.request.use(config => {
 				return config;
 			});
-			axios.get(routes.scratch_card_themes.index, {}).then(response => {
+			
+			var url = routes.scratch_card_themes.index;
+			if(this.auth)
+				url = url+'?user_id='+this.auth.id;
+
+			axios.get(url, {}).then(response => {
 	            if(response.status === 200){
 	            	this.item.hash = this.makeid();
 	            	this.scratch_card_themes = response.data
@@ -674,23 +690,14 @@
 		},
 		components: {
 			ModalFormComponent,
-			LoadComponent
+			LoadComponent,
+			ModalComponent
 		}
 	}
 </script>
 
 <style scoped>
 	
-	.remaining-tickets {
-	    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
-	    border-color: #baa359;
-	    color: #f2d472;
-	    text-align: left;
-	    line-height: 48px;
-	    padding: 0 15px;
-	    width: 100%;
-	}
-
 	.info-text {
 		color: #fff;
     	font-size: 15px;
@@ -700,47 +707,6 @@
 	    text-shadow: 0 2px 3px rgba(0,0,0,.8);
 	}
 
-	.ticket-number {
-	    color: #fff;
-	    font-family: courier;
-	}
-
-	.btn-result {
-		border-color: #baa359;
-	    line-height: 36px;
-	    font-weight: bold;
-	    text-align: center;
-        color: #f2d472;
-        border-color: #baa359;
-	    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
-	    font-size: 21px;
-	    width: 100%;
-	}
-
-	.btn-game:not([disabled]):not(.disabled):active {
-		background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0 !important;
-	}
-
-	.btn-game {
-		background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0;
-	    border: 0 none;
-	    width: 100%;
-	    border-radius: 5px;
-	    box-shadow: 0 -4px 0 -2px #708f00 inset;
-	    box-sizing: border-box;
-	    color: #fff;
-	    cursor: pointer;
-	    font-family: "kievit",arial,sans-serif;
-	    font-size: 24px;
-	    font-weight: 700;
-	    line-height: 48px;
-	    padding: 0 15px;
-	    text-align: center;
-	    text-decoration: none;
-	    text-shadow: 1px 1px 2px #586e00;
-	    vertical-align: bottom;
-	}
-	
 	.scratch-card {
 		background: #efefef;
 	    border-radius: 5px;

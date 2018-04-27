@@ -27,12 +27,16 @@ export const routes = {
 	},
 	scratch_cards: {
 		index: host+'/scratch_cards',
-		jackpot_available: host+'/scratch_cards/{id}/jackpot_available'
+		jackpot_available: host+'/scratch_cards/{id}/jackpot_available',
 	},
 	scratch_card_themes: {
 		index: host+'/scratch_card_themes',
 		jackpot_available: host+'/scratch_card_themes/{id}/jackpot_available',
-		demo: host+'/scratch_card_themes/{theme_id}/demo'
+		demo: host+'/scratch_card_themes/{theme_id}/demo',
+		scratch_card: host + '/scratch_card_themes/{theme_id}/scratch_card',
+		show: host + '/scratch_card_themes/{theme_id}',
+		play: host + '/scratch_card_themes/{theme_id}/{user_id}',
+		change_scratch_card: host + '/scratch_card_themes/{scratch_card_id}/change_scratch_card',
 	},
 	scratch_card_demo: {
 		index: host+'/scratch_card_demo',
