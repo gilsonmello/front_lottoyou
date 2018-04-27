@@ -19,7 +19,7 @@
             	{{ category.nome }}
             </span>     
 		</header>
-		<div class="tickets-content" :style="backgroundTicket(ticket.imagem_capa)">
+		<div class="tickets-content" :style="backgroundTicket(ticket.imagem_modal)">
 			<div class="row">
 				<div :class="verifyCol(ticket.games)" v-for="(game, index) in ticket.games">
 					<game-component :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index"></game-component>
@@ -50,7 +50,8 @@
     			days: '',
     			hours: '',
     			minutes: '',
-    			seconds: ''
+    			seconds: '',
+    			valid: true,
         	}
         },
         methods: {
@@ -98,7 +99,17 @@
 					this.ticket.complete = true;
 					$(this.$el).addClass('complete');
 					$(this.$el).removeClass('incomplete');
-					this.item.tickets.unshift(this.ticket);
+
+					//Verifico se o item já está incluso na lista de tickets
+					var has = false;
+					this.item.tickets.filter((val) => {
+						if(this.ticket.id == val.id)
+							has = true;
+					});
+
+					//Caso não esteja, adiciono, se não, não adiciono novamente
+					if(!has)
+						this.item.tickets.unshift(this.ticket);
 				} else {
 					this.ticket.complete = false;
 					$(this.$el).addClass('incomplete');
@@ -113,8 +124,6 @@
 					$(this.$el).removeClass('complete');
 					$(this.$el).removeClass('incomplete');
 				}
-				
-				this.$emit('updateSoccerExpert');
 			},
 			setCountdown(date) {
 				this.countdown(date, (d, h, m, s, distance) => {
@@ -124,6 +133,7 @@
 					this.seconds = s;
 					if(distance < 0) {
 						clearInterval(timeOut);
+						this.valid = false
 					}
 	            });
 			},
@@ -194,6 +204,7 @@
 
 	.tickets-header {
 		padding: 5px 0 0 0;
+		color: #000;
 		background-color: initial;
 	}
 

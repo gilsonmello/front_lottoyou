@@ -81,9 +81,14 @@ class SoccerExpertRound extends Model
             ->where('active', '=', 1);
     }
 
-    public function getImagemCapaAttribute()
+    public function getImagemCapaAttribute($imagem)
     {        
-        return env('APP_CDN'). $this->attributes['imagem_capa'];
+        return env('APP_CDN') . $this->attributes['imagem_capa'];
+    }
+
+    public function getImagemModalAttribute($imagem)
+    {        
+        return env('APP_CDN') . $this->attributes['imagem_modal'];
     }
 
     public function getDataTerminoAttribute($date) 

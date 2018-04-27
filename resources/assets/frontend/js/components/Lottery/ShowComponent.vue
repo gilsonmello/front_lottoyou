@@ -71,7 +71,7 @@
 					<button type="submit" class="btn btn-md btn-success pull-right">
 						{{ trans('strings.add_to_cart') }}
 					</button>
-					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
+					<button @click.prevent="" type="load" class="hide pull-right btn btn-xs btn-success">
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">

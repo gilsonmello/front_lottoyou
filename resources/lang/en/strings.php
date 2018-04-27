@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'nickname' => 'Apelido',
     'next_lottery' => 'Próximo Sorteio',
     'complete_purchase' => 'Concluir Compra',
     'to_enter' => 'Entrar',

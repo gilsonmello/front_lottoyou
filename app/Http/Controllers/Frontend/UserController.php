@@ -53,7 +53,8 @@ class UserController extends Controller
         $user->country_id = $request->get('country');
         $user->gender = $request->get('gender');
         if($user->save()) {
-
+            $user->nickname = $user->name . '_' . $user->id;
+            $user->save();
             Balance::create([
                 'user_id' => $user->id,
                 'value' => 0.00,
@@ -108,6 +109,22 @@ class UserController extends Controller
         $user->username = $request->get('username');
         $user->state = $request->get('state');
         $user->tell_phone = $request->get('tell_phone');
+        $user->nickname = $user->name . '_' . $user->id;
+
+        if ($request->hasFile('photo')) {
+            if($request->file('photo')->isValid()) {
+                try {
+                    $file = $request->file('photo');
+                    $name = $user->id. '.' .$file->getClientOriginalExtension();
+                    $request->file('photo')->move(public_path('files/profile'), $name);
+                    $user->photo = request()->root() . '/files/profile/' . $name;
+                } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+
+                }
+            } 
+        }
+
+
         if($user->save()){
             return response()->json(['message' => trans('alerts.users.update.success')], 200);
         }

@@ -12,31 +12,38 @@
             </div>
             <div class="row">
                 <div class="col-lg-3">
-                    <img src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
+                    <img v-if="photo" :src="photo" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
+                    <img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
                     <label for="photo">Selecione a imagem do perfil</label>
                     <input accept="image/*" @change.prevent="changePhoto" type="file" name="photo" id="photo">
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-lg-2 col-12 col-sm-6 col-md-6">
+                        <div class="col-lg-2 col-2 col-sm-2 col-md-2" style="padding-right: 0;">
                             <div class="form-group">
-                                <label for="gender">{{ trans('strings.title') }}</label>
-                                <select readyonly disabled name="gender" v-model="gender" class="form-control" id="gender">
-                                    <option value="M">{{ trans('strings.man') }}</option>
-                                    <option value="F">{{ trans('strings.woman') }}</option>
+                                <label for="gender">&nbsp;</label>
+                                <select v-model="gender" required class="form-control" id="gender" aria-describedby="gender" :placeholder="trans('strings.gender')">
+                                    <option value="M" selected>Sr.</option>
+                                    <option value="F">Srª</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-12 col-sm-6 col-md-6">
+                        <div class="col-lg-4 col-12 col-sm-4 col-md-4">
                             <div class="form-group">
                                 <label for="name">{{ trans('strings.name') }}</label>
                                 <input readonly disabled v-model="name" type="text" class="form-control" id="name" aria-describedby="name" name="name" :placeholder="trans('strings.name')">
                             </div>
                         </div>
-                        <div class="col-lg-6 col-12 col-sm-6 col-md-6">
+                        <div class="col-lg-3 col-12 col-sm-4 col-md-4">
                             <div class="form-group">
                                 <label for="last_name">{{ trans('strings.last_name') }}</label>
                                 <input disabled readonly v-model="last_name" type="text" class="form-control" id="last_name" aria-describedby="last_name" name="last_name" :placeholder="trans('strings.last_name')">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-12 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <label for="nickname">{{ trans('strings.nickname') }}</label>
+                                <input disabled readonly v-model="nickname" type="text" class="form-control" id="nickname" aria-describedby="nickname" name="nickname" :placeholder="trans('strings.nickname')">
                             </div>
                         </div>
                     </div>
@@ -189,7 +196,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <button type="submit" class="btn btn-xs btn-success">
+                            <button type="submit" class="btn pull-right btn-md btn-success">
                                 {{ trans('strings.save_button') }}
                             </button>
                             <button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
@@ -231,32 +238,9 @@
                 var formData = new FormData(form[0]);
                 formData.append('_method', 'put');
 
-                /*var contentType = 'multipart/form-data';
-                $.ajax({
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: routes.users.update.replace('{id}', vm.id),
-                    data:  formData,
-                    contentType: false,
-                    processData: false,
-                    beforeSend: function() {
-                        
-                    },
-                    success: function(result) {
-
-                    },
-                    error: function(data) {
-                    
-                    }
-                });
-*/
-
                 var updateRequest = axios.create();
 
                 updateRequest.interceptors.request.use(config => {
-                    this.loading.component = true
                     $(this.$el).find('[type="load"]').removeClass('hide');
                     $(this.$el).find('[type="submit"]').addClass('hide');
                     return config;
@@ -288,18 +272,38 @@
                             window.localStorage.setItem('authUser', JSON.stringify(response_2.data))
                             this.$store.dispatch('setUserObject', response_2.data);
                             toastr.success(this.trans('alerts.users.update.success'));
-                            this.loading.component = false
+                            
+                            this.user = response_2.data                   
+                            this.errors = [];
+                            this.gender = this.user.gender ? this.user.gender : '';
+                            this.nickname = this.user.nickname;
+                            this.name = this.user.name;
+                            this.last_name = this.user.last_name;
+                            this.address = this.user.address;
+                            this.street = this.user.street;
+                            this.number = this.user.number;
+                            this.cep = this.user.cep;
+                            this.photo = this.user.photo;
+                            this.city = this.user.city;
+                            this.username = this.user.username;
+                            this.state = this.user.state;
+                            this.date_birth = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
+                            this.id = this.user.id;
+                            this.complement = this.user.complement
+                            this.country = this.user.country.name
+                            this.phone_code = '+'+this.user.country.phonecode
+
                             //window.location.href = "/painel"
                             //this.$router.push({name: 'home'});
                         }).catch((error_2) => {
                             $(this.$el).find('[type="load"]').addClass('hide');
                             $(this.$el).find('[type="submit"]').removeClass('hide');
-                            this.loading.component = false
+                            
                         });
                         this.errors = [];
                     }
                 }).catch((error) => {
-                    this.loading.component = false
+                    
                     this.errors = error.response.data.errors
                     toastr.success(this.trans('alerts.users.update.error'));
                     $(this.$el).find('[type="load"]').addClass('hide');
@@ -314,6 +318,7 @@
                 last_name: '',
                 address: '',
                 street: '',
+                photo: '',
                 number: '',
                 cep: '',
                 city: '',
@@ -328,6 +333,7 @@
                 country: '',
                 tell_phone: '',
                 phone_code: '',
+                nickname: '',
                 countries: [],
                 errors: [],
                 loading: {
@@ -336,6 +342,7 @@
             }
         },
         mounted: function() {
+
             const access_token = JSON.parse(window.localStorage.getItem('access_token'));            
 
             var authRequest = axios.create();
@@ -357,12 +364,14 @@
                 this.errors = [];
 
                 this.gender = this.user.gender ? this.user.gender : '';
+                this.nickname = this.user.nickname;
                 this.name = this.user.name;
                 this.last_name = this.user.last_name;
                 this.address = this.user.address;
                 this.street = this.user.street;
                 this.number = this.user.number;
                 this.cep = this.user.cep;
+                this.photo = this.user.photo;
                 this.city = this.user.city;
                 this.username = this.user.username;
                 this.state = this.user.state;

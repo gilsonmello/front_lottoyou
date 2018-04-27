@@ -1,10 +1,10 @@
 <template>
 	<section>
-		<div class="vcenter soccer_experts no-padding item" :href="'#'+id" data-toggle="collapse">
+		<div class="vcenter soccer_experts no-padding">
 			<div class="col-lg-2 col-md-2 col-2 col-sm-2" style="padding-left: 0;">
 				<img class="img-fluid" :alt="item.soccer_expert.nome" :src="item.soccer_expert.imagem_capa">
 			</div>
-			<div class="col-lg-8 col-5 col-md-7 col-sm-6">
+			<div class="col-lg-8 col-5 col-md-7 col-sm-6" :href="'#'+id" data-toggle="collapse">
 				<div class="row">
 					<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 						<span>{{ item.soccer_expert.nome }}</span>
@@ -35,8 +35,8 @@
 			</div>
 		</div>
 
-		<div class="collapse item row" :id="id" @click.prevent="editTickets">		
-			<div class="col-lg-4 col-12 col-md-4 col-sm-4" v-for="(ticket, index) in item.tickets">
+		<div class="collapse row" :id="id" @click.prevent="editTickets">		
+			<div class="col-lg-4 col-12 col-md-4 col-sm-4 item" v-for="(ticket, index) in item.tickets">
                 <ticket-component :category="item.soccer_expert" :ticket="ticket" :index="index">
                     
                 </ticket-component>

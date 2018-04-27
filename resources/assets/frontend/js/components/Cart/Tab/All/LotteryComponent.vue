@@ -1,10 +1,10 @@
 <template>
 	<section>
-		<div class="vcenter lotteries no-padding" :href="'#'+id" data-toggle="collapse">
+		<div class="vcenter lotteries no-padding">
 			<div class="col-lg-2 col-md-2 col-2 col-sm-2">
 				<img class="img-fluid" :alt="item.lottery.nome" :src="item.lottery.img_loteria">
 			</div>
-			<div class="col-lg-8 col-5 col-md-7 col-sm-6">
+			<div class="col-lg-8 col-5 col-md-7 col-sm-6" :href="'#'+id" data-toggle="collapse">
 				<div class="row">
 					<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 						<span>{{ item.lottery.nome }}</span>
@@ -129,6 +129,10 @@
 	}
 	.lotteries {
 		padding: 10px 0 10px 0;
+	}
+
+	.container-tickets {
+		cursor: pointer;
 	}
 
 	.collapse.show {

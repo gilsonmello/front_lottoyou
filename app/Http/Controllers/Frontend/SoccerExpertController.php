@@ -102,6 +102,7 @@ class SoccerExpertController extends Controller
                         'modified',
                         'soc_categoria_id',
                         'soc_ciclo_id',
+                        'imagem_modal'
                     ])
                     ->where(
                         DB::raw("concat(data_termino,' ',hora_termino)"), 

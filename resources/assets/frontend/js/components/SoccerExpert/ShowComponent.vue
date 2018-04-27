@@ -70,7 +70,7 @@
                 <div class="modal-content" v-if="ticket != null">
                     <!-- Modal Header -->
                     <div class="modal-header" style="border-bottom: none;">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    	<button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
                     <!-- Modal body -->
@@ -118,6 +118,9 @@
         	}
         },
         methods: {
+        	backgroundModal(background) {
+        		return 'background-image: url('+background+'); background-size: 100% 100%; background-repeat: no-repeat;';
+        	},
         	addToCart(event) {
         		
 				var item = {
@@ -246,6 +249,21 @@
 
 <style scoped>
 
+	.btn-xs {
+        margin: 2px;
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+        border-radius: 999px !important;
+        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+        -webkit-transition: -webkit-box-shadow 0.15s ease-out;
+        -moz-transition: -moz-box-shadow 0.15s ease-out;
+        -o-transition: -o-box-shadow 0.15s ease-out;
+        transition: box-shadow 0.15s ease-out;
+        padding: 0;
+    }
+
  	.ticket-sweepstake-name {
         display: block;
     }
@@ -266,7 +284,7 @@
         margin: 0 auto;
     }
 
-    .fa {
+    .carousel .fa {
         font-size: 60px !important;
     }
 

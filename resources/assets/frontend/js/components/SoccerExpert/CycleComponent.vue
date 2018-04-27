@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-4" v-for="(ticket, index) in cycle.rounds">
             <ticket-component v-on:updateSoccerExpert="updateSoccerExpert" :category="item.soccer_expert" :ticket="ticket" :index="index">
-           </ticket-component>
+            </ticket-component>
         </div>
     </div>
 </template>
@@ -37,15 +37,20 @@
                 return 'background-image: url('+background+')';
             },
             updateSoccerExpert() {
+
                 this.item.total = this.updateTotal();
             },
             //Atualizando o total de todas as cartelas feitas
             updateTotal: function() {  
                 var total = 0.00;
-                var value = null;
+                var value = 0.00;
+                
                 //Pegando todas as apostas feitas
-                this.item.tickets.filter(function(val) {
-                    console.log(val)
+                this.item.tickets.filter((val) => {
+                    if(val.complete) {
+                        value = parseFloat(val.valor);
+                        total += value;
+                    }
                 });
                 return total;            
             },

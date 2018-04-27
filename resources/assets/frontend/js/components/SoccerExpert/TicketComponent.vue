@@ -25,7 +25,7 @@
             	{{ category.nome }}
             </span>     
         </header>
-		<div class="tickets-content" @click.prevent="openModal">
+		<div class="tickets-content" @click.prevent="openModal" :style="backgroundTicket(ticket.imagem_capa)">
 			<div class="row">
 				<div :class="verifyCol(ticket.games)" v-for="(game, index) in ticket.games">
 					<game-component :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index"></game-component>
@@ -65,7 +65,8 @@
     			days: '',
     			hours: '',
     			minutes: '',
-    			seconds: ''
+    			seconds: '',
+    			valid: true,
         	}
         },
         methods: {
@@ -135,6 +136,7 @@
 					this.seconds = s;
 					if(distance < 0) {
 						clearInterval(timeOut);
+						this.valid = false
 					}
 	            });
 			},
@@ -185,6 +187,7 @@
 
 	.tickets-header {
 		padding: 5px 0 0 0;
+		color: #000;
 		background-color: initial;
 	}
 
