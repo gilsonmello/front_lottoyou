@@ -14,6 +14,7 @@ class CreateCartItemsTable extends Migration
     public function up()
     {
         Schema::create('cart_items', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->integer('id')->autoIncrement();
            
             $length = 11;

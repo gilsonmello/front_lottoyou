@@ -35,7 +35,7 @@
 	      							<div class="vert-align">
 	      								<h3>Não restam raspadinhas.</h3>
 	      								<p>Tens de comprar mais raspadinhas para voltar a jogar.</p>
-	      								<div @click="app.reload" class="btn btn-primary btn-mini buy-more-btn">
+	      								<div @click.prevent="app.reload" class="btn btn-primary btn-mini buy-more-btn">
 	      									Comprar mais bilhetes.
 	      								</div>
       								</div>
@@ -57,7 +57,9 @@
 	      				</div>
 	      				<div class="row" style="padding: 10px 20px 10px 20px;">
 	      					<div class="col-lg-6 col-12 col-md-6 col-sm-6" style="padding: 0 5px 0 5px;">
-	      						<a href="javascript: void(0);" class="btn remaining-tickets">Raspadinhas restantes: {{ attempts }}</a>
+	      						<a href="javascript: void(0);" class="btn remaining-tickets">
+	      							Raspadinhas restantes: {{ attempts == null ? 0 : attempts }}
+	      						</a>
 	      					</div>
 	      					<div class="col-lg-6 col-12 col-md-6 col-sm-6 btn-container" style="padding: 0 5px 0 5px;">		      						
 	      						<a v-if="loading.game == 0" @click.prevent="handlePlay($event)" href="javascript: void(0);" class="btn btn-game btn-play">
@@ -71,6 +73,9 @@
 	      						</a>
 	      						<a v-if="loading.game == 3" @click.prevent="handlePlayAgain($event)" href="javascript: void(0);" class="btn btn-game btn-play-again">
 	      							{{ trans('strings.play_again') }}
+	      						</a>
+	      						<a v-if="loading.game == 4" @click.prevent="handleBuyNow($event)" href="javascript: void(0);" class="btn btn-game btn-buy-now">
+	      							{{ trans('strings.buy_now') }}
 	      						</a>
 	      					</div>
 	      				</div>
@@ -92,6 +97,9 @@
                 'auth'
             ]),
 		},
+		beforeDestroy() {
+            this.$eventBus.$off('openModal');
+        },
 		data() {
 			return {
 				loading: {
@@ -105,25 +113,33 @@
 			}
 		},
 		mounted() {
-			this.$eventBus.$on('openModal',  (theme) => {
+			//Escuta o evento open Modal
+			this.$eventBus.$on('openModal',  (theme, onHidden) => {
                 this.theme = theme;
                 this.attempts = this.theme.has_scratch_card.quantity;
+                $('.modal-scratch-card').off('hidden.bs.modal');
+                $('.modal-scratch-card').off('shown.bs.modal');
                 $('.modal-scratch-card').modal('toggle');
+                $('.modal-scratch-card').on('hidden.bs.modal', (e) => {
+					this.theme = null;
+					this.loading.game = 0;
+					this.loading.scratchpad = false;
+					this.scratch_card = {}
+					onHidden();	
+					$('html, body').animate({
+				        scrollTop: 0
+				    },  300);			
+	        	});
+	        	$('.modal-scratch-card').on('shown.bs.modal', (e) => {
+	        		this.loading.component = false;
+	        	});
             }); 
 			
-			$('.modal-scratch-card').on('hidden.bs.modal', (e) => {
-				this.theme = null;
-				this.loading.game = 0;
-				this.loading.scratchpad = false;
-				this.scratch_card = {}
-				window.location.reload();
-        	});
-
-        	$('.modal-scratch-card').on('shown.bs.modal', (e) => {
-        		this.loading.component = false;
-        	});
 		},
-		methods: {
+		methods: {			
+			handleBuyNow(el) {
+				this.app.reload();
+			},
 			changeScratchCard() {
 				var instance = axios.create();
 
@@ -173,29 +189,32 @@
 				return 'background-image: url('+this.theme.img_capa_url.replace(' ', '%20')+'); background-size: 100% 100%;';
 			},
 			handleReveal(el) {
-				this.changeScratchCard().then(response => {
-		            if(response.status === 200) {
-		            	
-		            	this.attempts = response.data.quantity
+				this.changeScratchCard()
+					.then(response => {
+			            if(response.status === 200) {
 
-		            	$(this.$el).find('.scratchpad').wScratchPad('clear');
+			            	this.loading.game = 3;
+			            	this.attempts = response.data.quantity
 
-		            	if(this.scratch_card.premio > 0) {
-							$(this.$el).find('.btn-result').text('Parabéns, você ganhou: $ '+this.scratch_card.premio);
-						} else {
-							$(this.$el).find('.btn-result').text(this.trans('strings.good_luck_to_the_next'));
+			            	$(this.$el).find('.scratchpad').wScratchPad('clear');
+
+			            	if(this.scratch_card.premio > 0) {
+			            		this.refreshAuth();
+								$(this.$el).find('.btn-result').text('Parabéns, você ganhou: $ '+this.scratch_card.premio);
+							} else {
+								$(this.$el).find('.btn-result').text(this.trans('strings.good_luck_to_the_next'));
+							}
+
+							$(this.$el).find('.btn-result').removeClass('invisible');
+			            	
+			            	$(this.$el).find('.btn-play-again').removeClass('hide');
+			            	
+			            	
 						}
 
-						$(this.$el).find('.btn-result').removeClass('invisible');
-		            	
-		            	$(this.$el).find('.btn-play-again').removeClass('hide');
-		            	
-		            	this.loading.game = 3;
-					}
-
-		        }).catch((error) => {
-		        	
-		        });
+			        }).catch((error) => {
+			        	
+			        });
 			},
 			handleScratchPad: function() {
 				var vm = this;
@@ -231,12 +250,12 @@
 		                            }
 
 		                            //Caso o usuário raspou 9 quadrados, verifica se o bilhete era premiado
-		                            if(i == 9) {
-		                            	
+		                            if(i == 9) {		                            	
 		                            	$(vm.$el).find('.scratchpad')
 							            		.wScratchPad('clear');
 
 						            	if(vm.scratch_card.premio > 0) {
+						            		this.refreshAuth();
 											$(vm.$el)
 												.find('.btn-result')
 												.text('Parabéns, você ganhou: $ '+vm.scratch_card.premio);
@@ -248,8 +267,7 @@
 
 		                            	vm.changeScratchCard().then(response => {
 								            if(response.status === 200) {
-								            	
-								            	vm.attempts = response.data.quantity
+								            	vm.attempts = response.data.quantity;
 
 								            	$(vm.$el)
 													.find('.btn-result')
@@ -325,6 +343,18 @@
 							}
 						});
 					}
+				}
+			},
+			attempts(newValue, oldValue) {
+				if(newValue == null) {
+					this.loading.game = 4;
+					$(this.$el).find('.no-tickets-container').removeClass('hide');
+					$(this.$el).find('.h').css({
+						opacity: 0.5
+					});
+					$(this.$el).find('.btn-container').css({
+						opacity: 0.5
+					});
 				}
 			}
 		}

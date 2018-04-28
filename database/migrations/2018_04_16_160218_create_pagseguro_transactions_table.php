@@ -14,6 +14,7 @@ class CreatePagseguroTransactionsTable extends Migration
     public function up()
     {
         Schema::create('pagseguro_transactions', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->integer('id')->autoIncrement();
             $table->timestamps();
         });

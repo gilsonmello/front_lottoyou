@@ -77,7 +77,7 @@
 							</div>
 							<div class="row vcenter" style="margin-top: 15px; background: none;">
 								<div class="col-12 col-md-12 col-xs-12 col-sm-12 text-center">
-									<button type="buttom" @click.prevent="handleScratchCard(index, $event)" class="btn btn-md btn-success" v-if="scratch_card_theme.has_scratch_card">
+									<button type="button" @click.prevent="handleScratchCard(index, $event)" class="btn btn-md btn-success" v-if="scratch_card_theme.has_scratch_card">
 										{{ trans('strings.to_play') }}
 									</button>
 									<button type="submit" class="btn btn-md btn-success">
@@ -348,7 +348,9 @@
 		methods: {
 			handleScratchCard(index, $event) {
 				let theme = this.scratch_card_themes[index];
-				this.$eventBus.$emit('openModal', theme);
+				this.$eventBus.$emit('openModal', theme, () => {
+					this.init();
+				});
 			},
 			//Função para remover o espaço de uma url
 			src(src) {
@@ -532,8 +534,9 @@
 		        	}, 500)
 		        })
 			},
-			addToCart: function(index, $event) {
-				
+			addToCart: function(index, event) {
+
+
 				//A posição 0 foi reservada para o valor sem desconto
 				/*if(this.scratch_card_themes[index].positionSelected == 0) {
 
@@ -588,13 +591,15 @@
 					this.item.scratch_card = scratch_card_theme
 				}
 
-				let addScratchCardRequest = axios.create();
+				var addScratchCardRequest = axios.create();
 
 				addScratchCardRequest.interceptors.request.use(config => {
-		        	$(event.currentTarget).find('[type="load"]').removeClass('hide');
-		        	$(event.currentTarget).find('[type="submit"]').addClass('hide');
+		        	$(event.target).find('[type="load"]').removeClass('hide');
+		        	$(event.target).find('[type="submit"]').addClass('hide');
+		        	$(event.target).find('[type="button"]').addClass('hide');
 				  	return config;
 				});
+
 
 				addScratchCardRequest.post(routes.carts.add_scratch_cards, {
 					purchase: this.item, 
@@ -619,6 +624,7 @@
 
 				var request = axios.create();
 				request.interceptors.request.use(config => {
+					this.loading.component = true;
 					return config;
 				});
 				
@@ -664,6 +670,9 @@
 				demoAttempts: 5
 			}
 		},
+		beforeDestroy() {
+            this.$eventBus.$off('openModal');
+        },
 		beforeMount: function() {
 			
 		},
@@ -841,25 +850,4 @@
 		padding: 0 5px 0 5px;
 	}
 
-	.no-padding-left {
-		padding-left: 0;
-	}
-
-	.no-tickets-container {
-		position: absolute;
-		top: 30.3%;
-		right: 0;
-		z-index: 1000;
-		left: 0;
-	}
-
-	.no-tickets-container .vert-align {
-	    color: #fff;
-	    text-align: center;
-	    background-color: rgba(0,0,0,.9);
-	    padding: 30px;
-	    border-radius: 5px;
-	    border: 1px solid #000;
-	}
-	
 </style>

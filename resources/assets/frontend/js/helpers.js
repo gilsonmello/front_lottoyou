@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import {routes} from './api_routes'
 
 /*Vue.prototype.removeRepeatedNumbers = function(numbers, value) {
 	for(var i = 0; i < numbers.length; i++) {
@@ -57,4 +58,36 @@ Vue.prototype.formatDate = function(dateBR) {
 	var minute = arrHour[1];
 
 	return year +'-'+ month +'-'+day +' '+hour +':'+minute;
+};
+
+Vue.prototype.refreshAuth = function() {
+	//Token de acesso
+	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+	access_token = access_token != null ? access_token : null;
+
+	//Token para refresh
+	var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+	refresh_token = refresh_token != null ? refresh_token : '';
+
+	var authRequest = axios.create();
+
+	authRequest.interceptors.request.use(config => {
+		return config;
+	});
+	//Fazendo busca do usuário logado, para setar na estrutura de dados
+	authRequest.get(routes.auth.user, { headers: {
+		'Accept': 'application/json',
+		'Authorization': 'Bearer ' + access_token
+	}}).then(response => {
+
+		if(response.status === 200) {
+        	response.data.access_token = access_token
+        	response.data.refresh_token = refresh_token
+			window.localStorage.setItem('authUser', JSON.stringify(response.data))
+			this.$store.dispatch('setUserObject', response.data);
+		}
+      	
+    }).catch((error) => {
+		
+    });
 };

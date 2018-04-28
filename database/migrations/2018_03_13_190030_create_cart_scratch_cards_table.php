@@ -14,6 +14,7 @@ class CreateCartScratchCardsTable extends Migration
     public function up()
     {
         Schema::create('cart_scratch_cards', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             
             $table->integer('id')->autoIncrement();
            

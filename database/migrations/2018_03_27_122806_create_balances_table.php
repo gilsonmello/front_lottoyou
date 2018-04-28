@@ -14,6 +14,7 @@ class CreateBalancesTable extends Migration
     public function up()
     {
         Schema::create('balances', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->integer('id')->autoIncrement();
             $length = 11;
             $unsigned = true;

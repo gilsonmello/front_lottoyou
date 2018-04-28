@@ -11,6 +11,7 @@ use App\Model\Frontend\OrderItem;
 use App\Model\Frontend\SoccerExpert;
 use App\Model\Frontend\Lottery;
 use App\Model\Frontend\ScratchCardTheme;
+use DB;
 
 class CartController extends Controller
 {
@@ -189,13 +190,7 @@ class CartController extends Controller
         return response()->json(['msg' => 'ok'], 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function completePurchase(Request $request)
+    private function saveOrder($request) 
     {
         $order = new Order;
 
@@ -248,20 +243,44 @@ class CartController extends Controller
                 ->get()
                 ->first();
                 
-            $cart->finished = 1;
-            $cart->save();
+            if($cart) {
+                $cart->finished = 1;
+                $cart->save();   
+            }
 
             $cart = Cart::where('visitor', '=', $request->ip())
                 ->where('finished', '=', 0)
                 ->get()
                 ->first();
 
-            $cart->finished = 1;
+            if($cart) {
+                $cart->finished = 1;
+                $cart->save();   
+            }            
+        }   
+    }
 
-            $cart->save();
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function completePurchase(Request $request)
+    {
+        //Iniciando a transação
+        DB::beginTransaction();
 
+        //Caso ocorra algum erro de SQL, é feito o rollback
+        try {
+            $this->saveOrder($request);
+            DB::commit();
             return response()->json(['msg' => 'ok'], 200);
-        }
+        } catch (Illuminate\Database\QueryException $e) {
+            DB::rollBack();
+        } catch (PDOException $e) {
+            DB::rollBack();
+        }      
 
         return response()->json(['msg' => 'error'], 422);
     }

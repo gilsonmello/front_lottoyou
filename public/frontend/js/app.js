@@ -56228,6 +56228,8 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_routes__ = __webpack_require__(4);
+
 
 
 /*Vue.prototype.removeRepeatedNumbers = function(numbers, value) {
@@ -56285,6 +56287,37 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.formatDate = function (dat
 	var minute = arrHour[1];
 
 	return year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
+};
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.refreshAuth = function () {
+	var _this = this;
+
+	//Token de acesso
+	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+	access_token = access_token != null ? access_token : null;
+
+	//Token para refresh
+	var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+	refresh_token = refresh_token != null ? refresh_token : '';
+
+	var authRequest = axios.create();
+
+	authRequest.interceptors.request.use(function (config) {
+		return config;
+	});
+	//Fazendo busca do usuário logado, para setar na estrutura de dados
+	authRequest.get(__WEBPACK_IMPORTED_MODULE_1__api_routes__["a" /* routes */].auth.user, { headers: {
+			'Accept': 'application/json',
+			'Authorization': 'Bearer ' + access_token
+		} }).then(function (response) {
+
+		if (response.status === 200) {
+			response.data.access_token = access_token;
+			response.data.refresh_token = refresh_token;
+			window.localStorage.setItem('authUser', JSON.stringify(response.data));
+			_this.$store.dispatch('setUserObject', response.data);
+		}
+	}).catch(function (error) {});
 };
 
 /***/ }),
@@ -66857,7 +66890,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.info-text[data-v-fc188428] {\n\t\tcolor: #fff;\n    \tfont-size: 15px;\n\t    margin: 0;\n\t    padding: 0 8px;\n\t    line-height: 22px;\n\t    text-shadow: 0 2px 3px rgba(0,0,0,.8);\n}\n.scratch-card[data-v-fc188428] {\n\t\tbackground: #efefef;\n\t    border-radius: 5px;\n\t    padding: 15px;\n\t    margin-bottom: 30px;\n\t    position: relative;\n}\n.extras img[data-v-fc188428] {\n\t\tposition: absolute;\n\t\ttop: -15px;\n\t    left: -5px;\n\t    z-index: 4;\n}\ninput[type=radio][data-v-fc188428] {\n\t\tmargin: 0;\n    \tmargin-right: 10px;\n}\n.scratch-card-footer label[data-v-fc188428] {\n\t\tpadding: 13px 10px;\n\t    margin: 0;\n\t    width: 100%;\n\t    cursor: pointer;\n}\n.scratch-card-footer form .row[data-v-fc188428] {\n\t\tcolor: #666;\n\t    background: rgba(255,255,255,.3);\n\t    border-bottom: 1px solid #eee;\n\t    font-size: 15px;\n\t    cursor: pointer;\n}\n.scratch-card-body .amount[data-v-fc188428] {\n\t\tbackground: linear-gradient(87.71deg, #1DB2E0 0%, #6AD1ED 50.77%, #1DB2E0 100%);\n\t    height: 46px;\n\t    color: #FFFFFF;\n\t    font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n\t    font-size: 15px;\n\t    font-weight: bold;\n\t    line-height: 46px;\n\t    text-align: center;\n\t    -webkit-box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t            box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t    position: relative;\n}\n.scratch-card-body .jackpot-table[data-v-fc188428] {\n\t\tbackground: #0f546d;\n\t    color: #fff;\n\t    padding: 10px;\n\t    font-size: 13px;\n\t    font-weight: 700;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428] {\n\t\tdisplay: block;\n\t    border: 2px solid rgba(255,255,255,.2);\n\t    border-radius: 5px;\n\t    color: #fff;\n\t    font-weight: 700;\n\t    -webkit-transition: border .3s ease-in-out;\n\t    transition: border .3s ease-in-out;\n\t    font-size: 13px;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.description[data-v-fc188428] {\n\t\tcursor: pointer;\n    \tcolor: #fff;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428]:hover {\n\t\tborder: 2px solid #fff;\n}\n.scratch-card-body .btn[data-v-fc188428] {\n\t\tpadding: 0\n}\n.scratch-card-header[data-v-fc188428] {\n\t\tposition: relative;\n}\n.scratch-card-header .header-image[data-v-fc188428] { \n\t\twidth: 100%;\n}\n.scratch-card-header:hover .descript[data-v-fc188428] {\n\t    opacity: 1;\n}\n.scratch-card-header .descript[data-v-fc188428] {\n\t    position: absolute;\n\t    left: 0;\n\t    top: 0;\n\t    width: 100%;\n\t    height: 100%;\n\t    background-color: rgba(239,239,239,.95);\n\t    z-index: 2;\n\t    opacity: 0;\n\t    -webkit-transition: opacity .3s ease-in-out;\n\t    transition: opacity .3s ease-in-out;\n\t    padding: 20px;\n\t    text-align: center;\n\t    color: #666;\n}\n.modal-jackpot-table .container-actions[data-v-fc188428] {\n\t\tbackground-color: #155C7B;\n\t    text-align: center;\n}\n.modal-jackpot-table .container-actions .btn[data-v-fc188428] {\n\t   \tmargin: 10px 0 10px 0;\n\t   \tdisplay: block;\n}\n.modal-demo .modal-body[data-v-fc188428] {\n\t\tpadding: 20px;\n}\n.h div[data-v-fc188428]{\n\t\theight: 146px;\n\t\tmargin-bottom: 3px;\n\t\tpadding: 0 5px 0 5px;\n}\n.no-padding-left[data-v-fc188428] {\n\t\tpadding-left: 0;\n}\n.no-tickets-container[data-v-fc188428] {\n\t\tposition: absolute;\n\t\ttop: 30.3%;\n\t\tright: 0;\n\t\tz-index: 1000;\n\t\tleft: 0;\n}\n.no-tickets-container .vert-align[data-v-fc188428] {\n\t    color: #fff;\n\t    text-align: center;\n\t    background-color: rgba(0,0,0,.9);\n\t    padding: 30px;\n\t    border-radius: 5px;\n\t    border: 1px solid #000;\n}\n\t\n", ""]);
+exports.push([module.i, "\n.info-text[data-v-fc188428] {\n\t\tcolor: #fff;\n    \tfont-size: 15px;\n\t    margin: 0;\n\t    padding: 0 8px;\n\t    line-height: 22px;\n\t    text-shadow: 0 2px 3px rgba(0,0,0,.8);\n}\n.scratch-card[data-v-fc188428] {\n\t\tbackground: #efefef;\n\t    border-radius: 5px;\n\t    padding: 15px;\n\t    margin-bottom: 30px;\n\t    position: relative;\n}\n.extras img[data-v-fc188428] {\n\t\tposition: absolute;\n\t\ttop: -15px;\n\t    left: -5px;\n\t    z-index: 4;\n}\ninput[type=radio][data-v-fc188428] {\n\t\tmargin: 0;\n    \tmargin-right: 10px;\n}\n.scratch-card-footer label[data-v-fc188428] {\n\t\tpadding: 13px 10px;\n\t    margin: 0;\n\t    width: 100%;\n\t    cursor: pointer;\n}\n.scratch-card-footer form .row[data-v-fc188428] {\n\t\tcolor: #666;\n\t    background: rgba(255,255,255,.3);\n\t    border-bottom: 1px solid #eee;\n\t    font-size: 15px;\n\t    cursor: pointer;\n}\n.scratch-card-body .amount[data-v-fc188428] {\n\t\tbackground: linear-gradient(87.71deg, #1DB2E0 0%, #6AD1ED 50.77%, #1DB2E0 100%);\n\t    height: 46px;\n\t    color: #FFFFFF;\n\t    font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n\t    font-size: 15px;\n\t    font-weight: bold;\n\t    line-height: 46px;\n\t    text-align: center;\n\t    -webkit-box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t            box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t    position: relative;\n}\n.scratch-card-body .jackpot-table[data-v-fc188428] {\n\t\tbackground: #0f546d;\n\t    color: #fff;\n\t    padding: 10px;\n\t    font-size: 13px;\n\t    font-weight: 700;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428] {\n\t\tdisplay: block;\n\t    border: 2px solid rgba(255,255,255,.2);\n\t    border-radius: 5px;\n\t    color: #fff;\n\t    font-weight: 700;\n\t    -webkit-transition: border .3s ease-in-out;\n\t    transition: border .3s ease-in-out;\n\t    font-size: 13px;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.description[data-v-fc188428] {\n\t\tcursor: pointer;\n    \tcolor: #fff;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428]:hover {\n\t\tborder: 2px solid #fff;\n}\n.scratch-card-body .btn[data-v-fc188428] {\n\t\tpadding: 0\n}\n.scratch-card-header[data-v-fc188428] {\n\t\tposition: relative;\n}\n.scratch-card-header .header-image[data-v-fc188428] { \n\t\twidth: 100%;\n}\n.scratch-card-header:hover .descript[data-v-fc188428] {\n\t    opacity: 1;\n}\n.scratch-card-header .descript[data-v-fc188428] {\n\t    position: absolute;\n\t    left: 0;\n\t    top: 0;\n\t    width: 100%;\n\t    height: 100%;\n\t    background-color: rgba(239,239,239,.95);\n\t    z-index: 2;\n\t    opacity: 0;\n\t    -webkit-transition: opacity .3s ease-in-out;\n\t    transition: opacity .3s ease-in-out;\n\t    padding: 20px;\n\t    text-align: center;\n\t    color: #666;\n}\n.modal-jackpot-table .container-actions[data-v-fc188428] {\n\t\tbackground-color: #155C7B;\n\t    text-align: center;\n}\n.modal-jackpot-table .container-actions .btn[data-v-fc188428] {\n\t   \tmargin: 10px 0 10px 0;\n\t   \tdisplay: block;\n}\n.modal-demo .modal-body[data-v-fc188428] {\n\t\tpadding: 20px;\n}\n.h div[data-v-fc188428]{\n\t\theight: 146px;\n\t\tmargin-bottom: 3px;\n\t\tpadding: 0 5px 0 5px;\n}\n\n", ""]);
 
 // exports
 
@@ -67223,8 +67256,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	activated: function activated() {},
 	methods: {
 		handleScratchCard: function handleScratchCard(index, $event) {
+			var _this = this;
+
 			var theme = this.scratch_card_themes[index];
-			this.$eventBus.$emit('openModal', theme);
+			this.$eventBus.$emit('openModal', theme, function () {
+				_this.init();
+			});
 		},
 
 		//Função para remover o espaço de uma url
@@ -67247,7 +67284,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		},
 
 		handlePlayAgain: function handlePlayAgain(el) {
-			var _this = this;
+			var _this2 = this;
 
 			$('.modal-demo').off('hidden.bs.modal');
 
@@ -67257,16 +67294,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				var instance = axios.create();
 				instance.interceptors.request.use(function (config) {
 					$('.btn-result').addClass('invisible');
-					_this.loading.modalDemo = true;
+					_this2.loading.modalDemo = true;
 					return config;
 				});
 				instance.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(function (response) {
 					if (response.status === 200) {
-						_this.scratch_card_demo = response.data;
-						_this.loading.modalDemo = false;
+						_this2.scratch_card_demo = response.data;
+						_this2.loading.modalDemo = false;
 						$(el.target).addClass('hide');
 						$('.btn-play').removeClass('hide');
-						_this.handleScratchPad();
+						_this2.handleScratchPad();
 					}
 				}).catch(function (error) {
 					$('.modal-demo').on('hidden.bs.modal', function (e) {
@@ -67286,20 +67323,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			$('.scratchpad').wScratchPad('enable', true);
 		},
 		handleReveal: function handleReveal(el) {
-			var _this2 = this;
+			var _this3 = this;
 
 			var vm = this;
 			var time = setTimeout(function () {
 				$('.scratchpad').wScratchPad('clear');
-				if (_this2.scratch_card_demo.premio > 0) {
-					$('.btn-result').text('Parabéns, você ganhou: $ ' + _this2.scratch_card_demo.premio);
+				if (_this3.scratch_card_demo.premio > 0) {
+					$('.btn-result').text('Parabéns, você ganhou: $ ' + _this3.scratch_card_demo.premio);
 				} else {
 					$('.btn-result').text(vm.trans('strings.good_luck_to_the_next'));
 				}
 				$(el.target).addClass('hide');
 				$('.btn-result').removeClass('invisible');
 				$('.btn-play-again').removeClass('hide');
-				_this2.demoAttempts -= 1;
+				_this3.demoAttempts -= 1;
 			}, 200);
 		},
 		handleScratchPad: function handleScratchPad() {
@@ -67358,7 +67395,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			});
 		},
 		handleDemo: function handleDemo(el) {
-			var _this3 = this;
+			var _this4 = this;
 
 			this.id = el.target.getAttribute('data-id');
 
@@ -67366,15 +67403,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			$('.modal-demo').off('hidden.bs.modal');
 			var instance = axios.create();
 			instance.interceptors.request.use(function (config) {
-				_this3.loading.modalDemo = true;
+				_this4.loading.modalDemo = true;
 				return config;
 			});
 			instance.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].scratch_card_themes.demo.replace('{theme_id}', this.id), {}).then(function (response) {
 				if (response.status === 200) {
-					_this3.scratch_card_demo = response.data;
-					_this3.loading.modalDemo = false;
-					_this3.handleScratchPad();
-					_this3.demoAttempts = 5;
+					_this4.scratch_card_demo = response.data;
+					_this4.loading.modalDemo = false;
+					_this4.handleScratchPad();
+					_this4.demoAttempts = 5;
 				}
 			}).catch(function (error) {
 				$('.modal-demo').on('hidden.bs.modal', function (e) {
@@ -67389,20 +67426,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		},
 		submit: function submit() {},
 		handleJackpotTable: function handleJackpotTable(el) {
-			var _this4 = this;
+			var _this5 = this;
 
 			this.id = el.target.getAttribute('data-id');
 			$('.modal-jackpot-table').off('hidden.bs.modal');
 			$('.modal-jackpot-table').modal('toggle');
 			var instance = axios.create();
 			instance.interceptors.request.use(function (config) {
-				_this4.loading.modalJackpotTable = true;
+				_this5.loading.modalJackpotTable = true;
 				return config;
 			});
 			instance.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].scratch_card_themes.jackpot_available.replace('{id}', this.id), {}).then(function (response) {
 				if (response.status === 200) {
-					_this4.scratch_card_jackpot_available = response.data;
-					_this4.loading.modalJackpotTable = false;
+					_this5.scratch_card_jackpot_available = response.data;
+					_this5.loading.modalJackpotTable = false;
 				}
 			}).catch(function (error) {
 				$('.modal-jackpot-table').on('hidden.bs.modal', function (e) {
@@ -67415,8 +67452,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				}, 500);
 			});
 		},
-		addToCart: function addToCart(index, $event) {
-			var _this5 = this;
+		addToCart: function addToCart(index, event) {
+			var _this6 = this;
 
 			//A posição 0 foi reservada para o valor sem desconto
 			/*if(this.scratch_card_themes[index].positionSelected == 0) {
@@ -67467,8 +67504,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			var addScratchCardRequest = axios.create();
 
 			addScratchCardRequest.interceptors.request.use(function (config) {
-				$(event.currentTarget).find('[type="load"]').removeClass('hide');
-				$(event.currentTarget).find('[type="submit"]').addClass('hide');
+				$(event.target).find('[type="load"]').removeClass('hide');
+				$(event.target).find('[type="submit"]').addClass('hide');
+				$(event.target).find('[type="button"]').addClass('hide');
 				return config;
 			});
 
@@ -67479,9 +67517,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			}).then(function (response) {
 				if (response.status === 200) {
 					//Atualizando os dados do carrinho
-					_this5.$store.dispatch('setItemScratchCard', _this5.item);
+					_this6.$store.dispatch('setItemScratchCard', _this6.item);
 					//Redirecionando para o carrinho
-					_this5.$router.push({ name: 'cart.index' });
+					_this6.$router.push({ name: 'cart.index' });
 				}
 			}).catch(function (error) {});
 		},
@@ -67490,10 +67528,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			return (total - total * percentage / 100).format(2, true);
 		},
 		init: function init() {
-			var _this6 = this;
+			var _this7 = this;
 
 			var request = axios.create();
 			request.interceptors.request.use(function (config) {
+				_this7.loading.component = true;
 				return config;
 			});
 
@@ -67502,15 +67541,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 			request.get(url, {}).then(function (response) {
 				if (response.status === 200) {
-					_this6.item.hash = _this6.makeid();
-					_this6.scratch_card_themes = response.data;
-					_this6.scratch_card_themes = _this6.scratch_card_themes.filter(function (val) {
+					_this7.item.hash = _this7.makeid();
+					_this7.scratch_card_themes = response.data;
+					_this7.scratch_card_themes = _this7.scratch_card_themes.filter(function (val) {
 						//Selecionado a primeira linha
 						val.positionSelected = 0;
-						val.hash = _this6.makeid();
+						val.hash = _this7.makeid();
 						return true;
 					});
-					_this6.loading.component = false;
+					_this7.loading.component = false;
 				}
 			}).catch(function (error) {});
 		}
@@ -67536,6 +67575,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			demoAttempts: 5
 		};
 	},
+	beforeDestroy: function beforeDestroy() {
+		this.$eventBus.$off('openModal');
+	},
+
 	beforeMount: function beforeMount() {},
 	mounted: function mounted() {
 		//window.document.title = this.trans('strings.scratch_cards') +' - '+ window.app.title;
@@ -67935,6 +67978,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -67942,6 +67990,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: [],
 	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['auth'])),
+	beforeDestroy: function beforeDestroy() {
+		this.$eventBus.$off('openModal');
+	},
 	data: function data() {
 		return {
 			loading: {
@@ -67957,26 +68008,33 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	mounted: function mounted() {
 		var _this = this;
 
-		this.$eventBus.$on('openModal', function (theme) {
+		//Escuta o evento open Modal
+		this.$eventBus.$on('openModal', function (theme, onHidden) {
 			_this.theme = theme;
 			_this.attempts = _this.theme.has_scratch_card.quantity;
+			$('.modal-scratch-card').off('hidden.bs.modal');
+			$('.modal-scratch-card').off('shown.bs.modal');
 			$('.modal-scratch-card').modal('toggle');
-		});
-
-		$('.modal-scratch-card').on('hidden.bs.modal', function (e) {
-			_this.theme = null;
-			_this.loading.game = 0;
-			_this.loading.scratchpad = false;
-			_this.scratch_card = {};
-			window.location.reload();
-		});
-
-		$('.modal-scratch-card').on('shown.bs.modal', function (e) {
-			_this.loading.component = false;
+			$('.modal-scratch-card').on('hidden.bs.modal', function (e) {
+				_this.theme = null;
+				_this.loading.game = 0;
+				_this.loading.scratchpad = false;
+				_this.scratch_card = {};
+				onHidden();
+				$('html, body').animate({
+					scrollTop: 0
+				}, 300);
+			});
+			$('.modal-scratch-card').on('shown.bs.modal', function (e) {
+				_this.loading.component = false;
+			});
 		});
 	},
 
 	methods: {
+		handleBuyNow: function handleBuyNow(el) {
+			this.app.reload();
+		},
 		changeScratchCard: function changeScratchCard() {
 			var _this2 = this;
 
@@ -68028,11 +68086,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			this.changeScratchCard().then(function (response) {
 				if (response.status === 200) {
 
+					_this4.loading.game = 3;
 					_this4.attempts = response.data.quantity;
 
 					$(_this4.$el).find('.scratchpad').wScratchPad('clear');
 
 					if (_this4.scratch_card.premio > 0) {
+						_this4.refreshAuth();
 						$(_this4.$el).find('.btn-result').text('Parabéns, você ganhou: $ ' + _this4.scratch_card.premio);
 					} else {
 						$(_this4.$el).find('.btn-result').text(_this4.trans('strings.good_luck_to_the_next'));
@@ -68041,8 +68101,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 					$(_this4.$el).find('.btn-result').removeClass('invisible');
 
 					$(_this4.$el).find('.btn-play-again').removeClass('hide');
-
-					_this4.loading.game = 3;
 				}
 			}).catch(function (error) {});
 		},
@@ -68082,10 +68140,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 								//Caso o usuário raspou 9 quadrados, verifica se o bilhete era premiado
 								if (i == 9) {
-
 									$(vm.$el).find('.scratchpad').wScratchPad('clear');
 
 									if (vm.scratch_card.premio > 0) {
+										this.refreshAuth();
 										$(vm.$el).find('.btn-result').text('Parabéns, você ganhou: $ ' + vm.scratch_card.premio);
 									} else {
 										$(vm.$el).find('.btn-result').text(vm.trans('strings.good_luck_to_the_next'));
@@ -68093,7 +68151,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 									vm.changeScratchCard().then(function (response) {
 										if (response.status === 200) {
-
 											vm.attempts = response.data.quantity;
 
 											$(vm.$el).find('.btn-result').removeClass('invisible');
@@ -68164,6 +68221,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 						}
 					});
 				}
+			}
+		},
+		attempts: function attempts(newValue, oldValue) {
+			if (newValue == null) {
+				this.loading.game = 4;
+				$(this.$el).find('.no-tickets-container').removeClass('hide');
+				$(this.$el).find('.h').css({
+					opacity: 0.5
+				});
+				$(this.$el).find('.btn-container').css({
+					opacity: 0.5
+				});
 			}
 		}
 	}
@@ -68319,7 +68388,12 @@ var render = function() {
                                           {
                                             staticClass:
                                               "btn btn-primary btn-mini buy-more-btn",
-                                            on: { click: _vm.app.reload }
+                                            on: {
+                                              click: function($event) {
+                                                $event.preventDefault()
+                                                _vm.app.reload($event)
+                                              }
+                                            }
                                           },
                                           [
                                             _vm._v(
@@ -68397,8 +68471,13 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "Raspadinhas restantes: " +
-                                          _vm._s(_vm.attempts)
+                                        "\n\t      \t\t\t\t\t\t\tRaspadinhas restantes: " +
+                                          _vm._s(
+                                            _vm.attempts == null
+                                              ? 0
+                                              : _vm.attempts
+                                          ) +
+                                          "\n\t      \t\t\t\t\t\t"
                                       )
                                     ]
                                   )
@@ -68514,6 +68593,34 @@ var render = function() {
                                             "\n\t      \t\t\t\t\t\t\t" +
                                               _vm._s(
                                                 _vm.trans("strings.play_again")
+                                              ) +
+                                              "\n\t      \t\t\t\t\t\t"
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _vm.loading.game == 4
+                                    ? _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "btn btn-game btn-buy-now",
+                                          attrs: {
+                                            href: "javascript: void(0);"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              $event.preventDefault()
+                                              _vm.handleBuyNow($event)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n\t      \t\t\t\t\t\t\t" +
+                                              _vm._s(
+                                                _vm.trans("strings.buy_now")
                                               ) +
                                               "\n\t      \t\t\t\t\t\t"
                                           )
@@ -68849,7 +68956,7 @@ var render = function() {
                                         "button",
                                         {
                                           staticClass: "btn btn-md btn-success",
-                                          attrs: { type: "buttom" },
+                                          attrs: { type: "button" },
                                           on: {
                                             click: function($event) {
                                               $event.preventDefault()

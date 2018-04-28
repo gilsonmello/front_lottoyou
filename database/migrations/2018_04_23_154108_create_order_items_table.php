@@ -14,6 +14,7 @@ class CreateOrderItemsTable extends Migration
     public function up()
     {
         Schema::create('order_items', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->integer('id')->autoIncrement();
            
             $length = 11;
@@ -24,7 +25,7 @@ class CreateOrderItemsTable extends Migration
 
             $table->string('hash')->nullable();
 
-            $table->addColumn('integer', 'order_id', compact('length', 'unsigned'));
+            $table->addColumn('integer', 'order_id', compact('length'))->nullable();
             
             $table->longText('data')->nullable();
 

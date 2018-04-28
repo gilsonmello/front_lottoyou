@@ -14,6 +14,7 @@ class CreateCartSoccerExpertsTable extends Migration
     public function up()
     {
         Schema::create('cart_soccer_experts', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->integer('id')->autoIncrement();
            
             $length = 11;

@@ -24,6 +24,9 @@ body {
     background-color: #fff
 }
 
+.no-padding-left {
+    padding-left: 0;
+}
 
 .alert {
     padding: 7px;
@@ -598,4 +601,21 @@ button.close {
     display: block;
     text-align: center;
     line-height: 1;
+}
+
+.no-tickets-container {
+    position: absolute;
+    top: 30.3%;
+    right: 0;
+    z-index: 1000;
+    left: 0;
+}
+
+.no-tickets-container .vert-align {
+    color: #fff;
+    text-align: center;
+    background-color: rgba(0,0,0,.9);
+    padding: 30px;
+    border-radius: 5px;
+    border: 1px solid #000;
 }

@@ -14,6 +14,7 @@ class CreateCouponsTable extends Migration
     public function up()
     {
         Schema::create('coupons', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->integer('id')->autoIncrement();
             $table->string('name');
             $table->string('code');
@@ -29,6 +30,7 @@ class CreateCouponsTable extends Migration
         });
 
         Schema::create('coupons_has_lotteries', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->integer('id')->autoIncrement();
             $unsigned = true;
             $nullable = true;
@@ -43,6 +45,7 @@ class CreateCouponsTable extends Migration
         });
 
         Schema::create('coupons_has_soccer_experts', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->integer('id')->autoIncrement();
             $unsigned = true;
             $nullable = true;
@@ -57,6 +60,7 @@ class CreateCouponsTable extends Migration
         });
 
         Schema::create('coupons_has_scratch_cards', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->integer('id')->autoIncrement();
             $unsigned = true;
             $nullable = true;

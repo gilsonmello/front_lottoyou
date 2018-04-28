@@ -3,6 +3,8 @@
 namespace App\Observers\Frontend;
 
 use App\Model\Frontend\Order;
+use App\HistoricBalance;
+use App\Balance;
 
 class OrderObserver
 {
@@ -19,7 +21,16 @@ class OrderObserver
 
     public function saved(Order $order)
     {
-        //
+        $balance = Balance::where('user_id', '=', $order->user_id)->get()->first();
+        $historicBalance = new HistoricBalance;
+        $historicBalance->user_id = $balance->user_id;
+        $historicBalance->from = $balance->value;
+        $historicBalance->to = $balance->value - $order->sub_total;
+        $historicBalance->balance_id = $balance->id;
+        $historicBalance->order_id = $order->id;
+        $historicBalance->save();
+        $balance->value = $balance->value - $order->sub_total;
+        $balance->save();
     }
 
     /**
