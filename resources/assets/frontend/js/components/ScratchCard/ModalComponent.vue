@@ -8,74 +8,73 @@
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body" style="padding: 0;">
+                <div class="modal-body" style="padding: 0;" v-if="theme">
                 	<load-component v-if="loading.component == true"></load-component>
 
-                	<div class="col-lg-12 col-12 col-md-12 col-sm-12 no-padding" v-else :style="backgroundDemo(theme.img_background_url)">
-			      			
-		      				<div class="row" style="padding: 20px 20px 0 20px;">
-		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
-		      						<div class="row" style="height: 100%;">
-		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12" style="padding: 0 5px 0 5px;">
-		      								<span class="ticket-number">ID do Bilhete: #{{ scratch_card.id }}</span>
-		      							</div>
-		      							<!-- <div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end" style="padding: 0 5px 0 5px;">
-		      								<p :style="'color: '+scratch_card_demo.theme.cor_texto_raspadinha+' '" class="text-center info-text">
-		      									{{ scratch_card_demo.theme.texto_index }}
-		      								</p>
-		      							</div> -->
-		      							<div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end" style="padding: 0 5px 0 5px;">
-		      								<a href="javascript: void(0);" class="btn btn-result invisible">
-				      							{{ trans('strings.result') }}
-				      						</a>
-		      							</div>
-		      						</div>
-		      					</div>
-		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
-		      						<div class="no-tickets-container hide">
-		      							<div class="vert-align">
-		      								<h3>Não restam raspadinhas.</h3>
-		      								<p>Tens de comprar mais raspadinhas para voltar a jogar.</p>
-		      								<div @click="app.reload" class="btn btn-primary btn-mini buy-more-btn">
-		      									Comprar mais bilhetes.
-		      								</div>
+                	<div class="col-lg-12 col-12 col-md-12 col-sm-12 no-padding" v-else :style="backgroundDemo(theme.img_background_url)">			      			
+	      				<div class="row" style="padding: 20px 20px 0 20px;">
+	      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
+	      						<div class="row" style="height: 100%;">
+	      							<div class="col-lg-12 col-12 col-md-12 col-sm-12" style="padding: 0 5px 0 5px;">
+	      								<span class="ticket-number">ID do Bilhete: #{{ scratch_card.id }}</span>
+	      							</div>
+	      							<!-- <div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end" style="padding: 0 5px 0 5px;">
+	      								<p :style="'color: '+scratch_card_demo.theme.cor_texto_raspadinha+' '" class="text-center info-text">
+	      									{{ scratch_card_demo.theme.texto_index }}
+	      								</p>
+	      							</div> -->
+	      							<div class="col-lg-12 col-12 col-md-12 col-sm-12 vcenter-end" style="padding: 0 5px 0 5px;">
+	      								<a href="javascript: void(0);" class="btn btn-result invisible">
+			      							{{ trans('strings.result') }}
+			      						</a>
+	      							</div>
+	      						</div>
+	      					</div>
+	      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
+	      						<div class="no-tickets-container hide">
+	      							<div class="vert-align">
+	      								<h3>Não restam raspadinhas.</h3>
+	      								<p>Tens de comprar mais raspadinhas para voltar a jogar.</p>
+	      								<div @click="app.reload" class="btn btn-primary btn-mini buy-more-btn">
+	      									Comprar mais bilhetes.
 	      								</div>
-		      						</div>
-		      						<div class="row h" v-if="loading.scratchpad" >
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4" v-for="(val, index) in (0, 9)">
-		      								<div class="scratchpad">
-		      									
-		      								</div>
+      								</div>
+	      						</div>
+	      						<div class="row h" v-if="loading.scratchpad" >
+	      							<div class="col-lg-4 col-4 col-md-4 col-sm-4" v-for="(val, index) in (0, 9)">
+	      								<div class="scratchpad">
+	      									
+	      								</div>
+	      							</div>
+	      						</div>
+	      						<div class="row h" v-else>
+	      							<div class="col-lg-4 col-4 col-md-4 col-sm-4" v-for="(val, index) in (0, 9)">
+	      								<div class="scratchpad empty" :style="backgroundScratchpad()">
 		      							</div>
-		      						</div>
-		      						<div class="row h" v-else>
-		      							<div class="col-lg-4 col-4 col-md-4 col-sm-4" v-for="(val, index) in (0, 9)">
-			      							<div class="scratchpad empty" :style="backgroundScratchpad()">
-			      							</div>
-		      							</div>
-		      						</div>
-		      					</div>
-		      				</div>
-		      				<div class="row" style="padding: 10px 20px 10px 20px;">
-		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6" style="padding: 0 5px 0 5px;">
-		      						<a href="javascript: void(0);" class="btn remaining-tickets">Raspadinhas restantes: {{ demoAttempts }}</a>
-		      					</div>
-		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6 btn-container" style="padding: 0 5px 0 5px;">		      						
-		      						<a v-if="loading.game == 0" @click.prevent="handlePlay($event)" href="javascript: void(0);" class="btn btn-game btn-play">
-		      							{{ trans('strings.play_scratch_card') }}
-		      						</a>
-		      						<a v-if="loading.game == 1" href="javascript: void(0);" class="btn btn-game btn-loading">
-		      							{{ trans('strings.loading') + ' ...' }}
-		      						</a>
-		      						<a v-if="loading.game == 2" @click.prevent="handleReveal($event)" href="javascript: void(0);" class="btn btn-game btn-reveal-all">
-		      							{{ trans('strings.reveal_all') }}
-		      						</a>
-		      						<a v-if="loading.game == 3" @click.prevent="handlePlayAgain($event)" href="javascript: void(0);" class="btn btn-game btn-play-again">
-		      							{{ trans('strings.play_again') }}
-		      						</a>
-		      					</div>
-		      				</div>
-		      			</div>  
+	      							</div>
+	      						</div>
+	      					</div>
+	      				</div>
+	      				<div class="row" style="padding: 10px 20px 10px 20px;">
+	      					<div class="col-lg-6 col-12 col-md-6 col-sm-6" style="padding: 0 5px 0 5px;">
+	      						<a href="javascript: void(0);" class="btn remaining-tickets">Raspadinhas restantes: {{ demoAttempts }}</a>
+	      					</div>
+	      					<div class="col-lg-6 col-12 col-md-6 col-sm-6 btn-container" style="padding: 0 5px 0 5px;">		      						
+	      						<a v-if="loading.game == 0" @click.prevent="handlePlay($event)" href="javascript: void(0);" class="btn btn-game btn-play">
+	      							{{ trans('strings.play_scratch_card') }}
+	      						</a>
+	      						<a v-if="loading.game == 1" href="javascript: void(0);" class="btn btn-game btn-loading">
+	      							{{ trans('strings.loading') + ' ...' }}
+	      						</a>
+	      						<a v-if="loading.game == 2" @click.prevent="handleReveal($event)" href="javascript: void(0);" class="btn btn-game btn-reveal-all">
+	      							{{ trans('strings.reveal_all') }}
+	      						</a>
+	      						<a v-if="loading.game == 3" @click.prevent="handlePlayAgain($event)" href="javascript: void(0);" class="btn btn-game btn-play-again">
+	      							{{ trans('strings.play_again') }}
+	      						</a>
+	      					</div>
+	      				</div>
+	      			</div>  
                 </div>
             </div>
         </div>
@@ -100,7 +99,7 @@
 					game: 0,
 					scratchpad: false,
 				},
-				theme: '',
+				theme: null,
 				scratch_card: {},
 				demoAttempts: 5,
 			}
@@ -114,7 +113,7 @@
 			$('.modal-scratch-card').off('hidden.bs.modal');
 
 			$('.modal-scratch-card').on('hidden.bs.modal', (e) => {
-        		
+				this.theme = null;
         	});
 
         	$('.modal-scratch-card').on('show.bs.modal', (e) => {
@@ -159,10 +158,9 @@
 					var instance = axios.create();
 					
 					this.loading.game = 1;
-					
+					this.loading.scratchpad = false;
 					
 					instance.interceptors.request.use(config => {
-						this.loading.scratchpad = false;
 						$(this.$el).find('.btn-result').addClass('invisible');
 						return config;
 					});
@@ -174,6 +172,7 @@
 					instance.get(url, {}).then(response => {
 			            if(response.status === 200) {
 			            	this.scratch_card = response.data
+			            	this.loading.scratchpad = true;
 							this.handleScratchPad();
 						}
 			        }).catch((error) => {
@@ -298,7 +297,14 @@
 			'loading.scratchpad': {
 				deep: true,
 				handler: function(newValue, oldValue) {
-					console.log(newValue)
+					if(oldValue) {
+						var time = setInterval(() => {
+							if($(this.$el).find('.empty').length > 0) {
+								$(this.$el).find('.empty').empty();
+								clearInterval(time);
+							}
+						});
+					}
 				}
 			}
 		}

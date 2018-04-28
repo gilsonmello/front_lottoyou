@@ -67,7 +67,10 @@ class ScratchCardThemeController extends Controller
             ->orderByRaw('RAND()')
             ->get()
             ->first();
-        return response()->json($scratchCard, 200);
+        if($scratchCard) {
+            return response()->json($scratchCard, 200);
+        }
+        return response()->json(['msg' => ''], 422);
     }
 
     /**
@@ -94,6 +97,7 @@ class ScratchCardThemeController extends Controller
             ])
             ->where('owner', '=', $user_id)
             ->where('temas_raspadinha_id', '=', $value->id)
+            ->where('ativo', '=', 0)
             ->groupBy([
                 'temas_raspadinha_id', 
                 'owner'

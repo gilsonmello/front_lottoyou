@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Schema;
 use Validator;
 use App\User;
 use App\Model\Frontend\Order;
+use App\Model\Frontend\ScratchCard;
 use App\Model\Frontend\OrderItem;
 use App\Observers\UserObserver;
 use App\Observers\Frontend\OrderObserver;
 use App\Observers\Frontend\OrderItemObserver;
+use App\Observers\Frontend\ScratchCardObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         //User::observe(UserObserver::class);
         Order::observe(OrderObserver::class);
         OrderItem::observe(OrderItemObserver::class);
+        ScratchCard::observe(ScratchCardObserver::class);
         Schema::defaultStringLength(191);
     }
 
