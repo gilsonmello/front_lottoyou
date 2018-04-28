@@ -57,7 +57,7 @@
 	      				</div>
 	      				<div class="row" style="padding: 10px 20px 10px 20px;">
 	      					<div class="col-lg-6 col-12 col-md-6 col-sm-6" style="padding: 0 5px 0 5px;">
-	      						<a href="javascript: void(0);" class="btn remaining-tickets">Raspadinhas restantes: {{ demoAttempts }}</a>
+	      						<a href="javascript: void(0);" class="btn remaining-tickets">Raspadinhas restantes: {{ attempts }}</a>
 	      					</div>
 	      					<div class="col-lg-6 col-12 col-md-6 col-sm-6 btn-container" style="padding: 0 5px 0 5px;">		      						
 	      						<a v-if="loading.game == 0" @click.prevent="handlePlay($event)" href="javascript: void(0);" class="btn btn-game btn-play">
@@ -101,39 +101,26 @@
 				},
 				theme: null,
 				scratch_card: {},
-				demoAttempts: 5,
+				attempts: 5,
 			}
 		},
 		mounted() {
 			this.$eventBus.$on('openModal',  (theme) => {
                 this.theme = theme;
+                this.attempts = this.theme.has_scratch_card.quantity;
                 $('.modal-scratch-card').modal('toggle');
             }); 
-
-			$('.modal-scratch-card').off('hidden.bs.modal');
-
+			
 			$('.modal-scratch-card').on('hidden.bs.modal', (e) => {
 				this.theme = null;
+				this.loading.game = 0;
+				this.loading.scratchpad = false;
+				this.scratch_card = {}
+				window.location.reload();
         	});
 
-        	$('.modal-scratch-card').on('show.bs.modal', (e) => {
-        		/*const instance = axios.create();
-				instance.interceptors.request.use(config => {
-					this.loading.component = true;
-					return config;
-				});
-				var url = routes.scratch_card_themes.show
-					.replace('{theme_id}', this.theme.id);
-
-				instance.get(url, {}).then(response => {
-		            if(response.status === 200) {
-		            	this.loading.component = false;
-		            	
-					}
-		        }).catch((error) => {		        	
-		        	this.loading.component = false;
-		        });*/
-		        this.loading.component = false;
+        	$('.modal-scratch-card').on('shown.bs.modal', (e) => {
+        		this.loading.component = false;
         	});
 		},
 		methods: {
@@ -146,13 +133,15 @@
 				});
 
 				var url = routes.scratch_card_themes.change_scratch_card
-					.replace('{scratch_card_id}', this.scratch_card.id);
+					.replace('{scratch_card_id}', this.scratch_card.id)
+					.replace('{theme_id}', this.theme.id)
+					.replace('{user_id}', this.auth.id);
 
 				return instance.post(url, {});				
 			},
 			handlePlayAgain: function (el) {
 				
-				if(this.demoAttempts == 0) {
+				if(this.attempts == 0) {
 					$('.modal-scratch-card').modal('hide');
 				} else {
 					var instance = axios.create();
@@ -184,10 +173,11 @@
 				return 'background-image: url('+this.theme.img_capa_url.replace(' ', '%20')+'); background-size: 100% 100%;';
 			},
 			handleReveal(el) {
-				this.changeScratchCard()
-				.then(response => {
+				this.changeScratchCard().then(response => {
 		            if(response.status === 200) {
 		            	
+		            	this.attempts = response.data.quantity
+
 		            	$(this.$el).find('.scratchpad').wScratchPad('clear');
 
 		            	if(this.scratch_card.premio > 0) {
@@ -200,10 +190,9 @@
 		            	
 		            	$(this.$el).find('.btn-play-again').removeClass('hide');
 		            	
-		            	this.demoAttempts -= 1;
-		            	
 		            	this.loading.game = 3;
 					}
+
 		        }).catch((error) => {
 		        	
 		        });
@@ -215,14 +204,14 @@
 				var count = 1;
         		var time = setInterval(() => {	
         			//Verificando se encontrou as divs scratchpad e se seus parentes possuem largura maior do que 0
-					if($('.scratchpad').length > 0 && $('.scratchpad').parent().width() > 0) {
+					if($(vm.$el).find('.scratchpad').length > 0 && $(vm.$el).find('.scratchpad').parent().width() > 0) {
 						clearInterval(time);
 						//Destruindo os scratchpads
-						$('.scratchpad').wScratchPad('destroy');
+						$(vm.$el).find('.scratchpad').wScratchPad('destroy');
 						//Responsável por contar quantos quadrados foram raspados
 						var i = 0;
 						//Percorrendo todos os scratchpads
-						$('.scratchpad').each(function () {
+						$(vm.$el).find('.scratchpad').each(function () {
 							var scratchpad = $(this);
 							//Colocando a largura igual ao do seu parente
 							$(this).css({
@@ -243,8 +232,39 @@
 
 		                            //Caso o usuário raspou 9 quadrados, verifica se o bilhete era premiado
 		                            if(i == 9) {
-		                            	vm.changeScratchCard();
-		                            	vm.loading.game = 3;
+		                            	
+		                            	$(vm.$el).find('.scratchpad')
+							            		.wScratchPad('clear');
+
+						            	if(vm.scratch_card.premio > 0) {
+											$(vm.$el)
+												.find('.btn-result')
+												.text('Parabéns, você ganhou: $ '+vm.scratch_card.premio);
+										} else {
+											$(vm.$el)
+												.find('.btn-result')
+												.text(vm.trans('strings.good_luck_to_the_next'));
+										}
+
+		                            	vm.changeScratchCard().then(response => {
+								            if(response.status === 200) {
+								            	
+								            	vm.attempts = response.data.quantity
+
+								            	$(vm.$el)
+													.find('.btn-result')
+													.removeClass('invisible');
+								            	
+								            	$(vm.$el)
+								            		.find('.btn-play-again')
+								            		.removeClass('hide');
+								            	
+								            	vm.loading.game = 3;
+											}
+
+								        }).catch((error) => {
+								        	
+								        });
 		                            }
 		                        }
 		                    });
@@ -252,7 +272,7 @@
 						});
 						//Desabilitando todos os quadrados, obs: 
 						//Só será habilitado ao clicar em jogar
-						$('.scratchpad').wScratchPad('enable', false);	
+						$(vm.$el).find('.scratchpad').wScratchPad('enable', true);	
 						//Alterando status para carregado
 						vm.loading.game = 2;			
 					}						

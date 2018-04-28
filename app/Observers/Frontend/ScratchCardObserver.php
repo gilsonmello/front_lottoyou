@@ -21,7 +21,19 @@ class ScratchCardObserver
 
     public function saved(ScratchCard $item)
     {
-        
+        if($item->premio > 0) {
+            $balance = Balance::where('user_id', '=', $item->owner)->get()->first();
+            
+            $historicBalance = new HistoricBalance;
+            $historicBalance->user_id = $balance->user_id;
+            $historicBalance->balance_id = $balance->id;
+            $historicBalance->from = $balance->value;
+            $historicBalance->to = $balance->value + $item->premio;
+            $historicBalance->save();
+
+            $balance->value += $item->premio;
+            $balance->save();
+        }
     }
 
     /**

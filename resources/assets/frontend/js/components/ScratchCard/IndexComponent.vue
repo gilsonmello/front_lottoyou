@@ -81,7 +81,7 @@
 										{{ trans('strings.to_play') }}
 									</button>
 									<button type="submit" class="btn btn-md btn-success">
-										{{ trans('strings.play_now') }}
+										{{ trans('strings.buy_now') }}
 									</button>
 									<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
 										<i class="fa fa-refresh fa-spin"></i>
@@ -614,6 +614,33 @@
 			calculatePercentage(value, percentage, quantity) {
 				let total = value * quantity;
 				return (total - ((total * percentage) / 100)).format(2, true);
+			},
+			init() {
+
+				var request = axios.create();
+				request.interceptors.request.use(config => {
+					return config;
+				});
+				
+				var url = routes.scratch_card_themes.index;
+				if(this.auth)
+					url = url+'?user_id='+this.auth.id;
+
+				request.get(url, {}).then(response => {
+		            if(response.status === 200){
+		            	this.item.hash = this.makeid();
+		            	this.scratch_card_themes = response.data
+		            	this.scratch_card_themes = this.scratch_card_themes.filter((val) => {
+		            		//Selecionado a primeira linha
+	            			val.positionSelected = 0
+	            			val.hash = this.makeid();
+		            		return true;
+		            	})
+						this.loading.component = false
+				    }
+		        }).catch((error) => {
+		            
+		        })
 			}
 		},
 		data: function() {
@@ -640,32 +667,11 @@
 		beforeMount: function() {
 			
 		},
-		mounted: function() {
+		mounted() {
 			//window.document.title = this.trans('strings.scratch_cards') +' - '+ window.app.title;
 			window.document.title = this.trans('strings.scratch_cards');
-			axios.interceptors.request.use(config => {
-				return config;
-			});
 			
-			var url = routes.scratch_card_themes.index;
-			if(this.auth)
-				url = url+'?user_id='+this.auth.id;
-
-			axios.get(url, {}).then(response => {
-	            if(response.status === 200){
-	            	this.item.hash = this.makeid();
-	            	this.scratch_card_themes = response.data
-	            	this.scratch_card_themes = this.scratch_card_themes.filter((val) => {
-	            		//Selecionado a primeira linha
-            			val.positionSelected = 0
-            			val.hash = this.makeid();
-	            		return true;
-	            	})
-					this.loading.component = false
-			    }
-	        }).catch((error) => {
-	            
-	        })
+			this.init();
 		},
 		computed: {
 			...mapGetters([

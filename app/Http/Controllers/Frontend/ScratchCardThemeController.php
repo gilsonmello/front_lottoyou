@@ -50,12 +50,29 @@ class ScratchCardThemeController extends Controller
             ->first();
     }
 
-    public function changeScratchCard(Request $request, $scratch_card_id) 
+    public function changeScratchCard(Request $request, $scratch_card_id, $theme_id, $user_id) 
     {
         $scratchCard = ScratchCard::find($scratch_card_id);
+        
         $scratchCard->ativo = 1;
         if($scratchCard->save()) {
-            return response()->json(['msg' => ''], 200);
+
+            $scratchCard = ScratchCard::select([
+                'temas_raspadinha_id', 
+                'owner',
+                DB::raw('count(temas_raspadinha_id) as quantity')
+            ])
+            ->where('owner', '=', $user_id)
+            ->where('temas_raspadinha_id', '=', $theme_id)
+            ->where('ativo', '=', 0)
+            ->groupBy([
+                'temas_raspadinha_id', 
+                'owner'
+            ])
+            ->get()
+            ->first();
+
+            return response()->json($scratchCard, 200);
         }
         return response()->json(['msg' => trans('strings.not_found_demo')], 422);
     }
@@ -64,6 +81,7 @@ class ScratchCardThemeController extends Controller
     {
         $scratchCard = ScratchCard::where('owner', '=', $user_id)
             ->where('temas_raspadinha_id', '=', $id)
+            ->where('ativo', '=', 0)
             ->orderByRaw('RAND()')
             ->get()
             ->first();

@@ -36,7 +36,7 @@ export const routes = {
 		scratch_card: host + '/scratch_card_themes/{theme_id}/scratch_card',
 		show: host + '/scratch_card_themes/{theme_id}',
 		play: host + '/scratch_card_themes/{theme_id}/{user_id}',
-		change_scratch_card: host + '/scratch_card_themes/{scratch_card_id}/change_scratch_card',
+		change_scratch_card: host + '/scratch_card_themes/{scratch_card_id}/{theme_id}/{user_id}/change_scratch_card',
 	},
 	scratch_card_demo: {
 		index: host+'/scratch_card_demo',

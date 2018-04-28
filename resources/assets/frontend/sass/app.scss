@@ -546,11 +546,11 @@ button.close {
 }
 
 .btn-game {
-    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0;
+    background: transparent linear-gradient(to bottom, #0056b1 0px, #0056b1 100%) repeat scroll 0 0;
     border: 0 none;
     width: 100%;
     border-radius: 5px;
-    box-shadow: 0 -4px 0 -2px #708f00 inset;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
@@ -561,8 +561,11 @@ button.close {
     padding: 0 15px;
     text-align: center;
     text-decoration: none;
-    text-shadow: 1px 1px 2px #586e00;
     vertical-align: bottom;
+}
+
+.btn-game:hover {
+    color: #fff;
 }
 
 .btn-result {
