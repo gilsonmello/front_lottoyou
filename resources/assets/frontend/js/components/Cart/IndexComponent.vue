@@ -113,7 +113,7 @@
 				</div>
 				<div class="col-lg-5 col-12 col-md-5 col-sm-6" v-else>
 					<span>
-						Saldo disponível: $0.00(Saldo restante: $ 0.00 }})
+						Saldo disponível: $0.00(Saldo restante: $ 0.00)
 					</span>
 				</div>
 				<div class="col-lg-5 col-6 col-md-5 col-sm-4">

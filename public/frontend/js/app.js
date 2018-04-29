@@ -80216,7 +80216,7 @@ var render = function() {
                     [
                       _c("span", [
                         _vm._v(
-                          "\n\t\t\t\t\t\tSaldo disponível: $0.00(Saldo restante: $ 0.00 }})\n\t\t\t\t\t"
+                          "\n\t\t\t\t\t\tSaldo disponível: $0.00(Saldo restante: $ 0.00)\n\t\t\t\t\t"
                         )
                       ])
                     ]

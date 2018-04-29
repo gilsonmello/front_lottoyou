@@ -9,6 +9,7 @@ use App\Model\Frontend\ScratchCardLot;
 use App\Model\Frontend\ScratchCardDemo;
 use App\Model\Frontend\ScratchCardJackpotTable;
 use App\Model\Frontend\ScratchCard;
+use App\Model\Frontend\ScratchCardDiscountTable;
 use DB;
 
 class ScratchCardThemeController extends Controller
@@ -101,13 +102,16 @@ class ScratchCardThemeController extends Controller
         $user_id = $request->get('user_id') != null ? $request->get('user_id') : 0;
         $theme = ScratchCardTheme::whereHas('lot', function($query) {
             $query->where('active', '=', 1);
-        })->with([
-            'discountTables'
+        })
+        ->with([
+            'lot'
         ])
-        ->with('lot')
-        ->get();
+        ->get()
+        ->makeHidden(['total_tickets']);
 
         foreach($theme as $key => $value) {
+            
+            //Pegando o total de raspadinhas do usuário logado
             $value->has_scratch_card = ScratchCard::select([
                 'temas_raspadinha_id', 
                 'owner',
@@ -122,6 +126,23 @@ class ScratchCardThemeController extends Controller
             ])
             ->get()
             ->first();
+
+            //Pegando todos os descontos se a quantidade disponível for maior do que a quantidade do desconto
+            $discountTable = ScratchCardDiscountTable::where('tema_id', '=', $value->id)
+            ->select([
+                'id', 
+                'tema_id',
+                'quantity',
+                'percentage',
+                'created',
+                'modified',
+                'active'
+            ])
+            ->where('active', '=', 1)
+            ->where('quantity', '<=', $value->total_tickets_available)
+            ->get();
+
+            $value->discount_tables = $discountTable != null ? $discountTable : [] ;
         }
 
         return $theme;
