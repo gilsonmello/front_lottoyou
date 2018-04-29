@@ -12,6 +12,9 @@ Route::post('/carts/add_lotteries', 'CartController@addLottery')
 Route::post('/carts/complete_purchase', 'CartController@completePurchase')
     ->name('frontend.carts.complete_purchase');
 
+Route::post('/carts/validate', 'CartController@validatePurchase')
+    ->name('frontend.carts.validate');
+
 Route::resource('carts', 'CartController', [
     'names' => [
         'index' => 'frontend.carts.index',

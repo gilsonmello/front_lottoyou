@@ -62,6 +62,7 @@ export const routes = {
 		add_soccer_experts: host + '/carts/add_soccer_experts',
 		add_lotteries: host + '/carts/add_lotteries',
 		destroy: host + '/carts/{hash}',
-		complete_purchase: host + '/carts/complete_purchase'
+		complete_purchase: host + '/carts/complete_purchase',
+		validate: host + '/carts/validate',
 	}
 };

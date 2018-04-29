@@ -605,7 +605,8 @@ var routes = {
 		add_soccer_experts: host + '/carts/add_soccer_experts',
 		add_lotteries: host + '/carts/add_lotteries',
 		destroy: host + '/carts/{hash}',
-		complete_purchase: host + '/carts/complete_purchase'
+		complete_purchase: host + '/carts/complete_purchase',
+		validate: host + '/carts/validate'
 	}
 };
 
@@ -61019,7 +61020,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\nnav[data-v-7d64b6a4] {\n}\nli span[data-v-7d64b6a4] {\n\t\tfont-size: 12px;\n\t\tdisplay: block;\n}\n.cart[data-v-7d64b6a4] {\n\t\tdisplay: inline-block;\n\t\tposition: relative;\n}\n.cart a[data-v-7d64b6a4] {\n\t\tdisplay: -webkit-inline-box;\n\t\tdisplay: -ms-inline-flexbox;\n\t\tdisplay: inline-flex;\n\t\tposition: relative;\n\t\twidth: 100%;\n\t\theight: auto;\n}\n.cart-left .cart-count[data-v-7d64b6a4] {\n\t\tposition: absolute;\n\t\tborder-radius: 50%;\n\t\ttop: -10px;\n\t\tright: 10px;\n\t\twidth: 19px;\n\t\theight: 19px;\n\t\ttext-align: center;\n\t\tbackground-color: #d9deda;\n\t\tfont-weight: 900;\n\t\tcolor: white;\n\t\tfont-size: 12px;\n\t\tline-height: 20px;\n\t\t-webkit-transition: background-color .125s ease-out;\n\t\ttransition: background-color .125s ease-out;\n}\n.user-name[data-v-7d64b6a4] {\n\t\tfont-weight: 500;\n\t    color: #012406;\n\t    text-overflow: ellipsis;\n\t    overflow: hidden;\n\t    white-space: nowrap;\n\t    display: block;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.account[data-v-7d64b6a4] {\t\t\n\t\tfont-weight: 700;\n\t\tcolor: #0056b1;\n\t    font-size: 14px;\n\t    line-height: 18px;\n}\n.balance-amount[data-v-7d64b6a4] {\n\t    font-weight: 500;\n\t    color: #012406;\n\t    text-overflow: ellipsis;\n\t    overflow: hidden;\n\t    white-space: nowrap;\n\t    display: block;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.balance-deposit[data-v-7d64b6a4] {\n\t\tfont-weight: 700;\n\t\tcolor: #0056b1;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.item-cart[data-v-7d64b6a4] {\n\t\tpadding-right: 0;\n}\n.item-cart .cart-left[data-v-7d64b6a4] {\n\t\t/*float: left;\n\t\tpadding: 2px 10px 2px 2px;\n\t\tmargin-right: 21px;*/\n\t\tposition: relative;\n\t\tcolor: #0056b1 !important;\n}\n.cart-checkout-now[data-v-7d64b6a4] {\t\t\n\t\tfont-weight: 700;\n\t\tcolor: #0056b1;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.item-cart .cart-right[data-v-7d64b6a4] {\n\t\tfloat: right;\n}\n.cart-value[data-v-7d64b6a4] {\n\t\tdisplay: block;\n\t\tline-height: 18px;\n\t\tcolor: #9aa89c;\n\t\tfont-size: 14px;\n}\n.navbar-brand[data-v-7d64b6a4] {\n\t\tpadding: 0;\n}\n.navbar-brand ul[data-v-7d64b6a4] {\n\t\tmargin: 0;\n\t\tpadding: 0\n}\nul li[data-v-7d64b6a4] {\n\t\tpadding: 20px 20px 10px 10px;\n\t\tmargin-right: 10px;\n\t\tposition: relative;\n\t\tlist-style: none;\n\t\tdisplay: inline-block;\n}\nul[data-v-7d64b6a4] {\n\t\tmargin: 0;\n\t\tpadding: 0\n}\nul li[data-v-7d64b6a4]:last-child {\n\t\tmargin-right: 0;\n}\n.navbar-right ul li[data-v-7d64b6a4] {\n}\nul .item-account[data-v-7d64b6a4]:after {\n\t\tcontent: \"\";\n\t    background-color: #d9deda;\n\t    -webkit-transform: translateY(-50%);\n\t    transform: translateY(-50%);\n\t    height: 21px;\n\t    width: 1px;\n\t    position: absolute;\n\t    right: 0;\n    \ttop: 50%;\n}\n.row[data-v-7d64b6a4] {\n\t\tmargin: 0;\n}\nul .item-balance[data-v-7d64b6a4]:after {\n\t\tcontent: \"\";\n\t    background-color: #d9deda;\n\t    -webkit-transform: translateY(-50%);\n\t    transform: translateY(-50%);\n\t    height: 21px;\n\t    width: 1px;\n\t    position: absolute;\n\t    right: 0;\n    \ttop: 50%;\n}\nul .item-register-login[data-v-7d64b6a4]:after {\n\t\tcontent: \"\";\n\t    background-color: #d9deda;\n\t    -webkit-transform: translateY(-50%);\n\t    transform: translateY(-50%);\n\t    height: 21px;\n\t    width: 1px;\n\t    position: absolute;\n\t    right: 0;\n    \ttop: 50%;\n}\nspan[data-v-7d64b6a4], a[data-v-7d64b6a4] {\n\t\tcolor: #0056b1;\n\t\tfont-weight: 700;\n\t\tfont-size: 14px;\n\t\tcursor: pointer;\n\t\ttext-decoration: none;\n\t    text-align: initial;\n}\ni[data-v-7d64b6a4] {\n\t\tmargin-right: 21px;\n}\n.bg-white[data-v-7d64b6a4] {\n\t\tbackground-color: white;\n}\n.header[data-v-7d64b6a4] {\n\t\twidth: 100%;\n}\n.header .container[data-v-7d64b6a4] {\n}\n.bg-lottoyou[data-v-7d64b6a4] {\n\t\tbackground-color: #64a407;\n\t\tbackground-image: -webkit-gradient(linear,left top, right top,from(#0056b1),to(#003874));\n\t\tbackground-image: linear-gradient(90deg,#0056b1,#003874);\n}\n.navigation-header header[data-v-7d64b6a4]{\n}\n.no-padding-left[data-v-7d64b6a4] {\n\t\tpadding-left: 0\n}\n.no-padding-right[data-v-7d64b6a4] {\n\t\tpadding-right: 0;\n}\n.no-padding-bottom[data-v-7d64b6a4] {\n\t\tpadding-bottom: 0;\n}\n.no-padding-top[data-v-7d64b6a4] {\n\t\tpadding-top: 0;\n}\n.header-items[data-v-7d64b6a4] {\n\t\ttext-align: right;\n}\n@media (max-width: 992px) {\n.header-container[data-v-7d64b6a4], .container-fluid-header[data-v-7d64b6a4], .header-container .header-items[data-v-7d64b6a4]{\n\t\t\tpadding: 0 !important\n}\n}\n@media (max-width: 767px) {\n.header-container-logo[data-v-7d64b6a4] {\n\t\t\t-webkit-box-pack: center !important;\n\t\t\t    -ms-flex-pack: center !important;\n\t\t\t        justify-content: center !important;\n}\n.header-brand[data-v-7d64b6a4] {\n\t\t\t-webkit-box-pack: center;\n\t\t\t    -ms-flex-pack: center;\n\t\t\t        justify-content: center;\n}\n}\n@media (max-width: 576px) {\n.header-items[data-v-7d64b6a4] {\n\t\t\ttext-align: center;\n}\nul li[data-v-7d64b6a4] {\n\t\t    padding-bottom: 0 !important;\n    \t\tpadding-top: 5px !important;\n}\n}\n.tooltip-item-account[data-v-7d64b6a4] {\n\t\tdisplay: none;\n}\n.item-account .open[data-v-7d64b6a4]:before {\n\t\tcontent: \"\";\n\t    position: absolute;\n\t    height: 9px;\n\t    z-index: 102;\n\t    width: 9px;\n\t    border-top: 1px solid #d9deda;\n\t    border-right: 1px solid #d9deda;\n\t    -webkit-transform: rotate(-44deg);\n\t    transform: rotate(-44deg);\n\t    background: #fff;\n\t    top: -5px;\n\t    right: 66px;\n}\n.item-account .open[data-v-7d64b6a4] {\n\t    right: 0;\t\n\t    bottom: -217px;\n    \tbackground: white;\n    \twidth: 363px;\n    \tdisplay: block !important;\n    \tz-index: 9999;\n    \tposition: absolute;\n        border: 1px solid #ccc;\n\t    border-radius: 4px;\n\t    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.6);\n\t    box-shadow: 0 1px 3px 0 rgba(0,0,0,.6);\n\t    /* background: none repeat scroll 0 0 #fff; */\n\t    font-weight: 400;\n}\n.tooltip-item-account-header[data-v-7d64b6a4] {\n\t    padding: 5px;\n    \tborder-bottom: 1px #ccc solid;\n}\n.tooltip-item-account-header .title[data-v-7d64b6a4] {\n\t\tfont-weight: 900;\n\t    font-size: 17px;\n\t    color: #012406;\n\t    text-align: left;\n}\n.tooltip-item-account-header .balance[data-v-7d64b6a4] {\n\t\tfont-weight: 200;\n\t    font-size: 12px;\n\t    color: #012406;\n\t    text-align: right;\n\t    line-height: 18px;\n}\n.tooltip-item-account .account[data-v-7d64b6a4] {\n\t\ttext-align: left;\n}\n.tooltip-item-account .account .account-item[data-v-7d64b6a4] {\n\t\tdisplay: block;\n\t\tborder-bottom: 1px #ccc solid;\n\t    padding: 10px 10px 10px 10px;\n\t    margin-right: 0;\n}\n.tooltip-item-account .account .account-item .answer[data-v-7d64b6a4] {\n\t\tdisplay: initial;\n\t\tcolor: initial;\n}\n.tooltip-item-account .account .account-item[data-v-7d64b6a4]:last-child {\n\t\tborder: none;\n}\n\t\n", ""]);
+exports.push([module.i, "\nnav[data-v-7d64b6a4] {\n}\nli span[data-v-7d64b6a4] {\n\t\tfont-size: 12px;\n\t\tdisplay: block;\n}\n.cart[data-v-7d64b6a4] {\n\t\tdisplay: inline-block;\n\t\tposition: relative;\n}\n.cart a[data-v-7d64b6a4] {\n\t\tdisplay: -webkit-inline-box;\n\t\tdisplay: -ms-inline-flexbox;\n\t\tdisplay: inline-flex;\n\t\tposition: relative;\n\t\twidth: 100%;\n\t\theight: auto;\n}\n.cart-left .cart-count[data-v-7d64b6a4] {\n\t\tposition: absolute;\n\t\tborder-radius: 50%;\n\t\ttop: -10px;\n\t\tright: 10px;\n\t\twidth: 19px;\n\t\theight: 19px;\n\t\ttext-align: center;\n\t\tbackground-color: #d9deda;\n\t\tfont-weight: 900;\n\t\tcolor: white;\n\t\tfont-size: 12px;\n\t\tline-height: 20px;\n\t\t-webkit-transition: background-color .125s ease-out;\n\t\ttransition: background-color .125s ease-out;\n}\n.user-name[data-v-7d64b6a4] {\n\t\tfont-weight: 500;\n\t    color: #012406;\n\t    text-overflow: ellipsis;\n\t    overflow: hidden;\n\t    white-space: nowrap;\n\t    display: block;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.account[data-v-7d64b6a4] {\t\t\n\t\tfont-weight: 700;\n\t\tcolor: #0056b1;\n\t    font-size: 14px;\n\t    line-height: 18px;\n}\n.balance-amount[data-v-7d64b6a4] {\n\t    font-weight: 500;\n\t    color: #012406;\n\t    text-overflow: ellipsis;\n\t    overflow: hidden;\n\t    white-space: nowrap;\n\t    display: block;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.balance-deposit[data-v-7d64b6a4] {\n\t\tfont-weight: 700;\n\t\tcolor: #0056b1;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.item-cart[data-v-7d64b6a4] {\n\t\tpadding-right: 0;\n}\n.item-cart .cart-left[data-v-7d64b6a4] {\n\t\t/*float: left;\n\t\tpadding: 2px 10px 2px 2px;\n\t\tmargin-right: 21px;*/\n\t\tposition: relative;\n\t\tcolor: #0056b1 !important;\n}\n.cart-checkout-now[data-v-7d64b6a4] {\t\t\n\t\tfont-weight: 700;\n\t\tcolor: #0056b1;\n\t    font-size: 14px;\n\t    line-height: 18px\n}\n.item-cart .cart-right[data-v-7d64b6a4] {\n\t\tfloat: right;\n}\n.cart-value[data-v-7d64b6a4] {\n\t\tdisplay: block;\n\t\tline-height: 18px;\n\t\tcolor: #9aa89c;\n\t\tfont-size: 14px;\n}\n.navbar-brand[data-v-7d64b6a4] {\n\t\tpadding: 0;\n}\n.navbar-brand ul[data-v-7d64b6a4] {\n\t\tmargin: 0;\n\t\tpadding: 0\n}\nul li[data-v-7d64b6a4] {\n\t\tpadding: 20px 20px 10px 10px;\n\t\tmargin-right: 10px;\n\t\tposition: relative;\n\t\tlist-style: none;\n\t\tdisplay: inline-block;\n}\nul[data-v-7d64b6a4] {\n\t\tmargin: 0;\n\t\tpadding: 0\n}\nul li[data-v-7d64b6a4]:last-child {\n\t\tmargin-right: 0;\n}\n.navbar-right ul li[data-v-7d64b6a4] {\n}\nul .item-account[data-v-7d64b6a4]:after {\n\t\tcontent: \"\";\n\t    background-color: #d9deda;\n\t    -webkit-transform: translateY(-50%);\n\t    transform: translateY(-50%);\n\t    height: 21px;\n\t    width: 1px;\n\t    position: absolute;\n\t    right: 0;\n    \ttop: 50%;\n}\n.row[data-v-7d64b6a4] {\n\t\tmargin: 0;\n}\nul .item-balance[data-v-7d64b6a4]:after {\n\t\tcontent: \"\";\n\t    background-color: #d9deda;\n\t    -webkit-transform: translateY(-50%);\n\t    transform: translateY(-50%);\n\t    height: 21px;\n\t    width: 1px;\n\t    position: absolute;\n\t    right: 0;\n    \ttop: 50%;\n}\nul .item-register-login[data-v-7d64b6a4]:after {\n\t\tcontent: \"\";\n\t    background-color: #d9deda;\n\t    -webkit-transform: translateY(-50%);\n\t    transform: translateY(-50%);\n\t    height: 21px;\n\t    width: 1px;\n\t    position: absolute;\n\t    right: 0;\n    \ttop: 50%;\n}\nspan[data-v-7d64b6a4], a[data-v-7d64b6a4] {\n\t\tcolor: #0056b1;\n\t\tfont-weight: 700;\n\t\tfont-size: 14px;\n\t\tcursor: pointer;\n\t\ttext-decoration: none;\n\t    text-align: initial;\n}\ni[data-v-7d64b6a4] {\n\t\tmargin-right: 21px;\n}\n.bg-white[data-v-7d64b6a4] {\n\t\tbackground-color: white;\n}\n.header[data-v-7d64b6a4] {\n\t\twidth: 100%;\n}\n.header .container[data-v-7d64b6a4] {\n}\n.bg-lottoyou[data-v-7d64b6a4] {\n\t\tbackground-color: #64a407;\n\t\tbackground-image: -webkit-gradient(linear,left top, right top,from(#0056b1),to(#003874));\n\t\tbackground-image: linear-gradient(90deg,#0056b1,#003874);\n}\n.navigation-header header[data-v-7d64b6a4]{\n}\n.no-padding-left[data-v-7d64b6a4] {\n\t\tpadding-left: 0\n}\n.no-padding-right[data-v-7d64b6a4] {\n\t\tpadding-right: 0;\n}\n.no-padding-bottom[data-v-7d64b6a4] {\n\t\tpadding-bottom: 0;\n}\n.no-padding-top[data-v-7d64b6a4] {\n\t\tpadding-top: 0;\n}\n.header-items[data-v-7d64b6a4] {\n\t\ttext-align: right;\n}\n@media (max-width: 992px) {\n.header-container[data-v-7d64b6a4], .container-fluid-header[data-v-7d64b6a4], .header-container .header-items[data-v-7d64b6a4]{\n\t\t\tpadding: 0 !important\n}\n}\n@media (max-width: 767px) {\n.header-container-logo[data-v-7d64b6a4] {\n\t\t\t-webkit-box-pack: center !important;\n\t\t\t    -ms-flex-pack: center !important;\n\t\t\t        justify-content: center !important;\n}\n.header-brand[data-v-7d64b6a4] {\n\t\t\t-webkit-box-pack: center;\n\t\t\t    -ms-flex-pack: center;\n\t\t\t        justify-content: center;\n}\n}\n@media (max-width: 576px) {\n.header-items[data-v-7d64b6a4] {\n\t\t\ttext-align: center;\n}\nul li[data-v-7d64b6a4] {\n\t\t    padding-bottom: 0 !important;\n    \t\tpadding-top: 5px !important;\n}\n}\n.tooltip-item-account[data-v-7d64b6a4] {\n\t\tdisplay: none;\n}\n.item-account .open[data-v-7d64b6a4]:before {\n\t\tcontent: \"\";\n\t    position: absolute;\n\t    height: 9px;\n\t    z-index: 102;\n\t    width: 9px;\n\t    border-top: 1px solid #d9deda;\n\t    border-right: 1px solid #d9deda;\n\t    -webkit-transform: rotate(-44deg);\n\t    transform: rotate(-44deg);\n\t    background: #fff;\n\t    top: -5px;\n\t    right: 66px;\n}\n.item-account .open[data-v-7d64b6a4] {\n\t    right: 0;\t\n\t    bottom: -217px;\n    \tbackground: white;\n    \twidth: 363px;\n    \tdisplay: block !important;\n    \tz-index: 9999;\n    \tposition: absolute;\n        border: 1px solid #ccc;\n\t    border-radius: 4px;\n\t    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.6);\n\t    box-shadow: 0 1px 3px 0 rgba(0,0,0,.6);\n\t    /* background: none repeat scroll 0 0 #fff; */\n\t    font-weight: 400;\n}\n.tooltip-item-account-header[data-v-7d64b6a4] {\n\t    padding: 5px;\n    \tborder-bottom: 1px #ccc solid;\n}\n.tooltip-item-account-header .title[data-v-7d64b6a4] {\n\t\tfont-weight: 900;\n\t    font-size: 17px;\n\t    color: #012406;\n\t    text-align: left;\n}\n.tooltip-item-account-header .balance[data-v-7d64b6a4] {\n\t\tfont-weight: 500;\n\t\tfont-size: 14px;\n\t\tcolor: #012406;\n\t\ttext-align: right;\n}\n.tooltip-item-account .account[data-v-7d64b6a4] {\n\t\ttext-align: left;\n}\n.tooltip-item-account .account .account-item[data-v-7d64b6a4] {\n\t\tdisplay: block;\n\t\tborder-bottom: 1px #ccc solid;\n\t    padding: 10px 10px 10px 10px;\n\t    margin-right: 0;\n}\n.tooltip-item-account .account .account-item .answer[data-v-7d64b6a4] {\n\t\tdisplay: initial;\n\t\tcolor: initial;\n}\n.tooltip-item-account .account .account-item[data-v-7d64b6a4]:last-child {\n\t\tborder: none;\n}\n\t\n", ""]);
 
 // exports
 
@@ -61037,6 +61038,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(6);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -61920,7 +61926,52 @@ var render = function() {
                                 "div",
                                 { staticClass: "tooltip-item-account" },
                                 [
-                                  _vm._m(0),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "tooltip-item-account-header"
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "row vcenter" },
+                                        [
+                                          _vm._m(0),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "col-lg-5" },
+                                            [
+                                              _vm.auth && _vm.auth.balance
+                                                ? _c(
+                                                    "span",
+                                                    { staticClass: "balance" },
+                                                    [
+                                                      _vm._v(
+                                                        "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\tCrédito: $ " +
+                                                          _vm._s(
+                                                            _vm.auth.balance
+                                                              .value
+                                                          ) +
+                                                          "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t"
+                                                      )
+                                                    ]
+                                                  )
+                                                : _c(
+                                                    "span",
+                                                    { staticClass: "balance" },
+                                                    [
+                                                      _vm._v(
+                                                        "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\tCrédito: $ 0.00\n\t\t\t\t\t\t\t  \t\t\t\t\t\t"
+                                                      )
+                                                    ]
+                                                  )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
                                   _vm._v(" "),
                                   _c(
                                     "div",
@@ -62236,16 +62287,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tooltip-item-account-header" }, [
-      _c("div", { staticClass: "row vcenter" }, [
-        _c("div", { staticClass: "col-lg-8" }, [
-          _c("span", { staticClass: "title" }, [_vm._v("Minha Lottoyou")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-4" }, [
-          _c("span", { staticClass: "balance" }, [_vm._v("Crédito: $ 0.00")])
-        ])
-      ])
+    return _c("div", { staticClass: "col-lg-7" }, [
+      _c("span", { staticClass: "title" }, [_vm._v("Minha Lottoyou")])
     ])
   },
   function() {
@@ -77068,6 +77111,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -77091,14 +77135,33 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		};
 	},
 	methods: {
-		completePurchase: function completePurchase(event) {
+		validate: function validate(event) {
 			var _this = this;
+
+			var validateRequest = axios.create();
+
+			validateRequest.interceptors.request.use(function (config) {
+				$(_this.$el).find('[type="load"]').removeClass('hide');
+				$(_this.$el).find('[type="submit"]').addClass('hide');
+				return config;
+			});
+
+			validateRequest.post(__WEBPACK_IMPORTED_MODULE_6__api_routes__["a" /* routes */].carts.validate, this.purchase, {}).then(function (response) {
+				if (response.status === 200) {
+					_this.completePurchase();
+				}
+			}).catch(function (error) {
+				toastr.error(error.response.data.msg, _this.trans('strings.error'));
+				$(_this.$el).find('[type="load"]').addClass('hide');
+				$(_this.$el).find('[type="submit"]').removeClass('hide');
+			});
+		},
+		completePurchase: function completePurchase(event) {
+			var _this2 = this;
 
 			var completePurchaseRequest = axios.create();
 
 			completePurchaseRequest.interceptors.request.use(function (config) {
-				$(_this.$el).find('[type="load"]').removeClass('hide');
-				$(_this.$el).find('[type="submit"]').addClass('hide');
 				return config;
 			});
 
@@ -77106,8 +77169,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 			completePurchaseRequest.post(__WEBPACK_IMPORTED_MODULE_6__api_routes__["a" /* routes */].carts.complete_purchase, this.purchase, {}).then(function (response) {
 				if (response.status === 200) {
-					_this.$store.dispatch('clearPurchase');
-					_this.$router.push({
+					_this2.$store.dispatch('clearPurchase');
+					_this2.$router.push({
 						name: 'orders.finish'
 					});
 				}
@@ -80308,13 +80371,13 @@ var render = function() {
                               on: {
                                 click: function($event) {
                                   $event.preventDefault()
-                                  _vm.completePurchase($event)
+                                  _vm.validate($event)
                                 }
                               }
                             },
                             [
                               _vm._v(
-                                "\t\t" +
+                                "\t\t\n\t\t\t\t\t\t" +
                                   _vm._s(
                                     _vm.trans("strings.complete_purchase")
                                   ) +

@@ -11,10 +11,65 @@ use App\Model\Frontend\OrderItem;
 use App\Model\Frontend\SoccerExpert;
 use App\Model\Frontend\Lottery;
 use App\Model\Frontend\ScratchCardTheme;
+use App\Model\Frontend\ScratchCard;
 use DB;
 
 class CartController extends Controller
 {
+
+    private function scratchCardValidate($theme_id, $quantity) 
+    {
+
+        $scratchCard = ScratchCard::select([
+            DB::raw('count(temas_raspadinha_id) as total_tickets_available')
+        ])
+        ->where('ativo', '=', 0)
+        ->where('temas_raspadinha_id', '=', $theme_id)
+        ->groupBy([
+            'temas_raspadinha_id', 
+        ])
+        ->get()
+        ->first();
+
+        if($scratchCard) {
+            return $scratchCard->total_tickets_available > $quantity ? true : false;
+        }
+
+        return false;
+    }
+
+    public function validatePurchase(Request $request) 
+    {
+        $data = $request->all();
+
+        $valid = [
+            'valid' => true, 
+            'msg' => 'ok'
+        ];
+
+        foreach($data['items'] as $key => $value) {
+            if($value['type'] == 'scratch_card') {
+                $scratchCard = $value['scratch_card']['scratch_card'];
+                $valid['valid'] = $this->scratchCardValidate(
+                    $scratchCard['id'], 
+                    $scratchCard['discount_tables']['quantity']
+                );
+
+                if(!$valid['valid']) {
+                    $valid['msg'] = 'A raspadinha '. $scratchCard['nome'] . ' encontra-se indisponível';
+                    return response()->json($valid, 422);
+                }
+
+            } else if($value['type'] == 'soccer_expert') {
+
+            } else if($value['type'] == 'lottery') {
+
+            }
+        }
+
+        return response()->json($valid, 200);
+    }
+
     /**
      * Display a listing of the resource.
      *

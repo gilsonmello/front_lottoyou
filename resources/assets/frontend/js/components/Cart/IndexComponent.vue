@@ -156,7 +156,8 @@
 					
 				</div>
 				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-					<button class="btn btn-success btn-md" type="submit" @click.prevent="completePurchase($event)">		{{ trans('strings.complete_purchase') }}
+					<button class="btn btn-success btn-md" type="submit" @click.prevent="validate($event)">		
+						{{ trans('strings.complete_purchase') }}
 					</button>
 					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
 						<i class="fa fa-refresh fa-spin"></i>
@@ -193,13 +194,37 @@
 			}
 		},
 		methods: {
-			completePurchase(event) {
+			validate(event) {
+				var validateRequest = axios.create();
 
-				const completePurchaseRequest = axios.create();
-
-				completePurchaseRequest.interceptors.request.use(config => {
+				validateRequest.interceptors.request.use(config => {
 					$(this.$el).find('[type="load"]').removeClass('hide');
 		        	$(this.$el).find('[type="submit"]').addClass('hide');
+		          	return config;
+				});
+
+				validateRequest.post(
+					routes.carts.validate, 
+					this.purchase, 
+					{}
+				).then(response => {
+					if(response.status === 200) {
+						this.completePurchase();
+					}
+				}).catch((error) => {
+					toastr.error(
+						error.response.data.msg,
+						this.trans('strings.error')
+					);
+					$(this.$el).find('[type="load"]').addClass('hide');
+		        	$(this.$el).find('[type="submit"]').removeClass('hide');
+				});			
+			},
+			completePurchase(event) {
+
+				var completePurchaseRequest = axios.create();
+
+				completePurchaseRequest.interceptors.request.use(config => {					
 		          	return config;
 				});
 
@@ -218,7 +243,7 @@
 					}
 				}).catch((error) => {
 					
-				});				
+				});		
 			}
 		},
 		mounted: function() {

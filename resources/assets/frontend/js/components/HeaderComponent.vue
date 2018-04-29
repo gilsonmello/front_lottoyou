@@ -88,11 +88,16 @@
 						  			<div class="tooltip-item-account">
 						  				<div class="tooltip-item-account-header">
 						  					<div class="row vcenter">
-						  						<div class="col-lg-8">
+						  						<div class="col-lg-7">
 						  							<span class="title">Minha Lottoyou</span>
 						  						</div>
-						  						<div class="col-lg-4">
-						  							<span class="balance">Crédito: $ 0.00</span>
+						  						<div class="col-lg-5">
+						  							<span class="balance" v-if="auth && auth.balance">
+							  							Crédito: $ {{ auth.balance.value }}
+							  						</span>
+							  						<span class="balance" v-else>
+							  							Crédito: $ 0.00
+							  						</span>
 						  						</div>
 						  					</div>
 						  				</div>
@@ -567,11 +572,10 @@
 	}
 
 	.tooltip-item-account-header .balance {
-		font-weight: 200;
-	    font-size: 12px;
-	    color: #012406;
-	    text-align: right;
-	    line-height: 18px;
+		font-weight: 500;
+		font-size: 14px;
+		color: #012406;
+		text-align: right;
 	}
 
 	.tooltip-item-account .account {
