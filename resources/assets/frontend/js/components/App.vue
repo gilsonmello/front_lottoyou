@@ -44,6 +44,25 @@
 				
 			},
 			init() {
+				//Pegando os dados do usuário no localstorage
+				var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+				access_token = access_token != null ? access_token : null;
+
+				if(access_token) {
+					this.refreshAuthPromise()
+					.then(response => {
+						if(response.status === 200) {
+				        	response.data.access_token = access_token
+				        	response.data.refresh_token = refresh_token
+							window.localStorage.setItem('authUser', JSON.stringify(response.data))
+							this.$store.dispatch('setUserObject', response.data);
+						}
+				    }).catch((error) => {
+						
+				    });
+				}
+
+
 				this.authUser = JSON.parse(window.localStorage.getItem('authUser'));
 				this.$store.dispatch('setUserObject', this.authUser);
 
@@ -78,6 +97,7 @@
 			},
 			onReady() {
 				router.onReady(() => {
+
 					//Verificando se está tentando acessar a página de fininalização de pedido
 					if(this.$router.history.current.name == "orders.finish") {
 						this.$router.push({
