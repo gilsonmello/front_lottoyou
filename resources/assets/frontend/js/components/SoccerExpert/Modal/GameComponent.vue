@@ -1,11 +1,19 @@
 <template>
 	<div class="row vcenter text-center games">
-        
-       <div class="col-2 col-md-5 col-lg-4">
+        <div class="col-lg-12" v-if="!ticket.choseGoldBall">
+			<span class="fa fa-star gold-ball" @click.prevent="goldBall($event)"></span>
+		</div>
+	 	<div class="col-lg-12" v-else-if="ticket.choseGoldBall && ticket.gold_ball_game_id != game.id">
+			<span class="fa fa-star gold-ball" @click.prevent="" style="visibility: hidden;"></span>
+		</div>
+		<div class="col-lg-12" v-if="ticket.choseGoldBall && ticket.gold_ball_game_id == game.id">
+			<span class="fa fa-star gold-ball" @click.prevent="changeGoldBall($event)"></span>
+		</div>
+       	<div class="col-2 col-md-5 col-lg-4">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-end;">
 				<span style="line-height: 1;">{{ game.house_club.nome }}</span>
-				<img v-if="game.house_club.escudo != undefined" style="width: 50px; height: 50px; margin-left: 5px;" :title="game.house_club.nome" :src="game.house_club.escudo">				
+				<img class="shield-img" v-if="game.house_club.escudo != undefined" style="margin-left: 5px;" :title="game.house_club.nome" :src="game.house_club.escudo">				
 			</div>
 		</div>
 
@@ -24,7 +32,7 @@
         <div class="col-2 col-md-5 col-lg-4">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-start;">
-				<img v-if="game.out_club.escudo != undefined" style="width: 50px; height: 50px; margin-right: 5px;" :title="game.out_club.nome" :src="game.out_club.escudo">
+				<img class="shield-img" v-if="game.out_club.escudo != undefined" style="margin-right: 5px;" :title="game.out_club.nome" :src="game.out_club.escudo">
 				<span style="line-height: 1;">{{ game.out_club.nome }}</span>
 			</div>
 		</div>
@@ -44,12 +52,21 @@
         },
         mounted: function() {
         	this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : ''
-        	this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : ''
+        	this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
+        	this.game.bola_ouro = this.game.bola_ouro ? this.game.bola_ouro : '';
         },
         activated: function() {
             
         },
         methods: {
+        	changeGoldBall(event) {
+	        	this.ticket.choseGoldBall = false;
+	        	this.ticket.gold_ball_game_id = 0;
+        	},
+        	goldBall(event) {
+        		this.ticket.choseGoldBall = true;
+        		this.ticket.gold_ball_game_id = this.game.id;
+        	},
         	houseClubResult: function(index, event) {		        
 
 				//Pegando o valor informado pelo usuário
@@ -83,6 +100,8 @@
         },
         computed: {
 
+        },
+        watch: {
         }
 	}
 </script>
@@ -95,11 +114,18 @@
 
 	span {
 		line-height: 1;
+		word-wrap: break-word;
+		width: 67%;
 	}
 
 	.row {
 		color: white;
 		justify-content: center;
+	}
+
+	.shield-img {
+		width: 42%;
+		height: auto;
 	}
 
 	.info-date {
@@ -120,5 +146,13 @@
 	.x {
 		font-weight: bold;
 		font-size: 16px;
+	}
+
+	.gold-ball {
+		width: inherit;
+		font-size: 30px;
+		color: gold;
+		line-height: 1;
+		cursor: pointer;
 	}
 </style>

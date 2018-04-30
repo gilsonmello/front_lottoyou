@@ -13276,7 +13276,7 @@ button.close {
   }
 
   .modal-xl {
-    max-width: 70% !important;
+    max-width: 70%;
   }
 }
 

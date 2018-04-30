@@ -156,8 +156,9 @@
 	            .on('hidden.bs.modal', (event) => {
 	                this.updateTicket();
 	            });
-	        
-            this.updateTicket();
+            this.$set(this.ticket, 'choseGoldBall', false);
+            this.$set(this.ticket, 'gold_ball_game_id', 0);
+	        this.updateTicket();
 			let value = parseFloat(this.ticket.valor);
             this.value = value.format(2, true);
         },

@@ -20,14 +20,14 @@
             </span>     
 		</header>
 		<div class="tickets-content" :style="backgroundTicket(ticket.imagem_modal)">
-			<div class="row">
-				<div :class="verifyCol(ticket.games)" v-for="(game, index) in ticket.games">
-					<game-component :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index"></game-component>
-					<div class="separator" v-if="index % 2 == 0 && ticket.games.length > 1">
-						
-					</div>
+			
+			<div :class="verifyCol(ticket.games)" v-for="(game, index) in ticket.games">
+				<game-component :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index"></game-component>
+				<div class="separator" v-if="index % 2 == 0 && ticket.games.length > 1">
+					
 				</div>
 			</div>
+			
 		</div>
 		<footer class="tickets-footer">
 			<div class="row">
@@ -173,6 +173,9 @@
 	    padding-bottom: 20px;
 	    padding-top: 20px;
 	    cursor: default;
+	    display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
 	}
 
 	.tickets {

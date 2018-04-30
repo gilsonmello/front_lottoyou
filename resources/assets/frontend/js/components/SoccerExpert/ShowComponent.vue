@@ -268,6 +268,14 @@
         display: block;
     }
 
+
+	@media (min-width: 992px) {
+  	  	.modal-xl {
+	    	width: 85%;
+	    }
+	}
+    
+
 	#prev-slide-content{
         left: -50px; 
         right: auto;
@@ -305,6 +313,7 @@
 	        width: 30px !important;
 	    }
     }
+    
 	.price {
 		margin-right: 15px;
 	}
