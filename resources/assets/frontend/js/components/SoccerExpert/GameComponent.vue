@@ -40,7 +40,8 @@
         },
         mounted: function() {
         	this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : ''
-        	this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : ''
+        	this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
+        	this.$set(this.game, 'bola_ouro', false);
         },
         activated: function() {
             

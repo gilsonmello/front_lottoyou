@@ -92,38 +92,6 @@ Vue.prototype.refreshAuth = function() {
     });
 };
 
-Vue.prototype.refreshAuth = function() {
-	//Token de acesso
-	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
-	access_token = access_token != null ? access_token : null;
-
-	//Token para refresh
-	var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
-	refresh_token = refresh_token != null ? refresh_token : '';
-
-	var authRequest = axios.create();
-
-	authRequest.interceptors.request.use(config => {
-		return config;
-	});
-	//Fazendo busca do usuário logado, para setar na estrutura de dados
-	authRequest.get(routes.auth.user, { headers: {
-		'Accept': 'application/json',
-		'Authorization': 'Bearer ' + access_token
-	}}).then(response => {
-
-		if(response.status === 200) {
-        	response.data.access_token = access_token
-        	response.data.refresh_token = refresh_token
-			window.localStorage.setItem('authUser', JSON.stringify(response.data))
-			this.$store.dispatch('setUserObject', response.data);
-		}
-      	
-    }).catch((error) => {
-		
-    });
-};
-
 Vue.prototype.refreshAuthPromise = function() {
 	//Token de acesso
 	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
@@ -143,4 +111,84 @@ Vue.prototype.refreshAuthPromise = function() {
 		'Accept': 'application/json',
 		'Authorization': 'Bearer ' + access_token
 	}})
+};
+
+Vue.prototype.divideInTwo = function(arr) {
+	var length = arr.length;
+
+	var arrLeft = [];
+	var arrRight = [];
+
+	//Se não tiver itens retorna vazio
+	if(length == 0) {
+		return [[], []]
+	}else if(length == 1) {
+		//Se só possui 1 item, retorna a posição 0
+		return [
+			[
+				arr[0]
+			], 
+			[]
+		]
+	} else if(length == 2) {
+		//Se possui dois itens, retorna a posição 0 e 1
+		return [
+			[
+				arr[0]
+			], 
+			[
+				arr[1]
+			]
+		]
+	} else if((length % 2 == 1)) {
+		//Se a quantidade de itens forem impar
+		var left = Math.round(length / 2);
+
+		if(left == 0) {
+			arrLeft.push(arr[0]);
+			return [arrLeft, []];
+		} else {
+			for (var i = 0; i < left; i++) {
+				arrLeft.push(arr[i]);
+			}
+		}
+		
+		var right = left + 1
+
+		if(right == length) {
+			arrRight.push(arr[right]);
+		} else {
+			for(var i = right; i < length; i++) {
+				arrRight.push(arr[i]);
+			}
+		}
+
+		return [arrLeft, arrRight];
+	} else if((length % 2 == 0)) {
+		//Se a quantidade de itens foram par
+
+		var left = Math.round(length / 2);
+
+		if(left == 0) {
+			arrLeft.push(arr[0]);
+			return [arrLeft, []];
+		} else {
+			for (var i = 0; i < left; i++) {
+				arrLeft.push(arr[i]);
+			}
+		}
+		
+		var right = left
+
+		if(right == length) {
+			arrRight.push(arr[right]);
+		} else {
+			for(var i = right; i < length; i++) {
+				arrRight.push(arr[i]);
+			}
+		}
+
+		return [arrLeft, arrRight];
+	}
+
 };

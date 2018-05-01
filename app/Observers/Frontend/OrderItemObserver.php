@@ -71,6 +71,7 @@ class OrderItemObserver
                 $soccerExpertBet->soc_jogo_id = $game->id;
                 $soccerExpertBet->resultado_clube_casa = $game->result_house_club;
                 $soccerExpertBet->resultado_clube_fora = $game->result_out_club;
+                $soccerExpertBet->bola_ouro = $game->bola_ouro;
                 $soccerExpertBet->save();
             }
         }

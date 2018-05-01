@@ -129,7 +129,7 @@
 						//Do usuário atualizado
 						if(to.name != 'users.account') {					
 
-							let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+							/*let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
 							refresh_token = refresh_token != null ? refresh_token : '';
 
 							var loginRequest = axios.create();
@@ -162,7 +162,7 @@
 								next({
 					                name: 'login'
 					            });
-			                });
+			                });*/
 			            } else {
 			            	//Se a rota não for para o component UserAccount,
 			            	//Verifica se o usuário está logado

@@ -56321,37 +56321,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.refreshAuth = function () 
 	}).catch(function (error) {});
 };
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.refreshAuth = function () {
-	var _this2 = this;
-
-	//Token de acesso
-	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
-	access_token = access_token != null ? access_token : null;
-
-	//Token para refresh
-	var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
-	refresh_token = refresh_token != null ? refresh_token : '';
-
-	var authRequest = axios.create();
-
-	authRequest.interceptors.request.use(function (config) {
-		return config;
-	});
-	//Fazendo busca do usuário logado, para setar na estrutura de dados
-	authRequest.get(__WEBPACK_IMPORTED_MODULE_1__api_routes__["a" /* routes */].auth.user, { headers: {
-			'Accept': 'application/json',
-			'Authorization': 'Bearer ' + access_token
-		} }).then(function (response) {
-
-		if (response.status === 200) {
-			response.data.access_token = access_token;
-			response.data.refresh_token = refresh_token;
-			window.localStorage.setItem('authUser', JSON.stringify(response.data));
-			_this2.$store.dispatch('setUserObject', response.data);
-		}
-	}).catch(function (error) {});
-};
-
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.refreshAuthPromise = function () {
 	//Token de acesso
 	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
@@ -56371,6 +56340,73 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.refreshAuthPromise = funct
 			'Accept': 'application/json',
 			'Authorization': 'Bearer ' + access_token
 		} });
+};
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.divideInTwo = function (arr) {
+	var length = arr.length;
+
+	var arrLeft = [];
+	var arrRight = [];
+
+	//Se não tiver itens retorna vazio
+	if (length == 0) {
+		return [[], []];
+	} else if (length == 1) {
+		//Se só possui 1 item, retorna a posição 0
+		return [[arr[0]], []];
+	} else if (length == 2) {
+		//Se possui dois itens, retorna a posição 0 e 1
+		return [[arr[0]], [arr[1]]];
+	} else if (length % 2 == 1) {
+		//Se a quantidade de itens forem impar
+		var left = Math.round(length / 2);
+
+		if (left == 0) {
+			arrLeft.push(arr[0]);
+			return [arrLeft, []];
+		} else {
+			for (var i = 0; i < left; i++) {
+				arrLeft.push(arr[i]);
+			}
+		}
+
+		var right = left + 1;
+
+		if (right == length) {
+			arrRight.push(arr[right]);
+		} else {
+			for (var i = right; i < length; i++) {
+				arrRight.push(arr[i]);
+			}
+		}
+
+		return [arrLeft, arrRight];
+	} else if (length % 2 == 0) {
+		//Se a quantidade de itens foram par
+
+		var left = Math.round(length / 2);
+
+		if (left == 0) {
+			arrLeft.push(arr[0]);
+			return [arrLeft, []];
+		} else {
+			for (var i = 0; i < left; i++) {
+				arrLeft.push(arr[i]);
+			}
+		}
+
+		var right = left;
+
+		if (right == length) {
+			arrRight.push(arr[right]);
+		} else {
+			for (var i = right; i < length; i++) {
+				arrRight.push(arr[i]);
+			}
+		}
+
+		return [arrLeft, arrRight];
+	}
 };
 
 /***/ }),
@@ -72256,8 +72292,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				var addSoccerExpertRequest = axios.create();
 
 				addSoccerExpertRequest.interceptors.request.use(function (config) {
-					$(event.currentTarget).find('[type="load"]').removeClass('hide');
-					$(event.currentTarget).find('[type="submit"]').addClass('hide');
+					$(event.target).find('[type="load"]').removeClass('hide');
+					$(event.target).find('[type="submit"]').addClass('hide');
 					return config;
 				});
 
@@ -72635,6 +72671,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			minutes: '',
 			seconds: '',
 			valid: true
+
 		};
 	},
 	methods: {
@@ -72660,7 +72697,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
 			//Não foi concluído o preenchimento na rodada
-			this.ticket.games.filter(function (val) {
+			this.ticket.games_left.filter(function (val) {
 
 				if (val.result_out_club === '' || val.result_out_club === null || val.result_house_club === '' || val.result_house_club === null) {
 					complete = false;
@@ -72673,6 +72710,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 				return true;
 			});
+
+			this.ticket.games_right.filter(function (val) {
+
+				if (val.result_out_club === '' || val.result_out_club === null || val.result_house_club === '' || val.result_house_club === null) {
+					complete = false;
+				}
+
+				//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
+				if (val.result_out_club !== '' && val.result_out_club !== null || val.result_house_club !== '' && val.result_house_club !== null) {
+					empty = false;
+				}
+
+				return true;
+			});
+
+			if (this.ticket.choseGoldBall == false) {
+				complete = false;
+			}
 
 			//Se foi completado o preenchimento na rodada
 			if (complete === true) {
@@ -72726,8 +72781,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		$('.modal-ticket').on('hidden.bs.modal', function (event) {
 			_this3.updateTicket();
 		});
-		this.$set(this.ticket, 'choseGoldBall', false);
-		this.$set(this.ticket, 'gold_ball_game_id', 0);
+
+		this.$set(this.ticket, 'choseGoldBall', true);
+
+		if (!this.ticket.gold_ball_game_id) {
+			this.$set(this.ticket, 'gold_ball_game_id', this.ticket.games[0].id);
+		}
+
+		var games = this.divideInTwo(this.ticket.games);
+		this.$set(this.ticket, 'games_left', games[0]);
+		this.$set(this.ticket, 'games_right', games[1]);
+
 		this.updateTicket();
 		var value = parseFloat(this.ticket.valor);
 		this.value = value.format(2, true);
@@ -72735,7 +72799,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	components: {
 		GameComponent: __WEBPACK_IMPORTED_MODULE_0__GameComponent___default.a
 	},
-	computed: {}
+	computed: {},
+	watch: {
+		'ticket.choseGoldBall': function ticketChoseGoldBall(newValue, oldValue) {
+			this.updateTicket();
+		}
+	}
 });
 
 /***/ }),
@@ -72876,6 +72945,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	mounted: function mounted() {
 		this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : '';
 		this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
+		this.$set(this.game, 'bola_ouro', false);
 	},
 	activated: function activated() {},
 	methods: {
@@ -73214,7 +73284,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.tickets-content[data-v-260d980f] {\n\t\tbackground-color: initial;\n\t\ttext-align: center;\n\t    padding-bottom: 20px;\n\t    padding-top: 20px;\n\t    cursor: default;\n\t    display: -webkit-box;\n\t    display: -ms-flexbox;\n\t    display: flex;\n\t\t-webkit-box-orient: horizontal;\n\t\t-webkit-box-direction: normal;\n\t\t    -ms-flex-direction: row;\n\t\t        flex-direction: row;\n\t\t-ms-flex-wrap: wrap;\n\t\t    flex-wrap: wrap;\n}\n.tickets[data-v-260d980f] {\n\t\t\n\t\tpadding: 5px;\n}\n.separator[data-v-260d980f] {\n\t\tposition: absolute;\n\t    top: 0;\n\t    right: -8px;\n\t    width: 20px;\n\t    height: 100%;\n}\n.separator[data-v-260d980f]:after {\n\t\twidth: 100%;\n\t    content: '|';\n    \tfont-size: 80px;\n    \tline-height: 1;\n    \tcolor: white;\n}\n@media (max-width: 576px) {\n.separator[data-v-260d980f] {\n\t\t\tdisplay: none;\n}\n}\n.tickets-header[data-v-260d980f] {\n\t\tpadding: 5px 0 0 0;\n\t\tcolor: #000;\n\t\tbackground-color: initial;\n}\n.tickets-header .ticket-categories[data-v-260d980f] {\n\t\tfont-weight: bold;\n\t\ttext-align: center;\n\t\tbackground-color: #fad7d4;\n\t    border-color: #f7bec3;\n\t    color: #a94442;\n        border: 1px solid transparent;\n\t    border-radius: 2px;\n\t    display: block;\n\t    text-transform: uppercase;\n}\n.tickets-header .tickets-limit[data-v-260d980f] {\n\t\tdisplay: block;\n}\n.tickets-header .tickets-name[data-v-260d980f] {\n\t    display: block;\n\t    vertical-align: middle;\n\t    line-height: 17px;\n\t    font-size: 20px;\n\t    color: #000\n}\n.countdown[data-v-260d980f] {\n\t\tdisplay: block;\n\t\ttext-transform: lowercase;\n\t\ttext-align: center;\n}\n\t\n", ""]);
+exports.push([module.i, "\n.tickets-content[data-v-260d980f] {\n\t\tbackground-color: initial;\n\t\ttext-align: center;\n\t    padding-bottom: 10px;\n\t    padding-top: 10px;\n\t    cursor: default;\n\t    display: -webkit-box;\n\t    display: -ms-flexbox;\n\t    display: flex;\n\t\t-webkit-box-orient: horizontal;\n\t\t-webkit-box-direction: normal;\n\t\t    -ms-flex-direction: row;\n\t\t        flex-direction: row;\n\t\t-ms-flex-wrap: wrap;\n\t\t    flex-wrap: wrap;\n\t\tposition: relative;\n}\n.tickets[data-v-260d980f] {\n\t\t\n\t\tpadding: 5px;\n}\n.separator[data-v-260d980f] {\n\t    position: absolute;\n\t    top: 50%;\n\t    left: 50%;\n\t    -webkit-transform: translate(-50%, -50%);\n\t    transform: translate(-50%, -50%);\n\t    width: 40px;\n\t    height: 100%;\n\t    padding: 10px;\n}\n.line[data-v-260d980f] {\n\t    border-right: 3px solid #ff0000;\n\t    height: 100%;\n\t    width: 100%;\n}\n.separator[data-v-260d980f]:after {\n}\n@media (max-width: 576px) {\n.separator[data-v-260d980f] {\n\t\t\tdisplay: none;\n}\n}\n.tickets-header[data-v-260d980f] {\n\t\tpadding: 5px 0 0 0;\n\t\tcolor: #000;\n\t\tbackground-color: initial;\n}\n.tickets-header .ticket-categories[data-v-260d980f] {\n\t\tfont-weight: bold;\n\t\ttext-align: center;\n\t\tbackground-color: #fad7d4;\n\t    border-color: #f7bec3;\n\t    color: #a94442;\n        border: 1px solid transparent;\n\t    border-radius: 2px;\n\t    display: block;\n\t    text-transform: uppercase;\n}\n.tickets-header .tickets-limit[data-v-260d980f] {\n\t\tdisplay: block;\n}\n.tickets-header .tickets-name[data-v-260d980f] {\n\t    display: block;\n\t    vertical-align: middle;\n\t    line-height: 17px;\n\t    font-size: 20px;\n\t    color: #000\n}\n.countdown[data-v-260d980f] {\n\t\tdisplay: block;\n\t\ttext-transform: lowercase;\n\t\ttext-align: center;\n}\n\t\n", ""]);
 
 // exports
 
@@ -73227,6 +73297,15 @@ exports.push([module.i, "\n.tickets-content[data-v-260d980f] {\n\t\tbackground-c
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__GameComponent__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__GameComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__GameComponent__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -73308,7 +73387,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
 			//Não foi concluído o preenchimento na rodada
-			this.ticket.games.filter(function (val) {
+			this.ticket.games_left.filter(function (val) {
 
 				if (val.result_out_club === '' || val.result_out_club === null || val.result_house_club === '' || val.result_house_club === null) {
 					complete = false;
@@ -73321,6 +73400,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 				return true;
 			});
+
+			this.ticket.games_right.filter(function (val) {
+
+				if (val.result_out_club === '' || val.result_out_club === null || val.result_house_club === '' || val.result_house_club === null) {
+					complete = false;
+				}
+
+				//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
+				if (val.result_out_club !== '' && val.result_out_club !== null || val.result_house_club !== '' && val.result_house_club !== null) {
+					empty = false;
+				}
+
+				return true;
+			});
+
+			if (this.ticket.choseGoldBall == false) {
+				complete = false;
+			}
 
 			//Se foi completado o preenchimento na rodada
 			if (complete == true) {
@@ -73390,7 +73487,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	components: {
 		GameComponent: __WEBPACK_IMPORTED_MODULE_0__GameComponent___default.a
 	},
-	computed: {}
+	computed: {},
+	watch: {
+		'ticket.choseGoldBall': function ticketChoseGoldBall(newValue, oldValue) {
+			this.updateTicket();
+		}
+	}
 });
 
 /***/ }),
@@ -73479,7 +73581,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\ninput[data-v-732e4e69] {\n\ttext-align: center;\n}\nspan[data-v-732e4e69] {\n\tline-height: 1;\n\tword-wrap: break-word;\n\twidth: 67%;\n}\n.row[data-v-732e4e69] {\n\tcolor: white;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n}\n.shield-img[data-v-732e4e69] {\n\twidth: 42%;\n\theight: auto;\n}\n.info-date[data-v-732e4e69] {\n\tdisplay: block;\n}\n.info-local[data-v-732e4e69] {\n\tdisplay: block;\n\tfont-size: 16px\n}\n.container-club[data-v-732e4e69] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex; \n\t-webkit-box-align: center; \n\t    -ms-flex-align: center; \n\t        align-items: center;\n}\n.x[data-v-732e4e69] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n.gold-ball[data-v-732e4e69] {\n\twidth: inherit;\n\tfont-size: 30px;\n\tcolor: gold;\n\tline-height: 1;\n\tcursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\ninput[data-v-732e4e69] {\n\ttext-align: center;\n}\nspan[data-v-732e4e69] {\n\tline-height: 1;\n\tword-wrap: break-word;\n\twidth: 67%;\n}\n.row[data-v-732e4e69] {\n\tcolor: white;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n}\n.shield-img[data-v-732e4e69] {\n\twidth: 42%;\n\theight: auto;\n}\n.info-date[data-v-732e4e69] {\n\tdisplay: block;\n}\n.info-local[data-v-732e4e69] {\n\tdisplay: block;\n\tfont-size: 16px\n}\n.container-club[data-v-732e4e69] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex; \n\t-webkit-box-align: center; \n\t    -ms-flex-align: center; \n\t        align-items: center;\n}\n.x[data-v-732e4e69] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n.gold-ball[data-v-732e4e69] {\n\twidth: inherit;\n\tfont-size: 30px;\n\tcolor: gold;\n\tline-height: 1;\n\tcursor: pointer;\n}\n.games[data-v-732e4e69] {\n\tmargin-bottom: 10px;\n}\n", ""]);
 
 // exports
 
@@ -73533,60 +73635,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['game', 'index', 'ticket'],
-  created: function created() {},
-  mounted: function mounted() {
-    this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : '';
-    this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
-    this.game.bola_ouro = this.game.bola_ouro ? this.game.bola_ouro : '';
-  },
-  activated: function activated() {},
-  methods: {
-    changeGoldBall: function changeGoldBall(event) {
-      this.ticket.choseGoldBall = false;
-      this.ticket.gold_ball_game_id = 0;
-    },
-    goldBall: function goldBall(event) {
-      this.ticket.choseGoldBall = true;
-      this.ticket.gold_ball_game_id = this.game.id;
-    },
+	props: ['game', 'index', 'ticket'],
+	created: function created() {},
+	mounted: function mounted() {
+		this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : '';
+		this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
+	},
+	activated: function activated() {},
+	methods: {
+		changeGoldBall: function changeGoldBall(event) {
+			this.game.bola_ouro = true;
+			this.ticket.gold_ball_game_id = this.game.id;
+		},
+		goldBall: function goldBall(event) {
+			this.ticket.gold_ball_game_id = this.game.id;
+			this.game.bola_ouro = true;
+		},
 
-    houseClubResult: function houseClubResult(index, event) {
+		houseClubResult: function houseClubResult(index, event) {
 
-      //Pegando o valor informado pelo usuário
-      var input = $(event.currentTarget);
+			//Pegando o valor informado pelo usuário
+			var input = $(event.currentTarget);
 
-      if (input.val() < 0) input.val(input.val() * -1);
+			if (input.val() < 0) input.val(input.val() * -1);
 
-      //this.$emit('houseClubResult', this.game, index);
+			//this.$emit('houseClubResult', this.game, index);
 
-      this.game.result_house_club = input.val();
+			this.game.result_house_club = input.val();
 
-      this.$emit('updateTicket');
-    },
-    //Column = rodada disponível no array
-    //Line = jogo da roda disponível no array
-    outClubResult: function outClubResult(index, event) {
-      var input = $(event.currentTarget);
+			this.$emit('updateTicket');
+		},
+		//Column = rodada disponível no array
+		//Line = jogo da roda disponível no array
+		outClubResult: function outClubResult(index, event) {
+			var input = $(event.currentTarget);
 
-      if (input.val() < 0) input.val(input.val() * -1);
+			if (input.val() < 0) input.val(input.val() * -1);
 
-      this.game.result_out_club = input.val();
+			this.game.result_out_club = input.val();
 
-      this.$emit('updateTicket');
-      //this.$emit('outClubResult', this.game, index);
-    }
-  },
-  data: function data() {
-    return {};
-  },
-  computed: {},
-  watch: {}
+			this.$emit('updateTicket');
+			//this.$emit('outClubResult', this.game, index);
+		}
+	},
+	data: function data() {
+		return {};
+	},
+	computed: {},
+	watch: {}
 });
 
 /***/ }),
@@ -73598,33 +73696,22 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row vcenter text-center games" }, [
-    !_vm.ticket.choseGoldBall
+    _vm.ticket.gold_ball_game_id != _vm.game.id
       ? _c("div", { staticClass: "col-lg-12" }, [
           _c("span", {
             staticClass: "fa fa-star gold-ball",
+            staticStyle: { opacity: "0.5" },
             on: {
               click: function($event) {
                 $event.preventDefault()
-                _vm.goldBall($event)
+                _vm.changeGoldBall($event)
               }
             }
           })
         ])
-      : _vm.ticket.choseGoldBall && _vm.ticket.gold_ball_game_id != _vm.game.id
-        ? _c("div", { staticClass: "col-lg-12" }, [
-            _c("span", {
-              staticClass: "fa fa-star gold-ball",
-              staticStyle: { visibility: "hidden" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                }
-              }
-            })
-          ])
-        : _vm._e(),
+      : _vm._e(),
     _vm._v(" "),
-    _vm.ticket.choseGoldBall && _vm.ticket.gold_ball_game_id == _vm.game.id
+    _vm.ticket.gold_ball_game_id == _vm.game.id
       ? _c("div", { staticClass: "col-lg-12" }, [
           _c("span", {
             staticClass: "fa fa-star gold-ball",
@@ -73867,23 +73954,37 @@ var render = function() {
         staticClass: "tickets-content",
         style: _vm.backgroundTicket(_vm.ticket.imagem_modal)
       },
-      _vm._l(_vm.ticket.games, function(game, index) {
-        return _c(
+      [
+        _c(
           "div",
-          { class: _vm.verifyCol(_vm.ticket.games) },
-          [
-            _c("game-component", {
+          { staticClass: "col-lg-6 col-12 col-md-6 col-sm-12" },
+          _vm._l(_vm.ticket.games_left, function(game, index) {
+            return _c("game-component", {
+              key: index,
               attrs: { game: game, ticket: _vm.ticket, index: index },
               on: { updateTicket: _vm.updateTicket }
-            }),
-            _vm._v(" "),
-            index % 2 == 0 && _vm.ticket.games.length > 1
-              ? _c("div", { staticClass: "separator" })
-              : _vm._e()
-          ],
-          1
+            })
+          })
+        ),
+        _vm._v(" "),
+        _vm.ticket.games_right.length > 0
+          ? _c("div", { staticClass: "separator" }, [
+              _c("div", { staticClass: "line" })
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-lg-6 col-12 col-md-6 col-sm-12" },
+          _vm._l(_vm.ticket.games_right, function(game, index) {
+            return _c("game-component", {
+              key: index,
+              attrs: { game: game, ticket: _vm.ticket, index: index },
+              on: { updateTicket: _vm.updateTicket }
+            })
+          })
         )
-      })
+      ]
     ),
     _vm._v(" "),
     _c("footer", { staticClass: "tickets-footer" }, [
@@ -74166,7 +74267,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "hide pull-right btn btn-xs btn-success",
+                      staticClass: "hide pull-right btn btn-md btn-success",
                       attrs: { type: "load" },
                       on: {
                         click: function($event) {
@@ -77241,8 +77342,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			var validateRequest = axios.create();
 
 			validateRequest.interceptors.request.use(function (config) {
-				$(_this.$el).find('[type="load"]').removeClass('hide');
-				$(_this.$el).find('[type="submit"]').addClass('hide');
+				$(_this.$el).find('.btn-load').removeClass('hide');
+				$(_this.$el).find('.btn-complete-purchase').addClass('hide');
 				return config;
 			});
 
@@ -77252,8 +77353,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				}
 			}).catch(function (error) {
 				toastr.error(error.response.data.msg, _this.trans('strings.error'));
-				$(_this.$el).find('[type="load"]').addClass('hide');
-				$(_this.$el).find('[type="submit"]').removeClass('hide');
+				$(_this.$el).find('.btn-load').addClass('hide');
+				$(_this.$el).find('.btn-complete-purchase').removeClass('hide');
 			});
 		},
 		completePurchase: function completePurchase(event) {
@@ -77269,10 +77370,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 			completePurchaseRequest.post(__WEBPACK_IMPORTED_MODULE_6__api_routes__["a" /* routes */].carts.complete_purchase, this.purchase, {}).then(function (response) {
 				if (response.status === 200) {
-					_this2.$store.dispatch('clearPurchase');
-					_this2.$router.push({
-						name: 'orders.finish'
-					});
+					_this2.refreshAuthPromise().then(function (response) {
+						if (response.status === 200) {
+							window.localStorage.setItem('authUser', JSON.stringify(response.data));
+							_this2.$store.dispatch('setUserObject', response.data);
+							_this2.$store.dispatch('clearPurchase');
+							_this2.$router.push({
+								name: 'orders.finish'
+							});
+						}
+					}).catch(function (error) {});
 				}
 			}).catch(function (error) {});
 		}
@@ -80466,7 +80573,8 @@ var render = function() {
                           _c(
                             "button",
                             {
-                              staticClass: "btn btn-success btn-md",
+                              staticClass:
+                                "btn btn-success btn-md btn-complete-purchase",
                               attrs: { type: "submit" },
                               on: {
                                 click: function($event) {
@@ -80490,7 +80598,7 @@ var render = function() {
                             "button",
                             {
                               staticClass:
-                                "hide pull-right btn btn-md btn-success",
+                                "btn-load hide pull-right btn btn-md btn-success",
                               attrs: { type: "load" },
                               on: {
                                 click: function($event) {
@@ -89255,39 +89363,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					//Do usuário atualizado
 					if (to.name != 'users.account') {
 
-						var _refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
-						_refresh_token = _refresh_token != null ? _refresh_token : '';
-
-						var loginRequest = axios.create();
-
-						loginRequest.interceptors.request.use(function (config) {
-							_this3.loading.component = true;
-							return config;
-						});
-						//Fazendo busca do usuário logado, para setar na estrutura de dados
-						loginRequest.get(__WEBPACK_IMPORTED_MODULE_8__api_routes__["a" /* routes */].auth.user, { headers: {
-								'Accept': 'application/json',
-								'Authorization': 'Bearer ' + access_token
-							} }).then(function (response) {
-
-							if (response.status === 200) {
-								response.data.access_token = access_token;
-
-								response.data.refresh_token = _refresh_token;
-
-								window.localStorage.setItem('authUser', JSON.stringify(response.data));
-
-								_this3.$store.dispatch('setUserObject', response.data);
-
-								_this3.loading.component = false;
-
-								next();
-							}
-						}).catch(function (error) {
-							next({
-								name: 'login'
-							});
-						});
+						/*let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+      refresh_token = refresh_token != null ? refresh_token : '';
+      	var loginRequest = axios.create();
+      	loginRequest.interceptors.request.use(config => {
+      	this.loading.component = true;
+        	return config;
+      });
+      //Fazendo busca do usuário logado, para setar na estrutura de dados
+      loginRequest.get(routes.auth.user, { headers: {
+      	'Accept': 'application/json',
+      	'Authorization': 'Bearer ' + access_token
+      }}).then(response => {
+      		if(response.status === 200) {
+             	response.data.access_token = access_token
+             	
+             	response.data.refresh_token = refresh_token
+      			window.localStorage.setItem('authUser', JSON.stringify(response.data))
+      			this.$store.dispatch('setUserObject', response.data);
+      			this.loading.component = false;
+      			next();
+      	}
+                    	
+                  }).catch((error) => {
+      	next({
+                    name: 'login'
+                });
+                  });*/
 					} else {
 						//Se a rota não for para o component UserAccount,
 						//Verifica se o usuário está logado

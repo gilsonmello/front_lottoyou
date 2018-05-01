@@ -67,6 +67,7 @@
     			minutes: '',
     			seconds: '',
     			valid: true,
+
         	}
         },
         methods: {
@@ -77,8 +78,8 @@
         		return 'col-lg-12 col-sm-12 col-md-12 col-12'
         	},
         	openModal() {
-		     	this.$eventBus.$emit('openModal', this.ticket);	
-        	},
+        		this.$eventBus.$emit('openModal', this.ticket);	
+		    },
         	backgroundTicket(background) {
         		return 'background-image: url('+background+'); background-size: 100% 100%; background-repeat: no-repeat;';
         	},
@@ -92,7 +93,7 @@
 
 				//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
 				//Não foi concluído o preenchimento na rodada
-				this.ticket.games.filter((val) => {
+				this.ticket.games_left.filter((val) => {
 					
 					if((val.result_out_club === '' || val.result_out_club === null) 
 						|| (val.result_house_club === '' || val.result_house_club === null)) {
@@ -108,6 +109,27 @@
 
 					return true;
 				});
+
+				this.ticket.games_right.filter((val) => {
+					
+					if((val.result_out_club === '' || val.result_out_club === null) 
+						|| (val.result_house_club === '' || val.result_house_club === null)) {
+						complete = false
+						
+					}
+					
+					//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
+					if((val.result_out_club !== '' && val.result_out_club !== null) 
+						|| (val.result_house_club !== '' && val.result_house_club !== null)) {
+						empty = false;
+					}
+
+					return true;
+				});
+
+				if(this.ticket.choseGoldBall == false) {
+					complete = false;
+				}
 				
 				//Se foi completado o preenchimento na rodada
 				if(complete === true) {
@@ -156,8 +178,18 @@
 	            .on('hidden.bs.modal', (event) => {
 	                this.updateTicket();
 	            });
-            this.$set(this.ticket, 'choseGoldBall', false);
-            this.$set(this.ticket, 'gold_ball_game_id', 0);
+	            
+            this.$set(this.ticket, 'choseGoldBall', true);
+            
+            if(!this.ticket.gold_ball_game_id) {
+            	this.$set(this.ticket, 'gold_ball_game_id', this.ticket.games[0].id);	
+            }
+            
+            let games = this.divideInTwo(this.ticket.games);
+            this.$set(this.ticket, 'games_left', games[0])
+            this.$set(this.ticket, 'games_right', games[1])
+
+
 	        this.updateTicket();
 			let value = parseFloat(this.ticket.valor);
             this.value = value.format(2, true);
@@ -166,6 +198,11 @@
 			GameComponent
 		},
 		computed: {
+		},
+		watch: {
+			'ticket.choseGoldBall': function(newValue, oldValue) {
+				this.updateTicket();
+			}
 		}
 	}
 </script>

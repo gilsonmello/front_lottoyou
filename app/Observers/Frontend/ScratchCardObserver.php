@@ -28,6 +28,7 @@ class ScratchCardObserver
             $historicBalance->user_id = $balance->user_id;
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
+            $historicBalance->scratch_card_id = $item->temas_raspadinha_id;
             $historicBalance->to = $balance->value + $item->premio;
             $historicBalance->save();
 

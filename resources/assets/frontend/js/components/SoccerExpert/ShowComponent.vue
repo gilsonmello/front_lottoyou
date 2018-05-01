@@ -51,7 +51,7 @@
 					<button type="submit" class="btn btn-md btn-success pull-right">
 						{{ trans('strings.add_to_cart') }}
 					</button>
-					<button @click.prevent="" type="load" class="hide pull-right btn btn-xs btn-success">
+					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">
@@ -141,8 +141,8 @@
 					let addSoccerExpertRequest = axios.create();
 
 					addSoccerExpertRequest.interceptors.request.use(config => {
-						$(event.currentTarget).find('[type="load"]').removeClass('hide');
-			        	$(event.currentTarget).find('[type="submit"]').addClass('hide');
+						$(event.target).find('[type="load"]').removeClass('hide');
+			        	$(event.target).find('[type="submit"]').addClass('hide');
 					  	return config;
 					});
 

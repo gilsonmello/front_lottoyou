@@ -156,10 +156,10 @@
 					
 				</div>
 				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-					<button class="btn btn-success btn-md" type="submit" @click.prevent="validate($event)">		
+					<button class="btn btn-success btn-md btn-complete-purchase" type="submit" @click.prevent="validate($event)">		
 						{{ trans('strings.complete_purchase') }}
 					</button>
-					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
+					<button @click.prevent="" type="load" class="btn-load hide pull-right btn btn-md btn-success">
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 				</div>
@@ -198,8 +198,8 @@
 				var validateRequest = axios.create();
 
 				validateRequest.interceptors.request.use(config => {
-					$(this.$el).find('[type="load"]').removeClass('hide');
-		        	$(this.$el).find('[type="submit"]').addClass('hide');
+					$(this.$el).find('.btn-load').removeClass('hide');
+		        	$(this.$el).find('.btn-complete-purchase').addClass('hide');
 		          	return config;
 				});
 
@@ -216,8 +216,8 @@
 						error.response.data.msg,
 						this.trans('strings.error')
 					);
-					$(this.$el).find('[type="load"]').addClass('hide');
-		        	$(this.$el).find('[type="submit"]').removeClass('hide');
+					$(this.$el).find('.btn-load').addClass('hide');
+		        	$(this.$el).find('.btn-complete-purchase').removeClass('hide');
 				});			
 			},
 			completePurchase(event) {
@@ -236,10 +236,20 @@
 					{}
 				).then(response => {
 					if(response.status === 200) {
-						this.$store.dispatch('clearPurchase');
-						this.$router.push({
-							name: 'orders.finish'
-						});
+						this.refreshAuthPromise()
+							.then((response) => {
+								if (response.status === 200) {
+									window.localStorage.setItem('authUser', JSON.stringify(response.data))
+									this.$store.dispatch('setUserObject', response.data);
+									this.$store.dispatch('clearPurchase');
+									this.$router.push({
+										name: 'orders.finish'
+									});	
+								}								
+							}).catch((error) => {
+
+							});
+						
 					}
 				}).catch((error) => {
 					

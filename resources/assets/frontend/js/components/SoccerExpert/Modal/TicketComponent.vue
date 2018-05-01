@@ -21,11 +21,20 @@
 		</header>
 		<div class="tickets-content" :style="backgroundTicket(ticket.imagem_modal)">
 			
-			<div :class="verifyCol(ticket.games)" v-for="(game, index) in ticket.games">
-				<game-component :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index"></game-component>
-				<div class="separator" v-if="index % 2 == 0 && ticket.games.length > 1">
-					
+			<div class="col-lg-6 col-12 col-md-6 col-sm-12">
+				<game-component v-for="(game, index) in ticket.games_left" :key="index" :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index"></game-component>
+			</div>
+
+			
+				<div class="separator" v-if="ticket.games_right.length > 0">
+					<div class="line">
+						
+					</div>
 				</div>
+			
+
+			<div class="col-lg-6 col-12 col-md-6 col-sm-12">
+				<game-component v-for="(game, index) in ticket.games_right" :key="index" :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index"></game-component>
 			</div>
 			
 		</div>
@@ -62,12 +71,13 @@
         		return 'col-lg-12 col-sm-6 col-md-6 col-12'
         	},
         	openModal() {
-        		this.$emit('openModal', this.index, this.type);       		
+        		this.$emit('openModal', this.index, this.type);  
         	},
         	backgroundTicket(background) {
         		return 'background-image: url('+background+'); background-size: 100% 100%; background-repeat: no-repeat;';
         	},
         	updateTicket() {
+        		
         		//Atribuindo o resultado informado para o time da casa
 				//Serve para controlar se a rodada foi complemente preenchida
 				var complete = true
@@ -77,7 +87,7 @@
 
 				//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
 				//Não foi concluído o preenchimento na rodada
-				this.ticket.games.filter((val) => {
+				this.ticket.games_left.filter((val) => {
 
 					if((val.result_out_club === '' || val.result_out_club === null) 
 						|| (val.result_house_club === '' || val.result_house_club === null)) {
@@ -93,6 +103,27 @@
 
 					return true;
 				});
+
+				this.ticket.games_right.filter((val) => {
+
+					if((val.result_out_club === '' || val.result_out_club === null) 
+						|| (val.result_house_club === '' || val.result_house_club === null)) {
+						complete = false
+						
+					}
+					
+					//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
+					if((val.result_out_club !== '' && val.result_out_club !== null) 
+						|| (val.result_house_club !== '' && val.result_house_club !== null)) {
+						empty = false;
+					}
+
+					return true;
+				});
+
+				if(this.ticket.choseGoldBall == false) {
+					complete = false;
+				}
 
 				//Se foi completado o preenchimento na rodada
 				if(complete == true) {
@@ -161,6 +192,11 @@
 		},
 		computed: {
 			
+		},
+		watch: {
+			'ticket.choseGoldBall': function(newValue, oldValue) {
+				this.updateTicket();
+			}
 		}
 	}
 </script>
@@ -170,12 +206,13 @@
 	.tickets-content {
 		background-color: initial;
 		text-align: center;
-	    padding-bottom: 20px;
-	    padding-top: 20px;
+	    padding-bottom: 10px;
+	    padding-top: 10px;
 	    cursor: default;
 	    display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
+		position: relative;
 	}
 
 	.tickets {
@@ -184,19 +221,24 @@
 	}
 
 	.separator {
-		position: absolute;
-	    top: 0;
-	    right: -8px;
-	    width: 20px;
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    -webkit-transform: translate(-50%, -50%);
+	    transform: translate(-50%, -50%);
+	    width: 40px;
 	    height: 100%;
+	    padding: 10px;
+	}
+
+	.line {
+	    border-right: 3px solid #ff0000;
+	    height: 100%;
+	    width: 100%;
 	}
 
 	.separator:after {
-		width: 100%;
-	    content: '|';
-    	font-size: 80px;
-    	line-height: 1;
-    	color: white;
+		
 	}
 
 	@media (max-width: 576px) {

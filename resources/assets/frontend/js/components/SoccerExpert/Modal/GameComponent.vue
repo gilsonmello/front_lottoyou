@@ -1,12 +1,9 @@
 <template>
 	<div class="row vcenter text-center games">
-        <div class="col-lg-12" v-if="!ticket.choseGoldBall">
-			<span class="fa fa-star gold-ball" @click.prevent="goldBall($event)"></span>
+        <div class="col-lg-12" v-if="ticket.gold_ball_game_id != game.id">
+			<span class="fa fa-star gold-ball" @click.prevent="changeGoldBall($event)" style="opacity: 0.5;"></span>
 		</div>
-	 	<div class="col-lg-12" v-else-if="ticket.choseGoldBall && ticket.gold_ball_game_id != game.id">
-			<span class="fa fa-star gold-ball" @click.prevent="" style="visibility: hidden;"></span>
-		</div>
-		<div class="col-lg-12" v-if="ticket.choseGoldBall && ticket.gold_ball_game_id == game.id">
+		<div class="col-lg-12" v-if="ticket.gold_ball_game_id == game.id">
 			<span class="fa fa-star gold-ball" @click.prevent="changeGoldBall($event)"></span>
 		</div>
        	<div class="col-2 col-md-5 col-lg-4">
@@ -53,19 +50,18 @@
         mounted: function() {
         	this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : ''
         	this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
-        	this.game.bola_ouro = this.game.bola_ouro ? this.game.bola_ouro : '';
         },
         activated: function() {
             
         },
         methods: {
         	changeGoldBall(event) {
-	        	this.ticket.choseGoldBall = false;
-	        	this.ticket.gold_ball_game_id = 0;
+	        	this.game.bola_ouro = true;
+	        	this.ticket.gold_ball_game_id = this.game.id;
         	},
         	goldBall(event) {
-        		this.ticket.choseGoldBall = true;
         		this.ticket.gold_ball_game_id = this.game.id;
+        		this.game.bola_ouro = true;
         	},
         	houseClubResult: function(index, event) {		        
 
@@ -154,5 +150,9 @@
 		color: gold;
 		line-height: 1;
 		cursor: pointer;
+	}
+
+	.games {
+		margin-bottom: 10px;
 	}
 </style>
