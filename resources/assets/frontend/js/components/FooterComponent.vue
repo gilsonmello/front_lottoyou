@@ -1,6 +1,6 @@
 <template>
 	<footer>
-		<div class="container-fluid" style="background: linear-gradient(90deg,#fafafa,#f2f4f2); border-bottom: 1px solid #d9deda">  
+		<!-- <div class="container-fluid" style="background: linear-gradient(90deg,#fafafa,#f2f4f2); border-bottom: 1px solid #d9deda">  
 		    <div class="container" style="position: initial;">
 		        <div class="row">
 		            <div class="col-lg-3 col-6 col-md-3 col-sm-6">
@@ -21,7 +21,7 @@
 		            </div>
 		        </div>
 		    </div> 
-		</div>
+		</div> -->
 		<div class="container" style="position: initial; background-color: white">
 		    <div class="row">
 	            <div class="col-lg-4 col-md-6 col-12 col-sm-6">

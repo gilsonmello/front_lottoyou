@@ -45,7 +45,7 @@ export const routes = {
 	soccer_experts: {
 		index: host+'/soccer_experts',
 		show: host+'/soccer_experts/{id}',
-		results: host+'/soccer_experts/results/:id'
+		results: host+'/soccer_experts/results/{id}'
 	},
 	soccer_categories: {
 		index: host+'/soccer_categories',

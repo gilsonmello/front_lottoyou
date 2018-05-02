@@ -7,10 +7,31 @@ use App\Http\Controllers\Controller;
 use App\Model\Frontend\SoccerExpert;
 use App\Model\Frontend\SoccerExpertRound;
 use App\Model\Frontend\SoccerExpertCycle;
+use App\Model\Frontend\SoccerExpertRoundGroup;
 use DB;
 
 class SoccerExpertController extends Controller
 {
+    public function results($id, Request $request) 
+    {
+        $soccer_expert = SoccerExpert::where('id', '=', $id)
+        ->select(
+            'id', 
+            'nome',
+            'imagem_capa',
+            'active',
+            'ordem',
+            'novo',
+            'created',
+            'modified'
+        )->get()
+        ->first();
+        return response()->json($soccer_expert, 200);
+        $round_group = SoccerExpertRoundGroup::where('soc_rodada_id', '=', $id)->get();
+
+        
+    }
+
     /**
      * Display a listing of the resource.
      *

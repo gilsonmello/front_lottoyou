@@ -70,20 +70,18 @@ export default {
 			        component: require('../components/ScratchCard/IndexComponent.vue')
 			    },
 			    {   
-			  		path: 'soccer_expert',
+			  		path: '/soccer_expert',
 			        name: 'soccer_expert.index', 
-			        props: true,
 			        component: require('../components/SoccerExpert/IndexComponent.vue')
 			    },
 			    {   
-			  		path: 'soccer_expert/:id/:hash?',
+			  		path: 'soccer_expert/show/:id/:hash?',
 			        name: 'soccer_expert.show', 
 			        props: true,
 			        component: require('../components/SoccerExpert/ShowComponent.vue')
 			    },
-			    ,
 			    {   
-			  		path: 'soccer_expert/results/:id',
+			  		path: '/soccer_expert/results/:id',
 			        name: 'soccer_expert.results', 
 			        props: true,
 			        component: require('../components/SoccerExpert/ResultComponent.vue')
@@ -91,11 +89,10 @@ export default {
 			    {   
 			  		path: 'lotteries',
 			        name: 'lotteries.index', 
-			        props: true,
 			        component: require('../components/Lottery/IndexComponent.vue')
 			    },
 			    {   
-			  		path: 'lotteries/:id/:hash?',
+			  		path: 'lotteries/show/:id/:hash?',
 			        name: 'lotteries.show', 
 			        props: true,
 			        component: require('../components/Lottery/ShowComponent.vue')
