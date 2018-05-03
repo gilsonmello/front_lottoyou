@@ -72926,7 +72926,10 @@ var render = function() {
                           [
                             _c("span", {
                               staticClass: "fa fa-angle-left",
-                              staticStyle: { color: "black" }
+                              staticStyle: {
+                                color: "black",
+                                "font-size": "50px"
+                              }
                             }),
                             _vm._v(" "),
                             _c("span", { staticClass: "sr-only" }, [
@@ -72951,7 +72954,10 @@ var render = function() {
                           [
                             _c("span", {
                               staticClass: "fa fa-angle-right",
-                              staticStyle: { color: "black" }
+                              staticStyle: {
+                                color: "black",
+                                "font-size": "50px"
+                              }
                             }),
                             _vm._v(" "),
                             _c("span", { staticClass: "sr-only" }, [

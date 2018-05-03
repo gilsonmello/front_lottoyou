@@ -47,11 +47,11 @@
 						</div>
 			        </div>
 			        <a class="carousel-control-prev" v-if="item.soccer_expert.cycles.length > 1" id="prev-slide-content" href="#carouselExampleIndicators" role="button" data-slide="prev">
-			            <span class="fa fa-angle-left" style="color: black"></span>
+			            <span class="fa fa-angle-left" style="color: black; font-size: 50px;"></span>
 			            <span class="sr-only">Previous</span>
 			        </a>
 			        <a class="carousel-control-next" v-if="item.soccer_expert.cycles.length > 1" id="next-slide-content" href="#carouselExampleIndicators" role="button" data-slide="next">
-			            <span class="fa fa-angle-right" style="color: black"></span>
+			            <span class="fa fa-angle-right" style="color: black; font-size: 50px;"></span>
 			            <span class="sr-only">Next</span>
 			        </a>
 			    </div>   
