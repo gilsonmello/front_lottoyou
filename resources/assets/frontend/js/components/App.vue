@@ -111,6 +111,7 @@
 							name: 'home'
 						})
 					}
+					
 				});
 			},
 			beforeEach() {

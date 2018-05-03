@@ -91,7 +91,6 @@
 	import {routes} from '../../api_routes'
 	import LoadComponent from '../Load'
 	import PlayComponent from './PlayComponent'
-	import ResultComponent from './ResultComponent'
 	import {mapState, mapGetters} from 'vuex'
 	import TicketComponent from './TicketComponent'
 	export default {
@@ -809,7 +808,6 @@
 		components: {
 			LoadComponent,
 			PlayComponent,
-			ResultComponent,
 			TicketComponent
 		},
 		watch: {

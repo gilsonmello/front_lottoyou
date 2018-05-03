@@ -11,3 +11,5 @@ Route::resource('soccer_experts', 'SoccerExpertController', [
         'show' => 'frontend.soccer_experts.show'
     ]
 ]);
+
+Route::get('soccer_experts/results/{id}', 'SoccerExpertController@results');

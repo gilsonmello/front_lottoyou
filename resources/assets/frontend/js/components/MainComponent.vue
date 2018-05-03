@@ -3,11 +3,6 @@
 </template>
 
 <script>
-	import HeaderComponent from './HeaderComponent'
-	import SliderComponent from './SliderComponent'
-	import CarouselComponent from './CarouselComponent'
-	import LoadComponent from './Load'
-	import router from '../router'
 	export default {
 		data: function() {
 			return {
@@ -24,10 +19,6 @@
 			
 		},
 		components: {
-			HeaderComponent,
-			SliderComponent,
-			CarouselComponent,
-			LoadComponent
 		}
 	}
 </script>

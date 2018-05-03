@@ -6,6 +6,8 @@ use App\Model\Frontend\OrderItem;
 use App\Model\Frontend\SoccerExpertBet;
 use App\Model\Frontend\ScratchCard;
 use App\Model\Frontend\LotteryUser;
+use App\Model\Frontend\SoccerExpertRoundGroup;
+use App\Model\Frontend\SoccerExpertRound;
 
 class OrderItemObserver
 {
@@ -59,6 +61,7 @@ class OrderItemObserver
 
     private function soccerExpert($item, $data) 
     {
+        $user_id = $item->order->user_id;
         //Percorrendo as cartelas feitas pelo o usuário
         foreach($data->tickets as $key => $ticket) {
             //Percorrendo os jogos feitos
@@ -66,7 +69,7 @@ class OrderItemObserver
 
                 //Salvando os jogos feitos na tabela de apostas
                 $soccerExpertBet = new SoccerExpertBet;
-                $soccerExpertBet->user_id = $item->order->user_id;
+                $soccerExpertBet->user_id = $user_id;
                 $soccerExpertBet->soc_rodada_id = $game->soc_rodada_id;
                 $soccerExpertBet->soc_jogo_id = $game->id;
                 $soccerExpertBet->resultado_clube_casa = $game->result_house_club;
@@ -74,6 +77,41 @@ class OrderItemObserver
                 $soccerExpertBet->bola_ouro = $game->bola_ouro;
                 $soccerExpertBet->save();
             }
+
+
+            //Pegando o grupo atual da rodada
+            $ticket_group = SoccerExpertRoundGroup::where('soc_rodada_id', '=', $ticket->id)
+                ->where('status', '=', 1)
+                ->get()
+                ->first();
+
+            //Se a rodada for limitada
+            if($ticket->limite != null) {
+                //Verifico se a quantidade de usuário já chegou até o limite, caso sim, 
+                //Desativo o grupo atual e o crio outro grupo
+                if($ticket_group->count == $ticket->limite) {
+                    $ticket_group->status = 0;
+                    $ticket_group->save();
+                    $ticket_group = new SoccerExpertRoundGroup;
+                    $ticket_group->soc_rodada_id = $ticket->id;
+                    $ticket_group->count += 1;
+                    $ticket_group->active = 1;
+                    $ticket_group->status = 1;
+                    $ticket_group->save();
+                    $ticket_group->users()->attach($user_id, ['points' => 0]);
+                } else {
+                    //Se não, vou adicionando usuários ao grupo
+                    $ticket_group->count += 1;
+                    $ticket_group->save();
+                    $ticket_group->users()->attach($user_id, ['points' => 0]);
+                }              
+            } else {
+                //Se a rodada for ilimitada, vou adicionando usuários ao grupo
+                $ticket_group->count += 1;
+                $ticket_group->save();
+                $ticket_group->users()->attach($user_id, ['points' => 0]);
+            }
+                
         }
 
         return true;
