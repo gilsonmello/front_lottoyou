@@ -24,7 +24,7 @@
 		</div> -->
 		<div class="container" style="position: initial; background-color: white">
 		    <div class="row">
-	            <div class="col-lg-4 col-md-6 col-12 col-sm-6">
+	            <!-- <div class="col-lg-4 col-md-6 col-12 col-sm-6">
 	                <h3 class="page-header">
 	                    {{ trans('strings.products') }}
 	                </h3>
@@ -65,8 +65,8 @@
 	                        </a>
 	                    </li>
 	                </ul>               
-	            </div>
-	            <div class="col-lg-4 col-md-6 col-12 col-sm-6">
+	            </div> -->
+	            <div class="col-lg-6 col-md-6 col-12 col-sm-6">
 	                <h3 class="page-header">
 	                    Informações
 	                </h3>
@@ -93,7 +93,7 @@
 	                    </li>
 	                    <li class="list-group-item">
 	                        <a href="#" class="color-green">
-	                            Sobre a Lottoland
+	                            Resultados
 	                        </a>
 	                    </li>
 	                    <li class="list-group-item">
@@ -145,7 +145,7 @@
 	                    </li>
 	                </ul>               
 	            </div> -->
-	            <div class="col-lg-4 col-md-6 col-12 col-sm-6">
+	            <div class="col-lg-6 col-md-6 col-12 col-sm-6">
 	                <h3 class="page-header">
 	                    Idioma
 	                </h3>
