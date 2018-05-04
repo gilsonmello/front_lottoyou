@@ -10,6 +10,17 @@
 
 @import '~font-awesome/scss/font-awesome';
 
+.btn-info {
+    background-color: #0056b1;
+    border-color: #0056b1;
+}
+
+.btn-info:hover {
+    color: #fff;
+    background-color: #003874;
+    border-color: #117a8b;
+}
+
 .carousel-indicators .active {
     background-color: #000;
 }

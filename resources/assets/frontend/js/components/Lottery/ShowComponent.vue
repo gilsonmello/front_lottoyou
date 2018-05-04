@@ -19,8 +19,13 @@
 
         <form @submit.prevent="addToCart">
         	<div class="row">
-	        	<div class="col-lg-12">
-	        		<h4 class="page-header" style="margin-top: 0;">{{ lottery.nome }}</h4>
+	        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+	        		<h4 class="page-header" style="margin-top: 0; border: none;">{{ lottery.nome }}</h4>
+	        	</div>
+	        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+	        		<button class="btn btn-md btn-back pull-right btn-info" @click.prevent="back($event)">
+	        			{{ trans('strings.back') }}
+	        		</button>
 	        	</div>
 	        </div>
 			<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
@@ -143,6 +148,11 @@
 			}
 		},
 		methods: {
+			back(event) {
+				this.$router.push({
+					name: 'lotteries.index'
+				})
+			},
 			wow(bet) {
 				return bet.complete && bet.completeExtras ? 'complete' : ''
 			},

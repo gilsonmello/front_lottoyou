@@ -14,13 +14,26 @@
         	</div>
         </div>	
        	
-       	<!-- <div class="row">
-        	<div class="col-lg-12">
-        		<h4 class="page-header" style="margin-top: 0;">{{ item.soccer_expert.nome }}</h4>
+       	<div class="row">
+        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+        		<h4 class="page-header" style="margin-top: 0; border: none;">{{ item.soccer_expert.nome }}</h4>
         	</div>
-        </div> -->
+        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+        		<button class="btn btn-md btn-back pull-right btn-info" @click.prevent="back($event)">
+        			{{ trans('strings.back') }}
+        		</button>
+        	</div>
+        </div>
+
+
+
+		<div class="row" v-if="item.soccer_expert.cycles.length == 0">
+			<div class="col-lg-12">
+				<h3>Nenhuma cartela disponível no momento</h3>
+			</div>				
+		</div>
     	
-    	<form @submit.prevent="addToCart($event)">
+    	<form @submit.prevent="addToCart($event)" v-else>
 	    	<div class="row">
 				<div class="col-lg-12">
 			        <div id="carouselExampleIndicators" data-interval="false" class="carousel slide" data-ride="carousel">
@@ -34,11 +47,11 @@
 						</div>
 			        </div>
 			        <a class="carousel-control-prev" v-if="item.soccer_expert.cycles.length > 1" id="prev-slide-content" href="#carouselExampleIndicators" role="button" data-slide="prev">
-			            <span class="fa fa-angle-left" style="color: black"></span>
+			            <span class="fa fa-angle-left" style="color: black; font-size: 50px;"></span>
 			            <span class="sr-only">Previous</span>
 			        </a>
 			        <a class="carousel-control-next" v-if="item.soccer_expert.cycles.length > 1" id="next-slide-content" href="#carouselExampleIndicators" role="button" data-slide="next">
-			            <span class="fa fa-angle-right" style="color: black"></span>
+			            <span class="fa fa-angle-right" style="color: black; font-size: 50px;"></span>
 			            <span class="sr-only">Next</span>
 			        </a>
 			    </div>   
@@ -118,6 +131,11 @@
         	}
         },
         methods: {
+        	back(event) {
+				this.$router.push({
+					name: 'soccer_expert.index'
+				})
+			},
         	backgroundModal(background) {
         		return 'background-image: url('+background+'); background-size: 100% 100%; background-repeat: no-repeat;';
         	},
