@@ -14,12 +14,19 @@
         		</div>
         	</div>
         </div>
+        
+        <div class="row">
+        	<ticket-component v-for="(ticket, index) in tickets" :key="index" :ticket="ticket"></ticket-component>
+        </div>
+
+
 	</div>
 </template>
 
 <script>
 	import {routes} from '../../api_routes'
 	import LoadComponent from '../Load'
+	import TicketComponent from './Result/TicketComponent'
 	export default {
 		data: function() {
 			return {
@@ -28,6 +35,8 @@
 				},
 				soccer_expert: {},
 				id: '',
+				results: [],
+				tickets: []
 			}
 		},
 		mounted: function() {
@@ -37,20 +46,40 @@
 	        	this.loading.component = true
 			  	return config;
 			});
-			showRequest.get(routes.soccer_expert.show.replace('{id}', this.id), {}, {}).then(response => {
+			let url = routes.soccer_experts.find.replace('{id}', this.id);
+
+			showRequest.get(url, {}, {}).then(response => {
 				if(response.status === 200){
 					this.soccer_expert = response.data
-					this.loading.component = false
 				}
 			}).catch((error) => {
 				
 			});
+
+			const resultRequest = axios.create();
+
+			resultRequest.interceptors.request.use(config => {
+	        	return config;
+			});
+
+			url = routes.soccer_experts.results.replace('{id}', this.id);
+
+			resultRequest.get(url, {}, {}).then(response => {
+				if(response.status === 200) {
+					this.tickets = response.data;
+					this.loading.component = false
+				}
+			}).catch((error) => {
+				this.loading.component = false
+			});
+
 		},
 		activated: function() {
 			
 		},
 		components: {
-			LoadComponent
+			LoadComponent,
+			TicketComponent
 		}
 	}
 </script>

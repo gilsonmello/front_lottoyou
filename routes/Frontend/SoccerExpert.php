@@ -13,3 +13,4 @@ Route::resource('soccer_experts', 'SoccerExpertController', [
 ]);
 
 Route::get('soccer_experts/results/{id}', 'SoccerExpertController@results');
+Route::get('soccer_experts/find/{id}', 'SoccerExpertController@find');
