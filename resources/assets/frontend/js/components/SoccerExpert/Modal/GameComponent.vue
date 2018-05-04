@@ -56,6 +56,10 @@
         },
         methods: {
         	changeGoldBall(event) {
+				this.ticket.games.forEach((value) => {
+        			value.bola_ouro = false;
+				});
+
 	        	this.game.bola_ouro = true;
 	        	this.ticket.gold_ball_game_id = this.game.id;
         	},

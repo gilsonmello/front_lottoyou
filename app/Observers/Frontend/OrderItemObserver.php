@@ -64,26 +64,21 @@ class OrderItemObserver
         $user_id = $item->order->user_id;
         //Percorrendo as cartelas feitas pelo o usuário
         foreach($data->tickets as $key => $ticket) {
-            //Percorrendo os jogos feitos
-            foreach ($ticket->games as $game) {
-
-                //Salvando os jogos feitos na tabela de apostas
-                $soccerExpertBet = new SoccerExpertBet;
-                $soccerExpertBet->user_id = $user_id;
-                $soccerExpertBet->soc_rodada_id = $game->soc_rodada_id;
-                $soccerExpertBet->soc_jogo_id = $game->id;
-                $soccerExpertBet->resultado_clube_casa = $game->result_house_club;
-                $soccerExpertBet->resultado_clube_fora = $game->result_out_club;
-                $soccerExpertBet->bola_ouro = $game->bola_ouro;
-                $soccerExpertBet->save();
-            }
-
-
             //Pegando o grupo atual da rodada
             $ticket_group = SoccerExpertRoundGroup::where('soc_rodada_id', '=', $ticket->id)
                 ->where('status', '=', 1)
                 ->get()
                 ->first();
+
+            if(is_null($ticket_group)) {
+                $ticket_group = new SoccerExpertRound;
+                $ticket_group->soc_rodada_id = $ticket->id;
+                $ticket_group->count  = 0;
+                $ticket_group->active = 1;
+                $ticket_group->status = 1;
+                $ticket_group->save();
+            }
+
 
             //Se a rodada for limitada
             if($ticket->limite != null) {
@@ -110,6 +105,20 @@ class OrderItemObserver
                 $ticket_group->count += 1;
                 $ticket_group->save();
                 $ticket_group->users()->attach($user_id, ['points' => 0]);
+            }
+
+            //Percorrendo os jogos feitos
+            foreach ($ticket->games as $game) {
+                //Salvando os jogos feitos na tabela de apostas
+                $soccerExpertBet = new SoccerExpertBet;
+                $soccerExpertBet->user_id = $user_id;
+                $soccerExpertBet->soc_rodada_id = $game->soc_rodada_id;
+                $soccerExpertBet->soc_jogo_id = $game->id;
+                $soccerExpertBet->resultado_clube_casa = $game->result_house_club;
+                $soccerExpertBet->resultado_clube_fora = $game->result_out_club;
+                $soccerExpertBet->bola_ouro = $game->bola_ouro;
+                $soccerExpertBet->soc_rodada_grupo_id = $ticket_group->id;
+                $soccerExpertBet->save();
             }
                 
         }

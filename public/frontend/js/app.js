@@ -71626,6 +71626,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : '';
 		this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
 		this.$set(this.game, 'bola_ouro', false);
+
+		if (this.game.bola_ouro != undefined) {
+			this.ticket.games[0].bola_ouro = true;
+		}
 	},
 	activated: function activated() {},
 	methods: {
@@ -72112,7 +72116,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				});
 
 				//Caso não esteja, adiciono, se não, não adiciono novamente
-				if (!has) this.item.tickets.unshift(this.ticket);
+				if (!has) {
+					this.item.tickets.unshift(this.ticket);
+				}
 			} else {
 				this.ticket.complete = false;
 				$(this.$el).addClass('incomplete');
@@ -72326,6 +72332,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	activated: function activated() {},
 	methods: {
 		changeGoldBall: function changeGoldBall(event) {
+			this.ticket.games.forEach(function (value) {
+				value.bola_ouro = false;
+			});
+
 			this.game.bola_ouro = true;
 			this.ticket.gold_ball_game_id = this.game.id;
 		},

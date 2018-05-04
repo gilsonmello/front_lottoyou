@@ -139,8 +139,10 @@
 					});
 
 					//Caso não esteja, adiciono, se não, não adiciono novamente
-					if(!has)
+					if(!has) {
 						this.item.tickets.unshift(this.ticket);
+					}
+
 				} else {
 					this.ticket.complete = false;
 					$(this.$el).addClass('incomplete');

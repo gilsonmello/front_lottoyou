@@ -57,7 +57,11 @@ class SoccerExpertRoundGroup extends Model
 
     public function users() 
     {
-        return $this->belongsToMany(User::class, 'soc_rodadas_grupos_has_users', 'soc_rodadas_grupo_id', 'user_id');
+        return $this->belongsToMany(User::class, 
+            'soc_rodadas_grupos_has_users', 
+            'soc_rodadas_grupo_id', 
+            'user_id'
+        )->withTimestamps();
     }
 
     /*public function getCountAttribute() {
