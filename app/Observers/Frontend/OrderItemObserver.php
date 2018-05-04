@@ -111,7 +111,7 @@ class OrderItemObserver
             foreach ($ticket->games as $game) {
                 //Salvando os jogos feitos na tabela de apostas
                 $soccerExpertBet = new SoccerExpertBet;
-                $soccerExpertBet->user_id = $user_id;
+                $soccerExpertBet->owner_id = $user_id;
                 $soccerExpertBet->soc_rodada_id = $game->soc_rodada_id;
                 $soccerExpertBet->soc_jogo_id = $game->id;
                 $soccerExpertBet->resultado_clube_casa = $game->result_house_club;
