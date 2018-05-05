@@ -40,9 +40,8 @@
 			}
 		},
 		methods: {
-			openModal() {
-				
-			},
+			openModal: function() {
+                        },
 			init() {
 				//Pegando os dados do usuário no localstorage
 				var access_token = JSON.parse(window.localStorage.getItem('access_token'));

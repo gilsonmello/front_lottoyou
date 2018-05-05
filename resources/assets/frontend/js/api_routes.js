@@ -65,5 +65,8 @@ export const routes = {
 		destroy: host + '/carts/{hash}',
 		complete_purchase: host + '/carts/complete_purchase',
 		validate: host + '/carts/validate',
+	},
+	soccer_tickets: {
+		games: host + '/soccer_tickets/{ticket_id}/games',
 	}
 };

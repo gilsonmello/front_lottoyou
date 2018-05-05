@@ -27,4 +27,5 @@ Route::group(['namespace' => 'Frontend'], function(){
 	require __DIR__.'/Frontend/SoccerCategory.php';
 	require __DIR__.'/Frontend/Lottery.php';	
 	require __DIR__.'/Frontend/Cart.php';
+	require __DIR__.'/Frontend/SoccerTicket.php';
 });

@@ -16,9 +16,15 @@ class SoccerExpertController extends Controller
 {
     public function results($id, Request $request) 
     {
-        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $id)
-        ->get();
-        
+        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $id);
+
+        if($request->get('column')) {
+            $tickets->orderBy($request->get('column'), $request->get('direction'));
+        }
+
+        $tickets = $tickets->with('group')
+            ->paginate(15);
+
         return response()->json($tickets, 200);       
     }
 
