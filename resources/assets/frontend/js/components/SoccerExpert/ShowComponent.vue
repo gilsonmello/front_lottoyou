@@ -10,6 +10,9 @@
 	                <router-link :to="{ name: 'soccer_expert.results', params: { id: item.soccer_expert.id } }" class="show" id="result-component">
 	                    Resultado 
 	               	</router-link>
+	               	<router-link :to="{ name: 'soccer_expert.ranks', params: { id: item.soccer_expert.id } }" class="show" id="result-component">
+		                Rank 
+		           	</router-link>
         		</div>
         	</div>
         </div>	

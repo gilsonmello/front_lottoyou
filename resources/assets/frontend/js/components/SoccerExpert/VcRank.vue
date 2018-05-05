@@ -7,10 +7,10 @@
 			<router-link :to="{ name: 'soccer_expert.show', params: { id: category.id } }" class="show" id="play-component">
                 {{ trans('strings.play_on_the') }} {{ category.nome }} 
             </router-link>
-            <router-link :to="{ name: 'soccer_expert.results', params: { id: category.id } }" class="show active" id="result-component">
+            <router-link :to="{ name: 'soccer_expert.results', params: { id: category.id } }" class="show" id="result-component">
                 Resultado 
            	</router-link>
-           	<router-link :to="{ name: 'soccer_expert.ranks', params: { id: category.id } }" class="show" id="result-component">
+           	<router-link :to="{ name: 'soccer_expert.ranks', params: { id: category.id } }" class="show active" id="result-component">
                 Rank 
            	</router-link>
 		</div>
@@ -68,7 +68,8 @@
 	    </div>
         
 	    <load-component v-if="loading.pagination == true"></load-component>
-    	<ticket-component v-else v-for="(ticket, index) in tickets" :index="index" :key="index" :ticket="ticket" :category="category"></ticket-component>
+    	<vc-ticket v-else v-for="(ticket, index) in tickets" :index="index" :key="index" :ticket="ticket" :category="category">
+    	</vc-ticket>
 
     	<div class="row no-margin">
             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
@@ -91,12 +92,12 @@
 	import {routes} from '../../api_routes'
 	import LoadComponent from '../Load'
 	import VcPagination from '../VcPagination'
-	import TicketComponent from './Result/TicketComponent'
+	import VcTicket from './Rank/VcTicket'
 	export default {
 		methods: {
 			paginate(page) {
 				this.query.page = page;
-				this.resultRequest();
+				this.rankRequest();
 			},
 			toggle(column) {
 				if(this.query.column === column) {
@@ -110,34 +111,34 @@
 					this.query.direction = 'asc';
 				}
 
-				this.resultRequest();
+				this.rankRequest();
 			},
 			prev() {
 				if(this.model.prev_page_url) {
 					this.query.page--;
-					this.resultRequest();
+					this.rankRequest();
 				}
 			},
 			next() {
 				if(this.model.next_page_url) {
 					this.query.page++;
-					this.resultRequest();
+					this.rankRequest();
 				}
 			},
-			resultRequest() {
+			rankRequest() {
 
-				const resultRequest = axios.create();
-				resultRequest.interceptors.request.use(config => {
+				const rankRequest = axios.create();
+				rankRequest.interceptors.request.use(config => {
 					this.loading.pagination = true
 		        	return config;
 				});
 
-				let url = routes.soccer_experts.results.replace('{id}', this.id);
+				let url = routes.soccer_experts.ranks.replace('{id}', this.id);
 				url += "?page="+this.query.page;
 				url += "&column="+this.query.column;
 				url += "&direction="+this.query.direction;
 
-				resultRequest.get(url, {}, {}).then(response => {
+				rankRequest.get(url, {}, {}).then(response => {
 					if(response.status === 200) {
 						this.model = response.data;
 						this.tickets = response.data.data;
@@ -160,8 +161,10 @@
 				columns: ['nome', 'valor', 'data_termino'],
 				id: '',
 				results: [],
+				bets: [],
 				tickets: [],
 				model: {},
+				users: [],
 				query: {
 					page: 1,
 					column: 'nome',
@@ -173,15 +176,15 @@
 			}
 		},
 		mounted: function() {
-			const showRequest = axios.create();
+			const categoryRequest = axios.create();
 			this.id = this.$route.params.id;
-			showRequest.interceptors.request.use(config => {
+			categoryRequest.interceptors.request.use(config => {
 	        	this.loading.component = true
 			  	return config;
 			});
 			let url = routes.soccer_experts.find.replace('{id}', this.id);
 
-			showRequest.get(url, {}, {}).then(response => {
+			categoryRequest.get(url, {}, {}).then(response => {
 				if(response.status === 200){
 					this.category = response.data
 				}
@@ -189,15 +192,29 @@
 				
 			});
 
-			this.resultRequest();
+			/*const userRequest = axios.create();
+			userRequest.interceptors.request.use(config => {
+	        	return config;
+			});
+
+			url = routes.users.index;
+			categoryRequest.get(url, {}, {}).then(response => {
+				if(response.status === 200){
+					this.users = response.data
+				}
+			}).catch((error) => {
+				
+			});*/
+
+			this.rankRequest();
 		},
 		activated: function() {
 			
 		},
 		components: {
 			LoadComponent,
-			TicketComponent,
-			VcPagination
+			VcPagination,
+			VcTicket
 		},
 		watch: {
 			'query.page': function(newValue, oldValue) {}

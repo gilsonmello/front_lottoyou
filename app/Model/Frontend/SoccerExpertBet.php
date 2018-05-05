@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Model\Frontend\SoccerExpertRound;
 use App\Model\Frontend\SoccerExpertGame;
+use App\Model\Frontend\SoccerExpertRoundGroup;
 use App\User;
 
 class SoccerExpertBet extends Model
@@ -59,6 +60,14 @@ class SoccerExpertBet extends Model
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function group() {
+        return $this->belongsTo(SoccerExpertRoundGroup::class, 'soc_rodada_grupo_id');
+    }
+
+    public function owner() {
+        return $this->belongsTo(User::class, 'owner_id');
     }
 
     public function getHouseClubAttribute()

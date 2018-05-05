@@ -13,6 +13,8 @@
 		<footer-component></footer-component>
 
 		<login-component></login-component>
+
+		<vc-modal></vc-modal>
 	</main>
 </template>
 
@@ -22,6 +24,7 @@
 	import CarouselComponent from './CarouselComponent'
 	import FooterComponent from './FooterComponent'
 	import LoginComponent from './LoginComponent'
+	import VcModal from './VcModal'
 	import router from '../router'
 	import LoadComponent from './Load'
 	import AppLoadComponent from './AppLoad'
@@ -40,8 +43,6 @@
 			}
 		},
 		methods: {
-			openModal: function() {
-                        },
 			init() {
 				//Pegando os dados do usuário no localstorage
 				var access_token = JSON.parse(window.localStorage.getItem('access_token'));
@@ -228,7 +229,8 @@
 			FooterComponent,
 			LoadComponent,
 			LoginComponent,
-			AppLoadComponent
+			AppLoadComponent,
+			VcModal
 		}
 	}
 </script>

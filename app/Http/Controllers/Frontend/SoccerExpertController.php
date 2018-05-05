@@ -14,6 +14,35 @@ use DB;
 
 class SoccerExpertController extends Controller
 {
+    public function ranks($id, Request $request) 
+    {
+        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $id);
+
+        if($request->get('column')) {
+            $tickets->orderBy($request->get('column'), $request->get('direction'));
+        }
+
+        $tickets = $tickets->with('group')
+            ->paginate(3);
+
+        return response()->json($tickets, 200);
+        
+        /*$bets = SoccerExpertBet::whereHas('round', function($query) use($id) {
+            $query->where('soc_categoria_id', '=', $id);
+        });
+
+        $column = $request->get('column'); 
+        $direction = $request->get('direction'); 
+
+        $bets = $bets->with([
+            'owner' => function($query) use ($column, $direction){
+                $query->where('nickname', 'LIKE', '%gilson%');
+            }
+        ])->paginate(2);
+
+        return response()->json($bets, 200);   */    
+    }
+
     public function results($id, Request $request) 
     {
         $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $id);
@@ -23,7 +52,7 @@ class SoccerExpertController extends Controller
         }
 
         $tickets = $tickets->with('group')
-            ->paginate(15);
+            ->paginate(3);
 
         return response()->json($tickets, 200);       
     }

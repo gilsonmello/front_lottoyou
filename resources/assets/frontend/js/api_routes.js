@@ -13,6 +13,7 @@ export const routes = {
 		find: host+'/find/{id}'
 	},
 	users: {
+		index: host+'/users',
 		create: host+'/users',
 		edit: host+'/{id}/user',
 		logged: host+'/users/logged',
@@ -46,6 +47,7 @@ export const routes = {
 		index: host+'/soccer_experts',
 		show: host+'/soccer_experts/{id}',
 		results: host+'/soccer_experts/results/{id}',
+		ranks: host+'/soccer_experts/ranks/{id}',
 		find: host+'/soccer_experts/find/{id}',
 	},
 	soccer_categories: {
@@ -68,5 +70,13 @@ export const routes = {
 	},
 	soccer_tickets: {
 		games: host + '/soccer_tickets/{ticket_id}/games',
+	},
+	soccer_rounds: {
+		groups: host + '/soccer_rounds/{round_id}/groups',
+	},
+	soccer_groups: {
+		ranking: host + '/soccer_groups/{id}/ranking',
+		show: host + '/soccer_groups/{id}',
+		find: host + '/soccer_groups/{id}/find',
 	}
 };

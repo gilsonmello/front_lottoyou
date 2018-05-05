@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return User::where('group_id', '=', 3)->get();
     }
 
     /**

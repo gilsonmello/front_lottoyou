@@ -76,6 +76,7 @@ class OrderItemObserver
                 $ticket_group->count  = 0;
                 $ticket_group->active = 1;
                 $ticket_group->status = 1;
+                $ticket_group->identificacao += 1;
                 $ticket_group->save();
             }
 
@@ -86,12 +87,14 @@ class OrderItemObserver
                 //Desativo o grupo atual e o crio outro grupo
                 if($ticket_group->count == $ticket->limite) {
                     $ticket_group->status = 0;
+                    $identificacao = $ticket_group->identificacao;
                     $ticket_group->save();
                     $ticket_group = new SoccerExpertRoundGroup;
                     $ticket_group->soc_rodada_id = $ticket->id;
                     $ticket_group->count += 1;
                     $ticket_group->active = 1;
                     $ticket_group->status = 1;
+                    $ticket_group->identificacao = $identificacao + 1;
                     $ticket_group->save();
                     $ticket_group->users()->attach($user_id, ['points' => 0]);
                 } else {

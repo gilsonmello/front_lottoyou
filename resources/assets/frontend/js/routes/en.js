@@ -81,10 +81,22 @@ export default {
 			        component: require('../components/SoccerExpert/ShowComponent.vue')
 			    },
 			    {   
+			  		path: '/soccer_expert/ranks/:id',
+			        name: 'soccer_expert.ranks', 
+			        props: true,
+			        component: require('../components/SoccerExpert/VcRank.vue')
+			    },
+			    {   
 			  		path: '/soccer_expert/results/:id',
 			        name: 'soccer_expert.results', 
 			        props: true,
 			        component: require('../components/SoccerExpert/ResultComponent.vue')
+			    },
+			    {   
+			  		path: '/soccer_groups/ranking/:id',
+			        name: 'soccer_groups.ranking', 
+			        props: true,
+			        component: require('../components/SoccerGroup/VcRanking.vue')
 			    },
 			    {   
 			  		path: 'lotteries',

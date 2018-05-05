@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
     return view('welcome');
 });*/
 
-Route::group(['namespace' => 'Frontend'], function(){
+Route::group(['namespace' => 'Frontend'], function() {
 	require __DIR__.'/Frontend/Home.php';
 	require __DIR__.'/Frontend/User.php';
 	require __DIR__.'/Frontend/ScratchCard.php';
@@ -28,4 +28,6 @@ Route::group(['namespace' => 'Frontend'], function(){
 	require __DIR__.'/Frontend/Lottery.php';	
 	require __DIR__.'/Frontend/Cart.php';
 	require __DIR__.'/Frontend/SoccerTicket.php';
+	require __DIR__.'/Frontend/SoccerRound.php';
+	require __DIR__.'/Frontend/SoccerGroup.php';
 });

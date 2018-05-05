@@ -5,6 +5,7 @@ namespace App\Model\Frontend;
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Model\Frontend\SoccerExpertRound;
+use App\Model\Frontend\SoccerExpertBet;
 use DB;
 use App\User;
 
@@ -53,6 +54,11 @@ class SoccerExpertRoundGroup extends Model
     {
     	return $this->belongsTo(SoccerExpertRound::class, 'soc_rodada_id')
             ->where('active', '=', 1);
+    }
+
+    public function bets() 
+    {
+        return $this->hasMany(SoccerExpertBet::class, 'soc_rodada_grupo_id');
     }
 
     public function users() 
