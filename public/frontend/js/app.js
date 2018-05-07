@@ -61368,7 +61368,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "container-fluid no-padding" }, [
       _c("img", {
         staticClass: "img-fluid",
-        attrs: { src: "/img/banner_principal_83.jpg" }
+        attrs: { src: "/img/new1/BAN-princi_S_TX.png" }
       })
     ])
   }
@@ -61852,7 +61852,7 @@ var render = function() {
                 _c("img", {
                   staticClass: "img-fluid",
                   staticStyle: { width: "100%" },
-                  attrs: { src: "/img/new/banner_1.jpg" }
+                  attrs: { src: "/img/new1/Ban-CUSTOM_BG.png" }
                 })
               ]
             )
@@ -61871,7 +61871,7 @@ var render = function() {
                 _c("img", {
                   staticClass: "img-fluid",
                   staticStyle: { width: "100%" },
-                  attrs: { src: "/img/banner_medio_soccer.jpg" }
+                  attrs: { src: "/img/new1/Soccer_Exp_S_TX.jpg" }
                 })
               ]
             )
@@ -61890,7 +61890,7 @@ var render = function() {
                 _c("img", {
                   staticClass: "img-fluid",
                   staticStyle: { width: "100%" },
-                  attrs: { src: "/img/banner_medio_raspadinhas.jpg" }
+                  attrs: { src: "/img/new1/RASPADINHAS.jpg" }
                 })
               ]
             )
@@ -61909,7 +61909,7 @@ var render = function() {
                 _c("img", {
                   staticClass: "img-fluid",
                   staticStyle: { width: "100%" },
-                  attrs: { src: "/img/banner_medio_raspadinha.jpg" }
+                  attrs: { src: "/img/new1/easy_loteria_S_TX.jpg" }
                 })
               ]
             )
@@ -61925,12 +61925,6 @@ var render = function() {
                 _c("div", { attrs: { id: "how-to-play" } }, [
                   _c("h1", { staticClass: "text-center" }, [
                     _vm._v("Como jogar na Easy Money - Nossa Loteria")
-                  ]),
-                  _vm._v(" "),
-                  _c("h3", { staticClass: "text-center" }, [
-                    _vm._v(
-                      "\n\t\t\t\t\tEscolha seus números / Escolha a data do Sorteio / Confirme seu bilhete\n\t\t\t\t"
-                    )
                   ])
                 ])
               ]
@@ -61969,7 +61963,7 @@ var render = function() {
                   { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
                   [
                     _c("h5", [
-                      _c("strong", [_vm._v("1. Escolha seus números")])
+                      _c("strong", [_vm._v("2. Escolha a data do Sorteio")])
                     ]),
                     _vm._v(" "),
                     _c("h5", [
@@ -61983,7 +61977,7 @@ var render = function() {
                   { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
                   [
                     _c("h5", [
-                      _c("strong", [_vm._v("1. Escolha seus números")])
+                      _c("strong", [_vm._v("3. Confirme seu bilhete")])
                     ]),
                     _vm._v(" "),
                     _c("h5", [
@@ -62008,10 +62002,12 @@ var render = function() {
                 _c("img", {
                   staticClass: "img-fluid",
                   staticStyle: { width: "100%" },
-                  attrs: { src: "/img/new/explic_easy.jpg" }
+                  attrs: { src: "/img/new1/explic_soccer.jpg" }
                 })
               ]
             ),
+            _vm._v(" "),
+            _c("br"),
             _vm._v(" "),
             _c(
               "div",
@@ -62023,10 +62019,12 @@ var render = function() {
                 _c("img", {
                   staticClass: "img-fluid",
                   staticStyle: { width: "100%" },
-                  attrs: { src: "/img/new/explic_raspadinhas.jpg" }
+                  attrs: { src: "/img/new1/explic_piratas.jpg" }
                 })
               ]
             ),
+            _vm._v(" "),
+            _c("br"),
             _vm._v(" "),
             _c(
               "div",
@@ -62038,7 +62036,7 @@ var render = function() {
                 _c("img", {
                   staticClass: "img-fluid",
                   staticStyle: { width: "100%" },
-                  attrs: { src: "/img/new/explic_soccer.jpg" }
+                  attrs: { src: "/img/new1/explic_easy.jpg" }
                 })
               ]
             )
@@ -76093,6 +76091,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			},
 			id: null,
 			bets: [],
+			total: 0,
 			category: {},
 			group: {},
 			model: {},
@@ -76185,6 +76184,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			rankingRequest.get(url, {}, {}).then(function (response) {
 				if (response.status === 200) {
 					_this2.model = response.data;
+					_this2.total = _this2.model.total;
 					_this2.bets = response.data.data;
 					_this2.loading.component = false;
 					_this2.loading.pagination = false;

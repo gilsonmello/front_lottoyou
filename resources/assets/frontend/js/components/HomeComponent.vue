@@ -10,7 +10,7 @@
 		<div class="container">
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
-				<img style="width: 100%; " class="img-fluid" src="/img/new/banner_1.jpg">
+				<img style="width: 100%; " class="img-fluid" src="/img/new1/Ban-CUSTOM_BG.png">
 			</div>			
 		</div>
 		
@@ -18,7 +18,7 @@
 		<div class="container">
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
-				<img style="width: 100%; " class="img-fluid" src="/img/banner_medio_soccer.jpg">
+				<img style="width: 100%; " class="img-fluid" src="/img/new1/Soccer_Exp_S_TX.jpg">
 			</div>
 		</div>
 
@@ -26,7 +26,7 @@
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
 				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
-				<img style="width: 100%; " class="img-fluid" src="/img/banner_medio_raspadinhas.jpg">
+				<img style="width: 100%; " class="img-fluid" src="/img/new1/RASPADINHAS.jpg">
 			</div>
 		</div>
 
@@ -34,7 +34,7 @@
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
 				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
-				<img style="width: 100%; " class="img-fluid" src="/img/banner_medio_raspadinha.jpg">
+				<img style="width: 100%; " class="img-fluid" src="/img/new1/easy_loteria_S_TX.jpg">
 			</div>
 		</div>
 		
@@ -79,9 +79,6 @@
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
 				<div id="how-to-play">
 					<h1 class="text-center">Como jogar na Easy Money - Nossa Loteria</h1>
-					<h3 class="text-center">
-						Escolha seus números / Escolha a data do Sorteio / Confirme seu bilhete
-					</h3>
 				</div>
 			</div>
 			<div class="row" style="background-image: url(//www.lottoland.com/cms/5554aadbe4b06bf49b4e071e/br_homepage_step-icons2.jpg); height: 300px; background-size: 100% auto; background-repeat: no-repeat; padding: 200px 0 0 130px;">
@@ -90,11 +87,11 @@
 					<h5>Clique sobre seus números da sorte e confirme!</h5>
 				</div>
 				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
-					<h5><strong>1. Escolha seus números</strong></h5>
+					<h5><strong>2. Escolha a data do Sorteio</strong></h5>
 					<h5>Clique sobre seus números da sorte e confirme!</h5>
 				</div>
 				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
-					<h5><strong>1. Escolha seus números</strong></h5>
+					<h5><strong>3. Confirme seu bilhete</strong></h5>
 					<h5>Clique sobre seus números da sorte e confirme!</h5>
 				</div>
 			</div>
@@ -107,22 +104,25 @@
 					<h1 class="text-center">Explicações<br>960 x 300px</h1>
 				</div>
 			</div> -->
-			
+
+
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-				<img class="img-fluid" style="width: 100%; " src="/img/new/explic_easy.jpg">
+				<img class="img-fluid" style="width: 100%; " src="/img/new1/explic_soccer.jpg">
 			</div>
-			
+			<br>
+			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+				<img class="img-fluid" style="width: 100%; " src="/img/new1/explic_piratas.jpg">
+			</div>
+			<br>
 
 		
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-				<img class="img-fluid" style="width: 100%; " src="/img/new/explic_raspadinhas.jpg">
+				<img class="img-fluid" style="width: 100%; " src="/img/new1/explic_easy.jpg">
 			</div>
 		
 
 			
-			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-				<img class="img-fluid" style="width: 100%; " src="/img/new/explic_soccer.jpg">
-			</div>
+			
 			
 		</div>
 	</div>

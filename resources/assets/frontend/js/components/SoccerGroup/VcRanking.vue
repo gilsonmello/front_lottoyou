@@ -144,6 +144,7 @@
 				},
 				id: null,
 				bets: [],
+				total: 0,
 				category: {},
 				group: {},
 				model: {},
@@ -234,6 +235,7 @@
 				rankingRequest.get(url, {}, {}).then(response => {
 					if(response.status === 200) {
 						this.model = response.data;
+						this.total = this.model.total;
 						this.bets = response.data.data;
 						this.loading.component = false
 						this.loading.pagination = false
