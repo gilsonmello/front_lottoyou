@@ -1,6 +1,6 @@
 <template>	
 	<section class="ticket">
-		<div class="row ticket-columns" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(255,255,255,.05);': ''">
+		<div class="row ticket-columns collapsed" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(255,255,255,.05);': ''">
 	    	<div class="col-lg-2">
 	    		{{ ticket.nome }}
 	    	</div>
@@ -13,8 +13,7 @@
 	    </div>
 
     	<div :class="'collapse '+ticket.id">
-			<load-component v-if="loading.game"></load-component>	  	
-	    	
+			<load-component v-if="loading.game"></load-component>	    	
 			<div class="row no-margin" v-else>
 				<div class="col-lg-4 col-sm-6 col-md-6 col-12" v-for="(group, index) in groups">
 					<vc-group :group="group" :category="category" :index="index"></vc-group>
@@ -52,9 +51,9 @@
 				if($(this.$el).find('.'+this.ticket.id).length > 0) {
 					clearInterval(interval);
 					$(this.$el).find('.'+this.ticket.id).on('show.bs.collapse', (event) => {
-					  	const groupRequest = axios.create();
 					  	this.loading.game = true;
-						groupRequest.interceptors.request.use(config => {
+					  	const groupRequest = axios.create();
+					  	groupRequest.interceptors.request.use(config => {
 							return config;
 						});
 
@@ -108,6 +107,16 @@
 	.ticket-columns {
 		padding: 10px 0 10px 0;
 	}
+
+	.ticket .ticket-columns:after {
+		font-family: 'FontAwesome';
+		content: "\f068";
+		float: right;
+	}
+
+	.ticket .collapsed:after {
+		content: "\f067";
+	}	
 
 	.ticket {
 		background: #212529;

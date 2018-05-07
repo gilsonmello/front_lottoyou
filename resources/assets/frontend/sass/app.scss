@@ -634,3 +634,13 @@ button.close {
     border-radius: 5px;
     border: 1px solid #000;
 }
+
+.ticket .ticket-columns:after {
+    font-family: 'FontAwesome';
+    content: "\f068";
+    float: right;
+}
+
+.ticket .collapsed:after {
+    content: "\f067";
+}

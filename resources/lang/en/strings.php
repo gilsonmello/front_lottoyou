@@ -12,6 +12,7 @@ return [
       |
      */
     'nickname' => 'Apelido',
+    'rank' => 'Rank',
     'next_lottery' => 'Próximo Sorteio',
     'complete_purchase' => 'Concluir Compra',
     'to_enter' => 'Entrar',

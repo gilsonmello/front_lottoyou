@@ -1,6 +1,6 @@
 <template>	
-	<section>
-		<div class="row ticket" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(0,0,0,.05);': 'background-color: initial;'">
+	<section class="ticket">
+		<div class="row ticket-columns collapsed" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(255,255,255,.05);': ''">
 	    	<div class="col-lg-2">
 	    		{{ ticket.nome }}
 	    	</div>
@@ -164,10 +164,30 @@
 </script>
 
 <style scoped>
+
+	.collapse {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	.ticket-columns {
+		padding: 10px 0 10px 0;
+	}
+
+	.ticket .ticket-columns:after {
+		font-family: 'FontAwesome';
+		content: "\f068";
+		float: right;
+	}
+
+	.ticket .collapsed:after {
+		content: "\f067";
+	}	
+
 	.ticket {
-		background: #ccc9;
-	    padding: 10px 0 10px 0;
+		background: #212529;
 	    cursor: pointer;
+	    padding: 0;
 	}
 
 	.row {

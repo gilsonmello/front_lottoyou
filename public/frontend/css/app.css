@@ -13743,3 +13743,13 @@ button.close {
   border: 1px solid #000;
 }
 
+.ticket .ticket-columns:after {
+  font-family: 'FontAwesome';
+  content: "\F068";
+  float: right;
+}
+
+.ticket .collapsed:after {
+  content: "\F067";
+}
+

@@ -75,6 +75,11 @@ class SoccerExpertBet extends Model
         return Club::find($this->gel_clube_casa_id);
     }
 
+    public function getCreatedAttribute($date) 
+    {
+        return format($date, 'd/m/Y H:i');
+    }
+
     public function getOutClubAttribute()
     {
         return Club::find($this->gel_clube_fora_id);
