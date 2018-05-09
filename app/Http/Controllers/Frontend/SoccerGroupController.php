@@ -29,7 +29,7 @@ class SoccerGroupController extends Controller
                 }
             })
             ->selectRaw('SUM(pontuacao) as pontuacao, owner_id')
-            ->groupBy('owner_id');
+            ->groupBy(['owner_id', 'num_compras']);
 
         if($request->get('column')) {
             $bets->orderBy($request->get('column'), $request->get('direction'));

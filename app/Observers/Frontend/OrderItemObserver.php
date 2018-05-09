@@ -4,6 +4,7 @@ namespace App\Observers\Frontend;
 
 use App\Model\Frontend\OrderItem;
 use App\Model\Frontend\SoccerExpertBet;
+use App\Model\Frontend\SoccerExpertBetGame;
 use App\Model\Frontend\ScratchCard;
 use App\Model\Frontend\LotteryUser;
 use App\Model\Frontend\SoccerExpertRoundGroup;
@@ -25,7 +26,7 @@ class OrderItemObserver
     private function lottery($item, $data) 
     {
         //Percorrendo todas as cartelas feitas pelo usuário
-        foreach($data->betting as $bet) {
+        foreach($data->tickets as $bet) {
             $lotteryUser = new LotteryUser;
 
             //Pegando as dezenas selecionadas
@@ -61,7 +62,8 @@ class OrderItemObserver
 
     private function soccerExpert($item, $data) 
     {
-        $user_id = $item->order->user_id;
+        $order = $item->order;
+        $user_id = $order->user_id;
         //Percorrendo as cartelas feitas pelo o usuário
         foreach($data->tickets as $key => $ticket) {
             //Pegando o grupo atual da rodada
@@ -71,7 +73,7 @@ class OrderItemObserver
                 ->first();
 
             if(is_null($ticket_group)) {
-                $ticket_group = new SoccerExpertRound;
+                $ticket_group = new SoccerExpertRoundGroup;
                 $ticket_group->soc_rodada_id = $ticket->id;
                 $ticket_group->count  = 0;
                 $ticket_group->active = 1;
@@ -128,20 +130,25 @@ class OrderItemObserver
                 $num_compras += $soccerExpertBet->num_compras;
             }
 
+            $soccerExpertBet = new SoccerExpertBet;
+            $soccerExpertBet->owner_id = $user_id;
+            $soccerExpertBet->soc_rodada_id = $ticket->id;
+            $soccerExpertBet->soc_rodada_grupo_id = $ticket_group->id;
+            $soccerExpertBet->num_compras = $num_compras;
+            $soccerExpertBet->order_item_id = $item->id;
+            $soccerExpertBet->save();
+
             //Percorrendo os jogos feitos
             foreach ($ticket->games as $game) {
 
                 //Salvando os jogos feitos na tabela de apostas
-                $soccerExpertBet = new SoccerExpertBet;
-                $soccerExpertBet->owner_id = $user_id;
-                $soccerExpertBet->soc_rodada_id = $game->soc_rodada_id;
-                $soccerExpertBet->soc_jogo_id = $game->id;
-                $soccerExpertBet->resultado_clube_casa = $game->result_house_club;
-                $soccerExpertBet->resultado_clube_fora = $game->result_out_club;
-                $soccerExpertBet->bola_ouro = $game->bola_ouro;
-                $soccerExpertBet->soc_rodada_grupo_id = $ticket_group->id;
-                $soccerExpertBet->num_compras = $num_compras;
-                $soccerExpertBet->save();
+                $soccerExpertBetGame = new SoccerExpertBetGame;
+                $soccerExpertBetGame->soc_aposta_id = $soccerExpertBet->id;
+                $soccerExpertBetGame->soc_jogo_id = $game->id;
+                $soccerExpertBetGame->resultado_clube_casa = $game->result_house_club;
+                $soccerExpertBetGame->resultado_clube_fora = $game->result_out_club;
+                $soccerExpertBetGame->bola_ouro = $game->bola_ouro;
+                $soccerExpertBetGame->save();
             }
                 
         }

@@ -20,93 +20,92 @@
             </div>
         </div>
 
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col" @click="toggle('id')">
-                        <span>
-                            {{ trans('strings.id') }}
-                        </span>                     
-                        <span v-if="'id' === query.column">
-                            <span v-if="query.direction === 'desc'">
-                                &darr;
-                            </span>
-                            <span v-else>
-                                &uarr;
-                            </span>
+        <br>
+
+        <div class="table text-center">
+            <div class="row table-head">
+                <div class="col-lg-1" @click="toggle('id')">
+                    <span>
+                        {{ trans('strings.id') }}
+                    </span>                     
+                    <span v-if="'id' === query.column">
+                        <span v-if="query.direction === 'desc'">
+                            &darr;
                         </span>
-                    </th>
-                    <th scope="col" @click="toggle('total')">
-                        <span>
-                            {{ trans('strings.total') }}
-                        </span>                     
-                        <span v-if="'total' === query.column">
-                            <span v-if="query.direction === 'desc'">
-                                &darr;
-                            </span>
-                            <span v-else>
-                                &uarr;
-                            </span>
+                        <span v-else>
+                            &uarr;
                         </span>
-                    </th>
-                    <th scope="col" @click="toggle('sub_total')">
-                        <span>
-                            {{ trans('strings.sub_total') }}
+                    </span>
+                </div>
+                <div class="col-lg-2">
+                    <span>
+                        {{ trans('strings.game') }}
+                    </span>                     
+                    <span v-if="'game' === query.column">
+                        <span v-if="query.direction === 'desc'">
+                            &darr;
                         </span>
-                        <span v-if="'sub_total' === query.column">
-                            <span v-if="query.direction === 'desc'">
-                                &darr;
-                            </span>
-                            <span v-else>
-                                &uarr;
-                            </span>
+                        <span v-else>
+                            &uarr;
                         </span>
-                    </th>
-                    <th scope="col" @click="toggle('number_items')">
-                        <span>
-                            {{ trans('strings.number_items') }}
+                    </span>
+                </div>
+                <div class="col-lg-2" @click="toggle('total')">
+                    <span>
+                        {{ trans('strings.total') }}
+                    </span>                     
+                    <span v-if="'total' === query.column">
+                        <span v-if="query.direction === 'desc'">
+                            &darr;
                         </span>
-                        <span v-if="'number_items' === query.column">
-                            <span v-if="query.direction === 'desc'">
-                                &darr;
-                            </span>
-                            <span v-else>
-                                &uarr;
-                            </span>
+                        <span v-else>
+                            &uarr;
                         </span>
-                    </th>
-                    <th @click="toggle('created_at')">
-                        <span>
-                            {{ trans('strings.date') }}
+                    </span>
+                </div>
+                <div class="col-lg-2" @click="toggle('quantity')">
+                    <span>
+                        {{ trans('strings.quantity') }}
+                    </span>
+                    <span v-if="'quantity' === query.column">
+                        <span v-if="query.direction === 'desc'">
+                            &darr;
                         </span>
-                        <span v-if="'created_at' === query.column">
-                            <span v-if="query.direction === 'desc'">
-                                &darr;
-                            </span>
-                            <span v-else>
-                                &uarr;
-                            </span>
+                        <span v-else>
+                            &uarr;
                         </span>
-                    </th>
-                    <th>
-                        <span>{{ trans('strings.actions') }}</span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody v-if="loading.pagination == true">
-                <tr>
-                    <td colspan="5">
-                        <load-component></load-component>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody v-else>
-                <tr v-for="(order, index) in items">
-                    
-                    
-                </tr>        
-            </tbody>
-        </table>
+                    </span>
+                </div>
+                <div class="col-lg-2" @click="toggle('created_at')">
+                    <span>
+                        {{ trans('strings.date') }}
+                    </span>
+                    <span v-if="'created_at' === query.column">
+                        <span v-if="query.direction === 'desc'">
+                            &darr;
+                        </span>
+                        <span v-else>
+                            &uarr;
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="row table-tbody" v-if="loading.pagination">
+                <div class="col-lg-12">
+                    <load-component></load-component>
+                </div>
+            </div>
+            
+            <div v-for="(item, index) in items" :key="index" class="row table-tbody">
+                <vc-soccer-expert :key="index" :item="item" v-if="item.type == 'soccer_expert'">
+                </vc-soccer-expert>
+                <vc-scratch-card :key="index" :item="item" v-if="item.type == 'scratch_card'">
+                </vc-scratch-card>
+                <vc-lottery :key="index" :item="item" v-if="item.type == 'lottery'">
+                </vc-lottery>
+            </div>           
+        </div>
 
         <div class="row no-margin">
             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
@@ -130,6 +129,9 @@
     import {mapState, mapGetters} from 'vuex'
     import LoadComponent from '../Load'
     import VcPagination from '../VcPagination'
+    import VcSoccerExpert from './SoccerExpert/VcSoccerExpert'
+    import VcScratchCard from './ScratchCard/VcScratchCard'
+    import VcLottery from './Lottery/VcLottery'
     export default {
         data() {
             return {
@@ -163,8 +165,12 @@
                 orderRequest.get(url, {}, {}).then(response => {
                     if(response.status === 200) {
                         this.loading.component = false;
-                        this.model = response.data;
-                        this.items = response.data.data;                          
+                        this.model = response.data;  
+                        //console.log(response.data.data)
+                        response.data.data.forEach((val) => {
+                            val.data = JSON.parse(val.data);
+                        })             
+                        this.items = response.data.data;
                     }
                 }).catch((error) => {
                     //this.$router.push({name: 'users.account'});                  
@@ -215,11 +221,20 @@
         },
         components: {
             LoadComponent,
-            VcPagination
+            VcPagination,
+            VcSoccerExpert,
+            VcScratchCard,
+            VcLottery
         }
     }
 </script>
 
 <style scoped>
-    
+    .table-head {
+        color: #fff;
+        background-color: #212529;
+        border-color: #32383e;
+        border-bottom: 2px solid #dee2e6;
+        padding: 10px 0 10px 0;
+    }
 </style>

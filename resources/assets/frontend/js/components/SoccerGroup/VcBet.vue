@@ -61,7 +61,7 @@
 						this.groups = []
 					})
 				}
-			}, 1000);
+			});
 		},
 		components: {
 			VcGame

@@ -61,5 +61,10 @@ class OrderItem extends Model
     public function lottery() {
         return $this->belongsTo(Lottery::class, 'lottery_id');
     }
+
+    public function getCreatedAtAttribute($date) 
+    {
+        return format($date, 'd/m/Y H:i');
+    }
     
 }

@@ -14,11 +14,9 @@ class OrderController extends Controller
 {
     public function items($id, Request $request) 
     {
-        $user_id = $request->get('user_id');
-
         $order = Order::find($id);      
 
-        $user = User::find($user_id); 
+        $user = User::find($request->get('user_id')); 
 
         Gate::forUser($user)->allows('frontend.orders.show', $order);
 
