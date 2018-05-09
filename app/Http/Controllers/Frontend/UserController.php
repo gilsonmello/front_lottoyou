@@ -8,6 +8,12 @@ use App\Http\Requests\Frontend\User\CreateUserRequest;
 use App\Http\Requests\Frontend\User\UpdateUserRequest;
 use App\User;
 use App\Balance;
+use App\Model\Frontend\Order;
+use App\Model\Frontend\OrderItem;
+use App\Model\Frontend\SoccerExpertBet;
+use App\Model\Frontend\SoccerExpertRound;
+use App\Model\Frontend\ScratchCard;
+use App\Model\Frontend\LotteryUser;
 
 class UserController extends Controller
 {
@@ -19,6 +25,47 @@ class UserController extends Controller
     public function index()
     {
         return User::where('group_id', '=', 3)->get();
+    }
+
+    public function soccerExperts($id, Request $request) 
+    {
+        return SoccerExpertRound::whereHas('bets', function($query) use ($id) {
+            $query->where('owner_id', '=', $id);
+        })
+        ->paginate(15);
+    }
+
+    public function scratchCards($id, Request $request) 
+    {
+
+    }
+
+    public function lotteries($id, Request $request) 
+    {
+        
+    }
+
+    public function games($id, Request $request) 
+    {
+        return Order::where('user_id', '=', $id)->with('item');
+    }
+
+    public function orders($id, Request $request) 
+    {
+        $orders = Order::where('user_id', '=', $id);
+        
+        if($request->get('column')) {
+            $orders->orderBy($request->get('column'), $request->get('direction'));
+        }
+        
+        $orders = $orders->paginate(20);
+
+        return response()->json($orders, 200);
+    }
+
+    public function transactions($id, Request $request) 
+    {
+
     }
 
     /**

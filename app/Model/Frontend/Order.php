@@ -72,11 +72,26 @@ class Order extends Model
 
     public function soccerExperts() 
     {
-        return $this->belongsToMany(SoccerExpert::class, 'orders_has_soccer_experts', 'order_id', 'soccer_expert_id');
+        return $this->belongsToMany(
+            SoccerExpert::class, 
+            'orders_has_soccer_experts', 
+            'order_id', 
+            'soccer_expert_id'
+        );
     }
 
     public function scratchCards() 
     {
-        return $this->belongsToMany(ScratchCardTheme::class, 'orders_has_scratch_cards', 'order_id', 'scratch_card_id');
+        return $this->belongsToMany(
+            ScratchCardTheme::class, 
+            'orders_has_scratch_cards', 
+            'order_id', 
+            'scratch_card_id'
+        );
+    }
+
+    public function getCreatedAtAttribute($date) 
+    {
+        return format($date, 'd/m/Y H:i');
     }
 }

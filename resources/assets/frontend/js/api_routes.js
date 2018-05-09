@@ -12,13 +12,23 @@ export const routes = {
 		index: host+'/countries',
 		find: host+'/find/{id}'
 	},
+	orders: {
+		show: host+'/orders/{id}',
+		items: host+'/orders/{id}/items',
+	},
 	users: {
 		index: host+'/users',
 		create: host+'/users',
 		edit: host+'/{id}/user',
 		logged: host+'/users/logged',
 		logout: host+'/users/logout',
-		update: host+'/users/{id}'
+		update: host+'/users/{id}',
+		orders: host+'/users/{id}/orders',
+		transactions: host+'/users/{id}/transactions',
+		games: host+'/users/{id}/games',
+		soccer_experts: host+'/users/{id}/soccer_experts',
+		scratch_cards: host+'/users/{id}/scratch_cards',
+		lotteries: host+'/users/{id}/lotteries',
 	},
 	packages: {
 		create: host+'/packages',

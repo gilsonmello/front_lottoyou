@@ -48,11 +48,15 @@
 				var access_token = JSON.parse(window.localStorage.getItem('access_token'));
 				access_token = access_token != null ? access_token : null;
 
+				//Token para refresh
+				var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+				refresh_token = refresh_token != null ? refresh_token : '';
+
 				if(access_token) {
 					this.refreshAuthPromise()
 					.then(response => {
 						if(response.status === 200) {
-				        	response.data.access_token = access_token
+							response.data.access_token = access_token
 				        	response.data.refresh_token = refresh_token
 							window.localStorage.setItem('authUser', JSON.stringify(response.data))
 							this.$store.dispatch('setUserObject', response.data);

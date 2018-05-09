@@ -43,6 +43,27 @@ export default {
 			        component: require('../components/User/GameComponent.vue')
 			    },
 			    {   
+			  		path: 'users/soccer_experts',
+			        name: 'users.soccer_experts',
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/User/Game/VcSoccerExpert.vue')
+			    },
+			    {   
+			  		path: 'users/scratch_cards',
+			        name: 'users.scratch_cards',
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/User/Game/VcScratchCard.vue')
+			    },
+			    {   
+			  		path: 'users/lotteries',
+			        name: 'users.lotteries',
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/User/Game/VcLottery.vue')
+			    },
+			    {   
 			  		path: 'users/logout',
 			        name: 'users.logout',
 			        props: true,
@@ -54,7 +75,14 @@ export default {
 			        name: 'users.orders', 
 			        props: true,
 			        meta: { requiresAuth: true },
-			        component: require('../components/User/OrderComponent.vue')
+			        component: require('../components/User/Order/VcIndex.vue')
+			    },
+			    {   
+			  		path: 'orders/show/:id',
+			        name: 'orders.show', 
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/Order/VcShow.vue')
 			    },
 			    {   
 			  		path: 'users/transactions',
@@ -156,13 +184,6 @@ export default {
 			        props: true,
 			        meta: { requiresAuth: true },
 			        component: require('../components/Order/FinishComponent.vue')
-			    },
-			    {   
-			  		path: '/orders/:id',
-			        name: 'orders.show', 
-			        props: true,
-			        meta: { requiresAuth: true },
-			        component: require('../components/Order/ShowComponent.vue')
 			    }
   			]
   		}

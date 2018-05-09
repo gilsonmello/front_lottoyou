@@ -96,22 +96,41 @@ class OrderItemObserver
                     $ticket_group->status = 1;
                     $ticket_group->identificacao = $identificacao + 1;
                     $ticket_group->save();
-                    $ticket_group->users()->attach($user_id, ['points' => 0]);
+                    //$ticket_group->users()->attach($user_id, ['points' => 0]);
                 } else {
                     //Se não, vou adicionando usuários ao grupo
                     $ticket_group->count += 1;
                     $ticket_group->save();
-                    $ticket_group->users()->attach($user_id, ['points' => 0]);
+                    //$ticket_group->users()->attach($user_id, ['points' => 0]);
                 }              
             } else {
                 //Se a rodada for ilimitada, vou adicionando usuários ao grupo
                 $ticket_group->count += 1;
                 $ticket_group->save();
-                $ticket_group->users()->attach($user_id, ['points' => 0]);
+                //$ticket_group->users()->attach($user_id, ['points' => 0]);
+            }
+
+            $soccerExpertBet = SoccerExpertBet::select([
+                    'owner_id',
+                    'soc_rodada_grupo_id',
+                    'num_compras'
+                ])
+                ->where('owner_id', '=', $user_id)
+                ->where('soc_rodada_grupo_id', '=', $ticket_group->id)
+                ->groupBy(['owner_id', 'soc_rodada_grupo_id', 'num_compras'])
+                ->orderBy('num_compras', 'desc')
+                ->get()
+                ->first();
+            
+            $num_compras = 1;
+                    
+            if(!is_null($soccerExpertBet)) {
+                $num_compras += $soccerExpertBet->num_compras;
             }
 
             //Percorrendo os jogos feitos
             foreach ($ticket->games as $game) {
+
                 //Salvando os jogos feitos na tabela de apostas
                 $soccerExpertBet = new SoccerExpertBet;
                 $soccerExpertBet->owner_id = $user_id;
@@ -121,6 +140,7 @@ class OrderItemObserver
                 $soccerExpertBet->resultado_clube_fora = $game->result_out_club;
                 $soccerExpertBet->bola_ouro = $game->bola_ouro;
                 $soccerExpertBet->soc_rodada_grupo_id = $ticket_group->id;
+                $soccerExpertBet->num_compras = $num_compras;
                 $soccerExpertBet->save();
             }
                 

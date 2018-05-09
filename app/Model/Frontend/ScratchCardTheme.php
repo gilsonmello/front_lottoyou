@@ -118,7 +118,7 @@ class ScratchCardTheme extends Model
 
     public function getTotalTicketsAvailableAttribute()
     {        
-        return ScratchCard::select([
+        $total_tickets_available = ScratchCard::select([
             DB::raw('count(temas_raspadinha_id) as total_tickets_available')
         ])
         ->where('ativo', '=', 0)
@@ -127,7 +127,7 @@ class ScratchCardTheme extends Model
             'temas_raspadinha_id', 
         ])
         ->get()
-        ->first()
-        ->total_tickets_available;
+        ->first();
+        return $total_tickets_available ? $total_tickets_available->total_tickets_available : null;
     }
 }

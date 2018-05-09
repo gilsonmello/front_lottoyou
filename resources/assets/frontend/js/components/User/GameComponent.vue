@@ -1,53 +1,48 @@
 <template>
 	<load-component v-if="loading.component == true"></load-component>
-    <div class="container" v-else>
-        <h3 class="">&nbsp;</h3>
-        <ul class="nav nav-pills nav-justified" id="myTab" role="tablist">
-            <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'users.account', params: {  } }">
-                    {{ trans('strings.profile') }}
-                </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link class="nav-link active show" :to="{ name: 'users.games', params: {  } }">
-                    {{ trans('strings.games') }}
-                </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'users.transactions', params: {  } }">
-                    {{ trans('strings.transactions') }}
-                </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'users.orders', params: {  } }">
-                    {{ trans('strings.orders') }}
-                </router-link>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade active show">                
-                Game
-            </div>
-        </div>
-	</div>
+    <vc-soccer-expert v-else></vc-soccer-expert>
 </template>
 
 <script>
+    import {routes} from '../../api_routes'
+    import {mapState, mapGetters} from 'vuex'
 	import LoadComponent from '../Load'
+    import VcPagination from '../VcPagination'
+    import VcSoccerExpert from './Game/VcSoccerExpert'
     export default {
     	data() {
     		return {
     			loading: {
                     component: true
                 },
+                games: [],
+                model: {},
+                query: {
+                    page: 1,
+                    column: 'id',
+                    direction: 'desc',
+                }
     		}
     	},
+        methods: {
+            
+        },
         mounted: function() {
             this.loading.component = false;
         },
         components: {
-        	LoadComponent
-        }
+        	LoadComponent,
+            VcPagination,
+            VcSoccerExpert
+        },
+        computed: {
+            ...mapState({
+                User: state => state.User
+            }),
+            ...mapGetters([
+                'auth'
+            ])
+        },
     }
 </script>
 

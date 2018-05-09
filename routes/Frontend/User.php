@@ -11,3 +11,10 @@ Route::resource('users', 'UserController', [
         'show' => 'frontend.users.show'
     ]
 ]);
+
+Route::get('users/{id}/games', 'UserController@games');
+Route::get('users/{id}/transactions', 'UserController@transactions');
+Route::get('users/{id}/orders', 'UserController@orders');
+Route::get('users/{id}/soccer_experts', 'UserController@soccerExperts');
+Route::get('users/{id}/scratch_cards', 'UserController@scratchCards');
+Route::get('users/{id}/lotteries', 'UserController@lotteries');

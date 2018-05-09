@@ -25,7 +25,17 @@ class CreateOrderItemsTable extends Migration
 
             $table->string('hash')->nullable();
 
-            $table->addColumn('integer', 'order_id', compact('length'))->nullable();
+            $table->addColumn('integer', 'order_id', compact('length'))
+                ->nullable();
+
+            $table->addColumn('integer', 'soccer_expert_id', compact('length'))
+                ->nullable();
+                
+            $table->addColumn('integer', 'lottery_id', compact('length'))
+                ->nullable();
+
+            $table->addColumn('integer', 'scratch_card_id', compact('length'))
+                ->nullable();
             
             $table->longText('data')->nullable();
 
@@ -35,6 +45,15 @@ class CreateOrderItemsTable extends Migration
 
             $table->foreign('order_id')
                 ->on('orders')
+                ->references('id');
+            $table->foreign('soccer_expert_id')
+                ->on('soc_categorias')
+                ->references('id');
+            $table->foreign('lottery_id')
+                ->on('lot_categorias')
+                ->references('id');
+            $table->foreign('scratch_card_id')
+                ->on('temas_raspadinhas')
                 ->references('id');
         });
     }

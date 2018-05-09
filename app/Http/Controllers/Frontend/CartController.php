@@ -270,24 +270,27 @@ class CartController extends Controller
                 if($value['type'] == 'lottery') {
                     $data = json_encode($value['lottery']);
                     $orderItem->data = $data;
+                    $orderItem->lottery_id = $value['lottery']['id'];
                     $orderItem->hash = $value['lottery']['hash'];
-                    $order->lotteries()->attach($value['lottery']['id'], [
+                    /*$order->lotteries()->attach($value['lottery']['id'], [
                         'data' => $data
-                    ]);
+                    ]);*/
                 } else if($value['type'] == 'soccer_expert') {
                     $data = json_encode($value['soccer_expert']);
                     $orderItem->data = $data;
                     $orderItem->hash = $value['soccer_expert']['hash'];
-                    $order->soccerExperts()->attach($value['soccer_expert']['soccer_expert']['id'], [
+                    $orderItem->soccer_expert_id = $value['soccer_expert']['soccer_expert']['id'];
+                    /*$order->soccerExperts()->attach($value['soccer_expert']['soccer_expert']['id'], [
                         'data' => $data
-                    ]);
+                    ]);*/
                 } else if($value['type'] == 'scratch_card') {
                     $data = json_encode($value['scratch_card']);
                     $orderItem->data = $data;
                     $orderItem->hash = $value['scratch_card']['hash'];
-                    $order->scratchCards()->attach($value['scratch_card']['scratch_card']['id'], [
+                    $orderItem->scratch_card_id = $value['scratch_card']['scratch_card']['id'];
+                    /*$order->scratchCards()->attach($value['scratch_card']['scratch_card']['id'], [
                         'data' => $data
-                    ]);
+                    ]);*/
                 }
 
                 $orderItem->save();

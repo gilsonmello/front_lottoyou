@@ -29,87 +29,72 @@
         
         <br>
 
-		<table class="table table-striped text-center table-ranking">
-		  	<thead>
-			    <tr>
-			    	<th @click="toggle('id')">
-						<span>
-	    					Posição
-	    				</span>			    		
-						<span v-if="'id' === query.column">
-			    			<span v-if="query.direction === 'desc'">
-			    				&darr;
-				    		</span>
-				    		<span v-else>
-			    				&uarr;
-				    		</span>
+        <div class="table-ranking">
+        	<div class="row table-ranking-head">
+	        	<div class="col-lg-2" @click="toggle('id')">
+	        		<span>
+						Posição
+					</span>			    		
+					<span v-if="'id' === query.column">
+		    			<span v-if="query.direction === 'desc'">
+		    				&darr;
 			    		</span>
-			    	</th>
-			    	<th>
-			    		<span>
-	    					Foto
-	    				</span>
-	    				<span v-if="'photo' === query.column">
-			    			<span v-if="query.direction === 'desc'">
-			    				&darr;
-				    		</span>
-				    		<span v-else>
-			    				&uarr;
-				    		</span>
+			    		<span v-else>
+		    				&uarr;
 			    		</span>
-			    	</th>
-			      	<th @click="toggle('owner_id')">
-			      		<span>
-			      			Usuário
-			      		</span>
-			      		<span v-if="'owner_id' === query.column">
-			    			<span v-if="query.direction === 'desc'">
-			    				&darr;
-				    		</span>
-				    		<span v-else>
-			    				&uarr;
-				    		</span>
+		    		</span>
+	        	</div>
+	        	<div class="col-lg-2">
+	        		<span>
+						Foto
+					</span>
+					<span v-if="'photo' === query.column">
+		    			<span v-if="query.direction === 'desc'">
+		    				&darr;
 			    		</span>
-			      	</th>
-			      	<th @click="toggle('pontuacao')">
-			      		<span>
-			      			Pontos
-			      		</span>
-			      		<span v-if="'pontuacao' === query.column">
-			    			<span v-if="query.direction === 'desc'">
-			    				&darr;
-				    		</span>
-				    		<span v-else>
-			    				&uarr;
-				    		</span>
+			    		<span v-else>
+		    				&uarr;
 			    		</span>
-			      	</th>
-			    </tr>
-		  	</thead>
-		  	<tbody v-if="loading.pagination">
-		  		<tr>
-		  			<td colspan="4">
-		  				<vc-load></vc-load>
-		  			</td>
-		  		</tr>
-		  	</tbody>
-		  	<tbody v-else>
-		    	<tr v-for="(bet, index) in bets">
-		    		<td style="width: 20%;">
-			      		{{ index + 1 }}
-			      	</td>
-			      	<td style="width: 10%;">
-			      		<img :src="bet.owner.photo" style="width: 100%; height: 50px;">
-			      	</td>
-			      	<td>
-			      		{{ bet.owner.nickname }}
-			      	</td>
-			      	<td>
-			      		{{ bet.pontuacao }}
-			      	</td>
-		   	 	</tr>
-		  	</tbody>
-		</table>
+		    		</span>
+	        	</div>
+	        	<div class="col-lg-2" @click="toggle('owner_id')">
+	        		<span>
+		      			Usuário
+		      		</span>
+		      		<span v-if="'owner_id' === query.column">
+		    			<span v-if="query.direction === 'desc'">
+		    				&darr;
+			    		</span>
+			    		<span v-else>
+		    				&uarr;
+			    		</span>
+		    		</span>
+	        	</div>
+	        	<div class="col-lg-2" @click="toggle('pontuacao')">
+	        		<span>
+		      			Pontos
+		      		</span>
+		      		<span v-if="'pontuacao' === query.column">
+		    			<span v-if="query.direction === 'desc'">
+		    				&darr;
+			    		</span>
+			    		<span v-else>
+		    				&uarr;
+			    		</span>
+		    		</span>
+	        	</div>
+	        </div>
+	        <div class="row table-ranking-body" v-if="loading.pagination">
+	        	<div class="col-lg-12">
+	        		<vc-load></vc-load>
+	        	</div>
+	        </div>
+	        <vc-bet v-for="(bet, index) in bets" :key="index" :index="index" :bet="bet" v-else>
+	        	
+	        </vc-bet>
+        </div>
+
+        
 
 		<div class="row no-margin">
             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
@@ -131,6 +116,7 @@
 	import {routes} from '../../api_routes'
 	import VcLoad from '../Load'
 	import VcPagination from '../VcPagination'
+	import VcBet from './VcBet'
 	export default {
 		beforeRouteUpdate: function(to, from, next) {
 			next();
@@ -148,6 +134,7 @@
 				category: {},
 				group: {},
 				model: {},
+				bet: {},
 				query: {
 					page: 1,
 					column: 'pontuacao',
@@ -165,7 +152,8 @@
 		},
 		components: {
 			VcLoad,
-			VcPagination
+			VcPagination,
+			VcBet
 		},
 		methods: {
 			filter(event) {				

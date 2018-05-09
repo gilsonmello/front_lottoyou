@@ -11,6 +11,16 @@ return [
       | found in a intuitive way.
       |
      */
+    'page' => 'Página',
+    'pages' => 'Páginas',
+    'of' => 'De',
+    'lines' => 'Linhas',
+    'line' => 'Linha',
+    'column' => 'Coluna',
+    'columns' => 'Colunas',
+    'total' => 'Total',
+    'sub_total' => 'Sub Total',
+    'number_items' => 'Número de Itens',
     'nickname' => 'Apelido',
     'rank' => 'Rank',
     'next_lottery' => 'Próximo Sorteio',

@@ -54,8 +54,7 @@ class SoccerExpertRound extends Model
 
     public function bets() 
     {
-        return $this->hasMany(SoccerExpertBet::class, 'soc_rodada_id')
-            ->where('active', '=', 1);
+        return $this->hasMany(SoccerExpertBet::class, 'soc_rodada_id');
     }
 
     public function games() 

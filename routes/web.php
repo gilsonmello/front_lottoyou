@@ -30,4 +30,5 @@ Route::group(['namespace' => 'Frontend'], function() {
 	require __DIR__.'/Frontend/SoccerTicket.php';
 	require __DIR__.'/Frontend/SoccerRound.php';
 	require __DIR__.'/Frontend/SoccerGroup.php';
+	require __DIR__.'/Frontend/Order.php';
 });
