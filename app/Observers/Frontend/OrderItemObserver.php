@@ -97,16 +97,19 @@ class OrderItemObserver
                     $ticket_group->active = 1;
                     $ticket_group->status = 1;
                     $ticket_group->identificacao = $identificacao + 1;
+                    $ticket_group->arrecadado = 0.00;
                     $ticket_group->save();
                     //$ticket_group->users()->attach($user_id, ['points' => 0]);
                 } else {
                     //Se não, vou adicionando usuários ao grupo
+                    $ticket_group->arrecadado += $ticket->valor;
                     $ticket_group->count += 1;
                     $ticket_group->save();
                     //$ticket_group->users()->attach($user_id, ['points' => 0]);
                 }              
             } else {
                 //Se a rodada for ilimitada, vou adicionando usuários ao grupo
+                $ticket_group->arrecadado += $ticket->valor;
                 $ticket_group->count += 1;
                 $ticket_group->save();
                 //$ticket_group->users()->attach($user_id, ['points' => 0]);

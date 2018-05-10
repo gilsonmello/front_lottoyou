@@ -59,7 +59,7 @@ class User extends Authenticatable
     }
 
     public function balance() {
-        return $this->hasOne(Balance::class, 'user_id');
+        return $this->hasOne(Balance::class, 'owner_id');
     }
 
     /**
