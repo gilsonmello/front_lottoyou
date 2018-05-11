@@ -1,6 +1,6 @@
 <template>	
-	<section class="ticket">
-		<div class="row ticket-columns collapsed" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(255,255,255,.05);': ''">
+	<section class="col-lg-12 ticket">
+		<div class="row ticket-columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(255,255,255,.05);': ''">
 	    	<div class="col-lg-2">
 	    		{{ ticket.nome }}
 	    	</div>
@@ -14,36 +14,24 @@
 
     	<div :class="'collapse '+ticket.id">
 			<load-component v-if="loading.game"></load-component>	  	
-	    	<div class="tickets" v-else>
-				<header class="tickets-header"> 
-		            <span class="text-center tickets-limit" v-if="ticket.limite == null">
-						Ilimitado
-		            	<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Quantidade de Jogadores"></i>
-		            </span>
-
-		            <span class="text-center tickets-limit" v-else>				
-						{{ ticket.group.count }} / {{ ticket.limite }}
-		            	<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Quantidade de Jogadores"></i>
-		            </span> 
-		            <span class="ticket-categories">
-		            	{{ category.nome }}
-		            </span>
-				</header>
-				<div class="tickets-content" :style="backgroundTicket(ticket.imagem_capa)">
-					<div class="row">
-						<div class="col-lg-12 col-sm-6 col-md-6 col-12" v-for="(game, index) in games">
-							<game-component :game="game" :ticket="ticket" :index="index"></game-component>
+	    	<div class="row no-margin" v-else>
+        		<div class="col-lg-6 col-sm-6 col-md-6 col-12">
+        			<div class="tickets">
+						<!-- <header class="tickets-header">
+						</header> -->
+						<div class="tickets-content" :style="backgroundTicket(ticket.imagem_capa)">
+							<div class="row no-margin">
+								<div class="col-lg-12 col-sm-6 col-md-6 col-12" v-for="(game, index) in games">
+									<game-component :game="game" :ticket="ticket" :index="index"></game-component>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				<footer class="tickets-footer">
-					<div class="row">
-						<div class="col-lg-12">
-							<em class="text-caption">Termina em: {{ ticket.data_termino }}</em>
-						</div>
-					</div>
-				</footer>
-			</div>			  	
+						<!-- <footer class="tickets-footer">
+							
+						</footer> -->
+					</div> 
+        		</div>
+        	</div> 		  	
 		</div>
     
     </section>
@@ -165,11 +153,6 @@
 
 <style scoped>
 
-	.collapse {
-		padding-top: 10px;
-		padding-bottom: 10px;
-	}
-
 	.ticket-columns {
 		padding: 10px 0 10px 0;
 	}
@@ -184,13 +167,19 @@
 		content: "\f067";
 	}	
 
+	[data-toggle="collapse"] {
+		align-items: center;
+	}
+
 	.ticket {
 		background: #212529;
 	    cursor: pointer;
 	    padding: 0;
+	    color: #fff;
 	}
 
-	.row {
-		margin: 0;
+	.tickets {
+		padding: 0;
+		margin-bottom: 0;
 	}
 </style>

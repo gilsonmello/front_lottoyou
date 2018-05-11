@@ -5,8 +5,8 @@ namespace App\Model\Frontend;
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Model\Frontend\SoccerExpertRound;
-use App\Model\Frontend\SoccerExpertGame;
 use App\Model\Frontend\SoccerExpertRoundGroup;
+use App\Model\Frontend\SoccerExpertBetGame;
 use App\User;
 
 class SoccerExpertBet extends Model
@@ -38,7 +38,7 @@ class SoccerExpertBet extends Model
     ];
 
     protected $appends = [
-        'house_club', 'out_club'
+        
     ];
 
     /**
@@ -50,12 +50,19 @@ class SoccerExpertBet extends Model
         
     ];
 
+    /**
+     * The number of models to return for pagination.
+     *
+     * @var int
+     */
+    protected $perPage = 15;
+
     public function round() {
     	return $this->belongsTo(SoccerExpertRound::class, 'soc_rodada_id');
     }
 
-    public function game() {
-        return $this->belongsTo(SoccerExpertGame::class, 'soc_jogo_id');
+    public function games() {
+        return $this->hasMany(SoccerExpertBetGame::class, 'soc_aposta_id');
     }
 
     public function user() {
@@ -70,18 +77,8 @@ class SoccerExpertBet extends Model
         return $this->belongsTo(User::class, 'owner_id');
     }
 
-    public function getHouseClubAttribute()
-    {
-        return Club::find($this->gel_clube_casa_id);
-    }
-
     public function getCreatedAttribute($date) 
     {
         return format($date, 'd/m/Y H:i');
-    }
-
-    public function getOutClubAttribute()
-    {
-        return Club::find($this->gel_clube_fora_id);
     }
 }

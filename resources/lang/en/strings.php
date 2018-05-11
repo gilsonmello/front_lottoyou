@@ -12,9 +12,16 @@ return [
       |
      */
     'page' => 'Página',
+    'points' => 'Pontos',
+    'point' => 'Ponto',
+    'positions' => 'Posicões',
+    'position' => 'Posição',
+    'photo' => 'Foto',
+    'photos' => 'Fotos',
     'pages' => 'Páginas',
     'of' => 'De',
     'lines' => 'Linhas',
+    'ranking' => 'Ranking',
     'line' => 'Linha',
     'column' => 'Coluna',
     'columns' => 'Colunas',

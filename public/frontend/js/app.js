@@ -61838,7 +61838,6 @@ exports.push([module.i, "\n.fa-spin[data-v-26cf5ae2] {\n\tfont-size: 100px;\n\tc
 //
 //
 //
-//
 
 /***/ }),
 /* 116 */
@@ -61862,11 +61861,7 @@ var staticRenderFns = [
           {
             staticClass: "col-lg-12 col-md-12 col-xs-12 col-sm-12 text-center"
           },
-          [
-            _c("br"),
-            _vm._v(" "),
-            _c("i", { staticClass: "fa fa-refresh fa-spin" })
-          ]
+          [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
         )
       ])
     ])
@@ -78537,7 +78532,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.group[data-v-6243b482] {\n\tcursor: initial;\n    position: relative;\n    background: #ffffff;\n    color: #313534;\n    border-radius: 3px;\n    border-color: rgba(83, 88, 88, 0.15);\n}\n.img-fluid[data-v-6243b482] {\n\tmin-height: 100%;\n}\n\n", ""]);
+exports.push([module.i, "\n.group[data-v-6243b482] {\n\tcursor: initial;\n    position: relative;\n    background: #ffffff;\n    color: #313534;\n    cursor: pointer;\n    border-radius: 3px;\n    border-color: rgba(83, 88, 88, 0.15);\n}\n.img-fluid[data-v-6243b482] {\n\tmin-height: 100%;\n}\n\n", ""]);
 
 // exports
 
@@ -78573,13 +78568,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	props: ['index', 'group', 'category'],
 	methods: {
 		newTab: function newTab() {
-			var url = this.$router.resolve({
+			/*let url = this.$router.resolve({
+   	name: 'soccer_groups.ranking',
+   	params: {
+   		id: this.group.id
+   	}
+   });*/
+			this.$router.push({
 				name: 'soccer_groups.ranking',
 				params: {
 					id: this.group.id
 				}
 			});
-			window.open(url.href, '_blank');
+			//window.open(url.href, '_blank');
 		},
 		init: function init() {}
 	},
@@ -79114,7 +79115,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.ticket[data-v-399cb720] {\n    color: #fff;\t\n    background-color: #212529;\n    border-color: #32383e;\n\tborder-bottom: 2px solid #dee2e6;\n\tpadding: 10px 0 10px 0;\n}\n", ""]);
+exports.push([module.i, "\n.table-head[data-v-399cb720] {\n        color: #fff;\n        background-color: #212529;\n        border-color: #32383e;\n        border-bottom: 2px solid #dee2e6;\n        padding: 10px 0 10px 0;\n        cursor: pointer;\n}\n.table-head .table-column[data-v-399cb720]:hover{\n        color: #928f8f;\n}\n", ""]);
 
 // exports
 
@@ -79132,6 +79133,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__VcPagination___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__VcPagination__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Result_TicketComponent__ = __webpack_require__(304);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Result_TicketComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Result_TicketComponent__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -79423,7 +79434,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.collapse[data-v-0d01902f] {\n\tpadding-top: 10px;\n\tpadding-bottom: 10px;\n}\n.ticket-columns[data-v-0d01902f] {\n\tpadding: 10px 0 10px 0;\n}\n.ticket .ticket-columns[data-v-0d01902f]:after {\n\tfont-family: 'FontAwesome';\n\tcontent: \"\\F068\";\n\tfloat: right;\n}\n.ticket .collapsed[data-v-0d01902f]:after {\n\tcontent: \"\\F067\";\n}\n.ticket[data-v-0d01902f] {\n\tbackground: #212529;\n    cursor: pointer;\n    padding: 0;\n}\n.row[data-v-0d01902f] {\n\tmargin: 0;\n}\n", ""]);
+exports.push([module.i, "\n.ticket-columns[data-v-0d01902f] {\n\tpadding: 10px 0 10px 0;\n}\n.ticket .ticket-columns[data-v-0d01902f]:after {\n\tfont-family: 'FontAwesome';\n\tcontent: \"\\F068\";\n\tfloat: right;\n}\n.ticket .collapsed[data-v-0d01902f]:after {\n\tcontent: \"\\F067\";\n}\n[data-toggle=\"collapse\"][data-v-0d01902f] {\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.ticket[data-v-0d01902f] {\n\tbackground: #212529;\n    cursor: pointer;\n    padding: 0;\n    color: #fff;\n}\n.tickets[data-v-0d01902f] {\n\tpadding: 0;\n\tmargin-bottom: 0;\n}\n", ""]);
 
 // exports
 
@@ -79439,18 +79450,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Load__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__GameComponent__ = __webpack_require__(308);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__GameComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__GameComponent__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -79890,11 +79889,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "ticket" }, [
+  return _c("section", { staticClass: "col-lg-12 ticket" }, [
     _c(
       "div",
       {
-        staticClass: "row ticket-columns collapsed",
+        staticClass: "row ticket-columns collapsed no-margin",
         style:
           _vm.index % 2 == 0 ? "background-color: rgba(255,255,255,.05);" : "",
         attrs: { "data-toggle": "collapse", "data-target": "." + _vm.ticket.id }
@@ -79922,84 +79921,40 @@ var render = function() {
       [
         _vm.loading.game
           ? _c("load-component")
-          : _c("div", { staticClass: "tickets" }, [
-              _c("header", { staticClass: "tickets-header" }, [
-                _vm.ticket.limite == null
-                  ? _c("span", { staticClass: "text-center tickets-limit" }, [
-                      _vm._v("\n\t\t\t\t\t\tIlimitado\n\t\t            \t"),
-                      _c("i", {
-                        staticClass: "fa fa-question-circle",
-                        attrs: {
-                          "data-toggle": "tooltip",
-                          "data-placement": "top",
-                          title: "Quantidade de Jogadores"
-                        }
-                      })
-                    ])
-                  : _c("span", { staticClass: "text-center tickets-limit" }, [
-                      _vm._v(
-                        "\t\t\t\t\n\t\t\t\t\t\t" +
-                          _vm._s(_vm.ticket.group.count) +
-                          " / " +
-                          _vm._s(_vm.ticket.limite) +
-                          "\n\t\t            \t"
-                      ),
-                      _c("i", {
-                        staticClass: "fa fa-question-circle",
-                        attrs: {
-                          "data-toggle": "tooltip",
-                          "data-placement": "top",
-                          title: "Quantidade de Jogadores"
-                        }
-                      })
-                    ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "ticket-categories" }, [
-                  _vm._v(
-                    "\n\t\t            \t" +
-                      _vm._s(_vm.category.nome) +
-                      "\n\t\t            "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "tickets-content",
-                  style: _vm.backgroundTicket(_vm.ticket.imagem_capa)
-                },
-                [
+          : _c("div", { staticClass: "row no-margin" }, [
+              _c("div", { staticClass: "col-lg-6 col-sm-6 col-md-6 col-12" }, [
+                _c("div", { staticClass: "tickets" }, [
                   _c(
                     "div",
-                    { staticClass: "row" },
-                    _vm._l(_vm.games, function(game, index) {
-                      return _c(
+                    {
+                      staticClass: "tickets-content",
+                      style: _vm.backgroundTicket(_vm.ticket.imagem_capa)
+                    },
+                    [
+                      _c(
                         "div",
-                        { staticClass: "col-lg-12 col-sm-6 col-md-6 col-12" },
-                        [
-                          _c("game-component", {
-                            attrs: {
-                              game: game,
-                              ticket: _vm.ticket,
-                              index: index
-                            }
-                          })
-                        ],
-                        1
+                        { staticClass: "row no-margin" },
+                        _vm._l(_vm.games, function(game, index) {
+                          return _c(
+                            "div",
+                            {
+                              staticClass: "col-lg-12 col-sm-6 col-md-6 col-12"
+                            },
+                            [
+                              _c("game-component", {
+                                attrs: {
+                                  game: game,
+                                  ticket: _vm.ticket,
+                                  index: index
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        })
                       )
-                    })
+                    ]
                   )
-                ]
-              ),
-              _vm._v(" "),
-              _c("footer", { staticClass: "tickets-footer" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-lg-12" }, [
-                    _c("em", { staticClass: "text-caption" }, [
-                      _vm._v("Termina em: " + _vm._s(_vm.ticket.data_termino))
-                    ])
-                  ])
                 ])
               ])
             ])
@@ -80028,202 +79983,192 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.loading.component == true
     ? _c("load-component")
-    : _c(
-        "div",
-        { staticClass: "container" },
-        [
-          _c(
-            "div",
-            { staticClass: "sub-navigation" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "show",
-                  attrs: {
-                    to: {
-                      name: "soccer_expert.show",
-                      params: { id: _vm.category.id }
-                    },
-                    id: "play-component"
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.trans("strings.play_on_the")) +
-                      " " +
-                      _vm._s(_vm.category.nome) +
-                      " \n            "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "show active",
-                  attrs: {
-                    to: {
-                      name: "soccer_expert.results",
-                      params: { id: _vm.category.id }
-                    },
-                    id: "result-component"
-                  }
-                },
-                [_vm._v("\n                Resultado \n           \t")]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "show",
-                  attrs: {
-                    to: {
-                      name: "soccer_expert.ranks",
-                      params: { id: _vm.category.id }
-                    },
-                    id: "result-component"
-                  }
-                },
-                [_vm._v("\n                Rank \n           \t")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  _vm.filter($event)
+    : _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          { staticClass: "sub-navigation" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "show",
+                attrs: {
+                  to: {
+                    name: "soccer_expert.show",
+                    params: { id: _vm.category.id }
+                  },
+                  id: "play-component"
                 }
+              },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.trans("strings.play_on_the")) +
+                    " " +
+                    _vm._s(_vm.category.nome) +
+                    " \n            "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass: "show active",
+                attrs: {
+                  to: {
+                    name: "soccer_expert.results",
+                    params: { id: _vm.category.id }
+                  },
+                  id: "result-component"
+                }
+              },
+              [_vm._v("\n                Resultado \n           \t")]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass: "show",
+                attrs: {
+                  to: {
+                    name: "soccer_expert.ranks",
+                    params: { id: _vm.category.id }
+                  },
+                  id: "result-component"
+                }
+              },
+              [_vm._v("\n                Rank \n           \t")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                _vm.filter($event)
               }
-            },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-lg-4 col-12 col-sm-4 col-md-4" },
-                  [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "nome" } }, [
-                        _vm._v(_vm._s(_vm.trans("strings.name")))
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.query.nome,
-                            expression: "query.nome"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          id: "nome",
-                          "aria-describedby": "nome",
-                          name: "nome",
-                          placeholder: _vm.trans("strings.name")
-                        },
-                        domProps: { value: _vm.query.nome },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.query, "nome", $event.target.value)
-                          }
+            }
+          },
+          [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-lg-4 col-12 col-sm-4 col-md-4" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "nome" } }, [
+                    _vm._v(_vm._s(_vm.trans("strings.name")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.query.nome,
+                        expression: "query.nome"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "nome",
+                      "aria-describedby": "nome",
+                      name: "nome",
+                      placeholder: _vm.trans("strings.name")
+                    },
+                    domProps: { value: _vm.query.nome },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
-                      })
-                    ])
+                        _vm.$set(_vm.query, "nome", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-4 col-12 col-sm-4 col-md-4" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "valor" } }, [
+                    _vm._v(_vm._s(_vm.trans("strings.value")))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.query.valor,
+                        expression: "query.valor"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "valor",
+                      "aria-describedby": "valor",
+                      placeholder: _vm.trans("strings.value")
+                    },
+                    domProps: { value: _vm.query.valor },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.query, "valor", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-lg-12" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-md btn-primary",
+                    attrs: { type: "submit" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.trans("strings.filter")) +
+                        "\n                    "
+                    )
                   ]
                 ),
                 _vm._v(" "),
                 _c(
-                  "div",
-                  { staticClass: "col-lg-4 col-12 col-sm-4 col-md-4" },
-                  [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "valor" } }, [
-                        _vm._v(_vm._s(_vm.trans("strings.value")))
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.query.valor,
-                            expression: "query.valor"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          id: "valor",
-                          "aria-describedby": "valor",
-                          placeholder: _vm.trans("strings.value")
-                        },
-                        domProps: { value: _vm.query.valor },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.query, "valor", $event.target.value)
-                          }
-                        }
-                      })
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-lg-12" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-md btn-primary",
-                      attrs: { type: "submit" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.trans("strings.filter")) +
-                          "\n                    "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "hide btn btn-md btn-primary",
-                      attrs: { type: "load" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                        }
+                  "button",
+                  {
+                    staticClass: "hide btn btn-md btn-primary",
+                    attrs: { type: "load" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
                       }
-                    },
-                    [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
-                  )
-                ])
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
+                )
               ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "table text-center" }, [
           _c(
             "div",
-            { staticClass: "row no-margin ticket" },
+            { staticClass: "row no-margin table-head" },
             _vm._l(_vm.columns, function(column, index) {
               return _c(
                 "div",
@@ -80239,25 +80184,25 @@ var render = function() {
                   column === "nome"
                     ? _c("span", [
                         _vm._v(
-                          "\n\t    \t\t\t" +
+                          "\n\t\t    \t\t\t" +
                             _vm._s(_vm.trans("strings.name")) +
-                            "\n\t    \t\t"
+                            "\n\t\t    \t\t"
                         )
                       ])
                     : column === "valor"
                       ? _c("span", [
                           _vm._v(
-                            "\n\t    \t\t\t" +
+                            "\n\t\t    \t\t\t" +
                               _vm._s(_vm.trans("strings.value")) +
-                              "\n\t    \t\t"
+                              "\n\t\t    \t\t"
                           )
                         ])
                       : column === "data_termino"
                         ? _c("span", [
                             _vm._v(
-                              "\n\t    \t\t\t" +
+                              "\n\t\t    \t\t\t" +
                                 _vm._s(_vm.trans("strings.date_end")) +
-                                "\n\t    \t\t"
+                                "\n\t\t    \t\t"
                             )
                           ])
                         : _vm._e(),
@@ -80266,10 +80211,10 @@ var render = function() {
                     ? _c("span", [
                         _vm.query.direction === "desc"
                           ? _c("span", [
-                              _vm._v("\n\t    \t\t\t\t↓\n\t\t    \t\t")
+                              _vm._v("\n\t\t    \t\t\t\t↓\n\t\t\t    \t\t")
                             ])
                           : _c("span", [
-                              _vm._v("\n\t    \t\t\t\t↑\n\t\t    \t\t")
+                              _vm._v("\n\t\t    \t\t\t\t↑\n\t\t\t    \t\t")
                             ])
                       ])
                     : _vm._e()
@@ -80278,58 +80223,68 @@ var render = function() {
             })
           ),
           _vm._v(" "),
-          _vm.loading.pagination == true
-            ? _c("load-component")
-            : _vm._l(_vm.tickets, function(ticket, index) {
-                return _c("ticket-component", {
-                  key: index,
-                  attrs: {
-                    index: index,
-                    ticket: ticket,
-                    category: _vm.category
-                  }
-                })
-              }),
-          _vm._v(" "),
-          _c("div", { staticClass: "row no-margin" }, [
-            _c(
-              "div",
-              { staticClass: "col-lg-12 col-md-12 col-xs-12 col-sm-12" },
-              [
-                _c("div", { staticClass: "pull-left" }, [
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("label", [
-                    _vm._v(
-                      _vm._s(_vm.model.from) +
-                        " - " +
-                        _vm._s(_vm.model.to) +
-                        " de " +
-                        _vm._s(_vm.model.total) +
-                        " de linhas"
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
+          _vm.loading.pagination
+            ? _c("div", { staticClass: "row no-margin table-tbody" }, [
                 _c(
                   "div",
-                  { staticClass: "pull-right" },
-                  [
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("vc-pagination", {
-                      attrs: { source: _vm.model },
-                      on: { paginate: _vm.paginate }
-                    })
-                  ],
+                  { staticClass: "col-lg-12" },
+                  [_c("load-component")],
                   1
                 )
-              ]
-            )
-          ])
-        ],
-        2
-      )
+              ])
+            : _c(
+                "div",
+                { staticClass: "row no-margin table-tbody" },
+                _vm._l(_vm.tickets, function(ticket, index) {
+                  return _c("ticket-component", {
+                    key: index,
+                    attrs: {
+                      index: index,
+                      ticket: ticket,
+                      category: _vm.category
+                    }
+                  })
+                })
+              )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row no-margin" }, [
+          _c(
+            "div",
+            { staticClass: "col-lg-12 col-md-12 col-xs-12 col-sm-12" },
+            [
+              _c("div", { staticClass: "pull-left" }, [
+                _c("br"),
+                _vm._v(" "),
+                _c("label", [
+                  _vm._v(
+                    _vm._s(_vm.model.from) +
+                      " - " +
+                      _vm._s(_vm.model.to) +
+                      " de " +
+                      _vm._s(_vm.model.total) +
+                      " de linhas"
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "pull-right" },
+                [
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("vc-pagination", {
+                    attrs: { source: _vm.model },
+                    on: { paginate: _vm.paginate }
+                  })
+                ],
+                1
+              )
+            ]
+          )
+        ])
+      ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -80427,7 +80382,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.table-ranking thead th[data-v-582e5db8] {\n\tcursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.table-head[data-v-582e5db8] {\n        color: #fff;\n        background-color: #212529;\n        border-color: #32383e;\n        border-bottom: 2px solid #dee2e6;\n        padding: 10px 0 10px 0;\n        cursor: pointer;\n}\n.table-head .table-column[data-v-582e5db8]:hover{\n        color: #928f8f;\n}\n", ""]);
 
 // exports
 
@@ -80443,8 +80398,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Load__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__VcPagination__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__VcPagination___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__VcPagination__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__VcBet__ = __webpack_require__(319);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__VcBet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__VcBet__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__VcTicket__ = __webpack_require__(506);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__VcTicket___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__VcTicket__);
+//
+//
+//
+//
 //
 //
 //
@@ -80576,7 +80535,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				pagination: false
 			},
 			id: null,
-			bets: [],
+			tickets: [],
 			total: 0,
 			category: {},
 			group: {},
@@ -80601,7 +80560,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	components: {
 		VcLoad: __WEBPACK_IMPORTED_MODULE_1__Load___default.a,
 		VcPagination: __WEBPACK_IMPORTED_MODULE_2__VcPagination___default.a,
-		VcBet: __WEBPACK_IMPORTED_MODULE_3__VcBet___default.a
+		VcTicket: __WEBPACK_IMPORTED_MODULE_3__VcTicket___default.a
 	},
 	methods: {
 		filter: function filter(event) {
@@ -80673,7 +80632,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				if (response.status === 200) {
 					_this2.model = response.data;
 					_this2.total = _this2.model.total;
-					_this2.bets = response.data.data;
+					_this2.tickets = response.data.data;
 					_this2.loading.component = false;
 					_this2.loading.pagination = false;
 
@@ -80689,178 +80648,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 319 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(320)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(322)
-/* template */
-var __vue_template__ = __webpack_require__(328)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-e3f01202"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/frontend/js/components/SoccerGroup/VcBet.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e3f01202", Component.options)
-  } else {
-    hotAPI.reload("data-v-e3f01202", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 320 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(321);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("a7043ffe", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e3f01202\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcBet.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e3f01202\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcBet.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 321 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.table-ranking-body[data-v-e3f01202] {\n\tpadding-bottom: 10px;\n\tpadding-top: 10px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 322 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VcGame__ = __webpack_require__(323);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VcGame___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__VcGame__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['index', 'bet'],
-	data: function data() {
-		return {
-			loading: {
-				game: false
-			}
-		};
-	},
-	mounted: function mounted() {
-		var _this = this;
-
-		var interval = setInterval(function () {
-			if ($(_this.$el).find('.' + _this.bet.owner_id).length > 0) {
-				clearInterval(interval);
-				$(_this.$el).find('.' + _this.bet.owner_id).on('show.bs.collapse', function (event) {
-					_this.loading.game = true;
-					var gameRequest = axios.create();
-					gameRequest.interceptors.request.use(function (config) {
-						return config;
-					});
-
-					var url = routes.soccer_rounds.groups.replace('{round_id}', _this.ticket.id);
-
-					gameRequest.get(url, {}, {}).then(function (response) {
-						if (response.status === 200) {
-							_this.groups = response.data;
-							_this.loading.game = false;
-						}
-					}).catch(function (error) {
-						_this.loading.game = false;
-					});
-				});
-
-				$(_this.$el).find('.' + _this.bet.owner_id).on('hide.bs.collapse', function (event) {
-					_this.groups = [];
-				});
-			}
-		});
-	},
-
-	components: {
-		VcGame: __WEBPACK_IMPORTED_MODULE_0__VcGame___default.a
-	}
-});
-
-/***/ }),
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
 /* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -80946,7 +80737,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\ninput[data-v-5db847f4] {\n\ttext-align: center;\n}\nspan[data-v-5db847f4] {\n\tline-height: 1;\n}\n.info-date[data-v-5db847f4] {\n\tdisplay: block;\n}\n.info-local[data-v-5db847f4] {\n\tdisplay: block;\n\tfont-size: 16px\n}\n.row[data-v-5db847f4] {\n\tcolor: white;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.games[data-v-5db847f4]{\n\tmargin-bottom: 5px;\n}\n.container-club[data-v-5db847f4] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex; \n\t-webkit-box-align: center; \n\t    -ms-flex-align: center; \n\t        align-items: center;\n}\n.result[data-v-5db847f4] {\n\tfont-weight: bold;\n\tfont-size: 22px;\n}\n.x[data-v-5db847f4] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n", ""]);
 
 // exports
 
@@ -80963,9 +80754,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	mounted: function mounted() {}
+  props: ['game', 'index', 'ticket'],
+  created: function created() {},
+  mounted: function mounted() {},
+  activated: function activated() {},
+  methods: {},
+  data: function data() {
+    return {};
+  },
+  computed: {}
 });
 
 /***/ }),
@@ -80976,7 +80818,102 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section")
+  return _c("div", { staticClass: "row vcenter text-center games" }, [
+    _c(
+      "div",
+      {
+        staticClass: "col-2 col-md-5 col-lg-5",
+        staticStyle: { "padding-left": "0", "padding-right": "2px" }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "container-club",
+            staticStyle: { "justify-content": "flex-end" }
+          },
+          [
+            _c("span", { staticStyle: { "line-height": "1" } }, [
+              _vm._v(_vm._s(_vm.game.game.house_club.nome))
+            ]),
+            _vm._v(" "),
+            _vm.game.game.house_club.escudo != undefined
+              ? _c("img", {
+                  staticStyle: {
+                    width: "30px",
+                    height: "30px",
+                    "margin-left": "5px"
+                  },
+                  attrs: {
+                    title: _vm.game.game.house_club.nome,
+                    src: _vm.game.game.house_club.escudo
+                  }
+                })
+              : _vm._e()
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "col-2 col-md-2 col-sm-2 col-lg-2 no-padding",
+        staticStyle: { "text-align": "center" }
+      },
+      [
+        _c("span", { staticClass: "result" }, [
+          _vm._v(
+            "\n\t\t\t\t" + _vm._s(_vm.game.resultado_clube_casa) + "\n\t\t\t"
+          )
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "x" }, [_vm._v("X")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "result" }, [
+          _vm._v(
+            "\n\t\t\t\t" + _vm._s(_vm.game.resultado_clube_fora) + "\n\t\t\t"
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "col-2 col-md-5 col-lg-5",
+        staticStyle: { "padding-right": "0", "padding-left": "2px" }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "container-club",
+            staticStyle: { "justify-content": "flex-start" }
+          },
+          [
+            _vm.game.game.out_club.escudo != undefined
+              ? _c("img", {
+                  staticStyle: {
+                    width: "30px",
+                    height: "30px",
+                    "margin-right": "5px"
+                  },
+                  attrs: {
+                    title: _vm.game.game.out_club.nome,
+                    src: _vm.game.game.out_club.escudo
+                  }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _c("span", { staticStyle: { "line-height": "1" } }, [
+              _vm._v(_vm._s(_vm.game.game.out_club.nome))
+            ])
+          ]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -80989,70 +80926,7 @@ if (false) {
 }
 
 /***/ }),
-/* 328 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "table-ranking-body" }, [
-    _c(
-      "div",
-      {
-        staticClass: "row collapsed",
-        attrs: {
-          "data-toggle": "collapse",
-          "data-target": "." + _vm.bet.owner_id
-        }
-      },
-      [
-        _c("div", { staticClass: "col-lg-2" }, [
-          _vm._v("\n\t      \t\t" + _vm._s(_vm.index + 1) + "\n\t      \t")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-2" }, [
-          _c("img", {
-            staticStyle: { width: "100%", height: "50px" },
-            attrs: { src: _vm.bet.owner.photo }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-2" }, [
-          _vm._v(
-            "\n\t      \t\t" + _vm._s(_vm.bet.owner.nickname) + "\n\t      \t"
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-2" }, [
-          _vm._v("\n\t      \t\t" + _vm._s(_vm.bet.pontuacao) + "\n\t      \t")
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { class: "collapse " + _vm.bet.owner_id },
-      [
-        _vm.loading.game ? _c("load-component") : _vm._e(),
-        _vm._v(" "),
-        _c("vc-game")
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e3f01202", module.exports)
-  }
-}
-
-/***/ }),
+/* 328 */,
 /* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -81066,7 +80940,7 @@ var render = function() {
         _c("h1", { staticClass: "page-header" }, [
           _vm._v(
             "\n\t\t\t" +
-              _vm._s(_vm.trans("strings.rank")) +
+              _vm._s(_vm.trans("strings.ranking")) +
               " - Grupo " +
               _vm._s(_vm.group.identificacao) +
               "\n\t\t"
@@ -81160,42 +81034,28 @@ var render = function() {
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "table-ranking" },
-          [
-            _c("div", { staticClass: "row table-ranking-head" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "col-lg-2",
-                  on: {
-                    click: function($event) {
-                      _vm.toggle("id")
-                    }
+        _c("div", { staticClass: "table text-center" }, [
+          _c("div", { staticClass: "row no-margin table-head" }, [
+            _c(
+              "div",
+              {
+                staticClass: "col-lg-2 table-column",
+                on: {
+                  click: function($event) {
+                    _vm.toggle("ordem")
                   }
-                },
-                [
-                  _c("span", [_vm._v("\n\t\t\t\t\t\tPosição\n\t\t\t\t\t")]),
-                  _vm._v(" "),
-                  "id" === _vm.query.column
-                    ? _c("span", [
-                        _vm.query.direction === "desc"
-                          ? _c("span", [
-                              _vm._v("\n\t\t    \t\t\t\t↓\n\t\t\t    \t\t")
-                            ])
-                          : _c("span", [
-                              _vm._v("\n\t\t    \t\t\t\t↑\n\t\t\t    \t\t")
-                            ])
-                      ])
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2" }, [
-                _c("span", [_vm._v("\n\t\t\t\t\t\tFoto\n\t\t\t\t\t")]),
+                }
+              },
+              [
+                _c("span", [
+                  _vm._v(
+                    "\n\t\t\t\t\t\t" +
+                      _vm._s(_vm.trans("strings.positions")) +
+                      "\n\t\t\t\t\t"
+                  )
+                ]),
                 _vm._v(" "),
-                "photo" === _vm.query.column
+                "ordem" === _vm.query.column
                   ? _c("span", [
                       _vm.query.direction === "desc"
                         ? _c("span", [
@@ -81206,80 +81066,113 @@ var render = function() {
                           ])
                     ])
                   : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-2 table-column" }, [
+              _c("span", [
+                _vm._v(
+                  "\n\t\t\t\t\t\t" +
+                    _vm._s(_vm.trans("strings.photo")) +
+                    "\n\t\t\t\t\t"
+                )
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "col-lg-2",
-                  on: {
-                    click: function($event) {
-                      _vm.toggle("owner_id")
-                    }
-                  }
-                },
-                [
-                  _c("span", [
-                    _vm._v("\n\t\t      \t\t\tUsuário\n\t\t      \t\t")
-                  ]),
-                  _vm._v(" "),
-                  "owner_id" === _vm.query.column
-                    ? _c("span", [
-                        _vm.query.direction === "desc"
-                          ? _c("span", [
-                              _vm._v("\n\t\t    \t\t\t\t↓\n\t\t\t    \t\t")
-                            ])
-                          : _c("span", [
-                              _vm._v("\n\t\t    \t\t\t\t↑\n\t\t\t    \t\t")
-                            ])
-                      ])
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "col-lg-2",
-                  on: {
-                    click: function($event) {
-                      _vm.toggle("pontuacao")
-                    }
-                  }
-                },
-                [
-                  _c("span", [
-                    _vm._v("\n\t\t      \t\t\tPontos\n\t\t      \t\t")
-                  ]),
-                  _vm._v(" "),
-                  "pontuacao" === _vm.query.column
-                    ? _c("span", [
-                        _vm.query.direction === "desc"
-                          ? _c("span", [
-                              _vm._v("\n\t\t    \t\t\t\t↓\n\t\t\t    \t\t")
-                            ])
-                          : _c("span", [
-                              _vm._v("\n\t\t    \t\t\t\t↑\n\t\t\t    \t\t")
-                            ])
-                      ])
-                    : _vm._e()
-                ]
-              )
+              "photo" === _vm.query.column
+                ? _c("span", [
+                    _vm.query.direction === "desc"
+                      ? _c("span", [
+                          _vm._v("\n\t\t    \t\t\t\t↓\n\t\t\t    \t\t")
+                        ])
+                      : _c("span", [
+                          _vm._v("\n\t\t    \t\t\t\t↑\n\t\t\t    \t\t")
+                        ])
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
-            _vm.loading.pagination
-              ? _c("div", { staticClass: "row table-ranking-body" }, [
-                  _c("div", { staticClass: "col-lg-12" }, [_c("vc-load")], 1)
-                ])
-              : _vm._l(_vm.bets, function(bet, index) {
-                  return _c("vc-bet", {
+            _c(
+              "div",
+              {
+                staticClass: "col-lg-2 table-column",
+                on: {
+                  click: function($event) {
+                    _vm.toggle("owner_id")
+                  }
+                }
+              },
+              [
+                _c("span", [
+                  _vm._v(
+                    "\n\t\t      \t\t\t" +
+                      _vm._s(_vm.trans("strings.nickname")) +
+                      "\n\t\t      \t\t"
+                  )
+                ]),
+                _vm._v(" "),
+                "owner_id" === _vm.query.column
+                  ? _c("span", [
+                      _vm.query.direction === "desc"
+                        ? _c("span", [
+                            _vm._v("\n\t\t    \t\t\t\t↓\n\t\t\t    \t\t")
+                          ])
+                        : _c("span", [
+                            _vm._v("\n\t\t    \t\t\t\t↑\n\t\t\t    \t\t")
+                          ])
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "col-lg-2 table-column",
+                on: {
+                  click: function($event) {
+                    _vm.toggle("pontuacao")
+                  }
+                }
+              },
+              [
+                _c("span", [
+                  _vm._v(
+                    "\n\t\t      \t\t\t" +
+                      _vm._s(_vm.trans("strings.points")) +
+                      "\n\t\t      \t\t"
+                  )
+                ]),
+                _vm._v(" "),
+                "pontuacao" === _vm.query.column
+                  ? _c("span", [
+                      _vm.query.direction === "desc"
+                        ? _c("span", [
+                            _vm._v("\n\t\t    \t\t\t\t↓\n\t\t\t    \t\t")
+                          ])
+                        : _c("span", [
+                            _vm._v("\n\t\t    \t\t\t\t↑\n\t\t\t    \t\t")
+                          ])
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _vm.loading.pagination
+            ? _c("div", { staticClass: "row no-margin table-tbody" }, [
+                _c("div", { staticClass: "col-lg-12" }, [_c("vc-load")], 1)
+              ])
+            : _c(
+                "div",
+                { staticClass: "row no-margin table-tbody" },
+                _vm._l(_vm.tickets, function(ticket, index) {
+                  return _c("vc-ticket", {
                     key: index,
-                    attrs: { index: index, bet: bet }
+                    attrs: { index: index, ticket: ticket }
                   })
                 })
-          ],
-          2
-        ),
+              )
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "row no-margin" }, [
           _c(
@@ -98506,6 +98399,292 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 499 */,
+/* 500 */,
+/* 501 */,
+/* 502 */,
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(507)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(509)
+/* template */
+var __vue_template__ = __webpack_require__(510)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-66dc578e"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/SoccerGroup/VcTicket.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-66dc578e", Component.options)
+  } else {
+    hotAPI.reload("data-v-66dc578e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 507 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(508);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("bc11d564", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-66dc578e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcTicket.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-66dc578e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcTicket.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 508 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.ticket-columns[data-v-66dc578e] {\n\tpadding: 10px 0 10px 0;\n}\n.ticket .ticket-columns[data-v-66dc578e]:after {\n\tfont-family: 'FontAwesome';\n\tcontent: \"\\F068\";\n\tfloat: right;\n}\n.ticket .collapsed[data-v-66dc578e]:after {\n\tcontent: \"\\F067\";\n}\n[data-toggle=\"collapse\"][data-v-66dc578e] {\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.ticket[data-v-66dc578e] {\n\tbackground: #212529;\n    cursor: pointer;\n    padding: 0;\n    color: #fff;\n}\n.tickets[data-v-66dc578e] {\n\tpadding: 0;\n\tmargin-bottom: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 509 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__VcGame__ = __webpack_require__(323);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__VcGame___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__VcGame__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Load__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['index', 'ticket'],
+	data: function data() {
+		return {
+			loading: {
+				game: false
+			}
+		};
+	},
+
+	methods: {
+		backgroundTicket: function backgroundTicket(background) {
+			return 'background-image: url(' + background + '); background-size: 100% 100%; background-repeat: no-repeat;';
+		}
+	},
+	mounted: function mounted() {
+		var _this = this;
+
+		var interval = setInterval(function () {
+			if ($(_this.$el).find('.' + _this.ticket.id).length > 0) {
+				clearInterval(interval);
+				$(_this.$el).find('.' + _this.ticket.id).on('show.bs.collapse', function (event) {});
+
+				$(_this.$el).find('.' + _this.ticket.owner_id).on('hide.bs.collapse', function (event) {});
+			}
+		});
+	},
+
+	components: {
+		VcGame: __WEBPACK_IMPORTED_MODULE_1__VcGame___default.a,
+		VcLoad: __WEBPACK_IMPORTED_MODULE_2__Load___default.a
+	}
+});
+
+/***/ }),
+/* 510 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "col-lg-12 ticket" }, [
+    _c(
+      "div",
+      {
+        staticClass: "row ticket-columns collapsed no-margin",
+        style:
+          _vm.index % 2 == 0 ? "background-color: rgba(255,255,255,.05);" : "",
+        attrs: { "data-toggle": "collapse", "data-target": "." + _vm.ticket.id }
+      },
+      [
+        _c("div", { staticClass: "col-lg-2" }, [
+          _vm._v(
+            "\n\t      \t\t" +
+              _vm._s(_vm.ticket.ordem != null ? _vm.ticket.ordem : "-") +
+              "\n\t      \t"
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-2" }, [
+          _c("img", {
+            staticStyle: { width: "70px", height: "50px" },
+            attrs: { src: _vm.ticket.owner.photo }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-2" }, [
+          _vm._v(
+            "\n\t      \t\t" +
+              _vm._s(_vm.ticket.owner.nickname) +
+              "\n\t      \t"
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-2" }, [
+          _vm._v(
+            "\n\t      \t\t" + _vm._s(_vm.ticket.pontuacao) + "\n\t      \t"
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { class: "collapse " + _vm.ticket.id }, [
+      _c("div", { staticClass: "row no-margin" }, [
+        _c("div", { staticClass: "col-lg-6 col-sm-6 col-md-6 col-12" }, [
+          _c("div", { staticClass: "tickets" }, [
+            _c(
+              "div",
+              {
+                staticClass: "tickets-content",
+                style: _vm.backgroundTicket(_vm.ticket.round.imagem_capa)
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "row no-margin" },
+                  _vm._l(_vm.ticket.games, function(game, index) {
+                    return _c(
+                      "div",
+                      { staticClass: "col-lg-12 col-sm-6 col-md-6 col-12" },
+                      [
+                        _c("vc-game", {
+                          attrs: {
+                            game: game,
+                            ticket: _vm.ticket,
+                            index: index
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  })
+                )
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-66dc578e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

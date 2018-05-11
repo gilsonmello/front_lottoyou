@@ -45,32 +45,42 @@
         <br>
         
         
-        <div class="row no-margin ticket">
-	    	<div class="col-lg-2" @click="toggle(column)" v-for="(column, index) in columns">
-	    		<span v-if="column === 'nome'">
-	    			{{ trans('strings.name') }}
-	    		</span>
-	    		<span v-else-if="column === 'valor'">
-	    			{{ trans('strings.value') }}
-	    		</span>
-	    		<span v-else-if="column === 'data_termino'">
-	    			{{ trans('strings.date_end') }}
-	    		</span>
-	    		<span v-if="column === query.column">
-	    			<span v-if="query.direction === 'desc'">
-	    				&darr;
+        <div class="table text-center">
+        	<div class="row no-margin table-head">
+		    	<div class="col-lg-2" @click="toggle(column)" v-for="(column, index) in columns">
+		    		<span v-if="column === 'nome'">
+		    			{{ trans('strings.name') }}
 		    		</span>
-		    		<span v-else>
-	    				&uarr;
+		    		<span v-else-if="column === 'valor'">
+		    			{{ trans('strings.value') }}
 		    		</span>
-	    		</span>
-	    	</div>
+		    		<span v-else-if="column === 'data_termino'">
+		    			{{ trans('strings.date_end') }}
+		    		</span>
+		    		<span v-if="column === query.column">
+		    			<span v-if="query.direction === 'desc'">
+		    				&darr;
+			    		</span>
+			    		<span v-else>
+		    				&uarr;
+			    		</span>
+		    		</span>
+		    	</div>
+		    </div>
+
+		    <div class="row no-margin table-tbody" v-if="loading.pagination">
+	        	<div class="col-lg-12">
+	        		<load-component></load-component>
+	        	</div>
+	        </div>
+
+	        <div class="row no-margin table-tbody" v-else>
+	        	<ticket-component v-for="(ticket, index) in tickets" :index="index" :key="index" :ticket="ticket" :category="category"></ticket-component>
+	        </div>
 	    </div>
         
-	    <load-component v-if="loading.pagination == true"></load-component>
-    	<ticket-component v-else v-for="(ticket, index) in tickets" :index="index" :key="index" :ticket="ticket" :category="category"></ticket-component>
-
-    	<div class="row no-margin">
+	    
+		<div class="row no-margin">
             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
                 <div class="pull-left">
                     <br>
@@ -206,11 +216,16 @@
 </script>
 
 <style scoped>
-	.ticket {
-	    color: #fff;	
-	    background-color: #212529;
-	    border-color: #32383e;
-		border-bottom: 2px solid #dee2e6;
-		padding: 10px 0 10px 0;
-	}
+	.table-head {
+        color: #fff;
+        background-color: #212529;
+        border-color: #32383e;
+        border-bottom: 2px solid #dee2e6;
+        padding: 10px 0 10px 0;
+        cursor: pointer;
+    }
+
+    .table-head .table-column:hover{
+        color: #928f8f;
+    }
 </style>

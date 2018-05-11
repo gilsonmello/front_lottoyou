@@ -52,6 +52,13 @@ class SoccerExpertRound extends Model
         
     ];
 
+    /**
+     * The number of models to return for pagination.
+     *
+     * @var int
+     */
+    protected $perPage = 15;
+
     public function bets() 
     {
         return $this->hasMany(SoccerExpertBet::class, 'soc_rodada_id');

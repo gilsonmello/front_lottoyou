@@ -57,25 +57,10 @@ class SoccerExpertBetGame extends Model
 
     public function bet() 
     {
-        return $this->belongsTo(SoccerExpertBet::class, 'soc_jogo_id');
+        return $this->belongsTo(SoccerExpertBet::class, 'soc_aposta_id');
     }
 
     public function owner() {
         return $this->belongsTo(User::class, 'owner_id');
-    }
-
-    public function getHouseClubAttribute()
-    {
-        return Club::find($this->gel_clube_casa_id);
-    }
-
-    public function getCreatedAttribute($date) 
-    {
-        return format($date, 'd/m/Y H:i');
-    }
-
-    public function getOutClubAttribute()
-    {
-        return Club::find($this->gel_clube_fora_id);
     }
 }

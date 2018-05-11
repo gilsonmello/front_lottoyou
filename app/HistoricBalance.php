@@ -4,11 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Balance;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\HistoricBalanceSoccer;
+use App\HistoricBalanceLottery;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 
 class HistoricBalance extends Model
 {
-    use SoftDeletes;
+    //use SoftDeletes;
+
+    const CREATED_AT = 'created';
+
+    const UPDATED_AT = 'modified';
+
+    //const DELETED_AT = 'deleted_at';
     
     /**
      * @var bool
@@ -45,7 +53,23 @@ class HistoricBalance extends Model
         
     ];
 
-    public function balance() {
+    public function balance() 
+    {
         return $this->belongsTo(Balance::class, 'balance_id');
+    }
+
+    public function soccer() 
+    {
+        return $this->hasOne(HistoricBalanceSoccer::class, 'historic_balance_id');
+    }
+
+    public function lottery() 
+    {
+        return $this->hasOne(HistoricBalanceLottery::class, 'historic_balance_id');
+    }
+
+    public function getCreatedAttribute($date) 
+    {
+        return format($date, 'd/m/Y H:i');
     }
 }

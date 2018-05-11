@@ -20,13 +20,19 @@
 		props: ['index', 'group', 'category'],
 		methods: {
 			newTab() {
-				let url = this.$router.resolve({
+				/*let url = this.$router.resolve({
+					name: 'soccer_groups.ranking',
+					params: {
+						id: this.group.id
+					}
+				});*/
+				this.$router.push({
 					name: 'soccer_groups.ranking',
 					params: {
 						id: this.group.id
 					}
 				});
-				window.open(url.href, '_blank');
+				//window.open(url.href, '_blank');
 			},
 			init() {
     			
@@ -53,6 +59,7 @@
 	    position: relative;
 	    background: #ffffff;
 	    color: #313534;
+	    cursor: pointer;
 	    border-radius: 3px;
 	    border-color: rgba(83, 88, 88, 0.15);
 	}

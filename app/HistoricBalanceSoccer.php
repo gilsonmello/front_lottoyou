@@ -3,20 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Database\Eloquent\SoftDeletes;
-use App\User;
 use App\HistoricBalance;
 
-class Balance extends Model
+class HistoricBalanceSoccer extends Model
 {
-    const CREATED_AT = 'created';
-
-    const UPDATED_AT = 'modified';
-
-    //const DELETED_AT = 'deleted_at';
-
-    //use SoftDeletes;
-    
     /**
      * @var bool
      */
@@ -32,7 +22,7 @@ class Balance extends Model
      * 
      * @var array
      */
-    public $table = 'balances';
+    public $table = 'historic_balance_soccers';
 
     /**
      * The attributes that are mass assignable.
@@ -40,7 +30,7 @@ class Balance extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'value'
+        
     ];
 
     /**
@@ -52,16 +42,7 @@ class Balance extends Model
         
     ];
 
-    public function user() {
-        return $this->belongsTo(User::class, 'owner_id');
-    }
-
-    public function historic() {
-        return $this->hasMany(HistoricBalance::class, 'balance_id');
-    }
-
-    public function getCreatedAttribute($date) 
-    {
-        return format($date, 'd/m/Y H:i');
+    public function historicBalance() {
+        return $this->belongsTo(HistoricBalance::class, 'historic_balance_id');
     }
 }

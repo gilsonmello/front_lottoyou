@@ -3,7 +3,7 @@
 	<div class="container" v-else>
 
 		<h1 class="page-header">
-			{{ trans('strings.rank') }} - Grupo {{ group.identificacao }}
+			{{ trans('strings.ranking') }} - Grupo {{ group.identificacao }}
 		</h1>
 
 		<form @submit.prevent="filter" class="form-filter">
@@ -29,13 +29,13 @@
         
         <br>
 
-        <div class="table-ranking">
-        	<div class="row table-ranking-head">
-	        	<div class="col-lg-2" @click="toggle('id')">
+        <div class="table text-center">
+        	<div class="row no-margin table-head">
+        		<div class="col-lg-2 table-column" @click="toggle('ordem')">
 	        		<span>
-						Posição
+						{{ trans('strings.positions') }}
 					</span>			    		
-					<span v-if="'id' === query.column">
+					<span v-if="'ordem' === query.column">
 		    			<span v-if="query.direction === 'desc'">
 		    				&darr;
 			    		</span>
@@ -44,9 +44,9 @@
 			    		</span>
 		    		</span>
 	        	</div>
-	        	<div class="col-lg-2">
+	        	<div class="col-lg-2 table-column">
 	        		<span>
-						Foto
+						{{ trans('strings.photo') }}
 					</span>
 					<span v-if="'photo' === query.column">
 		    			<span v-if="query.direction === 'desc'">
@@ -57,9 +57,9 @@
 			    		</span>
 		    		</span>
 	        	</div>
-	        	<div class="col-lg-2" @click="toggle('owner_id')">
+	        	<div class="col-lg-2 table-column" @click="toggle('owner_id')">
 	        		<span>
-		      			Usuário
+		      			{{ trans('strings.nickname') }}
 		      		</span>
 		      		<span v-if="'owner_id' === query.column">
 		    			<span v-if="query.direction === 'desc'">
@@ -70,9 +70,9 @@
 			    		</span>
 		    		</span>
 	        	</div>
-	        	<div class="col-lg-2" @click="toggle('pontuacao')">
+	        	<div class="col-lg-2 table-column" @click="toggle('pontuacao')">
 	        		<span>
-		      			Pontos
+		      			{{ trans('strings.points') }}
 		      		</span>
 		      		<span v-if="'pontuacao' === query.column">
 		    			<span v-if="query.direction === 'desc'">
@@ -83,15 +83,19 @@
 			    		</span>
 		    		</span>
 	        	</div>
-	        </div>
-	        <div class="row table-ranking-body" v-if="loading.pagination">
+        	</div>
+
+			<div class="row no-margin table-tbody" v-if="loading.pagination">
 	        	<div class="col-lg-12">
 	        		<vc-load></vc-load>
 	        	</div>
 	        </div>
-	        <vc-bet v-for="(bet, index) in bets" :key="index" :index="index" :bet="bet" v-else>
-	        	
-	        </vc-bet>
+
+	        <div class="row no-margin table-tbody" v-else>
+	        	<vc-ticket v-for="(ticket, index) in tickets" :key="index" :index="index" :ticket="ticket">
+			    	
+			    </vc-ticket>
+	        </div>
         </div>
 
         
@@ -116,7 +120,7 @@
 	import {routes} from '../../api_routes'
 	import VcLoad from '../Load'
 	import VcPagination from '../VcPagination'
-	import VcBet from './VcBet'
+	import VcTicket from './VcTicket'
 	export default {
 		beforeRouteUpdate: function(to, from, next) {
 			next();
@@ -129,7 +133,7 @@
 					pagination: false
 				},
 				id: null,
-				bets: [],
+				tickets: [],
 				total: 0,
 				category: {},
 				group: {},
@@ -153,7 +157,7 @@
 		components: {
 			VcLoad,
 			VcPagination,
-			VcBet
+			VcTicket
 		},
 		methods: {
 			filter(event) {				
@@ -224,7 +228,7 @@
 					if(response.status === 200) {
 						this.model = response.data;
 						this.total = this.model.total;
-						this.bets = response.data.data;
+						this.tickets = response.data.data;
 						this.loading.component = false
 						this.loading.pagination = false
 
@@ -242,7 +246,16 @@
 
 
 <style scoped>
-	.table-ranking thead th {
-		cursor: pointer;
-	}
+	.table-head {
+        color: #fff;
+        background-color: #212529;
+        border-color: #32383e;
+        border-bottom: 2px solid #dee2e6;
+        padding: 10px 0 10px 0;
+        cursor: pointer;
+    }
+
+    .table-head .table-column:hover{
+        color: #928f8f;
+    }
 </style>

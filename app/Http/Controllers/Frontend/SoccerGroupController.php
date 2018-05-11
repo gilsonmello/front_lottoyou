@@ -21,6 +21,18 @@ class SoccerGroupController extends Controller
             ->with([
                 'owner' => function($query) use($request) {
                     $query->select('id', 'nickname', 'name', 'photo');
+                    if($request->get('nickname') != '') {
+                        $query->where('nickname', 'LIKE', '%'.$request->get('nickname').'%');
+                    }
+                },
+                'games' => function($query) use($request) {
+
+                },
+                'games.game' => function($query) use($request) {
+
+                },
+                'round' => function($query) {
+
                 }
             ])
             ->whereHas('owner', function($query) use($request) {
@@ -28,8 +40,12 @@ class SoccerGroupController extends Controller
                     $query->where('nickname', 'LIKE', '%'.$request->get('nickname').'%');
                 }
             })
-            ->selectRaw('SUM(pontuacao) as pontuacao, owner_id')
-            ->groupBy(['owner_id', 'num_compras']);
+            ->select([
+                'id',
+                'pontuacao',
+                'owner_id',
+                'soc_rodada_id'
+            ]);
 
         if($request->get('column')) {
             $bets->orderBy($request->get('column'), $request->get('direction'));
@@ -38,7 +54,7 @@ class SoccerGroupController extends Controller
 
         $bets = $bets
             ->orderBy('pontuacao', 'desc')
-            ->paginate(20);
+            ->paginate();
 
         return response()->json($bets, 200);
     }

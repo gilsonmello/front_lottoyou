@@ -47,44 +47,6 @@
 		</div>
     
     </section>
-
-	<!-- <div class="col-lg-4">
-		<h4 data-toggle="collapse" :data-target="'.'+ticket.id">{{ ticket.nome }}</h4>
-
-		<div :class="'collapse '+ticket.id">
-			<load-component v-if="loading.game"></load-component>	  	
-	    	<div class="tickets" v-else>
-				<header class="tickets-header"> 
-		            <span class="text-center tickets-limit" v-if="ticket.limite == null">
-						Ilimitado
-		            	<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Quantidade de Jogadores"></i>
-		            </span>
-
-		            <span class="text-center tickets-limit" v-else>				
-						{{ ticket.group.count }} / {{ ticket.limite }}
-		            	<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Quantidade de Jogadores"></i>
-		            </span> 
-		            <span class="ticket-categories">
-		            	{{ category.nome }}
-		            </span>
-				</header>
-				<div class="tickets-content" :style="backgroundTicket(ticket.imagem_capa)">
-					<div class="row">
-						<div class="col-lg-12 col-sm-6 col-md-6 col-12" v-for="(game, index) in games">
-							<game-component :game="game" :ticket="ticket" :index="index"></game-component>
-						</div>
-					</div>
-				</div>
-				<footer class="tickets-footer">
-					<div class="row">
-						<div class="col-lg-12">
-							<em class="text-caption">Termina em: {{ ticket.data_termino }}</em>
-						</div>
-					</div>
-				</footer>
-			</div>			  	
-		</div>
-	</div> -->
 </template>
 
 <script>

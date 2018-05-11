@@ -23,7 +23,7 @@ class SoccerExpertController extends Controller
         }
 
         $tickets = $tickets->with('group')
-            ->paginate(3);
+            ->paginate();
 
         return response()->json($tickets, 200);
         
@@ -52,7 +52,7 @@ class SoccerExpertController extends Controller
         }
 
         $tickets = $tickets->with('group')
-            ->paginate(3);
+            ->paginate();
 
         return response()->json($tickets, 200);       
     }
@@ -133,7 +133,7 @@ class SoccerExpertController extends Controller
                     DB::raw("concat(data_termino,' ',hora_termino)"), 
                     '>=', 
                     date('Y-m-d H:i:s')
-                );
+                )->where('active', '=', 1);
             })
             ->with([
                 'rounds' => function($query) {
@@ -159,7 +159,7 @@ class SoccerExpertController extends Controller
                         DB::raw("concat(data_termino,' ',hora_termino)"), 
                         '>=', 
                         date('Y-m-d H:i:s')
-                    );
+                    )->where('active', '=', 1);
                 },
                 'rounds.games' => function($query) {
                     $query->select([
@@ -179,7 +179,7 @@ class SoccerExpertController extends Controller
                         'active',
                         'created',
                         'modified',
-                    ]);
+                    ])->where('active', '=', 1);
                 },
                 'rounds.sweepstake',
                 'rounds.group',
