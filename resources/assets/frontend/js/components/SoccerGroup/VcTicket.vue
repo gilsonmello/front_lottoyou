@@ -109,6 +109,10 @@
 		margin-bottom: 0;
 	}
 
+	.tickets .tickets-content {
+		cursor: initial;
+	}
+
 	.photo {
 		width: 70px;
 	    height: 70px;

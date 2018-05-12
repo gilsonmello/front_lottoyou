@@ -36,7 +36,7 @@
 			<div class="container-club" style="justify-content: flex-start;">
 				<img v-if="game.game.out_club.escudo != undefined" style="width: 30px; height: 30px; margin-right: 5px;" :title="game.game.out_club.nome" :src="game.game.out_club.escudo">
 				<span style="line-height: 1; flex: 5; text-align: left;">{{ game.game.out_club.nome }}</span>
-				<span class="fa fa-star gold-ball" v-if="game.bola_ouro == 1"></span>
+				<img src="/img/gold_ball.png" class="img-fluid gold-ball" v-if="game.bola_ouro == 1">
 			</div>
 		</div>
 
@@ -111,13 +111,16 @@
 	}
 
 	.gold-ball {
-		width: inherit;
 		font-size: 30px;
-		color: gold;
-		line-height: 1;
-		cursor: pointer;
-		margin-left: 5px;
-        flex: 2;
+	    color: gold;
+	    line-height: 1;
+	    cursor: pointer;
+	    margin-right: 5px;
+	    -webkit-box-flex: 2;
+	    -ms-flex: 2;
+	    flex: 1;
+	    height: 40px;
+	    width: 40px;
 	}
 
 	.x {

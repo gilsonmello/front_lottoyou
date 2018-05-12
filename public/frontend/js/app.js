@@ -80680,7 +80680,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.ticket-columns[data-v-66dc578e] {\n\tpadding: 10px 0 10px 0;\n}\n.ticket .ticket-columns[data-v-66dc578e]:after {\n\tfont-family: 'FontAwesome';\n\tcontent: \"\\F068\";\n\tfloat: right;\n}\n.ticket .collapsed[data-v-66dc578e]:after {\n\tcontent: \"\\F067\";\n}\n[data-toggle=\"collapse\"][data-v-66dc578e] {\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.ticket[data-v-66dc578e] {\n\tbackground: #212529;\n    cursor: pointer;\n    padding: 0;\n    color: #fff;\n}\n.tickets[data-v-66dc578e] {\n\tpadding: 0;\n\tmargin-bottom: 0;\n}\n.photo[data-v-66dc578e] {\n\twidth: 70px;\n    height: 70px;\n    border-radius: 999px;\n    margin-right: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.ticket-columns[data-v-66dc578e] {\n\tpadding: 10px 0 10px 0;\n}\n.ticket .ticket-columns[data-v-66dc578e]:after {\n\tfont-family: 'FontAwesome';\n\tcontent: \"\\F068\";\n\tfloat: right;\n}\n.ticket .collapsed[data-v-66dc578e]:after {\n\tcontent: \"\\F067\";\n}\n[data-toggle=\"collapse\"][data-v-66dc578e] {\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.ticket[data-v-66dc578e] {\n\tbackground: #212529;\n    cursor: pointer;\n    padding: 0;\n    color: #fff;\n}\n.tickets[data-v-66dc578e] {\n\tpadding: 0;\n\tmargin-bottom: 0;\n}\n.tickets .tickets-content[data-v-66dc578e] {\n\tcursor: initial;\n}\n.photo[data-v-66dc578e] {\n\twidth: 70px;\n    height: 70px;\n    border-radius: 999px;\n    margin-right: 5px;\n}\n", ""]);
 
 // exports
 
@@ -80861,7 +80861,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\ninput[data-v-5db847f4] {\n\t\ttext-align: center;\n}\nspan[data-v-5db847f4] {\n\t\tline-height: 1;\n}\n.info-date[data-v-5db847f4] {\n\t\tdisplay: block;\n}\n.info-local[data-v-5db847f4] {\n\t\tdisplay: block;\n\t\tfont-size: 16px\n}\n.row[data-v-5db847f4] {\n\t\tcolor: white;\n\t\t-webkit-box-pack: center;\n\t\t    -ms-flex-pack: center;\n\t\t        justify-content: center;\n\t\t-webkit-box-align: center;\n\t\t    -ms-flex-align: center;\n\t\t        align-items: center;\n}\n.games[data-v-5db847f4]{\n\t\tmargin-bottom: 5px;\n}\n.container-club[data-v-5db847f4] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -ms-flexbox;\n\t\tdisplay: flex; \n\t\t-webkit-box-align: center; \n\t\t    -ms-flex-align: center; \n\t\t        align-items: center;\n}\n.result[data-v-5db847f4] {\n\t\tfont-weight: bold;\n\t\tfont-size: 22px;\n}\n.gold-ball[data-v-5db847f4] {\n\t\twidth: inherit;\n\t\tfont-size: 30px;\n\t\tcolor: gold;\n\t\tline-height: 1;\n\t\tcursor: pointer;\n\t\tmargin-left: 5px;\n        -webkit-box-flex: 2;\n            -ms-flex: 2;\n                flex: 2;\n}\n.x[data-v-5db847f4] {\n\t\tfont-weight: bold;\n\t\tfont-size: 16px;\n}\n", ""]);
+exports.push([module.i, "\ninput[data-v-5db847f4] {\n\ttext-align: center;\n}\nspan[data-v-5db847f4] {\n\tline-height: 1;\n}\n.info-date[data-v-5db847f4] {\n\tdisplay: block;\n}\n.info-local[data-v-5db847f4] {\n\tdisplay: block;\n\tfont-size: 16px\n}\n.row[data-v-5db847f4] {\n\tcolor: white;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.games[data-v-5db847f4]{\n\tmargin-bottom: 5px;\n}\n.container-club[data-v-5db847f4] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex; \n\t-webkit-box-align: center; \n\t    -ms-flex-align: center; \n\t        align-items: center;\n}\n.result[data-v-5db847f4] {\n\tfont-weight: bold;\n\tfont-size: 22px;\n}\n.gold-ball[data-v-5db847f4] {\n\tfont-size: 30px;\n    color: gold;\n    line-height: 1;\n    cursor: pointer;\n    margin-right: 5px;\n    -webkit-box-flex: 2;\n    -ms-flex: 2;\n    flex: 1;\n    height: 40px;\n    width: 40px;\n}\n.x[data-v-5db847f4] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n", ""]);
 
 // exports
 
@@ -81054,7 +81054,10 @@ var render = function() {
             ),
             _vm._v(" "),
             _vm.game.bola_ouro == 1
-              ? _c("span", { staticClass: "fa fa-star gold-ball" })
+              ? _c("img", {
+                  staticClass: "img-fluid gold-ball",
+                  attrs: { src: "/img/gold_ball.png" }
+                })
               : _vm._e()
           ]
         )
