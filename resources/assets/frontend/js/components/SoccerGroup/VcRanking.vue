@@ -33,11 +33,11 @@
 
         <div class="table text-center">
         	<div class="row no-margin table-head">
-        		<div class="col-lg-2 table-column" @click="toggle('ordem')">
+        		<div class="col-lg-2 table-column" @click="toggle('posicao')">
 	        		<span>
 						{{ trans('strings.positions') }}
 					</span>			    		
-					<span v-if="'ordem' === query.column">
+					<span v-if="'posicao' === query.column">
 		    			<span v-if="query.direction === 'desc'">
 		    				&darr;
 			    		</span>
