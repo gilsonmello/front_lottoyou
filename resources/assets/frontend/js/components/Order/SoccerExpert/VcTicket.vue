@@ -94,11 +94,11 @@
 <style scoped>
 
 	.tickets-content {
-		background-color: initial;
+		cursor: initial;
 		text-align: center;
-	    padding-bottom: 20px;
-	    padding-top: 20px;
-	}
+	    padding-bottom: 5px;
+	    padding-top: 5px;
+    }
 
 	.tickets {
 		padding: 0;
