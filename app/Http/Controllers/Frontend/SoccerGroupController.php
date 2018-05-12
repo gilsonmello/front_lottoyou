@@ -46,6 +46,7 @@ class SoccerGroupController extends Controller
             ->select([
                 'id',
                 'pontuacao',
+                'posicao',
                 'owner_id',
                 'ordem',
                 'soc_rodada_id'

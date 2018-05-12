@@ -3,7 +3,7 @@
 		
 		<div class="row ticket-columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(255,255,255,.05);': ''"> 	
     		<div class="col-lg-2">
-	      		{{ ticket.ordem != null ? ticket.ordem : '-'}}
+	      		{{ ticket.posicao != null ? ticket.posicao : '-'}}
 	      	</div>
 	      	<div class="col-lg-2">
 	      		<img class="photo" :src="ticket.owner.photo">

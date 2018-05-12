@@ -81120,7 +81120,7 @@ var render = function() {
         _c("div", { staticClass: "col-lg-2" }, [
           _vm._v(
             "\n\t      \t\t" +
-              _vm._s(_vm.ticket.ordem != null ? _vm.ticket.ordem : "-") +
+              _vm._s(_vm.ticket.posicao != null ? _vm.ticket.posicao : "-") +
               "\n\t      \t"
           )
         ]),
