@@ -80861,7 +80861,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\ninput[data-v-5db847f4] {\n\t\ttext-align: center;\n}\nspan[data-v-5db847f4] {\n\t\tline-height: 1;\n}\n.info-date[data-v-5db847f4] {\n\t\tdisplay: block;\n}\n.info-local[data-v-5db847f4] {\n\t\tdisplay: block;\n\t\tfont-size: 16px\n}\n.row[data-v-5db847f4] {\n\t\tcolor: white;\n\t\t-webkit-box-pack: center;\n\t\t    -ms-flex-pack: center;\n\t\t        justify-content: center;\n\t\t-webkit-box-align: center;\n\t\t    -ms-flex-align: center;\n\t\t        align-items: center;\n}\n.games[data-v-5db847f4]{\n\t\tmargin-bottom: 5px;\n}\n.container-club[data-v-5db847f4] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -ms-flexbox;\n\t\tdisplay: flex; \n\t\t-webkit-box-align: center; \n\t\t    -ms-flex-align: center; \n\t\t        align-items: center;\n}\n.result[data-v-5db847f4] {\n\t\tfont-weight: bold;\n\t\tfont-size: 22px;\n}\n.gold-ball[data-v-5db847f4] {\n\t\twidth: inherit;\n\t\tfont-size: 30px;\n\t\tcolor: gold;\n\t\tline-height: 1;\n\t\tcursor: pointer;\n\t\tmargin-left: 5px;\n        -webkit-box-flex: 1;\n            -ms-flex: 1;\n                flex: 1;\n}\n.x[data-v-5db847f4] {\n\t\tfont-weight: bold;\n\t\tfont-size: 16px;\n}\n", ""]);
+exports.push([module.i, "\ninput[data-v-5db847f4] {\n\t\ttext-align: center;\n}\nspan[data-v-5db847f4] {\n\t\tline-height: 1;\n}\n.info-date[data-v-5db847f4] {\n\t\tdisplay: block;\n}\n.info-local[data-v-5db847f4] {\n\t\tdisplay: block;\n\t\tfont-size: 16px\n}\n.row[data-v-5db847f4] {\n\t\tcolor: white;\n\t\t-webkit-box-pack: center;\n\t\t    -ms-flex-pack: center;\n\t\t        justify-content: center;\n\t\t-webkit-box-align: center;\n\t\t    -ms-flex-align: center;\n\t\t        align-items: center;\n}\n.games[data-v-5db847f4]{\n\t\tmargin-bottom: 5px;\n}\n.container-club[data-v-5db847f4] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -ms-flexbox;\n\t\tdisplay: flex; \n\t\t-webkit-box-align: center; \n\t\t    -ms-flex-align: center; \n\t\t        align-items: center;\n}\n.result[data-v-5db847f4] {\n\t\tfont-weight: bold;\n\t\tfont-size: 22px;\n}\n.gold-ball[data-v-5db847f4] {\n\t\twidth: inherit;\n\t\tfont-size: 30px;\n\t\tcolor: gold;\n\t\tline-height: 1;\n\t\tcursor: pointer;\n\t\tmargin-left: 5px;\n        -webkit-box-flex: 2;\n            -ms-flex: 2;\n                flex: 2;\n}\n.x[data-v-5db847f4] {\n\t\tfont-weight: bold;\n\t\tfont-size: 16px;\n}\n", ""]);
 
 // exports
 
@@ -80966,7 +80966,7 @@ var render = function() {
                 staticStyle: {
                   "line-height": "1",
                   flex: "5",
-                  "text-align": "left"
+                  "text-align": "right"
                 }
               },
               [_vm._v(_vm._s(_vm.game.game.house_club.nome))]

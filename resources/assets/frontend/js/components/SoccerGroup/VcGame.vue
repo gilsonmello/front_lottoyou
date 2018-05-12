@@ -4,7 +4,7 @@
 		<div class="col-2 col-md-5 col-lg-5" style="padding-left: 0; padding-right: 2px;">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-end;">
-				<span style="line-height: 1; flex: 5; text-align: left;">{{ game.game.house_club.nome }}</span>
+				<span style="line-height: 1; flex: 5; text-align: right;">{{ game.game.house_club.nome }}</span>
 				<img v-if="game.game.house_club.escudo != undefined" style="width: 30px; height: 30px; margin-left: 5px;" :title="game.game.house_club.nome" :src="game.game.house_club.escudo">		
 			</div>
 		</div>
@@ -117,7 +117,7 @@
 		line-height: 1;
 		cursor: pointer;
 		margin-left: 5px;
-        flex: 1;
+        flex: 2;
 	}
 
 	.x {
