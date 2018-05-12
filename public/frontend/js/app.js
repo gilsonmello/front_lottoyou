@@ -73360,7 +73360,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\ninput[data-v-1b554b64] {\n\ttext-align: center;\n}\nspan[data-v-1b554b64] {\n\tline-height: 1;\n}\n.info-date[data-v-1b554b64] {\n\tdisplay: block;\n}\n.info-local[data-v-1b554b64] {\n\tdisplay: block;\n\tfont-size: 16px\n}\n.row[data-v-1b554b64] {\n\tcolor: white;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.games[data-v-1b554b64]{\n\tmargin-bottom: 5px;\n}\n.container-club[data-v-1b554b64] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex; \n\t-webkit-box-align: center; \n\t    -ms-flex-align: center; \n\t        align-items: center;\n}\n.result[data-v-1b554b64] {\n\tfont-weight: bold;\n\tfont-size: 22px;\n}\n.x[data-v-1b554b64] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n", ""]);
+exports.push([module.i, "\ninput[data-v-1b554b64] {\n\ttext-align: center;\n}\nspan[data-v-1b554b64] {\n\tline-height: 1;\n}\n.info-date[data-v-1b554b64] {\n\tdisplay: block;\n}\n.info-local[data-v-1b554b64] {\n\tdisplay: block;\n\tfont-size: 16px\n}\n.row[data-v-1b554b64] {\n\tcolor: white;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.games[data-v-1b554b64]{\n\tmargin-bottom: 5px;\n}\n.container-club[data-v-1b554b64] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex; \n\t-webkit-box-align: center; \n\t    -ms-flex-align: center; \n\t        align-items: center;\n}\n.result[data-v-1b554b64] {\n\tfont-weight: bold;\n\tfont-size: 22px;\n}\n.gold-ball[data-v-1b554b64] {\n\tfont-size: 30px;\n    color: gold;\n    line-height: 1;\n    cursor: pointer;\n    margin-right: 5px;\n    -webkit-box-flex: 2;\n    -ms-flex: 2;\n    flex: 1;\n    height: 40px;\n    width: 40px;\n}\n.x[data-v-1b554b64] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n", ""]);
 
 // exports
 
@@ -73371,6 +73371,7 @@ exports.push([module.i, "\ninput[data-v-1b554b64] {\n\ttext-align: center;\n}\ns
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -73456,9 +73457,17 @@ var render = function() {
             staticStyle: { "justify-content": "flex-end" }
           },
           [
-            _c("span", { staticStyle: { "line-height": "1" } }, [
-              _vm._v(_vm._s(_vm.game.house_club.nome))
-            ]),
+            _c(
+              "span",
+              {
+                staticStyle: {
+                  "line-height": "1",
+                  flex: "5",
+                  "text-align": "right"
+                }
+              },
+              [_vm._v(_vm._s(_vm.game.house_club.nome))]
+            ),
             _vm._v(" "),
             _vm.game.house_club.escudo != undefined
               ? _c("img", {
@@ -73525,9 +73534,24 @@ var render = function() {
                 })
               : _vm._e(),
             _vm._v(" "),
-            _c("span", { staticStyle: { "line-height": "1" } }, [
-              _vm._v(_vm._s(_vm.game.out_club.nome))
-            ])
+            _c(
+              "span",
+              {
+                staticStyle: {
+                  "line-height": "1",
+                  flex: "5",
+                  "text-align": "left"
+                }
+              },
+              [_vm._v(_vm._s(_vm.game.out_club.nome))]
+            ),
+            _vm._v(" "),
+            _vm.game.bola_ouro == 1
+              ? _c("img", {
+                  staticClass: "img-fluid gold-ball",
+                  attrs: { src: "/img/gold_ball.png" }
+                })
+              : _vm._e()
           ]
         )
       ]
@@ -73562,7 +73586,7 @@ var render = function() {
       [
         _c(
           "div",
-          { staticClass: "row" },
+          { staticClass: "row no-margin" },
           _vm._l(_vm.ticket.games, function(game, index) {
             return _c(
               "div",
@@ -73654,7 +73678,7 @@ var render = function() {
               _vm._l(_vm.item.data.tickets, function(ticket, idx) {
                 return _c(
                   "div",
-                  { staticClass: "col-lg-4" },
+                  { staticClass: "col-lg-6 col-sm-6 col-md-6 col-12" },
                   [
                     _c("vc-ticket", {
                       attrs: {

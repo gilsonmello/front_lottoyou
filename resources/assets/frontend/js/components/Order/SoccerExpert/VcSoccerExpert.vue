@@ -21,7 +21,7 @@
         <div :class="'collapse '+item.id">
 			<load-component v-if="loading.game"></load-component>	
 			<div class="row no-margin" v-else>
-				<div class="col-lg-4" v-for="(ticket, idx) in item.data.tickets">
+				<div class="col-lg-6 col-sm-6 col-md-6 col-12" v-for="(ticket, idx) in item.data.tickets">
 					<vc-ticket :ticket="ticket" :index="idx" :category="item.soccer_expert"></vc-ticket>
 				</div>
 			</div>

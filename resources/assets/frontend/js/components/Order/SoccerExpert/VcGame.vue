@@ -4,7 +4,7 @@
 		<div class="col-2 col-md-5 col-lg-5" style="padding-left: 0; padding-right: 2px;">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-end;">
-				<span style="line-height: 1;">{{ game.house_club.nome }}</span>
+				<span style="line-height: 1; flex: 5; text-align: right;">{{ game.house_club.nome }}</span>
 				<img v-if="game.house_club.escudo != undefined" style="width: 30px; height: 30px; margin-left: 5px;" :title="game.house_club.nome" :src="game.house_club.escudo">				
 			</div>
 		</div>
@@ -35,7 +35,8 @@
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-start;">
 				<img v-if="game.out_club.escudo != undefined" style="width: 30px; height: 30px; margin-right: 5px;" :title="game.out_club.nome" :src="game.out_club.escudo">
-				<span style="line-height: 1;">{{ game.out_club.nome }}</span>
+				<span style="line-height: 1; flex: 5; text-align: left;">{{ game.out_club.nome }}</span>
+				<img src="/img/gold_ball.png" class="img-fluid gold-ball" v-if="game.bola_ouro == 1">
 			</div>
 		</div>
 
@@ -107,6 +108,19 @@
 	.result {
 		font-weight: bold;
 		font-size: 22px;
+	}
+
+	.gold-ball {
+		font-size: 30px;
+	    color: gold;
+	    line-height: 1;
+	    cursor: pointer;
+	    margin-right: 5px;
+	    -webkit-box-flex: 2;
+	    -ms-flex: 2;
+	    flex: 1;
+	    height: 40px;
+	    width: 40px;
 	}
 
 	.x {
