@@ -81321,7 +81321,7 @@ var render = function() {
                 staticClass: "col-lg-2 table-column",
                 on: {
                   click: function($event) {
-                    _vm.toggle("ordem")
+                    _vm.toggle("posicao")
                   }
                 }
               },
@@ -81334,7 +81334,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                "ordem" === _vm.query.column
+                "posicao" === _vm.query.column
                   ? _c("span", [
                       _vm.query.direction === "desc"
                         ? _c("span", [
