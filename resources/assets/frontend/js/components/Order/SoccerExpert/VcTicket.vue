@@ -1,6 +1,6 @@
 <template>		
 	<div class="tickets">
-		<header class="tickets-header">	
+		<!-- <header class="tickets-header">	
 			<span class="text-center tickets-name">
             	{{ ticket.nome }} - $ {{ value }}
             </span> 
@@ -16,7 +16,7 @@
             <span class="ticket-categories">
             	{{ category.nome }}
             </span>
-		</header>
+		</header> -->
 		<div class="tickets-content" :style="backgroundTicket(ticket.imagem_capa)">
 			<div class="row">
 				<div class="col-lg-12 col-sm-6 col-md-6 col-12" v-for="(game, index) in ticket.games">
@@ -24,13 +24,13 @@
 				</div>
 			</div>
 		</div>
-		<footer class="tickets-footer">
+		<!-- <footer class="tickets-footer">
 			<div class="row">
 				<div class="col-lg-12">
 					<em class="text-caption">Termina em: {{ ticket.data_termino }}</em>
 				</div>
 			</div>
-		</footer>
+		</footer> -->
 	</div>
 </template>
 
@@ -101,8 +101,7 @@
 	}
 
 	.tickets {
-		
-		padding: 5px;
+		padding: 0;
 	}
 
 	.tickets-header {

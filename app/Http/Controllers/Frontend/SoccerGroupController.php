@@ -12,7 +12,10 @@ class SoccerGroupController extends Controller
 {
     public function find($id)
     {
-        return SoccerExpertRoundGroup::find($id);
+        return SoccerExpertRoundGroup::with([
+            'round',
+            'round.category'
+        ])->find($id);
     }
 
     public function ranking($id, Request $request) 
@@ -44,6 +47,7 @@ class SoccerGroupController extends Controller
                 'id',
                 'pontuacao',
                 'owner_id',
+                'ordem',
                 'soc_rodada_id'
             ]);
 

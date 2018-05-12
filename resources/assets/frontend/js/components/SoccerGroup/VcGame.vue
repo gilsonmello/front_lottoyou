@@ -4,8 +4,8 @@
 		<div class="col-2 col-md-5 col-lg-5" style="padding-left: 0; padding-right: 2px;">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-end;">
-				<span style="line-height: 1;">{{ game.game.house_club.nome }}</span>
-				<img v-if="game.game.house_club.escudo != undefined" style="width: 30px; height: 30px; margin-left: 5px;" :title="game.game.house_club.nome" :src="game.game.house_club.escudo">				
+				<span style="line-height: 1; flex: 5; text-align: left;">{{ game.game.house_club.nome }}</span>
+				<img v-if="game.game.house_club.escudo != undefined" style="width: 30px; height: 30px; margin-left: 5px;" :title="game.game.house_club.nome" :src="game.game.house_club.escudo">		
 			</div>
 		</div>
 
@@ -35,7 +35,8 @@
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-start;">
 				<img v-if="game.game.out_club.escudo != undefined" style="width: 30px; height: 30px; margin-right: 5px;" :title="game.game.out_club.nome" :src="game.game.out_club.escudo">
-				<span style="line-height: 1;">{{ game.game.out_club.nome }}</span>
+				<span style="line-height: 1; flex: 5; text-align: left;">{{ game.game.out_club.nome }}</span>
+				<span class="fa fa-star gold-ball" v-if="game.bola_ouro == 1"></span>
 			</div>
 		</div>
 
@@ -54,7 +55,7 @@
 
         },
         mounted: function() {
-        	
+        	console.log(this.game)
         },
         activated: function() {
             
@@ -107,6 +108,16 @@
 	.result {
 		font-weight: bold;
 		font-size: 22px;
+	}
+
+	.gold-ball {
+		width: inherit;
+		font-size: 30px;
+		color: gold;
+		line-height: 1;
+		cursor: pointer;
+		margin-left: 5px;
+        flex: 1;
 	}
 
 	.x {

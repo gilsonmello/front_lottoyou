@@ -3,8 +3,10 @@
 	<div class="container" v-else>
 
 		<h1 class="page-header">
-			{{ trans('strings.ranking') }} - Grupo {{ group.identificacao }}
+		  	<span style="display: block;">{{ group.round.category.nome }} - {{ group.round.nome}}</span>
+		  	<span>{{ trans('strings.ranking') }} - Grupo {{ group.identificacao }}</span>
 		</h1>
+
 
 		<form @submit.prevent="filter" class="form-filter">
 			<div class="row">

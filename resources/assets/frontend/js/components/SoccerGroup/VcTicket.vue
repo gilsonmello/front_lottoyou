@@ -6,7 +6,7 @@
 	      		{{ ticket.ordem != null ? ticket.ordem : '-'}}
 	      	</div>
 	      	<div class="col-lg-2">
-	      		<img :src="ticket.owner.photo" style="width: 70px; height: 50px;">
+	      		<img class="photo" :src="ticket.owner.photo">
 	      	</div>
 	      	<div class="col-lg-2">
 	      		{{ ticket.owner.nickname }}
@@ -107,5 +107,12 @@
 	.tickets {
 		padding: 0;
 		margin-bottom: 0;
+	}
+
+	.photo {
+		width: 70px;
+	    height: 70px;
+	    border-radius: 999px;
+	    margin-right: 5px;
 	}
 </style>

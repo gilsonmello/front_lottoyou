@@ -101,11 +101,13 @@ class UserController extends Controller
         $user->gender = $request->get('gender');
         if($user->save()) {
             $user->nickname = $user->name . '_' . $user->id;
-            $user->save();
+            
             Balance::create([
-                'user_id' => $user->id,
+                'owner_id' => $user->id,
                 'value' => 0.00,
             ]);
+
+            $user->save();
             
             return response()->json(['message' => trans('alerts.users.create.success')], 200);
         }

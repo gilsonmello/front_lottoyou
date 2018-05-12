@@ -11,6 +11,8 @@ return [
       | found in a intuitive way.
       |
      */
+    'to_view' => 'Visualizar',
+    'view' => 'Visualizar',
     'page' => 'Página',
     'points' => 'Pontos',
     'point' => 'Ponto',
