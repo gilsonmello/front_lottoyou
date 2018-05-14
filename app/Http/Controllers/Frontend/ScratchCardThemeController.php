@@ -100,6 +100,7 @@ class ScratchCardThemeController extends Controller
     public function index(Request $request)
     {   
         $user_id = $request->get('user_id') != null ? $request->get('user_id') : 0;
+        
         $theme = ScratchCardTheme::whereHas('lot', function($query) {
             $query->where('active', '=', 1);
         })
@@ -145,7 +146,7 @@ class ScratchCardThemeController extends Controller
             $value->discount_tables = $discountTable != null ? $discountTable : [] ;
         }
 
-        return $theme;
+        return response()->json($theme, 200);
     }
 
     /**

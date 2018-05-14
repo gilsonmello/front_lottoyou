@@ -95,10 +95,11 @@ class ScratchCardTheme extends Model
 
     public function getTotalTicketsAttribute()
     {
-        return ScratchCardLot::selectRaw('qtd_raspadinhas')
+        $qtd_raspadinhas = ScratchCardLot::selectRaw('qtd_raspadinhas')
             ->where('temas_raspadinha_id', '=', $this->id)
             ->get()
             ->first();
+        return $qtd_raspadinhas != null ? $qtd_raspadinhas : 0;
     }
 
     public function getImgBackgroundUrlAttribute()
@@ -128,6 +129,6 @@ class ScratchCardTheme extends Model
         ])
         ->get()
         ->first();
-        return $total_tickets_available ? $total_tickets_available->total_tickets_available : null;
+        return $total_tickets_available != null ? $total_tickets_available->total_tickets_available : 0;
     }
 }
