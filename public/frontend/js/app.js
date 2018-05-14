@@ -97654,7 +97654,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.color-green[data-v-071e5d6e]{\n        color: #69a507\n}\n.color-green[data-v-071e5d6e]:hover{\n        color: #3f6304\n}\n.footer-signs[data-v-071e5d6e] {\n    \twidth: 100%;\n    \tlist-style: none;\n    \ttext-align: center;\n    \tpadding-left: 0;\n}\n.footer-signs .footer-signs-item[data-v-071e5d6e] {\n    \tmargin: 0 7px;\n    \tdisplay: inline-block;\n    \tmax-width: 112px;\n}\nsvg[data-v-071e5d6e] {\n    \tfill: #9aa89c;\n\t    stroke: #9aa89c;\n\t    vertical-align: text-bottom;\n\t    height: 32px;\n}\n.footer-plataform-container p[data-v-071e5d6e]{\n    \tmargin-bottom: 36px;\n\t    font-size: 12px;\n\t    color: #9aa89c;\n\t    margin: 0 0 10px;\n}\n", ""]);
+exports.push([module.i, "\n.color-blue[data-v-071e5d6e]{\n        color: #0056b1\n}\n.color-blue[data-v-071e5d6e]:hover{\n        color: #003874\n}\n.footer-signs[data-v-071e5d6e] {\n    \twidth: 100%;\n    \tlist-style: none;\n    \ttext-align: center;\n    \tpadding-left: 0;\n}\n.footer-signs .footer-signs-item[data-v-071e5d6e] {\n    \tmargin: 0 7px;\n    \tdisplay: inline-block;\n    \tmax-width: 112px;\n}\nsvg[data-v-071e5d6e] {\n    \tfill: #9aa89c;\n\t    stroke: #9aa89c;\n\t    vertical-align: text-bottom;\n\t    height: 32px;\n}\n.footer-plataform-container p[data-v-071e5d6e]{\n    \tmargin-bottom: 36px;\n\t    font-size: 12px;\n\t    color: #9aa89c;\n\t    margin: 0 0 10px;\n}\n", ""]);
 
 // exports
 
@@ -97665,82 +97665,6 @@ exports.push([module.i, "\n.color-green[data-v-071e5d6e]{\n        color: #69a50
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -97946,90 +97870,95 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("footer", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
     _c(
       "div",
       {
-        staticClass: "container",
-        staticStyle: { position: "initial", "background-color": "white" }
+        staticClass: "container-fluid footer-plataform-container",
+        staticStyle: {
+          background: "linear-gradient(90deg,#fafafa,#f2f4f2)",
+          "border-bottom": "1px solid #d9deda"
+        }
       },
       [
-        _c("div", { staticClass: "row" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-6 col-md-6 col-12 col-sm-6" }, [
-            _c("h3", { staticClass: "page-header" }, [
-              _vm._v("\n                    Idioma\n                ")
-            ]),
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _vm._m(1),
             _vm._v(" "),
-            _c("ul", { staticClass: "list-group" }, [
-              _c("li", { staticClass: "list-group-item" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "color-green",
-                    attrs: { href: "/#/br" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.redirect($event)
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            Português (Brasil)\n                        "
-                    )
-                  ]
-                )
+            _c("div", { staticClass: "col-lg-6 col-md-6 col-12 col-sm-6" }, [
+              _c("h3", { staticClass: "page-header" }, [
+                _vm._v("\n\t                    Idioma\n\t                ")
               ]),
               _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _c("li", { staticClass: "list-group-item" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "color-green",
-                    attrs: { href: "/#/" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.redirect($event)
+              _c("ul", { staticClass: "list-group" }, [
+                _c("li", { staticClass: "list-group-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "color-blue",
+                      attrs: { href: "/#/br" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.redirect($event)
+                        }
                       }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            English\n                        "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _vm._m(2),
-              _vm._v(" "),
-              _vm._m(3),
-              _vm._v(" "),
-              _vm._m(4),
-              _vm._v(" "),
-              _vm._m(5),
-              _vm._v(" "),
-              _vm._m(6),
-              _vm._v(" "),
-              _vm._m(7),
-              _vm._v(" "),
-              _vm._m(8)
+                    },
+                    [
+                      _vm._v(
+                        "\n\t                            Português (Brasil)\n\t                        "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "color-blue",
+                      attrs: { href: "/#/" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.redirect($event)
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n\t                            English\n\t                        "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _vm._m(4),
+                _vm._v(" "),
+                _vm._m(5),
+                _vm._v(" "),
+                _vm._m(6),
+                _vm._v(" "),
+                _vm._m(7),
+                _vm._v(" "),
+                _vm._m(8),
+                _vm._v(" "),
+                _vm._m(9)
+              ])
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _vm._m(9)
+        _c("br")
       ]
     ),
-    _vm._v(" "),
-    _c("br"),
     _vm._v(" "),
     _vm._m(10)
   ])
@@ -98039,56 +97968,113 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "container-fluid",
+        staticStyle: { "border-bottom": "1px solid #d9deda" }
+      },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-3 col-3 col-md-3 col-sm-3" }, [
+              _c("img", {
+                staticClass: "img-responsive img-fluid",
+                attrs: {
+                  src:
+                    "//www.lottoland.com/cms/5846d41ce4b0d02cb5922535/boletol_logo@2x.png"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 col-3 col-md-3 col-sm-3" }, [
+              _c("img", {
+                staticClass: "img-responsive img-fluid",
+                attrs: {
+                  src:
+                    "//www.lottoland.com/cms/5846d427e4b0d02cb592253a/transferencia_bancaria_local_logo@2x.png"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 col-3 col-md-3 col-sm-3" }, [
+              _c("img", {
+                staticClass: "img-responsive img-fluid",
+                attrs: {
+                  src:
+                    "//www.lottoland.com/cms/596c86890eb35860f76742c5/visa_logo@2x.png"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 col-3 col-md-3 col-sm-3" }, [
+              _c("img", {
+                staticClass: "img-responsive img-fluid",
+                attrs: {
+                  src:
+                    "//www.lottoland.com/cms/596c86940eb35860f76742c7/mastercard_logo@2x.png"
+                }
+              })
+            ])
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-lg-6 col-md-6 col-12 col-sm-6" }, [
       _c("h3", { staticClass: "page-header" }, [
-        _vm._v("\n                    Informações\n                ")
+        _vm._v("\n\t                    Informações\n\t                ")
       ]),
       _vm._v(" "),
       _c("ul", { staticClass: "list-group" }, [
         _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
+          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
             _vm._v(
-              "\n                            Ajuda\n                        "
+              "\n\t                            Ajuda\n\t                        "
             )
           ])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
+          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
             _vm._v(
-              "\n                            Proteção do Jogador\n                        "
+              "\n\t                            Proteção do Jogador\n\t                        "
             )
           ])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
+          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
             _vm._v(
-              "\n                            Privacidade\n                        "
+              "\n\t                            Privacidade\n\t                        "
             )
           ])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
+          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
             _vm._v(
-              "\n                            Termos e Condições\n                        "
+              "\n\t                            Termos e Condições\n\t                        "
             )
           ])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
+          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
             _vm._v(
-              "\n                            Resultados\n                        "
+              "\n\t                            Resultados\n\t                        "
             )
           ])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
+          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
             _vm._v(
-              "\n                            Pergunte\n                        "
+              "\n\t                            Pergunte\n\t                        "
             )
           ])
         ])
@@ -98100,9 +98086,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
         _vm._v(
-          "\n                            Deutsch\n                        "
+          "\n\t                            Deutsch\n\t                        "
         )
       ])
     ])
@@ -98112,29 +98098,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
-        _vm._v("\n                            Slovak\n                        ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
-        _vm._v("\n                            Polski\n                        ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
         _vm._v(
-          "\n                            Svenska\n                        "
+          "\n\t                            Slovak\n\t                        "
         )
       ])
     ])
@@ -98144,9 +98110,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
         _vm._v(
-          "\n                            Português\n                        "
+          "\n\t                            Polski\n\t                        "
         )
       ])
     ])
@@ -98156,19 +98122,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
-        _vm._v("\n                            České\n                        ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
         _vm._v(
-          "\n                            English (Canada)\n                        "
+          "\n\t                            Svenska\n\t                        "
         )
       ])
     ])
@@ -98178,9 +98134,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-green", attrs: { href: "#" } }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
         _vm._v(
-          "\n                            Deutsch (Schweiz)\n                        "
+          "\n\t                            Português\n\t                        "
         )
       ])
     ])
@@ -98189,51 +98145,37 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "row", staticStyle: { border: "1px solid black" } },
-      [
-        _c("div", { staticClass: "col-lg-3 col-3 col-md-3 col-sm-3" }, [
-          _c("img", {
-            staticClass: "img-responsive img-fluid",
-            attrs: {
-              src:
-                "//www.lottoland.com/cms/5846d41ce4b0d02cb5922535/boletol_logo@2x.png"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-3 col-3 col-md-3 col-sm-3" }, [
-          _c("img", {
-            staticClass: "img-responsive img-fluid",
-            attrs: {
-              src:
-                "//www.lottoland.com/cms/5846d427e4b0d02cb592253a/transferencia_bancaria_local_logo@2x.png"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-3 col-3 col-md-3 col-sm-3" }, [
-          _c("img", {
-            staticClass: "img-responsive img-fluid",
-            attrs: {
-              src:
-                "//www.lottoland.com/cms/596c86890eb35860f76742c5/visa_logo@2x.png"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-3 col-3 col-md-3 col-sm-3" }, [
-          _c("img", {
-            staticClass: "img-responsive img-fluid",
-            attrs: {
-              src:
-                "//www.lottoland.com/cms/596c86940eb35860f76742c7/mastercard_logo@2x.png"
-            }
-          })
-        ])
-      ]
-    )
+    return _c("li", { staticClass: "list-group-item" }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
+        _vm._v(
+          "\n\t                            České\n\t                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "list-group-item" }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
+        _vm._v(
+          "\n\t                            English (Canada)\n\t                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "list-group-item" }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
+        _vm._v(
+          "\n\t                            Deutsch (Schweiz)\n\t                        "
+        )
+      ])
+    ])
   },
   function() {
     var _vm = this
