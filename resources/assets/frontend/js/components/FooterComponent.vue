@@ -1,18 +1,22 @@
 <template>
 	<footer>
-		<div class="container-fluid" style="border-bottom: 1px solid #d9deda">  
+		<br>
+		<div class="container-fluid" style="background: linear-gradient(90deg,#fafafa,#f2f4f2); border-bottom: 1px solid #d9deda">  
 		    <div class="container">
-				<div class="row" style="">
-		            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+				<div class="row" style="align-items: center; justify-content: center;">
+		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
 		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d41ce4b0d02cb5922535/boletol_logo@2x.png">
 		            </div>
-		            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
-		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d427e4b0d02cb592253a/transferencia_bancaria_local_logo@2x.png">
+		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
+		                <img class="img-responsive img-fluid" src="/img/pagseguro.png">
 		            </div>
-		            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
+		                <img class="img-responsive img-fluid" src="/img/paypal.png">
+		            </div>
+		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
 		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/596c86890eb35860f76742c5/visa_logo@2x.png">
 		            </div>
-		            <div class="col-lg-3 col-3 col-md-3 col-sm-3">
+		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
 		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/596c86940eb35860f76742c7/mastercard_logo@2x.png">
 		            </div>
 		        </div>
@@ -40,11 +44,10 @@
 		        </div>
 		    </div> 
 		</div> -->
-		<br>
-		<div class="container-fluid footer-plataform-container" style="background: linear-gradient(90deg,#fafafa,#f2f4f2); border-bottom: 1px solid #d9deda">
+		<div class="container-fluid footer-plataform-container" style="border-bottom: 1px solid #d9deda">
 			<div class="container">
 			    <div class="row">
-		            <div class="col-lg-6 col-md-6 col-12 col-sm-6">
+		            <div class="col-lg-4 col-md-6 col-12 col-sm-6">
 		                <h3 class="page-header">
 		                    Informações
 		                </h3>
@@ -81,7 +84,7 @@
 		                    </li>
 		                </ul>               
 		            </div>
-		            <div class="col-lg-6 col-md-6 col-12 col-sm-6">
+		            <div class="col-lg-4 col-md-6 col-12 col-sm-6">
 		                <h3 class="page-header">
 		                    Idioma
 		                </h3>
@@ -113,31 +116,48 @@
 		                    </li>
 		                    <li class="list-group-item">
 		                        <a href="#" class="color-blue">
-		                            Svenska
+		                            &nbsp;
 		                        </a>
 		                    </li>
-		                    <li class="list-group-item">
-		                        <a href="#" class="color-blue">
-		                            Português
-		                        </a>
-		                    </li>
-		                    <li class="list-group-item">
-		                        <a href="#" class="color-blue">
-		                            České
-		                        </a>
-		                    </li>
-		                    <li class="list-group-item">
-		                        <a href="#" class="color-blue">
-		                            English (Canada)
-		                        </a>
-		                    </li>
-		                    <li class="list-group-item">
-		                        <a href="#" class="color-blue">
-		                            Deutsch (Schweiz)
-		                        </a>
-		                    </li>
+		                    
 		                </ul>               
 		            </div>
+		            <div class="col-lg-4 col-md-6 col-12 col-sm-6">
+		                <h3 class="page-header">
+		                    &nbsp;
+		                </h3>
+		                <li class="list-group-item">
+	                        <a href="#" class="color-blue">
+	                            Svenska
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-blue">
+	                            Português
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-blue">
+	                            České
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-blue">
+	                            English (Canada)
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-blue">
+	                            Deutsch (Schweiz)
+	                        </a>
+	                    </li>
+	                    <li class="list-group-item">
+	                        <a href="#" class="color-blue">
+	                            &nbsp;
+	                        </a>
+	                    </li>
+		            </div>
+
 		        </div>
 		        
 			</div>
