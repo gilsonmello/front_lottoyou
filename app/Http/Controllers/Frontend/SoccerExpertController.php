@@ -183,7 +183,15 @@ class SoccerExpertController extends Controller
                 },
                 'rounds.sweepstake',
                 'rounds.group',
+                'rounds.games.houseClub',
+                'rounds.games.outClub',
             ])
+            ->whereHas('rounds.games.houseClub', function($query) {
+                $query->where('active', '=', 1);
+            })
+            ->whereHas('rounds.games.outClub', function($query) {
+                $query->where('active', '=', 1);
+            })
             ->where(
                 DB::raw("concat(data_inicio,' ',hora_inicio)"), 
                 '<=', 

@@ -47,7 +47,9 @@ class SoccerExpertGame extends Model
     ];
 
     protected $appends = [
-        'house_club', 'out_club', 'result_house_club', 'result_out_club', 'day'
+        //'house_club', 
+        //'out_club', 
+        'result_house_club', 'result_out_club', 'day'
     ];
 
     /*public function houseClub() {
@@ -77,6 +79,12 @@ class SoccerExpertGame extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function houseClub() 
+    {
+        return $this->belongsTo(Club::class, 'gel_clube_casa_id');
+    }
+
 
     public function getHouseClubAttribute()
     {
