@@ -249,6 +249,12 @@
 		}
 	}
 
+	@media (max-width: 747px) {
+    	.separator {
+			display: none;
+		}
+	}
+
 	.tickets-header {
 		padding: 5px 0 0 0;
 		color: #000;

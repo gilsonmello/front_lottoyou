@@ -75533,7 +75533,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.btn-xs[data-v-5953fa40] {\n        margin: 2px;\n        width: 28px;\n        height: 28px;\n        font-size: 12px;\n        border-radius: 999px !important;\n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n.ticket-sweepstake-name[data-v-5953fa40] {\n        display: block;\n}\n@media (min-width: 992px) {\n.modal-xl[data-v-5953fa40] {\n\t    \twidth: 85%;\n}\n}\n#prev-slide-content[data-v-5953fa40]{\n        left: -50px; \n        right: auto;\n        width: 30px !important;\n}\n#next-slide-content[data-v-5953fa40]{\n        left: auto; \n        right: -50px;\n        width: 30px !important;\n}\n.slide[data-v-5953fa40]{\n        width: 100%;\n        margin: 0 auto;\n}\n.carousel .fa[data-v-5953fa40] {\n        font-size: 60px !important;\n}\n@media (max-width: 576px) {\n.slide[data-v-5953fa40]{\n\t        width: 90%;\n\t        margin: 0 auto;\n}\n#prev-slide-content[data-v-5953fa40]{\n\t        left: 0; \n\t        right: auto;\n\t        width: 30px !important;\n}\n#next-slide-content[data-v-5953fa40]{\n\t        left: auto; \n\t        right: 0;\n\t        width: 30px !important;\n}\n}\n.price[data-v-5953fa40] {\n\t\tmargin-right: 15px;\n}\n.well[data-v-5953fa40] {\n\t\tpadding: 0;\n}\n.tickets[data-v-5953fa40] {\n\t\tpadding: 0;\n}\n.tickets-content[data-v-5953fa40] {\n\t\tpadding: 2px 15px 0 15px;\n\t\tbackground-color: initial;\n}\n.club[data-v-5953fa40] {\n\t\tdisplay: block;\n}\n.no-padding[data-v-5953fa40] {\n\t    margin-left: 2px;\n    \tmargin-right: 2px;\n}\n.input-group-addon[data-v-5953fa40] {\n\t\tborder-color: transparent;\t\t\t\t\t\n\t    background-color: transparent;\n\t    color: inherit;\n\t    opacity: 0.7;\n\t    padding: 0;\n\t    -webkit-box-pack: center;\n\t        -ms-flex-pack: center;\n\t            justify-content: center;\n}\n.complete[data-v-5953fa40] {\n\t\tborder: 3px solid #67be13 !important;\n}\n.incomplete[data-v-5953fa40] {\n\t    border: 3px solid #BF390F !important;\n}\n\n", ""]);
+exports.push([module.i, "\n.btn-xs[data-v-5953fa40] {\n        margin: 2px;\n        width: 28px;\n        height: 28px;\n        font-size: 12px;\n        border-radius: 999px !important;\n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n.ticket-sweepstake-name[data-v-5953fa40] {\n        display: block;\n}\n@media (min-width: 992px) {\n.modal-xl[data-v-5953fa40] {\n\t    \twidth: 85%;\n}\n}\n#prev-slide-content[data-v-5953fa40]{\n        left: -50px; \n        right: auto;\n        width: 30px !important;\n}\n#next-slide-content[data-v-5953fa40]{\n        left: auto; \n        right: -50px;\n        width: 30px !important;\n}\n.slide[data-v-5953fa40]{\n        width: 100%;\n        margin: 0 auto;\n}\n.carousel .fa[data-v-5953fa40] {\n        font-size: 60px !important;\n}\n@media (max-width: 576px) {\n.slide[data-v-5953fa40]{\n\t        width: 90%;\n\t        margin: 0 auto;\n}\n#prev-slide-content[data-v-5953fa40]{\n\t        left: 0; \n\t        right: auto;\n\t        width: 30px !important;\n}\n#next-slide-content[data-v-5953fa40]{\n\t        left: auto; \n\t        right: 0;\n\t        width: 30px !important;\n}\n}\n.price[data-v-5953fa40] {\n\t\tmargin-right: 15px;\n}\n.well[data-v-5953fa40] {\n\t\tpadding: 0;\n}\n.tickets[data-v-5953fa40] {\n\t\tpadding: 0;\n}\n.tickets-content[data-v-5953fa40] {\n\t\tpadding: 2px 15px 0 15px;\n\t\tbackground-color: initial;\n}\n.club[data-v-5953fa40] {\n\t\tdisplay: block;\n}\n.no-padding[data-v-5953fa40] {\n\t    margin-left: 2px;\n    \tmargin-right: 2px;\n}\n.input-group-addon[data-v-5953fa40] {\n\t\tborder-color: transparent;\t\t\t\t\t\n\t    background-color: transparent;\n\t    color: inherit;\n\t    opacity: 0.7;\n\t    padding: 0;\n\t    -webkit-box-pack: center;\n\t        -ms-flex-pack: center;\n\t            justify-content: center;\n}\n.complete[data-v-5953fa40] {\n\t\tborder: 3px solid #67be13 !important;\n}\n.incomplete[data-v-5953fa40] {\n\t    border: 3px solid #BF390F !important;\n}\n.modal-xl[data-v-5953fa40] {\n        max-width: 85%;\n}\n@media (min-width: 992px)  {\n.modal-xl[data-v-5953fa40] {\n\t        max-width: 90%;\n}\n}\n@media (max-width: 767px){\n.modal-xl[data-v-5953fa40] {\n\t        max-width: 98%;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -76719,7 +76719,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.tickets-content[data-v-260d980f] {\n\t\tbackground-color: initial;\n\t\ttext-align: center;\n\t    padding-bottom: 10px;\n\t    padding-top: 10px;\n\t    cursor: default;\n\t    display: -webkit-box;\n\t    display: -ms-flexbox;\n\t    display: flex;\n\t\t-webkit-box-orient: horizontal;\n\t\t-webkit-box-direction: normal;\n\t\t    -ms-flex-direction: row;\n\t\t        flex-direction: row;\n\t\t-ms-flex-wrap: wrap;\n\t\t    flex-wrap: wrap;\n\t\tposition: relative;\n}\n.tickets[data-v-260d980f] {\n\t\t\n\t\tpadding: 5px;\n}\n.separator[data-v-260d980f] {\n\t    position: absolute;\n\t    top: 50%;\n\t    left: 50%;\n\t    -webkit-transform: translate(-50%, -50%);\n\t    transform: translate(-50%, -50%);\n\t    width: 40px;\n\t    height: 100%;\n\t    padding: 10px;\n}\n.line[data-v-260d980f] {\n\t    border-right: 3px solid #ff0000;\n\t    height: 100%;\n\t    width: 100%;\n}\n.separator[data-v-260d980f]:after {\n}\n@media (max-width: 576px) {\n.separator[data-v-260d980f] {\n\t\t\tdisplay: none;\n}\n}\n.tickets-header[data-v-260d980f] {\n\t\tpadding: 5px 0 0 0;\n\t\tcolor: #000;\n\t\tbackground-color: initial;\n}\n.tickets-header .ticket-categories[data-v-260d980f] {\n\t\tfont-weight: bold;\n\t\ttext-align: center;\n\t\tbackground-color: #fad7d4;\n\t    border-color: #f7bec3;\n\t    color: #a94442;\n        border: 1px solid transparent;\n\t    border-radius: 2px;\n\t    display: block;\n\t    text-transform: uppercase;\n}\n.tickets-header .tickets-limit[data-v-260d980f] {\n\t\tdisplay: block;\n}\n.tickets-header .tickets-name[data-v-260d980f] {\n\t    display: block;\n\t    vertical-align: middle;\n\t    line-height: 17px;\n\t    font-size: 20px;\n\t    color: #000\n}\n.countdown[data-v-260d980f] {\n\t\tdisplay: block;\n\t\ttext-transform: lowercase;\n\t\ttext-align: center;\n}\n\t\n", ""]);
+exports.push([module.i, "\n.tickets-content[data-v-260d980f] {\n\t\tbackground-color: initial;\n\t\ttext-align: center;\n\t    padding-bottom: 10px;\n\t    padding-top: 10px;\n\t    cursor: default;\n\t    display: -webkit-box;\n\t    display: -ms-flexbox;\n\t    display: flex;\n\t\t-webkit-box-orient: horizontal;\n\t\t-webkit-box-direction: normal;\n\t\t    -ms-flex-direction: row;\n\t\t        flex-direction: row;\n\t\t-ms-flex-wrap: wrap;\n\t\t    flex-wrap: wrap;\n\t\tposition: relative;\n}\n.tickets[data-v-260d980f] {\n\t\t\n\t\tpadding: 5px;\n}\n.separator[data-v-260d980f] {\n\t    position: absolute;\n\t    top: 50%;\n\t    left: 50%;\n\t    -webkit-transform: translate(-50%, -50%);\n\t    transform: translate(-50%, -50%);\n\t    width: 40px;\n\t    height: 100%;\n\t    padding: 10px;\n}\n.line[data-v-260d980f] {\n\t    border-right: 3px solid #ff0000;\n\t    height: 100%;\n\t    width: 100%;\n}\n.separator[data-v-260d980f]:after {\n}\n@media (max-width: 576px) {\n.separator[data-v-260d980f] {\n\t\t\tdisplay: none;\n}\n}\n@media (max-width: 747px) {\n.separator[data-v-260d980f] {\n\t\t\tdisplay: none;\n}\n}\n.tickets-header[data-v-260d980f] {\n\t\tpadding: 5px 0 0 0;\n\t\tcolor: #000;\n\t\tbackground-color: initial;\n}\n.tickets-header .ticket-categories[data-v-260d980f] {\n\t\tfont-weight: bold;\n\t\ttext-align: center;\n\t\tbackground-color: #fad7d4;\n\t    border-color: #f7bec3;\n\t    color: #a94442;\n        border: 1px solid transparent;\n\t    border-radius: 2px;\n\t    display: block;\n\t    text-transform: uppercase;\n}\n.tickets-header .tickets-limit[data-v-260d980f] {\n\t\tdisplay: block;\n}\n.tickets-header .tickets-name[data-v-260d980f] {\n\t    display: block;\n\t    vertical-align: middle;\n\t    line-height: 17px;\n\t    font-size: 20px;\n\t    color: #000\n}\n.countdown[data-v-260d980f] {\n\t\tdisplay: block;\n\t\ttext-transform: lowercase;\n\t\ttext-align: center;\n}\n\t\n", ""]);
 
 // exports
 
@@ -77018,7 +77018,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\ninput[data-v-732e4e69] {\n\ttext-align: center;\n}\nspan[data-v-732e4e69] {\n\tline-height: 1;\n\tword-wrap: break-word;\n\twidth: 67%;\n}\n.row[data-v-732e4e69] {\n\tcolor: white;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n}\n.shield-img[data-v-732e4e69] {\n\twidth: 42%;\n\theight: auto;\n}\n.info-date[data-v-732e4e69] {\n\tdisplay: block;\n}\n.info-local[data-v-732e4e69] {\n\tdisplay: block;\n\tfont-size: 16px\n}\n.container-club[data-v-732e4e69] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex; \n\t-webkit-box-align: center; \n\t    -ms-flex-align: center; \n\t        align-items: center;\n}\n.x[data-v-732e4e69] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n.gold-ball[data-v-732e4e69] {\n\twidth: inherit;\n\tfont-size: 30px;\n\tcolor: gold;\n\tline-height: 1;\n\tcursor: pointer;\n}\n.games[data-v-732e4e69] {\n\tmargin-bottom: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.shield-img[data-v-732e4e69] {\n\t\twidth: 40px; \n\t\theight: 40px;\n}\ninput[data-v-732e4e69] {\n\t\ttext-align: center;\n}\nspan[data-v-732e4e69] {\n\t\tline-height: 1;\n}\n.info-date[data-v-732e4e69] {\n\t\tdisplay: block;\n}\n.info-local[data-v-732e4e69] {\n\t\tdisplay: block;\n\t\tfont-size: 16px\n}\n.row[data-v-732e4e69] {\n\t\tcolor: white;\n\t\t-webkit-box-pack: center;\n\t\t    -ms-flex-pack: center;\n\t\t        justify-content: center;\n\t\t-webkit-box-align: center;\n\t\t    -ms-flex-align: center;\n\t\t        align-items: center;\n}\n.games[data-v-732e4e69]{\n\t\tmargin-bottom: 5px;\n}\n.container-club[data-v-732e4e69] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -ms-flexbox;\n\t\tdisplay: flex; \n\t\t-webkit-box-align: center; \n\t\t    -ms-flex-align: center; \n\t\t        align-items: center;\n}\n.result[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 22px;\n}\n.gold-ball[data-v-732e4e69] {\n\t\tfont-size: 30px;\n\t    color: gold;\n\t    line-height: 1;\n\t    cursor: pointer;\n\t    margin-right: 5px;\n\t    height: 40px;\n\t    width: 40px;\n}\n.x[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 16px;\n\t\tdisplay: inline-block;\n}\n.form-control[data-v-732e4e69] {\n\t\tdisplay: inline-block;\n    \twidth: 40px;\n}\n", ""]);
 
 // exports
 
@@ -77029,6 +77029,26 @@ exports.push([module.i, "\ninput[data-v-732e4e69] {\n\ttext-align: center;\n}\ns
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -77136,37 +77156,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row vcenter text-center games" }, [
-    _vm.ticket.gold_ball_game_id != _vm.game.id
-      ? _c("div", { staticClass: "col-lg-12" }, [
-          _c("span", {
-            staticClass: "fa fa-star gold-ball",
-            staticStyle: { opacity: "0.5" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.changeGoldBall($event)
+  return _c("div", { staticClass: "row vcenter text-center games no-margin" }, [
+    _c(
+      "div",
+      {
+        staticClass: "col-lg-1 no-padding mobile",
+        staticStyle: { "justify-content": "center" }
+      },
+      [
+        _vm.ticket.gold_ball_game_id != _vm.game.id
+          ? _c("img", {
+              staticClass: "img-fluid gold-ball",
+              staticStyle: { opacity: "0.5" },
+              attrs: { src: "/img/gold_ball.png" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.changeGoldBall($event)
+                }
               }
-            }
-          })
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.ticket.gold_ball_game_id == _vm.game.id
-      ? _c("div", { staticClass: "col-lg-12" }, [
-          _c("span", {
-            staticClass: "fa fa-star gold-ball",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.changeGoldBall($event)
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.ticket.gold_ball_game_id == _vm.game.id
+          ? _c("img", {
+              staticClass: "img-fluid gold-ball",
+              attrs: { src: "/img/gold_ball.png" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.changeGoldBall($event)
+                }
               }
-            }
-          })
-        ])
-      : _vm._e(),
+            })
+          : _vm._e()
+      ]
+    ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-2 col-md-5 col-lg-4" }, [
+    _c("div", { staticClass: "col-4 col-sm-4 col-md-5 col-lg-4" }, [
       _c(
         "div",
         {
@@ -77174,9 +77201,17 @@ var render = function() {
           staticStyle: { "justify-content": "flex-end" }
         },
         [
-          _c("span", { staticStyle: { "line-height": "1" } }, [
-            _vm._v(_vm._s(_vm.game.house_club.nome))
-          ]),
+          _c(
+            "span",
+            {
+              staticStyle: {
+                "line-height": "1",
+                flex: "5",
+                "text-align": "right"
+              }
+            },
+            [_vm._v(_vm._s(_vm.game.house_club.nome))]
+          ),
           _vm._v(" "),
           _vm.game.house_club.escudo != undefined
             ? _c("img", {
@@ -77192,65 +77227,70 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-lg-1 col-2 no-padding" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.game.result_house_club,
-            expression: "game.result_house_club"
-          }
-        ],
-        staticClass: "form-control no-padding",
-        attrs: { min: "0", type: "number" },
-        domProps: { value: _vm.game.result_house_club },
-        on: {
-          change: function($event) {
-            $event.preventDefault()
-            _vm.houseClubResult(_vm.index, $event)
-          },
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+    _c(
+      "div",
+      {
+        staticClass: "col-4 col-sm-3 col-md-2 col-lg-3 no-padding",
+        staticStyle: { "text-align": "center" }
+      },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.game.result_house_club,
+              expression: "game.result_house_club"
             }
-            _vm.$set(_vm.game, "result_house_club", $event.target.value)
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-lg-1 col-2 no-padding" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.game.result_out_club,
-            expression: "game.result_out_club"
-          }
-        ],
-        staticClass: "form-control no-padding",
-        attrs: { min: "0", type: "number", name: "" },
-        domProps: { value: _vm.game.result_out_club },
-        on: {
-          change: function($event) {
-            $event.preventDefault()
-            _vm.outClubResult(_vm.index, $event)
-          },
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+          ],
+          staticClass: "form-control no-padding",
+          attrs: { min: "0", type: "number" },
+          domProps: { value: _vm.game.result_house_club },
+          on: {
+            change: function($event) {
+              $event.preventDefault()
+              _vm.houseClubResult(_vm.index, $event)
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.game, "result_house_club", $event.target.value)
             }
-            _vm.$set(_vm.game, "result_out_club", $event.target.value)
           }
-        }
-      })
-    ]),
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "x" }, [_vm._v("X")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.game.result_out_club,
+              expression: "game.result_out_club"
+            }
+          ],
+          staticClass: "form-control no-padding",
+          attrs: { min: "0", type: "number" },
+          domProps: { value: _vm.game.result_out_club },
+          on: {
+            change: function($event) {
+              $event.preventDefault()
+              _vm.outClubResult(_vm.index, $event)
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.game, "result_out_club", $event.target.value)
+            }
+          }
+        })
+      ]
+    ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-2 col-md-5 col-lg-4" }, [
+    _c("div", { staticClass: "col-4 col-sm-4 col-md-5 col-lg-4" }, [
       _c(
         "div",
         {
@@ -77269,12 +77309,56 @@ var render = function() {
               })
             : _vm._e(),
           _vm._v(" "),
-          _c("span", { staticStyle: { "line-height": "1" } }, [
-            _vm._v(_vm._s(_vm.game.out_club.nome))
-          ])
+          _c(
+            "span",
+            {
+              staticStyle: {
+                "line-height": "1",
+                flex: "5",
+                "text-align": "left"
+              }
+            },
+            [_vm._v(_vm._s(_vm.game.out_club.nome))]
+          )
         ]
       )
     ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "col-lg-1 no-padding no-mobile",
+        staticStyle: { "justify-content": "center" }
+      },
+      [
+        _vm.ticket.gold_ball_game_id != _vm.game.id
+          ? _c("img", {
+              staticClass: "img-fluid gold-ball",
+              staticStyle: { opacity: "0.5" },
+              attrs: { src: "/img/gold_ball.png" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.changeGoldBall($event)
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.ticket.gold_ball_game_id == _vm.game.id
+          ? _c("img", {
+              staticClass: "img-fluid gold-ball",
+              attrs: { src: "/img/gold_ball.png" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.changeGoldBall($event)
+                }
+              }
+            })
+          : _vm._e()
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "col-lg-12" }, [
       _c("span", [
@@ -77291,21 +77375,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "col-2 col-md-2 col-sm-2 col-lg-1 no-padding",
-        staticStyle: { "text-align": "center" }
-      },
-      [_c("span", { staticClass: "x" }, [_vm._v("X")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -86148,7 +86218,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.tickets-content[data-v-6a2749a0] {\n\t\tbackground-color: initial;\n\t\ttext-align: center;\n\t    padding-bottom: 20px;\n\t    padding-top: 20px;\n}\n.tickets[data-v-6a2749a0] {\n\t\t\n\t\tpadding: 5px;\n}\n.tickets-header[data-v-6a2749a0] {\n\t\tpadding: 5px 0 0 0;\n\t\tbackground-color: initial;\n}\n.tickets-header .ticket-categories[data-v-6a2749a0] {\n\t\tfont-weight: bold;\n\t\ttext-align: center;\n\t\tbackground-color: #fad7d4;\n\t    border-color: #f7bec3;\n\t    color: #a94442;\n        border: 1px solid transparent;\n\t    border-radius: 2px;\n\t    display: block;\n\t    text-transform: uppercase;\n}\n.tickets-header .tickets-limit[data-v-6a2749a0] {\n\t\tdisplay: block;\n}\n.tickets-header .tickets-name[data-v-6a2749a0] {\n\t    display: block;\n\t    vertical-align: middle;\n\t    line-height: 17px;\n\t    font-size: 20px;\n\t    color: #000\n}\n.countdown[data-v-6a2749a0] {\n\t\tdisplay: block;\n\t\ttext-transform: lowercase;\n\t\ttext-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.tickets-content[data-v-6a2749a0] {\n\t\tbackground-color: initial;\n\t\ttext-align: center;\n\t    padding-bottom: 20px;\n\t    padding-top: 20px;\n}\n.tickets[data-v-6a2749a0] {\t\t\n\t\tpadding: 5px;\n}\n.tickets-header[data-v-6a2749a0] {\n\t\tpadding: 5px 0 0 0;\n\t\tcolor: #000;\n\t\tbackground-color: initial;\n}\n.tickets-header .ticket-categories[data-v-6a2749a0] {\n\t\tfont-weight: bold;\n\t\ttext-align: center;\n\t\tbackground-color: #fad7d4;\n\t    border-color: #f7bec3;\n\t    color: #a94442;\n        border: 1px solid transparent;\n\t    border-radius: 2px;\n\t    display: block;\n\t    text-transform: uppercase;\n}\n.tickets-header .tickets-limit[data-v-6a2749a0] {\n\t\tdisplay: block;\n}\n.tickets-header .tickets-name[data-v-6a2749a0] {\n\t    display: block;\n\t    vertical-align: middle;\n\t    line-height: 17px;\n\t    font-size: 20px;\n\t    color: #000\n}\n.countdown[data-v-6a2749a0] {\n\t\tdisplay: block;\n\t\ttext-transform: lowercase;\n\t\ttext-align: center;\n}\n", ""]);
 
 // exports
 
@@ -86336,7 +86406,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\ninput[data-v-5e79303a] {\n\ttext-align: center;\n}\nspan[data-v-5e79303a] {\n\tline-height: 1;\n}\n.info-date[data-v-5e79303a] {\n\tdisplay: block;\n}\n.info-local[data-v-5e79303a] {\n\tdisplay: block;\n\tfont-size: 16px\n}\n.row[data-v-5e79303a] {\n\tcolor: white;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.games[data-v-5e79303a]{\n\tmargin-bottom: 5px;\n}\n.container-club[data-v-5e79303a] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex; \n\t-webkit-box-align: center; \n\t    -ms-flex-align: center; \n\t        align-items: center;\n}\n.x[data-v-5e79303a] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n", ""]);
+exports.push([module.i, "\ninput[data-v-5e79303a] {\n\ttext-align: center;\n}\nspan[data-v-5e79303a] {\n\tline-height: 1;\n}\n.info-date[data-v-5e79303a] {\n\tdisplay: block;\n}\n.info-local[data-v-5e79303a] {\n\tdisplay: block;\n\tfont-size: 16px\n}\n.row[data-v-5e79303a] {\n\tcolor: white;\n\t-webkit-box-pack: center;\n\t    -ms-flex-pack: center;\n\t        justify-content: center;\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.games[data-v-5e79303a]{\n\tmargin-bottom: 5px;\n}\n.container-club[data-v-5e79303a] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex; \n\t-webkit-box-align: center; \n\t    -ms-flex-align: center; \n\t        align-items: center;\n}\n.x[data-v-5e79303a] {\n\tfont-weight: bold;\n\tfont-size: 16px;\n}\n.result[data-v-5e79303a] {\n\tfont-size: 20px;\n\tcolor: #fff;\n}\n", ""]);
 
 // exports
 
@@ -86347,6 +86417,16 @@ exports.push([module.i, "\ninput[data-v-5e79303a] {\n\ttext-align: center;\n}\ns
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -86411,7 +86491,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "col-2 col-md-5 col-lg-4",
+        staticClass: "col-2 col-md-5 col-lg-5",
         staticStyle: { "padding-left": "0", "padding-right": "2px" }
       },
       [
@@ -86444,68 +86524,29 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-lg-1 col-2 no-padding" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.game.result_house_club,
-            expression: "game.result_house_club"
-          }
-        ],
-        staticClass: "form-control no-padding",
-        attrs: { min: "0", type: "number" },
-        domProps: { value: _vm.game.result_house_club },
-        on: {
-          change: function($event) {
-            $event.preventDefault()
-            _vm.houseClubResult(_vm.index, $event)
-          },
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.game, "result_house_club", $event.target.value)
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-lg-1 col-2 no-padding" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.game.result_out_club,
-            expression: "game.result_out_club"
-          }
-        ],
-        staticClass: "form-control no-padding",
-        attrs: { min: "0", type: "number", name: "" },
-        domProps: { value: _vm.game.result_out_club },
-        on: {
-          change: function($event) {
-            $event.preventDefault()
-            _vm.outClubResult(_vm.index, $event)
-          },
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.game, "result_out_club", $event.target.value)
-          }
-        }
-      })
-    ]),
+    _c(
+      "div",
+      {
+        staticClass: "col-2 col-md-2 col-sm-2 col-lg-2 no-padding",
+        staticStyle: { "text-align": "center" }
+      },
+      [
+        _c("span", { staticClass: "result" }, [
+          _vm._v("\n\t\t\t\t" + _vm._s(_vm.game.result_house_club) + "\n\t\t\t")
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "x" }, [_vm._v("X")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "result" }, [
+          _vm._v("\n\t\t\t\t" + _vm._s(_vm.game.result_out_club) + "\n\t\t\t")
+        ])
+      ]
+    ),
     _vm._v(" "),
     _c(
       "div",
       {
-        staticClass: "col-2 col-md-5 col-lg-4",
+        staticClass: "col-2 col-md-5 col-lg-5",
         staticStyle: { "padding-right": "0", "padding-left": "2px" }
       },
       [
@@ -86539,21 +86580,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "col-2 col-md-2 col-sm-2 col-lg-1 no-padding",
-        staticStyle: { "text-align": "center" }
-      },
-      [_c("span", { staticClass: "x" }, [_vm._v("X")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

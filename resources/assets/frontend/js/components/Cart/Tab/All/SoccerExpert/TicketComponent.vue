@@ -97,13 +97,13 @@
 	    padding-top: 20px;
 	}
 
-	.tickets {
-		
+	.tickets {		
 		padding: 5px;
 	}
 
 	.tickets-header {
 		padding: 5px 0 0 0;
+		color: #000;
 		background-color: initial;
 	}
 

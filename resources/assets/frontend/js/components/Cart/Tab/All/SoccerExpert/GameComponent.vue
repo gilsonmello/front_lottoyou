@@ -1,7 +1,7 @@
 <template>
 	<div class="row vcenter text-center games">
 
-		<div class="col-2 col-md-5 col-lg-4" style="padding-left: 0; padding-right: 2px;">
+		<div class="col-2 col-md-5 col-lg-5" style="padding-left: 0; padding-right: 2px;">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-end;">
 				<span style="line-height: 1;">{{ game.house_club.nome }}</span>
@@ -9,19 +9,29 @@
 			</div>
 		</div>
 
-		<div class="col-lg-1 col-2 no-padding">
-			<input min="0" v-model="game.result_house_club" @change.prevent="houseClubResult(index, $event)" type="number" class="form-control no-padding">
-		</div>
+		<!-- <div class="col-lg-1 col-2 no-padding">
+			<span class="result">
+				{{ game.resultado_clube_casa }}
+			</span>
+		</div> -->
 
-		<div class="col-2 col-md-2 col-sm-2 col-lg-1 no-padding" style="text-align: center">
+		<div class="col-2 col-md-2 col-sm-2 col-lg-2 no-padding" style="text-align: center">
+			<span class="result">
+				{{ game.result_house_club }}
+			</span>
             <span class="x">X</span>
+            <span class="result">
+				{{ game.result_out_club }}
+			</span>
         </div>
 
-        <div class="col-lg-1 col-2 no-padding">
-			<input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(index, $event)" type="number" class="form-control no-padding" name="">
-		</div>
+        <!-- <div class="col-lg-1 col-2 no-padding">
+        	<span class="result">
+				{{ game.resultado_clube_fora }}
+			</span>
+		</div> -->
 
-        <div class="col-2 col-md-5 col-lg-4" style="padding-right: 0; padding-left: 2px;">
+        <div class="col-2 col-md-5 col-lg-5" style="padding-right: 0; padding-left: 2px;">
 			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 			<div class="container-club" style="justify-content: flex-start;">
 				<img v-if="game.out_club.escudo != undefined" style="width: 30px; height: 30px; margin-right: 5px;" :title="game.out_club.nome" :src="game.out_club.escudo">
@@ -97,5 +107,10 @@
 	.x {
 		font-weight: bold;
 		font-size: 16px;
+	}
+
+	.result {
+		font-size: 20px;
+		color: #fff;
 	}
 </style>

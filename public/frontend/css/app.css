@@ -13196,6 +13196,14 @@ body {
   padding: 0;
 }
 
+.no-mobile {
+  display: inherit;
+}
+
+.mobile {
+  display: none;
+}
+
 .page-header {
   color: #000;
   padding-bottom: 10px;
@@ -13295,7 +13303,15 @@ button.close {
   }
 
   .modal-xl {
-    max-width: 70% !important;
+    max-width: 70%;
+  }
+
+  .no-mobile {
+    display: inherit;
+  }
+
+  .mobile {
+    display: none;
   }
 }
 
@@ -13303,6 +13319,14 @@ button.close {
   .modal-demo .scratchpad {
     min-height: 70px;
     margin-bottom: 12px;
+  }
+
+  .no-mobile {
+    display: none;
+  }
+
+  .mobile {
+    display: inherit;
   }
 }
 
@@ -13328,6 +13352,14 @@ button.close {
   .btn-game {
     font-size: 15px !important;
   }
+
+  .no-mobile {
+    display: none;
+  }
+
+  .mobile {
+    display: inherit;
+  }
 }
 
 @media (max-width: 747px) {
@@ -13342,6 +13374,14 @@ button.close {
 
   .navbar-right {
     width: 100% !important;
+  }
+
+  .no-mobile {
+    display: none;
+  }
+
+  .mobile {
+    display: inherit;
   }
 }
 
@@ -13399,6 +13439,14 @@ button.close {
   .h div {
     height: 100px !important;
     margin-bottom: 3px;
+  }
+
+  .no-mobile {
+    display: none;
+  }
+
+  .mobile {
+    display: inherit;
   }
 }
 

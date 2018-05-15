@@ -378,4 +378,20 @@
 	    border: 3px solid #BF390F !important;
 	}
 
+	.modal-xl {
+        max-width: 85%;
+    }
+
+	@media (min-width: 992px)  {
+	    .modal-xl {
+	        max-width: 90%;
+	    }
+	}
+
+	@media (max-width: 767px){
+	    .modal-xl {
+	        max-width: 98%;
+	    }
+	}
+
 </style>
