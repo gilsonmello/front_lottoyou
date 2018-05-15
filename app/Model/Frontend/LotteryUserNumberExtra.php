@@ -3,12 +3,10 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Model\Frontend\LotteryUser;
 //use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Model\Frontend\Lottery;
-use App\Model\Frontend\LotteryUserNumber;
-use App\User;
 
-class LotteryUser extends Model
+class LotteryUserNumberExtra extends Model
 {
     const CREATED_AT = 'created';
 
@@ -31,7 +29,7 @@ class LotteryUser extends Model
      * 
      * @var array
      */
-    public $table = 'lot_users_jogos';
+    public $table = 'lot_users_numeros_extras';
 
     /**
      * The attributes that are mass assignable.
@@ -51,17 +49,7 @@ class LotteryUser extends Model
         
     ];
 
-    public function lottery() {
-    	return $this->belongsTo(Lottery::class, 'lot_jogo_id');
+    public function bet() {
+    	return $this->belongsTo(LotteryUser::class, 'lot_users_jogo_id');
     }
-
-    public function player() {
-    	return $this->belongsTo(User::class, 'jogador_id');
-    }
-
-    public function numbers() 
-    {
-        return $this->belongsTo(LotteryUserNumber::class, 'lot_users_jogo_id');
-    }
-
 }

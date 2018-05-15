@@ -7,6 +7,8 @@ use App\Model\Frontend\SoccerExpertBet;
 use App\Model\Frontend\SoccerExpertBetGame;
 use App\Model\Frontend\ScratchCard;
 use App\Model\Frontend\LotteryUser;
+use App\Model\Frontend\LotteryUserNumber;
+use App\Model\Frontend\LotteryUserNumberExtra;
 use App\Model\Frontend\SoccerExpertRoundGroup;
 use App\Model\Frontend\SoccerExpertRound;
 
@@ -29,33 +31,28 @@ class OrderItemObserver
         foreach($data->tickets as $bet) {
             $lotteryUser = new LotteryUser;
 
-            //Pegando as dezenas selecionadas
-            foreach($bet->numbers as $key => $number) {
-
-                //Concatenando os números
-                if($key == (count($bet->numbers) - 1)) {
-                    $lotteryUser->numeros .= $number;
-                } else {
-                    $lotteryUser->numeros .= $number.' - ';
-                }                    
-            }
-
-            //Pegando as dezenas extras selecionadas
-            foreach($bet->numbersExtras as $key => $number) {
-
-                //Concatenando os números
-                if($key == (count($bet->numbersExtras) - 1)) {
-                    $lotteryUser->numeros .= $number;
-                } else {
-                    $lotteryUser->numeros .=  $number.' + ';
-                }
-            }
-
             //Atribuindo os dados para a aposta e salvando
             $lotteryUser->lot_jogo_id = $data->sweepstake->id;
             $lotteryUser->jogador_id = $item->order->user_id;
             $lotteryUser->status = 1;
             $lotteryUser->save();
+
+            //Pegando as dezenas selecionadas
+            foreach($bet->numbers as $key => $number) {
+                $userNumber = new LotteryUserNumber;
+                $userNumber->numero = $number;
+                $userNumber->lot_users_jogo_id = $lotteryUser->id;
+                $userNumber->save();                             
+            }
+
+            //Pegando as dezenas extras selecionadas
+            foreach($bet->numbersExtras as $key => $number) {
+                $userNumber = new LotteryUserNumberExtra;
+                $userNumber->numero = $number;
+                $userNumber->lot_users_jogo_id = $lotteryUser->id;
+                $userNumber->save();
+            }
+
         }
         return true;
     }

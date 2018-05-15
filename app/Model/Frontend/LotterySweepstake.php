@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Model\Frontend\LotteryResult;
 use App\Model\Frontend\Lottery;
+use App\Model\Frontend\LotteryNumber;
 
 class LotterySweepstake extends Model
 {
@@ -62,6 +63,11 @@ class LotterySweepstake extends Model
 
     public function results() {
     	return $this->hasMany(LotteryResult::class, 'lot_jogo_id');
+    }
+
+    public function numbers() 
+    {
+        return $this->hasMany(LotteryNumber::class, 'lot_jogo_id');
     }
 
     public function getDataFimAttribute($date) {
