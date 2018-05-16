@@ -234,7 +234,7 @@
 	}
 
 	.line {
-	    border-right: 3px solid #ff0000;
+	    border-right: 3px solid #fff;
 	    height: 100%;
 	    width: 100%;
 	}
