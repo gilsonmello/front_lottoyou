@@ -180,9 +180,9 @@
 		        		</table>
 			      	</div>
 					<!-- Modal footer -->
-			      	<div class="modal-footer">
-			        	<!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
-			      	</div>
+			      	<!--<div class="modal-footer">
+			        	 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			      	</div>-->
 				</div>
 		  	</div>
 		</div>
@@ -712,6 +712,13 @@
 </script>
 
 <style scoped>
+
+	.table {
+		margin-bottom: 0;
+	}
+	.table th, .table td {
+		padding: 8px;
+	}
 	
 	.info-text {
 		color: #fff;
