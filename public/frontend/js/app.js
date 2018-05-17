@@ -76588,9 +76588,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['game', 'index', 'ticket'],
-	created: function created() {
-		if (this.game.out_club == null || this.game.house_club == null) console.log(this.game);
-	},
+	created: function created() {},
 	mounted: function mounted() {
 		this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : '';
 		this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';

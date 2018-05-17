@@ -36,8 +36,7 @@
 	export default {
 		props: ['game', 'index', 'ticket'],
 		created: function () {
-			if(this.game.out_club == null || this.game.house_club == null)
-				console.log(this.game)
+				
         },
         mounted: function() {
         	this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : ''
