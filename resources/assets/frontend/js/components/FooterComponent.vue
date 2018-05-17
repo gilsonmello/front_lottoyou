@@ -19,6 +19,9 @@
 		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
 		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/596c86940eb35860f76742c7/mastercard_logo@2x.png">
 		            </div>
+		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
+		                <img class="img-responsive img-fluid" src="/img/american-express.png">
+		            </div>
 		        </div>
 	        </div>
 		</div>
@@ -188,11 +191,11 @@
 				</ul>
 				<p></p>-->
 				<p class="text-center">
-					A Lottoyou.bet é administrada pela Lottoyou, em nome da EU Lotto Limited.
-					EU Lotto está autorizada a oferecer serviços de intermediação.<br>
-
-					<br> EU Lotto não é associada ou afiliada a nenhuma operadora de loterias oficiais. Sede no endereço: Suite A, Ocean Village Promenade, Ocean Village, Gibraltar, GX11 1AA <br><br>
-					Jogue nas maiores loterias online com a lottoyou.bet
+					A Lottoyou.bet é administrada pela P2G INVERSIONES SAC.
+					<br>
+					P2G INVERSIONES SAC não é associada ou afiliada a nenhuma operadora de loterias oficiais. Sede na Republica do Peru.
+					<br>
+					Este site é destinado a usuarios maiores de 18 anos.
 				</p>
 			</div>
 		</div>

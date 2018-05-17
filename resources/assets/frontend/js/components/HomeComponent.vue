@@ -13,20 +13,20 @@
 				<img style="width: 100%; " class="img-fluid" src="/img/new1/Ban-CUSTOM_BG.png">
 			</div>			
 		</div>
-		
-		<br>
-		<div class="container">
-			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
-				<img style="width: 100%; " class="img-fluid" src="/img/new1/Soccer_Exp_S_TX.jpg">
-			</div>
-		</div>
 
 		<br>
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
 				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
 				<img style="width: 100%; " class="img-fluid" src="/img/new1/RASPADINHAS.jpg">
+			</div>
+		</div>
+		
+		<br>
+		<div class="container">
+			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
+				<img style="width: 100%; " class="img-fluid" src="/img/new1/Soccer_Exp_S_TX.jpg">
 			</div>
 		</div>
 
@@ -78,21 +78,21 @@
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
 				<div id="how-to-play">
-					<h1 class="text-center">Como jogar na Easy Money - Nossa Loteria</h1>
+					<h1 class="text-center">Como jogar na Nossa Loteria - Easy Money</h1>
 				</div>
 			</div>
 			<div class="row" style="background-image: url(//www.lottoland.com/cms/5554aadbe4b06bf49b4e071e/br_homepage_step-icons2.jpg); height: 300px; background-size: 100% auto; background-repeat: no-repeat; padding: 200px 0 0 130px;">
 				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
 					<h5><strong>1. Escolha seus números</strong></h5>
-					<h5>Clique sobre seus números da sorte e confirme!</h5>
+					<h4>Escolha 5 números no universo de 35 números</h4>
 				</div>
 				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
 					<h5><strong>2. Escolha a data do Sorteio</strong></h5>
-					<h5>Clique sobre seus números da sorte e confirme!</h5>
+					<h4>Os sorteios ocorrem de segunda a sábado</h4>
 				</div>
 				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
 					<h5><strong>3. Confirme seu bilhete</strong></h5>
-					<h5>Clique sobre seus números da sorte e confirme!</h5>
+					<h4>Escolha como deseja pagar seu jogo com segurança</h4>
 				</div>
 			</div>
 			

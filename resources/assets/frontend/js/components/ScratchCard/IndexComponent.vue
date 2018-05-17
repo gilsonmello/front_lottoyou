@@ -77,13 +77,13 @@
 							</div>
 							<div class="row vcenter" style="margin-top: 15px; background: none;">
 								<div class="col-12 col-md-12 col-xs-12 col-sm-12 text-center">
-									<button type="button" @click.prevent="handleScratchCard(index, $event)" class="btn btn-md btn-success" v-if="scratch_card_theme.has_scratch_card">
+									<button type="button" @click.prevent="handleScratchCard(index, $event)" class="btn btn-md btn-info" v-if="scratch_card_theme.has_scratch_card">
 										{{ trans('strings.to_play') }}
 									</button>
-									<button type="submit" class="btn btn-md btn-success">
+									<button type="submit" class="btn btn-md btn-info">
 										{{ trans('strings.buy_now') }}
 									</button>
-									<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
+									<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-info">
 										<i class="fa fa-refresh fa-spin"></i>
 									</button>
 								</div>

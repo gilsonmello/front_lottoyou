@@ -61929,13 +61929,13 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
+                  "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
               },
               [
                 _c("img", {
                   staticClass: "img-fluid",
                   staticStyle: { width: "100%" },
-                  attrs: { src: "/img/new1/Soccer_Exp_S_TX.jpg" }
+                  attrs: { src: "/img/new1/RASPADINHAS.jpg" }
                 })
               ]
             )
@@ -61948,13 +61948,13 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
+                  "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
               },
               [
                 _c("img", {
                   staticClass: "img-fluid",
                   staticStyle: { width: "100%" },
-                  attrs: { src: "/img/new1/RASPADINHAS.jpg" }
+                  attrs: { src: "/img/new1/Soccer_Exp_S_TX.jpg" }
                 })
               ]
             )
@@ -61988,7 +61988,7 @@ var render = function() {
               [
                 _c("div", { attrs: { id: "how-to-play" } }, [
                   _c("h1", { staticClass: "text-center" }, [
-                    _vm._v("Como jogar na Easy Money - Nossa Loteria")
+                    _vm._v("Como jogar na Nossa Loteria - Easy Money")
                   ])
                 ])
               ]
@@ -62016,8 +62016,8 @@ var render = function() {
                       _c("strong", [_vm._v("1. Escolha seus números")])
                     ]),
                     _vm._v(" "),
-                    _c("h5", [
-                      _vm._v("Clique sobre seus números da sorte e confirme!")
+                    _c("h4", [
+                      _vm._v("Escolha 5 números no universo de 35 números")
                     ])
                   ]
                 ),
@@ -62030,8 +62030,8 @@ var render = function() {
                       _c("strong", [_vm._v("2. Escolha a data do Sorteio")])
                     ]),
                     _vm._v(" "),
-                    _c("h5", [
-                      _vm._v("Clique sobre seus números da sorte e confirme!")
+                    _c("h4", [
+                      _vm._v("Os sorteios ocorrem de segunda a sábado")
                     ])
                   ]
                 ),
@@ -62044,8 +62044,8 @@ var render = function() {
                       _c("strong", [_vm._v("3. Confirme seu bilhete")])
                     ]),
                     _vm._v(" "),
-                    _c("h5", [
-                      _vm._v("Clique sobre seus números da sorte e confirme!")
+                    _c("h4", [
+                      _vm._v("Escolha como deseja pagar seu jogo com segurança")
                     ])
                   ]
                 )
@@ -62603,7 +62603,7 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-md btn-success",
+                            staticClass: "btn btn-md btn-info",
                             staticStyle: { width: "100%" },
                             attrs: { type: "submit" }
                           },
@@ -62619,7 +62619,7 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass: "hide btn btn-md btn-success",
+                            staticClass: "hide btn btn-md btn-info",
                             staticStyle: { width: "100%" },
                             attrs: { type: "load" },
                             on: {
@@ -67851,7 +67851,7 @@ var render = function() {
                                     ? _c(
                                         "button",
                                         {
-                                          staticClass: "btn btn-md btn-success",
+                                          staticClass: "btn btn-md btn-info",
                                           attrs: { type: "button" },
                                           on: {
                                             click: function($event) {
@@ -67878,7 +67878,7 @@ var render = function() {
                                   _c(
                                     "button",
                                     {
-                                      staticClass: "btn btn-md btn-success",
+                                      staticClass: "btn btn-md btn-info",
                                       attrs: { type: "submit" }
                                     },
                                     [
@@ -67894,7 +67894,7 @@ var render = function() {
                                     "button",
                                     {
                                       staticClass:
-                                        "hide pull-right btn btn-md btn-success",
+                                        "hide pull-right btn btn-md btn-info",
                                       attrs: { type: "load" },
                                       on: {
                                         click: function($event) {
@@ -97893,6 +97893,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -98068,6 +98071,13 @@ var staticRenderFns = [
                     src:
                       "//www.lottoland.com/cms/596c86940eb35860f76742c7/mastercard_logo@2x.png"
                   }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-2 col-3 col-md-3 col-sm-3" }, [
+                _c("img", {
+                  staticClass: "img-responsive img-fluid",
+                  attrs: { src: "/img/american-express.png" }
                 })
               ])
             ]
@@ -98262,18 +98272,15 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("p", { staticClass: "text-center" }, [
             _vm._v(
-              "\n\t\t\t\tA Lottoyou.bet é administrada pela Lottoyou, em nome da EU Lotto Limited.\n\t\t\t\tEU Lotto está autorizada a oferecer serviços de intermediação."
+              "\n\t\t\t\tA Lottoyou.bet é administrada pela P2G INVERSIONES SAC.\n\t\t\t\t"
             ),
             _c("br"),
-            _vm._v(" "),
-            _c("br"),
             _vm._v(
-              " EU Lotto não é associada ou afiliada a nenhuma operadora de loterias oficiais. Sede no endereço: Suite A, Ocean Village Promenade, Ocean Village, Gibraltar, GX11 1AA "
+              "\n\t\t\t\tP2G INVERSIONES SAC não é associada ou afiliada a nenhuma operadora de loterias oficiais. Sede na Republica do Peru.\n\t\t\t\t"
             ),
             _c("br"),
-            _c("br"),
             _vm._v(
-              "\n\t\t\t\tJogue nas maiores loterias online com a lottoyou.bet\n\t\t\t"
+              "\n\t\t\t\tEste site é destinado a usuarios maiores de 18 anos.\n\t\t\t"
             )
           ])
         ])

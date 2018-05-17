@@ -13719,7 +13719,12 @@ button.close {
 }
 
 .btn-game:not([disabled]):not(.disabled):active {
-  background: transparent linear-gradient(to bottom, #c3dc41 0px, #97bd00 100%) repeat scroll 0 0 !important;
+  background: #003874 !important;
+}
+
+.btn-game:hover {
+  background: #003874 !important;
+  color: #fff;
 }
 
 .btn-game {
@@ -13731,7 +13736,6 @@ button.close {
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
-  font-family: "kievit",arial,sans-serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 48px;
@@ -13739,10 +13743,6 @@ button.close {
   text-align: center;
   text-decoration: none;
   vertical-align: bottom;
-}
-
-.btn-game:hover {
-  color: #fff;
 }
 
 .btn-result {
@@ -13765,6 +13765,12 @@ button.close {
   line-height: 48px;
   padding: 0 15px;
   width: 100%;
+  cursor: auto !important;
+}
+
+.remaining-tickets:hover {
+  color: #f2d472;
+  background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
 }
 
 .ticket-number {
