@@ -22,7 +22,7 @@
 		<div class="tickets-content" :style="backgroundTicket(ticket.imagem_modal)">
 			
 			<div class="col-lg-6 col-12 col-md-6 col-sm-12">
-				<game-component v-for="(game, index) in ticket.games_left" :key="index" :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index"></game-component>
+				<game-component v-for="(game, index) in ticket.games_left" :key="index" :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index" :position="'left'"></game-component>
 			</div>
 
 			
@@ -34,7 +34,7 @@
 			
 
 			<div class="col-lg-6 col-12 col-md-6 col-sm-12">
-				<game-component v-for="(game, index) in ticket.games_right" :key="index" :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index"></game-component>
+				<game-component v-for="(game, index) in ticket.games_right" :key="index" :game="game" :ticket="ticket" v-on:updateTicket="updateTicket" :index="index" :position="'right'"></game-component>
 			</div>
 			
 		</div>

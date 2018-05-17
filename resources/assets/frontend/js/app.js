@@ -50,6 +50,7 @@ Vue.prototype.app.reload = function() {
 	window.location.reload();
 }
 
+
 require('./helpers');
 
 
@@ -82,6 +83,7 @@ import store from './store'
 import Select2 from './components/Select2Component'
 import InputMask from './components/InputMaskComponent'
 import DatepickerComponent from './components/DatepickerComponent'
+import {mapState, mapGetters} from 'vuex'
 
 import App from './components/App'
 
@@ -103,5 +105,44 @@ const app = new Vue({
     },
     mounted: function() {
     	
-    }
+    },
+    computed: {
+		...mapState({
+            User: state => state.User
+        }),
+        ...mapGetters([
+            'auth', 'purchase'
+        ])
+	},
+});
+
+
+window.addEventListener('storage', function(event) {
+    
+    //Se foi tudo deletado
+    if(event.storageArea.length == 0) {
+    	window.location.reload();
+    } else {
+    	
+    	//Se deletou o token, removo o usuário logado
+	    if((event.key == 'access_token' && event.newValue == null)) {
+	    	window.localStorage.removeItem('refresh_token');
+	    	window.localStorage.removeItem('authUser');
+	        window.location.reload();
+	    } else {
+
+	    	//Se removeu o usuário
+			if((event.key == "authUser") && (event.newValue == null)) {
+		        window.location.reload();
+		    }
+
+		    //Se houve alguma alteração no usuário mas não está logado
+		    if((event.key == "authUser") && event.newValue != null && app.auth == null) {
+		    	window.location.reload();
+		    }
+	    }
+	}
+
+    
+
 });

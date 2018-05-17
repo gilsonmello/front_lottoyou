@@ -119,6 +119,8 @@ Vue.prototype.divideInTwo = function(arr) {
 	var arrLeft = [];
 	var arrRight = [];
 
+
+
 	//Se não tiver itens retorna vazio
 	if(length == 0) {
 		return [[], []]
@@ -141,6 +143,7 @@ Vue.prototype.divideInTwo = function(arr) {
 			]
 		]
 	} else if((length % 2 == 1)) {
+
 		//Se a quantidade de itens forem impar
 		var left = Math.round(length / 2);
 
@@ -152,8 +155,8 @@ Vue.prototype.divideInTwo = function(arr) {
 				arrLeft.push(arr[i]);
 			}
 		}
-		
-		var right = left + 1
+
+		var right = left
 
 		if(right == length) {
 			arrRight.push(arr[right]);

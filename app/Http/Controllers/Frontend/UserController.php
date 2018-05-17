@@ -99,8 +99,9 @@ class UserController extends Controller
         $user->birth_year = $request->get('birth_year');
         $user->country_id = $request->get('country');
         $user->gender = $request->get('gender');
+        $user->nickname = $request->get('nickname');
         if($user->save()) {
-            $user->nickname = $user->name . '_' . $user->id;
+            $user->nickname2 = $user->name . '_' . $user->id;
             
             Balance::create([
                 'owner_id' => $user->id,

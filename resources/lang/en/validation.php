@@ -253,6 +253,12 @@ return [
                 'regex' => 'Informe o nome somente com letras',
                 'unique' => 'O Nome informado ja existe',
             ],
+            'nickname' => [
+                'required' => 'O campo apelido é obrigatório',
+                'min' => 'Informe o apelido com no mínimo 3 letras',
+                'regex' => 'Informe o apelido somente com letras',
+                'unique' => 'O apelido informado já existe',
+            ],
             'last_name' => [
                 'required' => '',
                 'min' => 'Informe o sobrenome com no mínimo 3 letras',

@@ -46,11 +46,12 @@
                 var value = 0.00;
                 
                 //Pegando todas as apostas feitas
-                this.item.tickets.filter((val) => {
+                this.item.tickets = this.item.tickets.filter((val) => {
                     if(val.complete) {
                         value = parseFloat(val.valor);
                         total += value;
                     }
+                    return true;
                 });
                 return total;            
             },

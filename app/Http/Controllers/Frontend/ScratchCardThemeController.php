@@ -135,6 +135,7 @@ class ScratchCardThemeController extends Controller
                 'tema_id',
                 'quantity',
                 'percentage',
+                'is_discount',
                 'created',
                 'modified',
                 'active'

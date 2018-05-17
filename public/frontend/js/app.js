@@ -44836,8 +44836,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_InputMaskComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_InputMaskComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_DatepickerComponent__ = __webpack_require__(463);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_DatepickerComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_DatepickerComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_App__ = __webpack_require__(468);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_App__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuex__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_App__ = __webpack_require__(468);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_App__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -44924,23 +44926,56 @@ function getTrans(key) {
 
 
 
+
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_resource__["a" /* default */]);
 
 Vue.component('select2', __WEBPACK_IMPORTED_MODULE_3__components_Select2Component___default.a);
 Vue.component('input-mask', __WEBPACK_IMPORTED_MODULE_4__components_InputMaskComponent___default.a);
 Vue.component('datepicker', __WEBPACK_IMPORTED_MODULE_5__components_DatepickerComponent___default.a);
 
-Vue.component('app', __WEBPACK_IMPORTED_MODULE_6__components_App___default.a);
+Vue.component('app', __WEBPACK_IMPORTED_MODULE_7__components_App___default.a);
 
 var app = new Vue({
   router: __WEBPACK_IMPORTED_MODULE_1__router__["a" /* default */],
   store: __WEBPACK_IMPORTED_MODULE_2__store__["a" /* default */],
   el: '#app',
   render: function render(h) {
-    return h(__WEBPACK_IMPORTED_MODULE_6__components_App___default.a);
+    return h(__WEBPACK_IMPORTED_MODULE_7__components_App___default.a);
   },
   created: function created() {},
-  mounted: function mounted() {}
+  mounted: function mounted() {},
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_6_vuex__["c" /* mapState */])({
+    User: function User(state) {
+      return state.User;
+    }
+  }), Object(__WEBPACK_IMPORTED_MODULE_6_vuex__["b" /* mapGetters */])(['auth', 'purchase']))
+});
+
+window.addEventListener('storage', function (event) {
+
+  //Se foi tudo deletado
+  if (event.storageArea.length == 0) {
+    window.location.reload();
+  } else {
+
+    //Se deletou o token, removo o usuário logado
+    if (event.key == 'access_token' && event.newValue == null) {
+      window.localStorage.removeItem('refresh_token');
+      window.localStorage.removeItem('authUser');
+      window.location.reload();
+    } else {
+
+      //Se removeu o usuário
+      if (event.key == "authUser" && event.newValue == null) {
+        window.location.reload();
+      }
+
+      //Se houve alguma alteração no usuário mas não está logado
+      if (event.key == "authUser" && event.newValue != null && app.auth == null) {
+        window.location.reload();
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -45012,14 +45047,14 @@ $('<img/>').attr('src', '/img/load.gif').on('load', function () {
     $(this).remove();
 });
 
-window.addEventListener('storage', function (e) {
-    if (event.key == "authUser" || e.storageArea.length == 0 || e.newValue == null) {
+/*window.addEventListener('storage', function(e) {
+    if((event.key == "authUser") || (e.storageArea.length == 0 || e.newValue == null)) {
         tokenData = "";
         access_token = "";
         window.localStorage.removeItem('authUser');
         window.location.href = '/';
     }
-});
+});*/
 
 //window.QueryString = getParamsUrl();
 
@@ -56390,6 +56425,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.divideInTwo = function (ar
 		//Se possui dois itens, retorna a posição 0 e 1
 		return [[arr[0]], [arr[1]]];
 	} else if (length % 2 == 1) {
+
 		//Se a quantidade de itens forem impar
 		var left = Math.round(length / 2);
 
@@ -56402,7 +56438,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.divideInTwo = function (ar
 			}
 		}
 
-		var right = left + 1;
+		var right = left;
 
 		if (right == length) {
 			arrRight.push(arr[right]);
@@ -61288,6 +61324,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -61546,6 +61590,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     created: function created() {},
@@ -61561,218 +61617,285 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c(
+          "div",
+          {
+            staticClass: "carousel slide",
+            attrs: { id: "carouselExampleIndicators", "data-ride": "carousel" }
+          },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "carousel-inner", attrs: { role: "listbox" } },
+              [
+                _c("div", { staticClass: "carousel-item active" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4" },
+                      [
+                        _c(
+                          "router-link",
+                          { attrs: { to: { name: "scratch_cards.index" } } },
+                          [
+                            _c("img", {
+                              staticClass: "img-fluid",
+                              staticStyle: {
+                                width: "100%",
+                                "margin-bottom": "10px"
+                              },
+                              attrs: { src: "/img/new/index_2.jpeg" }
+                            })
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: { name: "lotteries.show", params: { id: 3 } }
+                            }
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "img-fluid",
+                              staticStyle: {
+                                width: "100%",
+                                "margin-bottom": "10px"
+                              },
+                              attrs: { src: "/img/index_easy_money.png" }
+                            })
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4" },
+                      [
+                        _c(
+                          "router-link",
+                          { attrs: { to: { name: "scratch_cards.index" } } },
+                          [
+                            _c("img", {
+                              staticClass: "img-fluid",
+                              staticStyle: {
+                                width: "100%",
+                                "margin-bottom": "10px"
+                              },
+                              attrs: { src: "/img/new/index_golden_goal.png" }
+                            })
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "carousel-item" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: {
+                                name: "soccer_expert.show",
+                                params: { id: 3 }
+                              }
+                            }
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "img-fluid",
+                              staticStyle: {
+                                width: "100%",
+                                "margin-bottom": "10px"
+                              },
+                              attrs: { src: "/img/new/slide_4.png" }
+                            })
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: {
+                                name: "soccer_expert.show",
+                                params: { id: 1 }
+                              }
+                            }
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "img-fluid",
+                              staticStyle: {
+                                width: "100%",
+                                "margin-bottom": "10px"
+                              },
+                              attrs: { src: "/img/new/slide_3.png" }
+                            })
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: {
+                                name: "soccer_expert.show",
+                                params: { id: 2 }
+                              }
+                            }
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "img-fluid",
+                              staticStyle: {
+                                width: "100%",
+                                "margin-bottom": "10px"
+                              },
+                              attrs: { src: "/img/new/slide_5.png" }
+                            })
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2)
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(3)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c(
-            "div",
-            {
-              staticClass: "carousel slide",
-              attrs: {
-                id: "carouselExampleIndicators",
-                "data-ride": "carousel"
-              }
-            },
-            [
-              _c(
-                "ol",
-                {
-                  staticClass: "carousel-indicators",
-                  staticStyle: { bottom: "-46px" }
-                },
-                [
-                  _c("li", {
-                    staticClass: "active",
-                    attrs: {
-                      "data-target": "#carouselExampleIndicators",
-                      "data-slide-to": "0"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("li", {
-                    attrs: {
-                      "data-target": "#carouselExampleIndicators",
-                      "data-slide-to": "1"
-                    }
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "carousel-inner", attrs: { role: "listbox" } },
-                [
-                  _c("div", { staticClass: "carousel-item active" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
-                        },
-                        [
-                          _c("img", {
-                            staticClass: "img-fluid",
-                            staticStyle: {
-                              width: "100%",
-                              "margin-bottom": "10px"
-                            },
-                            attrs: { src: "/img/new/index_2.jpeg" }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
-                        },
-                        [
-                          _c("img", {
-                            staticClass: "img-fluid",
-                            staticStyle: {
-                              width: "100%",
-                              "margin-bottom": "10px"
-                            },
-                            attrs: { src: "/img/index_easy_money.png" }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
-                        },
-                        [
-                          _c("img", {
-                            staticClass: "img-fluid",
-                            staticStyle: {
-                              width: "100%",
-                              "margin-bottom": "10px"
-                            },
-                            attrs: { src: "/img/new/index_golden_goal.png" }
-                          })
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "carousel-item" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
-                        },
-                        [
-                          _c("img", {
-                            staticClass: "img-fluid",
-                            staticStyle: {
-                              width: "100%",
-                              "margin-bottom": "10px"
-                            },
-                            attrs: { src: "/img/new/slide_4.png" }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
-                        },
-                        [
-                          _c("img", {
-                            staticClass: "img-fluid",
-                            staticStyle: {
-                              width: "100%",
-                              "margin-bottom": "10px"
-                            },
-                            attrs: { src: "/img/new/slide_3.png" }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: " col-xs-12 col-sm-4 col-md-4 col-lg-4"
-                        },
-                        [
-                          _c("img", {
-                            staticClass: "img-fluid",
-                            staticStyle: {
-                              width: "100%",
-                              "margin-bottom": "10px"
-                            },
-                            attrs: { src: "/img/new/slide_5.png" }
-                          })
-                        ]
-                      )
-                    ])
-                  ])
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-prev",
-              attrs: {
-                id: "prev-slide-content",
-                href: "#carouselExampleIndicators",
-                role: "button",
-                "data-slide": "prev"
-              }
-            },
-            [
-              _c("span", {
-                staticClass: "fa fa-angle-left",
-                staticStyle: { color: "black" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "carousel-control-next",
-              attrs: {
-                id: "next-slide-content",
-                href: "#carouselExampleIndicators",
-                role: "button",
-                "data-slide": "next"
-              }
-            },
-            [
-              _c("span", {
-                staticClass: "fa fa-angle-right",
-                staticStyle: { color: "black" }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row", attrs: { id: "conteudo" } }, [
-        _c("div", {
-          staticClass: "col-lg-12",
-          staticStyle: { "min-height": "50px", "background-color": "#fff" }
+    return _c(
+      "ol",
+      { staticClass: "carousel-indicators", staticStyle: { bottom: "-46px" } },
+      [
+        _c("li", {
+          staticClass: "active",
+          attrs: {
+            "data-target": "#carouselExampleIndicators",
+            "data-slide-to": "0"
+          }
+        }),
+        _vm._v(" "),
+        _c("li", {
+          attrs: {
+            "data-target": "#carouselExampleIndicators",
+            "data-slide-to": "1"
+          }
         })
-      ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-prev",
+        attrs: {
+          id: "prev-slide-content",
+          href: "#carouselExampleIndicators",
+          role: "button",
+          "data-slide": "prev"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "fa fa-angle-left",
+          staticStyle: { color: "black" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-next",
+        attrs: {
+          id: "next-slide-content",
+          href: "#carouselExampleIndicators",
+          role: "button",
+          "data-slide": "next"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "fa fa-angle-right",
+          staticStyle: { color: "black" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row", attrs: { id: "conteudo" } }, [
+      _c("div", {
+        staticClass: "col-lg-12",
+        staticStyle: { "min-height": "50px", "background-color": "#fff" }
+      })
     ])
   }
 ]
@@ -61913,12 +62036,23 @@ var render = function() {
                   "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
               },
               [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  staticStyle: { width: "100%" },
-                  attrs: { src: "/img/new1/Ban-CUSTOM_BG.png" }
-                })
-              ]
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      to: { name: "soccer_expert.show", params: { id: 3 } }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      staticStyle: { width: "100%" },
+                      attrs: { src: "/img/new1/Ban-CUSTOM_BG.png" }
+                    })
+                  ]
+                )
+              ],
+              1
             )
           ]),
           _vm._v(" "),
@@ -61932,12 +62066,19 @@ var render = function() {
                   "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
               },
               [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  staticStyle: { width: "100%" },
-                  attrs: { src: "/img/new1/RASPADINHAS.jpg" }
-                })
-              ]
+                _c(
+                  "router-link",
+                  { attrs: { to: { name: "scratch_cards.index" } } },
+                  [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      staticStyle: { width: "100%" },
+                      attrs: { src: "/img/new1/RASPADINHAS.jpg" }
+                    })
+                  ]
+                )
+              ],
+              1
             )
           ]),
           _vm._v(" "),
@@ -61951,12 +62092,19 @@ var render = function() {
                   "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
               },
               [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  staticStyle: { width: "100%" },
-                  attrs: { src: "/img/new1/Soccer_Exp_S_TX.jpg" }
-                })
-              ]
+                _c(
+                  "router-link",
+                  { attrs: { to: { name: "soccer_expert.index" } } },
+                  [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      staticStyle: { width: "100%" },
+                      attrs: { src: "/img/new1/Soccer_Exp_S_TX.jpg" }
+                    })
+                  ]
+                )
+              ],
+              1
             )
           ]),
           _vm._v(" "),
@@ -61970,12 +62118,21 @@ var render = function() {
                   "col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding"
               },
               [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  staticStyle: { width: "100%" },
-                  attrs: { src: "/img/new1/easy_loteria_S_TX.jpg" }
-                })
-              ]
+                _c(
+                  "router-link",
+                  {
+                    attrs: { to: { name: "lotteries.show", params: { id: 3 } } }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      staticStyle: { width: "100%" },
+                      attrs: { src: "/img/new1/easy_loteria_S_TX.jpg" }
+                    })
+                  ]
+                )
+              ],
+              1
             )
           ]),
           _vm._v(" "),
@@ -62016,7 +62173,7 @@ var render = function() {
                       _c("strong", [_vm._v("1. Escolha seus números")])
                     ]),
                     _vm._v(" "),
-                    _c("h4", [
+                    _c("h6", [
                       _vm._v("Escolha 5 números no universo de 35 números")
                     ])
                   ]
@@ -62030,7 +62187,7 @@ var render = function() {
                       _c("strong", [_vm._v("2. Escolha a data do Sorteio")])
                     ]),
                     _vm._v(" "),
-                    _c("h4", [
+                    _c("h6", [
                       _vm._v("Os sorteios ocorrem de segunda a sábado")
                     ])
                   ]
@@ -62044,7 +62201,7 @@ var render = function() {
                       _c("strong", [_vm._v("3. Confirme seu bilhete")])
                     ]),
                     _vm._v(" "),
-                    _c("h4", [
+                    _c("h6", [
                       _vm._v("Escolha como deseja pagar seu jogo com segurança")
                     ])
                   ]
@@ -62900,6 +63057,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -62977,6 +63143,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			terms: false,
 			gender: 'M',
 			birth_day: 1,
+			nickname: '',
 			days: [],
 			errors: [],
 			loading: {
@@ -63063,7 +63230,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				birth_year: this.birth_year,
 				country: this.country,
 				gender: this.gender,
-				terms: this.terms
+				terms: this.terms,
+				nickname: this.nickname
 			})).then(function (response) {
 				if (response.status === 200) {
 					_this2.name = '';
@@ -63149,7 +63317,7 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c(
                 "div",
-                { staticClass: "col-lg-8 col-12 col-sm-12 col-md-12" },
+                { staticClass: "col-lg-9 col-12 col-sm-12 col-md-12" },
                 [
                   _c("div", { staticClass: "row" }, [
                     _c(
@@ -63158,7 +63326,7 @@ var render = function() {
                       [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", { attrs: { for: "email" } }, [
-                            _vm._v(_vm._s(_vm.trans("strings.email")))
+                            _vm._v(_vm._s(_vm.trans("strings.email")) + "*")
                           ]),
                           _vm._v(" "),
                           _c("input", {
@@ -63208,7 +63376,7 @@ var render = function() {
                       [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", { attrs: { for: "password" } }, [
-                            _vm._v(_vm._s(_vm.trans("strings.password")))
+                            _vm._v(_vm._s(_vm.trans("strings.password")) + "*")
                           ]),
                           _vm._v(" "),
                           _c("input", {
@@ -63265,7 +63433,8 @@ var render = function() {
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", { attrs: { for: "confirm_password" } }, [
                             _vm._v(
-                              _vm._s(_vm.trans("strings.confirm_password"))
+                              _vm._s(_vm.trans("strings.confirm_password")) +
+                                "*"
                             )
                           ]),
                           _vm._v(" "),
@@ -63384,11 +63553,11 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "col-lg-5 col-12 col-sm-4 col-md-4" },
+                      { staticClass: "col-lg-4 col-12 col-sm-4 col-md-4" },
                       [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", { attrs: { for: "name" } }, [
-                            _vm._v(_vm._s(_vm.trans("strings.name")))
+                            _vm._v(_vm._s(_vm.trans("strings.name")) + "*")
                           ]),
                           _vm._v(" "),
                           _c("input", {
@@ -63403,7 +63572,7 @@ var render = function() {
                             staticClass: "form-control",
                             attrs: {
                               required: "",
-                              type: "name",
+                              type: "text",
                               id: "name",
                               "aria-describedby": "name",
                               placeholder: _vm.trans("strings.name")
@@ -63434,11 +63603,11 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "col-lg-5 col-12 col-sm-4 col-md-4" },
+                      { staticClass: "col-lg-3 col-12 col-sm-4 col-md-4" },
                       [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", { attrs: { for: "last_name" } }, [
-                            _vm._v(_vm._s(_vm.trans("strings.last_name")))
+                            _vm._v(_vm._s(_vm.trans("strings.last_name")) + "*")
                           ]),
                           _vm._v(" "),
                           _c("input", {
@@ -63453,7 +63622,7 @@ var render = function() {
                             staticClass: "form-control",
                             attrs: {
                               required: "",
-                              type: "last_name",
+                              type: "text",
                               id: "last_name",
                               "aria-describedby": "last_name",
                               placeholder: _vm.trans("strings.last_name")
@@ -63482,6 +63651,56 @@ var render = function() {
                             : _vm._e()
                         ])
                       ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-3 col-12 col-sm-4 col-md-4" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { attrs: { for: "last_name" } }, [
+                            _vm._v(_vm._s(_vm.trans("strings.nickname")) + "*")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.nickname,
+                                expression: "nickname"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              required: "",
+                              type: "text",
+                              id: "nickname",
+                              "aria-describedby": "nickname",
+                              placeholder: _vm.trans("strings.nickname")
+                            },
+                            domProps: { value: _vm.nickname },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.nickname = $event.target.value
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.nickname
+                            ? _c(
+                                "div",
+                                { staticClass: "alert alert-danger" },
+                                _vm._l(_vm.errors.nickname, function(nickname) {
+                                  return _c("div", [_vm._v(_vm._s(nickname))])
+                                })
+                              )
+                            : _vm._e()
+                        ])
+                      ]
                     )
                   ]),
                   _vm._v(" "),
@@ -63497,7 +63716,7 @@ var render = function() {
                             [
                               _c("div", { staticClass: "form-group" }, [
                                 _c("label", { attrs: { for: "birth_day" } }, [
-                                  _vm._v("Data nasc.")
+                                  _vm._v("Data nasc.*")
                                 ]),
                                 _vm._v(" "),
                                 _c(
@@ -63912,7 +64131,7 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "col-lg-4 col-12 col-md-4 col-sm-12 text-center"
+                  staticClass: "col-lg-3 col-12 col-md-4 col-sm-12 text-center"
                 },
                 [
                   _c("img", {
@@ -75966,11 +76185,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var value = 0.00;
 
             //Pegando todas as apostas feitas
-            this.item.tickets.filter(function (val) {
+            this.item.tickets = this.item.tickets.filter(function (val) {
                 if (val.complete) {
                     value = parseFloat(val.valor);
                     total += value;
                 }
+                return true;
             });
             return total;
         }
@@ -77016,7 +77236,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.shield-img[data-v-732e4e69] {\n\t\twidth: 40px; \n\t\theight: 40px;\n}\ninput[data-v-732e4e69] {\n\t\ttext-align: center;\n}\nspan[data-v-732e4e69] {\n\t\tline-height: 1;\n}\n.info-date[data-v-732e4e69] {\n\t\tdisplay: block;\n}\n.info-local[data-v-732e4e69] {\n\t\tdisplay: block;\n\t\tfont-size: 16px\n}\n.row[data-v-732e4e69] {\n\t\tcolor: white;\n\t\t-webkit-box-pack: center;\n\t\t    -ms-flex-pack: center;\n\t\t        justify-content: center;\n\t\t-webkit-box-align: center;\n\t\t    -ms-flex-align: center;\n\t\t        align-items: center;\n}\n.games[data-v-732e4e69]{\n\t\tmargin-bottom: 5px;\n}\n.container-club[data-v-732e4e69] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -ms-flexbox;\n\t\tdisplay: flex; \n\t\t-webkit-box-align: center; \n\t\t    -ms-flex-align: center; \n\t\t        align-items: center;\n}\n.result[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 22px;\n}\n.gold-ball[data-v-732e4e69] {\n\t\tfont-size: 30px;\n\t    color: gold;\n\t    line-height: 1;\n\t    cursor: pointer;\n\t    margin-right: 5px;\n\t    height: 40px;\n\t    width: 40px;\n}\n.x[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 16px;\n\t\tdisplay: inline-block;\n}\n.form-control[data-v-732e4e69] {\n\t\tdisplay: inline-block;\n    \twidth: 40px;\n}\n", ""]);
+exports.push([module.i, "\n.shield-img[data-v-732e4e69] {\n\t\twidth: 40px; \n\t\theight: 40px;\n}\ninput[data-v-732e4e69] {\n\t\ttext-align: center;\n}\nspan[data-v-732e4e69] {\n\t\tline-height: 1;\n}\n.info-date[data-v-732e4e69] {\n\t\tdisplay: block;\n\t\tmargin-top: 3px;\n}\n.info-local[data-v-732e4e69] {\n\t\tdisplay: block;\n\t\tfont-size: 16px\n}\n.row[data-v-732e4e69] {\n\t\tcolor: white;\n\t\t-webkit-box-pack: center;\n\t\t    -ms-flex-pack: center;\n\t\t        justify-content: center;\n\t\t-webkit-box-align: center;\n\t\t    -ms-flex-align: center;\n\t\t        align-items: center;\n}\n.games[data-v-732e4e69]{\n\t\tmargin-bottom: 5px;\n\t\t-webkit-box-align: start;\n\t\t    -ms-flex-align: start;\n\t\t        align-items: flex-start;\n}\n.container-club[data-v-732e4e69] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -ms-flexbox;\n\t\tdisplay: flex; \n\t\t-webkit-box-align: center; \n\t\t    -ms-flex-align: center; \n\t\t        align-items: center;\n}\n.result[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 22px;\n}\n.gold-ball[data-v-732e4e69] {\n\t\tfont-size: 30px;\n\t    color: gold;\n\t    line-height: 1;\n\t    cursor: pointer;\n\t    margin-right: 5px;\n\t    height: 40px;\n\t    width: 40px;\n}\n.x[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 16px;\n\t\tdisplay: inline-block;\n}\n.form-control[data-v-732e4e69] {\n\t\tdisplay: inline-block;\n    \twidth: 40px;\n}\n", ""]);
 
 // exports
 
@@ -77090,9 +77310,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['game', 'index', 'ticket'],
+	props: ['game', 'index', 'ticket', 'position'],
 	created: function created() {},
 	mounted: function mounted() {
 		this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : '';
@@ -77154,11 +77388,49 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row vcenter text-center games no-margin" }, [
+  return _c("div", { staticClass: "row text-center games no-margin" }, [
+    _vm.position == "left"
+      ? _c(
+          "div",
+          {
+            staticClass: "col-lg-2 no-mobile",
+            staticStyle: { "justify-content": "center" }
+          },
+          [
+            _vm.ticket.gold_ball_game_id != _vm.game.id
+              ? _c("img", {
+                  staticClass: "img-fluid gold-ball",
+                  staticStyle: { opacity: "0.5" },
+                  attrs: { src: "/img/gold_ball.png" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.changeGoldBall($event)
+                    }
+                  }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.ticket.gold_ball_game_id == _vm.game.id
+              ? _c("img", {
+                  staticClass: "img-fluid gold-ball",
+                  attrs: { src: "/img/gold_ball.png" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.changeGoldBall($event)
+                    }
+                  }
+                })
+              : _vm._e()
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
     _c(
       "div",
       {
-        staticClass: "col-lg-1 no-padding mobile",
+        staticClass: "col-lg-2 mobile",
         staticStyle: { "justify-content": "center" }
       },
       [
@@ -77191,186 +77463,192 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-4 col-sm-4 col-md-5 col-lg-4" }, [
-      _c(
-        "div",
-        {
-          staticClass: "container-club",
-          staticStyle: { "justify-content": "flex-end" }
-        },
-        [
+    _c("div", { staticClass: "col-lg-10" }, [
+      _c("div", { staticClass: "row no-margin vcenter" }, [
+        _c("div", { staticClass: "col-4 col-sm-4 col-md-5 col-lg-4" }, [
           _c(
-            "span",
+            "div",
             {
-              staticStyle: {
-                "line-height": "1",
-                flex: "5",
-                "text-align": "right"
-              }
+              staticClass: "container-club",
+              staticStyle: { "justify-content": "flex-end" }
             },
-            [_vm._v(_vm._s(_vm.game.house_club.nome))]
-          ),
-          _vm._v(" "),
-          _vm.game.house_club.escudo != undefined
-            ? _c("img", {
-                staticClass: "shield-img",
-                staticStyle: { "margin-left": "5px" },
-                attrs: {
-                  title: _vm.game.house_club.nome,
-                  src: _vm.game.house_club.escudo
-                }
-              })
-            : _vm._e()
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "col-4 col-sm-3 col-md-2 col-lg-3 no-padding",
-        staticStyle: { "text-align": "center" }
-      },
-      [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.game.result_house_club,
-              expression: "game.result_house_club"
-            }
-          ],
-          staticClass: "form-control no-padding",
-          attrs: { min: "0", type: "number" },
-          domProps: { value: _vm.game.result_house_club },
-          on: {
-            change: function($event) {
-              $event.preventDefault()
-              _vm.houseClubResult(_vm.index, $event)
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.game, "result_house_club", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "x" }, [_vm._v("X")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.game.result_out_club,
-              expression: "game.result_out_club"
-            }
-          ],
-          staticClass: "form-control no-padding",
-          attrs: { min: "0", type: "number" },
-          domProps: { value: _vm.game.result_out_club },
-          on: {
-            change: function($event) {
-              $event.preventDefault()
-              _vm.outClubResult(_vm.index, $event)
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.game, "result_out_club", $event.target.value)
-            }
-          }
-        })
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-4 col-sm-4 col-md-5 col-lg-4" }, [
-      _c(
-        "div",
-        {
-          staticClass: "container-club",
-          staticStyle: { "justify-content": "flex-start" }
-        },
-        [
-          _vm.game.out_club.escudo != undefined
-            ? _c("img", {
-                staticClass: "shield-img",
-                staticStyle: { "margin-right": "5px" },
-                attrs: {
-                  title: _vm.game.out_club.nome,
-                  src: _vm.game.out_club.escudo
-                }
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticStyle: {
-                "line-height": "1",
-                flex: "5",
-                "text-align": "left"
-              }
-            },
-            [_vm._v(_vm._s(_vm.game.out_club.nome))]
+            [
+              _c(
+                "span",
+                {
+                  staticStyle: {
+                    "line-height": "1",
+                    flex: "5",
+                    "text-align": "right"
+                  }
+                },
+                [_vm._v(_vm._s(_vm.game.house_club.nome))]
+              ),
+              _vm._v(" "),
+              _vm.game.house_club.escudo != undefined
+                ? _c("img", {
+                    staticClass: "shield-img",
+                    staticStyle: { "margin-left": "5px" },
+                    attrs: {
+                      title: _vm.game.house_club.nome,
+                      src: _vm.game.house_club.escudo
+                    }
+                  })
+                : _vm._e()
+            ]
           )
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "col-lg-1 no-padding no-mobile",
-        staticStyle: { "justify-content": "center" }
-      },
-      [
-        _vm.ticket.gold_ball_game_id != _vm.game.id
-          ? _c("img", {
-              staticClass: "img-fluid gold-ball",
-              staticStyle: { opacity: "0.5" },
-              attrs: { src: "/img/gold_ball.png" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.changeGoldBall($event)
-                }
-              }
-            })
-          : _vm._e(),
+        ]),
         _vm._v(" "),
-        _vm.ticket.gold_ball_game_id == _vm.game.id
-          ? _c("img", {
-              staticClass: "img-fluid gold-ball",
-              attrs: { src: "/img/gold_ball.png" },
+        _c(
+          "div",
+          {
+            staticClass: "col-4 col-sm-3 col-md-2 col-lg-3 no-padding",
+            staticStyle: { "text-align": "center" }
+          },
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.game.result_house_club,
+                  expression: "game.result_house_club"
+                }
+              ],
+              staticClass: "form-control no-padding",
+              attrs: { min: "0", type: "number" },
+              domProps: { value: _vm.game.result_house_club },
               on: {
-                click: function($event) {
+                change: function($event) {
                   $event.preventDefault()
-                  _vm.changeGoldBall($event)
+                  _vm.houseClubResult(_vm.index, $event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.game, "result_house_club", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "x" }, [_vm._v("X")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.game.result_out_club,
+                  expression: "game.result_out_club"
+                }
+              ],
+              staticClass: "form-control no-padding",
+              attrs: { min: "0", type: "number" },
+              domProps: { value: _vm.game.result_out_club },
+              on: {
+                change: function($event) {
+                  $event.preventDefault()
+                  _vm.outClubResult(_vm.index, $event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.game, "result_out_club", $event.target.value)
                 }
               }
             })
-          : _vm._e()
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-lg-12" }, [
-      _c("span", [
-        _c("strong", { staticClass: "info-date" }, [
-          _vm._v(_vm._s(_vm.game.day) + ", " + _vm._s(_vm.game.data))
-        ])
-      ]),
-      _vm._v(" "),
-      _c("span", [
-        _c("strong", { staticClass: "info-local" }, [
-          _vm._v(_vm._s(_vm.game.local))
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4 col-sm-4 col-md-5 col-lg-4" }, [
+          _c(
+            "div",
+            {
+              staticClass: "container-club",
+              staticStyle: { "justify-content": "flex-start" }
+            },
+            [
+              _vm.game.out_club.escudo != undefined
+                ? _c("img", {
+                    staticClass: "shield-img",
+                    staticStyle: { "margin-right": "5px" },
+                    attrs: {
+                      title: _vm.game.out_club.nome,
+                      src: _vm.game.out_club.escudo
+                    }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticStyle: {
+                    "line-height": "1",
+                    flex: "5",
+                    "text-align": "left"
+                  }
+                },
+                [_vm._v(_vm._s(_vm.game.out_club.nome))]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("span", [
+            _c("strong", { staticClass: "info-date" }, [
+              _vm._v(_vm._s(_vm.game.day) + ", " + _vm._s(_vm.game.data))
+            ])
+          ]),
+          _vm._v(" "),
+          _c("span", [
+            _c("strong", { staticClass: "info-local" }, [
+              _vm._v(_vm._s(_vm.game.local))
+            ])
+          ])
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _vm.position == "right"
+      ? _c(
+          "div",
+          {
+            staticClass: "col-lg-2 no-mobile",
+            staticStyle: { "justify-content": "center" }
+          },
+          [
+            _vm.ticket.gold_ball_game_id != _vm.game.id
+              ? _c("img", {
+                  staticClass: "img-fluid gold-ball",
+                  staticStyle: { opacity: "0.5" },
+                  attrs: { src: "/img/gold_ball.png" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.changeGoldBall($event)
+                    }
+                  }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.ticket.gold_ball_game_id == _vm.game.id
+              ? _c("img", {
+                  staticClass: "img-fluid gold-ball",
+                  attrs: { src: "/img/gold_ball.png" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.changeGoldBall($event)
+                    }
+                  }
+                })
+              : _vm._e()
+          ]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -77470,7 +77748,12 @@ var render = function() {
           _vm._l(_vm.ticket.games_left, function(game, index) {
             return _c("game-component", {
               key: index,
-              attrs: { game: game, ticket: _vm.ticket, index: index },
+              attrs: {
+                game: game,
+                ticket: _vm.ticket,
+                index: index,
+                position: "left"
+              },
               on: { updateTicket: _vm.updateTicket }
             })
           })
@@ -77488,7 +77771,12 @@ var render = function() {
           _vm._l(_vm.ticket.games_right, function(game, index) {
             return _c("game-component", {
               key: index,
-              attrs: { game: game, ticket: _vm.ticket, index: index },
+              attrs: {
+                game: game,
+                ticket: _vm.ticket,
+                index: index,
+                position: "right"
+              },
               on: { updateTicket: _vm.updateTicket }
             })
           })

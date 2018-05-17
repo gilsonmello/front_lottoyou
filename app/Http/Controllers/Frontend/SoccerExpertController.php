@@ -153,13 +153,15 @@ class SoccerExpertController extends Controller
                         'modified',
                         'soc_categoria_id',
                         'soc_ciclo_id',
-                        'imagem_modal'
+                        'imagem_modal',
+                        DB::raw("concat(data_termino,' ',hora_termino) as date_end")
                     ])
                     ->where(
                         DB::raw("concat(data_termino,' ',hora_termino)"), 
                         '>=', 
                         date('Y-m-d H:i:s')
-                    )->where('active', '=', 1);
+                    )->where('active', '=', 1)
+                    ->orderBy('date_end', 'asc');
                 },
                 'rounds.games' => function($query) {
                     $query->select([
@@ -179,7 +181,9 @@ class SoccerExpertController extends Controller
                         'active',
                         'created',
                         'modified',
-                    ])->where('active', '=', 1);
+                        DB::raw("concat(data,' ',hora) as date_end")
+                    ])->where('active', '=', 1)
+                    ->orderBy('date_end', 'asc');
                 },
                 'rounds.sweepstake',
                 'rounds.group',
@@ -203,6 +207,8 @@ class SoccerExpertController extends Controller
                 date('Y-m-d H:i:s')
             )
             ->where('active', '=', 1)
+            ->selectRaw('*, '.DB::raw("concat(data_fim,' ',hora_fim) as date_end"))
+            ->orderBy('date_end', 'asc')
             ->get();
 
         /*return response()->json($cycles, 200);

@@ -1,69 +1,83 @@
 <template>
-	<div class="row vcenter text-center games no-margin">
+	<div class="row text-center games no-margin">
 
-		<div class="col-lg-1 no-padding mobile" style="justify-content: center;">
-	
+		<div class="col-lg-2 no-mobile" style="justify-content: center;" v-if="position == 'left'">
+			
 			<img v-if="ticket.gold_ball_game_id != game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball" style="opacity: 0.5;">				
 				
 
 			<img v-if="ticket.gold_ball_game_id == game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball">			
+				
 		</div>
-        
-        <div class="col-4 col-sm-4 col-md-5 col-lg-4">
-			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
-			<div class="container-club" style="justify-content: flex-end;">
-				<span style="line-height: 1; flex: 5; text-align: right;">{{ game.house_club.nome }}</span>
-				<img class="shield-img" v-if="game.house_club.escudo != undefined" style="margin-left: 5px;" :title="game.house_club.nome" :src="game.house_club.escudo">				
+
+		<div class="col-lg-2 mobile" style="justify-content: center;">
+			
+			<img v-if="ticket.gold_ball_game_id != game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball" style="opacity: 0.5;">				
+
+			<img v-if="ticket.gold_ball_game_id == game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball">			
+				
+		</div>
+
+		<div class="col-lg-10">
+			<div class="row no-margin vcenter">
+				<div class="col-4 col-sm-4 col-md-5 col-lg-4">
+					<!-- <label class="club">{{ game.out_club.nome }}</label> -->
+					<div class="container-club" style="justify-content: flex-end;">
+						<span style="line-height: 1; flex: 5; text-align: right;">{{ game.house_club.nome }}</span>
+						<img class="shield-img" v-if="game.house_club.escudo != undefined" style="margin-left: 5px;" :title="game.house_club.nome" :src="game.house_club.escudo">				
+					</div>
+				</div>
+
+
+				<div class="col-4 col-sm-3 col-md-2 col-lg-3 no-padding" style="text-align: center">
+					<input min="0" v-model="game.result_house_club" @change.prevent="houseClubResult(index, $event)" type="number" class="form-control no-padding">
+		            <span class="x">X</span>
+		            <input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(index, $event)" type="number" class="form-control no-padding">
+		        </div>
+
+
+				<!-- <div class="col-lg-1 col-2 no-padding">
+					<input min="0" v-model="game.result_house_club" @change.prevent="houseClubResult(index, $event)" type="number" class="form-control no-padding">
+				</div>
+
+				<div class="col-2 col-md-2 col-sm-2 col-lg-1 no-padding" style="text-align: center">
+		            <span class="x">X</span>
+		        </div>
+
+		        <div class="col-lg-1 col-2 no-padding">
+					<input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(index, $event)" type="number" class="form-control no-padding">
+				</div> -->
+
+		        <div class="col-4 col-sm-4 col-md-5 col-lg-4">
+					<!-- <label class="club">{{ game.out_club.nome }}</label> -->
+					<div class="container-club" style="justify-content: flex-start;">
+						<img class="shield-img" v-if="game.out_club.escudo != undefined" style="margin-right: 5px;" :title="game.out_club.nome" :src="game.out_club.escudo">
+						<span style="line-height: 1; flex: 5; text-align: left;">{{ game.out_club.nome }}</span>
+			
+					</div>
+				</div>
+				<div class="col-lg-12">
+		            <span><strong class="info-date">{{ game.day }}, {{ game.data }}</strong></span>
+		            <span><strong class="info-local">{{ game.local }}</strong></span>
+		        </div>
 			</div>
 		</div>
 
-
-		<div class="col-4 col-sm-3 col-md-2 col-lg-3 no-padding" style="text-align: center">
-			<input min="0" v-model="game.result_house_club" @change.prevent="houseClubResult(index, $event)" type="number" class="form-control no-padding">
-            <span class="x">X</span>
-            <input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(index, $event)" type="number" class="form-control no-padding">
-        </div>
-
-
-		<!-- <div class="col-lg-1 col-2 no-padding">
-			<input min="0" v-model="game.result_house_club" @change.prevent="houseClubResult(index, $event)" type="number" class="form-control no-padding">
-		</div>
-
-		<div class="col-2 col-md-2 col-sm-2 col-lg-1 no-padding" style="text-align: center">
-            <span class="x">X</span>
-        </div>
-
-        <div class="col-lg-1 col-2 no-padding">
-			<input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(index, $event)" type="number" class="form-control no-padding">
-		</div> -->
-
-        <div class="col-4 col-sm-4 col-md-5 col-lg-4">
-			<!-- <label class="club">{{ game.out_club.nome }}</label> -->
-			<div class="container-club" style="justify-content: flex-start;">
-				<img class="shield-img" v-if="game.out_club.escudo != undefined" style="margin-right: 5px;" :title="game.out_club.nome" :src="game.out_club.escudo">
-				<span style="line-height: 1; flex: 5; text-align: left;">{{ game.out_club.nome }}</span>
-	
-			</div>
-		</div>
-
-		<div class="col-lg-1 no-padding no-mobile" style="justify-content: center;">
-	
+		<div class="col-lg-2 no-mobile" style="justify-content: center;" v-if="position == 'right'">
+			
 			<img v-if="ticket.gold_ball_game_id != game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball" style="opacity: 0.5;">				
 				
 
 			<img v-if="ticket.gold_ball_game_id == game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball">			
+				
 		</div>
-
-		<div class="col-lg-12">
-            <span><strong class="info-date">{{ game.day }}, {{ game.data }}</strong></span>
-            <span><strong class="info-local">{{ game.local }}</strong></span>
-        </div>
+		
 	</div>
 </template>
 
 <script>
 	export default {
-		props: ['game', 'index', 'ticket'],
+		props: ['game', 'index', 'ticket', 'position'],
 		created: function () {
 
         },
@@ -143,6 +157,7 @@
 
 	.info-date {
 		display: block;
+		margin-top: 3px;
 	}
 
 	.info-local {
@@ -158,6 +173,7 @@
 
 	.games{
 		margin-bottom: 5px;
+		align-items: flex-start;
 	}
 	
 	.container-club {

@@ -37,6 +37,7 @@ class CreateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|regex:/^([\pL\s\ ]+)$/u',
+            'nickname' => 'required|min:3||unique:users,nickname',
             'last_name' => 'required|min:3|regex:/^([\pL\s\ ]+)$/u',
             'email' => 'required|email|unique:users,username',
             'password' => 'required|min:6',
@@ -68,6 +69,13 @@ class CreateUserRequest extends FormRequest
             'name.min' => trans('validation.user.create.name.min'),
             'name.regex' => trans('validation.user.create.name.regex'),
             'name.unique' => trans('validation.user.create.name.unique'),
+
+
+            'nickname.required' => trans('validation.user.create.nickname.required'),
+            'nickname.min' => trans('validation.user.create.nickname.min'),
+            'nickname.unique' => trans('validation.user.create.nickname.unique'),
+
+
             'last_name.min' => trans('validation.user.create.last_name.min'),
             'birth_day.required' => trans('validation.user.create.birth_day.required'),
             'birth_month.required' => trans('validation.user.create.birth_month.required'),

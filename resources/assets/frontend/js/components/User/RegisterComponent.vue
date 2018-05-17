@@ -4,11 +4,11 @@
 		<h1 class="page-header text-center">Crie uma conta para desfrutar de infinitas possibilidades</h1>
 		<form @submit.prevent="register">
 			<div class="row">
-				<div class="col-lg-8 col-12 col-sm-12 col-md-12">
+				<div class="col-lg-9 col-12 col-sm-12 col-md-12">
 					<div class="row">
 						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
-								<label for="email">{{ trans('strings.email') }}</label>
+								<label for="email">{{ trans('strings.email') }}*</label>
 							    <input v-model="email" required type="email" class="form-control" id="email" aria-describedby="email" :placeholder="trans('strings.email')">
 							    <div class="alert alert-danger" v-if="errors.email">
 								  	<div v-for="email in errors.email" >{{ email }}</div>
@@ -17,7 +17,7 @@
 						</div>
 						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
-							    <label for="password">{{ trans('strings.password') }}</label>
+							    <label for="password">{{ trans('strings.password') }}*</label>
 							    <input v-model="password" required type="password" class="form-control" id="password" aria-describedby="password" :placeholder="trans('strings.password')">
 								<div class="alert alert-danger" v-if="errors.password">
 								  	<div v-for="password in errors.password">
@@ -28,7 +28,7 @@
 						</div>
 						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
-								<label for="confirm_password">{{ trans('strings.confirm_password') }}</label>
+								<label for="confirm_password">{{ trans('strings.confirm_password') }}*</label>
 							    <input v-model="confirm_password" required type="password" class="form-control" id="confirm_password" aria-describedby="confirm_password" :placeholder="trans('strings.confirm_password')">
 							    <div class="alert alert-danger" v-if="errors.confirm_password">
 								  	<div v-for="confirm_password in errors.confirm_password">
@@ -47,21 +47,30 @@
 							    </select>
 						  	</div>
 						</div>
-						<div class="col-lg-5 col-12 col-sm-4 col-md-4">
+						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
-								<label for="name">{{ trans('strings.name') }}</label>
-							    <input v-model="name" required type="name" class="form-control" id="name" aria-describedby="name" :placeholder="trans('strings.name')">
+								<label for="name">{{ trans('strings.name') }}*</label>
+							    <input v-model="name" required type="text" class="form-control" id="name" aria-describedby="name" :placeholder="trans('strings.name')">
 							    <div class="alert alert-danger" v-if="errors.name">
 								  	<div v-for="name in errors.name" >{{ name }}</div>
 								</div>
 						  	</div>
 						</div>
-						<div class="col-lg-5 col-12 col-sm-4 col-md-4">
+						<div class="col-lg-3 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
-								<label for="last_name">{{ trans('strings.last_name') }}</label>
-							    <input v-model="last_name" required type="last_name" class="form-control" id="last_name" aria-describedby="last_name" :placeholder="trans('strings.last_name')">
+								<label for="last_name">{{ trans('strings.last_name') }}*</label>
+							    <input v-model="last_name" required type="text" class="form-control" id="last_name" aria-describedby="last_name" :placeholder="trans('strings.last_name')">
 							    <div class="alert alert-danger" v-if="errors.last_name">
 								  	<div v-for="last_name in errors.last_name" >{{ last_name }}</div>
+								</div>
+						  	</div>
+						</div>
+						<div class="col-lg-3 col-12 col-sm-4 col-md-4">
+							<div class="form-group">
+								<label for="last_name">{{ trans('strings.nickname') }}*</label>
+							    <input v-model="nickname" required type="text" class="form-control" id="nickname" aria-describedby="nickname" :placeholder="trans('strings.nickname')">
+							    <div class="alert alert-danger" v-if="errors.nickname">
+								  	<div v-for="nickname in errors.nickname" >{{ nickname }}</div>
 								</div>
 						  	</div>
 						</div>
@@ -71,7 +80,7 @@
 							<div class="row">
 								<div class="col-lg-4 col-sm-6 col-md-4 col-6">
 									<div class="form-group">
-										<label for="birth_day">Data nasc.</label>
+										<label for="birth_day">Data nasc.*</label>
 									    <select v-model="birth_day" class="form-control" id="birth_day">
 									      	<option :value="day" v-for="day in days">
 									      		{{ day }}
@@ -149,7 +158,7 @@
 					</div>
 					<hr>
 				</div>
-				<div class="col-lg-4 col-12 col-md-4 col-sm-12 text-center">
+				<div class="col-lg-3 col-12 col-md-4 col-sm-12 text-center">
 					<img class="img-fluid" src="https://www.lottoland.com/cms/5a4ca7d90eb3587d99647503/br_yellow_homepage_286x406.jpg">
 				</div>
 			</div>
@@ -247,6 +256,7 @@
 				terms: false,
 				gender: 'M',
 				birth_day: 1,
+				nickname: '',
 				days: [],
 				errors: [],
 				loading: {
@@ -330,7 +340,8 @@
 					birth_year: this.birth_year,
 					country: this.country,
 					gender: this.gender,
-					terms: this.terms
+					terms: this.terms,
+					nickname: this.nickname
 				})).then((response) => {
 					if(response.status === 200){
 						this.name = '';						
