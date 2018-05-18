@@ -82,7 +82,8 @@ import router from './router'
 import store from './store'
 import Select2 from './components/Select2Component'
 import InputMask from './components/InputMaskComponent'
-import DatepickerComponent from './components/DatepickerComponent'
+import VcDatePicker from './components/VcDatePicker'
+import VcDateTimePicker from './components/VcDateTimePicker'
 import {mapState, mapGetters} from 'vuex'
 
 import App from './components/App'
@@ -91,7 +92,8 @@ Vue.use(VueResource);
 
 Vue.component('select2', Select2);
 Vue.component('input-mask', InputMask);
-Vue.component('datepicker', DatepickerComponent);
+Vue.component('datepicker', VcDatePicker);
+Vue.component('datetimepicker', VcDateTimePicker);
 
 Vue.component('app', App);
 

@@ -89,7 +89,7 @@ export default {
 			        name: 'users.transactions',
 			        props: true,
 			        meta: { requiresAuth: true },
-			        component: require('../components/User/TransactionComponent.vue')
+			        component: require('../components/User/Transaction/TransactionComponent.vue')
 			    },
 			    {   
 			  		path: 'scratch_cards',
@@ -141,7 +141,7 @@ export default {
 			  		path: 'lotteries/results/:id',
 			        name: 'lotteries.results', 
 			        props: true,
-			        component: require('../components/Lottery/ResultComponent.vue')
+			        component: require('../components/Lottery/Result/VcIndex.vue')
 			    },
 			    {   
 			  		path: 'cart',

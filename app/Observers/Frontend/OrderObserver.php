@@ -28,6 +28,9 @@ class OrderObserver
         $historicBalance->to = $balance->value - $order->sub_total;
         $historicBalance->balance_id = $balance->id;
         $historicBalance->order_id = $order->id;
+        $historicBalance->description = "order";
+        $historicBalance->type = 0;
+        $historicBalance->amount = $order->sub_total * -1;
         $historicBalance->save();
         $balance->value = $balance->value - $order->sub_total;
         $balance->save();

@@ -11,3 +11,6 @@ Route::resource('lotteries', 'LotteryController', [
         'show' => 'frontend.lotteries.show'
     ]
 ]);
+
+Route::get('lotteries/results/{id}', 'LotteryController@results');
+Route::get('lotteries/find/{id}', 'LotteryController@find');

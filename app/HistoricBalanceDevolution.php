@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Model\Frontend;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Model\Frontend\Lottery;
-use App\Model\Frontend\LotteryUserNumber;
-use App\Model\Frontend\LotterySweepstake;
-use App\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\HistoricBalance;
 
-class LotteryUser extends Model
+class HistoricBalanceDevolution extends Model
 {
+    //use SoftDeletes;
+
     const CREATED_AT = 'created';
 
     const UPDATED_AT = 'modified';
     
     //const DELETED_AT = 'deleted_at';
-
+    
     /**
      * @var bool
      */
@@ -32,7 +31,7 @@ class LotteryUser extends Model
      * 
      * @var array
      */
-    public $table = 'lot_users_jogos';
+    public $table = 'historic_balance_devolutions';
 
     /**
      * The attributes that are mass assignable.
@@ -52,17 +51,7 @@ class LotteryUser extends Model
         
     ];
 
-    public function sweepstake() {
-    	return $this->belongsTo(LotterySweepstake::class, 'lot_jogo_id');
+    public function balance() {
+        return $this->belongsTo(HistoricBalance::class, 'historic_balance_id');
     }
-
-    public function player() {
-    	return $this->belongsTo(User::class, 'jogador_id');
-    }
-
-    public function numbers() 
-    {
-        return $this->belongsTo(LotteryUserNumber::class, 'lot_users_jogo_id');
-    }
-
 }

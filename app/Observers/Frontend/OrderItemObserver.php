@@ -170,6 +170,7 @@ class OrderItemObserver
         //Atribuindo a raspadinha para o dono
         foreach($scratchCards as $scratchCard) {
             $scratchCard->owner = $item->order->user_id;
+            $scratchCard->order_id = $item->order->id;
             $scratchCard->save();
         }
         return true;

@@ -28,8 +28,11 @@ class ScratchCardObserver
             $historicBalance->owner_id = $balance->owner_id;
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
-            $historicBalance->scratch_card_id = $item->temas_raspadinha_id;
+            $historicBalance->scratch_card_id = $item->id;
             $historicBalance->to = $balance->value + $item->premio;
+            $historicBalance->description = "scratchcard";
+            $historicBalance->type = 1;
+            $historicBalance->amount = $item->premio;
             $historicBalance->save();
 
             $balance->value += $item->premio;

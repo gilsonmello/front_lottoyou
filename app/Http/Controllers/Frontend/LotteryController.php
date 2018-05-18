@@ -10,6 +10,48 @@ use DB;
 
 class LotteryController extends Controller
 {
+
+    public function find($id) 
+    {
+        return Lottery::find($id);
+    }
+
+    public function results($id, Request $request) 
+    {
+
+        $sweepstakes = LotterySweepstake::where('lot_categoria_id', '=', $id)
+            ->with([
+                'results' => function($query) {
+
+                },
+                'results.numbers' => function($query) {
+
+                },
+                'results.numbersExtras' => function($query) {
+
+                },
+            ]);
+
+        if($request->column && !empty($request->column)) {
+            $sweepstakes->orderBy($request->column, $request->direction);
+        }
+
+        if($request->sorteio && !empty($request->sorteio)) {
+            $sweepstakes->where('sorteio', 'LIKE', '%'.$request->sorteio.'%');
+        }
+
+        if($request->data_fim && !empty($request->data_fim)) {
+            $request->data_fim = format_without_mask($request->data_fim, '/');
+            $sweepstakes->where('data_fim', '=', $request->data_fim);
+        }
+            
+
+        $sweepstakes = $sweepstakes->paginate();
+
+        return response()->json($sweepstakes, 200);
+        
+    }
+
     /**
      * Display a listing of the resource.
      *

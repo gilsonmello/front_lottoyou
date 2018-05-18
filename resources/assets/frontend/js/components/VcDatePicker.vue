@@ -13,7 +13,7 @@
 			}
 		},
 		props: ['options'],
-		mounted: function(){
+		mounted() {
 			var vm = this
 			$.fn.datepicker.dates['pt-br'] = {
 		        days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],

@@ -1,0 +1,239 @@
+<template>
+	<load-component v-if="loading.component == true"></load-component>
+	<section class="container" v-else>
+		<div class="sub-navigation">
+			<router-link :to="{ name: 'lotteries.show', params: { id: id } }" class="show" id="play-component">
+                {{ trans('strings.play_on_the') }} {{ category.nome }} 
+            </router-link>
+            <router-link :to="{ name: 'lotteries.results', params: { id: id } }" class="show active" id="result-component">
+                Resultado 
+           	</router-link>
+		</div>
+
+		<form @submit.prevent="filter" class="form-filter">
+			<div class="row">
+			  	<div class="col-lg-4 col-12 col-sm-4 col-md-4">
+	                <div class="form-group">
+	                    <label for="sweepstake">{{ trans('strings.name') }}</label>
+	                    <input v-model="query.sorteio" type="text" class="form-control" id="sweepstake" aria-describedby="sweepstake" :placeholder="trans('strings.sweepstake')">
+	                </div>
+	            </div>
+	            <div class="col-lg-4 col-12 col-sm-4 col-md-4 container_date_end">
+	                <div class="form-group">
+					    <label for="date_end">{{ trans('strings.date_end') }}</label>
+					    <datepicker id="date_end" :options="{container:'.container_date_end'}"  :placeholder="trans('strings.date_end')" v-model="query.data_fim" class="form-control">
+					    	
+					    </datepicker>
+				  	</div>
+	            </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-md btn-primary">
+                        {{ trans('strings.filter') }}
+                    </button>
+                    <button @click.prevent="" type="load" class="hide btn btn-md btn-primary">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </button>
+                </div>
+            </div>
+		</form>
+        
+        <br>
+
+
+
+		<div class="table text-center">
+        	<div class="row no-margin table-head">
+		    	<div class="col-lg-2" @click="toggle(column)" v-for="(column, index) in columns">
+		    		<span v-if="column === 'sorteio'">
+		    			{{ trans('strings.sweepstake') }}
+		    		</span>
+		    		<span v-else-if="column === 'premio'">
+		    			{{ trans('strings.jackpot') }}
+		    		</span>
+		    		<span v-else-if="column === 'data_fim'">
+		    			{{ trans('strings.date_end') }}
+		    		</span>
+		    		<span v-else-if="column === 'concurso'">
+		    			{{ trans('strings.contest') }}
+		    		</span>
+		    		<span v-if="column === query.column">
+		    			<span v-if="query.direction === 'desc'">
+		    				&darr;
+			    		</span>
+			    		<span v-else>
+		    				&uarr;
+			    		</span>
+		    		</span>
+		    	</div>
+		    </div>
+
+		    <div class="row no-margin table-tbody" v-if="loading.pagination">
+	        	<div class="col-lg-12">
+	        		<load-component></load-component>
+	        	</div>
+	        </div>
+
+	        <div class="row no-margin table-tbody" v-else>
+	        	<vc-sweepstake v-for="(sweepstake, index) in sweepstakes" :key="index" :index="index" :sweepstake="sweepstake">
+	        		
+	        	</vc-sweepstake>
+	        </div>
+	    </div>
+        
+	    
+		<div class="row no-margin">
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                <div class="pull-left">
+                    <br>
+                    <label>{{ model.from }} - {{ model.to }} de {{ model.total }} de linhas</label>
+                </div>
+                <div class="pull-right">
+                	<br>
+                	<vc-pagination :source="model" @paginate="paginate"></vc-pagination>
+                </div>
+            </div>
+        </div>
+
+
+	</section>
+</template>
+
+<style scoped>
+	.table-head, .table-body {
+        color: #fff;
+        background-color: #212529;
+        border-color: #32383e;
+        border-bottom: 2px solid #dee2e6;
+        padding: 10px 0 10px 0;
+    }
+</style>
+
+<script>
+	import {routes} from '../../../api_routes'
+	import LoadComponent from '../../Load'
+	import VcPagination from '../../VcPagination'
+	import VcSweepstake from './VcSweepstake'
+	export default {
+		methods: {
+			filter(event) {				
+                $(event.target).find('[type="load"]').removeClass('hide');
+                $(event.target).find('[type="submit"]').addClass('hide');
+				this.resultRequest();
+			},
+			paginate(page) {
+				this.query.page = page;
+				this.resultRequest();
+			},
+			toggle(column) {
+				if(this.query.column === column) {
+					if(this.query.column === 'desc') {
+						this.query.direction = 'asc';
+					} else {
+						this.query.direction = 'desc';
+					}
+				} else {
+					this.query.column = column
+					this.query.direction = 'asc';
+				}
+
+				this.resultRequest();
+			},
+			prev() {
+				if(this.model.prev_page_url) {
+					this.query.page--;
+					this.resultRequest();
+				}
+			},
+			next() {
+				if(this.model.next_page_url) {
+					this.query.page++;
+					this.resultRequest();
+				}
+			},
+			findRequest() {
+				const findRequest = axios.create();
+				
+				findRequest.interceptors.request.use(config => {
+					return config;
+				});
+
+				let url = routes.lotteries.find.replace('{id}', this.id);
+
+				findRequest.get(url, {}, {}).then(response => {
+					if(response.status === 200) {
+						this.category = response.data;
+					}
+				}).catch((error) => {
+					
+				});
+			},
+			resultRequest() {
+
+				const resultRequest = axios.create();
+				resultRequest.interceptors.request.use(config => {
+					this.loading.pagination = true
+		        	return config;
+				});
+
+				let url = routes.lotteries.results.replace('{id}', this.id);
+				url += "?page="+this.query.page;
+				url += "&column="+this.query.column;
+				url += "&direction="+this.query.direction;
+				url += "&sorteio="+this.query.sorteio;
+				url += "&data_fim="+this.query.data_fim;
+
+				resultRequest.get(url, {}, {}).then(response => {
+					if(response.status === 200) {
+						this.model = response.data;
+						this.sweepstakes = response.data.data;
+						this.loading.component = false
+						this.loading.pagination = false
+
+						$(this.$el).find('.form-filter [type="load"]').addClass('hide');
+                        $(this.$el).find('.form-filter [type="submit"]').removeClass('hide');
+					}
+				}).catch((error) => {
+					this.loading.component = false
+					this.loading.pagination = false
+					$(this.$el).find('.form-filter [type="load"]').addClass('hide');
+                    $(this.$el).find('.form-filter [type="submit"]').removeClass('hide');
+				});
+			}
+		},
+		data() {
+			return {
+				loading: {
+					component: true,
+					pagination: false
+				},
+				category: {},
+				columns: ['sorteio', 'concurso', 'premio', 'data_fim'],
+				id: '',
+				results: [],
+				sweepstakes: [],
+				model: {},
+				query: {
+					page: 1,
+					column: 'sorteio',
+					direction: 'asc',
+					id: '',
+					sorteio: '',
+					premio: '',
+					data_fim: '',
+				}
+			}
+		},
+		mounted() {
+			this.id = this.$route.params.id;
+			this.findRequest();
+			this.resultRequest();
+		},
+		components: {			
+			LoadComponent,
+			VcPagination,
+			VcSweepstake
+		}
+	}
+</script>

@@ -5,15 +5,21 @@ namespace App\Model\Frontend;
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 use App\User;
-use App\Model\Frontend\LotteryResult;
 use App\Model\Frontend\Lottery;
-use App\Model\Frontend\LotteryNumber;
+use App\Model\Frontend\LotteryResult;
 
 class LotterySweepstake extends Model
 {
     const CREATED_AT = 'created';
 
     const UPDATED_AT = 'modified';
+
+    /**
+     * The number of models to return for pagination.
+     *
+     * @var int
+     */
+    public $perPage = 15;
     
     //const DELETED_AT = 'deleted_at';
 
@@ -63,11 +69,6 @@ class LotterySweepstake extends Model
 
     public function results() {
     	return $this->hasMany(LotteryResult::class, 'lot_jogo_id');
-    }
-
-    public function numbers() 
-    {
-        return $this->hasMany(LotteryNumber::class, 'lot_jogo_id');
     }
 
     public function getDataFimAttribute($date) {

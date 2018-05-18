@@ -5,7 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Balance;
 use App\HistoricBalanceSoccer;
+use App\HistoricBalanceDevolution;
 use App\HistoricBalanceLottery;
+use App\Order;
+use App\Model\Frontend\ScratchCard;
+use App\Model\Frontend\SoccerExpertBet;
+use App\Model\Frontend\LotteryUser;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 
 class HistoricBalance extends Model
@@ -17,6 +22,13 @@ class HistoricBalance extends Model
     const UPDATED_AT = 'modified';
 
     //const DELETED_AT = 'deleted_at';
+
+    /**
+     * The number of models to return for pagination.
+     *
+     * @var int
+     */
+    public $perPage = 15;
     
     /**
      * @var bool
@@ -58,14 +70,29 @@ class HistoricBalance extends Model
         return $this->belongsTo(Balance::class, 'balance_id');
     }
 
-    public function soccer() 
+    public function soccerExpertBet() 
     {
-        return $this->hasOne(HistoricBalanceSoccer::class, 'historic_balance_id');
+        return $this->belongsTo(SoccerExpertBet::class, 'soccer_expert_bet_id');
     }
 
-    public function lottery() 
+    public function order() 
     {
-        return $this->hasOne(HistoricBalanceLottery::class, 'historic_balance_id');
+        return $this->belongsTo(Order::class, 'order_id');
+    }
+
+    public function scratchCard() 
+    {
+        return $this->belongsTo(ScratchCard::class, 'scratch_card_id');
+    }
+
+    public function lotteryBet() 
+    {
+        return $this->belongsTo(LotteryUser::class, 'lottery_bet_id');
+    }
+
+    public function devolution() 
+    {
+        return $this->hasOne(HistoricBalanceDevolution::class, 'historic_balance_id');
     }
 
     public function getCreatedAttribute($date) 

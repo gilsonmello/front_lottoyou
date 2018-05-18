@@ -11,6 +11,16 @@ return [
       | found in a intuitive way.
       |
      */
+    'group' => 'Grupo',
+    'groups' => 'Grupos',
+    'confirmation' => 'Confirmação',
+    'balance' => 'Saldo',
+    'scratchcard' => 'Raspadinha',
+    'balances' => 'Saldos',
+    'historic_balance' => 'Histórico do Saldo',
+    'jackpot' => 'Prêmio',
+    'sweepstake' => 'Sorteio',
+    'contest' => 'Concurso',
     'to_view' => 'Visualizar',
     'view' => 'Visualizar',
     'unavailable' => 'Indisponível',
@@ -372,7 +382,7 @@ return [
     'ticket_reply_message' => 'Resposta ao atendimento ',
     'ticket_open' => 'Abertura de atendimento ',
     'ticket_finish_message' => 'Finalização do atendimento ',
-    'ticket' => 'Atendimento',
+    'ticket' => 'Bilhete',
     'reply_message' => 'Resposta',
     'sent_from' => 'Enviado por',
     'time_begin' => 'Hora de Início',

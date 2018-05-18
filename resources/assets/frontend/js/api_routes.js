@@ -4,6 +4,9 @@ export const host = window.location.protocol + '//'+ window.location.hostname + 
 
 
 export const routes = {
+	historic_balances: {
+		of_the_user: host+'/historic_balances/of_the_user/{id}'
+	},
 	auth: {
 		login: host+'/oauth/token',
 		user: host+'/api/user'
@@ -66,7 +69,9 @@ export const routes = {
 	},
 	lotteries: {
 		index: host+'/lotteries',
-		show: host+'/lotteries/{id}'
+		show: host+'/lotteries/{id}',
+		results: host+'/lotteries/results/{id}',
+		find: host+'/lotteries/find/{id}',
 	},
 	carts: {
 		store: host + '/carts',

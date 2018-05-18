@@ -13,14 +13,23 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+
+    window.moment = require('moment');
+    
     require('./plugins/AppWscratchPad.js');
 
     require('jquery.inputmask/dist/jquery.inputmask.bundle.js');
+
     require('bootstrap-datepicker');
     require('bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css');
     window.toastr = require('toastr');
     require('jquery-maskmoney/dist/jquery.maskMoney.min.js');
     require('toastr/build/toastr.min.css');
+
+    require('tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js');
+    require('tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css');
+
+
 } catch (e) {}
 
 /**

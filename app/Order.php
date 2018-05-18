@@ -1,19 +1,16 @@
 <?php
 
-namespace App\Model\Frontend;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Frontend\LotteryResult;
-//use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\User;
+use App\OrderItem;
 
-class LotteryNumber extends Model
+class Order extends Model
 {
-    const CREATED_AT = 'created';
-
-    const UPDATED_AT = 'modified';
+    use SoftDeletes;
     
-    //const DELETED_AT = 'deleted_at';
-
     /**
      * @var bool
      */
@@ -29,7 +26,7 @@ class LotteryNumber extends Model
      * 
      * @var array
      */
-    public $table = 'lot_jogos_numeros';
+    public $table = 'orders';
 
     /**
      * The attributes that are mass assignable.
@@ -49,8 +46,24 @@ class LotteryNumber extends Model
         
     ];
 
-    public function result() 
+    public function purchase()
     {
-    	return $this->belongsTo(LotteryResult::class, 'lot_jogos_resultado_id');
+
+    }
+
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class, 'order_id')
+            ->orderBy('created_at', 'DESC');
+    }
+
+    public function user() 
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function getCreatedAtAttribute($date) 
+    {
+        return format($date, 'd/m/Y H:i');
     }
 }

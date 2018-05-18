@@ -3,13 +3,17 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Frontend\Balance;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Model\Frontend\LotteryResult;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 
-class HistoricBalance extends Model
+class LotteryNumberExtra extends Model
 {
-    use SoftDeletes;
+    const CREATED_AT = 'created';
+
+    const UPDATED_AT = 'modified';
     
+    //const DELETED_AT = 'deleted_at';
+
     /**
      * @var bool
      */
@@ -25,7 +29,7 @@ class HistoricBalance extends Model
      * 
      * @var array
      */
-    public $table = 'historic_balances';
+    public $table = 'lot_jogos_numeros_extras';
 
     /**
      * The attributes that are mass assignable.
@@ -45,7 +49,8 @@ class HistoricBalance extends Model
         
     ];
 
-    public function balance() {
-        return $this->belongsTo(Balance::class, 'balance_id');
+    public function result() 
+    {
+        return $this->belongsTo(LotteryResult::class, 'lot_jogos_resultado_id');
     }
 }
