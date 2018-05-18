@@ -11,7 +11,12 @@ class SoccerTicketController extends Controller
 
     public function games($ticket_id)
     {
-        return SoccerExpertGame::where('soc_rodada_id', '=', $ticket_id)->get();
+        return SoccerExpertGame::where('soc_rodada_id', '=', $ticket_id)
+            ->with([
+                'outClub',
+                'houseClub'
+            ])
+            ->get();
     }
 
     /**
