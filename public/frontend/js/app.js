@@ -66359,6 +66359,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -68094,20 +68097,32 @@ var render = function() {
                                       )
                                     : _vm._e(),
                                   _vm._v(" "),
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-md btn-info",
-                                      attrs: { type: "submit" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n\t\t\t\t\t\t\t\t\t\t" +
-                                          _vm._s(_vm.trans("strings.buy_now")) +
-                                          "\n\t\t\t\t\t\t\t\t\t"
+                                  scratch_card_theme.discount_tables.length > 0
+                                    ? _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn btn-md btn-info",
+                                          attrs: { type: "submit" }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n\t\t\t\t\t\t\t\t\t\t" +
+                                              _vm._s(
+                                                _vm.trans("strings.buy_now")
+                                              ) +
+                                              "\n\t\t\t\t\t\t\t\t\t"
+                                          )
+                                        ]
                                       )
-                                    ]
-                                  ),
+                                    : _c("span", [
+                                        _vm._v(
+                                          "\n\t\t\t\t\t\t\t\t\t\t" +
+                                            _vm._s(
+                                              _vm.trans("strings.unavailable")
+                                            ) +
+                                            "\n\t\t\t\t\t\t\t\t\t"
+                                        )
+                                      ]),
                                   _vm._v(" "),
                                   _c(
                                     "button",

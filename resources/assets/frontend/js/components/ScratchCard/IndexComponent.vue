@@ -80,9 +80,12 @@
 									<button type="button" @click.prevent="handleScratchCard(index, $event)" class="btn btn-md btn-info" v-if="scratch_card_theme.has_scratch_card">
 										{{ trans('strings.to_play') }}
 									</button>
-									<button type="submit" class="btn btn-md btn-info">
+									<button type="submit" class="btn btn-md btn-info" v-if="scratch_card_theme.discount_tables.length > 0">
 										{{ trans('strings.buy_now') }}
 									</button>
+									<span v-else>
+										{{ trans('strings.unavailable') }}
+									</span>
 									<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-info">
 										<i class="fa fa-refresh fa-spin"></i>
 									</button>

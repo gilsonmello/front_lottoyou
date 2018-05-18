@@ -13,6 +13,7 @@ return [
      */
     'to_view' => 'Visualizar',
     'view' => 'Visualizar',
+    'unavailable' => 'Indisponível',
     'page' => 'Página',
     'points' => 'Pontos',
     'point' => 'Ponto',
