@@ -81060,7 +81060,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n.ticket-columns[data-v-66dc578e] {\n\tpadding: 10px 0 10px 0;\n}\n.ticket .ticket-columns[data-v-66dc578e]:after {\n\tfont-family: 'FontAwesome';\n\tcontent: \"\\F068\";\n\tfloat: right;\n}\n.ticket .collapsed[data-v-66dc578e]:after {\n\tcontent: \"\\F067\";\n}\n[data-toggle=\"collapse\"][data-v-66dc578e] {\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.ticket[data-v-66dc578e] {\n\tbackground: #212529;\n    cursor: pointer;\n    padding: 0;\n    color: #fff;\n}\n.tickets[data-v-66dc578e] {\n\tpadding: 0;\n\tmargin-bottom: 0;\n}\n.tickets .tickets-content[data-v-66dc578e] {\n\tcursor: initial;\n}\n.photo[data-v-66dc578e] {\n\twidth: 70px;\n    height: 70px;\n    border-radius: 999px;\n    margin-right: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.ticket-columns[data-v-66dc578e] {\n\tpadding: 10px 0 10px 0;\n}\n.tickets-header[data-v-66dc578e] {\n\tcolor: #000;\n}\n.ticket .ticket-columns[data-v-66dc578e]:after {\n\tfont-family: 'FontAwesome';\n\tcontent: \"\\F068\";\n\tfloat: right;\n}\n.ticket .collapsed[data-v-66dc578e]:after {\n\tcontent: \"\\F067\";\n}\n[data-toggle=\"collapse\"][data-v-66dc578e] {\n\t-webkit-box-align: center;\n\t    -ms-flex-align: center;\n\t        align-items: center;\n}\n.ticket[data-v-66dc578e] {\n\tbackground: #212529;\n    cursor: pointer;\n    padding: 0;\n    color: #fff;\n}\n.tickets[data-v-66dc578e] {\n\tpadding: 0;\n\tmargin-bottom: 0;\n}\n.tickets .tickets-content[data-v-66dc578e] {\n\tcursor: initial;\n}\n.photo[data-v-66dc578e] {\n\twidth: 70px;\n    height: 70px;\n    border-radius: 999px;\n    margin-right: 5px;\n}\n", ""]);
 
 // exports
 
@@ -81076,6 +81076,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__VcGame___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__VcGame__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Load__);
+//
 //
 //
 //

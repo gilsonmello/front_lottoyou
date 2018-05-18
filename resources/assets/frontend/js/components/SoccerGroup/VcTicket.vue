@@ -21,6 +21,7 @@
         		<div class="col-lg-6 col-sm-6 col-md-6 col-12">
         			<div class="tickets">
 						<!-- <header class="tickets-header">
+							<span>{{ ticket.round.nome }}</span>
 						</header> -->
 						<div class="tickets-content" :style="backgroundTicket(ticket.round.imagem_capa)">
 							<div class="row no-margin">
@@ -81,6 +82,10 @@
 <style scoped>
 	.ticket-columns {
 		padding: 10px 0 10px 0;
+	}
+
+	.tickets-header {
+		color: #000;
 	}
 
 	.ticket .ticket-columns:after {
