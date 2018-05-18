@@ -36,7 +36,13 @@ class SoccerGroupController extends Controller
                 },
                 'round' => function($query) {
 
-                }
+                },
+                'games.game.outClub' => function($query) use($request) {
+
+                },
+                'games.game.houseClub' => function($query) use($request) {
+
+                },
             ])
             ->whereHas('owner', function($query) use($request) {
                 if($request->get('nickname')) {
