@@ -172,7 +172,8 @@
                     if(response.status === 200) {
                         this.loading.component = false;
                         this.model = response.data;
-                        this.orders = response.data.data;                          
+                        this.orders = response.data.data;  
+                        this.scrollToTop();                        
                     }
                 }).catch((error) => {
                     this.loading.component = false                   

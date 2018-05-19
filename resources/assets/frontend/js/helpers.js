@@ -13,6 +13,13 @@ import {routes} from './api_routes'
 	return numbers;
 };*/
 
+Vue.prototype.scrollToTop = function() {
+	var height = $('main').prop('scrollHeight');
+    $('html, body').animate({
+        scrollTop: 0
+    },  300);
+};
+
 Vue.prototype.countdown = function(date, callback) {
 	
 	var now = new Date();	

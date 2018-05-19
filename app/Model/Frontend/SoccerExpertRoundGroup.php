@@ -52,8 +52,7 @@ class SoccerExpertRoundGroup extends Model
 
     public function round() 
     {
-    	return $this->belongsTo(SoccerExpertRound::class, 'soc_rodada_id')
-            ->where('active', '=', 1);
+    	return $this->belongsTo(SoccerExpertRound::class, 'soc_rodada_id');
     }
 
     public function bets() 

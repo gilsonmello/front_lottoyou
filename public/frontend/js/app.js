@@ -73012,6 +73012,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	return numbers;
 };*/
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.scrollToTop = function () {
+	var height = $('main').prop('scrollHeight');
+	$('html, body').animate({
+		scrollTop: 0
+	}, 300);
+};
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.countdown = function (date, callback) {
 
 	var now = new Date();
@@ -88868,7 +88875,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -89065,6 +89072,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     _this.loading.component = false;
                     _this.model = response.data;
                     _this.orders = response.data.data;
+                    _this.scrollToTop();
                 }
             }).catch(function (error) {
                 _this.loading.component = false;
@@ -92459,6 +92467,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     _this.loading.component = false;
                     _this.model = response.data;
                     _this.balances = response.data.data;
+                    _this.scrollToTop();
                 }
             }).catch(function (error) {
                 _this.loading.component = false;

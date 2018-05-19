@@ -3,7 +3,7 @@
 	<div class="container" v-else>
 
 		<h1 class="page-header">
-		  	<span style="display: block;">{{ group.round.category.nome }} - {{ group.round.nome}}</span>
+		  	<span style="display: block;">{{ group.round.category.nome }} - {{ group.round.nome }}</span>
 		  	<span>{{ trans('strings.ranking') }} - Grupo {{ group.identificacao }}</span>
 		</h1>
 
