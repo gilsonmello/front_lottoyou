@@ -291,7 +291,6 @@ return [
     'courses_sold' => 'Cursos vendidos no último mês',
     'content' => 'Conteúdo',
     'date' => 'Data',
-    'order' => 'Ordem',
     'carousel' => 'Carrossel',
     'is_active' => 'Ativo',
     'desactived' => 'Desativado',
