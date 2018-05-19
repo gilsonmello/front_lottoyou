@@ -196,10 +196,10 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <button type="submit" class="btn pull-right btn-md btn-success">
+                            <button type="submit" class="btn pull-right btn-md btn-info">
                                 {{ trans('strings.save_button') }}
                             </button>
-                            <button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
+                            <button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-info">
                                 <i class="fa fa-refresh fa-spin"></i>
                             </button>
                         </div>

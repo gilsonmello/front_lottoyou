@@ -32,10 +32,10 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <button type="submit" class="btn btn-md btn-primary">
+                    <button type="submit" class="btn btn-md btn-info">
                         {{ trans('strings.filter') }}
                     </button>
-                    <button @click.prevent="" type="load" class="hide btn btn-md btn-primary">
+                    <button @click.prevent="" type="load" class="hide btn btn-md btn-info">
                         <i class="fa fa-refresh fa-spin"></i>
                     </button>
                 </div>

@@ -9,7 +9,9 @@ use App\Model\Frontend\CartItem;
 use App\Model\Frontend\Order;
 use App\Model\Frontend\OrderItem;
 use App\Model\Frontend\SoccerExpert;
+use App\Model\Frontend\SoccerExpertRound;
 use App\Model\Frontend\Lottery;
+use App\Model\Frontend\LotterySweepstake;
 use App\Model\Frontend\ScratchCardTheme;
 use App\Model\Frontend\ScratchCard;
 use DB;
@@ -38,6 +40,62 @@ class CartController extends Controller
         return false;
     }
 
+    private function soccerExpertValidate($data) 
+    {
+        foreach ($data as $key => $ticket) {
+            
+            $round = SoccerExpertRound::where('id', '=', $ticket['id'])
+                ->where('active', '=', 1)
+                ->where(
+                    DB::raw("concat(data_termino,' ',hora_termino)"), 
+                    '>=', 
+                    date('Y-m-d H:i:s')
+                )
+                ->get();
+
+            $valid = [
+                'valid' => true, 
+                'msg' => 'ok'
+            ];
+
+            if($round->isEmpty()) {
+                $valid = [
+                    'valid' => false, 
+                    'msg' => 'O ticket '.$ticket['nome'].' encontra-se indisponível.'
+                ];
+                break;
+            }
+        }
+
+        return $valid;        
+    }
+
+    private function lotteryValidate($data) 
+    {
+        $valid = [
+            'valid' => true, 
+            'msg' => 'ok'
+        ];
+
+        $sweepstake = LotterySweepstake::where('id', '=', $data['id'])
+            ->where('active', '=', 1)
+            ->where(
+                DB::raw("concat(data_fim,' ',hora_fim)"), 
+                '>=', 
+                date('Y-m-d H:i:s')
+            )
+            ->get();
+
+        if($sweepstake->isEmpty()) {
+            $valid = [
+                'valid' => false, 
+                'msg' => 'O sorteio '.$data['sorteio'].' encontra-se indisponível.'
+            ];
+        }
+
+        return $valid;                
+    }
+
     public function validatePurchase(Request $request) 
     {
         $data = $request->all();
@@ -56,14 +114,28 @@ class CartController extends Controller
                 );
 
                 if(!$valid['valid']) {
-                    $valid['msg'] = 'A raspadinha '. $scratchCard['nome'] . ' encontra-se indisponível';
+                    $valid['msg'] = 'A raspadinha '. $scratchCard['nome'] . ' encontra-se indisponível.';
                     return response()->json($valid, 422);
                 }
 
             } else if($value['type'] == 'soccer_expert') {
+                $soccerExpert = $value['soccer_expert']['tickets'];
+                
+                $valid = $this->soccerExpertValidate($soccerExpert);
 
+                if(!$valid['valid']) {
+                    return response()->json($valid, 422);
+                }
+                
             } else if($value['type'] == 'lottery') {
+                $lottery = $value['lottery']['sweepstake'];
 
+
+                $valid = $this->lotteryValidate($lottery);
+
+                if(!$valid['valid']) {
+                    return response()->json($valid, 422);
+                }
             }
         }
 

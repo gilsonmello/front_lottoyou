@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="vcenter soccer_experts no-padding">
-			<div class="col-lg-2 col-md-2 col-2 col-sm-2" style="padding-left: 0;">
+			<div class="col-lg-2 col-md-2 col-2 col-sm-2">
 				<img class="img-fluid" :alt="item.soccer_expert.nome" :src="item.soccer_expert.imagem_capa">
 			</div>
 			<div class="col-lg-8 col-5 col-md-7 col-sm-6" :href="'#'+id" data-toggle="collapse">

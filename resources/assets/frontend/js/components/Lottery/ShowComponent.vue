@@ -17,6 +17,12 @@
         </div>	
 		
 
+		<div class="row" v-if="lottery.sweepstakes.length == 0">
+			<div class="col-lg-12">
+				<h3>Nenhuma data de sorteio disponível no momento</h3>
+			</div>				
+		</div>
+
         <form @submit.prevent="addToCart">
         	<div class="row">
 	        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
@@ -36,7 +42,7 @@
 				 <div class="col-lg-1 col-4 col-md-2 col-sm-2 vcenter" style="justify-content: center;" id="btn-add-ticket">
 					<div>
 
-						<a href="#" @click.prevent="addBet($event)" class="fa fa-plus" style="font-size: 60px;"></a>
+						<a href="#" @click.prevent="addBet($event)" class="btn btn-info fa fa-plus" style="font-size: 60px;"></a>
 						<!--
 						<br>
 						<a v-if="tickets.length > 5" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>-->
@@ -73,10 +79,10 @@
 			<hr>
 			<div class="row">
 				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-					<button type="submit" class="btn btn-md btn-success pull-right">
+					<button type="submit" class="btn btn-md btn-info pull-right">
 						{{ trans('strings.add_to_cart') }}
 					</button>
-					<button @click.prevent="" type="load" class="hide pull-right btn btn-xs btn-success">
+					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-info">
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">
@@ -148,6 +154,17 @@
 			}
 		},
 		methods: {
+			sweepstakesRequest() {				
+
+				const sweepstakesRequest = axios.create();
+				let url = routes.lotteries.sweepstakes.replace('{id}', this.$route.params.id)
+
+				sweepstakesRequest.interceptors.request.use(config => {		        
+				  	return config;
+				});
+
+				return sweepstakesRequest.get(url, {}, {});
+			},
 			back(event) {
 				this.$router.push({
 					name: 'lotteries.index'
@@ -251,7 +268,7 @@
 					
 					}
 				}).catch((error) => {
-					
+					this.loading.component = false;
 				});
 			},
 			verifyNumberSelected(numbers, dicker) {
@@ -279,7 +296,19 @@
 						item = item[0]
 
 						this.lottery = item.lottery
-						this.lot_jogo_id = item.lot_jogo_id
+
+						this.sweepstakesRequest().then(response => {
+							if(response.status === 200) {
+								this.lottery.sweepstakes = response.data
+								var date = this.formatDate(this.lottery.sweepstakes[0].data_fim);				
+								var timeOut = setInterval(() => {
+				    				this.setCountdown(date, timeOut);
+				    			}, 1000);
+				    			this.setCountdown(date, timeOut);
+							}
+						});
+
+		    			this.lot_jogo_id = item.lot_jogo_id
 
 						this.loading.component = false
 
@@ -310,13 +339,6 @@
 
 						this.total = this.item.value * item.tickets.length;
 
-						var date = this.formatDate(this.lottery.sweepstakes[0].data_fim);				
-						var timeOut = setInterval(() => {
-		    				this.setCountdown(date, timeOut);
-		    			}, 1000);
-		    			this.setCountdown(date, timeOut);
-
-						
 					} else {
 
 					}
@@ -724,7 +746,6 @@
 					alert('Faça pelo menos um jogo');
 					//this.$store.dispatch('removeItemLottery', item);
 				}else {
-					this.$store.dispatch('setItemLottery', item);
 
 					let addLotteryRequest = axios.create();
 
@@ -741,12 +762,13 @@
 						
 					}).then(response => {
 			            if(response.status === 200) {
+							this.$store.dispatch('setItemLottery', item);
 			            	this.$router.push({
 								name: 'cart.index'
 							})
 						}
 			        }).catch((error) => {
-			        	
+			        	toast.error('Erro ao adicionar item', 'Por favor tente novamente');
 			        })	
 					
 					/*const cartRequest = axios.create();

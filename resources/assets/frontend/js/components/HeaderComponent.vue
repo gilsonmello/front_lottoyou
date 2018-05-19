@@ -89,10 +89,10 @@
 						  			<div class="tooltip-item-account">
 						  				<div class="tooltip-item-account-header">
 						  					<div class="row vcenter">
-						  						<div class="col-lg-7">
+						  						<div class="col-lg-6">
 						  							<span class="title">Minha Lottoyou</span>
 						  						</div>
-						  						<div class="col-lg-5">
+						  						<div class="col-lg-6">
 						  							<span class="balance" v-if="auth && auth.balance">
 							  							Crédito: $ {{ auth.balance.value }}
 							  						</span>

@@ -10,6 +10,20 @@ use DB;
 
 class LotteryController extends Controller
 {
+    public function sweepstakes($id) 
+    {
+        $sweepstakes = LotterySweepstake::where('lot_categoria_id', '=', $id)
+            ->where('active', '=', 1)
+            ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'))
+            ->get();
+
+        if($sweepstakes->isEmpty()) {
+            return response()->json([
+                'msg' => ''
+            ], 422);
+        }
+        return response()->json($sweepstakes, 200);
+    }
 
     public function find($id) 
     {
@@ -76,7 +90,9 @@ class LotteryController extends Controller
         if(!is_null($lotteries)) {
             return response()->json($lotteries, 200);
         }
-        return response()->json(['msg' => ''], 422);
+        return response()->json([
+            'msg' => ''
+        ], 422);
     }
 
     /**
@@ -109,10 +125,15 @@ class LotteryController extends Controller
     public function show($id)
     {
        $lottery = Lottery::where('id', '=', $id)
-            ->with('sweepstakes')
+            ->with([
+                'sweepstakes' => function($query) {
+                    $query->where('active', '=', 1)
+                        ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'));
+                }
+            ])
             ->whereHas('sweepstakes', function($query) {
                 $query->where('active', '=', 1)
-                    ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>', date('Y-m-d H:i:s'));
+                    ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'));
             })
             ->get()
             ->first();

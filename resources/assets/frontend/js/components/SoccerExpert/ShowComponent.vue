@@ -64,10 +64,10 @@
 	    	<hr>
 			<div class="row">
 				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-					<button type="submit" class="btn btn-md btn-success pull-right">
+					<button type="submit" class="btn btn-md btn-info pull-right">
 						{{ trans('strings.add_to_cart') }}
 					</button>
-					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
+					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-info">
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">
@@ -157,7 +157,6 @@
 					alert('Faça pelo menos um jogo');
 				} else {
 					
-					this.$store.dispatch('setItemSoccerExpert', item);
 
 					let addSoccerExpertRequest = axios.create();
 
@@ -174,12 +173,13 @@
 						
 					}).then(response => {
 						if(response.status === 200) {
+							this.$store.dispatch('setItemSoccerExpert', item);
 			            	this.$router.push({
 								name: 'cart.index'
 							})
 						}
 			        }).catch((error) => {
-			        	console.log(error);
+			        	toast.error('Erro ao adicionar item', 'Por favor tente novamente');
 			        })	
 				}
         	},

@@ -2,6 +2,13 @@
 	<load-component v-if="loading.component == true"></load-component>
 	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.lotteries') }}</h1>
+
+		<div class="row" v-if="lotteries.length == 0">
+			<div class="col-lg-12">
+				<h3>Nenhuma loteria disponível no momento</h3>
+			</div>				
+		</div>
+
 		<div class="row">
 			<div class="col-lg-4 col-12 col-md-6 col-sm-6" v-for="lottery in lotteries">				
 				<card-component :lottery="lottery"></card-component>

@@ -151,15 +151,15 @@
 		</div>
 		
 		<div class="container" v-if="auth">
-			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px" v-if="auth.balance.value >= purchase.total">
+			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px" v-if="auth.balance.value >= purchase.total && purchase.items.length > 0">
 				<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 					
 				</div>
 				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-					<button class="btn btn-success btn-md btn-complete-purchase" type="submit" @click.prevent="validate($event)">		
+					<button class="btn btn-info btn-md btn-complete-purchase" type="submit" @click.prevent="validate($event)">		
 						{{ trans('strings.complete_purchase') }}
 					</button>
-					<button @click.prevent="" type="load" class="btn-load hide pull-right btn btn-md btn-success">
+					<button @click.prevent="" type="load" class="btn-load hide pull-right btn btn-md btn-info">
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 				</div>
