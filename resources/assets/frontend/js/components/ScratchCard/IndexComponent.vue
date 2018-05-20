@@ -245,9 +245,9 @@
 		      						<div class="no-tickets-container hide">
 		      							<div class="vert-align">
 		      								<h3>{{ trans('strings.no_tickets_left') }}.</h3>
-		      								<p>Tens de comprar mais raspadinhas para voltar a jogar.</p>
+		      								<p>{{ trans('strings.buy_scratchcard_to_play') }}.</p>
 		      								<div @click="app.reload" class="btn btn-primary btn-mini buy-more-btn">
-		      									{{ trans('strings.buy_scratchcard_to_play') }}.
+		      									{{ trans('strings.buy_tickets') }}.
 		      								</div>
 	      								</div>
 		      						</div>
@@ -322,7 +322,7 @@
 		      						</a>
 		      						
 		      						<a v-else @click.prevent="handleBuyNow($event)" href="javascript: void(0);" class="btn btn-game btn-buy-now">
-		      							{{ trans('strings.buy_tickets') }}
+		      							{{ trans('strings.buy_now') }}
 		      						</a>
 		      					</div>
 		      				</div>

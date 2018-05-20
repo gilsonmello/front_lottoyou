@@ -85321,7 +85321,11 @@ var render = function() {
                                                   _vm._v(" "),
                                                   _c("p", [
                                                     _vm._v(
-                                                      "Tens de comprar mais raspadinhas para voltar a jogar."
+                                                      _vm._s(
+                                                        _vm.trans(
+                                                          "strings.buy_scratchcard_to_play"
+                                                        )
+                                                      ) + "."
                                                     )
                                                   ]),
                                                   _vm._v(" "),
@@ -85339,7 +85343,7 @@ var render = function() {
                                                         "\n\t\t      \t\t\t\t\t\t\t\t\t" +
                                                           _vm._s(
                                                             _vm.trans(
-                                                              "strings.buy_scratchcard_to_play"
+                                                              "strings.buy_tickets"
                                                             )
                                                           ) +
                                                           ".\n\t\t      \t\t\t\t\t\t\t\t"
@@ -85662,7 +85666,7 @@ var render = function() {
                                                     "\n\t\t      \t\t\t\t\t\t\t" +
                                                       _vm._s(
                                                         _vm.trans(
-                                                          "strings.buy_tickets"
+                                                          "strings.buy_now"
                                                         )
                                                       ) +
                                                       "\n\t\t      \t\t\t\t\t\t"
@@ -96914,7 +96918,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.collapse[data-v-3fa1687c] {\n\tpadding-top: 10px;\n\tpadding-bottom: 10px;\n}\n.ticket-columns[data-v-3fa1687c] {\n\tpadding: 10px 0 10px 0;\n}\n.ticket .ticket-columns[data-v-3fa1687c]:after {\n\tfont-family: 'FontAwesome';\n\tcontent: \"\\F068\";\n\tfloat: right;\n}\n.ticket .collapsed[data-v-3fa1687c]:after {\n\tcontent: \"\\F067\";\n}\n.ticket[data-v-3fa1687c] {\n\tbackground: #212529;\n    cursor: pointer;\n    padding: 0;\n}\n.row[data-v-3fa1687c] {\n\tmargin: 0;\n}\n", ""]);
+exports.push([module.i, "\n.collapse[data-v-3fa1687c] {\n\tpadding-top: 20px;\n}\n.ticket-columns[data-v-3fa1687c] {\n\tpadding: 10px 0 10px 0;\n}\n.ticket .ticket-columns[data-v-3fa1687c]:after {\n\tfont-family: 'FontAwesome';\n\tcontent: \"\\F068\";\n\tfloat: right;\n}\n.ticket .collapsed[data-v-3fa1687c]:after {\n\tcontent: \"\\F067\";\n}\n.ticket[data-v-3fa1687c] {\n\tbackground: #212529;\n    cursor: pointer;\n    padding: 0;\n}\n.row[data-v-3fa1687c] {\n\tmargin: 0;\n}\n", ""]);
 
 // exports
 
@@ -96930,6 +96934,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Load__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__VcGroup__ = __webpack_require__(441);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__VcGroup___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__VcGroup__);
+//
 //
 //
 //
@@ -96986,9 +96991,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		var interval = setInterval(function () {
 			if ($(_this2.$el).find('.' + _this2.ticket.id).length > 0) {
 				clearInterval(interval);
+
 				$(_this2.$el).find('.' + _this2.ticket.id).on('show.bs.collapse', function (event) {
 					_this2.loading.game = true;
 					var groupRequest = axios.create();
+
 					groupRequest.interceptors.request.use(function (config) {
 						return config;
 					});
@@ -97009,7 +97016,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					_this2.groups = [];
 				});
 			}
-		}, 1000);
+		});
 		//this.init();	
 		this.ticket.valor = parseFloat(this.ticket.valor).format(2, true);
 	},
@@ -97226,11 +97233,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "ticket" }, [
+  return _c("section", { staticClass: "col-lg-12 ticket" }, [
     _c(
       "div",
       {
-        staticClass: "row ticket-columns collapsed",
+        staticClass: "row ticket-columns collapsed no-margin",
         style:
           _vm.index % 2 == 0 ? "background-color: rgba(255,255,255,.05);" : "",
         attrs: { "data-toggle": "collapse", "data-target": "." + _vm.ticket.id }
@@ -97277,7 +97284,9 @@ var render = function() {
                   1
                 )
               })
-            )
+            ),
+        _vm._v(" "),
+        _c("span", [_vm._v(" ")])
       ],
       1
     )

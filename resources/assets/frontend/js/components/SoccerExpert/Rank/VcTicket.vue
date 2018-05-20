@@ -1,6 +1,6 @@
 <template>	
-	<section class="ticket">
-		<div class="row ticket-columns collapsed" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(255,255,255,.05);': ''">
+	<section class="col-lg-12 ticket">
+		<div class="row ticket-columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(255,255,255,.05);': ''">
 	    	<div class="col-lg-2">
 	    		{{ ticket.nome }}
 	    	</div>
@@ -13,12 +13,13 @@
 	    </div>
 
     	<div :class="'collapse '+ticket.id">
-			<load-component v-if="loading.game"></load-component>	    	
+			<load-component v-if="loading.game"></load-component>	 
 			<div class="row no-margin" v-else>
 				<div class="col-lg-4 col-sm-6 col-md-6 col-12" v-for="(group, index) in groups">
 					<vc-group :group="group" :category="category" :index="index"></vc-group>
 				</div>
 			</div>
+			<span>&nbsp;</span>
 		</div>
     
     </section>
@@ -50,9 +51,11 @@
 			var interval = setInterval(() => {
 				if($(this.$el).find('.'+this.ticket.id).length > 0) {
 					clearInterval(interval);
+
 					$(this.$el).find('.'+this.ticket.id).on('show.bs.collapse', (event) => {
 					  	this.loading.game = true;
 					  	const groupRequest = axios.create();
+
 					  	groupRequest.interceptors.request.use(config => {
 							return config;
 						});
@@ -73,7 +76,7 @@
 						this.groups = []
 					})
 				}
-			}, 1000);	
+			});	
 			//this.init();	
 			this.ticket.valor = parseFloat(this.ticket.valor).format(2, true);	
 		},
@@ -100,8 +103,7 @@
 <style scoped>
 
 	.collapse {
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding-top: 20px;
 	}
 
 	.ticket-columns {
