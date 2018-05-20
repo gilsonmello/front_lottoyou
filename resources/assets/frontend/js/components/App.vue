@@ -220,10 +220,10 @@
 			    	if(to.matched.length == 0) {
 				    	this.$router.push({name: 'home'});
 					}
-			    }, 200)
+			    }, 200);
 
 			    //Fechando o modal de login
-			    $('.modal-login').modal('hide');
+			    $('.modal').modal('hide');
 			});			
 		},
 		components: {

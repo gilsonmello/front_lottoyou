@@ -35,7 +35,7 @@
 			
 			<div class="row" style="margin-top: 5px;">
 				<div class="col-lg-12">
-					<button class="btn btn-success btn-md" @click.prevent="openModal">
+					<button class="btn btn-primary btn-md" @click.prevent="openModal">
 						{{ trans('strings.to_play') }}
 					</button>
 					<!-- <button class="btn btn-danger btn-md" @click.prevent="openModal">

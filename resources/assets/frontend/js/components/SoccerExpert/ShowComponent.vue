@@ -101,7 +101,8 @@
                     </div>
                 </div>
             </div>
-        </div>	
+        </div>
+
 
 
     </div>
@@ -122,7 +123,8 @@
         data: function() {
         	return {
         		loading: {
-					component: true
+					component: true,
+					modalJackpotTable: false
 				},
 				item: {
 					soccer_expert: {},

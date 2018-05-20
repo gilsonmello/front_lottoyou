@@ -3,7 +3,7 @@
 	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.soccer_expert') }}</h1>
 		<div class="row">
-			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="soccer_expert in soccer_experts">
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="(soccer_expert, index) in soccer_experts">
 				<div class="soccer-expert">
 					<header class="soccer-expert-header">
 						<div class="extras" v-if="soccer_expert.new == 1">
@@ -23,7 +23,7 @@
 						<div class="jackpot-table">
 							<div class="row vcenter">
 								<div class="col-lg-8 col-12 col-md-8 col-sm-12">
-									<a :data-id="soccer_expert.id" href="#" @click.prevent="handleJackpotTable($event)" class="btn description">
+									<a href="#" @click.prevent="handleJackpotTable(index, $event)" class="btn description">
 										<i class="fa fa-money" aria-hidden="true"></i>
 										&nbsp;
 										Tabela de Premios
@@ -60,6 +60,86 @@
 				</router-link>
 			</div>
 		</div>
+
+
+
+
+        <div class="modal fade modal-jackpot-table" id="nivel1" data-backdrop="static" tabindex="-1" aria-labelledby="nivel1" aria-hidden="true">
+		  	<div class="modal-dialog modal-lg">
+		  		<div class="modal-content" v-if="loading.modalJackpotTable == true">
+		  			<div class="modal-body">
+		  				<load-component></load-component>
+		  			</div>
+		  		</div>
+		  		<div class="modal-content" v-else>
+					<!-- Modal Header -->
+			      	<div class="modal-header" style="border-bottom: none;" v-if="soccer_experts[indexClicked]">
+			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
+						<div class="col-lg-12 col-md-12 col-12 col-sm-12">
+		        			<div class="row">
+		        				<div class="col-lg-4 col-md-4 col-sm-12 col-12" :style="backgroundDemo(soccer_experts[indexClicked].imagem_capa)+' padding-right: 0; padding-left: 0; min-height: 106px;'">
+					        	</div>
+					        	<div class="col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions" style="background-color: #155C7B">
+					        		<div class="" style="width: 100%;">
+					        			<div class="row">
+					        				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+						        				<router-link :to="{ name: 'soccer_expert.show', params: {id: soccer_experts[indexClicked].id} }" style="display: block" class="btn btn-md btn-primary">
+						        					{{ trans('strings.play_now') }}
+						        				</router-link>
+						        			</div>
+					        			</div>
+					        			<div class="row">
+						        			<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+						        				
+						        			</div>
+						        		</div>
+					        		</div>					        		
+					        	</div>
+		        			</div>
+		        		</div>		        	
+			        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+			      	</div>
+
+			      	<!-- Modal body -->
+			      	<div class="modal-body" style="padding-top: 0;">
+		        		<table class="table table-striped text-center">
+		        			<thead>
+		        				<tr>
+		        					<th>{{ trans('strings.position') }}</th>
+		        					<th>{{ trans('strings.percentage') }}</th>
+		        				</tr>
+		        			</thead>
+		        			<tbody>
+		        				<tr>
+		        					<td>1º</td>
+		        					<td>50%</td>
+		        				</tr>
+		        				<tr>
+		        					<td>2º</td>
+		        					<td>10%</td>
+		        				</tr>
+		        				<tr>
+		        					<td>3º</td>
+		        					<td>5%</td>
+		        				</tr>
+		        				<tr>
+		        					<td>4º ao 10º</td>
+		        					<td>1%</td>
+		        				</tr>
+		        				<tr>
+		        					<td>11º ao 20º</td>
+		        					<td>0.5%</td>
+		        				</tr>
+		        			</tbody>
+		        		</table>
+			      	</div>
+					<!-- Modal footer -->
+			      	<!--<div class="modal-footer">
+			        	 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			      	</div>-->
+				</div>
+		  	</div>
+		</div>
 	</div>
 </template>
 
@@ -74,14 +154,27 @@
 			
 		},
 		methods: {
-			
+			backgroundDemo(background) {
+				return 'background-image: url('+background.replace(' ', '%20')+'); background-size: 100% 100%;';
+			},
+			handleJackpotTable: function(index, el) {
+				this.indexClicked = index;
+				$('.modal-jackpot-table').off('hidden.bs.modal');
+				$('.modal-jackpot-table').on('hidden.bs.modal', () => {
+					this.loading.modalJackpotTable = true;
+				});
+				$('.modal-jackpot-table').modal('toggle');
+				this.loading.modalJackpotTable = false;
+			},
 		},
 		data: function() {
 			return {
 				loading: {
-					component: true
+					component: true,
+					modalJackpotTable: false,
 				},
-				soccer_experts: []
+				soccer_experts: [],
+				indexClicked: null
 			}
 		},
 		mounted: function() {

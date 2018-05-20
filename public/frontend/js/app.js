@@ -85812,23 +85812,121 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	created: function created() {},
 	activated: function activated() {},
-	methods: {},
+	methods: {
+		backgroundDemo: function backgroundDemo(background) {
+			return 'background-image: url(' + background.replace(' ', '%20') + '); background-size: 100% 100%;';
+		},
+
+		handleJackpotTable: function handleJackpotTable(index, el) {
+			var _this = this;
+
+			this.indexClicked = index;
+			$('.modal-jackpot-table').off('hidden.bs.modal');
+			$('.modal-jackpot-table').on('hidden.bs.modal', function () {
+				_this.loading.modalJackpotTable = true;
+			});
+			$('.modal-jackpot-table').modal('toggle');
+			this.loading.modalJackpotTable = false;
+		}
+	},
 	data: function data() {
 		return {
 			loading: {
-				component: true
+				component: true,
+				modalJackpotTable: false
 			},
-			soccer_experts: []
+			soccer_experts: [],
+			indexClicked: null
 		};
 	},
 	mounted: function mounted() {
-		var _this = this;
+		var _this2 = this;
 
 		window.document.title = this.trans('strings.soccer_expert');
 		/*$(this.$el).find('.scratchpad').each(function () {
@@ -85847,8 +85945,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		});
 		soccerExpertRequest.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].soccer_experts.index, {}).then(function (response) {
 			if (response.status === 200) {
-				_this.loading.component = false;
-				_this.soccer_experts = response.data;
+				_this2.loading.component = false;
+				_this2.soccer_experts = response.data;
 			}
 		}).catch(function (error) {
 			if (error.response.data.msg) {
@@ -85881,7 +85979,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "row" },
-          _vm._l(_vm.soccer_experts, function(soccer_expert) {
+          _vm._l(_vm.soccer_experts, function(soccer_expert, index) {
             return _c(
               "div",
               { staticClass: "col-12 col-md-6 col-sm-6 col-lg-4" },
@@ -85922,9 +86020,9 @@ var render = function() {
                   _c("div", { staticClass: "soccer-expert-body" }, [
                     _c("div", { staticClass: "amount" }, [
                       _vm._v(
-                        "\n\t\t\t\t\t\t" +
+                        "\n\t\t\t\t\t\t\t" +
                           _vm._s(soccer_expert.nome) +
-                          "\n\t\t\t\t\t"
+                          "\n\t\t\t\t\t\t"
                       )
                     ]),
                     _vm._v(" "),
@@ -85938,14 +86036,11 @@ var render = function() {
                               "a",
                               {
                                 staticClass: "btn description",
-                                attrs: {
-                                  "data-id": soccer_expert.id,
-                                  href: "#"
-                                },
+                                attrs: { href: "#" },
                                 on: {
                                   click: function($event) {
                                     $event.preventDefault()
-                                    _vm.handleJackpotTable($event)
+                                    _vm.handleJackpotTable(index, $event)
                                   }
                                 }
                               },
@@ -85955,7 +86050,7 @@ var render = function() {
                                   attrs: { "aria-hidden": "true" }
                                 }),
                                 _vm._v(
-                                  "\n\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t\tTabela de Premios\n\t\t\t\t\t\t\t\t"
+                                  "\n\t\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t\t\tTabela de Premios\n\t\t\t\t\t\t\t\t\t"
                                 )
                               ]
                             )
@@ -85996,9 +86091,9 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n\t\t\t\t\t\t\t\t" +
+                                  "\n\t\t\t\t\t\t\t\t\t" +
                                     _vm._s(_vm.trans("strings.play_now")) +
-                                    "\n\t\t\t\t\t\t\t"
+                                    "\n\t\t\t\t\t\t\t\t"
                                 )
                               ]
                             )
@@ -86032,11 +86127,11 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n\t\t\t\t" +
+                    "\n\t\t\t\t\t" +
                       _vm._s(_vm.trans("strings.how_to_play")) +
                       " " +
                       _vm._s(_vm.trans("strings.soccer_expert")) +
-                      "\n\t\t\t"
+                      "\n\t\t\t\t"
                   )
                 ]
               ),
@@ -86054,16 +86149,221 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n\t\t\t\t" +
+                    "\n\t\t\t\t\t" +
                       _vm._s(_vm.trans("strings.create_your_own_league")) +
-                      "\n\t\t\t"
+                      "\n\t\t\t\t"
                   )
                 ]
               )
             ],
             1
           )
-        ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade modal-jackpot-table",
+            attrs: {
+              id: "nivel1",
+              "data-backdrop": "static",
+              tabindex: "-1",
+              "aria-labelledby": "nivel1",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c("div", { staticClass: "modal-dialog modal-lg" }, [
+              _vm.loading.modalJackpotTable == true
+                ? _c("div", { staticClass: "modal-content" }, [
+                    _c(
+                      "div",
+                      { staticClass: "modal-body" },
+                      [_c("load-component")],
+                      1
+                    )
+                  ])
+                : _c("div", { staticClass: "modal-content" }, [
+                    _vm.soccer_experts[_vm.indexClicked]
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "modal-header",
+                            staticStyle: { "border-bottom": "none" }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "col-lg-12 col-md-12 col-12 col-sm-12"
+                              },
+                              [
+                                _c("div", { staticClass: "row" }, [
+                                  _c("div", {
+                                    staticClass:
+                                      "col-lg-4 col-md-4 col-sm-12 col-12",
+                                    style:
+                                      _vm.backgroundDemo(
+                                        _vm.soccer_experts[_vm.indexClicked]
+                                          .imagem_capa
+                                      ) +
+                                      " padding-right: 0; padding-left: 0; min-height: 106px;"
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions",
+                                      staticStyle: {
+                                        "background-color": "#155C7B"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticStyle: { width: "100%" } },
+                                        [
+                                          _c("div", { staticClass: "row" }, [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "col-lg-12 col-12 col-md-12 col-sm-12"
+                                              },
+                                              [
+                                                _c(
+                                                  "router-link",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-md btn-primary",
+                                                    staticStyle: {
+                                                      display: "block"
+                                                    },
+                                                    attrs: {
+                                                      to: {
+                                                        name:
+                                                          "soccer_expert.show",
+                                                        params: {
+                                                          id:
+                                                            _vm.soccer_experts[
+                                                              _vm.indexClicked
+                                                            ].id
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n\t\t\t\t\t\t        \t\t\t\t\t" +
+                                                        _vm._s(
+                                                          _vm.trans(
+                                                            "strings.play_now"
+                                                          )
+                                                        ) +
+                                                        "\n\t\t\t\t\t\t        \t\t\t\t"
+                                                    )
+                                                  ]
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("div", { staticClass: "row" }, [
+                                            _c("div", {
+                                              staticClass:
+                                                "col-lg-12 col-12 col-md-12 col-sm-12"
+                                            })
+                                          ])
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "close",
+                                attrs: {
+                                  type: "button",
+                                  "data-dismiss": "modal"
+                                }
+                              },
+                              [_vm._v("×")]
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal-body",
+                        staticStyle: { "padding-top": "0" }
+                      },
+                      [
+                        _c(
+                          "table",
+                          { staticClass: "table table-striped text-center" },
+                          [
+                            _c("thead", [
+                              _c("tr", [
+                                _c("th", [
+                                  _vm._v(_vm._s(_vm.trans("strings.position")))
+                                ]),
+                                _vm._v(" "),
+                                _c("th", [
+                                  _vm._v(
+                                    _vm._s(_vm.trans("strings.percentage"))
+                                  )
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("tbody", [
+                              _c("tr", [
+                                _c("td", [_vm._v("1º")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("50%")])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("2º")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("10%")])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("3º")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("5%")])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("4º ao 10º")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("1%")])
+                              ]),
+                              _vm._v(" "),
+                              _c("tr", [
+                                _c("td", [_vm._v("11º ao 20º")]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v("0.5%")])
+                              ])
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+            ])
+          ]
+        )
       ])
 }
 var staticRenderFns = []
@@ -93844,6 +94144,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -93859,7 +94160,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	data: function data() {
 		return {
 			loading: {
-				component: true
+				component: true,
+				modalJackpotTable: false
 			},
 			item: {
 				soccer_expert: {},
@@ -94814,7 +95116,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-success btn-md",
+                  staticClass: "btn btn-primary btn-md",
                   on: {
                     click: function($event) {
                       $event.preventDefault()
@@ -115599,7 +115901,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}, 200);
 
 			//Fechando o modal de login
-			$('.modal-login').modal('hide');
+			$('.modal').modal('hide');
 		});
 	},
 
