@@ -11,7 +11,12 @@ return [
       | found in a intuitive way.
       |
      */
+    'create_your_own_league' => 'Crie sua própia liga',
+    'buy_scratchcard_to_play' => 'Compre raspadinha para jogar',
+    'buy_tickets' => 'Comprar bilhetes',
+    'no_tickets_left' => 'Não restam bilhetes',
     'group' => 'Grupo',
+    'how_to_play' => 'Como jogar',
     'groups' => 'Grupos',
     'confirmation' => 'Confirmação',
     'balance' => 'Saldo',

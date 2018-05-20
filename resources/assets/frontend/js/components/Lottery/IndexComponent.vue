@@ -14,6 +14,14 @@
 				<card-component :lottery="lottery"></card-component>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<router-link :to="{ name: 'how_to_play_lottery' }" class="btn btn-md btn-info" @click.prevent="">
+					{{ trans('strings.how_to_play') }} {{ trans('strings.lottery') }}
+				</router-link>
+			</div>
+		</div>
 	</div>
 </template>
 

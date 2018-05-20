@@ -53,10 +53,10 @@
 						</div>
 						<div class="row">
 							<div class="col-lg-12">
-								<button type="submit" class="btn btn-md btn-info" style="width: 100%;">
+								<button type="submit" class="btn btn-md btn-primary" style="width: 100%;">
 									{{ trans('strings.to_enter') }}
 								</button>							
-								<button style="width: 100%;" @click.prevent="" type="load" class="hide btn btn-md btn-info">
+								<button style="width: 100%;" @click.prevent="" type="load" class="hide btn btn-md btn-primary">
 									<i class="fa fa-refresh fa-spin"></i>
 								</button>
 							</div>

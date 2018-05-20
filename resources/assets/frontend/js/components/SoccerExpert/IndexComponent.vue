@@ -2,57 +2,64 @@
 	<load-component v-if="loading.component == true"></load-component>
 	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.soccer_expert') }}</h1>
-		
-			<div class="row">
-				<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="soccer_expert in soccer_experts">
-					<div class="soccer-expert">
-						<header class="soccer-expert-header">
-							<div class="extras" v-if="soccer_expert.new == 1">
-								<img :src="app.basePath+'img/new.png'" alt="new" class="game-badge">
-							</div>
-							<img class="header-image img-fluid" :alt="soccer_expert.nome" :src="src(soccer_expert.imagem_capa)">
-							<div class="descript">
-		                        <h2 class="ng-binding">{{ soccer_expert.nome }}</h2>
-		                        <p class="ng-binding">{{ soccer_expert.nome }}</p>
-		                    </div>
-						</header>
-						<div class="soccer-expert-body">
-							<div class="amount">
-								{{ soccer_expert.nome }}
-							</div>
-							<div class="jackpot-table">
-								<div class="row vcenter">
-									<div class="col-lg-8 col-12 col-md-8 col-sm-12">
-										<a :data-id="soccer_expert.id" href="#" @click.prevent="handleJackpotTable($event)" class="btn description">
-											<i class="fa fa-money" aria-hidden="true"></i>
-											&nbsp;
-											Tabela de Premios
-										</a>
-									</div>
-									<!-- <div class="col-lg-4 col-12 col-md-4 col-sm-12">
-										<a @click.prevent="handleDemo($event)" :data-id="soccer_expert.id" href="#" class="btn btn-md demo">
-											Demo
-										</a>
-									</div> -->
+		<div class="row">
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="soccer_expert in soccer_experts">
+				<div class="soccer-expert">
+					<header class="soccer-expert-header">
+						<div class="extras" v-if="soccer_expert.new == 1">
+							<img :src="app.basePath+'img/new.png'" alt="new" class="game-badge">
+						</div>
+						<img class="header-image img-fluid" :alt="soccer_expert.nome" :src="src(soccer_expert.imagem_capa)">
+						<div class="descript">
+	                        <h2 class="ng-binding">{{ soccer_expert.nome }}</h2>
+	                        <p class="ng-binding">{{ soccer_expert.nome }}</p>
+	                    </div>
+					</header>
+
+					<div class="soccer-expert-body">
+						<div class="amount">
+							{{ soccer_expert.nome }}
+						</div>
+						<div class="jackpot-table">
+							<div class="row vcenter">
+								<div class="col-lg-8 col-12 col-md-8 col-sm-12">
+									<a :data-id="soccer_expert.id" href="#" @click.prevent="handleJackpotTable($event)" class="btn description">
+										<i class="fa fa-money" aria-hidden="true"></i>
+										&nbsp;
+										Tabela de Premios
+									</a>
 								</div>
+								<!-- <div class="col-lg-4 col-12 col-md-4 col-sm-12">
+									<a @click.prevent="handleDemo($event)" :data-id="soccer_expert.id" href="#" class="btn btn-md demo">
+										Demo
+									</a>
+								</div> -->
 							</div>
 						</div>
-
-						<footer class="soccer-expert-footer">
-							<div class="row vcenter" style="margin-top: 15px; background: none;">
-								<div class="col-12 col-md-12 col-xs-12 col-sm-12 text-center">
-									<router-link class="btn btn-success btn-md play" :to="{ name: 'soccer_expert.show', params: { id: soccer_expert.id } }">
-										{{ trans('strings.play_now') }}
-									</router-link>
-								</div>
-							</div>
-							
-						</footer>
 					</div>
+
+					<footer class="soccer-expert-footer">
+						<div class="row vcenter" style="margin-top: 15px; background: none;">
+							<div class="col-12 col-md-12 col-xs-12 col-sm-12 text-center">
+								<router-link class="btn btn-primary btn-md play" :to="{ name: 'soccer_expert.show', params: { id: soccer_expert.id } }">
+									{{ trans('strings.play_now') }}
+								</router-link>
+							</div>
+						</div>
+					</footer>
 				</div>
 			</div>
-		
-		
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<router-link :to="{ name: 'how_to_play_soccer_expert' }" class="btn btn-md btn-info" @click.prevent="">
+					{{ trans('strings.how_to_play') }} {{ trans('strings.soccer_expert') }}
+				</router-link>
+				<router-link :to="{ name: 'create_your_league' }" class="btn btn-md btn-info" @click.prevent="">
+					{{ trans('strings.create_your_own_league') }}
+				</router-link>
+			</div>
+		</div>
 	</div>
 </template>
 

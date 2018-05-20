@@ -84,16 +84,16 @@
 							</div>
 							<div class="row vcenter" style="margin-top: 15px; background: none;">
 								<div class="col-12 col-md-12 col-xs-12 col-sm-12 text-center">
-									<button type="button" @click.prevent="handleScratchCard(index, $event)" class="btn btn-md btn-info" v-if="scratch_card_theme.has_scratch_card">
+									<button type="button" @click.prevent="handleScratchCard(index, $event)" class="btn btn-md btn-primary" v-if="scratch_card_theme.has_scratch_card">
 										{{ trans('strings.to_play') }}
 									</button>
-									<button type="submit" class="btn btn-md btn-info" v-if="scratch_card_theme.discount_tables.length > 0">
+									<button type="submit" class="btn btn-md btn-primary" v-if="scratch_card_theme.discount_tables.length > 0">
 										{{ trans('strings.buy_now') }}
 									</button>
 									<span v-else>
 										{{ trans('strings.unavailable') }}
 									</span>
-									<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-info">
+									<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-primary">
 										<i class="fa fa-refresh fa-spin"></i>
 									</button>
 								</div>
@@ -210,11 +210,11 @@
 			      		<div class="col-lg-6">
 				        	<h5 class="modal-title">Demo de Raspadinhas sem prêmios</h5> 
 				        </div>
-			        	<div class="col-lg-5">
+			        	<!-- <div class="col-lg-5">
 			        		<a href="javascript: void(0);" class="btn btn-success btn-xs pull-right">
 				        		{{ trans('strings.play_truth') }}
 				        	</a>  
-			        	</div> 	
+			        	</div>  -->	
 				        <button type="button" class="close" data-dismiss="modal">&times;</button>
 			      	</div>
 
@@ -244,10 +244,10 @@
 		      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
 		      						<div class="no-tickets-container hide">
 		      							<div class="vert-align">
-		      								<h3>Não restam raspadinhas.</h3>
+		      								<h3>{{ trans('strings.no_tickets_left') }}.</h3>
 		      								<p>Tens de comprar mais raspadinhas para voltar a jogar.</p>
 		      								<div @click="app.reload" class="btn btn-primary btn-mini buy-more-btn">
-		      									Comprar mais bilhetes.
+		      									{{ trans('strings.buy_scratchcard_to_play') }}.
 		      								</div>
 	      								</div>
 		      						</div>
@@ -322,7 +322,7 @@
 		      						</a>
 		      						
 		      						<a v-else @click.prevent="handleBuyNow($event)" href="javascript: void(0);" class="btn btn-game btn-buy-now">
-		      							{{ trans('strings.buy_now') }}
+		      							{{ trans('strings.buy_tickets') }}
 		      						</a>
 		      					</div>
 		      				</div>
@@ -760,7 +760,7 @@
 	}
 
 	.scratch-card-footer label {
-		padding: 13px 10px;
+		padding: 3px 10px;
 	    margin: 0;
 	    width: 100%;
 	    cursor: pointer;

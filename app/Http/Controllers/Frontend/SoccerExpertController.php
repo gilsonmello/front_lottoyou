@@ -207,8 +207,6 @@ class SoccerExpertController extends Controller
                 date('Y-m-d H:i:s')
             )
             ->where('active', '=', 1)
-            ->selectRaw('*, '.DB::raw("concat(data_fim,' ',hora_fim) as date_end"))
-            ->orderBy('date_end', 'asc')
             ->get();
 
         /*return response()->json($cycles, 200);

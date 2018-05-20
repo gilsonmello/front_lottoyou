@@ -156,10 +156,10 @@
 					
 				</div>
 				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-					<button class="btn btn-info btn-md btn-complete-purchase" type="submit" @click.prevent="validate($event)">		
+					<button class="btn btn-primary btn-md btn-complete-purchase" type="submit" @click.prevent="validate($event)">		
 						{{ trans('strings.complete_purchase') }}
 					</button>
-					<button @click.prevent="" type="load" class="btn-load hide pull-right btn btn-md btn-info">
+					<button @click.prevent="" type="load" class="btn-load hide pull-right btn btn-md btn-primary">
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 				</div>

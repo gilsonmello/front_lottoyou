@@ -10,6 +10,24 @@ export default {
   					component: require('../components/HomeComponent.vue'),
 			        props: true
   				},
+  				{   
+			  		path: 'create_your_league',
+			        name: 'create_your_league', 
+			        props: true,
+			        component: require('../components/VcCreateYourLeague.vue')
+			    }, 
+			    {   
+			  		path: 'how_to_play_soccer_expert',
+			        name: 'how_to_play_soccer_expert', 
+			        props: true,
+			        component: require('../components/VcHowToPlaySoccerExpert.vue')
+			    },
+			    {   
+			  		path: 'how_to_play_lottery',
+			        name: 'how_to_play_lottery', 
+			        props: true,
+			        component: require('../components/VcHowToPlayLottery.vue')
+			    },
 			  	{   
 			  		path: 'login',
 			        name: 'login', 

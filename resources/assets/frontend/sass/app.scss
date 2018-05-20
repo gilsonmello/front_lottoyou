@@ -14,12 +14,12 @@
     cursor: pointer;
 }
 
-.btn-info {
+.btn-primary {
     background-color: #0056b1;
     border-color: #0056b1;
 }
 
-.btn-info:hover {
+.btn-primary:hover {
     color: #fff;
     background-color: #003874;
     border-color: #117a8b;
@@ -665,7 +665,7 @@ button.close {
 .ticket-number {
     color: #fff;
     font-family: courier;
-    font-size: 25px;
+    font-size: 18px;
     font-weight: bold;
     display: block;
     text-align: center;

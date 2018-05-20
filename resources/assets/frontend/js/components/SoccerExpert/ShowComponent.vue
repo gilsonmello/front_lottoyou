@@ -64,10 +64,10 @@
 	    	<hr>
 			<div class="row">
 				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-					<button type="submit" class="btn btn-md btn-info pull-right">
+					<button type="submit" class="btn btn-md btn-primary pull-right">
 						{{ trans('strings.add_to_cart') }}
 					</button>
-					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-info">
+					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-primary">
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">

@@ -79467,7 +79467,7 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-md btn-info",
+                            staticClass: "btn btn-md btn-primary",
                             staticStyle: { width: "100%" },
                             attrs: { type: "submit" }
                           },
@@ -79483,7 +79483,7 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass: "hide btn btn-md btn-info",
+                            staticClass: "hide btn btn-md btn-primary",
                             staticStyle: { width: "100%" },
                             attrs: { type: "load" },
                             on: {
@@ -82536,7 +82536,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "btn pull-right btn-md btn-info",
+                        staticClass: "btn pull-right btn-md btn-primary",
                         attrs: { type: "submit" }
                       },
                       [
@@ -82551,7 +82551,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "hide pull-right btn btn-md btn-info",
+                        staticClass: "hide pull-right btn btn-md btn-primary",
                         attrs: { type: "load" },
                         on: {
                           click: function($event) {
@@ -82712,7 +82712,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.table[data-v-fc188428] {\n\t\tmargin-bottom: 0;\n}\n.table th[data-v-fc188428], .table td[data-v-fc188428] {\n\t\tpadding: 8px;\n}\n.info-text[data-v-fc188428] {\n\t\tcolor: #fff;\n    \tfont-size: 15px;\n\t    margin: 0;\n\t    padding: 0 8px;\n\t    line-height: 22px;\n\t    text-shadow: 0 2px 3px rgba(0,0,0,.8);\n}\n.scratch-card[data-v-fc188428] {\n\t\tbackground: #efefef;\n\t    border-radius: 5px;\n\t    padding: 15px;\n\t    margin-bottom: 30px;\n\t    position: relative;\n}\n.extras img[data-v-fc188428] {\n\t\tposition: absolute;\n\t\ttop: -15px;\n\t    left: -5px;\n\t    z-index: 4;\n}\ninput[type=radio][data-v-fc188428] {\n\t\tmargin: 0;\n    \tmargin-right: 10px;\n}\n.scratch-card-footer label[data-v-fc188428] {\n\t\tpadding: 13px 10px;\n\t    margin: 0;\n\t    width: 100%;\n\t    cursor: pointer;\n}\n.scratch-card-footer form .row[data-v-fc188428] {\n\t\tcolor: #666;\n\t    background: rgba(255,255,255,.3);\n\t    border-bottom: 1px solid #eee;\n\t    font-size: 15px;\n\t    cursor: pointer;\n}\n.scratch-card-body .amount[data-v-fc188428] {\n\t\tbackground: linear-gradient(87.71deg, #1DB2E0 0%, #6AD1ED 50.77%, #1DB2E0 100%);\n\t    height: 46px;\n\t    color: #FFFFFF;\n\t    font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n\t    font-size: 15px;\n\t    font-weight: bold;\n\t    line-height: 46px;\n\t    text-align: center;\n\t    -webkit-box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t            box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t    position: relative;\n}\n.scratch-card-body .jackpot-table[data-v-fc188428] {\n\t\tbackground: #0f546d;\n\t    color: #fff;\n\t    padding: 10px;\n\t    font-size: 13px;\n\t    font-weight: 700;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428] {\n\t\tdisplay: block;\n\t    border: 2px solid rgba(255,255,255,.2);\n\t    border-radius: 5px;\n\t    color: #fff;\n\t    font-weight: 700;\n\t    -webkit-transition: border .3s ease-in-out;\n\t    transition: border .3s ease-in-out;\n\t    font-size: 13px;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.description[data-v-fc188428] {\n\t\tcursor: pointer;\n    \tcolor: #fff;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428]:hover {\n\t\tborder: 2px solid #fff;\n}\n.scratch-card-body .btn[data-v-fc188428] {\n\t\tpadding: 0\n}\n.scratch-card-header[data-v-fc188428] {\n\t\tposition: relative;\n}\n.scratch-card-header .header-image[data-v-fc188428] { \n\t\twidth: 100%;\n}\n.scratch-card-header:hover .descript[data-v-fc188428] {\n\t    opacity: 1;\n}\n.scratch-card-header .descript[data-v-fc188428] {\n\t    position: absolute;\n\t    left: 0;\n\t    top: 0;\n\t    width: 100%;\n\t    height: 100%;\n\t    background-color: rgba(239,239,239,.95);\n\t    z-index: 2;\n\t    opacity: 0;\n\t    -webkit-transition: opacity .3s ease-in-out;\n\t    transition: opacity .3s ease-in-out;\n\t    padding: 20px;\n\t    text-align: center;\n\t    color: #666;\n}\n.modal-jackpot-table .container-actions[data-v-fc188428] {\n\t\tbackground-color: #155C7B;\n\t    text-align: center;\n}\n.modal-jackpot-table .container-actions .btn[data-v-fc188428] {\n\t   \tmargin: 10px 0 10px 0;\n\t   \tdisplay: block;\n}\n.modal-demo .modal-body[data-v-fc188428] {\n\t\tpadding: 20px;\n}\n.h div[data-v-fc188428]{\n\t\theight: 146px;\n\t\tmargin-bottom: 3px;\n\t\tpadding: 0 5px 0 5px;\n}\n\n", ""]);
+exports.push([module.i, "\n.table[data-v-fc188428] {\n\t\tmargin-bottom: 0;\n}\n.table th[data-v-fc188428], .table td[data-v-fc188428] {\n\t\tpadding: 8px;\n}\n.info-text[data-v-fc188428] {\n\t\tcolor: #fff;\n    \tfont-size: 15px;\n\t    margin: 0;\n\t    padding: 0 8px;\n\t    line-height: 22px;\n\t    text-shadow: 0 2px 3px rgba(0,0,0,.8);\n}\n.scratch-card[data-v-fc188428] {\n\t\tbackground: #efefef;\n\t    border-radius: 5px;\n\t    padding: 15px;\n\t    margin-bottom: 30px;\n\t    position: relative;\n}\n.extras img[data-v-fc188428] {\n\t\tposition: absolute;\n\t\ttop: -15px;\n\t    left: -5px;\n\t    z-index: 4;\n}\ninput[type=radio][data-v-fc188428] {\n\t\tmargin: 0;\n    \tmargin-right: 10px;\n}\n.scratch-card-footer label[data-v-fc188428] {\n\t\tpadding: 3px 10px;\n\t    margin: 0;\n\t    width: 100%;\n\t    cursor: pointer;\n}\n.scratch-card-footer form .row[data-v-fc188428] {\n\t\tcolor: #666;\n\t    background: rgba(255,255,255,.3);\n\t    border-bottom: 1px solid #eee;\n\t    font-size: 15px;\n\t    cursor: pointer;\n}\n.scratch-card-body .amount[data-v-fc188428] {\n\t\tbackground: linear-gradient(87.71deg, #1DB2E0 0%, #6AD1ED 50.77%, #1DB2E0 100%);\n\t    height: 46px;\n\t    color: #FFFFFF;\n\t    font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n\t    font-size: 15px;\n\t    font-weight: bold;\n\t    line-height: 46px;\n\t    text-align: center;\n\t    -webkit-box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t            box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);\n\t    position: relative;\n}\n.scratch-card-body .jackpot-table[data-v-fc188428] {\n\t\tbackground: #0f546d;\n\t    color: #fff;\n\t    padding: 10px;\n\t    font-size: 13px;\n\t    font-weight: 700;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428] {\n\t\tdisplay: block;\n\t    border: 2px solid rgba(255,255,255,.2);\n\t    border-radius: 5px;\n\t    color: #fff;\n\t    font-weight: 700;\n\t    -webkit-transition: border .3s ease-in-out;\n\t    transition: border .3s ease-in-out;\n\t    font-size: 13px;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.description[data-v-fc188428] {\n\t\tcursor: pointer;\n    \tcolor: #fff;\n    \tmargin: 10px 0 10px 0;\n}\n.scratch-card-body .jackpot-table a.demo[data-v-fc188428]:hover {\n\t\tborder: 2px solid #fff;\n}\n.scratch-card-body .btn[data-v-fc188428] {\n\t\tpadding: 0\n}\n.scratch-card-header[data-v-fc188428] {\n\t\tposition: relative;\n}\n.scratch-card-header .header-image[data-v-fc188428] { \n\t\twidth: 100%;\n}\n.scratch-card-header:hover .descript[data-v-fc188428] {\n\t    opacity: 1;\n}\n.scratch-card-header .descript[data-v-fc188428] {\n\t    position: absolute;\n\t    left: 0;\n\t    top: 0;\n\t    width: 100%;\n\t    height: 100%;\n\t    background-color: rgba(239,239,239,.95);\n\t    z-index: 2;\n\t    opacity: 0;\n\t    -webkit-transition: opacity .3s ease-in-out;\n\t    transition: opacity .3s ease-in-out;\n\t    padding: 20px;\n\t    text-align: center;\n\t    color: #666;\n}\n.modal-jackpot-table .container-actions[data-v-fc188428] {\n\t\tbackground-color: #155C7B;\n\t    text-align: center;\n}\n.modal-jackpot-table .container-actions .btn[data-v-fc188428] {\n\t   \tmargin: 10px 0 10px 0;\n\t   \tdisplay: block;\n}\n.modal-demo .modal-body[data-v-fc188428] {\n\t\tpadding: 20px;\n}\n.h div[data-v-fc188428]{\n\t\theight: 146px;\n\t\tmargin-bottom: 3px;\n\t\tpadding: 0 5px 0 5px;\n}\n\n", ""]);
 
 // exports
 
@@ -84795,7 +84795,7 @@ var render = function() {
                                     ? _c(
                                         "button",
                                         {
-                                          staticClass: "btn btn-md btn-info",
+                                          staticClass: "btn btn-md btn-primary",
                                           attrs: { type: "button" },
                                           on: {
                                             click: function($event) {
@@ -84823,7 +84823,7 @@ var render = function() {
                                     ? _c(
                                         "button",
                                         {
-                                          staticClass: "btn btn-md btn-info",
+                                          staticClass: "btn btn-md btn-primary",
                                           attrs: { type: "submit" }
                                         },
                                         [
@@ -84850,7 +84850,7 @@ var render = function() {
                                     "button",
                                     {
                                       staticClass:
-                                        "hide pull-right btn btn-md btn-info",
+                                        "hide pull-right btn btn-md btn-primary",
                                       attrs: { type: "load" },
                                       on: {
                                         click: function($event) {
@@ -85172,24 +85172,6 @@ var render = function() {
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "col-lg-5" }, [
-                            _c(
-                              "a",
-                              {
-                                staticClass:
-                                  "btn btn-success btn-xs pull-right",
-                                attrs: { href: "javascript: void(0);" }
-                              },
-                              [
-                                _vm._v(
-                                  "\n\t\t\t\t        \t\t" +
-                                    _vm._s(_vm.trans("strings.play_truth")) +
-                                    "\n\t\t\t\t        \t"
-                                )
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
                           _c(
                             "button",
                             {
@@ -85327,7 +85309,11 @@ var render = function() {
                                                 [
                                                   _c("h3", [
                                                     _vm._v(
-                                                      "Não restam raspadinhas."
+                                                      _vm._s(
+                                                        _vm.trans(
+                                                          "strings.no_tickets_left"
+                                                        )
+                                                      ) + "."
                                                     )
                                                   ]),
                                                   _vm._v(" "),
@@ -85348,7 +85334,13 @@ var render = function() {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "\n\t\t      \t\t\t\t\t\t\t\t\tComprar mais bilhetes.\n\t\t      \t\t\t\t\t\t\t\t"
+                                                        "\n\t\t      \t\t\t\t\t\t\t\t\t" +
+                                                          _vm._s(
+                                                            _vm.trans(
+                                                              "strings.buy_scratchcard_to_play"
+                                                            )
+                                                          ) +
+                                                          ".\n\t\t      \t\t\t\t\t\t\t\t"
                                                       )
                                                     ]
                                                   )
@@ -85668,7 +85660,7 @@ var render = function() {
                                                     "\n\t\t      \t\t\t\t\t\t\t" +
                                                       _vm._s(
                                                         _vm.trans(
-                                                          "strings.buy_now"
+                                                          "strings.buy_tickets"
                                                         )
                                                       ) +
                                                       "\n\t\t      \t\t\t\t\t\t"
@@ -85753,6 +85745,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Load__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -85921,9 +85920,9 @@ var render = function() {
                   _c("div", { staticClass: "soccer-expert-body" }, [
                     _c("div", { staticClass: "amount" }, [
                       _vm._v(
-                        "\n\t\t\t\t\t\t\t" +
+                        "\n\t\t\t\t\t\t" +
                           _vm._s(soccer_expert.nome) +
-                          "\n\t\t\t\t\t\t"
+                          "\n\t\t\t\t\t"
                       )
                     ]),
                     _vm._v(" "),
@@ -85954,7 +85953,7 @@ var render = function() {
                                   attrs: { "aria-hidden": "true" }
                                 }),
                                 _vm._v(
-                                  "\n\t\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t\t\tTabela de Premios\n\t\t\t\t\t\t\t\t\t"
+                                  "\n\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t\tTabela de Premios\n\t\t\t\t\t\t\t\t"
                                 )
                               ]
                             )
@@ -85985,7 +85984,7 @@ var render = function() {
                             _c(
                               "router-link",
                               {
-                                staticClass: "btn btn-success btn-md play",
+                                staticClass: "btn btn-primary btn-md play",
                                 attrs: {
                                   to: {
                                     name: "soccer_expert.show",
@@ -85995,9 +85994,9 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n\t\t\t\t\t\t\t\t\t" +
+                                  "\n\t\t\t\t\t\t\t\t" +
                                     _vm._s(_vm.trans("strings.play_now")) +
-                                    "\n\t\t\t\t\t\t\t\t"
+                                    "\n\t\t\t\t\t\t\t"
                                 )
                               ]
                             )
@@ -86011,7 +86010,58 @@ var render = function() {
               ]
             )
           })
-        )
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-12" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-md btn-info",
+                  attrs: { to: { name: "how_to_play_soccer_expert" } },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n\t\t\t\t" +
+                      _vm._s(_vm.trans("strings.how_to_play")) +
+                      " " +
+                      _vm._s(_vm.trans("strings.soccer_expert")) +
+                      "\n\t\t\t"
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-md btn-info",
+                  attrs: { to: { name: "create_your_league" } },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n\t\t\t\t" +
+                      _vm._s(_vm.trans("strings.create_your_own_league")) +
+                      "\n\t\t\t"
+                  )
+                ]
+              )
+            ],
+            1
+          )
+        ])
       ])
 }
 var staticRenderFns = []
@@ -86075,6 +86125,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Load__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CardComponent__ = __webpack_require__(284);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CardComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__CardComponent__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -86499,7 +86557,38 @@ var render = function() {
               1
             )
           })
-        )
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-lg-12" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-md btn-info",
+                  attrs: { to: { name: "how_to_play_lottery" } },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n\t\t\t\t" +
+                      _vm._s(_vm.trans("strings.how_to_play")) +
+                      " " +
+                      _vm._s(_vm.trans("strings.lottery")) +
+                      "\n\t\t\t"
+                  )
+                ]
+              )
+            ],
+            1
+          )
+        ])
       ])
 }
 var staticRenderFns = []
@@ -86557,6 +86646,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			name: 'home',
 			component: __webpack_require__(16),
 			props: true
+		}, {
+			path: 'create_your_league',
+			name: 'create_your_league',
+			props: true,
+			component: __webpack_require__(669)
+		}, {
+			path: 'how_to_play_soccer_expert',
+			name: 'how_to_play_soccer_expert',
+			props: true,
+			component: __webpack_require__(674)
+		}, {
+			path: 'how_to_play_lottery',
+			name: 'how_to_play_lottery',
+			props: true,
+			component: __webpack_require__(679)
 		}, {
 			path: 'login',
 			name: 'login',
@@ -95966,7 +96070,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-md btn-info pull-right",
+                          staticClass: "btn btn-md btn-primary pull-right",
                           attrs: { type: "submit" }
                         },
                         [
@@ -95981,7 +96085,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "hide pull-right btn btn-md btn-info",
+                          staticClass: "hide pull-right btn btn-md btn-primary",
                           attrs: { type: "load" },
                           on: {
                             click: function($event) {
@@ -97057,7 +97161,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-md btn-info",
+                      staticClass: "btn btn-md btn-primary",
                       attrs: { type: "submit" }
                     },
                     [
@@ -97072,7 +97176,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "hide btn btn-md btn-info",
+                      staticClass: "hide btn btn-md btn-primary",
                       attrs: { type: "load" },
                       on: {
                         click: function($event) {
@@ -98313,7 +98417,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-md btn-info",
+                    staticClass: "btn btn-md btn-primary",
                     attrs: { type: "submit" }
                   },
                   [
@@ -98328,7 +98432,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "hide btn btn-md btn-info",
+                    staticClass: "hide btn btn-md btn-primary",
                     attrs: { type: "load" },
                     on: {
                       click: function($event) {
@@ -101964,7 +102068,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-md btn-info pull-right",
+                      staticClass: "btn btn-md btn-primary pull-right",
                       attrs: { type: "submit" }
                     },
                     [
@@ -101979,7 +102083,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "hide pull-right btn btn-md btn-info",
+                      staticClass: "hide pull-right btn btn-md btn-primary",
                       attrs: { type: "load" },
                       on: {
                         click: function($event) {
@@ -106612,7 +106716,7 @@ var render = function() {
                             "button",
                             {
                               staticClass:
-                                "btn btn-info btn-md btn-complete-purchase",
+                                "btn btn-primary btn-md btn-complete-purchase",
                               attrs: { type: "submit" },
                               on: {
                                 click: function($event) {
@@ -106636,7 +106740,7 @@ var render = function() {
                             "button",
                             {
                               staticClass:
-                                "btn-load hide pull-right btn btn-md btn-info",
+                                "btn-load hide pull-right btn btn-md btn-primary",
                               attrs: { type: "load" },
                               on: {
                                 click: function($event) {
@@ -117890,6 +117994,441 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 662 */,
+/* 663 */,
+/* 664 */,
+/* 665 */,
+/* 666 */,
+/* 667 */,
+/* 668 */,
+/* 669 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(670)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(672)
+/* template */
+var __vue_template__ = __webpack_require__(673)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-7c4518b2"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/VcCreateYourLeague.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7c4518b2", Component.options)
+  } else {
+    hotAPI.reload("data-v-7c4518b2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 670 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(671);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("609fabc8", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7c4518b2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcCreateYourLeague.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7c4518b2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcCreateYourLeague.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 671 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 672 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	mounted: function mounted() {}
+});
+
+/***/ }),
+/* 673 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("h1", { staticClass: "page-header" }, [
+      _vm._v(
+        "\n\t\t" + _vm._s(_vm.trans("strings.create_your_own_league")) + "\n\t"
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7c4518b2", module.exports)
+  }
+}
+
+/***/ }),
+/* 674 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(675)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(677)
+/* template */
+var __vue_template__ = __webpack_require__(678)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-8b3fbc4e"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/VcHowToPlaySoccerExpert.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8b3fbc4e", Component.options)
+  } else {
+    hotAPI.reload("data-v-8b3fbc4e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 675 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(676);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("ab52cd12", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8b3fbc4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcHowToPlaySoccerExpert.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8b3fbc4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcHowToPlaySoccerExpert.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 676 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 677 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	mounted: function mounted() {}
+});
+
+/***/ }),
+/* 678 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("h1", { staticClass: "page-header" }, [
+      _vm._v(
+        "\n\t\t" +
+          _vm._s(_vm.trans("strings.how_to_play")) +
+          " " +
+          _vm._s(_vm.trans("strings.soccer_expert")) +
+          "\n\t"
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8b3fbc4e", module.exports)
+  }
+}
+
+/***/ }),
+/* 679 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(680)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(682)
+/* template */
+var __vue_template__ = __webpack_require__(683)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-263c465a"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/VcHowToPlayLottery.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-263c465a", Component.options)
+  } else {
+    hotAPI.reload("data-v-263c465a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 680 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(681);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("17e0efea", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-263c465a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcHowToPlayLottery.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-263c465a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcHowToPlayLottery.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 681 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 682 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	mounted: function mounted() {}
+});
+
+/***/ }),
+/* 683 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("h1", { staticClass: "page-header" }, [
+      _vm._v(
+        "\n\t\t" +
+          _vm._s(_vm.trans("strings.how_to_play")) +
+          " " +
+          _vm._s(_vm.trans("strings.lottery")) +
+          "\n\t"
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-263c465a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
