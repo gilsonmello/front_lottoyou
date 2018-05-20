@@ -66,7 +66,7 @@
 									<label class="">
 										<input type="radio" v-bind:value="ind" v-model="scratch_card_theme.positionSelected" :name="'game_'+index+'_option'">
 										<span v-if="discount_table.is_discount == 1">
-											{{ discount_table.quantity }} {{ trans('strings.game') }} {{'('+trans('strings.spare')+' '+discount_table.percentage+'%)'}}
+											{{ discount_table.quantity }} {{ discount_table.quantity == 1 ? trans('strings.game') : trans('strings.games') }}  {{'('+trans('strings.spare')+' '+discount_table.percentage+'%)'}}
 										</span>
 
 										<span v-else>

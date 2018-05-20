@@ -84719,9 +84719,11 @@ var render = function() {
                                               _vm._s(discount_table.quantity) +
                                               " " +
                                               _vm._s(
-                                                _vm.trans("strings.game")
+                                                discount_table.quantity == 1
+                                                  ? _vm.trans("strings.game")
+                                                  : _vm.trans("strings.games")
                                               ) +
-                                              " " +
+                                              "  " +
                                               _vm._s(
                                                 "(" +
                                                   _vm.trans("strings.spare") +
@@ -94388,10 +94390,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			_this3.updateTicket();
 		});
 
-		this.$set(this.ticket, 'choseGoldBall', true);
+		this.$set(this.ticket, 'choseGoldBall', false);
 
 		if (!this.ticket.gold_ball_game_id) {
-			this.$set(this.ticket, 'gold_ball_game_id', this.ticket.games[0].id);
+			this.$set(this.ticket, 'gold_ball_game_id', null);
 		}
 
 		var games = this.divideInTwo(this.ticket.games);
@@ -94552,10 +94554,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : '';
 		this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
 		this.$set(this.game, 'bola_ouro', false);
-
-		if (this.game.bola_ouro != undefined) {
-			this.ticket.games[0].bola_ouro = true;
-		}
 	},
 	activated: function activated() {},
 	methods: {
@@ -95283,58 +95281,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['game', 'index', 'ticket', 'position'],
-	created: function created() {},
-	mounted: function mounted() {
-		this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : '';
-		this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
-	},
-	activated: function activated() {},
-	methods: {
-		changeGoldBall: function changeGoldBall(event) {
-			this.ticket.games.forEach(function (value) {
-				value.bola_ouro = false;
-			});
+				props: ['game', 'index', 'ticket', 'position'],
+				created: function created() {},
+				mounted: function mounted() {
+								this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : '';
+								this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
+				},
+				activated: function activated() {},
+				methods: {
+								changeGoldBall: function changeGoldBall(event) {
+												this.ticket.games.forEach(function (value) {
+																value.bola_ouro = false;
+												});
+												this.ticket.choseGoldBall = false;
+												this.ticket.gold_ball_game_id = null;
+								},
+								goldBall: function goldBall(event) {
+												this.ticket.games.forEach(function (value) {
+																value.bola_ouro = false;
+												});
+												this.game.bola_ouro = true;
+												this.ticket.choseGoldBall = true;
+												this.ticket.gold_ball_game_id = this.game.id;
+								},
 
-			this.game.bola_ouro = true;
-			this.ticket.gold_ball_game_id = this.game.id;
-		},
-		goldBall: function goldBall(event) {
-			this.ticket.gold_ball_game_id = this.game.id;
-			this.game.bola_ouro = true;
-		},
+								houseClubResult: function houseClubResult(index, event) {
 
-		houseClubResult: function houseClubResult(index, event) {
+												//Pegando o valor informado pelo usuário
+												var input = $(event.currentTarget);
 
-			//Pegando o valor informado pelo usuário
-			var input = $(event.currentTarget);
+												if (input.val() < 0) input.val(input.val() * -1);
 
-			if (input.val() < 0) input.val(input.val() * -1);
+												//this.$emit('houseClubResult', this.game, index);
 
-			//this.$emit('houseClubResult', this.game, index);
+												this.game.result_house_club = input.val();
 
-			this.game.result_house_club = input.val();
+												this.$emit('updateTicket');
+								},
+								//Column = rodada disponível no array
+								//Line = jogo da roda disponível no array
+								outClubResult: function outClubResult(index, event) {
+												var input = $(event.currentTarget);
 
-			this.$emit('updateTicket');
-		},
-		//Column = rodada disponível no array
-		//Line = jogo da roda disponível no array
-		outClubResult: function outClubResult(index, event) {
-			var input = $(event.currentTarget);
+												if (input.val() < 0) input.val(input.val() * -1);
 
-			if (input.val() < 0) input.val(input.val() * -1);
+												this.game.result_out_club = input.val();
 
-			this.game.result_out_club = input.val();
-
-			this.$emit('updateTicket');
-			//this.$emit('outClubResult', this.game, index);
-		}
-	},
-	data: function data() {
-		return {};
-	},
-	computed: {},
-	watch: {}
+												this.$emit('updateTicket');
+												//this.$emit('outClubResult', this.game, index);
+								}
+				},
+				data: function data() {
+								return {};
+				},
+				computed: {},
+				watch: {}
 });
 
 /***/ }),
@@ -95362,7 +95363,7 @@ var render = function() {
                   on: {
                     click: function($event) {
                       $event.preventDefault()
-                      _vm.changeGoldBall($event)
+                      _vm.goldBall($event)
                     }
                   }
                 })
@@ -95399,7 +95400,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   $event.preventDefault()
-                  _vm.changeGoldBall($event)
+                  _vm.goldBall($event)
                 }
               }
             })
@@ -95585,7 +95586,7 @@ var render = function() {
                   on: {
                     click: function($event) {
                       $event.preventDefault()
-                      _vm.changeGoldBall($event)
+                      _vm.goldBall($event)
                     }
                   }
                 })

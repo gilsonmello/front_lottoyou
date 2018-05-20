@@ -179,10 +179,10 @@
 	                this.updateTicket();
 	            });
 	            
-            this.$set(this.ticket, 'choseGoldBall', true);
+            this.$set(this.ticket, 'choseGoldBall', false);
             
             if(!this.ticket.gold_ball_game_id) {
-            	this.$set(this.ticket, 'gold_ball_game_id', this.ticket.games[0].id);	
+            	this.$set(this.ticket, 'gold_ball_game_id', null);	
             }
             
             let games = this.divideInTwo(this.ticket.games);

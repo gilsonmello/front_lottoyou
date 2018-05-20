@@ -42,11 +42,6 @@
         	this.game.result_house_club = this.game.result_house_club != '' ? this.game.result_house_club : ''
         	this.game.result_out_club = this.game.result_out_club != '' ? this.game.result_out_club : '';
         	this.$set(this.game, 'bola_ouro', false);
-
-        	
-			if(this.game.bola_ouro != undefined) {
-        		this.ticket.games[0].bola_ouro = true;
-        	}
 		},
         activated: function() {
             

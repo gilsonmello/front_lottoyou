@@ -3,7 +3,7 @@
 
 		<div class="col-lg-2 no-mobile" style="justify-content: center;" v-if="position == 'left'">
 			
-			<img v-if="ticket.gold_ball_game_id != game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball" style="opacity: 0.5;">				
+			<img v-if="ticket.gold_ball_game_id != game.id" @click.prevent="goldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball" style="opacity: 0.5;">				
 				
 
 			<img v-if="ticket.gold_ball_game_id == game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball">			
@@ -12,7 +12,7 @@
 
 		<div class="col-lg-2 mobile" style="justify-content: center;">
 			
-			<img v-if="ticket.gold_ball_game_id != game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball" style="opacity: 0.5;">				
+			<img v-if="ticket.gold_ball_game_id != game.id" @click.prevent="goldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball" style="opacity: 0.5;">				
 
 			<img v-if="ticket.gold_ball_game_id == game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball">			
 				
@@ -65,7 +65,7 @@
 
 		<div class="col-lg-2 no-mobile" style="justify-content: center;" v-if="position == 'right'">
 			
-			<img v-if="ticket.gold_ball_game_id != game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball" style="opacity: 0.5;">				
+			<img v-if="ticket.gold_ball_game_id != game.id" @click.prevent="goldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball" style="opacity: 0.5;">				
 				
 
 			<img v-if="ticket.gold_ball_game_id == game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball">			
@@ -93,13 +93,16 @@
 				this.ticket.games.forEach((value) => {
         			value.bola_ouro = false;
 				});
-
-	        	this.game.bola_ouro = true;
-	        	this.ticket.gold_ball_game_id = this.game.id;
+	        	this.ticket.choseGoldBall = false;
+	        	this.ticket.gold_ball_game_id = null;
         	},
         	goldBall(event) {
-        		this.ticket.gold_ball_game_id = this.game.id;
-        		this.game.bola_ouro = true;
+        		this.ticket.games.forEach((value) => {
+        			value.bola_ouro = false;
+				});
+	        	this.game.bola_ouro = true;
+	        	this.ticket.choseGoldBall = true;
+	        	this.ticket.gold_ball_game_id = this.game.id;
         	},
         	houseClubResult: function(index, event) {		        
 
