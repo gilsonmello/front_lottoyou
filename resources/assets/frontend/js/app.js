@@ -91,7 +91,7 @@ import App from './components/App'
 Vue.use(VueResource);
 
 Vue.component('select2', Select2);
-Vue.component('input-mask', InputMask);
+Vue.component('inputmask', InputMask);
 Vue.component('datepicker', VcDatePicker);
 Vue.component('datetimepicker', VcDateTimePicker);
 

@@ -14,7 +14,6 @@
 		},
 		props: ['options'],
 		mounted() {
-			var vm = this
 			$.fn.datepicker.dates['pt-br'] = {
 		        days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
 		        daysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
@@ -27,9 +26,16 @@
 		        titleFormat: "MM yyyy",
 		        weekStart: 0
 		    };
-		    this.options['language'] = 'pt-br'
-			$(this.$el).datepicker(this.options).on("change", function(event) {
-			    vm.$emit('input', event.target.value);
+		    
+		    let options = {};
+
+		    if(this.options != undefined) {
+		    	this.options['language'] = 'pt-br';
+		    	options = this.options;
+		    }
+		    
+			$(this.$el).datepicker(options).on("change", (event) => {
+			    this.$emit('input', event.target.value);
 			});
 		},
 		methods: {

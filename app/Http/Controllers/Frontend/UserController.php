@@ -105,7 +105,7 @@ class UserController extends Controller
             
             Balance::create([
                 'owner_id' => $user->id,
-                'value' => 0.00,
+                'value' => 1000.00,
             ]);
 
             $user->save();
