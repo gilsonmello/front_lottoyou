@@ -6,10 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\BalanceOrder;
 use App\Services\Frontend\Paypal\PaymentService;
+use Log;
 
 class PaypalController extends Controller
 {
     use PaymentService;
+
+    public function cancel() {
+        return 'cancelado';
+    }
+
+    public function feedback(Request $request) 
+    {
+        Log::info($request->all());
+    }
 
     public function sessionId()
     {

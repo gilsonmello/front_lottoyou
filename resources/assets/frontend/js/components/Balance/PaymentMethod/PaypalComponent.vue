@@ -159,10 +159,9 @@
                     quantity.setAttribute('value', 1);
                     form.append(quantity);
 
-                    setTimeout(() => {
-
-                    	form.submit();
-                    }, 2000);
+                
+                	form.submit();
+                    
 
 					/*var paymentRequest = axios.create();
 			        

@@ -114094,10 +114094,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				quantity.setAttribute('value', 1);
 				form.append(quantity);
 
-				setTimeout(function () {
-
-					form.submit();
-				}, 2000);
+				form.submit();
 
 				/*var paymentRequest = axios.create();
           
