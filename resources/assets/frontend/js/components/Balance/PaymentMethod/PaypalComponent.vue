@@ -81,11 +81,11 @@
                     cmd.setAttribute('value', '_xclick');
                     form.append(cmd);
 
-                    var invoice = document.createElement('input');
+                    /*var invoice = document.createElement('input');
                     invoice.setAttribute('name', "invoice");
                     invoice.setAttribute('type', "hidden");
                     invoice.setAttribute('value', 1);
-                    form.append(invoice);
+                    form.append(invoice);*/
 
                     var upload = document.createElement('input');
                     upload.setAttribute('name', "upload");

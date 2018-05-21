@@ -114016,11 +114016,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				cmd.setAttribute('value', '_xclick');
 				form.append(cmd);
 
-				var invoice = document.createElement('input');
-				invoice.setAttribute('name', "invoice");
-				invoice.setAttribute('type', "hidden");
-				invoice.setAttribute('value', 1);
-				form.append(invoice);
+				/*var invoice = document.createElement('input');
+    invoice.setAttribute('name', "invoice");
+    invoice.setAttribute('type', "hidden");
+    invoice.setAttribute('value', 1);
+    form.append(invoice);*/
 
 				var upload = document.createElement('input');
 				upload.setAttribute('name', "upload");
