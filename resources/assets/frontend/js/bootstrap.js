@@ -30,6 +30,11 @@ try {
     require('tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css');
 
 
+    require('jquery-validation');
+ 
+    // CommonJS
+    window.swal = require('sweetalert2');
+
 } catch (e) {}
 
 /**

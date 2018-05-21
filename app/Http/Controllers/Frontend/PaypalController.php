@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\BalanceOrder;
-use App\Services\Frontend\Pagseguro\PaymentService;
+use App\Services\Frontend\Paypal\PaymentService;
 
-class PagseguroController extends Controller
+class PaypalController extends Controller
 {
     use PaymentService;
 

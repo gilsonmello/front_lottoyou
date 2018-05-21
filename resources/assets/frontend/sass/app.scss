@@ -10,6 +10,25 @@
 
 @import '~font-awesome/scss/font-awesome';
 
+input.error{
+  border: 1px solid rgba(255, 0, 0, 0.61);
+}
+input.error:focus{
+  border: 1px solid rgba(255, 0, 0, 0.61);
+}
+
+label.error{
+  color: rgba(255, 0, 0, 0.61);
+}
+
+.ok {
+  color: green;
+}
+
+.form-control{
+    text-align: left !important;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }

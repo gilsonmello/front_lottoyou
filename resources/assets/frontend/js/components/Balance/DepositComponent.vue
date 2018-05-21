@@ -63,7 +63,7 @@
 		},
 		data: function() {
 			return {
-				payment_method: 'pagseguro'
+				payment_method: 'paypal'
 			}
 		},
 		mounted() {

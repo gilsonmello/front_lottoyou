@@ -1,6 +1,9 @@
 <?php
 
 Route::get('pagseguro/get_session_id', 'PagseguroController@sessionId');
+Route::post('pagseguro/generate_order', 'PagseguroController@generateOrder');
+Route::post('pagseguro/payment', 'PagseguroController@payment');
+
 
 Route::resource('pagseguro', 'PagseguroController', [
     'names' => [

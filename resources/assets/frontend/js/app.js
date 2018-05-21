@@ -84,6 +84,7 @@ import Select2 from './components/Select2Component'
 import InputMask from './components/InputMaskComponent'
 import VcDatePicker from './components/VcDatePicker'
 import VcDateTimePicker from './components/VcDateTimePicker'
+import Load from './components/Load'
 import {mapState, mapGetters} from 'vuex'
 
 import App from './components/App'
@@ -94,6 +95,7 @@ Vue.component('select2', Select2);
 Vue.component('inputmask', InputMask);
 Vue.component('datepicker', VcDatePicker);
 Vue.component('datetimepicker', VcDateTimePicker);
+Vue.component('load', Load);
 
 Vue.component('app', App);
 

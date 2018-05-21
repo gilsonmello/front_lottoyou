@@ -1,5 +1,5 @@
 <template>
-	<input type="text" class="form-control">
+	<input type="text" class="form-control" @blur="onblur($event)">
 </template>
 
 <script>
@@ -17,7 +17,7 @@
 				placeholder: ''
 			}
 		},
-		props: ['mask', 'ph', 'repeat', 'greedy', 'rightAlign'],
+		props: ['mask', 'ph', 'repeat', 'greedy', 'rightAlign', 'blur'],
 		mounted: function(){
 			this.placeholder = this.ph != undefined ? this.ph : " ";
 			
@@ -46,14 +46,16 @@
 			options['showMaskOnHover'] = false
 			options['showMaskOnFocus'] = false
 			options['onBeforeWrite'] = (event, buffer, caretPos, opts) => {
-				if(event.target != undefined){
+				if(event.target != undefined) {
 					this.$emit('input', event.target.value);
 				}
 			}
 			$(this.$el).inputmask(options);
 		},
 		methods: {
-
+			onblur(event) {
+				this.$emit('onblur', event);
+			}
 		}
 	}
 </script>
