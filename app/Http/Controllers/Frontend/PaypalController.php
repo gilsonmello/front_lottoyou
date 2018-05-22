@@ -22,7 +22,7 @@ class PaypalController extends Controller
         $order->submit = 1;
         $order->sub_total = $request->amount;
         $order->total = $request->amount;
-        $order->status = 'In progress';
+        $order->status_paypal = 'In progress';
         if($order->save()) {
             return response()->json([
                 'msg' => 'ok'
@@ -42,7 +42,7 @@ class PaypalController extends Controller
     {
         $order = BalanceOrder::find($request->invoice);
         
-        $order->status = $request->payment_status;
+        $order->status_paypal = $request->payment_status;
         $order->save();
 
         $paypayOrder = new PaypalOrder;
@@ -178,7 +178,7 @@ class PaypalController extends Controller
             $balanceOrder->owner_id = $request->owner_id;
             $balanceOrder->total = 0.00;
             $balanceOrder->sub_total = 0.00;
-            $balanceOrder->status = 1;
+            $balanceOrder->status_paypal = 'In progress';
             $balanceOrder->submit = 0;
             $balanceOrder->save();
             return response()->json($balanceOrder->id, 200);
