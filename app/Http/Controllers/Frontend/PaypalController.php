@@ -39,12 +39,12 @@ class PaypalController extends Controller
 
     public function feedback(Request $request) 
     {
-        //$data = $request->all();
-        //$order = BalanceOrder::find($data['invoice']);
-        //Log::info($data);
-        Log::info($request->all());
-        //$order->status = $request->payment_status;
-        //$order->save();
+        $data = $request->all();
+        $order = BalanceOrder::find($data['invoice']);
+        Log::info($request->payment_status);
+        
+        $order->status = $request->payment_status;
+        $order->save();
 
         /*$paypayOrder = new PaypalOrder;
         $paypayOrder->mc_gross = $request->mc_gross;
