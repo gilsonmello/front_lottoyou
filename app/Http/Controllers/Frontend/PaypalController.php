@@ -46,6 +46,7 @@ class PaypalController extends Controller
         $order->save();
 
         $paypayOrder = new PaypalOrder;
+        $paypayOrder->balance_id = $order->id;
         $paypayOrder->mc_gross = $request->mc_gross;
         $paypayOrder->invoice = $request->invoice;
         $paypayOrder->protection_eligibility = $request->protection_eligibility;
@@ -96,7 +97,8 @@ class PaypalController extends Controller
         $historicBalance->devolution = 0;
         $historicBalance->description = 'deposit';
         $historicBalance->balance_id = $balance->id;
-        $historicBalance->from = $balance->value;
+        $historicBalance->from = $balance->value + $request->payment_gross;
+        $historicBalance->owner_id = $balance->owner_id;
 
         $balance->value += $request->payment_gross;
 
@@ -104,7 +106,6 @@ class PaypalController extends Controller
         $historicBalance->save();
 
         $balance->save();
-        
     }
 
     public function sessionId()
