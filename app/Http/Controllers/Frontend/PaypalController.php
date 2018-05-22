@@ -38,6 +38,8 @@ class PaypalController extends Controller
     public function feedback(Request $request) 
     {
         $order = BalanceOrder::find($request->invoice);
+        Log::info($request->invoice);
+        Log::info($order);
         $order->status = $request->payment_status;
         $order->save();
 
