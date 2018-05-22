@@ -3,6 +3,9 @@
 use App\BalanceOrder;
 use App\User;
 use App\PagseguroOrder;
+use App\Balance;
+use App\HistoricBalance;
+use Carbon\Carbon;
 
 /**
  * Created by PhpStorm.
@@ -15,62 +18,78 @@ trait PaymentService
 {
     public function updateFromPagseguroFeedback($dataXml) {
 
-        if(isset($dataXml->code)) {
-            /*$transaction = new PagseguroOrder;
-            $transaction->order_id = $dataXml->reference;
-            $transaction->payment_hub = 'pagseguro';
-            $transaction->payment_id = $dataXml->code;
-            $transaction->payment_method = $dataXml->paymentMethod->type;
-            $transaction->payment_code = $dataXml->paymentMethod->code;
-            $transaction->installment_fee_amount = isset($dataXml->installmentFeeAmount) ? $dataXml->installmentFeeAmount : null;
-            $transaction->installment_count = $dataXml->installmentCount;
-            $transaction->discount_amount = $dataXml->discountAmount;
-            $transaction->status_payment_id = $dataXml->status;
-            $transaction->gross_amount = $dataXml->grossAmount;
-            $transaction->net_amount = $dataXml->netAmount;
-            $transaction->operational_fee_amount = isset($dataXml->operationalFeeAmount) ? $dataXml->operationalFeeAmount : null;
-            $transaction->intermediation_fee_amount = isset($dataXml->creditorFees->intermediationFeeAmount) ? $dataXml->creditorFees->intermediationFeeAmount : null;
-            $transaction->intermediation_fee_rate = isset($dataXml->intermediationRateAmount) ? $dataXml->intermediationFeeAmount : null;
+        $order = BalanceOrder::find($dataXml->invoice); 
 
-            $carbon = Carbon::parse($dataXml->escrowEndDate);
-            $transaction->escrow_date = $carbon->toDateTimeString();
-            $transaction->save();*/
-        }
-
-            
-        //Pegando o id do pedido            
-        $order = Order::find($dataXml->reference);
-
-        if (in_array($dataXml->status, [1, 2])){
-            $order->status_payment_id = $dataXml->status;
-        }
-
-
+        $pagseguroOrder = new PagseguroOrder;
+        $carbon = Carbon::parse($dataXml->date);
+        $pagseguroOrder->date = $carbon->toDateTimeString();
+        $pagseguroOrder->balance_order_id = $dataXml->reference;
+        $carbon = Carbon::parse($dataXml->escrowEndDate);
+        $pagseguroOrder->escrowEndDate = $carbon->toDateTimeString();
+        $pagseguroOrder->code = $dataXml->code;
+        $pagseguroOrder->reference = $dataXml->reference;
+        $pagseguroOrder->type = $dataXml->type;
+        $pagseguroOrder->status = $dataXml->status;
+        $pagseguroOrder->lastEventDate = $dataXml->lastEventDate;
+        $pagseguroOrder->paymentMethodType = $dataXml->paymentMethod->type;
+        $pagseguroOrder->paymentMethodCode = $dataXml->paymentMethod->code;
+        $pagseguroOrder->grossAmount = $dataXml->grossAmount;
+        $pagseguroOrder->discountAmount = $dataXml->discountAmount;
+        $pagseguroOrder->feeAmount = $dataXml->feeAmount;
+        $pagseguroOrder->netAmount = $dataXml->netAmount;
+        $pagseguroOrder->extraAmount = $dataXml->extraAmount;
+        $pagseguroOrder->installmentCount = $dataXml->installmentCount;
+        $pagseguroOrder->itemCount = $dataXml->itemCount;
+        $pagseguroOrder->save();         
+    
         if ($order->date_confirmation == null) {
             $order->date_confirmation = Carbon::now();
         }
         
         if (in_array($dataXml->status, [5, 6, 7])) {
-            $order->status_payment_id = $dataXml->status;
 
-            // Disable enrollments
-            $schedules = Schedule::where('order_id', $order->id)->get();
-            if (count($schedules) > 0) {
-                foreach ($schedules as $schedule) {
-                    $schedule->is_active = 0;
-                    $schedule->save();
-                }
-            }
+            $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
+
+            $historicBalance = new HistoricBalance;
+            $historicBalance->pagseguro_order_id = $pagseguroOrder->id;
+            $historicBalance->type = 0;
+            $historicBalance->devolution = 1;
+            $historicBalance->description = 'devolution pagseguro';
+            $historicBalance->balance_id = $balance->id;
+            $historicBalance->from = $balance->value - $dataXml->grossAmount;
+            $historicBalance->owner_id = $balance->owner_id;
+
+            $balance->value -= $dataXml->grossAmount;
+
+            $historicBalance->to = $balance->value;
+            $historicBalance->save();
+
+            $balance->save();
         }
 
         //Verifico se o pagamento foi aprovado
-        if (in_array($dataXml->status, [3, 4]) && ($order->status_payment_id != 4 || $order->status_payment_id != 3)) {
-            $order->status_payment_id = $dataXml->status;
-            if (count($order->packages) > 0) {
-                $items = Package::whereIn('id', $order->packages->pluck('id'))->get();
-                $this->createSchedule($items, $order);
-            }
+        if (in_array($dataXml->status, [3, 4]) && ($order->status != 4 || $order->status != 3)) {
+            
+            $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
+
+            $historicBalance = new HistoricBalance;
+            $historicBalance->pagseguro_order_id = $pagseguroOrder->id;
+            $historicBalance->type = 1;
+            $historicBalance->devolution = 0;
+            $historicBalance->description = 'deposit pagseguro';
+            $historicBalance->balance_id = $balance->id;
+            $historicBalance->from = $balance->value + $dataXml->grossAmount;
+            $historicBalance->owner_id = $balance->owner_id;
+
+            $balance->value += $dataXml->grossAmount;
+
+            $historicBalance->to = $balance->value;
+            $historicBalance->save();
+
+            $balance->save();
         }
+
+        $order->status = $dataXml->status;
 
         $order->save();
     }
