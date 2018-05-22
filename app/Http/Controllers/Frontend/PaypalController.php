@@ -41,7 +41,7 @@ class PaypalController extends Controller
     {
         $data = $request->all();
         $order = BalanceOrder::find($data['invoice']);
-        Log::info($request->payment_status);
+        Log::info($data['invoice']);
         
         $order->status = $request->payment_status;
         $order->save();
