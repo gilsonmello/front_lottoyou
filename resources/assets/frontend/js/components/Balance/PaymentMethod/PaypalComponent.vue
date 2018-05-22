@@ -92,7 +92,7 @@
                     upload.setAttribute('name', "upload");
                     upload.setAttribute('type', "hidden");
                     upload.setAttribute('value', 1);
-                    form.append(business);
+                    form.append(upload);
 
                     var business = document.createElement('input');
                     business.setAttribute('name', "business");
@@ -173,8 +173,7 @@
 						amount: this.amount
 					}, {}).then(response => {
 						if(response.status === 200) {
-							//form.submit();
-							console.log(response.data)
+							form.submit();
 						}
 					}).catch((error) => {
 						form.find('[type="load"]').addClass('hide');

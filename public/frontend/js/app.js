@@ -114049,7 +114049,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				upload.setAttribute('name', "upload");
 				upload.setAttribute('type', "hidden");
 				upload.setAttribute('value', 1);
-				form.append(business);
+				form.append(upload);
 
 				var business = document.createElement('input');
 				business.setAttribute('name', "business");
@@ -114130,8 +114130,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					amount: this.amount
 				}, {}).then(function (response) {
 					if (response.status === 200) {
-						//form.submit();
-						console.log(response.data);
+						form.submit();
 					}
 				}).catch(function (error) {
 					form.find('[type="load"]').addClass('hide');
