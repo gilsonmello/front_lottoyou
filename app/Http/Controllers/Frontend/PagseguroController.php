@@ -13,7 +13,46 @@ class PagseguroController extends Controller
 
     public function back(Request $request) 
     {
-        return 'Back';
+        $code = $request->notificationCode;
+
+        ////////////// To tests //////////////
+        //$code = '7F7AA96F474A474A222664BC9F8EFA8680C4';
+
+        $request = [
+            'url' => 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/notifications/'.$code.'?email=lottoyou.adm@gmail.com&token=0AA8C0B8F9F74F46B9CCB2E7C5D1FFAD',
+            'params' => [
+                'email' => 'lottoyou.adm@gmail.com',
+                'token' => '0AA8C0B8F9F74F46B9CCB2E7C5D1FFAD'
+            ]
+        ];
+
+        //$request = Request::create($request['url'], 'get', $request['params']);
+        //$response = Route::dispatch( $request );
+
+        //Log::inf($response);
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $request['url']);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [ 'application/x-www-form-urlencoded; charset=ISO-8859-1']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        if (app()->environment() == 'production') {
+            curl_setopt($ch, CURLUSESSL_TRY, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        } else {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        }
+
+        $result = curl_exec($ch);
+
+        curl_close($ch);
+        
+        //$response = \HttpClient::get($request);
+        //$dataXml = $response->xml();
+
+        $dataXml = simplexml_load_string($result);
+
+        return $dataXml;
     }
 
     public function feedback(Request $request) 
