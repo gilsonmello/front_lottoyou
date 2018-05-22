@@ -16,10 +16,8 @@ use Carbon\Carbon;
 
 trait PaymentService
 {
-    public function updateFromPagseguroFeedback($dataXml) {
-
-        $order = BalanceOrder::find($dataXml->reference); 
-
+    public function updateFromPagseguroFeedback($dataXml) 
+    {
         $pagseguroOrder = new PagseguroOrder;
         $carbon = Carbon::parse($dataXml->date);
         $pagseguroOrder->date = $carbon->toDateTimeString();
@@ -42,6 +40,12 @@ trait PaymentService
         $pagseguroOrder->itemCount = $dataXml->itemCount;
         $pagseguroOrder->save();         
     
+        $order = BalanceOrder::find($dataXml->reference); 
+
+        if (in_array($dataXml->status, [1, 2])){
+            $order->status_pagseguro = $dataXml->status;
+        }
+        
         if ($order->date_confirmation == null) {
             $order->date_confirmation = Carbon::now();
         }
@@ -68,8 +72,9 @@ trait PaymentService
         }
 
         //Verifico se o pagamento foi aprovado
-        if (in_array($dataXml->status, [3, 4]) && ($order->status != 4 || $order->status != 3)) {
-            
+        if (in_array($dataXml->status, [3, 4]) && ($order->status_pagseguro != 4 && $order->status_pagseguro != 3)) {
+            Log::info($dataXml->status);
+            Log::info($order->status_pagseguro);
             $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
 
             $historicBalance = new HistoricBalance;
@@ -89,7 +94,7 @@ trait PaymentService
             $balance->save();
         }
 
-        $order->status = $dataXml->status;
+        $order->status_pagseguro = $dataXml->status;
 
         $order->save();
     }
