@@ -78,7 +78,7 @@ trait PaymentService
             $historicBalance->devolution = 0;
             $historicBalance->description = 'deposit pagseguro';
             $historicBalance->balance_id = $balance->id;
-            $historicBalance->from = $balance->value + $dataXml->grossAmount;
+            $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
 
             $balance->value += $dataXml->grossAmount;

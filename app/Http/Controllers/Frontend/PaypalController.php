@@ -96,7 +96,7 @@ class PaypalController extends Controller
         $historicBalance->devolution = 0;
         $historicBalance->description = 'deposit paypal';
         $historicBalance->balance_id = $balance->id;
-        $historicBalance->from = $balance->value + $request->payment_gross;
+        $historicBalance->from = $balance->value;
         $historicBalance->owner_id = $balance->owner_id;
 
         $balance->value += $request->payment_gross;
