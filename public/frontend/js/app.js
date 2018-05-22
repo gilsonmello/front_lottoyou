@@ -112782,8 +112782,8 @@ exports.push([module.i, "\n.box-payment-method[data-v-883c0e24] {\n\t-webkit-tra
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PagseguroComponent__ = __webpack_require__(599);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PagseguroComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PagseguroComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_VcPagseguro__ = __webpack_require__(599);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_VcPagseguro___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__PaymentMethod_VcPagseguro__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PaymentMethod_PaypalComponent__ = __webpack_require__(604);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PaymentMethod_PaypalComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__PaymentMethod_PaypalComponent__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -112855,7 +112855,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['auth', 'purchase'])),
 	data: function data() {
 		return {
-			payment_method: 'paypal',
+			payment_method: 'pagseguro',
 			order_id: ''
 		};
 	},
@@ -112879,7 +112879,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 	components: {
 		PaypalComponent: __WEBPACK_IMPORTED_MODULE_2__PaymentMethod_PaypalComponent___default.a,
-		PagseguroComponent: __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PagseguroComponent___default.a
+		VcPagseguro: __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_VcPagseguro___default.a
 	}
 });
 
@@ -112902,7 +112902,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-06abe741"
+var __vue_scopeId__ = "data-v-38aafcdf"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -112913,7 +112913,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/frontend/js/components/Balance/PaymentMethod/PagseguroComponent.vue"
+Component.options.__file = "resources/assets/frontend/js/components/Balance/PaymentMethod/VcPagseguro.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -112922,9 +112922,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-06abe741", Component.options)
+    hotAPI.createRecord("data-v-38aafcdf", Component.options)
   } else {
-    hotAPI.reload("data-v-06abe741", Component.options)
+    hotAPI.reload("data-v-38aafcdf", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -112945,13 +112945,13 @@ var content = __webpack_require__(601);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("845e4f5e", content, false, {});
+var update = __webpack_require__(3)("514b122e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-06abe741\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PagseguroComponent.vue", function() {
-     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-06abe741\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PagseguroComponent.vue");
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-38aafcdf\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcPagseguro.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-38aafcdf\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcPagseguro.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -112969,7 +112969,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.choice-payment-method-msg[data-v-06abe741] {\n    background-color: #EFEFEF;\n    padding: 15px;\n    font-size: 17px;\n    display: inline-block;\n    width: 100%;\n    -webkit-transition: background-color 0.5s ease;\n    transition: background-color 0.5s ease;\n}\n.buttons[data-v-06abe741] {\n\tmargin: 15px auto;\n}\n.input-group[data-v-06abe741] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n}\n", ""]);
+exports.push([module.i, "\n.choice-payment-method-msg[data-v-38aafcdf] {\n    background-color: #EFEFEF;\n    padding: 15px;\n    font-size: 17px;\n    display: inline-block;\n    width: 100%;\n    -webkit-transition: background-color 0.5s ease;\n    transition: background-color 0.5s ease;\n}\n.buttons[data-v-38aafcdf] {\n\tmargin: 15px auto;\n}\n.input-group[data-v-38aafcdf] {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n}\n", ""]);
 
 // exports
 
@@ -112980,10 +112980,6 @@ exports.push([module.i, "\n.choice-payment-method-msg[data-v-06abe741] {\n    ba
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_routes__ = __webpack_require__(4);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 //
 //
 //
@@ -113023,332 +113019,145 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['order_id'],
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['auth', 'purchase'])),
 	data: function data() {
 		return {
-			amount: '',
+			amount: '10.00',
 			terms: '',
-			loading: {
-				component: true
-			},
-			session_id: '',
-			card_name: '',
-			card_personal_id: '',
-			card_birth_date: '',
-			card_number: '',
-			card_month: '',
-			card_year: '',
-			card_cvv: '',
-			card_brand: '',
-			card_token: '',
-			sender_hash: '',
-			method: 'creditCard',
-			query: {
-				page: 1,
-				column: 'pontuacao',
-				direction: 'desc',
-				nickname: '',
-				valor: '',
-				data_termino: ''
-			}
+			errors: []
 		};
 	},
 	methods: {
-		cardPersonal: function cardPersonal() {
-			if (!this.validateCPF(this.card_personal_id)) {
-				swal("CPF", "Por favor, informe um CPF válido", "error");
-				$('#card_personal_id').val('');
-				this.card_personal_id = '';
-			}
-		},
-		payment: function payment(event) {
-			if ($("#payment-pagseguro").valid()) {
-				this.setCardToken();
-				this.setSenderHash();
-			}
-		},
-		executePayment: function executePayment() {
-			var paymentRequest = axios.create();
-			paymentRequest.interceptors.request.use(function (config) {
-				return config;
-			});
-			var url = "/pagseguro/payment";
+		sendPagseguro: function sendPagseguro(event) {
+			var form = $(event.currentTarget);
+			if (this.validate(this.amount)) {
 
-			paymentRequest.post(url, {
-				amount: this.amount,
-				owner_id: this.auth.id,
-				session_id: '',
-				card_name: this.card_name,
-				card_personal_id: this.card_personal_id,
-				card_birth_date: this.card_birth_date,
-				card_number: this.card_number,
-				card_month: this.card_month,
-				card_year: this.card_year,
-				card_cvv: this.card_cvv,
-				card_brand: this.card_brand,
-				card_token: this.card_token,
-				sender_hash: this.sender_hash,
-				method: this.method,
-				order_id: this.order_id
-			}, {}).then(function (response) {
-				if (response.status === 200) {
-					swal({
-						title: "Pedido efeituado",
-						type: "success",
-						text: 'Confirme para redirecionar à página do cliente',
-						html: true,
-						showCancelButton: false,
-						confirmButtonColor: "#00a65a",
-						confirmButtonText: "Confirmar",
-						closeOnConfirm: false,
-						showLoaderOnConfirm: false
-					}, function (inputValue) {});
-				}
-			}).catch(function (error) {});
-		},
-		setCardToken: function setCardToken() {
-			var _this = this;
+				var form = $('#sendPagseguro');
 
-			if (this.card_token == '') {
-				var parametros = {
-					cardNumber: this.card_number,
-					brand: this.card_brand,
-					cvv: this.card_cvv,
-					expirationMonth: this.card_month,
-					expirationYear: this.card_year,
-					success: function success(data) {
-						_this.card_token = data.card.token;
+				var receiverEmail = document.createElement('input');
+				receiverEmail.setAttribute('name', "receiverEmail");
+				receiverEmail.setAttribute('type', "hidden");
+				receiverEmail.setAttribute('value', 'lottoyou.adm@gmail.com');
+				form.append(receiverEmail);
 
-						if (_this.card_token != '') {
-							console.log(_this.card_token);
-						}
-					},
-					error: function error(data) {
-						window.console.log(data);
-					},
-					complete: function complete(data) {
-						_this.executePayment();
+				var currency = document.createElement('input');
+				currency.setAttribute('name', "currency");
+				currency.setAttribute('type', "hidden");
+				currency.setAttribute('value', 'BRL');
+				form.append(currency);
+
+				var itemId1 = document.createElement('input');
+				itemId1.setAttribute('name', "itemId1");
+				itemId1.setAttribute('type', "hidden");
+				itemId1.setAttribute('value', this.order_id);
+				form.append(itemId1);
+
+				var itemDescription1 = document.createElement('input');
+				itemDescription1.setAttribute('name', "itemDescription1");
+				itemDescription1.setAttribute('type', "hidden");
+				itemDescription1.setAttribute('value', 'Transference ' + this.order_id);
+				form.append(itemDescription1);
+
+				var itemAmount1 = document.createElement('input');
+				itemAmount1.setAttribute('name', "itemAmount1");
+				itemAmount1.setAttribute('type', "hidden");
+				itemAmount1.setAttribute('value', this.amount);
+				form.append(itemAmount1);
+
+				var itemQuantity1 = document.createElement('input');
+				itemQuantity1.setAttribute('name', "itemQuantity1");
+				itemQuantity1.setAttribute('type', "hidden");
+				itemQuantity1.setAttribute('value', 1);
+				form.append(itemQuantity1);
+
+				var reference = document.createElement('input');
+				reference.setAttribute('name', "reference");
+				reference.setAttribute('type', "hidden");
+				reference.setAttribute('value', this.order_id);
+				form.append(reference);
+
+				var return1 = document.createElement('input');
+				return1.setAttribute('name', "return");
+				return1.setAttribute('type', "hidden");
+				return1.setAttribute('value', 'http://dev.lottoyou.bet');
+				form.append(return1);
+
+				var paymentRequest = axios.create();
+
+				paymentRequest.interceptors.request.use(function (config) {
+					form.find('[type="load"]').removeClass('hide');
+					form.find('[type="submit"]').addClass('hide');
+					return config;
+				});
+
+				paymentRequest.post('/pagseguro/payment', {
+					order_id: this.order_id,
+					amount: this.amount
+				}, {}).then(function (response) {
+					if (response.status === 200) {
+						form.submit();
 					}
-				};
-				PagSeguroDirectPayment.createCardToken(parametros);
+				}).catch(function (error) {
+					form.find('[type="load"]').addClass('hide');
+					form.find('[type="submit"]').removeClass('hide');
+				});
+
+				/*var paymentRequest = axios.create();
+          
+          paymentRequest.interceptors.request.use(config => {
+          	$(this.$el).find('[type="load"]').removeClass('hide');
+          	$(this.$el).find('[type="submit"]').addClass('hide');
+      	return config;
+    });
+    	var url = '?cmd='+this.paypal.cmd;
+    url += '&cmd='+this.paypal.cmd;
+    	paymentRequest.post('https://www.sandbox.paypal.com/cgi-bin/webscr', {
+    	cmd: this.paypal.cmd,
+    	upload: this.paypal.upload,
+    	business: this.paypal.business,
+    	item_name_1: this.paypal.item_name_1,
+    	amount_1: this.paypal.amount_1,
+    	quantity_1: this.paypal.quantity_1,
+    	custom: this.paypal.custom,
+    	notify_url: this.paypal.notify_url,
+    	return: this.paypal.return,
+    	rm: this.paypal.rm,
+    	cbt: this.paypal.cbt,
+    	cancel_return: this.paypal.cancel_return,
+    	lc: 'US',
+    	currency_code: 'USD'
+    }, {}).then(response => {
+    	if(response.status === 200){
+    		}
+    }).catch((error) => {
+    	$(this.$el).find('[type="load"]').addClass('hide');
+        			$(this.$el).find('[type="submit"]').removeClass('hide');
+    	this.errors = {
+    		credentials: 'Usuário ou Senha inválidos'
+    	};
+    });*/
 			} else {
-				this.executePayment();
+				swal({
+					title: "Informe um valor maior do que $10.00",
+					type: "error",
+					html: true,
+					showCancelButton: false,
+					confirmButtonColor: "#00a65a",
+					confirmButtonText: "Confirmar",
+					closeOnConfirm: false,
+					showLoaderOnConfirm: false
+				}, function (inputValue) {});
 			}
 		},
-		setSenderHash: function setSenderHash() {
-			if (this.sender_hash == '') {
-				this.sender_hash = PagSeguroDirectPayment.getSenderHash();
+		validate: function validate(amount) {
+			if (amount >= 10.00) {
+				return true;
 			}
-		},
-		cardNumberBlur: function cardNumberBlur(event) {
-			var vm = this;
-			if (vm.card_number != '') {
-				PagSeguroDirectPayment.getBrand({
-					cardBin: vm.card_number.replace(/ /g, ''),
-					success: function success(data) {
-						vm.card_brand = data.brand.name;
-						$(vm.$el).find('.fa-credit-card-alt').removeClass('fa-credit-card-alt').addClass('fa-cc-' + vm.card_brand);
-					},
-					error: function error(data, _error, other) {},
-					complete: function complete(data) {}
-				});
-			}
-		},
-		validatePayment: function validatePayment() {
-			$('#payment-pagseguro').validate({
-				rules: {
-					card_name: {
-						required: true
-					},
-					card_personal_id: {
-						required: true /*,
-                     isCPF: true*/
-					},
-					card_birth_date: {
-						required: true
-					},
-					card_number: {
-						required: true
-					},
-					card_month: {
-						required: true,
-						minlength: 2,
-						maxlength: 2
-					},
-					card_year: {
-						required: true,
-						minlength: 4
-					},
-					card_cvv: {
-						required: true,
-						minlength: 3
-					}
-				},
-				messages: {
-					card_name: {
-						required: 'Campo obrigatório'
-					},
-					card_personal_id: {
-						required: 'Campo obrigatório' /*,
-                                    isCPF: 'CPF Inválido'*/
-					},
-					card_birth_date: {
-						required: 'Campo obrigatório'
-					},
-					card_number: {
-						required: 'Campo obrigatório'
-					},
-					card_month: {
-						required: 'Campo obrigatório',
-						minlength: 'Tamanho mínimo de 2 digitos'
-					},
-					card_year: {
-						required: 'Campo obrigatório',
-						minlength: 'Tamanho mínimo de 4 digitos'
-					},
-					card_cvv: {
-						required: 'Campo obrigatório',
-						minlength: 'Tamanho mínimo de 3 digitos'
-					}
-				}
-			});
+			return false;
 		}
-	},
-	mounted: function mounted() {
-		var _this2 = this;
-
-		$.ajaxSetup({
-			cache: true
-		});
-
-		$.getScript("https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js", function (data, textStatus, jqxhr) {});
-
-		var sessionRequest = axios.create();
-		sessionRequest.interceptors.request.use(function (config) {
-			return config;
-		});
-		var url = "/pagseguro/get_session_id";
-
-		sessionRequest.get(url, {}, {}).then(function (response) {
-			if (response.status === 200) {
-				_this2.session_id = response.data.id;
-				PagSeguroDirectPayment.setSessionId(_this2.session_id);
-			}
-		}).catch(function (error) {});
-
-		var orderRequest = axios.create();
-		orderRequest.interceptors.request.use(function (config) {
-			return config;
-		});
-		url = "/pagseguro/generate_order";
-
-		orderRequest.post(url, {
-			owner_id: this.auth.id
-		}, {}).then(function (response) {
-			if (response.status === 200) {
-				_this2.order_id = response.data;
-				_this2.loading.component = false;
-
-				var time = setInterval(function () {
-					if ($('#payment-pagseguro').length > 0) {
-						clearInterval(time);
-						_this2.validatePayment();
-					}
-				});
-			}
-		}).catch(function (error) {});
-	},
-	beforeDestroy: function beforeDestroy() {
-		$.ajaxSetup({
-			cache: false
-		});
-	},
-
-	components: {}
+	}
 });
 
 /***/ }),
@@ -113359,25 +113168,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.loading.component == true
-    ? _c("load")
-    : _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c("h4", { staticClass: "choice-payment-method-msg" }, [
-            _vm._v("Você escolheu Pagseguro como forma de pagamento")
-          ]),
-          _vm._v(" "),
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-lg-12" }, [
+      _c("h4", { staticClass: "choice-payment-method-msg" }, [
+        _vm._v("Você escolheu O Pagseguro como forma de pagamento")
+      ]),
+      _vm._v(" "),
+      _c("h5"),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          attrs: {
+            id: "sendPagseguro",
+            action:
+              "https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html",
+            method: "post"
+          },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              _vm.sendPagseguro($event)
+            }
+          }
+        },
+        [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-lg-12 col-12 col-sm-12 col-md-12" }, [
-              _c("strong", [
-                _c("label", { attrs: { for: "amount" } }, [
-                  _vm._v("* Quantia a ser depositada  \n\t\t\t    \t"),
-                  _c("i", {
-                    staticClass: "fa fa-info",
-                    attrs: { title: "Mínimo de $15.00" }
-                  })
-                ])
-              ]),
+              _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "input-group" }, [
                 _c("div", { staticClass: "input-group-addon" }, [_vm._v("@")]),
@@ -113397,7 +113215,7 @@ var render = function() {
                     required: "",
                     id: "amount",
                     "aria-describedby": "amount",
-                    placeholder: "Por favor, indique o valor",
+                    placeholder: "Por favor, indique o valor em USD",
                     maxlength: "5"
                   },
                   domProps: { value: _vm.amount },
@@ -113461,400 +113279,71 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v("\n\t\t\t\t Eu li e aceito os "),
+                _vm._v("\n\t\t\t\t\t Eu li e aceito os "),
                 _c(
                   "router-link",
                   { attrs: { to: { name: "terms.index" }, target: "_blank" } },
                   [_vm._v("termos e condições")]
                 ),
-                _vm._v(" de uso deste site.                    \n\t\t\t")
+                _vm._v(" de uso deste site.                    \n\t\t\t\t")
               ],
               1
             )
           ]),
           _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              attrs: { id: "payment-pagseguro" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  _vm.payment($event)
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-lg-4 col-12" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "label",
-                      {
-                        attrs: {
-                          for: "card_name",
-                          placeholder: _vm.trans("strings.card_name")
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n\t\t\t\t\t\t\t" +
-                            _vm._s(_vm.trans("strings.card_name")) +
-                            "\n\t\t\t\t\t\t"
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.card_name,
-                          expression: "card_name"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { name: "card_name", type: "text" },
-                      domProps: { value: _vm.card_name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.card_name = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-lg-4 col-12" }, [
-                  _c(
-                    "div",
-                    { staticClass: "form-group" },
-                    [
-                      _c(
-                        "label",
-                        {
-                          attrs: {
-                            for: "card_personal_id",
-                            placeholder: _vm.trans("strings.card_personal_id")
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t" +
-                              _vm._s(_vm.trans("strings.card_personal_id")) +
-                              "\n\t\t\t\t\t\t"
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("inputmask", {
-                        attrs: {
-                          id: "card_personal_id",
-                          name: "card_personal_id",
-                          mask: "999.999.999-99",
-                          greedy: false
-                        },
-                        on: { onblur: _vm.cardPersonal },
-                        model: {
-                          value: _vm.card_personal_id,
-                          callback: function($$v) {
-                            _vm.card_personal_id = $$v
-                          },
-                          expression: "card_personal_id"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-lg-4 col-12" }, [
-                  _c(
-                    "div",
-                    { staticClass: "form-group" },
-                    [
-                      _c(
-                        "label",
-                        {
-                          attrs: {
-                            for: "card_birth_date",
-                            placeholder: _vm.trans("strings.card_birth_date")
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t" +
-                              _vm._s(_vm.trans("strings.card_birth_date")) +
-                              "\n\t\t\t\t\t\t"
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("datepicker", {
-                        attrs: { name: "card_birth_date", options: {} },
-                        model: {
-                          value: _vm.card_birth_date,
-                          callback: function($$v) {
-                            _vm.card_birth_date = $$v
-                          },
-                          expression: "card_birth_date"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ])
-              ]),
-              _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-12 buttons" }, [
               _c(
-                "div",
+                "button",
                 {
-                  staticClass: "row",
-                  staticStyle: { "align-items": "flex-end" }
+                  staticClass: "btn btn-primary btn-md",
+                  attrs: { type: "submit" }
                 },
-                [
-                  _c("div", { staticClass: "col-lg-6 col-12" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-lg-10",
-                          staticStyle: { "padding-right": "0" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "form-group" },
-                            [
-                              _c(
-                                "label",
-                                {
-                                  attrs: {
-                                    for: "card_number",
-                                    placeholder: _vm.trans(
-                                      "strings.card_number"
-                                    )
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n\t\t\t\t\t\t\t\t\t" +
-                                      _vm._s(_vm.trans("strings.card_number")) +
-                                      "\n\t\t\t\t\t\t\t\t"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("inputmask", {
-                                attrs: {
-                                  name: "card_number",
-                                  blur: true,
-                                  mask: "9",
-                                  repeat: 20,
-                                  greedy: false,
-                                  rightAlign: false
-                                },
-                                on: { onblur: _vm.cardNumberBlur },
-                                model: {
-                                  value: _vm.card_number,
-                                  callback: function($$v) {
-                                    _vm.card_number = $$v
-                                  },
-                                  expression: "card_number"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-lg-2",
-                          staticStyle: {
-                            "padding-left": "0",
-                            "padding-right": "30px"
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "form-group" }, [
-                            _c("label", [
-                              _vm._v("\n\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t")
-                            ]),
-                            _vm._v(" "),
-                            _c("span", {
-                              staticClass:
-                                "input-group-addon fa fa-credit-card-alt"
-                            })
-                          ])
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-lg-2 col-6" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c(
-                          "label",
-                          {
-                            attrs: {
-                              for: "card_month",
-                              placeholder: _vm.trans("strings.card_month")
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n\t\t\t\t\t\t\t" +
-                                _vm._s(_vm.trans("strings.card_month")) +
-                                "\n\t\t\t\t\t\t"
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("inputmask", {
-                          attrs: {
-                            id: "card_month",
-                            name: "card_month",
-                            mask: "99"
-                          },
-                          model: {
-                            value: _vm.card_month,
-                            callback: function($$v) {
-                              _vm.card_month = $$v
-                            },
-                            expression: "card_month"
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-lg-2 col-6" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c(
-                          "label",
-                          {
-                            attrs: {
-                              for: "card_year",
-                              placeholder: _vm.trans("strings.card_year")
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n\t\t\t\t\t\t\t" +
-                                _vm._s(_vm.trans("strings.card_year")) +
-                                "\n\t\t\t\t\t\t"
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("inputmask", {
-                          attrs: { name: "card_year", mask: "9999" },
-                          model: {
-                            value: _vm.card_year,
-                            callback: function($$v) {
-                              _vm.card_year = $$v
-                            },
-                            expression: "card_year"
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-lg-2 col-6" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c(
-                          "label",
-                          {
-                            attrs: {
-                              for: "card_cvv",
-                              placeholder: _vm.trans("strings.card_cvv")
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n\t\t\t\t\t\t\t" +
-                                _vm._s(_vm.trans("strings.card_cvv")) +
-                                "\n\t\t\t\t\t\t"
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("inputmask", {
-                          attrs: { name: "card_cvv", mask: "999" },
-                          model: {
-                            value: _vm.card_cvv,
-                            callback: function($$v) {
-                              _vm.card_cvv = $$v
-                            },
-                            expression: "card_cvv"
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ])
-                ]
+                [_vm._v("Efeutuar compra")]
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-lg-12 buttons" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success",
-                      attrs: { type: "submit" }
-                    },
-                    [_vm._v("Efeutuar compra")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "hide pull-right btn btn-md btn-success",
-                      attrs: { type: "load" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
-                  )
-                ])
-              ])
-            ]
-          )
-        ])
-      ])
+              _c(
+                "button",
+                {
+                  staticClass: "hide pull-right btn btn-md btn-primary",
+                  attrs: { type: "load" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
+              )
+            ])
+          ])
+        ]
+      )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _c("label", { attrs: { for: "amount" } }, [
+        _vm._v("* Quantia a ser depositada  \n\t\t\t\t    \t"),
+        _c("i", {
+          staticClass: "fa fa-info",
+          attrs: { title: "Mínimo de $15.00" }
+        })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-06abe741", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-38aafcdf", module.exports)
   }
 }
 
@@ -114470,9 +113959,7 @@ var render = function() {
               _vm.payment_method == "paypal"
                 ? _c("paypal-component", { attrs: { order_id: _vm.order_id } })
                 : _vm.payment_method == "pagseguro"
-                  ? _c("pagseguro-component", {
-                      attrs: { order_id: _vm.order_id }
-                    })
+                  ? _c("vc-pagseguro", { attrs: { order_id: _vm.order_id } })
                   : _vm._e()
             ],
             1

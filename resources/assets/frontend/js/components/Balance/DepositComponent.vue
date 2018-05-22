@@ -24,7 +24,7 @@
 				<div class="row box-actions-payment">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-12">
 						<paypal-component :order_id="order_id" v-if="payment_method == 'paypal' "></paypal-component>
-						<pagseguro-component :order_id="order_id" v-else-if=" payment_method == 'pagseguro' "></pagseguro-component>
+						<vc-pagseguro :order_id="order_id" v-else-if=" payment_method == 'pagseguro' "></vc-pagseguro>
 					</div>
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 
 <script>
 	import {mapState, mapGetters} from 'vuex'
-	import PagseguroComponent from './PaymentMethod/PagseguroComponent'
+	import VcPagseguro from './PaymentMethod/VcPagseguro'
 	import PaypalComponent from './PaymentMethod/PaypalComponent'
 	export default {
 		methods: {
@@ -69,7 +69,7 @@
 		},
 		data: function() {
 			return {
-				payment_method: 'paypal',
+				payment_method: 'pagseguro',
 				order_id: '',
 			}
 		},
@@ -98,7 +98,7 @@
 		},
 		components: {
 			PaypalComponent,
-			PagseguroComponent
+			VcPagseguro
 		}
 	}
 </script>

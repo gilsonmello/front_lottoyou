@@ -90,8 +90,6 @@ class PaypalController extends Controller
 
         $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
 
-        Log::info($balance);
-        
         $historicBalance = new HistoricBalance;
         $historicBalance->paypal_order_id = $paypayOrder->id;
         $historicBalance->type = 1;
