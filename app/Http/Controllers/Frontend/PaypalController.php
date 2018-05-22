@@ -98,7 +98,7 @@ class PaypalController extends Controller
         $historicBalance->description = 'deposit';
         $historicBalance->balance_id = $balance->id;
         $historicBalance->from = $balance->value + $request->payment_gross;
-        $historicBalance->owner_id = $balance->owner_id;
+        $historicBalance->owner_id = $order->owner_id;
 
         $balance->value += $request->payment_gross;
 

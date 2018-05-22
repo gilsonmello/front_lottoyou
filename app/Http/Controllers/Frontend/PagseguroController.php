@@ -104,7 +104,7 @@ class PagseguroController extends Controller
             $balanceOrder->owner_id = $request->owner_id;
             $balanceOrder->total = 0.00;
             $balanceOrder->sub_total = 0.00;
-            $balanceOrder->status = 1;
+            $balanceOrder->status = 'In progress';
             $balanceOrder->submit = 0;
             $balanceOrder->save();
             return response()->json($balanceOrder->id, 200);
