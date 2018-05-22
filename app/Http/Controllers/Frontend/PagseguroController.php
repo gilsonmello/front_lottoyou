@@ -11,7 +11,7 @@ class PagseguroController extends Controller
 {
     use PaymentService;
 
-    public function back() 
+    public function back(Request $request) 
     {
         return 'Back';
     }

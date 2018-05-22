@@ -1,12 +1,11 @@
 <?php
 
-Route::post('pagseguro/feedback', 'PaypalController@feedback');
+Route::post('pagseguro/feedback', 'PagseguroController@feedback');
 Route::get('pagseguro/get_session_id', 'PagseguroController@sessionId');
 Route::post('pagseguro/generate_order', 'PagseguroController@generateOrder');
 Route::post('pagseguro/payment', 'PagseguroController@payment');
 
-
-Route::get('pagseguro/back', 'PaypalController@back');
+Route::get('pagseguro/back', 'PagseguroController@back');
 
 
 Route::resource('pagseguro', 'PagseguroController', [
