@@ -18,7 +18,7 @@ trait PaymentService
 {
     public function updateFromPagseguroFeedback($dataXml) {
 
-        $order = BalanceOrder::find($dataXml->invoice); 
+        $order = BalanceOrder::find($dataXml->reference); 
 
         $pagseguroOrder = new PagseguroOrder;
         $carbon = Carbon::parse($dataXml->date);
