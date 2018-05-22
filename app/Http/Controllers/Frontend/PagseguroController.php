@@ -100,7 +100,7 @@ class PagseguroController extends Controller
 
         $dataXml = simplexml_load_string($result);
 
-        Log::info($dataXml);
+        Log::info($result);
     }
 
     public function sessionId()
