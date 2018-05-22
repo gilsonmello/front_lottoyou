@@ -10,7 +10,7 @@ use Log;
 use App\PaypalOrder;
 use App\HistoricBalance;
 use App\Balance;
-use Carbon\Carbon
+use Carbon\Carbon;
 
 class PaypalController extends Controller
 {
