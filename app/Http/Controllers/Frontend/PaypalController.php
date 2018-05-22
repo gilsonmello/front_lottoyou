@@ -9,6 +9,7 @@ use App\Services\Frontend\Paypal\PaymentService;
 use Log;
 use App\PaypalOrder;
 use App\HistoricBalance;
+use App\Balance;
 
 class PaypalController extends Controller
 {
