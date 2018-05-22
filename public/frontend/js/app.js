@@ -113619,7 +113619,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					amount: this.amount
 				}, {}).then(function (response) {
 					if (response.status === 200) {
-						form.submit();
+						//form.submit();
 					}
 				}).catch(function (error) {
 					form.find('[type="load"]').addClass('hide');
