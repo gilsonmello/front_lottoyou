@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\BalanceOrder;
 use App\Services\Frontend\Pagseguro\PaymentService;
+use Log;
 
 class PagseguroController extends Controller
 {
@@ -13,6 +14,7 @@ class PagseguroController extends Controller
 
     public function back(Request $request) 
     {
+        var_dump($request->notificationCode);
         $code = $request->notificationCode;
 
         ////////////// To tests //////////////
@@ -44,6 +46,8 @@ class PagseguroController extends Controller
         }
 
         $result = curl_exec($ch);
+
+        Log::info($result);
 
         curl_close($ch);
         
