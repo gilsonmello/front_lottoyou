@@ -14,6 +14,7 @@ class PaypalController extends Controller
 {
     use PaymentService;
 
+   
     public function payment(Request $request) 
     {
         $order = BalanceOrder::find($request->order_id);
@@ -41,7 +42,7 @@ class PaypalController extends Controller
         //$data = $request->all();
         //$order = BalanceOrder::find($data['invoice']);
         //Log::info($data);
-        //Log::info($request->all());
+        Log::info($request->all());
         //$order->status = $request->payment_status;
         //$order->save();
 

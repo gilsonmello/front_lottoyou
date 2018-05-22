@@ -173,7 +173,8 @@
 						amount: this.amount
 					}, {}).then(response => {
 						if(response.status === 200) {
-							form.submit();
+							//form.submit();
+							console.log(response.data)
 						}
 					}).catch((error) => {
 						form.find('[type="load"]').addClass('hide');
