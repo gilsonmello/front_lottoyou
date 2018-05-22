@@ -42,9 +42,6 @@ class PaypalController extends Controller
     {
         $order = BalanceOrder::find($request->invoice);
         
-        $order->status_paypal = $request->payment_status;
-        $order->save();
-
         $paypayOrder = new PaypalOrder;
         $paypayOrder->balance_order_id = $order->id;
         $paypayOrder->mc_gross = $request->mc_gross;
@@ -53,7 +50,7 @@ class PaypalController extends Controller
         $paypayOrder->address_status = $request->address_status;
         $paypayOrder->payer_id = $request->payer_id;
         $paypayOrder->address_street = $request->address_street;
-        $paypayOrder->payment_date =  $request->payment_date;
+        $paypayOrder->payment_date = $request->payment_date;
         $paypayOrder->payment_status = $request->payment_status;
         $paypayOrder->charset = $request->charset;
         $paypayOrder->address_zip = $request->address_zip;
@@ -88,24 +85,62 @@ class PaypalController extends Controller
         $paypayOrder->ipn_track_id = $request->ipn_track_id;
         $paypayOrder->save();
 
-        $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
 
-        $historicBalance = new HistoricBalance;
-        $historicBalance->paypal_order_id = $paypayOrder->id;
-        $historicBalance->type = 1;
-        $historicBalance->devolution = 0;
-        $historicBalance->description = 'deposit paypal';
-        $historicBalance->balance_id = $balance->id;
-        $historicBalance->from = $balance->value;
-        $historicBalance->owner_id = $balance->owner_id;
-        $historicBalance->amount += $request->payment_gross;
+        if ($order->date_confirmation == null) {
+            $order->date_confirmation = Carbon::now();
+        }
 
-        $balance->value += $request->payment_gross;
+        if($request->payment_status == 'Canceled_Reversal' || 
+            $request->payment_status == 'Denied' ||
+            $request->payment_status == 'Expired' ||
+            $request->payment_status == 'Reversed' ||
+            $request->payment_status == 'Voided'
+        ) {
+            $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
 
-        $historicBalance->to = $balance->value;
-        $historicBalance->save();
+            $historicBalance = new HistoricBalance;
+            $historicBalance->paypal_order_id = $paypayOrder->id;
+            $historicBalance->type = 0;
+            $historicBalance->devolution = 1;
+            $historicBalance->description = 'devolution paypal';
+            $historicBalance->balance_id = $balance->id;
+            $historicBalance->from = $balance->value;
+            $historicBalance->owner_id = $balance->owner_id;
+            $historicBalance->amount = $request->payment_gross * -1;
 
-        $balance->save();
+            $balance->value -= $request->payment_gross;
+
+            $historicBalance->to = $balance->value;
+            $historicBalance->save();
+
+            $balance->save();
+
+        }
+
+        if($request->payment_status == 'Completed' && $order->status_paypal != 'Completed') {
+            $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
+
+            $historicBalance = new HistoricBalance;
+            $historicBalance->paypal_order_id = $paypayOrder->id;
+            $historicBalance->type = 1;
+            $historicBalance->devolution = 0;
+            $historicBalance->description = 'deposit paypal';
+            $historicBalance->balance_id = $balance->id;
+            $historicBalance->from = $balance->value;
+            $historicBalance->owner_id = $balance->owner_id;
+            $historicBalance->amount = $request->payment_gross;
+
+            $balance->value += $request->payment_gross;
+
+            $historicBalance->to = $balance->value;
+            $historicBalance->save();
+
+            $balance->save();
+        }
+
+        $order->status_paypal = $request->payment_status;
+        $order->save();
+        
     }
 
     public function sessionId()

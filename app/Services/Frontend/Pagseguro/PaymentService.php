@@ -74,9 +74,9 @@ trait PaymentService
         }
 
         //Verifico se o pagamento foi aprovado
-        if (in_array($dataXml->status, [3, 4]) && ($order->status_pagseguro != 4 && $order->status_pagseguro != 3)) {
-            Log::info($dataXml->status);
-            Log::info($order->status_pagseguro);
+        if (in_array($dataXml->status, [3, 4]) 
+            && ($order->status_pagseguro != 4 && $order->status_pagseguro != 3)) 
+        {
             $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
 
             $historicBalance = new HistoricBalance;
