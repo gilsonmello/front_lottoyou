@@ -31,11 +31,12 @@ class PaypalController extends Controller
         ], 422);
     }
 
-    public function cancel() {
+    public function cancel() 
+    {
         return 'cancelado';
     }
 
-    public function feedback(Request $request) 
+    public function feedback() 
     {
         //$data = $request->all();
         //$order = BalanceOrder::find($data['invoice']);
