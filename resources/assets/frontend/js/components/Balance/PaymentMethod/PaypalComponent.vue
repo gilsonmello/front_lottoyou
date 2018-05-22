@@ -14,7 +14,7 @@
 					    </strong>
 						<div class="input-group">
 							<div class="input-group-addon">@</div>
-						    <input type="number" v-model="paypal.amount_1" required class="form-control" id="amount" aria-describedby="amount" :placeholder="'Por favor, indique o valor em USD'" maxlength="5">
+						    <input type="number" v-model="amount" required class="form-control" id="amount" aria-describedby="amount" :placeholder="'Por favor, indique o valor em USD'" maxlength="5">
 					  	</div>
 					</div>
 				</div>
@@ -26,8 +26,8 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12 buttons">
-						<button type="submit" class="btn btn-success">Efeutuar compra</button>
-						<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
+						<button type="submit" class="btn btn-primary btn-md">Efeutuar compra</button>
+						<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-primary">
 							<i class="fa fa-refresh fa-spin"></i>
 						</button>
 					</div>
@@ -39,9 +39,10 @@
 
 <script>
 	export default {
+		props: ['order_id'],
 		data: function() {
 			return {
-				amount: '',
+				amount: '10.00',
 				terms: '',
 				paypal: {
 					cmd: '_xclick',
@@ -65,7 +66,7 @@
 		methods: {
 			sendPaypal: function(event) {
 				var form = $(event.currentTarget);
-				if(this.validate(this.paypal)) {
+				if(this.validate(this.amount)) {
 
 					var form = $('#sendPaypal');
 
@@ -81,11 +82,11 @@
                     cmd.setAttribute('value', '_xclick');
                     form.append(cmd);
 
-                    /*var invoice = document.createElement('input');
+                    var invoice = document.createElement('input');
                     invoice.setAttribute('name', "invoice");
                     invoice.setAttribute('type', "hidden");
-                    invoice.setAttribute('value', 1);
-                    form.append(invoice);*/
+                    invoice.setAttribute('value', this.order_id);
+                    form.append(invoice);
 
                     var upload = document.createElement('input');
                     upload.setAttribute('name', "upload");
@@ -144,13 +145,13 @@
                     var amount = document.createElement('input');
                     amount.setAttribute('name', "amount");
                     amount.setAttribute('type', "hidden");
-                    amount.setAttribute('value', parseFloat(this.paypal.amount_1).format(2, true));
+                    amount.setAttribute('value', parseFloat(this.amount).format(2, true));
                     form.append(amount);
 
                     var item_name = document.createElement('input');
                     item_name.setAttribute('name', "item_name");
                     item_name.setAttribute('type', "hidden");
-                    item_name.setAttribute('value', 'transference');
+                    item_name.setAttribute('value', 'Transference '+this.order_id);
                     form.append(item_name);
 
                     var quantity = document.createElement('input');
@@ -159,8 +160,27 @@
                     quantity.setAttribute('value', 1);
                     form.append(quantity);
 
+                    var paymentRequest = axios.create();
+			        
+			        paymentRequest.interceptors.request.use(config => {
+			        	form.find('[type="load"]').removeClass('hide');
+			        	form.find('[type="submit"]').addClass('hide');
+					  	return config;
+					});
+
+					paymentRequest.post('/paypal/payment', {
+						order_id: this.order_id,
+						amount: this.amount
+					}, {}).then(response => {
+						if(response.status === 200) {
+							form.submit();
+						}
+					}).catch((error) => {
+						form.find('[type="load"]').addClass('hide');
+			        	form.find('[type="submit"]').removeClass('hide');
+					});
+
                 
-                	form.submit();
                     
 
 					/*var paymentRequest = axios.create();
@@ -216,8 +236,8 @@
 					});
 				}
 			},
-			validate: function(data) {
-				if(data.amount_1 >= 10.00) {
+			validate: function(amount) {
+				if(amount >= 10.00) {
 					return true;
 				}
 				return false;

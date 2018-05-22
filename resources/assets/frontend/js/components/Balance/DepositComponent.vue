@@ -23,8 +23,8 @@
 				</div>
 				<div class="row box-actions-payment">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-12">
-						<paypal-component v-if="payment_method == 'paypal' "></paypal-component>
-						<pagseguro-component v-else-if=" payment_method == 'pagseguro' "></pagseguro-component>
+						<paypal-component :order_id="order_id" v-if="payment_method == 'paypal' "></paypal-component>
+						<pagseguro-component :order_id="order_id" v-else-if=" payment_method == 'pagseguro' "></pagseguro-component>
 					</div>
 				</div>
 			</div>
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+	import {mapState, mapGetters} from 'vuex'
 	import PagseguroComponent from './PaymentMethod/PagseguroComponent'
 	import PaypalComponent from './PaymentMethod/PaypalComponent'
 	export default {
@@ -61,13 +62,39 @@
 				this.payment_method = payment_method
 			}
 		},
+		computed: {
+            ...mapGetters([
+                'auth', 'purchase'
+            ])
+		},
 		data: function() {
 			return {
-				payment_method: 'paypal'
+				payment_method: 'paypal',
+				order_id: '',
 			}
 		},
 		mounted() {
+			const orderRequest = axios.create();
+			orderRequest.interceptors.request.use(config => {
+	        	return config;
+			});
+			let url = "/pagseguro/generate_order";
 
+			orderRequest.post(
+				url, 
+				{
+					owner_id: this.auth.id
+				}, 
+				{
+
+				}
+			).then(response => {
+				if(response.status === 200){
+					this.order_id = response.data
+				}
+			}).catch((error) => {
+				
+			});
 		},
 		components: {
 			PaypalComponent,

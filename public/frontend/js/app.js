@@ -112781,10 +112781,13 @@ exports.push([module.i, "\n.box-payment-method[data-v-883c0e24] {\n\t-webkit-tra
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PaymentMethod_PagseguroComponent__ = __webpack_require__(599);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PaymentMethod_PagseguroComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__PaymentMethod_PagseguroComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PaypalComponent__ = __webpack_require__(604);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PaypalComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PaypalComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PagseguroComponent__ = __webpack_require__(599);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PagseguroComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PagseguroComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PaymentMethod_PaypalComponent__ = __webpack_require__(604);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PaymentMethod_PaypalComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__PaymentMethod_PaypalComponent__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -112839,6 +112842,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -112848,16 +112852,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.payment_method = payment_method;
 		}
 	},
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['auth', 'purchase'])),
 	data: function data() {
 		return {
-			payment_method: 'paypal'
+			payment_method: 'paypal',
+			order_id: ''
 		};
 	},
-	mounted: function mounted() {},
+	mounted: function mounted() {
+		var _this = this;
+
+		var orderRequest = axios.create();
+		orderRequest.interceptors.request.use(function (config) {
+			return config;
+		});
+		var url = "/pagseguro/generate_order";
+
+		orderRequest.post(url, {
+			owner_id: this.auth.id
+		}, {}).then(function (response) {
+			if (response.status === 200) {
+				_this.order_id = response.data;
+			}
+		}).catch(function (error) {});
+	},
 
 	components: {
-		PaypalComponent: __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PaypalComponent___default.a,
-		PagseguroComponent: __WEBPACK_IMPORTED_MODULE_0__PaymentMethod_PagseguroComponent___default.a
+		PaypalComponent: __WEBPACK_IMPORTED_MODULE_2__PaymentMethod_PaypalComponent___default.a,
+		PagseguroComponent: __WEBPACK_IMPORTED_MODULE_1__PaymentMethod_PagseguroComponent___default.a
 	}
 });
 
@@ -113084,6 +113106,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['order_id'],
 	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['auth', 'purchase'])),
 	data: function data() {
 		return {
@@ -113104,7 +113127,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			card_token: '',
 			sender_hash: '',
 			method: 'creditCard',
-			order_id: '',
 			query: {
 				page: 1,
 				column: 'pontuacao',
@@ -113974,9 +113996,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['order_id'],
 	data: function data() {
 		return {
-			amount: '',
+			amount: '10.00',
 			terms: '',
 			paypal: {
 				cmd: '_xclick',
@@ -114000,7 +114023,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	methods: {
 		sendPaypal: function sendPaypal(event) {
 			var form = $(event.currentTarget);
-			if (this.validate(this.paypal)) {
+			if (this.validate(this.amount)) {
 
 				var form = $('#sendPaypal');
 
@@ -114016,11 +114039,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				cmd.setAttribute('value', '_xclick');
 				form.append(cmd);
 
-				/*var invoice = document.createElement('input');
-    invoice.setAttribute('name', "invoice");
-    invoice.setAttribute('type', "hidden");
-    invoice.setAttribute('value', 1);
-    form.append(invoice);*/
+				var invoice = document.createElement('input');
+				invoice.setAttribute('name', "invoice");
+				invoice.setAttribute('type', "hidden");
+				invoice.setAttribute('value', this.order_id);
+				form.append(invoice);
 
 				var upload = document.createElement('input');
 				upload.setAttribute('name', "upload");
@@ -114079,13 +114102,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				var amount = document.createElement('input');
 				amount.setAttribute('name', "amount");
 				amount.setAttribute('type', "hidden");
-				amount.setAttribute('value', parseFloat(this.paypal.amount_1).format(2, true));
+				amount.setAttribute('value', parseFloat(this.amount).format(2, true));
 				form.append(amount);
 
 				var item_name = document.createElement('input');
 				item_name.setAttribute('name', "item_name");
 				item_name.setAttribute('type', "hidden");
-				item_name.setAttribute('value', 'transference');
+				item_name.setAttribute('value', 'Transference ' + this.order_id);
 				form.append(item_name);
 
 				var quantity = document.createElement('input');
@@ -114094,7 +114117,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				quantity.setAttribute('value', 1);
 				form.append(quantity);
 
-				form.submit();
+				var paymentRequest = axios.create();
+
+				paymentRequest.interceptors.request.use(function (config) {
+					form.find('[type="load"]').removeClass('hide');
+					form.find('[type="submit"]').addClass('hide');
+					return config;
+				});
+
+				paymentRequest.post('/paypal/payment', {
+					order_id: this.order_id,
+					amount: this.amount
+				}, {}).then(function (response) {
+					if (response.status === 200) {
+						form.submit();
+					}
+				}).catch(function (error) {
+					form.find('[type="load"]').addClass('hide');
+					form.find('[type="submit"]').removeClass('hide');
+				});
 
 				/*var paymentRequest = axios.create();
           
@@ -114143,8 +114184,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}, function (inputValue) {});
 			}
 		},
-		validate: function validate(data) {
-			if (data.amount_1 >= 10.00) {
+		validate: function validate(amount) {
+			if (amount >= 10.00) {
 				return true;
 			}
 			return false;
@@ -114196,8 +114237,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.paypal.amount_1,
-                      expression: "paypal.amount_1"
+                      value: _vm.amount,
+                      expression: "amount"
                     }
                   ],
                   staticClass: "form-control",
@@ -114209,13 +114250,13 @@ var render = function() {
                     placeholder: "Por favor, indique o valor em USD",
                     maxlength: "5"
                   },
-                  domProps: { value: _vm.paypal.amount_1 },
+                  domProps: { value: _vm.amount },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.paypal, "amount_1", $event.target.value)
+                      _vm.amount = $event.target.value
                     }
                   }
                 })
@@ -114286,14 +114327,17 @@ var render = function() {
             _c("div", { staticClass: "col-lg-12 buttons" }, [
               _c(
                 "button",
-                { staticClass: "btn btn-success", attrs: { type: "submit" } },
+                {
+                  staticClass: "btn btn-primary btn-md",
+                  attrs: { type: "submit" }
+                },
                 [_vm._v("Efeutuar compra")]
               ),
               _vm._v(" "),
               _c(
                 "button",
                 {
-                  staticClass: "hide pull-right btn btn-md btn-success",
+                  staticClass: "hide pull-right btn btn-md btn-primary",
                   attrs: { type: "load" },
                   on: {
                     click: function($event) {
@@ -114424,9 +114468,11 @@ var render = function() {
             { staticClass: "col-lg-12 col-md-12 col-sm-12 col-12" },
             [
               _vm.payment_method == "paypal"
-                ? _c("paypal-component")
+                ? _c("paypal-component", { attrs: { order_id: _vm.order_id } })
                 : _vm.payment_method == "pagseguro"
-                  ? _c("pagseguro-component")
+                  ? _c("pagseguro-component", {
+                      attrs: { order_id: _vm.order_id }
+                    })
                   : _vm._e()
             ],
             1

@@ -120,6 +120,7 @@
 	import {mapState, mapGetters} from 'vuex'
 	import {routes} from '../../../api_routes'
 	export default {
+		props: ['order_id'],
 		computed: {
             ...mapGetters([
                 'auth', 'purchase'
@@ -144,7 +145,6 @@
 				card_token: '',
 				sender_hash: '',
 				method: 'creditCard',
-				order_id: '',
 				query: {
 					page: 1,
 					column: 'pontuacao',
