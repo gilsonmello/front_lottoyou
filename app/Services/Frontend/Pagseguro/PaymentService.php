@@ -6,6 +6,7 @@ use App\PagseguroOrder;
 use App\Balance;
 use App\HistoricBalance;
 use Carbon\Carbon;
+use Log;
 
 /**
  * Created by PhpStorm.
