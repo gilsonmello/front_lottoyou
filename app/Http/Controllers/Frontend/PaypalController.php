@@ -46,7 +46,7 @@ class PaypalController extends Controller
         $order->save();
 
         $paypayOrder = new PaypalOrder;
-        $paypayOrder->balance_id = $order->id;
+        $paypayOrder->balance_order_id = $order->id;
         $paypayOrder->mc_gross = $request->mc_gross;
         $paypayOrder->invoice = $request->invoice;
         $paypayOrder->protection_eligibility = $request->protection_eligibility;
