@@ -14,7 +14,7 @@ class PagseguroController extends Controller
 
     public function back(Request $request) 
     {
-        $code = str_replace('-', '', $request->transaction_id);
+        /*$code = $request->transaction_id;
 
         ////////////// To tests //////////////
         //$code = '7F7AA96F474A474A222664BC9F8EFA8680C4';
@@ -55,7 +55,7 @@ class PagseguroController extends Controller
 
         $dataXml = simplexml_load_string($result);
 
-        return $dataXml;
+        return $dataXml;*/
     }
 
     public function feedback(Request $request) 
