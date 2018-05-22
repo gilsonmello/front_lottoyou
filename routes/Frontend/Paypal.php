@@ -1,6 +1,6 @@
 <?php
 
-Route::post('paypal/feedback', 'PaypalController@feedback');
+Route::get('paypal/feedback', 'PaypalController@feedback');
 Route::get('paypal/cancel', 'PaypalController@cancel');
 Route::post('paypal/payment', 'PaypalController@payment');
 
