@@ -104,9 +104,9 @@
                     	<button @click="validate($event)" type="button" v-if="item.tickets.length > 0 && loading.paying == false && auth && auth.balance.value > parseFloat(ticket.valor)" class="btn btn-primary">
                             {{ trans('strings.pay_now') }}
                         </button>
-                        <button v-if="!loading.paying" type="button" class="btn btn-danger" data-dismiss="modal">
+                        <!-- <button v-if="!loading.paying" type="button" class="btn btn-danger" data-dismiss="modal">
                             {{ trans('strings.to_close') }}
-                        </button>
+                        </button> -->
                     </div>
                 </div>
             </div>

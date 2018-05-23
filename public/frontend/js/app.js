@@ -100658,23 +100658,6 @@ var render = function() {
                               )
                             ]
                           )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      !_vm.loading.paying
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-danger",
-                              attrs: { type: "button", "data-dismiss": "modal" }
-                            },
-                            [
-                              _vm._v(
-                                "\n                            " +
-                                  _vm._s(_vm.trans("strings.to_close")) +
-                                  "\n                        "
-                              )
-                            ]
-                          )
                         : _vm._e()
                     ])
                   ])
