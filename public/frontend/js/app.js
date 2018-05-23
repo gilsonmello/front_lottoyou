@@ -85877,7 +85877,7 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass: "pull-right btn btn-md btn-success",
+                            staticClass: "pull-right btn btn-md btn-primary",
                             attrs: { type: "submit" }
                           },
                           [
