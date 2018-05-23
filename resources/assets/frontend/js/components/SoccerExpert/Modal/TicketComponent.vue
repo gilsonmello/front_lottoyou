@@ -122,6 +122,7 @@
 				});
 
 				if(this.ticket.choseGoldBall == false) {
+					toast.error('Bola Lottoyou', 'Por favor selecione a bola Lottoyou');
 					complete = false;
 				}
 
@@ -144,6 +145,7 @@
 					}
 
 				} else {
+					toast.error('Cartela Incompleta', 'Por favor complete a cartela');
 					this.ticket.complete = false;
 					$(this.$el).addClass('incomplete');
 					$(this.$el).removeClass('complete');

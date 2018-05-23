@@ -100756,6 +100756,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			});
 
 			if (this.ticket.choseGoldBall == false) {
+				toast.error('Bola Lottoyou', 'Por favor selecione a bola Lottoyou');
 				complete = false;
 			}
 
@@ -100776,6 +100777,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					this.item.tickets.unshift(this.ticket);
 				}
 			} else {
+				toast.error('Cartela Incompleta', 'Por favor complete a cartela');
 				this.ticket.complete = false;
 				$(this.$el).addClass('incomplete');
 				$(this.$el).removeClass('complete');
