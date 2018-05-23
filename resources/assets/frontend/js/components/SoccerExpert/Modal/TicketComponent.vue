@@ -61,6 +61,7 @@
     			minutes: '',
     			seconds: '',
     			valid: true,
+    			empty: true;
         	}
         },
         methods: {
@@ -98,7 +99,7 @@
 					//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
 					if((val.result_out_club !== '' && val.result_out_club !== null) 
 						|| (val.result_house_club !== '' && val.result_house_club !== null)) {
-						empty = false;
+						this.empty = false;
 					}
 
 					return true;
@@ -115,7 +116,7 @@
 					//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
 					if((val.result_out_club !== '' && val.result_out_club !== null) 
 						|| (val.result_house_club !== '' && val.result_house_club !== null)) {
-						empty = false;
+						this.empty = false;
 					}
 
 					return true;
@@ -153,13 +154,13 @@
 				}
 
 				//Se a rodada está vazia
-				if(empty) {
+				if(this.empty) {
 					$(this.$el).removeClass('complete');
 					$(this.$el).removeClass('incomplete');
 				}
 
 				//Se a rodada está vazia
-				if(empty && this.ticket.choseGoldBall) {
+				if(this.empty && this.ticket.choseGoldBall) {
 					$(this.$el).addClass('incomplete');
 					$(this.$el).removeClass('complete');
 				}
@@ -201,11 +202,12 @@
             $('.modal-ticket').on('hidden.bs.modal', (event) => {
         		if(this.ticket.complete == false && this.ticket.choseGoldBall) {
         			toastr.error('Por favor, informe todos os jogos.', 'Cartela incompleta');
-        		} else if(this.ticket.choseGoldBall == false && this.ticket.complete == false) {
+        		} else if(this.ticket.choseGoldBall == false && this.empty == true) {
         			toastr.error('Por favor, selecione os Jogos e a Bola Lottoyou.', 'Cartela incompleta');
-        		} else if(this.ticket.choseGoldBall == false) {
+        		} else if(this.ticket.choseGoldBall == false && this.empty == false) {
         			toastr.error('Por favor, selecione a Bola Lottoyou.', 'Cartela incompleta');
         		}
+
             });
 
 			let value = parseFloat(this.ticket.valor);
