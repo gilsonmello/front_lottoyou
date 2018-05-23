@@ -99458,7 +99458,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var complete = true;
 
 			//Serve para controlar se a rodada está completamente vazia
-			var empty = true;
+			this.empty = true;
 
 			this.allSelected = true;
 
