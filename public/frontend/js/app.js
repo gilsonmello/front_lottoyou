@@ -98154,6 +98154,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -99300,7 +99303,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -100140,7 +100142,7 @@ var render = function() {
             _vm._s(
               _vm.ticket.limite == null ? "Ilimitado" : _vm.ticket.limite
             ) +
-            "\n\t\t\t\t\n            \t"
+            "\n\t\t\t\t"
         ),
         _c("i", {
           staticClass: "fa fa-question-circle",
@@ -100691,6 +100693,24 @@ var render = function() {
                                 "\n                            " +
                                   _vm._s(_vm.trans("strings.pay_now")) +
                                   "\n                        "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !_vm.loading.paying
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-md btn-primary pull-right",
+                              attrs: { type: "button" },
+                              on: { click: _vm.addToCart }
+                            },
+                            [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\t" +
+                                  _vm._s(_vm.trans("strings.add_to_cart")) +
+                                  "\n\t\t\t\t\t\t"
                               )
                             ]
                           )
