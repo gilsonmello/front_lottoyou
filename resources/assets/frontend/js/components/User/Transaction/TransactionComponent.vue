@@ -11,9 +11,9 @@
             <router-link class="nav-link active show" :to="{ name: 'users.transactions', params: {  } }">
                 {{ trans('strings.transactions') }}
             </router-link>
-            <router-link class="nav-link" :to="{ name: 'users.orders', params: {  } }">
+            <!-- <router-link class="nav-link" :to="{ name: 'users.orders', params: {  } }">
                 {{ trans('strings.orders') }}
-            </router-link>
+            </router-link> -->
         </div>
 
 

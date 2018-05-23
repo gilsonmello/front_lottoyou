@@ -128,7 +128,7 @@
 						  								</div>
 						  							</div>
 						  						</li>
-						  						<li class="account-item">
+						  						<!-- <li class="account-item">
 						  							<div class="row vcenter">
 						  								<div class="col-lg-2 col-md-2 col-sm-2">
 						  									<i class="fa fa-shopping-cart" style="font-size: 27px; color: initial;"></i>
@@ -139,7 +139,7 @@
 										                    </router-link>
 						  								</div>
 						  							</div>
-						  						</li>
+						  						</li> -->
 						  						<li class="account-item">
 						  							<div class="row vcenter">
 						  								<div class="col-lg-2 col-md-2 col-sm-2">
@@ -567,7 +567,7 @@
 
 	.item-account .open {
 	    right: 0;	
-	    bottom: -267px;
+	    bottom: -219px;
     	background: white;
     	width: 363px;
     	display: block !important;
