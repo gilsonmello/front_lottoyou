@@ -206,6 +206,8 @@
         			toastr.error('Por favor, selecione os Jogos e a Bola Lottoyou.', 'Cartela incompleta');
         		} else if(this.ticket.choseGoldBall == false && this.empty == false) {
         			toastr.error('Por favor, selecione a Bola Lottoyou.', 'Cartela incompleta');
+        		} else if(this.ticket.choseGoldBall == false && this.complete == false) {
+        			toastr.error('Por favor, informe todos os Jogos e a Bola Lottoyou.', 'Cartela incompleta');
         		}
 
             });
