@@ -201,9 +201,10 @@
             $('.modal-ticket').on('hidden.bs.modal', (event) => {
         		if(this.ticket.complete == false && this.ticket.choseGoldBall) {
         			toastr.error('Por favor, informe todos os jogos.', 'Cartela incompleta');
-        		}
-        		if(this.ticket.choseGoldBall == false) {
-        			toastr.error('Por favor, selecione a Bola Lottoyou.', 'Bola Lottoyou');
+        		} else if(this.ticket.choseGoldBall == false && this.ticket.complete == false) {
+        			toastr.error('Por favor, selecione os Jogos e a Bola Lottoyou.', 'Cartela incompleta');
+        		} else if(this.ticket.choseGoldBall == false) {
+        			toastr.error('Por favor, selecione a Bola Lottoyou.', 'Cartela incompleta');
         		}
             });
 
