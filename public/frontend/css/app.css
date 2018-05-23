@@ -13065,10 +13065,6 @@ label.error {
   color: green;
 }
 
-.form-control {
-  text-align: left !important;
-}
-
 .cursor-pointer {
   cursor: pointer;
 }

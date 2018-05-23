@@ -16,6 +16,12 @@ class HistoricBalanceController extends Controller
         }
 
         $historicBalances->with([
+            'pagseguro' => function($queyr) {
+
+            },
+            'paypal' => function($queyr) {
+
+            },
             'order' => function($query) {
 
             },

@@ -157,6 +157,8 @@
 					$(this.$el).removeClass('complete');
 					$(this.$el).removeClass('incomplete');
 				}
+				
+    			this.$eventBus.$emit('updateData');
 			},
 			setCountdown(date) {
 				this.countdown(date, (d, h, m, s, distance) => {
@@ -177,6 +179,9 @@
     				this.setCountdown(date);
     			}, 1000);
 			}
+        },
+        beforeDestroy() {
+        	this.$eventBus.$off('updateData');
         },
         mounted: function() {
         	//Callback executado ao abrir modal para atualizar o ticket do modal

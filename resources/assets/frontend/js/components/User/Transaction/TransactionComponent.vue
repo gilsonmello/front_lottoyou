@@ -5,13 +5,13 @@
             <router-link class="nav-link" :to="{ name: 'users.account', params: {  } }">
                 {{ trans('strings.profile') }}
             </router-link>
-                <router-link class="nav-link" :to="{ name: 'users.games', params: {  } }">
+            <!-- <router-link class="nav-link" :to="{ name: 'users.games', params: {  } }">
                 {{ trans('strings.games') }}
-            </router-link>
-                <router-link class="nav-link active show" :to="{ name: 'users.transactions', params: {  } }">
+            </router-link> -->
+            <router-link class="nav-link active show" :to="{ name: 'users.transactions', params: {  } }">
                 {{ trans('strings.transactions') }}
             </router-link>
-                <router-link class="nav-link" :to="{ name: 'users.orders', params: {  } }">
+            <router-link class="nav-link" :to="{ name: 'users.orders', params: {  } }">
                 {{ trans('strings.orders') }}
             </router-link>
         </div>
@@ -120,8 +120,11 @@
                     <td v-else-if="balance.soccer_expert_bet">
                         <vc-soccer-expert :soccer_expert_bet="balance.soccer_expert_bet"></vc-soccer-expert>
                     </td> 
-                    <td v-else-if="balance.lottery_bet">
-                        <vc-lottery :lottery_bet="balance.lottery_bet"></vc-lottery>
+                    <td v-else-if="balance.pagseguro">
+                        <vc-pagseguro :pagseguro="balance.pagseguro"></vc-pagseguro>
+                    </td> 
+                    <td v-else-if="balance.paypal">
+                        <vc-paypal :paypal="balance.paypal"></vc-paypal>
                     </td> 
                     <td>
                         {{ trans('strings.'+balance.description) }}
@@ -152,6 +155,8 @@
     import VcScratchcard from './VcScratchcard'
     import VcSoccerExpert from './VcSoccerExpert'
     import VcLottery from './VcLottery'
+    import VcPaypal from './VcPaypal'
+    import VcPagseguro from './VcPagseguro'
     export default {
         methods: {
             confirmation(balance) {
@@ -249,7 +254,9 @@
             VcOrder,
             VcScratchcard,
             VcSoccerExpert,
-            VcLottery
+            VcLottery,
+            VcPaypal,
+            VcPagseguro
         },
         computed: {
             ...mapGetters([

@@ -95,6 +95,12 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
+                    	<button v-if="loading.paying" @click.prevent="" type="load" class="btn btn-md btn-primary">
+							<i class="fa fa-refresh fa-spin"></i>
+						</button>
+                    	<button @click="addToCart($event)" type="button" v-if="this.item.tickets.length > 0 && loading.paying == false" class="btn btn-primary">
+                            {{ trans('strings.pay_now') }}
+                        </button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">
                             {{ trans('strings.to_close') }}
                         </button>
@@ -124,7 +130,8 @@
         	return {
         		loading: {
 					component: true,
-					modalJackpotTable: false
+					modalJackpotTable: false,
+					paying: false,
 				},
 				item: {
 					soccer_expert: {},
@@ -163,6 +170,7 @@
 					let addSoccerExpertRequest = axios.create();
 
 					addSoccerExpertRequest.interceptors.request.use(config => {
+						this.loading.paying = true
 						$(event.target).find('[type="load"]').removeClass('hide');
 			        	$(event.target).find('[type="submit"]').addClass('hide');
 					  	return config;
@@ -175,6 +183,7 @@
 						
 					}).then(response => {
 						if(response.status === 200) {
+							this.loading.paying = false;
 							this.$store.dispatch('setItemSoccerExpert', item);
 			            	this.$router.push({
 								name: 'cart.index'
@@ -213,6 +222,7 @@
 						clearInterval(interval);
 						this.loading.component = false
 						this.item = item[0]
+
 					} else {
 
 					}

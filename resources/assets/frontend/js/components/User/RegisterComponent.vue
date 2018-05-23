@@ -67,7 +67,7 @@
 						</div>
 						<div class="col-lg-3 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
-								<label for="last_name">{{ trans('strings.nickname') }}*</label>
+								<label for="nickname">{{ trans('strings.user') }}*</label>
 							    <input v-model="nickname" required type="text" class="form-control" id="nickname" aria-describedby="nickname" :placeholder="trans('strings.nickname')">
 							    <div class="alert alert-danger" v-if="errors.nickname">
 								  	<div v-for="nickname in errors.nickname" >{{ nickname }}</div>

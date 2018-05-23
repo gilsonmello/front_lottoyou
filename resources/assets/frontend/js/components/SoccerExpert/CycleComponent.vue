@@ -37,8 +37,10 @@
                 return 'background-image: url('+background+')';
             },
             updateSoccerExpert() {
-
                 this.item.total = this.updateTotal();
+                this.$eventBus.$on('updateData', () => {
+                    this.item.total = this.updateTotal();
+                });
             },
             //Atualizando o total de todas as cartelas feitas
             updateTotal: function() {  

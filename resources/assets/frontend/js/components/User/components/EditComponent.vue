@@ -14,8 +14,9 @@
                 <div class="col-lg-3">
                     <img v-if="photo" :src="photo" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
                     <img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
-                    <label for="photo">Selecione a imagem do perfil</label>
+                    <label for="photo">Imagem do perfil (jpg ou png)</label>
                     <input accept="image/*" @change.prevent="changePhoto" type="file" name="photo" id="photo">
+                    <label>Tamanho de arquivo até 5mb*</label>
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
@@ -42,7 +43,7 @@
                         </div>
                         <div class="col-lg-3 col-12 col-sm-4 col-md-4">
                             <div class="form-group">
-                                <label for="nickname">{{ trans('strings.nickname') }}</label>
+                                <label for="nickname">{{ trans('strings.user') }}</label>
                                 <input disabled readonly v-model="nickname" type="text" class="form-control" id="nickname" aria-describedby="nickname" name="nickname" :placeholder="trans('strings.nickname')">
                             </div>
                         </div>
@@ -63,7 +64,7 @@
                                     <div v-for="number in errors.number" >{{ number }}</div>
                                 </div>
                                 <label for="number">{{ trans('strings.number') }}</label>
-                                <input v-model="number" type="text" class="form-control" id="number" aria-describedby="number" name="number" :placeholder="trans('strings.number')">
+                                <input v-model="number" type="number" class="form-control" id="number" aria-describedby="number" name="number" :placeholder="trans('strings.number')">
                             </div>
                         </div>
                         <div class="col-lg-2 col-2 col-sm-2 col-md-2">
@@ -71,8 +72,8 @@
                                 <div class="alert alert-danger" v-if="errors.cep">
                                     <div v-for="zip in errors.cep" >{{ cep }}</div>
                                 </div>
-                                <label for="cep">{{ trans('strings.zip') }}</label>
-                                <input v-model="cep" name="cep" type="text" class="form-control" id="cep" aria-describedby="cep" :placeholder="trans('strings.zip')">
+                                <label for="cep">{{ trans('strings.postal_code') }}</label>
+                                <input v-model="cep" name="cep" type="number" class="form-control" id="cep" aria-describedby="cep" :placeholder="trans('strings.zip')">
                             </div>
                         </div>
                         <div class="col-lg-4 col-12 col-sm-6 col-md-6">
@@ -141,7 +142,7 @@
                                     <div v-for="tell_phone in errors.tell_phone" >{{ tell_phone }}</div>
                                 </div>
                                 <label for="tell_phone">{{ trans('strings.tell_phone') }}</label>
-                                <input v-model="tell_phone" name="tell_phone" type="text" class="form-control" id="tell_phone" aria-describedby="tell_phone" :placeholder="trans('strings.tell_phone')">
+                                <input v-model="tell_phone" name="tell_phone" type="number" class="form-control" id="tell_phone" aria-describedby="tell_phone" :placeholder="trans('strings.tell_phone')">
                             </div>
                         </div>
                     </div>
@@ -219,18 +220,27 @@
                 var file = null;
                 var form = $('.user-edit');
                 file = event.currentTarget.files[0];
-                if(window.FileReader){
-                    if(file.type.indexOf('image') >= 0){
-                        var reader = new FileReader();
-                        reader.onprogress = function(evt) {
-                            
-                        };
-                        reader.onloadend = function(e){
-                            form.find('#user-edit-photo').attr('src', e.target.result);
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                }            
+                
+                var acceptFileTypes = /^image\/(jpg|jpeg|png)$/i;
+                if (!acceptFileTypes.test(file['type'])) {
+                    toastr.error(this.trans('strings.invalid_file'));
+                } else if(file.size > 5000000) {
+                    toastr.error(this.trans('strings.size_larger_than_allowed'));
+                } else {
+
+                    if(window.FileReader){
+                        if(file.type.indexOf('image') >= 0){
+                            var reader = new FileReader();
+                            reader.onprogress = function(evt) {
+                                
+                            };
+                            reader.onloadend = function(e){
+                                form.find('#user-edit-photo').attr('src', e.target.result);
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    }    
+                }        
             },
             handleEdit: function(event) {
                 var vm = this;
@@ -305,7 +315,7 @@
                 }).catch((error) => {
                     
                     this.errors = error.response.data.errors
-                    toastr.success(this.trans('alerts.users.update.error'));
+                    toastr.error(this.trans('alerts.users.update.error'));
                     $(this.$el).find('[type="load"]').addClass('hide');
                     $(this.$el).find('[type="submit"]').removeClass('hide');                    
                 });

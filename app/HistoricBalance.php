@@ -8,6 +8,8 @@ use App\HistoricBalanceSoccer;
 use App\HistoricBalanceDevolution;
 use App\HistoricBalanceLottery;
 use App\Order;
+use App\PagseguroOrder;
+use App\PaypalOrder;
 use App\Model\Frontend\ScratchCard;
 use App\Model\Frontend\SoccerExpertBet;
 use App\Model\Frontend\LotteryUser;
@@ -93,6 +95,16 @@ class HistoricBalance extends Model
     public function devolution() 
     {
         return $this->hasOne(HistoricBalanceDevolution::class, 'historic_balance_id');
+    }
+
+    public function pagseguro() 
+    {
+        return $this->belongsTo(PagseguroOrder::class, 'pagseguro_order_id');
+    }
+
+    public function paypal() 
+    {
+        return $this->belongsTo(PaypalOrder::class, 'paypal_order_id');
     }
 
     public function getCreatedAttribute($date) 

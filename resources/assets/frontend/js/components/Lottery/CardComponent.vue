@@ -41,7 +41,7 @@
 		</div>
 
 		<footer class="tickets-footer">
-			<router-link :to="{ name: 'lotteries.show', params: { id: lottery.id } }" class="btn btn-md btn-success">
+			<router-link :to="{ name: 'lotteries.show', params: { id: lottery.id } }" class="btn btn-md btn-primary">
 				{{ trans('strings.play_now') }}
 			</router-link>
 		</footer>

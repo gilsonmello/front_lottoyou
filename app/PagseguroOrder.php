@@ -49,6 +49,35 @@ class PagseguroOrder extends Model
         
     ];
 
+    public function getStatusAttribute()
+    {    
+        if($this->attributes['status'] == 1) {
+            return 'awaiting payment';
+        }   
+
+        if($this->attributes['status'] == 2) {
+            return 'in analysis';
+        }
+
+        if($this->attributes['status'] == 3) {
+            return 'pay';
+        }
+
+        if($this->attributes['status'] == 4) {
+            return 'available';
+        }
+
+        if($this->attributes['status'] == 5) {
+            return 'in dispute';
+        }
+
+        if($this->attributes['status'] == 6) {
+            return 'returned';
+        }
+
+        return 'canceled';
+    }
+
     public function balanceOrder() 
     {
         return $this->belongsTo(BalanceOrder::class, 'balance_order_id');

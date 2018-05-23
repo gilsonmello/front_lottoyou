@@ -148,6 +148,9 @@
 					$(this.$el).removeClass('incomplete');
 				}
 				
+				let value = parseFloat(this.ticket.valor);
+            	this.value = value.format(2, true);
+
 				this.$emit('updateSoccerExpert');
 			},
 			setCountdown(date, timeOut) {
@@ -178,8 +181,10 @@
 	            .on('hidden.bs.modal', (event) => {
 	                this.updateTicket();
 	            });
-	            
-            this.$set(this.ticket, 'choseGoldBall', false);
+    	
+    		if(this.ticket.choseGoldBall == undefined) {
+            	this.$set(this.ticket, 'choseGoldBall', false);
+    		}
             
             if(!this.ticket.gold_ball_game_id) {
             	this.$set(this.ticket, 'gold_ball_game_id', null);	

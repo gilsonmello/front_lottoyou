@@ -19,7 +19,7 @@
 			<div class="row">
 			  	<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 	                <div class="form-group">
-	                    <label for="nome">{{ trans('strings.name') }}</label>
+	                    <label for="nome">{{ trans('strings.ticket_name') }}</label>
 	                    <input v-model="query.nome" type="text" class="form-control" id="nome" aria-describedby="nome" name="nome" :placeholder="trans('strings.name')">
 	                </div>
 	            </div>

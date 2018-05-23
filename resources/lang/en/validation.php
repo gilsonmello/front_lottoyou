@@ -254,10 +254,10 @@ return [
                 'unique' => 'O Nome informado ja existe',
             ],
             'nickname' => [
-                'required' => 'O campo apelido é obrigatório',
-                'min' => 'Informe o apelido com no mínimo 3 letras',
-                'regex' => 'Informe o apelido somente com letras',
-                'unique' => 'O apelido informado já existe',
+                'required' => 'O campo usuário é obrigatório',
+                'min' => 'Informe o usuário com no mínimo 3 letras',
+                'regex' => 'Informe o usuário somente com letras',
+                'unique' => 'O usuário informado já existe',
             ],
             'last_name' => [
                 'required' => '',

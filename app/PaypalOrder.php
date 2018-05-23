@@ -49,6 +49,11 @@ class PaypalOrder extends Model
         
     ];
 
+    public function getStatusAttribute()
+    {    
+        return strtolower($this->status);
+    }
+
     public function balanceOrder() 
     {
         return $this->belongsTo(BalanceOrder::class, 'balance_order_id');

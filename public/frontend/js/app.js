@@ -85441,8 +85441,8 @@ var render = function() {
                       { staticClass: "col-lg-3 col-12 col-sm-4 col-md-4" },
                       [
                         _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "last_name" } }, [
-                            _vm._v(_vm._s(_vm.trans("strings.nickname")) + "*")
+                          _c("label", { attrs: { for: "nickname" } }, [
+                            _vm._v(_vm._s(_vm.trans("strings.user")) + "*")
                           ]),
                           _vm._v(" "),
                           _c("input", {
@@ -86119,7 +86119,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -86345,6 +86345,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -86354,14 +86355,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var file = null;
             var form = $('.user-edit');
             file = event.currentTarget.files[0];
-            if (window.FileReader) {
-                if (file.type.indexOf('image') >= 0) {
-                    var reader = new FileReader();
-                    reader.onprogress = function (evt) {};
-                    reader.onloadend = function (e) {
-                        form.find('#user-edit-photo').attr('src', e.target.result);
-                    };
-                    reader.readAsDataURL(file);
+
+            var acceptFileTypes = /^image\/(jpg|jpeg|png)$/i;
+            if (!acceptFileTypes.test(file['type'])) {
+                toastr.error(this.trans('strings.invalid_file'));
+            } else if (file.size > 5000000) {
+                toastr.error(this.trans('strings.size_larger_than_allowed'));
+            } else {
+
+                if (window.FileReader) {
+                    if (file.type.indexOf('image') >= 0) {
+                        var reader = new FileReader();
+                        reader.onprogress = function (evt) {};
+                        reader.onloadend = function (e) {
+                            form.find('#user-edit-photo').attr('src', e.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
                 }
             }
         },
@@ -86435,7 +86445,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (error) {
 
                 _this.errors = error.response.data.errors;
-                toastr.success(_this.trans('alerts.users.update.error'));
+                toastr.error(_this.trans('alerts.users.update.error'));
                 $(_this.$el).find('[type="load"]').addClass('hide');
                 $(_this.$el).find('[type="submit"]').removeClass('hide');
             });
@@ -86613,7 +86623,7 @@ var render = function() {
                     }),
                 _vm._v(" "),
                 _c("label", { attrs: { for: "photo" } }, [
-                  _vm._v("Selecione a imagem do perfil")
+                  _vm._v("Imagem do perfil (jpg ou png)")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -86629,7 +86639,9 @@ var render = function() {
                       _vm.changePhoto($event)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _c("label", [_vm._v("Tamanho de arquivo até 5mb*")])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-lg-9" }, [
@@ -86786,7 +86798,7 @@ var render = function() {
                     [
                       _c("div", { staticClass: "form-group" }, [
                         _c("label", { attrs: { for: "nickname" } }, [
-                          _vm._v(_vm._s(_vm.trans("strings.nickname")))
+                          _vm._v(_vm._s(_vm.trans("strings.user")))
                         ]),
                         _vm._v(" "),
                         _c("input", {
@@ -86904,7 +86916,7 @@ var render = function() {
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            type: "text",
+                            type: "number",
                             id: "number",
                             "aria-describedby": "number",
                             name: "number",
@@ -86940,7 +86952,7 @@ var render = function() {
                           : _vm._e(),
                         _vm._v(" "),
                         _c("label", { attrs: { for: "cep" } }, [
-                          _vm._v(_vm._s(_vm.trans("strings.zip")))
+                          _vm._v(_vm._s(_vm.trans("strings.postal_code")))
                         ]),
                         _vm._v(" "),
                         _c("input", {
@@ -86955,7 +86967,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             name: "cep",
-                            type: "text",
+                            type: "number",
                             id: "cep",
                             "aria-describedby": "cep",
                             placeholder: _vm.trans("strings.zip")
@@ -87322,7 +87334,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             name: "tell_phone",
-                            type: "text",
+                            type: "number",
                             id: "tell_phone",
                             "aria-describedby": "tell_phone",
                             placeholder: _vm.trans("strings.tell_phone")
@@ -87683,21 +87695,6 @@ var render = function() {
                   _vm._v(
                     "\n                    " +
                       _vm._s(_vm.trans("strings.profile")) +
-                      "\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link",
-                  attrs: { to: { name: "users.games", params: {} } }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.trans("strings.games")) +
                       "\n                "
                   )
                 ]
@@ -90972,6 +90969,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -91192,12 +91191,39 @@ var render = function() {
         _c("div", { staticClass: "row" }, [
           _c(
             "div",
-            { staticClass: "col-12" },
+            { staticClass: "col-lg-6" },
             [
               _c(
                 "router-link",
                 {
-                  staticClass: "btn btn-md btn-info",
+                  staticClass: "btn btn-md btn-info pull-right",
+                  attrs: { to: { name: "create_your_league" } },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n\t\t\t\t\t" +
+                      _vm._s(_vm.trans("strings.create_your_own_league")) +
+                      "\n\t\t\t\t"
+                  )
+                ]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-6 col-lg-6" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-md btn-info pull-right",
                   attrs: { to: { name: "how_to_play_soccer_expert" } },
                   on: {
                     click: function($event) {
@@ -91211,26 +91237,6 @@ var render = function() {
                       _vm._s(_vm.trans("strings.how_to_play")) +
                       " " +
                       _vm._s(_vm.trans("strings.soccer_expert")) +
-                      "\n\t\t\t\t"
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-md btn-info",
-                  attrs: { to: { name: "create_your_league" } },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                    }
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n\t\t\t\t\t" +
-                      _vm._s(_vm.trans("strings.create_your_own_league")) +
                       "\n\t\t\t\t"
                   )
                 ]
@@ -91879,7 +91885,7 @@ var render = function() {
         _c(
           "router-link",
           {
-            staticClass: "btn btn-md btn-success",
+            staticClass: "btn btn-md btn-primary",
             attrs: {
               to: { name: "lotteries.show", params: { id: _vm.lottery.id } }
             }
@@ -93620,21 +93626,6 @@ var render = function() {
                 _c(
                   "router-link",
                   {
-                    staticClass: "nav-link active show",
-                    attrs: { to: { name: "users.games", params: {} } }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(_vm.trans("strings.games")) +
-                        "\n                    "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
                     staticClass: "nav-link",
                     attrs: { to: { name: "users.transactions", params: {} } }
                   },
@@ -94105,21 +94096,6 @@ var render = function() {
                 _vm._v(
                   "\n                        " +
                     _vm._s(_vm.trans("strings.profile")) +
-                    "\n                    "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              {
-                staticClass: "nav-link active show",
-                attrs: { to: { name: "users.games", params: {} } }
-              },
-              [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(_vm.trans("strings.games")) +
                     "\n                    "
                 )
               ]
@@ -95065,21 +95041,6 @@ var render = function() {
                     _vm._v(
                       "\n                    " +
                         _vm._s(_vm.trans("strings.profile")) +
-                        "\n                "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "nav-link",
-                    attrs: { to: { name: "users.games", params: {} } }
-                  },
-                  [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.trans("strings.games")) +
                         "\n                "
                     )
                   ]
@@ -97733,21 +97694,6 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "nav-link",
-                    attrs: { to: { name: "users.games", params: {} } }
-                  },
-                  [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm.trans("strings.games")) +
-                        "\n                "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "nav-link",
                     attrs: { to: { name: "users.transactions", params: {} } }
                   },
                   [
@@ -98161,6 +98107,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__VcSoccerExpert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__VcSoccerExpert__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__VcLottery__ = __webpack_require__(416);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__VcLottery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__VcLottery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__VcPaypal__ = __webpack_require__(686);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__VcPaypal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__VcPaypal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__VcPagseguro__ = __webpack_require__(691);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__VcPagseguro___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__VcPagseguro__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -98308,6 +98258,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+
+
 
 
 
@@ -98415,7 +98370,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         VcOrder: __WEBPACK_IMPORTED_MODULE_4__VcOrder___default.a,
         VcScratchcard: __WEBPACK_IMPORTED_MODULE_5__VcScratchcard___default.a,
         VcSoccerExpert: __WEBPACK_IMPORTED_MODULE_6__VcSoccerExpert___default.a,
-        VcLottery: __WEBPACK_IMPORTED_MODULE_7__VcLottery___default.a
+        VcLottery: __WEBPACK_IMPORTED_MODULE_7__VcLottery___default.a,
+        VcPaypal: __WEBPACK_IMPORTED_MODULE_8__VcPaypal___default.a,
+        VcPagseguro: __WEBPACK_IMPORTED_MODULE_9__VcPagseguro___default.a
     },
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['auth']))
 });
@@ -99048,21 +99005,6 @@ var render = function() {
             _c(
               "router-link",
               {
-                staticClass: "nav-link",
-                attrs: { to: { name: "users.games", params: {} } }
-              },
-              [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.trans("strings.games")) +
-                    "\n            "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              {
                 staticClass: "nav-link active show",
                 attrs: { to: { name: "users.transactions", params: {} } }
               },
@@ -99360,19 +99302,27 @@ var render = function() {
                                 ],
                                 1
                               )
-                            : balance.lottery_bet
+                            : balance.pagseguro
                               ? _c(
                                   "td",
                                   [
-                                    _c("vc-lottery", {
-                                      attrs: {
-                                        lottery_bet: balance.lottery_bet
-                                      }
+                                    _c("vc-pagseguro", {
+                                      attrs: { pagseguro: balance.pagseguro }
                                     })
                                   ],
                                   1
                                 )
-                              : _vm._e(),
+                              : balance.paypal
+                                ? _c(
+                                    "td",
+                                    [
+                                      _c("vc-paypal", {
+                                        attrs: { paypal: balance.paypal }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                : _vm._e(),
                       _vm._v(" "),
                       _c("td", [
                         _vm._v(
@@ -99653,6 +99603,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -99669,7 +99625,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		return {
 			loading: {
 				component: true,
-				modalJackpotTable: false
+				modalJackpotTable: false,
+				paying: false
 			},
 			item: {
 				soccer_expert: {},
@@ -99708,6 +99665,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				var addSoccerExpertRequest = axios.create();
 
 				addSoccerExpertRequest.interceptors.request.use(function (config) {
+					_this.loading.paying = true;
 					$(event.target).find('[type="load"]').removeClass('hide');
 					$(event.target).find('[type="submit"]').addClass('hide');
 					return config;
@@ -99720,6 +99678,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 				}).then(function (response) {
 					if (response.status === 200) {
+						_this.loading.paying = false;
 						_this.$store.dispatch('setItemSoccerExpert', item);
 						_this.$router.push({
 							name: 'cart.index'
@@ -99946,8 +99905,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return 'background-image: url(' + background + ')';
         },
         updateSoccerExpert: function updateSoccerExpert() {
+            var _this = this;
 
             this.item.total = this.updateTotal();
+            this.$eventBus.$on('updateData', function () {
+                _this.item.total = _this.updateTotal();
+            });
         },
 
         //Atualizando o total de todas as cartelas feitas
@@ -100164,6 +100127,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				$(this.$el).removeClass('incomplete');
 			}
 
+			var value = parseFloat(this.ticket.valor);
+			this.value = value.format(2, true);
+
 			this.$emit('updateSoccerExpert');
 		},
 		setCountdown: function setCountdown(date, timeOut) {
@@ -100200,7 +100166,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			_this3.updateTicket();
 		});
 
-		this.$set(this.ticket, 'choseGoldBall', false);
+		if (this.ticket.choseGoldBall == undefined) {
+			this.$set(this.ticket, 'choseGoldBall', false);
+		}
 
 		if (!this.ticket.gold_ball_game_id) {
 			this.$set(this.ticket, 'gold_ball_game_id', null);
@@ -100867,6 +100835,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				$(this.$el).removeClass('complete');
 				$(this.$el).removeClass('incomplete');
 			}
+
+			this.$eventBus.$emit('updateData');
 		},
 		setCountdown: function setCountdown(date) {
 			var _this2 = this;
@@ -100892,6 +100862,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}, 1000);
 		}
 	},
+	beforeDestroy: function beforeDestroy() {
+		this.$eventBus.$off('updateData');
+	},
+
 	mounted: function mounted() {
 		var _this4 = this;
 
@@ -101979,6 +101953,45 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
+                      _vm.loading.paying
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-md btn-primary",
+                              attrs: { type: "load" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      this.item.tickets.length > 0 &&
+                      _vm.loading.paying == false
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.addToCart($event)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(_vm.trans("strings.pay_now")) +
+                                  "\n                        "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
                       _c(
                         "button",
                         {
@@ -104159,7 +104172,7 @@ var render = function() {
               _c("div", { staticClass: "col-lg-4 col-12 col-sm-4 col-md-4" }, [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "nome" } }, [
-                    _vm._v(_vm._s(_vm.trans("strings.name")))
+                    _vm._v(_vm._s(_vm.trans("strings.ticket_name")))
                   ]),
                   _vm._v(" "),
                   _c("input", {
@@ -105374,7 +105387,7 @@ var render = function() {
               _c("div", { staticClass: "col-lg-4 col-12 col-sm-4 col-md-4" }, [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "nickname" } }, [
-                    _vm._v(_vm._s(_vm.trans("strings.nickname")))
+                    _vm._v(_vm._s(_vm.trans("strings.user")))
                   ]),
                   _vm._v(" "),
                   _c("input", {
@@ -124168,6 +124181,303 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 679 */,
+/* 680 */,
+/* 681 */,
+/* 682 */,
+/* 683 */,
+/* 684 */,
+/* 685 */,
+/* 686 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(687)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(689)
+/* template */
+var __vue_template__ = __webpack_require__(690)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-712ce849"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/User/Transaction/VcPaypal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-712ce849", Component.options)
+  } else {
+    hotAPI.reload("data-v-712ce849", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 687 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(688);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("39554508", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-712ce849\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcPaypal.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-712ce849\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcPaypal.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 688 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 689 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(4);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['paypal'],
+	mounted: function mounted() {}
+});
+
+/***/ }),
+/* 690 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._v(
+      "\n\t" +
+        _vm._s(_vm.trans("strings.deposit")) +
+        " #" +
+        _vm._s(_vm.paypal.balance_order_id) +
+        ", " +
+        _vm._s(_vm.trans("strings." + _vm.paypal.status)) +
+        "\n"
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-712ce849", module.exports)
+  }
+}
+
+/***/ }),
+/* 691 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(692)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(694)
+/* template */
+var __vue_template__ = __webpack_require__(695)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-a80ba5a6"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/frontend/js/components/User/Transaction/VcPagseguro.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a80ba5a6", Component.options)
+  } else {
+    hotAPI.reload("data-v-a80ba5a6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 692 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(693);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("1cce131e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a80ba5a6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcPagseguro.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a80ba5a6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./VcPagseguro.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 693 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 694 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(4);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['pagseguro'],
+	mounted: function mounted() {}
+});
+
+/***/ }),
+/* 695 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._v(
+      "\n\t" +
+        _vm._s(_vm.trans("strings.deposit")) +
+        " #" +
+        _vm._s(_vm.pagseguro.balance_order_id) +
+        ", " +
+        _vm._s(_vm.trans("strings." + _vm.pagseguro.status)) +
+        "\n"
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a80ba5a6", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
