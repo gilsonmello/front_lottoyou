@@ -246,11 +246,14 @@
             this.$eventBus.$on('openModal',  (ticket) => {
                 //Pegando o ticket passado como parâmetro
                 this.ticket = ticket
+                $('.modal-ticket').off('hidden.bs.modal');
                 //Abrindo o modal
                 $('.modal-ticket').on('hidden.bs.modal', (event) => {
 	            	this.ticket = null
+	            	this.$eventBus.$emit('closeModal');
 	            }).modal('toggle');
             }); 
+
     	},
     	beforeDestroy() {
             this.$eventBus.$off('openModal');

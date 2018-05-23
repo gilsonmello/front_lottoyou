@@ -122,7 +122,6 @@
 				});
 
 				if(this.ticket.choseGoldBall == false) {
-					toast.error('Bola Lottoyou', 'Por favor selecione a bola Lottoyou');
 					complete = false;
 				}
 
@@ -145,7 +144,6 @@
 					}
 
 				} else {
-					toast.error('Cartela Incompleta', 'Por favor complete a cartela');
 					this.ticket.complete = false;
 					$(this.$el).addClass('incomplete');
 					$(this.$el).removeClass('complete');
@@ -158,6 +156,12 @@
 				if(empty) {
 					$(this.$el).removeClass('complete');
 					$(this.$el).removeClass('incomplete');
+				}
+
+				//Se a rodada está vazia
+				if(empty && this.ticket.choseGoldBall) {
+					$(this.$el).addClass('incomplete');
+					$(this.$el).removeClass('complete');
 				}
 				
     			this.$eventBus.$emit('updateData');
@@ -191,7 +195,17 @@
 				.on('shown.bs.modal', (event) => {
 					this.init();
 					this.updateTicket();
-				})			
+				})	
+
+            //Abrindo o modal
+            $('.modal-ticket').on('hidden.bs.modal', (event) => {
+        		if(this.ticket.complete == false && this.ticket.choseGoldBall) {
+        			toastr.error('Por favor, informe todos os jogos.', 'Cartela incompleta');
+        		}
+        		if(this.ticket.choseGoldBall == false) {
+        			toastr.error('Por favor, selecione a Bola Lottoyou.', 'Bola Lottoyou');
+        		}
+            });
 
 			let value = parseFloat(this.ticket.valor);
             this.value = value.format(2, true);

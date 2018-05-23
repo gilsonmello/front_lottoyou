@@ -177,10 +177,9 @@
         	this.init();
 
         	//Escutando o close do modal, para atualizar os tickets na tela do usuário
-            $('.modal-ticket')
-	            .on('hidden.bs.modal', (event) => {
-	                this.updateTicket();
-	            });
+            this.$eventBus.$on('closeModal', () => {
+            	this.updateTicket();
+            });
     	
     		if(this.ticket.choseGoldBall == undefined) {
             	this.$set(this.ticket, 'choseGoldBall', false);
