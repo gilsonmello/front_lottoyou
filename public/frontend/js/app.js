@@ -85127,7 +85127,10 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c(
                 "div",
-                { staticClass: "col-lg-8 col-12 col-sm-12 col-md-12" },
+                {
+                  staticClass: "col-lg-9 col-12 col-sm-12 col-md-12",
+                  staticStyle: { "padding-right": "30px" }
+                },
                 [
                   _c("div", { staticClass: "row" }, [
                     _c(
@@ -85940,7 +85943,12 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "col-lg-4 col-12 col-md-4 col-sm-12 text-center"
+                  staticClass: "col-lg-3 col-12 col-md-4 col-sm-12 text-right",
+                  staticStyle: {
+                    "padding-left": "0px",
+                    "padding-right": "0",
+                    "margin-left": "-15px"
+                  }
                 },
                 [
                   _c("img", {
