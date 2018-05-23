@@ -20,7 +20,9 @@
             </div>
         </div>
 
-        <br>
+        <h3 class="page-header">
+            {{ trans('strings.games') }}
+        </h3>
 
         <div class="table text-center">
             <div class="row table-head">

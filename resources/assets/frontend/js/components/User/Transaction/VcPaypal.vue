@@ -4,7 +4,7 @@
 
 <template>
 	<div>
-		{{ trans('strings.deposit') }} #{{ paypal.balance_order_id }}, {{ trans('strings.'+paypal.status) }}
+		{{ trans('strings.deposit') }} #{{ paypal.balance_order_id }}, {{ trans('strings.'+paypal.payment_status) }}
 	</div>
 </template>
 

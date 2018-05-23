@@ -97423,7 +97423,7 @@ var render = function() {
         " #" +
         _vm._s(_vm.paypal.balance_order_id) +
         ", " +
-        _vm._s(_vm.trans("strings." + _vm.paypal.status)) +
+        _vm._s(_vm.trans("strings." + _vm.paypal.payment_status)) +
         "\n"
     )
   ])
@@ -123121,6 +123121,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -123286,7 +123288,9 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("br"),
+        _c("h3", { staticClass: "page-header" }, [
+          _vm._v("\n        " + _vm._s(_vm.trans("strings.games")) + "\n    ")
+        ]),
         _vm._v(" "),
         _c(
           "div",

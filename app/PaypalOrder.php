@@ -49,9 +49,9 @@ class PaypalOrder extends Model
         
     ];
 
-    public function getStatusAttribute()
+    public function getPaymentStatusAttribute()
     {    
-        return strtolower($this->status);
+        return strtolower($this->attributes['payment_status']);
     }
 
     public function balanceOrder() 
