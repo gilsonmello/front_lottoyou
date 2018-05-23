@@ -235,14 +235,16 @@
 						name: 'home'
 					});
 
-					var header = $('.header');
-					$('body').css({
-		    			'padding-top': header[0].clientHeight - 1
-			    	});
-			    	
-			    	if(header.length > 0){
-						clearInterval(time);
-					}
+					let time = setInterval(() => {
+						if(this.auth == null) {
+							var header = $('.header');
+							$('body').css({
+				    			'padding-top': header[0].clientHeight - 1
+					    	});
+					    	clearInterval(time);
+				    	}
+					});
+					
 				}
 			},
 			login() {

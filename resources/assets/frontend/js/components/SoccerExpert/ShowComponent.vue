@@ -64,11 +64,11 @@
 	    	<hr>
 			<div class="row">
 				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-					<button type="submit" class="btn btn-md btn-primary pull-right">
-						{{ trans('strings.add_to_cart') }}
-					</button>
-					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-primary">
+					<button v-if="loading.paying" @click.prevent="" type="load" class="pull-right btn btn-md btn-primary">
 						<i class="fa fa-refresh fa-spin"></i>
+					</button>
+					<button v-else type="submit" class="btn btn-md btn-primary pull-right">
+						{{ trans('strings.add_to_cart') }}
 					</button>
 					<span class="pull-right price">
 						$ <span class="value" v-if="item.total > 0">
@@ -85,7 +85,10 @@
             <div class="modal-dialog modal-xl">
                 <div class="modal-content" v-if="ticket != null">
                     <!-- Modal Header -->
-                    <div class="modal-header" style="border-bottom: none;">
+                    <div class="modal-header" style="border-bottom: none;" v-if="loading.paying">
+                    	<button type="button" class="close">&nbsp;</button>
+                    </div>
+                    <div class="modal-header" style="border-bottom: none;" v-else>
                     	<button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
@@ -98,10 +101,10 @@
                     	<button v-if="loading.paying" @click.prevent="" type="load" class="btn btn-md btn-primary">
 							<i class="fa fa-refresh fa-spin"></i>
 						</button>
-                    	<button @click="addToCart($event)" type="button" v-if="this.item.tickets.length > 0 && loading.paying == false" class="btn btn-primary">
+                    	<button @click="validate($event)" type="button" v-if="item.tickets.length > 0 && loading.paying == false && auth && auth.balance.value > parseFloat(ticket.valor)" class="btn btn-primary">
                             {{ trans('strings.pay_now') }}
                         </button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        <button v-if="!loading.paying" type="button" class="btn btn-danger" data-dismiss="modal">
                             {{ trans('strings.to_close') }}
                         </button>
                     </div>
@@ -151,6 +154,92 @@
         	backgroundModal(background) {
         		return 'background-image: url('+background+'); background-size: 100% 100%; background-repeat: no-repeat;';
         	},
+        	validate(event) {
+
+        		$(".modal-ticket").modal({
+			        keyboard: false,
+		            backdrop: 'static'
+			    });
+
+        		this.loading.paying = true;
+
+        		var item = {
+					hash: this.item.hash,
+					total: this.item.total,
+					soccer_expert: this.item.soccer_expert,
+					tickets: this.item.tickets,
+				};
+
+				//Se não completou nenhuma rodada
+				if(this.item.tickets.length == 0) {
+					this.$store.dispatch('removeItemSoccerExpert', item);
+					alert('Faça pelo menos um jogo');
+				} else {
+					
+					this.$store.dispatch('setItemSoccerExpert', item);
+				
+					var validateRequest = axios.create();
+
+					validateRequest.interceptors.request.use(config => {
+			          	return config;
+					});
+
+					validateRequest.post(
+						routes.carts.validate, 
+						this.purchase, 
+						{}
+					).then(response => {
+						if(response.status === 200) {
+							this.fastBuy();
+						}
+					}).catch((error) => {
+						toastr.error(
+							error.response.data.msg,
+							this.trans('strings.error')
+						)
+						this.loading.paying = false;
+					});		
+				}
+			},
+        	fastBuy(event) {
+
+				var completePurchaseRequest = axios.create();
+
+				completePurchaseRequest.interceptors.request.use(config => {					
+		          	return config;
+				});
+
+				this.purchase['user_id'] = this.auth.id;
+
+				completePurchaseRequest.post(
+					routes.carts.complete_purchase, 
+					this.purchase, 
+					{}
+				).then(response => {
+					if(response.status === 200) {
+						this.refreshAuthPromise()
+							.then((response) => {
+								if (response.status === 200) {
+									toastr.success(
+										this.trans('strings.successful_purchase'),
+										this.trans('strings.buy'),
+									);
+									window.localStorage.setItem('authUser', JSON.stringify(response.data))
+									this.$store.dispatch('setUserObject', response.data);
+									this.$store.dispatch('clearPurchase');
+									this.$router.push({
+										name: 'users.transactions'
+									});	
+								}								
+							}).catch((error) => {
+
+							});
+						
+					}
+				}).catch((error) => {
+					
+				});		
+			},
         	addToCart(event) {
         		
 				var item = {
@@ -171,9 +260,7 @@
 
 					addSoccerExpertRequest.interceptors.request.use(config => {
 						this.loading.paying = true
-						$(event.target).find('[type="load"]').removeClass('hide');
-			        	$(event.target).find('[type="submit"]').addClass('hide');
-					  	return config;
+						return config;
 					});
 
 					addSoccerExpertRequest.post(routes.carts.add_soccer_experts, {
@@ -190,6 +277,7 @@
 							})
 						}
 			        }).catch((error) => {
+			        	this.loading.paying = false;
 			        	toast.error('Erro ao adicionar item', 'Por favor tente novamente');
 			        })	
 				}
@@ -251,7 +339,11 @@
                 $('.modal-ticket').on('hidden.bs.modal', (event) => {
 	            	this.ticket = null
 	            	this.$eventBus.$emit('closeModal');
-	            }).modal('toggle');
+	            }).modal({
+	            	show: true,
+	            	keyboard: false,
+		            backdrop: 'static'
+	            });
             }); 
 
     	},

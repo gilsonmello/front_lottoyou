@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'successful_purchase' => 'Compra realizada com sucesso',
     'buy' => 'Compra',
     'buy_soccer_expert' => 'Compra soccer expert',
     'buy_scratch_card' => 'Compra raspadinha',

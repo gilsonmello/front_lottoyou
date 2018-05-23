@@ -125,16 +125,20 @@
 					var access_token = JSON.parse(window.localStorage.getItem('access_token'));
 					access_token = access_token != null ? access_token : null;
 
-					//Se a rota depende de login
-					if(to.meta.requiresAuth == true) {
+				    if(to.meta.requiresAuth == true && access_token) {
+				    	next();
+				    }
+
+				    //Se a rota depende de login
+					if(to.meta.requiresAuth == true && access_token == null) {
 
 						//Verificando se é diferente da rota para edição de conta do usuário
 						//Pois se não o fizer, a requisição será executada 2 vezes, porque
 						//Dentro do component UserAcount é executada uma requisição para pegar os dados
 						//Do usuário atualizado
-						if(to.name != 'users.account') {					
+						/*if(to.name != 'users.account') {					
 
-							/*let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+							let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
 							refresh_token = refresh_token != null ? refresh_token : '';
 
 							var loginRequest = axios.create();
@@ -167,31 +171,33 @@
 								next({
 					                name: 'login'
 					            });
-			                });*/
+			                });
 			            } else {
 			            	//Se a rota não for para o component UserAccount,
 			            	//Verifica se o usuário está logado
 			            	//Se estiver logado, deixa passar,
 			            	//Se não, redireciona para o login
+
+			            	console.log(access_token)
 				            if(access_token) {
 					            next()
 					        } else {
-					            next({
-					                name: 'login'
-					            })
+					            toastr.info('Você já está logado.');
+						        next({
+						            name: 'home'
+						        });
 					        }
-					    }
+					    }*/
+
+					    toastr.info('Você precisa está logado.');
+				        next(false);
+				        this.loading.component = false;
+  					} 
+
+				    if(!to.meta.requiresAuth) {
+				    	next();
 				    }
 
-				    //Se estou logado e estou tentando acessar a rota de login
-			        if(to.name == 'login' && this.authUser) {
-				        toastr.info('Você já está logado.');
-				        next({
-				            name: 'home'
-				        });
-				    } else{
-				        next();
-				    }
 				});
 			}
 		},

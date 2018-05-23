@@ -115,6 +115,7 @@
 	</div>
 </template>
 <script>
+	import {mapGetters} from 'vuex'
 	import {routes} from '../api_routes'
 	import LoadComponent from './Load'
 	export default {
@@ -131,6 +132,11 @@
 		watch: {
 
 		},
+		computed: {
+            ...mapGetters([
+                'auth'
+            ])
+        },
 		mounted: function() {
 			this.loading.component = false;
 			var interval = setInterval(() => {
@@ -199,6 +205,17 @@
 						window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
 
 						this.$router.push({name: 'users.account'});
+
+						let time = setInterval(() => {
+							if(this.auth) {
+								var header = $('.header');
+								$('body').css({
+					    			'padding-top': header[0].clientHeight - 1
+						    	});
+						    	clearInterval(time);
+					    	}
+						});
+
 			        	/*
 			        	var access_token = response.data.access_token
               			var refresh_token = response.data.refresh_token

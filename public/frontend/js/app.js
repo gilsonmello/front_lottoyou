@@ -83086,7 +83086,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		this.loading.component = true;
 	},
 	methods: {},
-
 	created: function created() {},
 	mounted: function mounted() {
 		this.loading.component = false;
@@ -84059,9 +84058,12 @@ exports.push([module.i, "\n.login-form[data-v-253114e0] {\n}\n.view-password[dat
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Load__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_routes__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Load__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -84178,6 +84180,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -84193,6 +84196,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		};
 	},
 	watch: {},
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['auth'])),
 	mounted: function mounted() {
 		var _this = this;
 
@@ -84251,7 +84255,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				return config;
 			});
 
-			loginRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].auth.login, qs.stringify(data)).then(function (response) {
+			loginRequest.post(__WEBPACK_IMPORTED_MODULE_1__api_routes__["a" /* routes */].auth.login, qs.stringify(data)).then(function (response) {
 
 				if (response.status === 200) {
 
@@ -84262,6 +84266,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
 
 					_this2.$router.push({ name: 'users.account' });
+
+					var time = setInterval(function () {
+						if (_this2.auth) {
+							var header = $('.header');
+							$('body').css({
+								'padding-top': header[0].clientHeight - 1
+							});
+							clearInterval(time);
+						}
+					});
+
 					/*
      var access_token = response.data.access_token
        			var refresh_token = response.data.refresh_token
@@ -84303,7 +84318,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	activated: function activated() {},
 	components: {
-		LoadComponent: __WEBPACK_IMPORTED_MODULE_1__Load___default.a
+		LoadComponent: __WEBPACK_IMPORTED_MODULE_2__Load___default.a
 	}
 });
 
@@ -98078,6 +98093,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -98115,8 +98133,76 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		backgroundModal: function backgroundModal(background) {
 			return 'background-image: url(' + background + '); background-size: 100% 100%; background-repeat: no-repeat;';
 		},
-		addToCart: function addToCart(event) {
+		validate: function validate(event) {
 			var _this = this;
+
+			$(".modal-ticket").modal({
+				keyboard: false,
+				backdrop: 'static'
+			});
+
+			this.loading.paying = true;
+
+			var item = {
+				hash: this.item.hash,
+				total: this.item.total,
+				soccer_expert: this.item.soccer_expert,
+				tickets: this.item.tickets
+			};
+
+			//Se não completou nenhuma rodada
+			if (this.item.tickets.length == 0) {
+				this.$store.dispatch('removeItemSoccerExpert', item);
+				alert('Faça pelo menos um jogo');
+			} else {
+
+				this.$store.dispatch('setItemSoccerExpert', item);
+
+				var validateRequest = axios.create();
+
+				validateRequest.interceptors.request.use(function (config) {
+					return config;
+				});
+
+				validateRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.validate, this.purchase, {}).then(function (response) {
+					if (response.status === 200) {
+						_this.fastBuy();
+					}
+				}).catch(function (error) {
+					toastr.error(error.response.data.msg, _this.trans('strings.error'));
+					_this.loading.paying = false;
+				});
+			}
+		},
+		fastBuy: function fastBuy(event) {
+			var _this2 = this;
+
+			var completePurchaseRequest = axios.create();
+
+			completePurchaseRequest.interceptors.request.use(function (config) {
+				return config;
+			});
+
+			this.purchase['user_id'] = this.auth.id;
+
+			completePurchaseRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.complete_purchase, this.purchase, {}).then(function (response) {
+				if (response.status === 200) {
+					_this2.refreshAuthPromise().then(function (response) {
+						if (response.status === 200) {
+							toastr.success(_this2.trans('strings.successful_purchase'), _this2.trans('strings.buy'));
+							window.localStorage.setItem('authUser', JSON.stringify(response.data));
+							_this2.$store.dispatch('setUserObject', response.data);
+							_this2.$store.dispatch('clearPurchase');
+							_this2.$router.push({
+								name: 'users.transactions'
+							});
+						}
+					}).catch(function (error) {});
+				}
+			}).catch(function (error) {});
+		},
+		addToCart: function addToCart(event) {
+			var _this3 = this;
 
 			var item = {
 				hash: this.item.hash,
@@ -98134,9 +98220,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				var addSoccerExpertRequest = axios.create();
 
 				addSoccerExpertRequest.interceptors.request.use(function (config) {
-					_this.loading.paying = true;
-					$(event.target).find('[type="load"]').removeClass('hide');
-					$(event.target).find('[type="submit"]').addClass('hide');
+					_this3.loading.paying = true;
 					return config;
 				});
 
@@ -98147,47 +98231,48 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 				}).then(function (response) {
 					if (response.status === 200) {
-						_this.loading.paying = false;
-						_this.$store.dispatch('setItemSoccerExpert', item);
-						_this.$router.push({
+						_this3.loading.paying = false;
+						_this3.$store.dispatch('setItemSoccerExpert', item);
+						_this3.$router.push({
 							name: 'cart.index'
 						});
 					}
 				}).catch(function (error) {
+					_this3.loading.paying = false;
 					toast.error('Erro ao adicionar item', 'Por favor tente novamente');
 				});
 			}
 		},
 		showRequest: function showRequest() {
-			var _this2 = this;
+			var _this4 = this;
 
 			var showRequest = axios.create();
 			var id = this.$route.params.id;
 
 			showRequest.interceptors.request.use(function (config) {
-				_this2.loading.component = true;
+				_this4.loading.component = true;
 				return config;
 			});
 			showRequest.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].soccer_experts.show.replace('{id}', id), {}, {}).then(function (response) {
 				if (response.status === 200) {
-					_this2.loading.component = false;
-					_this2.item.hash = _this2.makeid();
-					_this2.item.soccer_expert = response.data;
+					_this4.loading.component = false;
+					_this4.item.hash = _this4.makeid();
+					_this4.item.soccer_expert = response.data;
 				}
 			}).catch(function (error) {});
 		},
 		showSoccerExpert: function showSoccerExpert() {
-			var _this3 = this;
+			var _this5 = this;
 
 			var interval = setInterval(function () {
-				var item = _this3.purchase.soccer_expert.items.filter(function (val) {
-					return _this3.$route.params.hash == val.hash;
+				var item = _this5.purchase.soccer_expert.items.filter(function (val) {
+					return _this5.$route.params.hash == val.hash;
 				});
 
 				if (item.length > 0) {
 					clearInterval(interval);
-					_this3.loading.component = false;
-					_this3.item = item[0];
+					_this5.loading.component = false;
+					_this5.item = item[0];
 				} else {}
 			});
 		},
@@ -98204,20 +98289,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 	},
 	mounted: function mounted() {
-		var _this4 = this;
+		var _this6 = this;
 
 		this.init();
 
 		//Escutando evento, que será executado pelo TicektComponent
 		this.$eventBus.$on('openModal', function (ticket) {
 			//Pegando o ticket passado como parâmetro
-			_this4.ticket = ticket;
+			_this6.ticket = ticket;
 			$('.modal-ticket').off('hidden.bs.modal');
 			//Abrindo o modal
 			$('.modal-ticket').on('hidden.bs.modal', function (event) {
-				_this4.ticket = null;
-				_this4.$eventBus.$emit('closeModal');
-			}).modal('toggle');
+				_this6.ticket = null;
+				_this6.$eventBus.$emit('closeModal');
+			}).modal({
+				show: true,
+				keyboard: false,
+				backdrop: 'static'
+			});
 		});
 	},
 	beforeDestroy: function beforeDestroy() {
@@ -100350,34 +100439,34 @@ var render = function() {
                     "div",
                     { staticClass: "col-lg-12 col-12 col-md-12 col-sm-12" },
                     [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-md btn-primary pull-right",
-                          attrs: { type: "submit" }
-                        },
-                        [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t" +
-                              _vm._s(_vm.trans("strings.add_to_cart")) +
-                              "\n\t\t\t\t\t"
+                      _vm.loading.paying
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "pull-right btn btn-md btn-primary",
+                              attrs: { type: "load" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
                           )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "hide pull-right btn btn-md btn-primary",
-                          attrs: { type: "load" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
-                      ),
+                        : _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-md btn-primary pull-right",
+                              attrs: { type: "submit" }
+                            },
+                            [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t" +
+                                  _vm._s(_vm.trans("strings.add_to_cart")) +
+                                  "\n\t\t\t\t\t"
+                              )
+                            ]
+                          ),
                       _vm._v(" "),
                       _c("span", { staticClass: "pull-right price" }, [
                         _vm._v("\n\t\t\t\t\t\t$ "),
@@ -100414,23 +100503,44 @@ var render = function() {
             _c("div", { staticClass: "modal-dialog modal-xl" }, [
               _vm.ticket != null
                 ? _c("div", { staticClass: "modal-content" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "modal-header",
-                        staticStyle: { "border-bottom": "none" }
-                      },
-                      [
-                        _c(
-                          "button",
+                    _vm.loading.paying
+                      ? _c(
+                          "div",
                           {
-                            staticClass: "close",
-                            attrs: { type: "button", "data-dismiss": "modal" }
+                            staticClass: "modal-header",
+                            staticStyle: { "border-bottom": "none" }
                           },
-                          [_vm._v("×")]
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "close",
+                                attrs: { type: "button" }
+                              },
+                              [_vm._v(" ")]
+                            )
+                          ]
                         )
-                      ]
-                    ),
+                      : _c(
+                          "div",
+                          {
+                            staticClass: "modal-header",
+                            staticStyle: { "border-bottom": "none" }
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "close",
+                                attrs: {
+                                  type: "button",
+                                  "data-dismiss": "modal"
+                                }
+                              },
+                              [_vm._v("×")]
+                            )
+                          ]
+                        ),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -100467,8 +100577,10 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-                      this.item.tickets.length > 0 &&
-                      _vm.loading.paying == false
+                      _vm.item.tickets.length > 0 &&
+                      _vm.loading.paying == false &&
+                      _vm.auth &&
+                      _vm.auth.balance.value > parseFloat(_vm.ticket.valor)
                         ? _c(
                             "button",
                             {
@@ -100476,7 +100588,7 @@ var render = function() {
                               attrs: { type: "button" },
                               on: {
                                 click: function($event) {
-                                  _vm.addToCart($event)
+                                  _vm.validate($event)
                                 }
                               }
                             },
@@ -100490,20 +100602,22 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-danger",
-                          attrs: { type: "button", "data-dismiss": "modal" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            " +
-                              _vm._s(_vm.trans("strings.to_close")) +
-                              "\n                        "
+                      !_vm.loading.paying
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger",
+                              attrs: { type: "button", "data-dismiss": "modal" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(_vm.trans("strings.to_close")) +
+                                  "\n                        "
+                              )
+                            ]
                           )
-                        ]
-                      )
+                        : _vm._e()
                     ])
                   ])
                 : _vm._e()
@@ -107840,6 +107954,28 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -107863,6 +107999,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		};
 	},
 	methods: {
+		login: function login() {
+			$('.modal-login').modal('toggle');
+		},
 		validate: function validate(event) {
 			var _this = this;
 
@@ -111090,9 +111229,86 @@ var render = function() {
                       )
                     ]
                   )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.purchase.total > _vm.auth.balance.value
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "row vcenter border-dotted",
+                      staticStyle: { margin: "10px -15px 10px -15px" }
+                    },
+                    [
+                      _c("div", {
+                        staticClass: "col-lg-10 col-8 col-md-10 col-sm-10"
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-lg-2 col-4 col-md-2 col-sm-2" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-primary btn-md",
+                              attrs: { to: { name: "balances.deposit" } }
+                            },
+                            [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t" +
+                                  _vm._s(_vm.trans("strings.deposit")) +
+                                  "\n\t\t\t\t\t"
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ]
+                  )
                 : _vm._e()
             ])
-          : _vm._e()
+          : _c("div", { staticClass: "container" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "row vcenter border-dotted",
+                  staticStyle: { margin: "10px -15px 10px -15px" }
+                },
+                [
+                  _c("div", {
+                    staticClass: "col-lg-10 col-8 col-md-10 col-sm-10"
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-2 col-4 col-md-2 col-sm-2" },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-md",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.login($event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\t\t\n\t\t\t\t\t\t" +
+                              _vm._s(_vm.trans("strings.login")) +
+                              "\n\t\t\t\t\t"
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
       ])
 }
 var staticRenderFns = []
@@ -120059,7 +120275,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -120216,64 +120432,67 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				var access_token = JSON.parse(window.localStorage.getItem('access_token'));
 				access_token = access_token != null ? access_token : null;
 
+				if (to.meta.requiresAuth == true && access_token) {
+					next();
+				}
+
 				//Se a rota depende de login
-				if (to.meta.requiresAuth == true) {
+				if (to.meta.requiresAuth == true && access_token == null) {
 
 					//Verificando se é diferente da rota para edição de conta do usuário
 					//Pois se não o fizer, a requisição será executada 2 vezes, porque
 					//Dentro do component UserAcount é executada uma requisição para pegar os dados
 					//Do usuário atualizado
-					if (to.name != 'users.account') {
-
-						/*let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
-      refresh_token = refresh_token != null ? refresh_token : '';
-      	var loginRequest = axios.create();
-      	loginRequest.interceptors.request.use(config => {
-      	this.loading.component = true;
-        	return config;
-      });
-      //Fazendo busca do usuário logado, para setar na estrutura de dados
-      loginRequest.get(routes.auth.user, { headers: {
-      	'Accept': 'application/json',
-      	'Authorization': 'Bearer ' + access_token
-      }}).then(response => {
-      		if(response.status === 200) {
+					/*if(to.name != 'users.account') {					
+     		let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+     	refresh_token = refresh_token != null ? refresh_token : '';
+     		var loginRequest = axios.create();
+     		loginRequest.interceptors.request.use(config => {
+     		this.loading.component = true;
+     	  	return config;
+     	});
+     	//Fazendo busca do usuário logado, para setar na estrutura de dados
+     	loginRequest.get(routes.auth.user, { headers: {
+     		'Accept': 'application/json',
+     		'Authorization': 'Bearer ' + access_token
+     	}}).then(response => {
+     			if(response.status === 200) {
              	response.data.access_token = access_token
              	
              	response.data.refresh_token = refresh_token
-      			window.localStorage.setItem('authUser', JSON.stringify(response.data))
-      			this.$store.dispatch('setUserObject', response.data);
-      			this.loading.component = false;
-      			next();
-      	}
+     				window.localStorage.setItem('authUser', JSON.stringify(response.data))
+     				this.$store.dispatch('setUserObject', response.data);
+     				this.loading.component = false;
+     				next();
+     		}
                     	
                   }).catch((error) => {
-      	next({
+     		next({
                     name: 'login'
                 });
-                  });*/
-					} else {
-						//Se a rota não for para o component UserAccount,
-						//Verifica se o usuário está logado
-						//Se estiver logado, deixa passar,
-						//Se não, redireciona para o login
-						if (access_token) {
-							next();
-						} else {
-							next({
-								name: 'login'
-							});
-						}
-					}
+                  });
+              } else {
+              	//Se a rota não for para o component UserAccount,
+              	//Verifica se o usuário está logado
+              	//Se estiver logado, deixa passar,
+              	//Se não, redireciona para o login
+               	console.log(access_token)
+               if(access_token) {
+                next()
+            } else {
+                toastr.info('Você já está logado.');
+             next({
+                 name: 'home'
+             });
+            }
+        }*/
+
+					toastr.info('Você precisa está logado.');
+					next(false);
+					_this3.loading.component = false;
 				}
 
-				//Se estou logado e estou tentando acessar a rota de login
-				if (to.name == 'login' && _this3.authUser) {
-					toastr.info('Você já está logado.');
-					next({
-						name: 'home'
-					});
-				} else {
+				if (!to.meta.requiresAuth) {
 					next();
 				}
 			});
@@ -120646,6 +120865,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			$('.tooltip-item-account').addClass('open');
 		},
 		logout: function logout() {
+			var _this = this;
 
 			if (confirm('Deseja realmente deslogar?')) {
 				this.$store.dispatch('clearAuthUser');
@@ -120657,14 +120877,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 					name: 'home'
 				});
 
-				var header = $('.header');
-				$('body').css({
-					'padding-top': header[0].clientHeight - 1
+				var time = setInterval(function () {
+					if (_this.auth == null) {
+						var header = $('.header');
+						$('body').css({
+							'padding-top': header[0].clientHeight - 1
+						});
+						clearInterval(time);
+					}
 				});
-
-				if (header.length > 0) {
-					clearInterval(time);
-				}
 			}
 		},
 		login: function login() {

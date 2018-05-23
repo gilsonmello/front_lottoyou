@@ -164,6 +164,28 @@
 					</button>
 				</div>
 			</div>
+			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px" v-if="purchase.total > auth.balance.value">
+				<div class="col-lg-10 col-8 col-md-10 col-sm-10">
+					
+				</div>
+				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
+					<router-link class="btn btn-primary btn-md" :to="{name: 'balances.deposit'}">
+						{{ trans('strings.deposit') }}
+					</router-link>
+				</div>
+			</div>
+		</div>
+		<div class="container" v-else>
+			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
+				<div class="col-lg-10 col-8 col-md-10 col-sm-10">
+					
+				</div>
+				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
+					<button class="btn btn-primary btn-md" type="button" @click.prevent="login($event)">		
+						{{ trans('strings.login') }}
+					</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -194,6 +216,9 @@
 			}
 		},
 		methods: {
+			login() {
+				$('.modal-login').modal('toggle');
+			},
 			validate(event) {
 				var validateRequest = axios.create();
 

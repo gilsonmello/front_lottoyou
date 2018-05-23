@@ -157,7 +157,6 @@
 		methods: {
 
 		},
-
 		created: function() {
 			
 		},
