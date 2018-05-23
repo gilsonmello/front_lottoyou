@@ -61,7 +61,8 @@
     			minutes: '',
     			seconds: '',
     			valid: true,
-    			empty: true
+    			empty: true,
+    			allSelected: true;
         	}
         },
         methods: {
@@ -86,6 +87,8 @@
 				//Serve para controlar se a rodada está completamente vazia
 				var empty = true;
 
+				this.allSelected = true;
+
 				//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
 				//Não foi concluído o preenchimento na rodada
 				this.ticket.games_left.filter((val) => {
@@ -93,6 +96,7 @@
 					if((val.result_out_club === '' || val.result_out_club === null) 
 						|| (val.result_house_club === '' || val.result_house_club === null)) {
 						complete = false
+						this.allSelected = false;
 						
 					}
 					
@@ -100,6 +104,7 @@
 					if((val.result_out_club !== '' && val.result_out_club !== null) 
 						|| (val.result_house_club !== '' && val.result_house_club !== null)) {
 						this.empty = false;
+						this.allSelected = false;
 					}
 
 					return true;
@@ -110,6 +115,7 @@
 					if((val.result_out_club === '' || val.result_out_club === null) 
 						|| (val.result_house_club === '' || val.result_house_club === null)) {
 						complete = false
+						this.allSelected = false;
 						
 					}
 					
@@ -117,6 +123,7 @@
 					if((val.result_out_club !== '' && val.result_out_club !== null) 
 						|| (val.result_house_club !== '' && val.result_house_club !== null)) {
 						this.empty = false;
+						this.allSelected = false;
 					}
 
 					return true;
@@ -202,7 +209,7 @@
             $('.modal-ticket').on('hidden.bs.modal', (event) => {
         		if(this.ticket.complete == false && this.ticket.choseGoldBall && this.empty == true) {
         			toastr.error('Por favor, informe todos os jogos.', 'Cartela incompleta');
-        		} else if(this.ticket.choseGoldBall == false && this.empty == false && this.ticket.complete == false) {
+        		} else if(this.ticket.choseGoldBall == false && this.allSelected == false) {
         			toastr.error('Por favor, informe todos os jogos e a Bola Lottoyou.', 'Cartela incompleta');
         		} else if(this.ticket.choseGoldBall == false) {
         			toastr.error('Por favor, selecione a Bola Lottoyou.', 'Cartela incompleta');
