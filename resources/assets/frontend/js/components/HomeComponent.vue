@@ -11,7 +11,7 @@
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
 				<router-link :to="{ name: 'soccer_expert.show', params: {id: 3} }">
-					<img style="width: 100%; " class="img-fluid" src="/img/new1/Ban-CUSTOM_BG.png">
+					<img style="width: 100%; " class="img-fluid" src="/img/banner_custom.png">
 				</router-link>
 			</div>			
 		</div>

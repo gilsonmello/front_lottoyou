@@ -159,7 +159,7 @@
 					<hr>
 				</div>
 				<div class="col-lg-3 col-12 col-md-4 col-sm-12 text-center">
-					<img class="img-fluid" src="https://www.lottoland.com/cms/5a4ca7d90eb3587d99647503/br_yellow_homepage_286x406.jpg">
+					<img class="img-fluid" src="/img/572x700_marca_22.png">
 				</div>
 			</div>
 		</form>

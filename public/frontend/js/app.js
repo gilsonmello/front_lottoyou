@@ -83799,7 +83799,7 @@ var render = function() {
                     _c("img", {
                       staticClass: "img-fluid",
                       staticStyle: { width: "100%" },
-                      attrs: { src: "/img/new1/Ban-CUSTOM_BG.png" }
+                      attrs: { src: "/img/banner_custom.png" }
                     })
                   ]
                 )
@@ -85936,10 +85936,7 @@ var render = function() {
                 [
                   _c("img", {
                     staticClass: "img-fluid",
-                    attrs: {
-                      src:
-                        "https://www.lottoland.com/cms/5a4ca7d90eb3587d99647503/br_yellow_homepage_286x406.jpg"
-                    }
+                    attrs: { src: "/img/572x700_marca_22.png" }
                   })
                 ]
               )
