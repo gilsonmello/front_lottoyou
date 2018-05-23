@@ -83069,6 +83069,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -83887,63 +83903,93 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "row",
-                staticStyle: {
-                  "background-image":
-                    "url(//www.lottoland.com/cms/5554aadbe4b06bf49b4e071e/br_homepage_step-icons2.jpg)",
-                  height: "300px",
-                  "background-size": "100% auto",
-                  "background-repeat": "no-repeat",
-                  padding: "200px 0 0 130px"
-                }
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
-                  [
-                    _c("h5", [
-                      _c("strong", [_vm._v("1. Escolha seus números")])
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", [
-                      _vm._v("Escolha 5 números no universo de 35 números")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
-                  [
-                    _c("h5", [
-                      _c("strong", [_vm._v("2. Escolha a data do Sorteio")])
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", [
-                      _vm._v("Os sorteios ocorrem de segunda a sábado")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
-                  [
-                    _c("h5", [
-                      _c("strong", [_vm._v("3. Confirme seu bilhete")])
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", [
-                      _vm._v("Escolha como deseja pagar seu jogo com segurança")
-                    ])
-                  ]
-                )
-              ]
-            )
+            _c("div", { staticClass: "row text-center" }, [
+              _c(
+                "div",
+                { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
+                [
+                  _c("h5", [_c("strong", [_vm._v("1. Escolha seus números")])]),
+                  _vm._v(" "),
+                  _c("h6", [
+                    _vm._v("Escolha 5 números no universo de 35 números")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
+                [
+                  _c("h5", [
+                    _c("strong", [_vm._v("2. Escolha a data do Sorteio")])
+                  ]),
+                  _vm._v(" "),
+                  _c("h6", [_vm._v("Os sorteios ocorrem de segunda a sábado")])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
+                [
+                  _c("h5", [_c("strong", [_vm._v("3. Confirme seu bilhete")])]),
+                  _vm._v(" "),
+                  _c("h6", [
+                    _vm._v("Escolha como deseja pagar seu jogo com segurança")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter",
+                  staticStyle: { "justify-content": "center" }
+                },
+                [
+                  _c("div", { staticClass: "col-lg-6 no-padding" }, [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: { src: "/img/icon_11.png" }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter",
+                  staticStyle: { "justify-content": "center" }
+                },
+                [
+                  _c("div", { staticClass: "col-lg-6 no-padding" }, [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: { src: "/img/icon_22.png" }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter",
+                  staticStyle: { "justify-content": "center" }
+                },
+                [
+                  _c("div", { staticClass: "col-lg-6 no-padding" }, [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      attrs: { src: "/img/icon_33.png" }
+                    })
+                  ])
+                ]
+              )
+            ])
           ]),
           _vm._v(" "),
           _c("br"),

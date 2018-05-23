@@ -89,7 +89,7 @@
 					<h1 class="text-center">Como jogar na Nossa Loteria - Easy Money</h1>
 				</div>
 			</div>
-			<div class="row" style="background-image: url(//www.lottoland.com/cms/5554aadbe4b06bf49b4e071e/br_homepage_step-icons2.jpg); height: 300px; background-size: 100% auto; background-repeat: no-repeat; padding: 200px 0 0 130px;">
+			<div class="row text-center">
 				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
 					<h5><strong>1. Escolha seus números</strong></h5>
 					<h6>Escolha 5 números no universo de 35 números</h6>
@@ -103,7 +103,23 @@
 					<h6>Escolha como deseja pagar seu jogo com segurança</h6>
 				</div>
 			</div>
-			
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter" style="justify-content: center;">
+					<div class="col-lg-6 no-padding">
+						<img src="/img/icon_11.png" class="img-fluid">
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter" style="justify-content: center;">
+					<div class="col-lg-6 no-padding">
+						<img src="/img/icon_22.png" class="img-fluid">
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter" style="justify-content: center;">
+					<div class="col-lg-6 no-padding">
+						<img src="/img/icon_33.png" class="img-fluid">
+					</div>
+				</div>
+			</div>
 		</div>
 		<br>
 		<div class="container">
