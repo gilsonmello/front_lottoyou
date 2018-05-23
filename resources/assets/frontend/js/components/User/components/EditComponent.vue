@@ -44,7 +44,7 @@
                         <div class="col-lg-3 col-12 col-sm-4 col-md-4">
                             <div class="form-group">
                                 <label for="nickname">{{ trans('strings.user') }}</label>
-                                <input disabled readonly v-model="nickname" type="text" class="form-control" id="nickname" aria-describedby="nickname" name="nickname" :placeholder="trans('strings.nickname')">
+                                <input v-model="nickname" type="text" class="form-control" id="nickname" aria-describedby="nickname" name="nickname" :placeholder="trans('strings.nickname')">
                             </div>
                         </div>
                     </div>

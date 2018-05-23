@@ -86843,8 +86843,6 @@ var render = function() {
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            disabled: "",
-                            readonly: "",
                             type: "text",
                             id: "nickname",
                             "aria-describedby": "nickname",

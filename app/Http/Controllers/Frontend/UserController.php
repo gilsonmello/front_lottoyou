@@ -182,7 +182,7 @@ class UserController extends Controller
         $user->username = $request->get('username');
         $user->state = $request->get('state');
         $user->tell_phone = $request->get('tell_phone');
-        $user->nickname = $user->name . '_' . $user->id;
+        $user->nickname = $request->get('nickname')
 
         if ($request->hasFile('photo')) {
             if($request->file('photo')->isValid()) {
