@@ -13792,10 +13792,10 @@ button.close {
 .ticket-number {
   color: #fff;
   font-family: courier;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   display: block;
-  text-align: center;
+  /* text-align: center; */
   line-height: 1;
 }
 

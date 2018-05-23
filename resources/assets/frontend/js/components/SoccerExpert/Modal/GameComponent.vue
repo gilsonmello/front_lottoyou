@@ -155,7 +155,7 @@
 	}
 
 	span {
-		line-height: 1;
+		line-height: 1.2;
 	}
 
 	.info-date {
@@ -165,7 +165,7 @@
 
 	.info-local {
 		display: block;
-		font-size: 16px
+		font-size: 12px
 	}
 
 	.row {

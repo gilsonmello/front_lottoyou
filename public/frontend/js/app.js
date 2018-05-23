@@ -91222,7 +91222,7 @@ var render = function() {
         _c("div", { staticClass: "row" }, [
           _c(
             "div",
-            { staticClass: "col-lg-6" },
+            { staticClass: "col-12 col-lg-7 col-md-7 col-sm-7" },
             [
               _c(
                 "router-link",
@@ -91249,7 +91249,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-6 col-lg-6" },
+            { staticClass: "col-12 col-lg-5 col-md-5 col-sm-5" },
             [
               _c(
                 "router-link",
@@ -99622,7 +99622,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.shield-img[data-v-732e4e69] {\n\t\twidth: 40px; \n\t\theight: 40px;\n}\ninput[data-v-732e4e69] {\n\t\ttext-align: center;\n}\nspan[data-v-732e4e69] {\n\t\tline-height: 1;\n}\n.info-date[data-v-732e4e69] {\n\t\tdisplay: block;\n\t\tmargin-top: 3px;\n}\n.info-local[data-v-732e4e69] {\n\t\tdisplay: block;\n\t\tfont-size: 16px\n}\n.row[data-v-732e4e69] {\n\t\tcolor: white;\n\t\t-webkit-box-pack: center;\n\t\t    -ms-flex-pack: center;\n\t\t        justify-content: center;\n\t\t-webkit-box-align: center;\n\t\t    -ms-flex-align: center;\n\t\t        align-items: center;\n}\n.games[data-v-732e4e69]{\n\t\tmargin-bottom: 5px;\n\t\t-webkit-box-align: start;\n\t\t    -ms-flex-align: start;\n\t\t        align-items: flex-start;\n}\n.container-club[data-v-732e4e69] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -ms-flexbox;\n\t\tdisplay: flex; \n\t\t-webkit-box-align: center; \n\t\t    -ms-flex-align: center; \n\t\t        align-items: center;\n}\n.result[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 22px;\n}\n.gold-ball[data-v-732e4e69] {\n\t\tfont-size: 30px;\n\t    color: gold;\n\t    line-height: 1;\n\t    cursor: pointer;\n\t    margin-right: 5px;\n\t    height: 40px;\n\t    width: 40px;\n}\n.x[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 16px;\n\t\tdisplay: inline-block;\n}\n.form-control[data-v-732e4e69] {\n\t\tdisplay: inline-block;\n    \twidth: 40px;\n}\n", ""]);
+exports.push([module.i, "\n.shield-img[data-v-732e4e69] {\n\t\twidth: 40px; \n\t\theight: 40px;\n}\ninput[data-v-732e4e69] {\n\t\ttext-align: center;\n}\nspan[data-v-732e4e69] {\n\t\tline-height: 1.2;\n}\n.info-date[data-v-732e4e69] {\n\t\tdisplay: block;\n\t\tmargin-top: 3px;\n}\n.info-local[data-v-732e4e69] {\n\t\tdisplay: block;\n\t\tfont-size: 12px\n}\n.row[data-v-732e4e69] {\n\t\tcolor: white;\n\t\t-webkit-box-pack: center;\n\t\t    -ms-flex-pack: center;\n\t\t        justify-content: center;\n\t\t-webkit-box-align: center;\n\t\t    -ms-flex-align: center;\n\t\t        align-items: center;\n}\n.games[data-v-732e4e69]{\n\t\tmargin-bottom: 5px;\n\t\t-webkit-box-align: start;\n\t\t    -ms-flex-align: start;\n\t\t        align-items: flex-start;\n}\n.container-club[data-v-732e4e69] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -ms-flexbox;\n\t\tdisplay: flex; \n\t\t-webkit-box-align: center; \n\t\t    -ms-flex-align: center; \n\t\t        align-items: center;\n}\n.result[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 22px;\n}\n.gold-ball[data-v-732e4e69] {\n\t\tfont-size: 30px;\n\t    color: gold;\n\t    line-height: 1;\n\t    cursor: pointer;\n\t    margin-right: 5px;\n\t    height: 40px;\n\t    width: 40px;\n}\n.x[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 16px;\n\t\tdisplay: inline-block;\n}\n.form-control[data-v-732e4e69] {\n\t\tdisplay: inline-block;\n    \twidth: 40px;\n}\n", ""]);
 
 // exports
 
@@ -101583,7 +101583,7 @@ var render = function() {
                   [
                     _c("div", { staticClass: "form-group" }, [
                       _c("label", { attrs: { for: "nome" } }, [
-                        _vm._v(_vm._s(_vm.trans("strings.name")))
+                        _vm._v(_vm._s(_vm.trans("strings.ticket_name")))
                       ]),
                       _vm._v(" "),
                       _c("input", {

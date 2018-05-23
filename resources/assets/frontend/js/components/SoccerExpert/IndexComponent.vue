@@ -51,12 +51,12 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-12 col-lg-7 col-md-7 col-sm-7">
 				<router-link :to="{ name: 'create_your_league' }" class="btn btn-md btn-info pull-right" @click.prevent="">
 					{{ trans('strings.create_your_own_league') }}
 				</router-link>
 			</div>
-			<div class="col-6 col-lg-6">
+			<div class="col-12 col-lg-5 col-md-5 col-sm-5">
 				<router-link :to="{ name: 'how_to_play_soccer_expert' }" class="btn btn-md btn-info pull-right" @click.prevent="">
 					{{ trans('strings.how_to_play') }} {{ trans('strings.soccer_expert') }}
 				</router-link>
