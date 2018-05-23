@@ -62,7 +62,7 @@
     			seconds: '',
     			valid: true,
     			empty: true,
-    			allSelected: true;
+    			allSelected: true
         	}
         },
         methods: {
