@@ -105,17 +105,17 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter" style="justify-content: center;">
-					<div class="col-lg-6 no-padding">
+					<div class="col-lg-4 no-padding">
 						<img src="/img/icon_11.png" class="img-fluid">
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter" style="justify-content: center;">
-					<div class="col-lg-6 no-padding">
+					<div class="col-lg-4 no-padding">
 						<img src="/img/icon_22.png" class="img-fluid">
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter" style="justify-content: center;">
-					<div class="col-lg-6 no-padding">
+					<div class="col-lg-4 no-padding">
 						<img src="/img/icon_33.png" class="img-fluid">
 					</div>
 				</div>

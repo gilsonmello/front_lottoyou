@@ -83949,7 +83949,7 @@ var render = function() {
                   staticStyle: { "justify-content": "center" }
                 },
                 [
-                  _c("div", { staticClass: "col-lg-6 no-padding" }, [
+                  _c("div", { staticClass: "col-lg-4 no-padding" }, [
                     _c("img", {
                       staticClass: "img-fluid",
                       attrs: { src: "/img/icon_11.png" }
@@ -83965,7 +83965,7 @@ var render = function() {
                   staticStyle: { "justify-content": "center" }
                 },
                 [
-                  _c("div", { staticClass: "col-lg-6 no-padding" }, [
+                  _c("div", { staticClass: "col-lg-4 no-padding" }, [
                     _c("img", {
                       staticClass: "img-fluid",
                       attrs: { src: "/img/icon_22.png" }
@@ -83981,7 +83981,7 @@ var render = function() {
                   staticStyle: { "justify-content": "center" }
                 },
                 [
-                  _c("div", { staticClass: "col-lg-6 no-padding" }, [
+                  _c("div", { staticClass: "col-lg-4 no-padding" }, [
                     _c("img", {
                       staticClass: "img-fluid",
                       attrs: { src: "/img/icon_33.png" }
