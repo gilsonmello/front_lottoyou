@@ -104,7 +104,6 @@
 					if((val.result_out_club !== '' && val.result_out_club !== null) 
 						|| (val.result_house_club !== '' && val.result_house_club !== null)) {
 						this.empty = false;
-						this.allSelected = false;
 					}
 
 					return true;
@@ -123,7 +122,6 @@
 					if((val.result_out_club !== '' && val.result_out_club !== null) 
 						|| (val.result_house_club !== '' && val.result_house_club !== null)) {
 						this.empty = false;
-						this.allSelected = false;
 					}
 
 					return true;

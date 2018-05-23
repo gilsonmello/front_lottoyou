@@ -99474,7 +99474,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
 				if (val.result_out_club !== '' && val.result_out_club !== null || val.result_house_club !== '' && val.result_house_club !== null) {
 					_this.empty = false;
-					_this.allSelected = false;
 				}
 
 				return true;
@@ -99490,7 +99489,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
 				if (val.result_out_club !== '' && val.result_out_club !== null || val.result_house_club !== '' && val.result_house_club !== null) {
 					_this.empty = false;
-					_this.allSelected = false;
 				}
 
 				return true;
