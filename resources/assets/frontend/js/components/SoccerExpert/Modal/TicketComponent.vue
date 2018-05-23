@@ -209,13 +209,13 @@
         		if(this.ticket.complete == false && this.ticket.choseGoldBall && this.empty == true) {
         			toastr.error('Por favor, informe todos os jogos.', 'Cartela incompleta');
         		} else if(this.ticket.choseGoldBall == false && this.allSelected == false) {
-        			toastr.error('Por favor, informe todos os jogos e a Bola Lottoyou.', 'Cartela incompleta');
+        			toastr.error('Por favor, Está faltando algum jogo e a Bola Lottoyou.', 'Cartela incompleta');
         		} else if(this.ticket.choseGoldBall == false) {
         			toastr.error('Por favor, selecione a Bola Lottoyou.', 'Cartela incompleta');
         		} else if(this.empty) {
         			toastr.error('Por favor, informe todos os jogos ', 'Cartela vazia');
         		} else if(this.empty == false && this.ticket.complete == false) {
-        			toastr.error('Por favor, Está falando algum jogo ', 'Cartela incompleta');
+        			toastr.error('Por favor, Está faltando algum jogo ', 'Cartela incompleta');
         		}
 
             });
