@@ -61,7 +61,7 @@
     			minutes: '',
     			seconds: '',
     			valid: true,
-    			empty: true;
+    			empty: true
         	}
         },
         methods: {
