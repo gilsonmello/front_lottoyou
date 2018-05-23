@@ -222,6 +222,14 @@
 					this.$router.push({
 						name: 'home'
 					});
+
+					$('body').css({
+		    			'padding-top': header[0].clientHeight - 1
+			    	});
+			    	
+			    	if(header.length > 0){
+						clearInterval(time);
+					}
 				}
 			},
 			login() {

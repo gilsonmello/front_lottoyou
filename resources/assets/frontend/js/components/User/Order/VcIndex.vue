@@ -56,7 +56,7 @@
                             </span>
                         </span>
                     </th>
-                    <th scope="col" @click="toggle('sub_total')">
+                    <!-- <th scope="col" @click="toggle('sub_total')">
                         <span>
                             {{ trans('strings.sub_total') }}
                         </span>
@@ -68,7 +68,7 @@
                                 &uarr;
                             </span>
                         </span>
-                    </th>
+                    </th> -->
                     <th scope="col" @click="toggle('number_items')">
                         <span>
                             {{ trans('strings.number_items') }}
@@ -115,9 +115,9 @@
                     <td>
                         $ {{ order.total }}
                     </td>   
-                    <td>
+                    <!-- <td>
                         $ {{ order.sub_total }}
-                    </td>
+                    </td> -->
                     <td>
                         {{ order.number_items }}
                     </td>

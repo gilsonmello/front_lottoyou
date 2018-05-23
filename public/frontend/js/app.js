@@ -95199,43 +95199,6 @@ var render = function() {
                     attrs: { scope: "col" },
                     on: {
                       click: function($event) {
-                        _vm.toggle("sub_total")
-                      }
-                    }
-                  },
-                  [
-                    _c("span", [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.trans("strings.sub_total")) +
-                          "\n                    "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    "sub_total" === _vm.query.column
-                      ? _c("span", [
-                          _vm.query.direction === "desc"
-                            ? _c("span", [
-                                _vm._v(
-                                  "\n                            ↓\n                        "
-                                )
-                              ])
-                            : _c("span", [
-                                _vm._v(
-                                  "\n                            ↑\n                        "
-                                )
-                              ])
-                        ])
-                      : _vm._e()
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "th",
-                  {
-                    attrs: { scope: "col" },
-                    on: {
-                      click: function($event) {
                         _vm.toggle("number_items")
                       }
                     }
@@ -95336,14 +95299,6 @@ var render = function() {
                         _vm._v(
                           "\n                    $ " +
                             _vm._s(order.total) +
-                            "\n                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n                    $ " +
-                            _vm._s(order.sub_total) +
                             "\n                "
                         )
                       ]),
@@ -122136,6 +122091,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				this.$router.push({
 					name: 'home'
 				});
+
+				$('body').css({
+					'padding-top': header[0].clientHeight - 1
+				});
+
+				if (header.length > 0) {
+					clearInterval(time);
+				}
 			}
 		},
 		login: function login() {
