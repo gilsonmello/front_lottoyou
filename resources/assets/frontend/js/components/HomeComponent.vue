@@ -106,7 +106,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="row text-center">
+			<br>
+			<div class="row">
 				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
 					<h5><strong>1. Escolha seus números</strong></h5>
 					<h6>Escolha 5 números no universo de 35 números</h6>

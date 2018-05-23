@@ -83085,6 +83085,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -83953,7 +83954,9 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "row text-center" }, [
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
               _c(
                 "div",
                 { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
