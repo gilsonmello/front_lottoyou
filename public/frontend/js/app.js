@@ -83961,9 +83961,11 @@ var render = function() {
                 "div",
                 { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
                 [
-                  _c("h5", [_c("strong", [_vm._v("1. Escolha seus números")])]),
+                  _c("h5", { staticClass: "text-center" }, [
+                    _c("strong", [_vm._v("1. Escolha seus números")])
+                  ]),
                   _vm._v(" "),
-                  _c("h6", [
+                  _c("h6", { staticClass: "text-center" }, [
                     _vm._v("Escolha 5 números no universo de 35 números")
                   ])
                 ]
@@ -83973,11 +83975,13 @@ var render = function() {
                 "div",
                 { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
                 [
-                  _c("h5", [
+                  _c("h5", { staticClass: "text-center" }, [
                     _c("strong", [_vm._v("2. Escolha a data do Sorteio")])
                   ]),
                   _vm._v(" "),
-                  _c("h6", [_vm._v("Os sorteios ocorrem de segunda a sábado")])
+                  _c("h6", { staticClass: "text-center" }, [
+                    _vm._v("Os sorteios ocorrem de segunda a sábado")
+                  ])
                 ]
               ),
               _vm._v(" "),
@@ -83985,9 +83989,11 @@ var render = function() {
                 "div",
                 { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
                 [
-                  _c("h5", [_c("strong", [_vm._v("3. Confirme seu bilhete")])]),
+                  _c("h5", { staticClass: "text-center" }, [
+                    _c("strong", [_vm._v("3. Confirme seu bilhete")])
+                  ]),
                   _vm._v(" "),
-                  _c("h6", [
+                  _c("h6", { staticClass: "text-center" }, [
                     _vm._v("Escolha como deseja pagar seu jogo com segurança")
                   ])
                 ]
@@ -85121,7 +85127,7 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c(
                 "div",
-                { staticClass: "col-lg-9 col-12 col-sm-12 col-md-12" },
+                { staticClass: "col-lg-8 col-12 col-sm-12 col-md-12" },
                 [
                   _c("div", { staticClass: "row" }, [
                     _c(
@@ -85934,7 +85940,7 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "col-lg-3 col-12 col-md-4 col-sm-12 text-center"
+                  staticClass: "col-lg-4 col-12 col-md-4 col-sm-12 text-center"
                 },
                 [
                   _c("img", {

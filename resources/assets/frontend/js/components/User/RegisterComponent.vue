@@ -4,7 +4,7 @@
 		<h1 class="page-header text-center">Crie uma conta para desfrutar de infinitas possibilidades</h1>
 		<form @submit.prevent="register">
 			<div class="row">
-				<div class="col-lg-9 col-12 col-sm-12 col-md-12">
+				<div class="col-lg-8 col-12 col-sm-12 col-md-12">
 					<div class="row">
 						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
@@ -158,7 +158,7 @@
 					</div>
 					<hr>
 				</div>
-				<div class="col-lg-3 col-12 col-md-4 col-sm-12 text-center">
+				<div class="col-lg-4 col-12 col-md-4 col-sm-12 text-center">
 					<img class="img-fluid propaganda" src="/img/572x700_marca_22.png">
 				</div>
 			</div>
