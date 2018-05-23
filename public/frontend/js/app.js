@@ -99581,6 +99581,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (_this4.ticket.complete == false && _this4.ticket.choseGoldBall && _this4.empty == true) {
 				toastr.error('Por favor, informe todos os jogos.', 'Cartela incompleta');
 			} else if (_this4.ticket.choseGoldBall == false && _this4.allSelected == false) {
+				console.log(_this4.allSelected);
 				toastr.error('Por favor, informe todos os jogos e a Bola Lottoyou.', 'Cartela incompleta');
 			} else if (_this4.ticket.choseGoldBall == false) {
 				toastr.error('Por favor, selecione a Bola Lottoyou.', 'Cartela incompleta');
