@@ -14,5 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'paypal/feedback',
         'pagseguro/feedback',
+        'https://www.sandbox.paypal.com',
+        'https://sandbox.pagseguro.uol.com.br'
     ];
 }
