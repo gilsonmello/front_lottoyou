@@ -18,7 +18,7 @@
             	<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Quantidade de Jogadores"></i>
             </span>        	
 			<span class="text-center tickets-limit" v-else>				
-				{{ ticket.group.count }} / {{ ticket.limite }}
+				{{ ticket.group.count }} / {{ ticket.limite == null ? 'Ilimitado' : ticket.limite }}
             	<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Quantidade de Jogadores"></i>
             </span> 
 		    <span class="ticket-categories">

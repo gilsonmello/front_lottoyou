@@ -99094,7 +99094,9 @@ var render = function() {
               "\t\t\t\t\n\t\t\t\t" +
                 _vm._s(_vm.ticket.group.count) +
                 " / " +
-                _vm._s(_vm.ticket.limite) +
+                _vm._s(
+                  _vm.ticket.limite == null ? "Ilimitado" : _vm.ticket.limite
+                ) +
                 "\n            \t"
             ),
             _c("i", {
@@ -99248,6 +99250,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__GameComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__GameComponent__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
 //
 //
 //
@@ -100131,11 +100134,13 @@ var render = function() {
       _vm._v(" "),
       _c("span", { staticClass: "text-center tickets-limit" }, [
         _vm._v(
-          "\n\t\t\t\t" +
+          "\n            \t" +
+            _vm._s(_vm.ticket.group.count) +
+            " / " +
             _vm._s(
               _vm.ticket.limite == null ? "Ilimitado" : _vm.ticket.limite
             ) +
-            "\n            \t"
+            "\n\t\t\t\t\n            \t"
         ),
         _c("i", {
           staticClass: "fa fa-question-circle",
