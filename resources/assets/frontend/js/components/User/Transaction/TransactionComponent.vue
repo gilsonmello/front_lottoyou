@@ -117,6 +117,9 @@
                     <td v-else-if="balance.scratch_card">
                         <vc-scratchcard :scratch_card="balance.scratch_card"></vc-scratchcard>
                     </td> 
+                    <td v-else-if="balance.lottery_bet">
+                        <vc-lottery :lottery_bet="balance.lottery_bet"></vc-lottery>
+                    </td> 
                     <td v-else-if="balance.soccer_expert_bet">
                         <vc-soccer-expert :soccer_expert_bet="balance.soccer_expert_bet"></vc-soccer-expert>
                     </td> 

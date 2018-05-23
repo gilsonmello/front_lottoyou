@@ -122,6 +122,18 @@
 						  									<i class="fa fa-gamepad" style="font-size: 27px; color: initial;"></i>
 						  								</div>
 						  								<div class="col-lg-10 col-md-10 col-sm-10">
+						  									<router-link :to="{ name: 'users.games', params: {  } }">
+						  										{{ trans('strings.games') }}
+										                    </router-link>
+						  								</div>
+						  							</div>
+						  						</li>
+						  						<li class="account-item">
+						  							<div class="row vcenter">
+						  								<div class="col-lg-2 col-md-2 col-sm-2">
+						  									<i class="fa fa-shopping-cart" style="font-size: 27px; color: initial;"></i>
+						  								</div>
+						  								<div class="col-lg-10 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'users.orders', params: {  } }">
 						  										{{ trans('strings.orders') }}
 										                    </router-link>
@@ -555,7 +567,7 @@
 
 	.item-account .open {
 	    right: 0;	
-	    bottom: -217px;
+	    bottom: -267px;
     	background: white;
     	width: 363px;
     	display: block !important;
