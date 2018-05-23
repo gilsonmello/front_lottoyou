@@ -7,13 +7,13 @@
                     <router-link class="nav-link" :to="{ name: 'users.account', params: {  } }">
                         {{ trans('strings.profile') }}
                     </router-link>
-                    <!-- <router-link class="nav-link" :to="{ name: 'users.games', params: {  } }">
+                    <router-link class="nav-link" :to="{ name: 'users.games', params: {  } }">
                         {{ trans('strings.games') }}
-                    </router-link> -->
-                        <router-link class="nav-link" :to="{ name: 'users.transactions', params: {  } }">
+                    </router-link>
+                    <router-link class="nav-link" :to="{ name: 'users.transactions', params: {  } }">
                         {{ trans('strings.transactions') }}
                     </router-link>
-                        <router-link class="nav-link active show" :to="{ name: 'users.orders', params: {  } }">
+                    <router-link class="nav-link active show" :to="{ name: 'users.orders', params: {  } }">
                         {{ trans('strings.orders') }}
                     </router-link>
                 </div>
@@ -71,7 +71,7 @@
                     </th> -->
                     <th scope="col" @click="toggle('number_items')">
                         <span>
-                            {{ trans('strings.number_items') }}
+                            {{ trans('strings.quantity_items') }}
                         </span>
                         <span v-if="'number_items' === query.column">
                             <span v-if="query.direction === 'desc'">

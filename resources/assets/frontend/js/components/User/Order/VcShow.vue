@@ -7,13 +7,13 @@
                     <router-link class="nav-link" :to="{ name: 'users.account', params: {  } }">
                         {{ trans('strings.profile') }}
                     </router-link>
-                    <!-- <router-link class="nav-link" :to="{ name: 'users.games', params: {  } }">
+                    <router-link class="nav-link" :to="{ name: 'users.games', params: {  } }">
                         {{ trans('strings.games') }}
-                    </router-link> -->
-                        <router-link class="nav-link" :to="{ name: 'users.transactions', params: {  } }">
+                    </router-link>
+                    <router-link class="nav-link" :to="{ name: 'users.transactions', params: {  } }">
                         {{ trans('strings.transactions') }}
                     </router-link>
-                        <router-link class="nav-link active show" :to="{ name: 'users.orders', params: {  } }">
+                    <router-link class="nav-link active show" :to="{ name: 'users.orders', params: {  } }">
                         {{ trans('strings.orders') }}
                     </router-link>
                 </div>
@@ -49,22 +49,9 @@
                             </span>
                         </span>
                     </th>
-                    <th scope="col" @click="toggle('sub_total')">
-                        <span>
-                            {{ trans('strings.sub_total') }}
-                        </span>
-                        <span v-if="'sub_total' === query.column">
-                            <span v-if="query.direction === 'desc'">
-                                &darr;
-                            </span>
-                            <span v-else>
-                                &uarr;
-                            </span>
-                        </span>
-                    </th>
                     <th scope="col" @click="toggle('number_items')">
                         <span>
-                            {{ trans('strings.number_items') }}
+                            {{ trans('strings.quantity_tickets') }}
                         </span>
                         <span v-if="'number_items' === query.column">
                             <span v-if="query.direction === 'desc'">
@@ -107,10 +94,7 @@
                     </td>
                     <td>
                         $ {{ order.total }}
-                    </td>   
-                    <td>
-                        $ {{ order.sub_total }}
-                    </td>
+                    </td> 
                     <td>
                         {{ order.number_items }}
                     </td>

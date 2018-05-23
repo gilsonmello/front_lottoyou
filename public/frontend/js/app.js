@@ -87660,6 +87660,21 @@ var render = function() {
                 "router-link",
                 {
                   staticClass: "nav-link",
+                  attrs: { to: { name: "users.games", params: {} } }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.trans("strings.games")) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "nav-link",
                   attrs: { to: { name: "users.transactions", params: {} } }
                 },
                 [
@@ -93409,6 +93424,21 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "nav-link",
+                    attrs: { to: { name: "users.games", params: {} } }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.trans("strings.games")) +
+                        "\n                "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-link",
                     attrs: { to: { name: "users.transactions", params: {} } }
                   },
                   [
@@ -93571,7 +93601,7 @@ var render = function() {
                     _c("span", [
                       _vm._v(
                         "\n                        " +
-                          _vm._s(_vm.trans("strings.number_items")) +
+                          _vm._s(_vm.trans("strings.quantity_items")) +
                           "\n                    "
                       )
                     ]),
@@ -96012,6 +96042,21 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "nav-link",
+                    attrs: { to: { name: "users.games", params: {} } }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.trans("strings.games")) +
+                        "\n                "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-link",
                     attrs: { to: { name: "users.transactions", params: {} } }
                   },
                   [
@@ -96164,7 +96209,7 @@ var render = function() {
                   _c("span", [
                     _vm._v(
                       "\n                    " +
-                        _vm._s(_vm.trans("strings.quantity")) +
+                        _vm._s(_vm.trans("strings.quantity_tickets")) +
                         "\n                "
                     )
                   ]),
@@ -97605,6 +97650,21 @@ var render = function() {
                 _vm._v(
                   "\n                " +
                     _vm._s(_vm.trans("strings.profile")) +
+                    "\n            "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass: "nav-link",
+                attrs: { to: { name: "users.games", params: {} } }
+              },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.trans("strings.games")) +
                     "\n            "
                 )
               ]
@@ -123219,6 +123279,21 @@ var render = function() {
                 _c(
                   "router-link",
                   {
+                    staticClass: "nav-link active show",
+                    attrs: { to: { name: "users.games", params: {} } }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.trans("strings.games")) +
+                        "\n                "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
                     staticClass: "nav-link",
                     attrs: { to: { name: "users.transactions", params: {} } }
                   },
@@ -123234,7 +123309,7 @@ var render = function() {
                 _c(
                   "router-link",
                   {
-                    staticClass: "nav-link active show",
+                    staticClass: "nav-link",
                     attrs: { to: { name: "users.orders", params: {} } }
                   },
                   [
@@ -123335,7 +123410,7 @@ var render = function() {
                   _c("span", [
                     _vm._v(
                       "\n                    " +
-                        _vm._s(_vm.trans("strings.quantity")) +
+                        _vm._s(_vm.trans("strings.quantity_tickets")) +
                         "\n                "
                     )
                   ]),
