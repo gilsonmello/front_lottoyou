@@ -26,10 +26,10 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12 buttons">
-						<button type="submit" class="btn btn-primary btn-md">Efeutuar compra</button>
-						<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-primary">
+						<button v-if="loading.paying" @click.prevent="" type="load" class="hide btn btn-md btn-primary">
 							<i class="fa fa-refresh fa-spin"></i>
 						</button>
+						<button v-else type="submit" class="btn btn-primary btn-md">Efeutuar compra</button>
 					</div>
 				</div>
 			</form>
@@ -43,6 +43,9 @@
 		data: function() {
 			return {
 				amount: '10.00',
+				loading: {
+					paying: false
+				},
 				terms: '',
 				errors: []
 			}
@@ -105,8 +108,7 @@
                     var paymentRequest = axios.create();
 			        
 			        paymentRequest.interceptors.request.use(config => {
-			        	form.find('[type="load"]').removeClass('hide');
-			        	form.find('[type="submit"]').addClass('hide');
+			        	this.loading.paying = true;
 					  	return config;
 					});
 
@@ -118,8 +120,7 @@
 							form.submit();
 						}
 					}).catch((error) => {
-						form.find('[type="load"]').addClass('hide');
-			        	form.find('[type="submit"]').removeClass('hide');
+						this.loading.paying = false;
 					});
 
                 

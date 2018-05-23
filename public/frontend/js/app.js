@@ -113038,12 +113038,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			amount: '10.00',
+			loading: {
+				paying: false
+			},
 			terms: '',
 			errors: []
 		};
 	},
 	methods: {
 		sendPagseguro: function sendPagseguro(event) {
+			var _this = this;
+
 			var form = $(event.currentTarget);
 			if (this.validate(this.amount)) {
 
@@ -113100,8 +113105,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				var paymentRequest = axios.create();
 
 				paymentRequest.interceptors.request.use(function (config) {
-					form.find('[type="load"]').removeClass('hide');
-					form.find('[type="submit"]').addClass('hide');
+					_this.loading.paying = true;
 					return config;
 				});
 
@@ -113113,8 +113117,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						form.submit();
 					}
 				}).catch(function (error) {
-					form.find('[type="load"]').addClass('hide');
-					form.find('[type="submit"]').removeClass('hide');
+					_this.loading.paying = false;
 				});
 
 				/*var paymentRequest = axios.create();
@@ -113306,28 +113309,28 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-lg-12 buttons" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary btn-md",
-                  attrs: { type: "submit" }
-                },
-                [_vm._v("Efeutuar compra")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "hide pull-right btn btn-md btn-primary",
-                  attrs: { type: "load" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
-              )
+              _vm.loading.paying
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "hide btn btn-md btn-primary",
+                      attrs: { type: "load" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
+                  )
+                : _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-md",
+                      attrs: { type: "submit" }
+                    },
+                    [_vm._v("Efeutuar compra")]
+                  )
             ])
           ])
         ]
@@ -113502,6 +113505,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			amount: '10.00',
+			loading: {
+				paying: false
+			},
 			terms: '',
 			paypal: {
 				cmd: '_xclick',
@@ -113524,6 +113530,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	methods: {
 		sendPaypal: function sendPaypal(event) {
+			var _this = this;
+
 			var form = $(event.currentTarget);
 			if (this.validate(this.amount)) {
 
@@ -113622,8 +113630,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				var paymentRequest = axios.create();
 
 				paymentRequest.interceptors.request.use(function (config) {
-					form.find('[type="load"]').removeClass('hide');
-					form.find('[type="submit"]').addClass('hide');
+					_this.loading.paying = true;
 					return config;
 				});
 
@@ -113635,8 +113642,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						form.submit();
 					}
 				}).catch(function (error) {
-					form.find('[type="load"]').addClass('hide');
-					form.find('[type="submit"]').removeClass('hide');
+					_this.loading.paying = false;
 				});
 
 				/*var paymentRequest = axios.create();
@@ -113827,28 +113833,28 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-lg-12 buttons" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary btn-md",
-                  attrs: { type: "submit" }
-                },
-                [_vm._v("Efeutuar compra")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "hide pull-right btn btn-md btn-primary",
-                  attrs: { type: "load" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
-              )
+              _vm.loading.paying
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "hide btn btn-md btn-primary",
+                      attrs: { type: "load" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
+                  )
+                : _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-md",
+                      attrs: { type: "submit" }
+                    },
+                    [_vm._v("Efeutuar compra")]
+                  )
             ])
           ])
         ]
@@ -122688,7 +122694,10 @@ var render = function() {
                                           _vm._v(" "),
                                           _c(
                                             "div",
-                                            { staticClass: "col-lg-6" },
+                                            {
+                                              staticClass:
+                                                "col-lg-6 col-md-6 col-sm-6"
+                                            },
                                             [
                                               _vm.auth && _vm.auth.balance
                                                 ? _c(
@@ -122741,7 +122750,10 @@ var render = function() {
                                                 _vm._v(" "),
                                                 _c(
                                                   "div",
-                                                  { staticClass: "col-lg-10" },
+                                                  {
+                                                    staticClass:
+                                                      "col-lg-10 col-md-10 col-sm-10"
+                                                  },
                                                   [
                                                     _c(
                                                       "router-link",
@@ -122785,26 +122797,31 @@ var render = function() {
                                                 _vm._v(" "),
                                                 _c(
                                                   "div",
-                                                  { staticClass: "col-lg-10" },
+                                                  {
+                                                    staticClass:
+                                                      "col-lg-10 col-md-10 col-sm-10"
+                                                  },
                                                   [
                                                     _c(
                                                       "router-link",
                                                       {
                                                         attrs: {
                                                           to: {
-                                                            name: "users.games"
+                                                            name:
+                                                              "users.orders",
+                                                            params: {}
                                                           }
                                                         }
                                                       },
                                                       [
                                                         _vm._v(
-                                                          "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t" +
+                                                          "\n\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t\t" +
                                                             _vm._s(
                                                               _vm.trans(
-                                                                "strings.games"
+                                                                "strings.orders"
                                                               )
                                                             ) +
-                                                            "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t"
+                                                            "\n\t\t\t\t\t\t\t\t\t\t                    "
                                                         )
                                                       ]
                                                     )
@@ -122828,7 +122845,10 @@ var render = function() {
                                                 _vm._v(" "),
                                                 _c(
                                                   "div",
-                                                  { staticClass: "col-lg-10" },
+                                                  {
+                                                    staticClass:
+                                                      "col-lg-10 col-md-10 col-sm-10"
+                                                  },
                                                   [
                                                     _c(
                                                       "router-link",
@@ -123035,7 +123055,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-6" }, [
+    return _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6" }, [
       _c("span", { staticClass: "title" }, [_vm._v("Minha Lottoyou")])
     ])
   },
@@ -123043,7 +123063,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2" }, [
+    return _c("div", { staticClass: "col-lg-2 col-md-2 col-sm-2" }, [
       _c("i", {
         staticClass: "fa fa-user-circle",
         staticStyle: { "font-size": "27px", color: "initial" }
@@ -123054,7 +123074,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2" }, [
+    return _c("div", { staticClass: "col-lg-2 col-md-2 col-sm-2" }, [
       _c("i", {
         staticClass: "fa fa-gamepad",
         staticStyle: { "font-size": "27px", color: "initial" }
@@ -123065,7 +123085,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2" }, [
+    return _c("div", { staticClass: "col-lg-2 col-md-2 col-sm-2" }, [
       _c("i", {
         staticClass: "fa fa fa-credit-card-alt",
         staticStyle: { "font-size": "27px", color: "initial" }
@@ -123561,7 +123581,7 @@ var staticRenderFns = [
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-3 col-md-3 col-sm-3" }, [
+              _c("div", { staticClass: "col-lg-1 col-3 col-md-2 col-sm-2" }, [
                 _c("img", {
                   staticClass: "img-responsive img-fluid",
                   attrs: { src: "/img/american-express.png" }

@@ -89,10 +89,10 @@
 						  			<div class="tooltip-item-account">
 						  				<div class="tooltip-item-account-header">
 						  					<div class="row vcenter">
-						  						<div class="col-lg-6">
+						  						<div class="col-lg-6 col-md-6 col-sm-6">
 						  							<span class="title">Minha Lottoyou</span>
 						  						</div>
-						  						<div class="col-lg-6">
+						  						<div class="col-lg-6 col-md-6 col-sm-6">
 						  							<span class="balance" v-if="auth && auth.balance">
 							  							Crédito: $ {{ auth.balance.value }}
 							  						</span>
@@ -106,10 +106,10 @@
 						  					<ul class="account">
 						  						<li class="account-item">
 						  							<div class="row vcenter">
-						  								<div class="col-lg-2">
+						  								<div class="col-lg-2 col-md-2 col-sm-2">
 						  									<i class="fa fa-user-circle" style="font-size: 27px; color: initial;"></i>
 						  								</div>
-						  								<div class="col-lg-10">
+						  								<div class="col-lg-10 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'users.account' }" class="">
 							  									{{ trans('strings.account') }}
 							  								</router-link>
@@ -118,22 +118,22 @@
 						  						</li>
 						  						<li class="account-item">
 						  							<div class="row vcenter">
-						  								<div class="col-lg-2">
+						  								<div class="col-lg-2 col-md-2 col-sm-2">
 						  									<i class="fa fa-gamepad" style="font-size: 27px; color: initial;"></i>
 						  								</div>
-						  								<div class="col-lg-10">
-						  									<router-link :to="{ name: 'users.games' }" class="">
-							  									{{ trans('strings.games') }}
-							  								</router-link>
+						  								<div class="col-lg-10 col-md-10 col-sm-10">
+						  									<router-link :to="{ name: 'users.orders', params: {  } }">
+						  										{{ trans('strings.orders') }}
+										                    </router-link>
 						  								</div>
 						  							</div>
 						  						</li>
 						  						<li class="account-item">
 						  							<div class="row vcenter">
-						  								<div class="col-lg-2">
+						  								<div class="col-lg-2 col-md-2 col-sm-2">
 						  									<i class="fa fa fa-credit-card-alt" style="font-size: 27px; color: initial;"></i>
 						  								</div>
-						  								<div class="col-lg-10">
+						  								<div class="col-lg-10 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'users.transactions' }" class="">
 							  									{{ trans('strings.transactions') }}
 							  								</router-link>

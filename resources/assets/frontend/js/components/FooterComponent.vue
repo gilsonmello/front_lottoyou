@@ -19,7 +19,7 @@
 		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
 		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/596c86940eb35860f76742c7/mastercard_logo@2x.png">
 		            </div>
-		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
+		            <div class="col-lg-1 col-3 col-md-2 col-sm-2">
 		                <img class="img-responsive img-fluid" src="/img/american-express.png">
 		            </div>
 		        </div>
