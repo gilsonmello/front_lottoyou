@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use File;
+use Log;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,7 @@ class HomeController extends Controller
      */                     
     public function index(Request $request)         
     {
+        Log::info($request->server());
 
         /* $vet = [
             0 => 1, 
