@@ -101,7 +101,7 @@
                     	<button v-if="loading.paying" @click.prevent="" type="load" class="btn btn-md btn-primary">
 							<i class="fa fa-refresh fa-spin"></i>
 						</button>
-                    	<button @click="validate($event)" type="button" v-if="item.tickets.length > 0 && loading.paying == false && auth && auth.balance.value > parseFloat(ticket.valor)" class="btn btn-primary">
+                    	<button @click="fastBuy($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value > parseFloat(ticket.valor)" class="btn btn-primary">
                             {{ trans('strings.pay_now') }}
                         </button>
                         <!-- <button v-if="!loading.paying" type="button" class="btn btn-danger" data-dismiss="modal">
@@ -154,91 +154,9 @@
         	backgroundModal(background) {
         		return 'background-image: url('+background+'); background-size: 100% 100%; background-repeat: no-repeat;';
         	},
-        	validate(event) {
-
-        		$(".modal-ticket").modal({
-			        keyboard: false,
-		            backdrop: 'static'
-			    });
-
-        		this.loading.paying = true;
-
-        		var item = {
-					hash: this.item.hash,
-					total: this.item.total,
-					soccer_expert: this.item.soccer_expert,
-					tickets: this.item.tickets,
-				};
-
-				//Se não completou nenhuma rodada
-				if(this.item.tickets.length == 0) {
-					this.$store.dispatch('removeItemSoccerExpert', item);
-					alert('Faça pelo menos um jogo');
-				} else {
-					
-					this.$store.dispatch('setItemSoccerExpert', item);
-				
-					var validateRequest = axios.create();
-
-					validateRequest.interceptors.request.use(config => {
-			          	return config;
-					});
-
-					validateRequest.post(
-						routes.carts.validate, 
-						this.purchase, 
-						{}
-					).then(response => {
-						if(response.status === 200) {
-							this.fastBuy();
-						}
-					}).catch((error) => {
-						toastr.error(
-							error.response.data.msg,
-							this.trans('strings.error')
-						)
-						this.loading.paying = false;
-					});		
-				}
-			},
         	fastBuy(event) {
-
-				var completePurchaseRequest = axios.create();
-
-				completePurchaseRequest.interceptors.request.use(config => {					
-		          	return config;
-				});
-
-				this.purchase['user_id'] = this.auth.id;
-
-				completePurchaseRequest.post(
-					routes.carts.complete_purchase, 
-					this.purchase, 
-					{}
-				).then(response => {
-					if(response.status === 200) {
-						this.refreshAuthPromise()
-							.then((response) => {
-								if (response.status === 200) {
-									toastr.success(
-										this.trans('strings.successful_purchase'),
-										this.trans('strings.buy'),
-									);
-									window.localStorage.setItem('authUser', JSON.stringify(response.data))
-									this.$store.dispatch('setUserObject', response.data);
-									this.$store.dispatch('clearPurchase');
-									this.$router.push({
-										name: 'users.transactions'
-									});	
-								}								
-							}).catch((error) => {
-
-							});
-						
-					}
-				}).catch((error) => {
-					
-				});		
+        		this.loading.paying = true;
+        		this.$eventBus.$emit('validatePurchase');
 			},
         	addToCart(event) {
         		
@@ -346,9 +264,16 @@
 	            });
             }); 
 
+    		this.$eventBus.$on('notificationPayment', () => {
+    			this.loading.paying = false;
+    		});
+
     	},
     	beforeDestroy() {
             this.$eventBus.$off('openModal');
+            this.$eventBus.$off('notificationPayment');
+            this.$eventBus.$off('closeModal');
+            this.$eventBus.$off('validatePurchase');
         },
     	components: {
 			LoadComponent,

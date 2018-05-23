@@ -174,8 +174,8 @@
 		align-items: center;
 	}
 
-	.games{
-		margin-bottom: 5px;
+	.games {
+		margin-bottom: 10px;
 		align-items: flex-start;
 	}
 	

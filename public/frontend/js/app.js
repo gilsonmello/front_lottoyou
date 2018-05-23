@@ -98191,76 +98191,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		backgroundModal: function backgroundModal(background) {
 			return 'background-image: url(' + background + '); background-size: 100% 100%; background-repeat: no-repeat;';
 		},
-		validate: function validate(event) {
-			var _this = this;
-
-			$(".modal-ticket").modal({
-				keyboard: false,
-				backdrop: 'static'
-			});
-
-			this.loading.paying = true;
-
-			var item = {
-				hash: this.item.hash,
-				total: this.item.total,
-				soccer_expert: this.item.soccer_expert,
-				tickets: this.item.tickets
-			};
-
-			//Se não completou nenhuma rodada
-			if (this.item.tickets.length == 0) {
-				this.$store.dispatch('removeItemSoccerExpert', item);
-				alert('Faça pelo menos um jogo');
-			} else {
-
-				this.$store.dispatch('setItemSoccerExpert', item);
-
-				var validateRequest = axios.create();
-
-				validateRequest.interceptors.request.use(function (config) {
-					return config;
-				});
-
-				validateRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.validate, this.purchase, {}).then(function (response) {
-					if (response.status === 200) {
-						_this.fastBuy();
-					}
-				}).catch(function (error) {
-					toastr.error(error.response.data.msg, _this.trans('strings.error'));
-					_this.loading.paying = false;
-				});
-			}
-		},
 		fastBuy: function fastBuy(event) {
-			var _this2 = this;
-
-			var completePurchaseRequest = axios.create();
-
-			completePurchaseRequest.interceptors.request.use(function (config) {
-				return config;
-			});
-
-			this.purchase['user_id'] = this.auth.id;
-
-			completePurchaseRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.complete_purchase, this.purchase, {}).then(function (response) {
-				if (response.status === 200) {
-					_this2.refreshAuthPromise().then(function (response) {
-						if (response.status === 200) {
-							toastr.success(_this2.trans('strings.successful_purchase'), _this2.trans('strings.buy'));
-							window.localStorage.setItem('authUser', JSON.stringify(response.data));
-							_this2.$store.dispatch('setUserObject', response.data);
-							_this2.$store.dispatch('clearPurchase');
-							_this2.$router.push({
-								name: 'users.transactions'
-							});
-						}
-					}).catch(function (error) {});
-				}
-			}).catch(function (error) {});
+			this.loading.paying = true;
+			this.$eventBus.$emit('validatePurchase');
 		},
 		addToCart: function addToCart(event) {
-			var _this3 = this;
+			var _this = this;
 
 			var item = {
 				hash: this.item.hash,
@@ -98278,7 +98214,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				var addSoccerExpertRequest = axios.create();
 
 				addSoccerExpertRequest.interceptors.request.use(function (config) {
-					_this3.loading.paying = true;
+					_this.loading.paying = true;
 					return config;
 				});
 
@@ -98289,48 +98225,48 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 				}).then(function (response) {
 					if (response.status === 200) {
-						_this3.loading.paying = false;
-						_this3.$store.dispatch('setItemSoccerExpert', item);
-						_this3.$router.push({
+						_this.loading.paying = false;
+						_this.$store.dispatch('setItemSoccerExpert', item);
+						_this.$router.push({
 							name: 'cart.index'
 						});
 					}
 				}).catch(function (error) {
-					_this3.loading.paying = false;
+					_this.loading.paying = false;
 					toast.error('Erro ao adicionar item', 'Por favor tente novamente');
 				});
 			}
 		},
 		showRequest: function showRequest() {
-			var _this4 = this;
+			var _this2 = this;
 
 			var showRequest = axios.create();
 			var id = this.$route.params.id;
 
 			showRequest.interceptors.request.use(function (config) {
-				_this4.loading.component = true;
+				_this2.loading.component = true;
 				return config;
 			});
 			showRequest.get(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].soccer_experts.show.replace('{id}', id), {}, {}).then(function (response) {
 				if (response.status === 200) {
-					_this4.loading.component = false;
-					_this4.item.hash = _this4.makeid();
-					_this4.item.soccer_expert = response.data;
+					_this2.loading.component = false;
+					_this2.item.hash = _this2.makeid();
+					_this2.item.soccer_expert = response.data;
 				}
 			}).catch(function (error) {});
 		},
 		showSoccerExpert: function showSoccerExpert() {
-			var _this5 = this;
+			var _this3 = this;
 
 			var interval = setInterval(function () {
-				var item = _this5.purchase.soccer_expert.items.filter(function (val) {
-					return _this5.$route.params.hash == val.hash;
+				var item = _this3.purchase.soccer_expert.items.filter(function (val) {
+					return _this3.$route.params.hash == val.hash;
 				});
 
 				if (item.length > 0) {
 					clearInterval(interval);
-					_this5.loading.component = false;
-					_this5.item = item[0];
+					_this3.loading.component = false;
+					_this3.item = item[0];
 				} else {}
 			});
 		},
@@ -98347,28 +98283,35 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 	},
 	mounted: function mounted() {
-		var _this6 = this;
+		var _this4 = this;
 
 		this.init();
 
 		//Escutando evento, que será executado pelo TicektComponent
 		this.$eventBus.$on('openModal', function (ticket) {
 			//Pegando o ticket passado como parâmetro
-			_this6.ticket = ticket;
+			_this4.ticket = ticket;
 			$('.modal-ticket').off('hidden.bs.modal');
 			//Abrindo o modal
 			$('.modal-ticket').on('hidden.bs.modal', function (event) {
-				_this6.ticket = null;
-				_this6.$eventBus.$emit('closeModal');
+				_this4.ticket = null;
+				_this4.$eventBus.$emit('closeModal');
 			}).modal({
 				show: true,
 				keyboard: false,
 				backdrop: 'static'
 			});
 		});
+
+		this.$eventBus.$on('notificationPayment', function () {
+			_this4.loading.paying = false;
+		});
 	},
 	beforeDestroy: function beforeDestroy() {
 		this.$eventBus.$off('openModal');
+		this.$eventBus.$off('notificationPayment');
+		this.$eventBus.$off('closeModal');
+		this.$eventBus.$off('validatePurchase');
 	},
 
 	components: {
@@ -99288,7 +99231,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.tickets-content[data-v-260d980f] {\n\t\tbackground-color: initial;\n\t\ttext-align: center;\n\t    padding-bottom: 10px;\n\t    padding-top: 10px;\n\t    cursor: default;\n\t    display: -webkit-box;\n\t    display: -ms-flexbox;\n\t    display: flex;\n\t\t-webkit-box-orient: horizontal;\n\t\t-webkit-box-direction: normal;\n\t\t    -ms-flex-direction: row;\n\t\t        flex-direction: row;\n\t\t-ms-flex-wrap: wrap;\n\t\t    flex-wrap: wrap;\n\t\tposition: relative;\n}\n.tickets[data-v-260d980f] {\n\t\t\n\t\tpadding: 5px;\n}\n.separator[data-v-260d980f] {\n\t    position: absolute;\n\t    top: 50%;\n\t    left: 50%;\n\t    -webkit-transform: translate(-50%, -50%);\n\t    transform: translate(-50%, -50%);\n\t    width: 40px;\n\t    height: 100%;\n\t    padding: 10px;\n}\n.line[data-v-260d980f] {\n\t    border-right: 3px solid #fff;\n\t    height: 100%;\n\t    width: 100%;\n}\n.separator[data-v-260d980f]:after {\n}\n@media (max-width: 576px) {\n.separator[data-v-260d980f] {\n\t\t\tdisplay: none;\n}\n}\n@media (max-width: 747px) {\n.separator[data-v-260d980f] {\n\t\t\tdisplay: none;\n}\n}\n.tickets-header[data-v-260d980f] {\n\t\tpadding: 5px 0 0 0;\n\t\tcolor: #000;\n\t\tbackground-color: initial;\n}\n.tickets-header .ticket-categories[data-v-260d980f] {\n\t\tfont-weight: bold;\n\t\ttext-align: center;\n\t\tbackground-color: #fad7d4;\n\t    border-color: #f7bec3;\n\t    color: #a94442;\n        border: 1px solid transparent;\n\t    border-radius: 2px;\n\t    display: block;\n\t    text-transform: uppercase;\n}\n.tickets-header .tickets-limit[data-v-260d980f] {\n\t\tdisplay: block;\n}\n.tickets-header .tickets-name[data-v-260d980f] {\n\t    display: block;\n\t    vertical-align: middle;\n\t    line-height: 17px;\n\t    font-size: 20px;\n\t    color: #000\n}\n.countdown[data-v-260d980f] {\n\t\tdisplay: block;\n\t\ttext-transform: lowercase;\n\t\ttext-align: center;\n}\n\t\n", ""]);
+exports.push([module.i, "\n.tickets-content[data-v-260d980f] {\n\t\tbackground-color: initial;\n\t\ttext-align: center;\n\t    padding-bottom: 10px;\n\t    padding-top: 10px;\n\t    cursor: default;\n\t    display: -webkit-box;\n\t    display: -ms-flexbox;\n\t    display: flex;\n\t\t-webkit-box-orient: horizontal;\n\t\t-webkit-box-direction: normal;\n\t\t    -ms-flex-direction: row;\n\t\t        flex-direction: row;\n\t\t-ms-flex-wrap: wrap;\n\t\t    flex-wrap: wrap;\n\t\tposition: relative;\n}\n.tickets[data-v-260d980f] {\n\t\tmargin-bottom: 0;\n\t\tpadding: 5px;\n}\n.separator[data-v-260d980f] {\n\t    position: absolute;\n\t    top: 50%;\n\t    left: 50%;\n\t    -webkit-transform: translate(-50%, -50%);\n\t    transform: translate(-50%, -50%);\n\t    width: 40px;\n\t    height: 100%;\n\t    padding: 10px;\n}\n.line[data-v-260d980f] {\n\t    border-right: 3px solid #fff;\n\t    height: 100%;\n\t    width: 100%;\n}\n.separator[data-v-260d980f]:after {\n}\n@media (max-width: 576px) {\n.separator[data-v-260d980f] {\n\t\t\tdisplay: none;\n}\n}\n@media (max-width: 747px) {\n.separator[data-v-260d980f] {\n\t\t\tdisplay: none;\n}\n}\n.tickets-header[data-v-260d980f] {\n\t\tpadding: 5px 0 0 0;\n\t\tcolor: #000;\n\t\tbackground-color: initial;\n}\n.tickets-header .ticket-categories[data-v-260d980f] {\n\t\tfont-weight: bold;\n\t\ttext-align: center;\n\t\tbackground-color: #fad7d4;\n\t    border-color: #f7bec3;\n\t    color: #a94442;\n        border: 1px solid transparent;\n\t    border-radius: 2px;\n\t    display: block;\n\t    text-transform: uppercase;\n}\n.tickets-header .tickets-limit[data-v-260d980f] {\n\t\tdisplay: block;\n}\n.tickets-header .tickets-name[data-v-260d980f] {\n\t    display: block;\n\t    vertical-align: middle;\n\t    line-height: 17px;\n\t    font-size: 20px;\n\t    color: #000\n}\n.countdown[data-v-260d980f] {\n\t\tdisplay: block;\n\t\ttext-transform: lowercase;\n\t\ttext-align: center;\n}\n\t\n", ""]);
 
 // exports
 
@@ -99299,8 +99242,12 @@ exports.push([module.i, "\n.tickets-content[data-v-260d980f] {\n\t\tbackground-c
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__GameComponent__ = __webpack_require__(452);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__GameComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__GameComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__GameComponent__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__GameComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__GameComponent__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -99351,6 +99298,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -99490,33 +99438,117 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var timeOut = setInterval(function () {
 				_this3.setCountdown(date);
 			}, 1000);
+		},
+		validate: function validate(event) {
+			var _this4 = this;
+
+			var item = {
+				hash: this.item.hash,
+				total: this.item.total,
+				soccer_expert: this.item.soccer_expert,
+				tickets: this.item.tickets
+			};
+
+			//Se não completou nenhuma rodada
+			if (this.item.tickets.length == 0) {
+				this.$store.dispatch('removeItemSoccerExpert', item);
+				alert('Faça pelo menos um jogo');
+			} else {
+
+				this.$store.dispatch('setItemSoccerExpert', item);
+
+				var validateRequest = axios.create();
+
+				validateRequest.interceptors.request.use(function (config) {
+					return config;
+				});
+
+				validateRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.validate, this.purchase, {}).then(function (response) {
+					if (response.status === 200) {
+						_this4.fastBuy();
+					}
+				}).catch(function (error) {
+					toastr.error(error.response.data.msg, _this4.trans('strings.error'));
+
+					_this4.$eventBus.$emit('notificationPayment');
+				});
+			}
+		},
+		fastBuy: function fastBuy(event) {
+			var _this5 = this;
+
+			var completePurchaseRequest = axios.create();
+
+			completePurchaseRequest.interceptors.request.use(function (config) {
+				return config;
+			});
+
+			this.purchase['user_id'] = this.auth.id;
+
+			completePurchaseRequest.post(__WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].carts.complete_purchase, this.purchase, {}).then(function (response) {
+				if (response.status === 200) {
+					_this5.refreshAuthPromise().then(function (response) {
+						if (response.status === 200) {
+							toastr.success(_this5.trans('strings.successful_purchase'), _this5.trans('strings.buy'));
+							window.localStorage.setItem('authUser', JSON.stringify(response.data));
+							_this5.$store.dispatch('setUserObject', response.data);
+							_this5.$store.dispatch('clearPurchase');
+							_this5.$router.push({
+								name: 'users.transactions'
+							});
+						}
+					}).catch(function (error) {});
+				}
+			}).catch(function (error) {
+				_this5.$eventBus.$emit('notificationPayment');
+			});
+		},
+		hasError: function hasError() {
+			var error = false;
+			if (this.ticket.complete == false && this.ticket.choseGoldBall && this.empty == true) {
+				toastr.error('Por favor, informe todos os jogos.', 'Cartela incompleta');
+				error = true;
+			} else if (this.ticket.choseGoldBall == false && this.allSelected == false) {
+				toastr.error('Por favor, Está faltando algum jogo e a Bola Lottoyou.', 'Cartela incompleta');
+				error = true;
+			} else if (this.ticket.choseGoldBall == false) {
+				toastr.error('Por favor, selecione a Bola Lottoyou.', 'Cartela incompleta');
+				error = true;
+			} else if (this.empty) {
+				toastr.error('Por favor, informe todos os jogos ', 'Cartela vazia');
+				error = true;
+			} else if (this.empty == false && this.ticket.complete == false) {
+				toastr.error('Por favor, Está faltando algum jogo ', 'Cartela incompleta');
+				error = true;
+			}
+			return error;
 		}
 	},
 	beforeDestroy: function beforeDestroy() {
 		this.$eventBus.$off('updateData');
+		this.$eventBus.$off('validatePurchase');
+		this.$eventBus.$off('notificationPayment');
 	},
 
 	mounted: function mounted() {
-		var _this4 = this;
+		var _this6 = this;
 
 		//Callback executado ao abrir modal para atualizar o ticket do modal
 		$(".modal-ticket").on('shown.bs.modal', function (event) {
-			_this4.init();
-			_this4.updateTicket();
+			_this6.init();
+			_this6.updateTicket();
 		});
 
 		//Abrindo o modal
 		$('.modal-ticket').on('hidden.bs.modal', function (event) {
-			if (_this4.ticket.complete == false && _this4.ticket.choseGoldBall && _this4.empty == true) {
-				toastr.error('Por favor, informe todos os jogos.', 'Cartela incompleta');
-			} else if (_this4.ticket.choseGoldBall == false && _this4.allSelected == false) {
-				toastr.error('Por favor, Está faltando algum jogo e a Bola Lottoyou.', 'Cartela incompleta');
-			} else if (_this4.ticket.choseGoldBall == false) {
-				toastr.error('Por favor, selecione a Bola Lottoyou.', 'Cartela incompleta');
-			} else if (_this4.empty) {
-				toastr.error('Por favor, informe todos os jogos ', 'Cartela vazia');
-			} else if (_this4.empty == false && _this4.ticket.complete == false) {
-				toastr.error('Por favor, Está faltando algum jogo ', 'Cartela incompleta');
+			_this6.hasError();
+		});
+
+		this.$eventBus.$on('validatePurchase', function () {
+			if (!_this6.hasError()) {
+				_this6.validate();
+			} else {
+				_this6.$eventBus.$emit('notificationPayment');
 			}
 		});
 
@@ -99524,9 +99556,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		this.value = value.format(2, true);
 	},
 	components: {
-		GameComponent: __WEBPACK_IMPORTED_MODULE_0__GameComponent___default.a
+		GameComponent: __WEBPACK_IMPORTED_MODULE_2__GameComponent___default.a
 	},
-	computed: {},
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['purchase', 'auth'])),
 	watch: {
 		'ticket.choseGoldBall': function ticketChoseGoldBall(newValue, oldValue) {
 			this.updateTicket();
@@ -99620,7 +99652,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.shield-img[data-v-732e4e69] {\n\t\twidth: 40px; \n\t\theight: 40px;\n}\ninput[data-v-732e4e69] {\n\t\ttext-align: center;\n}\nspan[data-v-732e4e69] {\n\t\tline-height: 1.2;\n}\n.info-date[data-v-732e4e69] {\n\t\tdisplay: block;\n\t\tmargin-top: 3px;\n}\n.info-local[data-v-732e4e69] {\n\t\tdisplay: block;\n\t\tfont-size: 12px\n}\n.row[data-v-732e4e69] {\n\t\tcolor: white;\n\t\t-webkit-box-pack: center;\n\t\t    -ms-flex-pack: center;\n\t\t        justify-content: center;\n\t\t-webkit-box-align: center;\n\t\t    -ms-flex-align: center;\n\t\t        align-items: center;\n}\n.games[data-v-732e4e69]{\n\t\tmargin-bottom: 5px;\n\t\t-webkit-box-align: start;\n\t\t    -ms-flex-align: start;\n\t\t        align-items: flex-start;\n}\n.container-club[data-v-732e4e69] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -ms-flexbox;\n\t\tdisplay: flex; \n\t\t-webkit-box-align: center; \n\t\t    -ms-flex-align: center; \n\t\t        align-items: center;\n}\n.result[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 22px;\n}\n.gold-ball[data-v-732e4e69] {\n\t\tfont-size: 30px;\n\t    color: gold;\n\t    line-height: 1;\n\t    cursor: pointer;\n\t    margin-right: 5px;\n\t    height: 40px;\n\t    width: 40px;\n}\n.x[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 16px;\n\t\tdisplay: inline-block;\n}\n.form-control[data-v-732e4e69] {\n\t\tdisplay: inline-block;\n    \twidth: 40px;\n}\n", ""]);
+exports.push([module.i, "\n.shield-img[data-v-732e4e69] {\n\t\twidth: 40px; \n\t\theight: 40px;\n}\ninput[data-v-732e4e69] {\n\t\ttext-align: center;\n}\nspan[data-v-732e4e69] {\n\t\tline-height: 1.2;\n}\n.info-date[data-v-732e4e69] {\n\t\tdisplay: block;\n\t\tmargin-top: 3px;\n}\n.info-local[data-v-732e4e69] {\n\t\tdisplay: block;\n\t\tfont-size: 12px\n}\n.row[data-v-732e4e69] {\n\t\tcolor: white;\n\t\t-webkit-box-pack: center;\n\t\t    -ms-flex-pack: center;\n\t\t        justify-content: center;\n\t\t-webkit-box-align: center;\n\t\t    -ms-flex-align: center;\n\t\t        align-items: center;\n}\n.games[data-v-732e4e69] {\n\t\tmargin-bottom: 10px;\n\t\t-webkit-box-align: start;\n\t\t    -ms-flex-align: start;\n\t\t        align-items: flex-start;\n}\n.container-club[data-v-732e4e69] {\n\t\tdisplay: -webkit-box;\n\t\tdisplay: -ms-flexbox;\n\t\tdisplay: flex; \n\t\t-webkit-box-align: center; \n\t\t    -ms-flex-align: center; \n\t\t        align-items: center;\n}\n.result[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 22px;\n}\n.gold-ball[data-v-732e4e69] {\n\t\tfont-size: 30px;\n\t    color: gold;\n\t    line-height: 1;\n\t    cursor: pointer;\n\t    margin-right: 5px;\n\t    height: 40px;\n\t    width: 40px;\n}\n.x[data-v-732e4e69] {\n\t\tfont-weight: bold;\n\t\tfont-size: 16px;\n\t\tdisplay: inline-block;\n}\n.form-control[data-v-732e4e69] {\n\t\tdisplay: inline-block;\n    \twidth: 40px;\n}\n", ""]);
 
 // exports
 
@@ -100635,7 +100667,6 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-                      _vm.item.tickets.length > 0 &&
                       _vm.loading.paying == false &&
                       _vm.auth &&
                       _vm.auth.balance.value > parseFloat(_vm.ticket.valor)
@@ -100646,7 +100677,7 @@ var render = function() {
                               attrs: { type: "button" },
                               on: {
                                 click: function($event) {
-                                  _vm.validate($event)
+                                  _vm.fastBuy($event)
                                 }
                               }
                             },

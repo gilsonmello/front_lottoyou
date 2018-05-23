@@ -49,7 +49,8 @@
 </template>
 
 <script>
-	
+	import {routes} from '../../../api_routes'
+	import {mapState, mapGetters} from 'vuex'
 	import GameComponent from './GameComponent'
 	export default {
 		props: ['ticket', 'index', 'type', 'category', 'item'],
@@ -190,10 +191,112 @@
     			var timeOut = setInterval(() => {
     				this.setCountdown(date);
     			}, 1000);
+			},
+			validate(event) {
+
+        		var item = {
+					hash: this.item.hash,
+					total: this.item.total,
+					soccer_expert: this.item.soccer_expert,
+					tickets: this.item.tickets,
+				};
+
+				//Se não completou nenhuma rodada
+				if(this.item.tickets.length == 0) {
+					this.$store.dispatch('removeItemSoccerExpert', item);
+					alert('Faça pelo menos um jogo');
+				} else {
+					
+					this.$store.dispatch('setItemSoccerExpert', item);
+				
+					var validateRequest = axios.create();
+
+					validateRequest.interceptors.request.use(config => {
+			          	return config;
+					});
+
+					validateRequest.post(
+						routes.carts.validate, 
+						this.purchase, 
+						{}
+					).then(response => {
+						if(response.status === 200) {
+							this.fastBuy();
+						}
+					}).catch((error) => {
+						toastr.error(
+							error.response.data.msg,
+							this.trans('strings.error')
+						);
+
+						this.$eventBus.$emit('notificationPayment');
+					});		
+				}
+			},
+        	fastBuy(event) {
+
+				var completePurchaseRequest = axios.create();
+
+				completePurchaseRequest.interceptors.request.use(config => {					
+		          	return config;
+				});
+
+				this.purchase['user_id'] = this.auth.id;
+
+				completePurchaseRequest.post(
+					routes.carts.complete_purchase, 
+					this.purchase, 
+					{}
+				).then(response => {
+					if(response.status === 200) {
+						this.refreshAuthPromise()
+							.then((response) => {
+								if (response.status === 200) {
+									toastr.success(
+										this.trans('strings.successful_purchase'),
+										this.trans('strings.buy'),
+									);
+									window.localStorage.setItem('authUser', JSON.stringify(response.data))
+									this.$store.dispatch('setUserObject', response.data);
+									this.$store.dispatch('clearPurchase');
+									this.$router.push({
+										name: 'users.transactions'
+									});	
+								}								
+							}).catch((error) => {
+
+							});
+						
+					}
+				}).catch((error) => {
+					this.$eventBus.$emit('notificationPayment');
+				});		
+			},
+			hasError() {
+				let error = false;
+				if(this.ticket.complete == false && this.ticket.choseGoldBall && this.empty == true) {
+        			toastr.error('Por favor, informe todos os jogos.', 'Cartela incompleta');
+        			 error = true;
+        		} else if(this.ticket.choseGoldBall == false && this.allSelected == false) {
+        			toastr.error('Por favor, Está faltando algum jogo e a Bola Lottoyou.', 'Cartela incompleta');
+        			error = true;
+        		} else if(this.ticket.choseGoldBall == false) {
+        			toastr.error('Por favor, selecione a Bola Lottoyou.', 'Cartela incompleta');
+        			error = true;
+        		} else if(this.empty) {
+        			toastr.error('Por favor, informe todos os jogos ', 'Cartela vazia');
+        			error = true;
+        		} else if(this.empty == false && this.ticket.complete == false) {
+        			toastr.error('Por favor, Está faltando algum jogo ', 'Cartela incompleta');
+        			error = true;
+        		}
+				return error;
 			}
         },
         beforeDestroy() {
         	this.$eventBus.$off('updateData');
+        	this.$eventBus.$off('validatePurchase');
+        	this.$eventBus.$off('notificationPayment');
         },
         mounted: function() {
         	//Callback executado ao abrir modal para atualizar o ticket do modal
@@ -205,18 +308,15 @@
 
             //Abrindo o modal
             $('.modal-ticket').on('hidden.bs.modal', (event) => {
-            	if(this.ticket.complete == false && this.ticket.choseGoldBall && this.empty == true) {
-        			toastr.error('Por favor, informe todos os jogos.', 'Cartela incompleta');
-        		} else if(this.ticket.choseGoldBall == false && this.allSelected == false) {
-        			toastr.error('Por favor, Está faltando algum jogo e a Bola Lottoyou.', 'Cartela incompleta');
-        		} else if(this.ticket.choseGoldBall == false) {
-        			toastr.error('Por favor, selecione a Bola Lottoyou.', 'Cartela incompleta');
-        		} else if(this.empty) {
-        			toastr.error('Por favor, informe todos os jogos ', 'Cartela vazia');
-        		} else if(this.empty == false && this.ticket.complete == false) {
-        			toastr.error('Por favor, Está faltando algum jogo ', 'Cartela incompleta');
-        		}
+            	this.hasError();
+			});
 
+            this.$eventBus.$on('validatePurchase', () => {
+            	if(!this.hasError()) {
+            		this.validate();
+            	} else {
+            		this.$eventBus.$emit('notificationPayment');
+            	}
             });
 
 			let value = parseFloat(this.ticket.valor);
@@ -226,7 +326,9 @@
 			GameComponent
 		},
 		computed: {
-			
+			...mapGetters([
+                'purchase', 'auth'
+            ]),
 		},
 		watch: {
 			'ticket.choseGoldBall': function(newValue, oldValue) {
@@ -251,7 +353,7 @@
 	}
 
 	.tickets {
-		
+		margin-bottom: 0;
 		padding: 5px;
 	}
 
