@@ -105528,7 +105528,7 @@ var render = function() {
                 _c("span", [
                   _vm._v(
                     "\n\t\t      \t\t\t" +
-                      _vm._s(_vm.trans("strings.nickname")) +
+                      _vm._s(_vm.trans("strings.user")) +
                       "\n\t\t      \t\t"
                   )
                 ]),

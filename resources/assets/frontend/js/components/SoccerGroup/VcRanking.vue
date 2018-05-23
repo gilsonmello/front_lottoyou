@@ -61,7 +61,7 @@
 	        	</div>
 	        	<div class="col-lg-2 table-column" @click="toggle('owner_id')">
 	        		<span>
-		      			{{ trans('strings.nickname') }}
+		      			{{ trans('strings.user') }}
 		      		</span>
 		      		<span v-if="'owner_id' === query.column">
 		    			<span v-if="query.direction === 'desc'">
