@@ -85892,8 +85892,7 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass:
-                              "hide pull-right btn btn-md btn-success",
+                            staticClass: "hide btn btn-md btn-primary",
                             attrs: { type: "load" },
                             on: {
                               click: function($event) {
@@ -112783,7 +112782,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.box-payment-method[data-v-883c0e24] {\n\t-webkit-transition: 1s background-color;\n\ttransition: 1s background-color;\n\tbackground: #F7F7F7;\n    margin: 15px 0!important;\n    border-radius: 5px;\n    border: 1px solid #E2E2E2;\n    border-bottom: #E2E2E2 1px solid!important;\n    padding: 15px 0 10px;\n}\n.choice-payment-method-msg[data-v-883c0e24] {\n    background-color: #EFEFEF;\n    padding: 15px;\n    font-size: 17px;\n    display: inline-block;\n    width: 100%;\n    -webkit-transition: background-color 0.5s ease;\n    transition: background-color 0.5s ease;\n}\n.payment-method[data-v-883c0e24] {\n\tdisplay: inline-block;\n\ttext-decoration: none;\n}\n.payment-method img[data-v-883c0e24] {\n\tdisplay: block;\n\theight: 100%;\n\twidth: 100%;\n}\n.payment-method .payment-method-name[data-v-883c0e24] {\n\tdisplay: block;\n\ttext-align: center;\n\tcolor: #666;\n}\n", ""]);
+exports.push([module.i, "\n.box-payment-method[data-v-883c0e24] {\n\t-webkit-transition: 1s background-color;\n\ttransition: 1s background-color;\n\tbackground: #F7F7F7;\n    margin: 15px 0!important;\n    border-radius: 5px;\n    border: 1px solid #E2E2E2;\n    border-bottom: #E2E2E2 1px solid!important;\n    padding: 15px 0 10px;\n}\n.box-payment-method .active[data-v-883c0e24] {\n\t-webkit-transition: 1s background-color;\n\ttransition: 1s background-color;\n    border: 1px solid;\n}\n.choice-payment-method-msg[data-v-883c0e24] {\n    background-color: #EFEFEF;\n    padding: 15px;\n    font-size: 17px;\n    display: inline-block;\n    width: 100%;\n    -webkit-transition: background-color 0.5s ease;\n    transition: background-color 0.5s ease;\n}\n.payment-method[data-v-883c0e24] {\n\tdisplay: inline-block;\n\ttext-decoration: none;\n}\n.payment-method img[data-v-883c0e24] {\n\tdisplay: block;\n\theight: 100%;\n\twidth: 100%;\n}\n.payment-method .payment-method-name[data-v-883c0e24] {\n\tdisplay: block;\n\ttext-align: center;\n\tcolor: #666;\n}\n", ""]);
 
 // exports
 
@@ -112862,13 +112861,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
 	methods: {
 		changePaymentMethod: function changePaymentMethod(payment_method, el) {
+			$('.box-payment-method').find('.active').removeClass('active');
+			var parent = $(el.target).parent();
+			parent.addClass('active');
 			this.payment_method = payment_method;
 		}
 	},
 	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['auth', 'purchase'])),
 	data: function data() {
 		return {
-			payment_method: 'pagseguro',
+			payment_method: '',
 			order_id: ''
 		};
 	},

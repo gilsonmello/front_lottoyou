@@ -151,7 +151,7 @@
 							<button type="submit" class="pull-right btn btn-md btn-success">
 								{{ trans('strings.save_button') }}
 							</button>
-							<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
+							<button @click.prevent="" type="load" class="hide btn btn-md btn-primary">
 								<i class="fa fa-refresh fa-spin"></i>
 							</button>
 						</div>

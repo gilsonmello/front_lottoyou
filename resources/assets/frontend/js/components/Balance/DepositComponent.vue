@@ -59,6 +59,9 @@
 	export default {
 		methods: {
 			changePaymentMethod: function(payment_method, el) {
+				$('.box-payment-method').find('.active').removeClass('active');
+				var parent = $(el.target).parent();
+				parent.addClass('active');
 				this.payment_method = payment_method
 			}
 		},
@@ -69,7 +72,7 @@
 		},
 		data: function() {
 			return {
-				payment_method: 'pagseguro',
+				payment_method: '',
 				order_id: '',
 			}
 		},
@@ -104,7 +107,7 @@
 </script>
 
 <style scoped>
-
+	
 	.box-payment-method {
 		transition: 1s background-color;
 		background: #F7F7F7;
@@ -113,6 +116,11 @@
 	    border: 1px solid #E2E2E2;
 	    border-bottom: #E2E2E2 1px solid!important;
 	    padding: 15px 0 10px;
+	}
+
+	.box-payment-method .active {
+		transition: 1s background-color;
+	    border: 1px solid;
 	}
 
 	.choice-payment-method-msg {
