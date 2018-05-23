@@ -22,10 +22,16 @@ class HistoricBalanceController extends Controller
             'paypal' => function($queyr) {
 
             },
-            'order' => function($query) {
+            'orderItem' => function($query) {
 
             },
-            'order.items' => function($query) {
+            'orderItem.soccerExpert' => function($query) {
+
+            },
+            'orderItem.scratchCard' => function($query) {
+
+            },
+            'orderItem.lottery' => function($query) {
 
             },
             'scratchCard' => function($query) {

@@ -129,8 +129,6 @@ class CartController extends Controller
                 
             } else if($value['type'] == 'lottery') {
                 $lottery = $value['lottery']['sweepstake'];
-
-
                 $valid = $this->lotteryValidate($lottery);
 
                 if(!$valid['valid']) {

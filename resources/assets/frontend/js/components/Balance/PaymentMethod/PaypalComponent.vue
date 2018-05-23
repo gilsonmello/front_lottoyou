@@ -154,7 +154,7 @@
                     var item_name = document.createElement('input');
                     item_name.setAttribute('name', "item_name");
                     item_name.setAttribute('type', "hidden");
-                    item_name.setAttribute('value', 'Transference '+this.order_id);
+                    item_name.setAttribute('value', 'Deposit '+this.order_id);
                     form.append(item_name);
 
                     var quantity = document.createElement('input');

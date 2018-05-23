@@ -11,6 +11,10 @@ return [
       | found in a intuitive way.
       |
      */
+    'buy' => 'Compra',
+    'buy_soccer_expert' => 'Compra soccer expert',
+    'buy_scratch_card' => 'Compra raspadinha',
+    'buy_lottery' => 'Compra loteria',
     'ticket_name' => 'Nome da cartela',
     'size_larger_than_allowed' => 'Tamanho maior do que o permitido',
     'invalid_file' => 'Arquivo inválido',

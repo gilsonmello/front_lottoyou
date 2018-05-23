@@ -30,7 +30,7 @@ class ScratchCardObserver
             $historicBalance->from = $balance->value;
             $historicBalance->scratch_card_id = $item->id;
             $historicBalance->to = $balance->value + $item->premio;
-            $historicBalance->description = "scratchcard";
+            $historicBalance->description = "awards";
             $historicBalance->type = 1;
             $historicBalance->amount = $item->premio;
             $historicBalance->save();

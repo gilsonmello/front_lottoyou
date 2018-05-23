@@ -11,6 +11,8 @@ use App\Model\Frontend\LotteryUserNumber;
 use App\Model\Frontend\LotteryUserNumberExtra;
 use App\Model\Frontend\SoccerExpertRoundGroup;
 use App\Model\Frontend\SoccerExpertRound;
+use App\HistoricBalance;
+use App\Balance;
 
 class OrderItemObserver
 {
@@ -179,7 +181,8 @@ class OrderItemObserver
     public function saved(OrderItem $item)
     {
         $data = json_decode($item->data);
-        
+
+        $description = 'buy';
         if($item->type == 'lottery') {
             $this->lottery($item, $data);
         } else if($item->type == 'soccer_expert') {
@@ -187,6 +190,25 @@ class OrderItemObserver
         } else if($item->type == 'scratch_card') {
             $this->scratchCard($item, $data);
         }
+
+        $order = $item->order;
+
+        $balance = Balance::where('owner_id', '=', $order->user_id)->get()->first();
+        $historicBalance = new HistoricBalance;
+        $historicBalance->owner_id = $order->user_id;
+        $historicBalance->from = $balance->value;
+        $historicBalance->to = $balance->value - $data->total;
+        $historicBalance->balance_id = $balance->id;
+        $historicBalance->item_id = $item->id;
+        $historicBalance->description = $description;
+        $historicBalance->type = 0;
+        $historicBalance->amount = $data->total * -1;
+        
+        $historicBalance->save();
+        
+        $balance->value = $balance->value - $data->total;
+        
+        $balance->save();
     }
 
     /**

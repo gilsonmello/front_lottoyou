@@ -111,8 +111,8 @@
                     <td>
                         {{ balance.created }}
                     </td>
-                    <td v-if="balance.order">
-                        <vc-order :order="balance.order"></vc-order>
+                    <td v-if="balance.order_item">
+                        <vc-order-item :order_item="balance.order_item"></vc-order-item>
                     </td>
                     <td v-else-if="balance.scratch_card">
                         <vc-scratchcard :scratch_card="balance.scratch_card"></vc-scratchcard>
@@ -154,7 +154,7 @@
     import {mapState, mapGetters} from 'vuex'
     import LoadComponent from '../../Load'
     import VcPagination from '../../VcPagination'
-    import VcOrder from './VcOrder'
+    import VcOrderItem from './VcOrderItem'
     import VcScratchcard from './VcScratchcard'
     import VcSoccerExpert from './VcSoccerExpert'
     import VcLottery from './VcLottery'
@@ -254,7 +254,7 @@
         components: {
         	LoadComponent,
             VcPagination,
-            VcOrder,
+            VcOrderItem,
             VcScratchcard,
             VcSoccerExpert,
             VcLottery,

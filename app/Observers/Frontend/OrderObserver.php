@@ -21,7 +21,7 @@ class OrderObserver
 
     public function saved(Order $order)
     {
-        $balance = Balance::where('owner_id', '=', $order->user_id)->get()->first();
+        /*$balance = Balance::where('owner_id', '=', $order->user_id)->get()->first();
         $historicBalance = new HistoricBalance;
         $historicBalance->owner_id = $balance->owner_id;
         $historicBalance->from = $balance->value;
@@ -33,7 +33,7 @@ class OrderObserver
         $historicBalance->amount = $order->sub_total * -1;
         $historicBalance->save();
         $balance->value = $balance->value - $order->sub_total;
-        $balance->save();
+        $balance->save();*/
     }
 
     /**

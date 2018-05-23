@@ -78,7 +78,7 @@
                     var itemDescription1 = document.createElement('input');
                     itemDescription1.setAttribute('name', "itemDescription1");
                     itemDescription1.setAttribute('type', "hidden");
-                    itemDescription1.setAttribute('value', 'Transference '+this.order_id);
+                    itemDescription1.setAttribute('value', 'Deposit '+this.order_id);
                     form.append(itemDescription1);
 
                     var itemAmount1 = document.createElement('input');

@@ -7,7 +7,7 @@ use App\Balance;
 use App\HistoricBalanceSoccer;
 use App\HistoricBalanceDevolution;
 use App\HistoricBalanceLottery;
-use App\Order;
+use App\Model\Frontend\OrderItem;
 use App\PagseguroOrder;
 use App\PaypalOrder;
 use App\Model\Frontend\ScratchCard;
@@ -77,9 +77,9 @@ class HistoricBalance extends Model
         return $this->belongsTo(SoccerExpertBet::class, 'soccer_expert_bet_id');
     }
 
-    public function order() 
+    public function orderItem() 
     {
-        return $this->belongsTo(Order::class, 'order_id');
+        return $this->belongsTo(OrderItem::class, 'item_id');
     }
 
     public function scratchCard() 

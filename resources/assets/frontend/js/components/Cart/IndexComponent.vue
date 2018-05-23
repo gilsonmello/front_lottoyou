@@ -243,7 +243,7 @@
 									this.$store.dispatch('setUserObject', response.data);
 									this.$store.dispatch('clearPurchase');
 									this.$router.push({
-										name: 'orders.finish'
+										name: 'users.transactions'
 									});	
 								}								
 							}).catch((error) => {
