@@ -27,6 +27,29 @@ class UserController extends Controller
         return User::where('group_id', '=', 3)->get();
     }
 
+    public function items($id, Request $request)
+    {
+        $items = OrderItem::with([
+            'order' => function($query) use($id, $request) {
+                $query->where('user_id', '=', $id);
+            },
+            'soccerExpert',
+            'scratchCard',
+            'lottery'
+        ])
+        ->whereHas('order', function($query) use($id, $request) {
+            $query->where('user_id', '=', $id);
+        });
+        
+        if($request->column) {
+            $items->orderBy($request->column, $request->direction);
+        }
+        
+        $items = $items->paginate();
+
+        return response()->json($items, 200);
+    }
+
     public function soccerExperts($id, Request $request) 
     {
         return SoccerExpertRound::whereHas('bets', function($query) use ($id) {

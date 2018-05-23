@@ -43,7 +43,31 @@ class OrderItem extends Model
         
     ];
 
+    /**
+     * The number of models to return for pagination.
+     *
+     * @var int
+     */
+    public $perPage = 15;
+
     public function order() {
         return $this->belongsTo(Order::class, 'order_id');
+    }
+
+    public function soccerExpert() {
+        return $this->belongsTo(SoccerExpert::class, 'soccer_expert_id');
+    }
+
+    public function scratchCard() {
+        return $this->belongsTo(ScratchCardTheme::class, 'scratch_card_id');
+    }
+
+    public function lottery() {
+        return $this->belongsTo(Lottery::class, 'lottery_id');
+    }
+
+    public function getCreatedAtAttribute($date) 
+    {
+        return format($date, 'd/m/Y H:i');
     }
 }

@@ -223,6 +223,7 @@
 						name: 'home'
 					});
 
+					var header = $('.header');
 					$('body').css({
 		    			'padding-top': header[0].clientHeight - 1
 			    	});

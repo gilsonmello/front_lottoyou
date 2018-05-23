@@ -19,6 +19,9 @@ export const routes = {
 		show: host+'/orders/{id}',
 		items: host+'/orders/{id}/items',
 	},
+	order_items: {
+		index: host+'/order_items/{user_id}',
+	},
 	users: {
 		index: host+'/users',
 		create: host+'/users',
@@ -32,6 +35,7 @@ export const routes = {
 		soccer_experts: host+'/users/{id}/soccer_experts',
 		scratch_cards: host+'/users/{id}/scratch_cards',
 		lotteries: host+'/users/{id}/lotteries',
+		items: host+'/users/{id}/items',
 	},
 	packages: {
 		create: host+'/packages',

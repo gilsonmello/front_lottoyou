@@ -22,7 +22,7 @@
 
         <table class="table text-center table-hover table-striped">
             <caption>
-                <label>
+                <label style="text-transform: lowercase;">
                     {{ trans('strings.page') }} {{ model.from }}/{{ model.to }} - {{ trans('strings.total') }}  {{ trans('strings.of') }} {{ model.total }} {{ trans('strings.lines') }}
                 </label>
                 <br>

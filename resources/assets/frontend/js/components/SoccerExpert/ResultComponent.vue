@@ -84,7 +84,9 @@
             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
                 <div class="pull-left">
                     <br>
-                    <label>{{ model.from }} - {{ model.to }} de {{ model.total }} de linhas</label>
+                    <label style="text-transform: lowercase;">
+                    	{{ trans('strings.page') }} {{ model.from }}/{{ model.to }} - {{ trans('strings.total') }}
+                    </label>
                 </div>
                 <div class="pull-right">
                 	<br>

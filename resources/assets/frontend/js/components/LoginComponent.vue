@@ -122,7 +122,7 @@
 			return {
 				email: '',
 				password: '',
-				errors: [],
+				errors: {},
 				loading: {
 					component: true
 				},
@@ -192,6 +192,9 @@
 					
 					if(response.status === 200) {
 
+						this.email = '';
+						this.password = '';
+						this.errors = {};
 						window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
 						window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
 
