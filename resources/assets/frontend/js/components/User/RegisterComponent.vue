@@ -159,7 +159,7 @@
 					<hr>
 				</div>
 				<div class="col-lg-3 col-12 col-md-4 col-sm-12 text-center">
-					<img class="img-fluid" src="/img/572x700_marca_22.png">
+					<img class="img-fluid propaganda" src="/img/572x700_marca_22.png">
 				</div>
 			</div>
 		</form>
@@ -409,6 +409,10 @@
 <style scoped>
 	.form-group {
 		position: relative;
+	}
+
+	.propaganda {
+	    height: 50.3%;
 	}
 	
 </style>

@@ -89,20 +89,6 @@
 					<h1 class="text-center">Como jogar na Nossa Loteria - Easy Money</h1>
 				</div>
 			</div>
-			<div class="row text-center">
-				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
-					<h5><strong>1. Escolha seus números</strong></h5>
-					<h6>Escolha 5 números no universo de 35 números</h6>
-				</div>
-				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
-					<h5><strong>2. Escolha a data do Sorteio</strong></h5>
-					<h6>Os sorteios ocorrem de segunda a sábado</h6>
-				</div>
-				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
-					<h5><strong>3. Confirme seu bilhete</strong></h5>
-					<h6>Escolha como deseja pagar seu jogo com segurança</h6>
-				</div>
-			</div>
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter" style="justify-content: center;">
 					<div class="col-lg-4 no-padding">
@@ -118,6 +104,20 @@
 					<div class="col-lg-4 no-padding">
 						<img src="/img/icon_33.png" class="img-fluid">
 					</div>
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+					<h5><strong>1. Escolha seus números</strong></h5>
+					<h6>Escolha 5 números no universo de 35 números</h6>
+				</div>
+				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+					<h5><strong>2. Escolha a data do Sorteio</strong></h5>
+					<h6>Os sorteios ocorrem de segunda a sábado</h6>
+				</div>
+				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+					<h5><strong>3. Confirme seu bilhete</strong></h5>
+					<h6>Escolha como deseja pagar seu jogo com segurança</h6>
 				</div>
 			</div>
 		</div>

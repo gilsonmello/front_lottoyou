@@ -83903,44 +83903,6 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "row text-center" }, [
-              _c(
-                "div",
-                { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
-                [
-                  _c("h5", [_c("strong", [_vm._v("1. Escolha seus números")])]),
-                  _vm._v(" "),
-                  _c("h6", [
-                    _vm._v("Escolha 5 números no universo de 35 números")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
-                [
-                  _c("h5", [
-                    _c("strong", [_vm._v("2. Escolha a data do Sorteio")])
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", [_vm._v("Os sorteios ocorrem de segunda a sábado")])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
-                [
-                  _c("h5", [_c("strong", [_vm._v("3. Confirme seu bilhete")])]),
-                  _vm._v(" "),
-                  _c("h6", [
-                    _vm._v("Escolha como deseja pagar seu jogo com segurança")
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c(
                 "div",
@@ -83986,6 +83948,44 @@ var render = function() {
                       staticClass: "img-fluid",
                       attrs: { src: "/img/icon_33.png" }
                     })
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row text-center" }, [
+              _c(
+                "div",
+                { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
+                [
+                  _c("h5", [_c("strong", [_vm._v("1. Escolha seus números")])]),
+                  _vm._v(" "),
+                  _c("h6", [
+                    _vm._v("Escolha 5 números no universo de 35 números")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
+                [
+                  _c("h5", [
+                    _c("strong", [_vm._v("2. Escolha a data do Sorteio")])
+                  ]),
+                  _vm._v(" "),
+                  _c("h6", [_vm._v("Os sorteios ocorrem de segunda a sábado")])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
+                [
+                  _c("h5", [_c("strong", [_vm._v("3. Confirme seu bilhete")])]),
+                  _vm._v(" "),
+                  _c("h6", [
+                    _vm._v("Escolha como deseja pagar seu jogo com segurança")
                   ])
                 ]
               )
@@ -84685,7 +84685,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.form-group[data-v-4bed359c] {\n\tposition: relative;\n}\n\n", ""]);
+exports.push([module.i, "\n.form-group[data-v-4bed359c] {\n\tposition: relative;\n}\n.propaganda[data-v-4bed359c] {\n    height: 50.3%;\n}\n\n", ""]);
 
 // exports
 
@@ -85935,7 +85935,7 @@ var render = function() {
                 },
                 [
                   _c("img", {
-                    staticClass: "img-fluid",
+                    staticClass: "img-fluid propaganda",
                     attrs: { src: "/img/572x700_marca_22.png" }
                   })
                 ]
