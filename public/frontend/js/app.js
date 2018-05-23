@@ -99575,10 +99575,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				toastr.error('Por favor, informe todos os jogos.', 'Cartela incompleta');
 			} else if (_this4.ticket.choseGoldBall == false && _this4.empty == true) {
 				toastr.error('Por favor, selecione os Jogos e a Bola Lottoyou.', 'Cartela incompleta');
-			} else if (_this4.ticket.choseGoldBall == false && _this4.empty == false) {
-				toastr.error('Por favor, selecione a Bola Lottoyou.', 'Cartela incompleta');
 			} else if (_this4.ticket.choseGoldBall == false && _this4.complete == false) {
 				toastr.error('Por favor, informe todos os Jogos e a Bola Lottoyou.', 'Cartela incompleta');
+			} else if (_this4.ticket.choseGoldBall == false && _this4.complete == false) {
+				toastr.error('Por favor, selecione a Bola Lottoyou.', 'Cartela incompleta');
 			}
 		});
 
