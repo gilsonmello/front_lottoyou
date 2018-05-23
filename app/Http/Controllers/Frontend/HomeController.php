@@ -16,10 +16,6 @@ class HomeController extends Controller
      */                     
     public function index(Request $request)         
     {
-        if ($request->isMethod('post')) {
-            return 'lalal';            
-        }
-
         /* $vet = [
             0 => 1, 
             1 => 2, 
