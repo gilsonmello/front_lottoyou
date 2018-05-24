@@ -91000,6 +91000,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -91080,8 +91085,34 @@ var render = function() {
   return _vm.loading.component == true
     ? _c("load-component")
     : _c("div", { staticClass: "container" }, [
-        _c("h1", { staticClass: "page-header" }, [
-          _vm._v(_vm._s(_vm.trans("strings.soccer_expert")))
+        _c("div", { staticClass: "row page-header" }, [
+          _c(
+            "div",
+            { staticClass: "col-lg-12 col-12 col-md-12 col-sm-12" },
+            [
+              _c("h1", { staticStyle: { display: "inline" } }, [
+                _vm._v(_vm._s(_vm.trans("strings.soccer_expert")))
+              ]),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-md btn-info pull-right",
+                  attrs: { to: { name: "how_to_play_soccer_expert" } }
+                },
+                [
+                  _vm._v(
+                    "\n\t\t\t\t\t" +
+                      _vm._s(_vm.trans("strings.how_to_play")) +
+                      " " +
+                      _vm._s(_vm.trans("strings.soccer_expert")) +
+                      "\n\t\t\t\t"
+                  )
+                ]
+              )
+            ],
+            1
+          )
         ]),
         _vm._v(" "),
         _c(
@@ -91220,12 +91251,12 @@ var render = function() {
         _c("div", { staticClass: "row" }, [
           _c(
             "div",
-            { staticClass: "col-12 col-lg-7 col-md-7 col-sm-7" },
+            { staticClass: "col-12 col-lg-12 col-md-12 col-sm-12 text-center" },
             [
               _c(
                 "router-link",
                 {
-                  staticClass: "btn btn-md btn-info pull-right",
+                  staticClass: "btn btn-md btn-info",
                   attrs: { to: { name: "create_your_league" } },
                   on: {
                     click: function($event) {
@@ -91237,35 +91268,6 @@ var render = function() {
                   _vm._v(
                     "\n\t\t\t\t\t" +
                       _vm._s(_vm.trans("strings.create_your_own_league")) +
-                      "\n\t\t\t\t"
-                  )
-                ]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-12 col-lg-5 col-md-5 col-sm-5" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-md btn-info pull-right",
-                  attrs: { to: { name: "how_to_play_soccer_expert" } },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                    }
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n\t\t\t\t\t" +
-                      _vm._s(_vm.trans("strings.how_to_play")) +
-                      " " +
-                      _vm._s(_vm.trans("strings.soccer_expert")) +
                       "\n\t\t\t\t"
                   )
                 ]
@@ -91951,8 +91953,34 @@ var render = function() {
   return _vm.loading.component == true
     ? _c("load-component")
     : _c("div", { staticClass: "container" }, [
-        _c("h1", { staticClass: "page-header" }, [
-          _vm._v(_vm._s(_vm.trans("strings.lotteries")))
+        _c("div", { staticClass: "row page-header" }, [
+          _c(
+            "div",
+            { staticClass: "col-lg-12 col-12 col-md-12 col-sm-12" },
+            [
+              _c("h1", { staticStyle: { display: "inline" } }, [
+                _vm._v(_vm._s(_vm.trans("strings.lotteries")))
+              ]),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-md btn-info pull-right",
+                  attrs: { to: { name: "how_to_play_lottery" } }
+                },
+                [
+                  _vm._v(
+                    "\n\t\t\t\t\t" +
+                      _vm._s(_vm.trans("strings.how_to_play")) +
+                      " " +
+                      _vm._s(_vm.trans("strings.lottery")) +
+                      "\n\t\t\t\t"
+                  )
+                ]
+              )
+            ],
+            1
+          )
         ]),
         _vm._v(" "),
         _vm.lotteries.length == 0
@@ -91974,38 +92002,7 @@ var render = function() {
               1
             )
           })
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-lg-12" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-md btn-info",
-                  attrs: { to: { name: "how_to_play_lottery" } },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                    }
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n\t\t\t\t" +
-                      _vm._s(_vm.trans("strings.how_to_play")) +
-                      " " +
-                      _vm._s(_vm.trans("strings.lottery")) +
-                      "\n\t\t\t"
-                  )
-                ]
-              )
-            ],
-            1
-          )
-        ])
+        )
       ])
 }
 var staticRenderFns = []

@@ -1,7 +1,15 @@
 <template>
 	<load-component v-if="loading.component == true"></load-component>
 	<div class="container" v-else>
-		<h1 class="page-header">{{ trans('strings.lotteries') }}</h1>
+
+		<div class="row page-header">
+        	<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+        		<h1 style="display: inline">{{ trans('strings.lotteries') }}</h1>
+        		<router-link :to="{ name: 'how_to_play_lottery' }" class="btn btn-md btn-info pull-right">
+					{{ trans('strings.how_to_play') }} {{ trans('strings.lottery') }}
+				</router-link>
+        	</div>
+        </div>
 
 		<div class="row" v-if="lotteries.length == 0">
 			<div class="col-lg-12">
@@ -12,14 +20,6 @@
 		<div class="row">
 			<div class="col-lg-4 col-12 col-md-6 col-sm-6" v-for="lottery in lotteries">				
 				<card-component :lottery="lottery"></card-component>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-12">
-				<router-link :to="{ name: 'how_to_play_lottery' }" class="btn btn-md btn-info" @click.prevent="">
-					{{ trans('strings.how_to_play') }} {{ trans('strings.lottery') }}
-				</router-link>
 			</div>
 		</div>
 	</div>

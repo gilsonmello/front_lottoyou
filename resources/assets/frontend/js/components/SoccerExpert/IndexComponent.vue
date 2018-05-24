@@ -1,7 +1,17 @@
 <template>
 	<load-component v-if="loading.component == true"></load-component>
 	<div class="container" v-else>
-		<h1 class="page-header">{{ trans('strings.soccer_expert') }}</h1>
+		
+		<div class="row page-header">
+        	<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+        		<h1 style="display: inline">{{ trans('strings.soccer_expert') }}</h1>
+        		<router-link :to="{ name: 'how_to_play_soccer_expert' }" class="btn btn-md btn-info pull-right">
+					{{ trans('strings.how_to_play') }} {{ trans('strings.soccer_expert') }}
+				</router-link>
+        	</div>
+        </div>
+
+		
 		<div class="row">
 			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="(soccer_expert, index) in soccer_experts">
 				<div class="soccer-expert">
@@ -51,14 +61,9 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 col-lg-7 col-md-7 col-sm-7">
-				<router-link :to="{ name: 'create_your_league' }" class="btn btn-md btn-info pull-right" @click.prevent="">
+			<div class="col-12 col-lg-12 col-md-12 col-sm-12 text-center">
+				<router-link :to="{ name: 'create_your_league' }" class="btn btn-md btn-info" @click.prevent="">
 					{{ trans('strings.create_your_own_league') }}
-				</router-link>
-			</div>
-			<div class="col-12 col-lg-5 col-md-5 col-sm-5">
-				<router-link :to="{ name: 'how_to_play_soccer_expert' }" class="btn btn-md btn-info pull-right" @click.prevent="">
-					{{ trans('strings.how_to_play') }} {{ trans('strings.soccer_expert') }}
 				</router-link>
 			</div>			
 		</div>
