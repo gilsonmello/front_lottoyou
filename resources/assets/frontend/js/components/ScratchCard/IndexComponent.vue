@@ -245,7 +245,7 @@
 		      						<div class="no-tickets-container hide">
 		      							<div class="vert-align">
 		      								<h3>{{ trans('strings.no_tickets_left') }}.</h3>
-		      								<p>{{ trans('strings.buy_scratchcard_to_play') }}.</p>
+		      								<p>{{ trans('strings.buy_scratchcards_to_play') }}.</p>
 		      								<div @click="app.reload" class="btn btn-primary btn-mini buy-more-btn">
 		      									{{ trans('strings.buy_tickets') }}.
 		      								</div>

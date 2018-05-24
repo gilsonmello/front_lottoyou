@@ -33,10 +33,10 @@
 	      					<div class="col-lg-6 col-12 col-md-6 col-sm-6">
 	      						<div class="no-tickets-container hide">
 	      							<div class="vert-align">
-	      								<h3>Não restam raspadinhas.</h3>
-	      								<p>Tens de comprar mais raspadinhas para voltar a jogar.</p>
+	      								<h3>{{ trans('strings.no_tickets_left') }}.</h3>
+	      								<p>{{ trans('strings.buy_scratchcards_to_play') }}.</p>
 	      								<div @click.prevent="app.reload" class="btn btn-primary btn-mini buy-more-btn">
-	      									Comprar mais bilhetes.
+	      									{{ trans('strings.buy_tickets') }}.
 	      								</div>
       								</div>
 	      						</div>

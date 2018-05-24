@@ -86157,7 +86157,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n#photo[data-v-4f08ca32] {\n    display: none;\n}\n", ""]);
+exports.push([module.i, "\n.file-name[data-v-4f08ca32] {\n    display: block;\n}\n#photo[data-v-4f08ca32] {\n    display: none;\n}\n", ""]);
 
 // exports
 
@@ -86676,7 +86676,7 @@ var render = function() {
                 _c(
                   "span",
                   {
-                    staticClass: "btn btn-primary btn-xs",
+                    staticClass: "btn btn-primary btn-md",
                     on: { click: _vm.openImages }
                   },
                   [
@@ -89343,12 +89343,22 @@ var render = function() {
                                     [
                                       _c("div", { staticClass: "vert-align" }, [
                                         _c("h3", [
-                                          _vm._v("Não restam raspadinhas.")
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm.trans(
+                                                "strings.no_tickets_left"
+                                              )
+                                            ) + "."
+                                          )
                                         ]),
                                         _vm._v(" "),
                                         _c("p", [
                                           _vm._v(
-                                            "Tens de comprar mais raspadinhas para voltar a jogar."
+                                            _vm._s(
+                                              _vm.trans(
+                                                "strings.buy_scratchcards_to_play"
+                                              )
+                                            ) + "."
                                           )
                                         ]),
                                         _vm._v(" "),
@@ -89366,7 +89376,13 @@ var render = function() {
                                           },
                                           [
                                             _vm._v(
-                                              "\n\t      \t\t\t\t\t\t\t\t\tComprar mais bilhetes.\n\t      \t\t\t\t\t\t\t\t"
+                                              "\n\t      \t\t\t\t\t\t\t\t\t" +
+                                                _vm._s(
+                                                  _vm.trans(
+                                                    "strings.buy_tickets"
+                                                  )
+                                                ) +
+                                                ".\n\t      \t\t\t\t\t\t\t\t"
                                             )
                                           ]
                                         )
@@ -90460,7 +90476,7 @@ var render = function() {
                                                     _vm._v(
                                                       _vm._s(
                                                         _vm.trans(
-                                                          "strings.buy_scratchcard_to_play"
+                                                          "strings.buy_scratchcards_to_play"
                                                         )
                                                       ) + "."
                                                     )

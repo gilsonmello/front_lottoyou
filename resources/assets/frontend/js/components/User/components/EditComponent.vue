@@ -15,7 +15,7 @@
                     <img v-if="photo" :src="photo" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
                     <img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
                     <label for="photo">Imagem do perfil (jpg ou png)</label>
-                    <span @click="openImages" class="btn btn-primary btn-xs">
+                    <span @click="openImages" class="btn btn-primary btn-md">
                         <i class="glyphicon glyphicon-plus"></i>
                         <span>{{ trans('strings.select_an_image') }}</span>
                         <input accept="image/*" @change.prevent="changePhoto" type="file" name="photo" id="photo">
@@ -414,6 +414,10 @@
 </script>
 
 <style scoped>
+    .file-name {
+        display: block;
+    }
+
     #photo {
         display: none;
     }

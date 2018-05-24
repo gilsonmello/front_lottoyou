@@ -26,6 +26,7 @@ return [
     'postal_code' => 'Código Postal',
     'create_your_own_league' => 'Crie sua própia liga',
     'buy_scratchcard_to_play' => 'Compre raspadinha para jogar',
+    'buy_scratchcards_to_play' => 'Compre raspadinhas para jogar',
     'buy_tickets' => 'Comprar bilhetes',
     'no_tickets_left' => 'Não restam bilhetes',
     'group' => 'Grupo',
