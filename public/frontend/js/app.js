@@ -83379,7 +83379,7 @@ var render = function() {
             attrs: {
               id: "carouselExampleIndicators",
               "data-ride": "carousel",
-              "data-interval": "5000"
+              "data-interval": "3000"
             }
           },
           [
