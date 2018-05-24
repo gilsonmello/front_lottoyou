@@ -83357,7 +83357,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     created: function created() {},
-    mounted: function mounted() {},
+    mounted: function mounted() {
+        console.log($('.carousel'));
+        $('.carousel').carousel({
+            interval: 1200
+        });
+    },
+
     activated: function activated() {}
 });
 

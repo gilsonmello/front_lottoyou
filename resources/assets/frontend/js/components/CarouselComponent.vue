@@ -72,8 +72,11 @@
         created: function () {
 
         },
-        mounted: function() {
-            
+        mounted() {
+            console.log($('.carousel'))
+            $('.carousel').carousel({
+              interval: 1200
+            })
         },
         activated: function() {
             
