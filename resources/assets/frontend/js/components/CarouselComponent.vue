@@ -73,9 +73,8 @@
 
         },
         mounted() {
-            console.log($('.carousel'))
             $('.carousel').carousel({
-              interval: 1200
+              interval: 5000
             })
         },
         activated: function() {
