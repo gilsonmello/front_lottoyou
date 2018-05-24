@@ -61,10 +61,15 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 col-lg-12 col-md-12 col-sm-12 text-center">
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4">
+			</div>
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4">
 				<router-link :to="{ name: 'create_your_league' }" class="btn create_your_league btn-md btn-warning" @click.prevent="">
 					{{ trans('strings.create_your_own_league') }}
 				</router-link>
+			</div>
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4">
+				
 			</div>			
 		</div>
 
@@ -131,18 +136,20 @@
 		        				</tr>
 		        				<tr>
 		        					<td>4º ao 10º</td>
-		        					<td>1%</td>
+		        					<td>1% ({{ trans('strings.each_one') }})</td>
 		        				</tr>
 		        				<tr>
 		        					<td>11º ao 20º</td>
-		        					<td>0.5%</td>
+		        					<td>0.5% ({{ trans('strings.each_one') }})</td>
 		        				</tr>
 		        			</tbody>
 		        		</table>
 			      	</div>
+			      	<!-- <p>{{ trans('strings.each_one') }}</p> -->
 					<!-- Modal footer -->
 			      	<!--<div class="modal-footer">
-			        	 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			      		<p>{{ trans('strings.each_one') }}</p>
+		        	 	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
 			      	</div>-->
 				</div>
 		  	</div>
@@ -227,7 +234,7 @@
 	.btn-warning {
 		background-color: #ffe066; 
 		border: none; 
-		width: 50%; 
+		width: 100%; 
 		font-weight: bold;
 	}
 	

@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'each_one' => 'Cada um',
     'select_an_image' => 'Selecione uma imagem',
     'no_file_selected' => 'Nenhum arquivo selecionado',
     'awards' => 'Prêmios',
