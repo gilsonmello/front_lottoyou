@@ -23,7 +23,7 @@
 			</div>				
 		</div>
 
-        <form @submit.prevent="addToCart">
+        <form @submit.prevent="addToCart" v-if="lottery.sweepstakes.length > 0">
         	<div class="row">
 	        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
 	        		<h4 class="page-header" style="margin-top: 0; border: none;">{{ lottery.nome }}</h4>

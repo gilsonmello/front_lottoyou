@@ -109270,286 +109270,311 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
-        _c(
-          "form",
-          {
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                _vm.addToCart($event)
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-lg-6 col-6 col-md-6 col-sm-6" }, [
-                _c(
-                  "h4",
-                  {
-                    staticClass: "page-header",
-                    staticStyle: { "margin-top": "0", border: "none" }
-                  },
-                  [_vm._v(_vm._s(_vm.lottery.nome))]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-6 col-6 col-md-6 col-sm-6" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-md btn-back pull-right btn-primary",
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.back($event)
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n\t        \t\t\t" +
-                        _vm._s(_vm.trans("strings.back")) +
-                        "\n\t        \t\t"
-                    )
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
+        _vm.lottery.sweepstakes.length > 0
+          ? _c(
+              "form",
               {
-                staticClass: "row container-tickets",
-                staticStyle: { overflow: "auto", "flex-wrap": "nowrap" }
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    _vm.addToCart($event)
+                  }
+                }
               },
               [
-                _vm._l(_vm.item.tickets, function(ticket, index) {
-                  return _c("ticket-component", {
-                    key: index,
-                    attrs: {
-                      tickets: _vm.tickets,
-                      dickers: _vm.dickers,
-                      dickersMaxSel: _vm.dickersMaxSel,
-                      dickersExtras: _vm.dickersExtras,
-                      item: _vm.item,
-                      dickersExtrasSelect: _vm.dickersExtrasSelect,
-                      ticket: ticket,
-                      index: index
-                    },
-                    on: {
-                      refreshTickes: _vm.refreshTickes,
-                      refreshNumbersChecked: _vm.refreshNumbersChecked,
-                      deleteTicket: _vm.deleteTicket
-                    }
-                  })
-                }),
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-6 col-6 col-md-6 col-sm-6" },
+                    [
+                      _c(
+                        "h4",
+                        {
+                          staticClass: "page-header",
+                          staticStyle: { "margin-top": "0", border: "none" }
+                        },
+                        [_vm._v(_vm._s(_vm.lottery.nome))]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-6 col-6 col-md-6 col-sm-6" },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "btn btn-md btn-back pull-right btn-primary",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.back($event)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t        \t\t\t" +
+                              _vm._s(_vm.trans("strings.back")) +
+                              "\n\t        \t\t"
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
                 _c(
                   "div",
                   {
-                    staticClass: "col-lg-1 col-4 col-md-2 col-sm-2 vcenter",
-                    staticStyle: { "justify-content": "center" },
-                    attrs: { id: "btn-add-ticket" }
+                    staticClass: "row container-tickets",
+                    staticStyle: { overflow: "auto", "flex-wrap": "nowrap" }
                   },
                   [
-                    _c("div", [
-                      _c("a", {
-                        staticClass: "btn btn-primary fa fa-plus",
-                        staticStyle: { "font-size": "60px" },
-                        attrs: { href: "#" },
+                    _vm._l(_vm.item.tickets, function(ticket, index) {
+                      return _c("ticket-component", {
+                        key: index,
+                        attrs: {
+                          tickets: _vm.tickets,
+                          dickers: _vm.dickers,
+                          dickersMaxSel: _vm.dickersMaxSel,
+                          dickersExtras: _vm.dickersExtras,
+                          item: _vm.item,
+                          dickersExtrasSelect: _vm.dickersExtrasSelect,
+                          ticket: ticket,
+                          index: index
+                        },
                         on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            _vm.addBet($event)
-                          }
+                          refreshTickes: _vm.refreshTickes,
+                          refreshNumbersChecked: _vm.refreshNumbersChecked,
+                          deleteTicket: _vm.deleteTicket
                         }
                       })
-                    ])
-                  ]
-                )
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-lg-3 col-12 col-md-4 col-sm-4" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "date" } }, [
-                    _vm._v(_vm._s(_vm.trans("strings.sweepstake_date")))
-                  ]),
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-lg-1 col-4 col-md-2 col-sm-2 vcenter",
+                        staticStyle: { "justify-content": "center" },
+                        attrs: { id: "btn-add-ticket" }
+                      },
+                      [
+                        _c("div", [
+                          _c("a", {
+                            staticClass: "btn btn-primary fa fa-plus",
+                            staticStyle: { "font-size": "60px" },
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.addBet($event)
+                              }
+                            }
+                          })
+                        ])
+                      ]
+                    )
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-3 col-12 col-md-4 col-sm-4" },
+                    [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "date" } }, [
+                          _vm._v(_vm._s(_vm.trans("strings.sweepstake_date")))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.lot_jogo_id,
+                                expression: "lot_jogo_id"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "lot_jogo_id" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.lot_jogo_id = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          _vm._l(_vm.lottery.sweepstakes, function(
+                            sweepstake,
+                            key
+                          ) {
+                            return _c(
+                              "option",
+                              {
+                                attrs: { "data-key": key },
+                                domProps: { value: key }
+                              },
+                              [
+                                _vm._v(
+                                  "\n\t\t\t\t\t      \t\t" +
+                                    _vm._s(sweepstake.data_fim) +
+                                    "\n\t\t\t\t\t      \t"
+                                )
+                              ]
+                            )
+                          })
+                        )
+                      ])
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.lot_jogo_id,
-                          expression: "lot_jogo_id"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "lot_jogo_id" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.lot_jogo_id = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
-                    },
-                    _vm._l(_vm.lottery.sweepstakes, function(sweepstake, key) {
-                      return _c(
-                        "option",
-                        {
-                          attrs: { "data-key": key },
-                          domProps: { value: key }
-                        },
-                        [
+                    "div",
+                    { staticClass: "col-lg-3 col-12 col-md-4 col-sm-4" },
+                    [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "date" } }, [
+                          _vm._v(_vm._s(_vm.trans("strings.next_lottery")))
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "countdown form-control" }, [
+                          _vm.next_lottery.days > 1
+                            ? _c("span", [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t" +
+                                    _vm._s(_vm.next_lottery.days) +
+                                    " " +
+                                    _vm._s(_vm.trans("strings.days")) +
+                                    " e\n\t\t\t\t\t\t\t"
+                                )
+                              ])
+                            : _vm.next_lottery.days == 1
+                              ? _c("span", [
+                                  _vm._v(
+                                    "\n\t\t\t\t\t\t\t\t" +
+                                      _vm._s(_vm.next_lottery.days) +
+                                      " " +
+                                      _vm._s(_vm.trans("strings.day")) +
+                                      " e\n\t\t\t\t\t\t\t"
+                                  )
+                                ])
+                              : _vm._e(),
                           _vm._v(
-                            "\n\t\t\t\t\t      \t\t" +
-                              _vm._s(sweepstake.data_fim) +
-                              "\n\t\t\t\t\t      \t"
-                          )
-                        ]
-                      )
-                    })
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-3 col-12 col-md-4 col-sm-4" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "date" } }, [
-                    _vm._v(_vm._s(_vm.trans("strings.next_lottery")))
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "countdown form-control" }, [
-                    _vm.next_lottery.days > 1
-                      ? _c("span", [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t\t" +
-                              _vm._s(_vm.next_lottery.days) +
-                              " " +
-                              _vm._s(_vm.trans("strings.days")) +
-                              " e\n\t\t\t\t\t\t\t"
-                          )
-                        ])
-                      : _vm.next_lottery.days == 1
-                        ? _c("span", [
-                            _vm._v(
-                              "\n\t\t\t\t\t\t\t\t" +
-                                _vm._s(_vm.next_lottery.days) +
-                                " " +
-                                _vm._s(_vm.trans("strings.day")) +
-                                " e\n\t\t\t\t\t\t\t"
-                            )
-                          ])
-                        : _vm._e(),
-                    _vm._v(
-                      "\t\t\t\t\n\t\t\t\t\t\t\t" +
-                        _vm._s(_vm.next_lottery.hours) +
-                        ":" +
-                        _vm._s(_vm.next_lottery.minutes) +
-                        ":" +
-                        _vm._s(_vm.next_lottery.seconds) +
-                        "\n\t\t\t\t\t\t"
-                    )
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                { staticClass: "col-lg-12 col-12 col-md-12 col-sm-12" },
-                [
-                  !_vm.loading.paying
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-md btn-primary pull-right",
-                          attrs: { type: "submit" }
-                        },
-                        [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t" +
-                              _vm._s(_vm.trans("strings.add_to_cart")) +
-                              "\n\t\t\t\t\t"
-                          )
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.loading.paying == false &&
-                  _vm.auth &&
-                  _vm.auth.balance.value > _vm.total
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "btn-pay-now pull-right btn btn-primary",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.validate($event)
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(_vm.trans("strings.pay_now")) +
-                              "\n                    "
-                          )
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.loading.paying
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "pull-right btn btn-md btn-primary",
-                          attrs: { type: "load" },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "pull-right price" }, [
-                    _vm._v("\n\t\t\t\t\t\t$ "),
-                    _vm.total > 0
-                      ? _c("span", { staticClass: "value" }, [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t" +
-                              _vm._s(_vm.totalFormated) +
+                            "\t\t\t\t\n\t\t\t\t\t\t\t" +
+                              _vm._s(_vm.next_lottery.hours) +
+                              ":" +
+                              _vm._s(_vm.next_lottery.minutes) +
+                              ":" +
+                              _vm._s(_vm.next_lottery.seconds) +
                               "\n\t\t\t\t\t\t"
                           )
                         ])
-                      : _c("span", { staticClass: "value" }, [_vm._v("0.00")])
-                  ])
-                ]
-              )
-            ])
-          ]
-        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-lg-12 col-12 col-md-12 col-sm-12" },
+                    [
+                      !_vm.loading.paying
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-md btn-primary pull-right",
+                              attrs: { type: "submit" }
+                            },
+                            [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t" +
+                                  _vm._s(_vm.trans("strings.add_to_cart")) +
+                                  "\n\t\t\t\t\t"
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.loading.paying == false &&
+                      _vm.auth &&
+                      _vm.auth.balance.value > _vm.total
+                        ? _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn-pay-now pull-right btn btn-primary",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.validate($event)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(_vm.trans("strings.pay_now")) +
+                                  "\n                    "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.loading.paying
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "pull-right btn btn-md btn-primary",
+                              attrs: { type: "load" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "pull-right price" }, [
+                        _vm._v("\n\t\t\t\t\t\t$ "),
+                        _vm.total > 0
+                          ? _c("span", { staticClass: "value" }, [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\t" +
+                                  _vm._s(_vm.totalFormated) +
+                                  "\n\t\t\t\t\t\t"
+                              )
+                            ])
+                          : _c("span", { staticClass: "value" }, [
+                              _vm._v("0.00")
+                            ])
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            )
+          : _vm._e()
       ])
 }
 var staticRenderFns = []
