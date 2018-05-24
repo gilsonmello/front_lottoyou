@@ -15,7 +15,12 @@
                     <img v-if="photo" :src="photo" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
                     <img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
                     <label for="photo">Imagem do perfil (jpg ou png)</label>
-                    <input accept="image/*" @change.prevent="changePhoto" type="file" name="photo" id="photo">
+                    <span @click="openImages" class="btn btn-primary btn-xs">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>{{ trans('strings.select_an_image') }}</span>
+                        <input accept="image/*" @change.prevent="changePhoto" type="file" name="photo" id="photo">
+                    </span>
+                    <span class="file-name">{{ trans('strings.no_file_selected') }}</span>
                     <label>Tamanho de arquivo até 5mb*</label>
                 </div>
                 <div class="col-lg-9">
@@ -230,6 +235,7 @@
 
                     if(window.FileReader){
                         if(file.type.indexOf('image') >= 0){
+                            $('.file-name').text(file.name);
                             var reader = new FileReader();
                             reader.onprogress = function(evt) {
                                 
@@ -319,6 +325,9 @@
                     $(this.$el).find('[type="load"]').addClass('hide');
                     $(this.$el).find('[type="submit"]').removeClass('hide');                    
                 });
+            },
+            openImages() {
+                document.getElementById('photo').click();
             }
         },
         data: function() {
@@ -405,5 +414,7 @@
 </script>
 
 <style scoped>
-
+    #photo {
+        display: none;
+    }
 </style>

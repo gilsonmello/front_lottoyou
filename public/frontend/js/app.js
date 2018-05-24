@@ -83362,7 +83362,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             interval: 5000
         });
     },
-
     activated: function activated() {}
 });
 
@@ -86158,7 +86157,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n#photo[data-v-4f08ca32] {\n    display: none;\n}\n", ""]);
 
 // exports
 
@@ -86172,6 +86171,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Load__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -86404,6 +86408,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                 if (window.FileReader) {
                     if (file.type.indexOf('image') >= 0) {
+                        $('.file-name').text(file.name);
                         var reader = new FileReader();
                         reader.onprogress = function (evt) {};
                         reader.onloadend = function (e) {
@@ -86488,6 +86493,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 $(_this.$el).find('[type="load"]').addClass('hide');
                 $(_this.$el).find('[type="submit"]').removeClass('hide');
             });
+        },
+        openImages: function openImages() {
+            document.getElementById('photo').click();
         }
     },
     data: function data() {
@@ -86665,20 +86673,39 @@ var render = function() {
                   _vm._v("Imagem do perfil (jpg ou png)")
                 ]),
                 _vm._v(" "),
-                _c("input", {
-                  attrs: {
-                    accept: "image/*",
-                    type: "file",
-                    name: "photo",
-                    id: "photo"
+                _c(
+                  "span",
+                  {
+                    staticClass: "btn btn-primary btn-xs",
+                    on: { click: _vm.openImages }
                   },
-                  on: {
-                    change: function($event) {
-                      $event.preventDefault()
-                      _vm.changePhoto($event)
-                    }
-                  }
-                }),
+                  [
+                    _c("i", { staticClass: "glyphicon glyphicon-plus" }),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v(_vm._s(_vm.trans("strings.select_an_image")))
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: {
+                        accept: "image/*",
+                        type: "file",
+                        name: "photo",
+                        id: "photo"
+                      },
+                      on: {
+                        change: function($event) {
+                          $event.preventDefault()
+                          _vm.changePhoto($event)
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "file-name" }, [
+                  _vm._v(_vm._s(_vm.trans("strings.no_file_selected")))
+                ]),
                 _vm._v(" "),
                 _c("label", [_vm._v("Tamanho de arquivo até 5mb*")])
               ]),

@@ -69,7 +69,7 @@
 
 <script>
 	export default {
-        created: function () {
+        created() {
 
         },
         mounted() {
@@ -77,7 +77,7 @@
               interval: 5000
             })
         },
-        activated: function() {
+        activated() {
             
         }
 	}
