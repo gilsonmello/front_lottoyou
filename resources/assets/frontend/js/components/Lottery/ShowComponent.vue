@@ -29,7 +29,7 @@
 	        		<h4 class="page-header" style="margin-top: 0; border: none;">{{ lottery.nome }}</h4>
 	        	</div>
 	        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
-	        		<button class="btn btn-md btn-back pull-right btn-info" @click.prevent="back($event)">
+	        		<button class="btn btn-md btn-back pull-right btn-primary" @click.prevent="back($event)">
 	        			{{ trans('strings.back') }}
 	        		</button>
 	        	</div>
@@ -42,7 +42,7 @@
 				 <div class="col-lg-1 col-4 col-md-2 col-sm-2 vcenter" style="justify-content: center;" id="btn-add-ticket">
 					<div>
 
-						<a href="#" @click.prevent="addBet($event)" class="btn btn-info fa fa-plus" style="font-size: 60px;"></a>
+						<a href="#" @click.prevent="addBet($event)" class="btn btn-primary fa fa-plus" style="font-size: 60px;"></a>
 						<!--
 						<br>
 						<a v-if="tickets.length > 5" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>-->
@@ -79,10 +79,13 @@
 			<hr>
 			<div class="row">
 				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-					<button type="submit" class="btn btn-md btn-primary pull-right">
+					<button type="submit" class="btn btn-md btn-primary pull-right" v-if="!loading.paying">
 						{{ trans('strings.add_to_cart') }}
 					</button>
-					<button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-primary">
+					<button @click="validate($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value > total" class="btn-pay-now pull-right btn btn-primary">
+                        {{ trans('strings.pay_now') }}
+                    </button>
+					<button v-if="loading.paying" @click.prevent="" type="load" class="pull-right btn btn-md btn-primary">
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">
@@ -116,7 +119,8 @@
 			return {
 				rawHtml: '',
 				loading: {
-					component: true
+					component: true,
+					paying: false
 				},
 				lottery: {},
 				id: '',
@@ -154,6 +158,144 @@
 			}
 		},
 		methods: {
+			completePurchase(event) {
+
+				var completePurchaseRequest = axios.create();
+
+				completePurchaseRequest.interceptors.request.use(config => {					
+		          	return config;
+				});
+
+				this.purchase['user_id'] = this.auth.id;
+
+				completePurchaseRequest.post(
+					routes.carts.complete_purchase, 
+					this.purchase, 
+					{}
+				).then(response => {
+					if(response.status === 200) {
+						this.refreshAuthPromise()
+							.then((response) => {
+								if (response.status === 200) {
+									toastr.success(
+										this.trans('strings.successful_purchase'),
+										this.trans('strings.buy'),
+									);
+									window.localStorage.setItem('authUser', JSON.stringify(response.data))
+									this.$store.dispatch('setUserObject', response.data);
+									this.$store.dispatch('clearPurchase');
+									this.$router.push({
+										name: 'users.transactions'
+									});	
+								}								
+							}).catch((error) => {
+
+							});
+						
+					}
+				}).catch((error) => {
+					this.loading.paying = false;
+				});		
+			},
+			validate(event) {
+				var tickets = this.getTicketsFinished().clone();
+
+				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
+
+				//this.item.lottery.sweepstakes = this.item.lottery.sweepstakes[this.lot_jogo_id]
+
+				var item = {
+					hash: this.item.hash,
+					id: this.item.id,
+					name: this.item.name,
+					value: this.item.value,
+					lottery: this.item.lottery,
+					lot_jogo_id: this.lot_jogo_id,
+					total: this.total,
+					tickets: tickets,
+					sweepstake: sweepstake,
+					dickers: this.dickers,
+					dickersMaxSelect: this.dickersMaxSel,
+					dickersExtras: this.dickersExtras,
+					dickersExtrasMaxSelect: this.dickersExtrasSelect
+				};
+
+				if(tickets.length == 0) {
+					alert('Faça pelo menos um jogo');
+					//this.$store.dispatch('removeItemLottery', item);
+				} else {
+
+					this.$store.dispatch('setItemLottery', item);
+
+					var validateRequest = axios.create();
+
+					validateRequest.interceptors.request.use(config => {
+						this.loading.paying = true;
+						return config;
+					});
+
+					validateRequest.post(
+						routes.carts.validate, 
+						this.purchase, 
+						{}
+					).then(response => {
+						if(response.status === 200) {
+							this.fastBuy();
+						}
+					}).catch((error) => {
+						this.$store.dispatch('removeItemLottery', item);
+						toastr.error(
+							error.response.data.msg,
+							this.trans('strings.error')
+						);
+						this.loading.paying = false
+					});	
+				}
+			},
+			fastBuy(event) {
+				var vm = this
+				var tickets = this.getTicketsFinished().clone();
+
+				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
+
+				//this.item.lottery.sweepstakes = this.item.lottery.sweepstakes[this.lot_jogo_id]
+
+				var item = {
+					hash: this.item.hash,
+					id: this.item.id,
+					name: this.item.name,
+					value: this.item.value,
+					lottery: this.item.lottery,
+					lot_jogo_id: this.lot_jogo_id,
+					total: this.total,
+					tickets: tickets,
+					sweepstake: sweepstake,
+					dickers: this.dickers,
+					dickersMaxSelect: this.dickersMaxSel,
+					dickersExtras: this.dickersExtras,
+					dickersExtrasMaxSelect: this.dickersExtrasSelect
+				};
+
+				let addLotteryRequest = axios.create();
+
+				addLotteryRequest.interceptors.request.use(config => {
+					return config;
+				});
+
+				addLotteryRequest.post(routes.carts.add_lotteries, {
+					purchase: item, 
+					auth: this.auth,
+					hash: item.hash
+					
+				}).then(response => {
+		            if(response.status === 200) {
+						this.completePurchase();
+					}
+		        }).catch((error) => {
+		        	this.loading.paying = false;
+		        	toast.error('Erro ao adicionar item', 'Por favor tente novamente');
+		        });
+			},
 			sweepstakesRequest() {				
 
 				const sweepstakesRequest = axios.create();
@@ -857,6 +999,9 @@
 </script>
 
 <style scoped>
+	.btn-pay-now {
+		margin-right: 15px
+	}
 	
 	.countdown {
 

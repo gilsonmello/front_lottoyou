@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'no_file_selected' => 'Nenhum arquivo selecionado',
     'awards' => 'Prêmios',
     'award' => 'Prêmio',
     'successful_purchase' => 'Compra realizada com sucesso',

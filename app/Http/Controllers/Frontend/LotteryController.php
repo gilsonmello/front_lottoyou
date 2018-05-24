@@ -80,6 +80,8 @@ class LotteryController extends Controller
         ->with([
             'sweepstakes' => function($query) {
                 $query->select('id', 'lot_categoria_id', 'data_fim', 'hora_fim')
+                    ->where('active', '=', 1)
+                    ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'))
                     ->orderBy('data_fim', 'ASC')
                     ->orderBy('hora_fim', 'ASC')
                     ->limit(1);

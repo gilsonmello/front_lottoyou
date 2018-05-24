@@ -5,7 +5,7 @@
 		<div class="row page-header">
         	<div class="col-lg-12 col-12 col-md-12 col-sm-12">
         		<h1 style="display: inline">{{ trans('strings.soccer_expert') }}</h1>
-        		<router-link :to="{ name: 'how_to_play_soccer_expert' }" class="btn btn-md btn-info pull-right">
+        		<router-link :to="{ name: 'how_to_play_soccer_expert' }" class="btn btn-md btn-primary pull-right">
 					{{ trans('strings.how_to_play') }} {{ trans('strings.soccer_expert') }}
 				</router-link>
         	</div>
@@ -62,7 +62,7 @@
 		</div>
 		<div class="row">
 			<div class="col-12 col-lg-12 col-md-12 col-sm-12 text-center">
-				<router-link :to="{ name: 'create_your_league' }" class="btn btn-md btn-info" @click.prevent="">
+				<router-link :to="{ name: 'create_your_league' }" class="btn create_your_league btn-md btn-warning" @click.prevent="">
 					{{ trans('strings.create_your_own_league') }}
 				</router-link>
 			</div>			
@@ -224,6 +224,18 @@
 </script>
 
 <style scoped>
+	.btn-warning {
+		background-color: #ffe066; 
+		border: none; 
+		width: 50%; 
+		font-weight: bold;
+	}
+	
+	.btn-warning:hover {
+	    color: #212529;
+	    background-color: #e0a800;
+	    border-color: #d39e00;
+	}
 
 	.remaining-tickets {
 	    background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;

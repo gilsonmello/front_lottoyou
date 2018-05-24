@@ -73,7 +73,8 @@
 			},
 		},
 		mounted: function() {
-			var date = this.formatDate(this.lottery.sweepstakes[0].data_fim);				
+			var date = this.formatDate(this.lottery.sweepstakes[0].data_fim);
+					
 			var timeOut = setInterval(() => {
 				this.setCountdown(date, timeOut);
 			}, 1000);

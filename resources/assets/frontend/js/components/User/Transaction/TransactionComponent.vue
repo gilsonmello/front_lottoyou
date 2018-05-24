@@ -47,7 +47,7 @@
                     </th>
                     <th>
                         <span>
-                            {{ trans('strings.confirmation') }}
+                            {{ trans('strings.description') }}
                         </span>                     
                         <span v-if="'confirmacao' === query.column">
                             <span v-if="query.direction === 'desc'">

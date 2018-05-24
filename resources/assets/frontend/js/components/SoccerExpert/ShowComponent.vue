@@ -22,7 +22,7 @@
         		<h4 class="page-header" style="margin-top: 0; border: none;">{{ item.soccer_expert.nome }}</h4>
         	</div>
         	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
-        		<button class="btn btn-md btn-back pull-right btn-info" @click.prevent="back($event)">
+        		<button class="btn btn-md btn-back pull-right btn-primary" @click.prevent="back($event)">
         			{{ trans('strings.back') }}
         		</button>
         	</div>

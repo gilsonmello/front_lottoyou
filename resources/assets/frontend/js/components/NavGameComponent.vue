@@ -11,7 +11,7 @@
 				</router-link>
 
 	            <router-link tag="li" :to="{ name: 'scratch_cards.index' }">
-          			<a class="nav-link">{{ trans('strings.scratch_card') }}</a>
+          			<a class="nav-link">{{ trans('strings.scratch_cards') }}</a>
 				</router-link>
 
           		<router-link tag="li" :to="{ name: 'soccer_expert.index' }">
