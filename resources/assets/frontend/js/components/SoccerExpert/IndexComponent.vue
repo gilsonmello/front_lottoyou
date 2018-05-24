@@ -61,14 +61,14 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 col-md-6 col-sm-6 col-lg-4">
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4 no-mobile">
 			</div>
 			<div class="col-12 col-md-6 col-sm-6 col-lg-4">
 				<router-link :to="{ name: 'create_your_league' }" class="btn create_your_league btn-md btn-warning" @click.prevent="">
 					{{ trans('strings.create_your_own_league') }}
 				</router-link>
 			</div>
-			<div class="col-12 col-md-6 col-sm-6 col-lg-4">
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4 no-mobile">
 				
 			</div>			
 		</div>
@@ -234,7 +234,8 @@
 	.btn-warning {
 		background-color: #ffe066; 
 		border: none; 
-		width: 100%; 
+		width: 100%;
+		font-size: 20px; 
 		font-weight: bold;
 	}
 	

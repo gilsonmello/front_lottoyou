@@ -16,7 +16,7 @@
 		</header>
 		<div class="tickets-body">
 			<div class="amount">
-				<h4>$ {{ lottery.value }}</h4>
+				<!-- <h4>$ {{ lottery.value }}</h4> -->
 				<span class="countdown">
 					<span v-if="days > 1">
 						{{ days }} {{ trans('strings.days') }} e
