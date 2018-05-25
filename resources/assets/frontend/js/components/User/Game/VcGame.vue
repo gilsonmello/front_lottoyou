@@ -17,12 +17,12 @@
                         {{ trans('strings.orders') }}
                     </router-link> -->
                 </div>
+                <h3 class="page-header">
+                    {{ trans('strings.games') }}
+                </h3>
             </div>
         </div>
-
-        <h3 class="page-header">
-            {{ trans('strings.games') }}
-        </h3>
+        
 
         <div class="table text-center">
             <div class="row table-head">

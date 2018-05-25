@@ -95348,12 +95348,16 @@ var render = function() {
                 )
               ],
               1
-            )
+            ),
+            _vm._v(" "),
+            _c("h3", { staticClass: "page-header" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.trans("strings.games")) +
+                  "\n            "
+              )
+            ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("h3", { staticClass: "page-header" }, [
-          _vm._v("\n        " + _vm._s(_vm.trans("strings.games")) + "\n    ")
         ]),
         _vm._v(" "),
         _c(
@@ -100044,7 +100048,17 @@ var render = function() {
         "router-link",
         {
           staticClass: "btn btn-xs btn-primary",
-          attrs: { to: { name: "users.games" } }
+          attrs: {
+            to: {
+              name: "users.games",
+              query: {
+                id: _vm.lottery_bet.order_item_id,
+                page: 1,
+                column: "created_at",
+                direction: "asc"
+              }
+            }
+          }
         },
         [
           _c("i", {

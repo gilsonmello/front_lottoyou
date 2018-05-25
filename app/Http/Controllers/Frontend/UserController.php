@@ -41,9 +41,10 @@ class UserController extends Controller
             $query->where('user_id', '=', $id);
         });
 
-        /*if($request->id && !empty($request->id)) {
+        if($request->id && !empty($request->id)) {
             $items->where('id', '=', $request->id);
-        }*/
+        }
+        
         if($request->column) {
             $items->orderBy($request->column, $request->direction);
         }
