@@ -1,10 +1,12 @@
 <style scoped>
 	.btn-xs {
         margin: 2px;
-        width: 28px;
-        height: 28px;
-        font-size: 12px;
-        
+        font-size: 25px;
+        color: white;
+        width: 42px;
+        background-color: #0056b1;
+        border-color: #0056b1;
+        border-radius: 999px;
         -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
         -webkit-transition: -webkit-box-shadow 0.15s ease-out;
@@ -12,6 +14,12 @@
         -o-transition: -o-box-shadow 0.15s ease-out;
         transition: box-shadow 0.15s ease-out;
         padding: 0;
+    }
+
+    .btn-default-darking {
+    	background-color: #0090b1;
+	    border-color: black;
+	    color: black;
     }
 </style>
 

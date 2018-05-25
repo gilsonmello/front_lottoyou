@@ -14,7 +14,7 @@
 			<div class="row">
 			  	<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 	                <div class="form-group">
-	                    <label for="sweepstake">{{ trans('strings.name') }}</label>
+	                    <label for="sweepstake">{{ trans('strings.sweepstake') }}</label>
 	                    <input v-model="query.sorteio" type="text" class="form-control" id="sweepstake" aria-describedby="sweepstake" :placeholder="trans('strings.sweepstake')">
 	                </div>
 	            </div>

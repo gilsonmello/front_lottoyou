@@ -110128,6 +110128,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -110241,7 +110244,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.btn-xs[data-v-48deba6c] {\n        margin: 2px;\n        width: 28px;\n        height: 28px;\n        font-size: 12px;\n        \n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n", ""]);
+exports.push([module.i, "\n.btn-xs[data-v-48deba6c] {\n        margin: 2px;\n        font-size: 25px;\n        color: white;\n        width: 42px;\n        background-color: #0056b1;\n        border-color: #0056b1;\n        border-radius: 999px;\n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n.btn-default-darking[data-v-48deba6c] {\n    \tbackground-color: #0090b1;\n\t    border-color: black;\n\t    color: black;\n}\n", ""]);
 
 // exports
 
@@ -110252,6 +110255,14 @@ exports.push([module.i, "\n.btn-xs[data-v-48deba6c] {\n        margin: 2px;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -110402,12 +110413,25 @@ var render = function() {
     _c(
       "div",
       { class: "collapse " + _vm.sweepstake.id },
-      _vm._l(_vm.sweepstake.results, function(result, index) {
-        return _c("vc-result", {
-          key: index,
-          attrs: { result: result, index: index }
-        })
-      })
+      [
+        _vm._l(_vm.sweepstake.results, function(result, index) {
+          return _c("vc-result", {
+            key: index,
+            attrs: { result: result, index: index }
+          })
+        }),
+        _vm._v(" "),
+        _vm.sweepstake.results.length == 0
+          ? _c("h4", { staticClass: "text-left" }, [
+              _vm._v(
+                "\n\t\t\t\t" +
+                  _vm._s(_vm.trans("strings.unfinished_sweepstake")) +
+                  "\n\t\t\t"
+              )
+            ])
+          : _vm._e()
+      ],
+      2
     )
   ])
 }
@@ -110487,7 +110511,7 @@ var render = function() {
               _c("div", { staticClass: "col-lg-4 col-12 col-sm-4 col-md-4" }, [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { attrs: { for: "sweepstake" } }, [
-                    _vm._v(_vm._s(_vm.trans("strings.name")))
+                    _vm._v(_vm._s(_vm.trans("strings.sweepstake")))
                   ]),
                   _vm._v(" "),
                   _c("input", {
