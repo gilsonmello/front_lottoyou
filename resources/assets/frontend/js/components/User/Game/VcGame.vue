@@ -132,6 +132,7 @@
                 model: {},
                 items: [],
                 query: {
+                    id: '',
                     page: 1,
                     column: 'created_at',
                     direction: 'desc',
@@ -146,11 +147,17 @@
                 url += "?page="+this.query.page;
                 url += "&column="+this.query.column;
                 url += "&direction="+this.query.direction;
+                url += "&id="+this.query.id;
+
+                this.$router.replace({
+                    query: Object.assign(this.query)
+                })
 
                 itemsRequest.interceptors.request.use(config => {
                     this.loading.component = true
                     return config;
                 });
+
                 itemsRequest.get(url, {}, {}).then(response => {
                     if(response.status === 200) {
                         this.loading.component = false;
@@ -202,7 +209,20 @@
             ])
         },
         mounted() {
-            this.itemsRequest();
+            if(this.$route.query.id) {
+                this.query.id = this.$route.query.id
+            } 
+            if(this.$route.query.page) {
+                this.query.page = this.$route.query.page
+            }           
+            if(this.$route.query.column) {
+                this.query.column = this.$route.query.column
+            }
+            if(this.$route.query.direction) {
+                this.query.direction = this.$route.query.direction
+            } 
+
+            this.itemsRequest(); 
         },
         components: {
             LoadComponent,

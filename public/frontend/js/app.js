@@ -93084,6 +93084,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             model: {},
             items: [],
             query: {
+                id: '',
                 page: 1,
                 column: 'created_at',
                 direction: 'desc'
@@ -93101,11 +93102,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             url += "?page=" + this.query.page;
             url += "&column=" + this.query.column;
             url += "&direction=" + this.query.direction;
+            url += "&id=" + this.query.id;
+
+            this.$router.replace({
+                query: Object.assign(this.query)
+            });
 
             itemsRequest.interceptors.request.use(function (config) {
                 _this.loading.component = true;
                 return config;
             });
+
             itemsRequest.get(url, {}, {}).then(function (response) {
                 if (response.status === 200) {
                     _this.loading.component = false;
@@ -93153,6 +93160,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['auth'])),
     mounted: function mounted() {
+        if (this.$route.query.id) {
+            this.query.id = this.$route.query.id;
+        }
+        if (this.$route.query.page) {
+            this.query.page = this.$route.query.page;
+        }
+        if (this.$route.query.column) {
+            this.query.column = this.$route.query.column;
+        }
+        if (this.$route.query.direction) {
+            this.query.direction = this.$route.query.direction;
+        }
+
         this.itemsRequest();
     },
 
@@ -99987,11 +100007,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['lottery_bet'],
-	mounted: function mounted() {}
+	props: ['balance', 'lottery_bet'],
+	mounted: function mounted() {
+		console.log(this.balance);
+	}
 });
 
 /***/ }),
@@ -100002,17 +100028,48 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._v(
-      "\n\t" +
-        _vm._s(_vm.lottery_bet.sweepstake.sorteio) +
-        ", " +
-        _vm._s(_vm.trans("strings.ticket")) +
-        " #" +
-        _vm._s(_vm.lottery_bet.id) +
-        "\n"
-    )
-  ])
+  return _c(
+    "div",
+    [
+      _vm._v(
+        "\n\t" +
+          _vm._s(_vm.lottery_bet.sweepstake.sorteio) +
+          ", " +
+          _vm._s(_vm.trans("strings.ticket")) +
+          " #" +
+          _vm._s(_vm.lottery_bet.id) +
+          "\n\t"
+      ),
+      _c(
+        "router-link",
+        {
+          staticClass: "btn btn-xs btn-primary",
+          attrs: {
+            to: {
+              name: "users.games",
+              query: {
+                id: _vm.balance.lottery_bet_id,
+                page: 1,
+                column: "created_at",
+                direction: "asc"
+              }
+            }
+          }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-eye",
+            attrs: {
+              "data-toggle": "tooltip",
+              "data-placement": "top",
+              title: _vm.trans("strings.view")
+            }
+          })
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -100645,7 +100702,11 @@ var render = function() {
                         ? _c("td", [
                             _vm._v(
                               "\n                        " +
-                                _vm._s(_vm.trans("strings.game")) +
+                                _vm._s(
+                                  _vm.trans(
+                                    "strings." + balance.order_item.type
+                                  )
+                                ) +
                                 "\n                    "
                             )
                           ])
@@ -100694,7 +100755,10 @@ var render = function() {
                             "td",
                             [
                               _c("vc-order-item", {
-                                attrs: { order_item: balance.order_item }
+                                attrs: {
+                                  balance: balance,
+                                  order_item: balance.order_item
+                                }
                               })
                             ],
                             1
@@ -100704,7 +100768,10 @@ var render = function() {
                               "td",
                               [
                                 _c("vc-scratchcard", {
-                                  attrs: { scratch_card: balance.scratch_card }
+                                  attrs: {
+                                    balance: balance,
+                                    scratch_card: balance.scratch_card
+                                  }
                                 })
                               ],
                               1
@@ -100714,7 +100781,10 @@ var render = function() {
                                 "td",
                                 [
                                   _c("vc-lottery", {
-                                    attrs: { lottery_bet: balance.lottery_bet }
+                                    attrs: {
+                                      balance: balance,
+                                      lottery_bet: balance.lottery_bet
+                                    }
                                   })
                                 ],
                                 1
@@ -100725,6 +100795,7 @@ var render = function() {
                                   [
                                     _c("vc-soccer-expert", {
                                       attrs: {
+                                        balance: balance,
                                         soccer_expert_bet:
                                           balance.soccer_expert_bet
                                       }
@@ -100737,7 +100808,10 @@ var render = function() {
                                     "td",
                                     [
                                       _c("vc-pagseguro", {
-                                        attrs: { pagseguro: balance.pagseguro }
+                                        attrs: {
+                                          balance: balance,
+                                          pagseguro: balance.pagseguro
+                                        }
                                       })
                                     ],
                                     1
@@ -100747,7 +100821,10 @@ var render = function() {
                                       "td",
                                       [
                                         _c("vc-paypal", {
-                                          attrs: { paypal: balance.paypal }
+                                          attrs: {
+                                            balance: balance,
+                                            paypal: balance.paypal
+                                          }
                                         })
                                       ],
                                       1
@@ -107483,7 +107560,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	activated: function activated() {},
 	beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
 		next();
-		this.init();
 	},
 	data: function data() {
 		return {
@@ -108298,9 +108374,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			this.total = this.item.value * tickets.length;
 		}
 	},
-	mounted: function mounted() {
-		this.init();
-	},
+	mounted: function mounted() {},
 	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["c" /* mapState */])({
 		User: function User(state) {
 			return state.User;

@@ -36,6 +36,7 @@ class OrderItemObserver
             //Atribuindo os dados para a aposta e salvando
             $lotteryUser->lot_jogo_id = $data->sweepstake->id;
             $lotteryUser->jogador_id = $item->order->user_id;
+            $lotteryUser->order_item_id = $item->id;
             $lotteryUser->status = 1;
             $lotteryUser->save();
 
@@ -172,7 +173,7 @@ class OrderItemObserver
         //Atribuindo a raspadinha para o dono
         foreach($scratchCards as $scratchCard) {
             $scratchCard->owner = $item->order->user_id;
-            $scratchCard->order_id = $item->order->id;
+            $scratchCard->order_item_id = $item->id;
             $scratchCard->save();
         }
         return true;

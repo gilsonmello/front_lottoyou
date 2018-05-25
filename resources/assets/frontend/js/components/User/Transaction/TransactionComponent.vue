@@ -126,7 +126,7 @@
                     </td>
                     <!-- Modalidade -->
                     <td v-if="balance.order_item">
-                        {{ trans('strings.game') }}
+                        {{ trans('strings.'+balance.order_item.type) }}
                     </td>
                     <td v-else-if="balance.scratch_card">
                         {{ trans('strings.scratch_card') }}
@@ -145,22 +145,22 @@
                     </td>
                     <!-- Descrição -->
                     <td v-if="balance.order_item">
-                        <vc-order-item :order_item="balance.order_item"></vc-order-item>
+                        <vc-order-item :balance="balance" :order_item="balance.order_item"></vc-order-item>
                     </td>
                     <td v-else-if="balance.scratch_card">
-                        <vc-scratchcard :scratch_card="balance.scratch_card"></vc-scratchcard>
+                        <vc-scratchcard :balance="balance" :scratch_card="balance.scratch_card"></vc-scratchcard>
                     </td> 
                     <td v-else-if="balance.lottery_bet">
-                        <vc-lottery :lottery_bet="balance.lottery_bet"></vc-lottery>
+                        <vc-lottery :balance="balance" :lottery_bet="balance.lottery_bet"></vc-lottery>
                     </td> 
                     <td v-else-if="balance.soccer_expert_bet">
-                        <vc-soccer-expert :soccer_expert_bet="balance.soccer_expert_bet"></vc-soccer-expert>
+                        <vc-soccer-expert :balance="balance" :soccer_expert_bet="balance.soccer_expert_bet"></vc-soccer-expert>
                     </td> 
                     <td v-else-if="balance.pagseguro">
-                        <vc-pagseguro :pagseguro="balance.pagseguro"></vc-pagseguro>
+                        <vc-pagseguro :balance="balance" :pagseguro="balance.pagseguro"></vc-pagseguro>
                     </td> 
                     <td v-else-if="balance.paypal">
-                        <vc-paypal :paypal="balance.paypal"></vc-paypal>
+                        <vc-paypal :balance="balance" :paypal="balance.paypal"></vc-paypal>
                     </td> 
                     <td>
                         {{ trans('strings.'+balance.description) }}

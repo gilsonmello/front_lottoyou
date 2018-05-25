@@ -113,7 +113,6 @@
 		},
 		beforeRouteUpdate: function(to, from, next) {
 			next();
-			this.init();
         },
 		data: function() {
 			return {
@@ -963,7 +962,7 @@
 			}
  		},
  		mounted: function() {
-			this.init();
+			
 		},
 		computed: {
             ...mapState({
