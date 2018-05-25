@@ -1,6 +1,12 @@
 <template>	
-	<div class="container-fluid no-padding">
-		<img src="/img/new1/BAN-princi_S_TX.png" class="img-fluid">
+	<div class="container-fluid vcenter main-banner no-padding" style="background-image: url(/img/new1/BAN-princi_S_TX.png)">
+		<div class="row no-margin" style="width: 100%;">
+			<div class="col-lg-2">
+			</div>
+			<div class="col-lg-10 col-12">
+				<h1 class="">Aqui é mais fácil</h1>
+			</div>
+		</div>
 		
 		<!--<div class="container">
 			<div class="row">
@@ -51,19 +57,24 @@
 </script>
 
 <style scoped>
+	.main-banner {
+		min-height: 356px;
+	    background-size: 100% 100%;
+	}
+
 	.container-fluid img {
 	
 		width: 100%;
 	}
 	
 	h1 {
-		font-size: 47px;
-		line-height: 47px;
-		text-align: center;
-    	max-width: 500px;
-    	color: #012406;
-    	text-transform: uppercase;
-    	font-weight: 900;
+	    font-size: 47px;
+    	text-align: center;
+		max-width: 500px;
+		font-weight: bold;
+		color: #0056b1;
+		text-transform: uppercase;
+		font-weight: 900;
 	}
 
 	.jackpot-translation {

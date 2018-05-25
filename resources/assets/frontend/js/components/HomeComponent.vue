@@ -10,9 +10,44 @@
 		<div class="container">
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
-				<router-link :to="{ name: 'soccer_expert.show', params: {id: 3} }">
-					<img style="width: 100%; " class="img-fluid" src="/img/banner_custom.png">
-				</router-link>
+				<!-- <router-link :to="{ name: 'soccer_expert.show', params: {id: 3} }"> -->
+				<div class="banner-custom" style="position: relative">
+					<img style="width: 100%; " class="img-fluid" src="/img/banner_custom.png">	
+
+
+					<div class="content-left">
+						<h4>
+							Crie agora mesmo<br>
+							A SUA PRÓPIA LIGA!							
+						</h4>
+						<h4>
+							VOCÊ JÁ COMEÇA
+						</h4>
+						<h3>
+							GANHANDO 5%
+						</h3>
+						<h4>
+							DE TODAS AS APOSTAS*
+						</h4>
+					</div>
+
+					<div class="content-right">
+						<h2>
+							No <strong>Soccer Expert</strong> da <strong>Lottoyou</strong><br>
+							Você pode criar a sua própia liga<br>
+							com <strong>qualquer time do mundo.</strong><br>
+							Convide seus amigos e descubra<br>
+							quem é o "expert" do futebol.
+						</h2>
+
+						<h5>
+							<em>É momento de começar a desfrutar deste<br>
+							mundo de infinitas possibilidades com Lottoyou!</em>
+						</h5>
+					</div>
+				</div>
+				
+
 			</div>			
 		</div>
 
@@ -20,9 +55,16 @@
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
 				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
-				<router-link :to="{ name: 'scratch_cards.index' }">
-					<img style="width: 100%; " class="img-fluid" src="/img/new1/RASPADINHAS.jpg">
-				</router-link>
+				<!-- <router-link :to="{ name: 'scratch_cards.index' }"> -->
+				
+				<div class="banner-golden-goal" style="position: relative">
+					<img style="width: 100%; " class="img-fluid" src="/img/new1/RASPADINHAS.jpg">	
+					<div class="content-left">
+						<h1>
+							RASPE E GANHE !!!
+						</h1>
+					</div>
+				</div>
 			</div>
 		</div>
 		
@@ -30,9 +72,18 @@
 		<div class="container">
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
-				<router-link :to="{ name: 'soccer_expert.index' }">
-					<img style="width: 100%; " class="img-fluid" src="/img/new1/Soccer_Exp_S_TX.jpg">
-				</router-link>
+				<!-- <router-link :to="{ name: 'soccer_expert.index' }"> -->
+					
+
+				<div class="banner-soccer-expert" style="position: relative">
+					<img style="width: 100%; " class="img-fluid" src="/img/new1/Soccer_Exp_S_TX.jpg">	
+					<div class="content-left">
+						<h2>
+							AQUI SEU PALPITE<br>
+							VALE MAIS QUE UM GOL
+						</h2>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -40,9 +91,15 @@
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
 				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
-				<router-link :to="{ name: 'lotteries.show', params: {id: 3} }">
+				<!-- <router-link :to="{ name: 'lotteries.show', params: {id: 3} }"> -->
+				<div class="banner-easy-loteria" style="position: relative">
 					<img style="width: 100%; " class="img-fluid" src="/img/new1/easy_loteria_S_TX.jpg">
-				</router-link>
+					<div class="content-left">
+						<h2>
+							NUNCA FOI TÃO FÁCIL GANHAR
+						</h2>
+					</div>
+				</div>
 			</div>
 		</div>
 		
@@ -142,7 +199,31 @@
 
 		
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-				<img class="img-fluid" style="width: 100%; " src="/img/new1/explic_easy.jpg">
+
+
+				<div class="banner-explic-easy-loteria" style="position: relative">
+					<img class="img-fluid" style="width: 100%; " src="/img/new1/explic_easy.jpg">
+					<div class="content-left">
+						<h3>
+							Easy Money - A loteria da Lottoyou
+						</h3>
+						<br>
+						<h4>
+							Quem nunca sonhou em transformar 1 dólar em $20,000 dólares?<br>
+							Provavelmente você já tem os seus planos e aqui na Easy Money<br>
+							todos os dias você pode concretizá-los. Para ganhar o prêmio máximo<br>
+							basta acertar apenas 5 números em um universo de 35 números!!! Na<br>
+							Easy Money vôcê também ganha acertando 4, 3, 2 ou até mesmo 1<br>
+							número.
+						</h4>
+						<br>
+						<h4>
+							Easy Money, nunca foi tão fácil ganhar
+						</h4>
+					</div>
+				</div>
+
+
 			</div>
 		
 
@@ -192,5 +273,66 @@
 <style scoped>
 	h1 {
 		width: 100%;
+	}
+
+	.banner-explic-easy-loteria .content-left {
+	    left: 30%;
+	    position: absolute;
+	    transform: translate(13%, 10%);
+	    color: #000;
+	    top: 0;
+	    font-weight: bold;
+	    font-family: sans-serif;
+	}
+
+	.banner-easy-loteria .content-left {
+	    left: 30%;
+	    position: absolute;
+	    transform: translate(0,8%);
+	    color: #000;
+	    bottom: 0;
+	    font-weight: bold;
+	    font-family: sans-serif;
+	}
+
+	.banner-soccer-expert .content-left {
+	    left: 30%;
+	    top: 35%;
+	    position: absolute;
+	    -webkit-transform: translate(0, -50%);
+	    transform: translate(0, -50%);
+	    color: #003874;
+	    font-weight: bold;
+	    font-family: sans-serif;
+	}
+
+	.banner-golden-goal .content-left {
+		left: 0;
+	    top: 50%;
+	    margin-left: 8px;
+	    position: absolute;
+	    transform: translate(0, -50%);
+	    color: #003874;
+	    font-weight: bold;
+	    font-family: sans-serif;
+	}
+
+	.banner-custom .content-left {
+	    position: absolute;
+	    bottom: 4%;
+	    left: 13%;
+	    color: #003874;
+	    font-weight: bold;
+	    font-family: sans-serif;
+	}
+
+	.banner-custom .content-left h4, .content-left h3 {
+		margin-bottom: 0
+	}
+
+	.banner-custom .content-right {
+		position: absolute;
+	    top: 18%;
+	    right: 9%;
 	}
 </style>
