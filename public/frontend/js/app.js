@@ -100044,17 +100044,7 @@ var render = function() {
         "router-link",
         {
           staticClass: "btn btn-xs btn-primary",
-          attrs: {
-            to: {
-              name: "users.games",
-              query: {
-                id: _vm.balance.lottery_bet_id,
-                page: 1,
-                column: "created_at",
-                direction: "asc"
-              }
-            }
-          }
+          attrs: { to: { name: "users.games" } }
         },
         [
           _c("i", {
