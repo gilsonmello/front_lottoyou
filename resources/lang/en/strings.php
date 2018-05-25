@@ -11,6 +11,8 @@ return [
       | found in a intuitive way.
       |
      */
+    'remaining_time_for_next_sweepstake' => 'Tempo restante para próximo sorteio',
+    'time_left' => 'Tempo restante',
     'each_one' => 'Cada um',
     'select_an_image' => 'Selecione uma imagem',
     'no_file_selected' => 'Nenhum arquivo selecionado',
@@ -172,6 +174,7 @@ return [
     'register' => 'Cadastro',
     'registers' => 'Cadastros',
     'cart' => 'Carrinho',
+    'total_value' => 'Valor total',
     'last_name' => 'Sobrenome',
     'tags' => 'Tags',
     'categories' => 'Categorias',

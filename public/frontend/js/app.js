@@ -107387,6 +107387,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		};
 	},
 	methods: {
+		retireHour: function retireHour(date) {
+			date = date.split(' ');
+			return date[0];
+		},
 		completePurchase: function completePurchase(event) {
 			var _this = this;
 
@@ -109389,7 +109393,7 @@ var render = function() {
                       [
                         _c("div", [
                           _c("a", {
-                            staticClass: "btn btn-primary fa fa-plus",
+                            staticClass: "btn btn-primary fa fa-angle-right",
                             staticStyle: { "font-size": "60px" },
                             attrs: { href: "#" },
                             on: {
@@ -109458,7 +109462,9 @@ var render = function() {
                               [
                                 _vm._v(
                                   "\n\t\t\t\t\t      \t\t" +
-                                    _vm._s(sweepstake.data_fim) +
+                                    _vm._s(
+                                      _vm.retireHour(sweepstake.data_fim)
+                                    ) +
                                     "\n\t\t\t\t\t      \t"
                                 )
                               ]
@@ -109475,7 +109481,13 @@ var render = function() {
                     [
                       _c("div", { staticClass: "form-group" }, [
                         _c("label", { attrs: { for: "date" } }, [
-                          _vm._v(_vm._s(_vm.trans("strings.next_lottery")))
+                          _vm._v(
+                            _vm._s(
+                              _vm.trans(
+                                "strings.remaining_time_for_next_sweepstake"
+                              )
+                            )
+                          )
                         ]),
                         _vm._v(" "),
                         _c("span", { staticClass: "countdown form-control" }, [
@@ -109581,7 +109593,11 @@ var render = function() {
                         : _vm._e(),
                       _vm._v(" "),
                       _c("span", { staticClass: "pull-right price" }, [
-                        _vm._v("\n\t\t\t\t\t\t$ "),
+                        _vm._v(
+                          "\n\t\t\t\t\t\t" +
+                            _vm._s(_vm.trans("strings.total_value")) +
+                            " $"
+                        ),
                         _vm.total > 0
                           ? _c("span", { staticClass: "value" }, [
                               _vm._v(

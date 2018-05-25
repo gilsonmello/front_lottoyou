@@ -42,7 +42,7 @@
 				 <div class="col-lg-1 col-4 col-md-2 col-sm-2 vcenter" style="justify-content: center;" id="btn-add-ticket">
 					<div>
 
-						<a href="#" @click.prevent="addBet($event)" class="btn btn-primary fa fa-plus" style="font-size: 60px;"></a>
+						<a href="#" @click.prevent="addBet($event)" class="btn btn-primary fa fa-angle-right" style="font-size: 60px;"></a>
 						<!--
 						<br>
 						<a v-if="tickets.length > 5" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>-->
@@ -56,14 +56,14 @@
 						<label for="date">{{ trans('strings.sweepstake_date') }}</label>
 					    <select v-model="lot_jogo_id" class="form-control" id="lot_jogo_id">
 					      	<option :value="key" :data-key="key" v-for="(sweepstake, key) in lottery.sweepstakes">
-					      		{{ sweepstake.data_fim }}
+					      		{{ retireHour(sweepstake.data_fim) }}
 					      	</option>
 					    </select>
 				  	</div>
 				</div>
 				<div class="col-lg-3 col-12 col-md-4 col-sm-4">
 					<div class="form-group">
-						<label for="date">{{ trans('strings.next_lottery') }}</label>
+						<label for="date">{{ trans('strings.remaining_time_for_next_sweepstake') }}</label>
 						<span class="countdown form-control">
 							<span v-if="next_lottery.days > 1">
 								{{ next_lottery.days }} {{ trans('strings.days') }} e
@@ -89,7 +89,7 @@
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">
-						$ <span class="value" v-if="total > 0">
+						{{ trans('strings.total_value') }} $<span class="value" v-if="total > 0">
 							{{ totalFormated }}
 						</span>
 						<span class="value" v-else>0.00</span>
@@ -158,6 +158,10 @@
 			}
 		},
 		methods: {
+			retireHour(date) {
+				date = date.split(' ');
+				return date[0];
+			},
 			completePurchase(event) {
 
 				var completePurchaseRequest = axios.create();
