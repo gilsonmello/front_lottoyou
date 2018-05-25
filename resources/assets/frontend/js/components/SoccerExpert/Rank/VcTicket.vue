@@ -110,19 +110,14 @@
 		padding: 10px 0 10px 0;
 	}
 
-	.ticket .columns:after {
+	.line .columns:after {
 		font-family: 'FontAwesome';
 		content: "\f068";
 		float: right;
 	}
 
-	.ticket .collapsed:after {
+	.line .collapsed:after {
 		content: "\f067";
 	}	
 
-	
-
-	.row {
-		margin: 0;
-	}
 </style>

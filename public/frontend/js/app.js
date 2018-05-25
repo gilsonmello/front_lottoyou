@@ -103936,7 +103936,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.collapse[data-v-3fa1687c] {\n\tpadding-top: 20px;\n}\n.columns[data-v-3fa1687c] {\n\tpadding: 10px 0 10px 0;\n}\n.ticket .columns[data-v-3fa1687c]:after {\n\tfont-family: 'FontAwesome';\n\tcontent: \"\\F068\";\n\tfloat: right;\n}\n.ticket .collapsed[data-v-3fa1687c]:after {\n\tcontent: \"\\F067\";\n}\n.row[data-v-3fa1687c] {\n\tmargin: 0;\n}\n", ""]);
+exports.push([module.i, "\n.collapse[data-v-3fa1687c] {\n\tpadding-top: 20px;\n}\n.columns[data-v-3fa1687c] {\n\tpadding: 10px 0 10px 0;\n}\n.line .columns[data-v-3fa1687c]:after {\n\tfont-family: 'FontAwesome';\n\tcontent: \"\\F068\";\n\tfloat: right;\n}\n.line .collapsed[data-v-3fa1687c]:after {\n\tcontent: \"\\F067\";\n}\t\n\n", ""]);
 
 // exports
 
