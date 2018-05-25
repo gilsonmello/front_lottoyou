@@ -94266,7 +94266,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.container-tickets[data-v-1654ef13] {\n\tcursor: pointer;\n}\n.collapse.show[data-v-1654ef13] {\n}\n.columns[data-v-1654ef13] {\n\tpadding: 10px 0 10px 0;\n}\n.line .columns[data-v-1654ef13]:after {\n\tfont-family: 'FontAwesome';\n\tcontent: \"\\F068\";\n\tfloat: right;\n}\n.line .collapsed[data-v-1654ef13]:after {\n\tcontent: \"\\F067\";\n}\n", ""]);
+exports.push([module.i, "\n.container-tickets[data-v-1654ef13] {\n\tcursor: pointer;\n}\n.collapse.show[data-v-1654ef13] {\n}\n.columns[data-v-1654ef13] {\n\tpadding: 10px 0 10px 0;\n}\n\n\n", ""]);
 
 // exports
 

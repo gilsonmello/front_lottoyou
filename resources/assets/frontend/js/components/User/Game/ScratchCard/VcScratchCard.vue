@@ -46,13 +46,5 @@
 		padding: 10px 0 10px 0;
 	}
 
-	.line .columns:after {
-		font-family: 'FontAwesome';
-		content: "\f068";
-		float: right;
-	}
-
-	.line .collapsed:after {
-		content: "\f067";
-	}
+	
 </style>
