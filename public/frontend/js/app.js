@@ -110131,6 +110131,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -110421,15 +110425,20 @@ var render = function() {
           })
         }),
         _vm._v(" "),
-        _vm.sweepstake.results.length == 0
-          ? _c("h4", { staticClass: "text-left" }, [
-              _vm._v(
-                "\n\t\t\t\t" +
-                  _vm._s(_vm.trans("strings.unfinished_sweepstake")) +
-                  "\n\t\t\t"
-              )
-            ])
-          : _vm._e()
+        _c("div", { staticClass: "row no-margin" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _vm.sweepstake.results.length == 0
+              ? _c("h4", { staticClass: "text-left" }, [
+                  _vm._v(
+                    "\n\t\t\t\t\t\t" +
+                      _vm._s(_vm.trans("strings.unfinished_sweepstake")) +
+                      "\n\t\t\t\t\t"
+                  )
+                ])
+              : _vm._e()
+          ])
+        ]),
+        _vm._v("\n\t\ts")
       ],
       2
     )
