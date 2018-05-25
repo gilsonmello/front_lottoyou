@@ -60,8 +60,9 @@
 	    background: #ffffff;
 	    color: #313534;
 	    cursor: pointer;
+	    border: 1px solid;
 	    border-radius: 3px;
-	    border-color: rgba(83, 88, 88, 0.15);
+	    border-color: black;
 	}
 
 	.img-fluid {

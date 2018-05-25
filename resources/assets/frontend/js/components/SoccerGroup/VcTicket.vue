@@ -1,7 +1,7 @@
 <template>
-	<section class="col-lg-12 ticket">
+	<section class="col-lg-12 line">
 		
-		<div class="row ticket-columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(255,255,255,.05);': ''"> 	
+		<div class="row columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(0, 0, 0, 0.05);': ''"> 	
     		<div class="col-lg-2">
 	      		{{ ticket.posicao != null ? ticket.posicao : '-'}}
 	      	</div>
@@ -80,42 +80,22 @@
 </script>
 
 <style scoped>
-	.ticket-columns {
+	.columns {
 		padding: 10px 0 10px 0;
 	}
 
-	.tickets-header {
-		color: #000;
-	}
-
-	.ticket .ticket-columns:after {
+	.line .columns:after {
 		font-family: 'FontAwesome';
 		content: "\f068";
 		float: right;
 	}
 
-	.ticket .collapsed:after {
+	.line .collapsed:after {
 		content: "\f067";
 	}	
 
 	[data-toggle="collapse"] {
 		align-items: center;
-	}
-
-	.ticket {
-		background: #212529;
-	    cursor: pointer;
-	    padding: 0;
-	    color: #fff;
-	}
-
-	.tickets {
-		padding: 0;
-		margin-bottom: 0;
-	}
-
-	.tickets .tickets-content {
-		cursor: initial;
 	}
 
 	.photo {

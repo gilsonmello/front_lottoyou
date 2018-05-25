@@ -1,6 +1,6 @@
 <template>
-	<div class="col-lg-12 ticket">
-		<div class="row ticket-columns no-margin">
+	<div class="col-lg-12 ticket line">
+		<div class="row columns no-margin" :style="index % 2 == 0 ? 'background-color: rgba(0, 0, 0, 0.05);': ''">
 	        <div class="col-lg-2">
 	            {{ item.scratch_card.nome }}
 	        </div>
@@ -20,7 +20,7 @@
 <script>
 	
 	export default {
-		props: ['item'],
+		props: ['item', 'index'],
 		mounted: function() {
 			
 		},
@@ -34,18 +34,25 @@
 
 
 <style scoped>
-	.ticket-columns {
+	.container-tickets {
+		cursor: pointer;
+	}
+
+	.collapse.show {
+		
+	}
+
+	.columns {
 		padding: 10px 0 10px 0;
 	}
 
-	.ticket .ticket-columns:after {
-		content: '';
+	.line .columns:after {
+		font-family: 'FontAwesome';
+		content: "\f068";
+		float: right;
 	}
 
-	.ticket {
-		background: #212529;
-	    cursor: pointer;
-	    padding: 0;
-	    color: #fff;
+	.line .collapsed:after {
+		content: "\f067";
 	}
 </style>

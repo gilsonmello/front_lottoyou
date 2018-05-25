@@ -1,6 +1,6 @@
 <template>
-	<section class="col-lg-12 ticket">
-		<div class="row ticket-columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+item.id"> 	
+	<section class="col-lg-12 ticket line">
+		<div class="row columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+item.id" :style="index % 2 == 0 ? 'background-color: rgba(0, 0, 0, 0.05);': ''"> 	
     		<div class="col-lg-2">
 	      		{{ item.lottery.nome }}
 	      	</div>
@@ -16,6 +16,7 @@
         </div>
 
         <div :class="'collapse '+item.id">
+        	<br>
 			<load-component v-if="loading.game"></load-component>	
 			<div class="row no-margin" style="display: flex !important;" v-else>
 				
@@ -49,7 +50,7 @@
 <script>
 	import VcTicket from './VcTicket'
 	export default {
-		props: ['item', 'id'],
+		props: ['item', 'id', 'index'],
 		data: function() {
 			return {
 				dickers: [],
@@ -120,24 +121,18 @@
 		
 	}
 
-	.ticket-columns {
+	.columns {
 		padding: 10px 0 10px 0;
 	}
 
-	.ticket .ticket-columns:after {
+	.line .columns:after {
 		font-family: 'FontAwesome';
 		content: "\f068";
 		float: right;
 	}
 
-	.ticket .collapsed:after {
+	.line .collapsed:after {
 		content: "\f067";
 	}	
 
-	.ticket {
-		background: #212529;
-	    cursor: pointer;
-	    padding: 0;
-	    color: #fff;
-	}
 </style>

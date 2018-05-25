@@ -1,6 +1,6 @@
 <template>	
-	<section class="col-lg-12 ticket">
-		<div class="row ticket-columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(255,255,255,.05);': ''">
+	<section class="col-lg-12 line">
+		<div class="row columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(0, 0, 0, 0.05);': ''">
 	    	<div class="col-lg-2">
 	    		{{ ticket.nome }}
 	    	</div>
@@ -106,11 +106,11 @@
 		padding-top: 20px;
 	}
 
-	.ticket-columns {
+	.columns {
 		padding: 10px 0 10px 0;
 	}
 
-	.ticket .ticket-columns:after {
+	.ticket .columns:after {
 		font-family: 'FontAwesome';
 		content: "\f068";
 		float: right;
@@ -120,11 +120,7 @@
 		content: "\f067";
 	}	
 
-	.ticket {
-		background: #212529;
-	    cursor: pointer;
-	    padding: 0;
-	}
+	
 
 	.row {
 		margin: 0;

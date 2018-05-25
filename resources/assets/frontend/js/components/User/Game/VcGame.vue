@@ -80,18 +80,18 @@
                 </div>
             </div>
 
-            <div class="row table-tbody" v-if="loading.pagination">
+            <div class="row table-body" v-if="loading.pagination">
                 <div class="col-lg-12">
                     <load-component></load-component>
                 </div>
             </div>
             
-            <div v-for="(item, index) in items" :key="index" class="row table-tbody">
-                <vc-soccer-expert :key="index" :item="item" v-if="item.type == 'soccer_expert'">
+            <div v-for="(item, index) in items" :key="index" class="row table-body">
+                <vc-soccer-expert :key="index" :index="index" :item="item" v-if="item.type == 'soccer_expert'">
                 </vc-soccer-expert>
-                <vc-scratch-card :key="index" :item="item" v-if="item.type == 'scratch_card'">
+                <vc-scratch-card :key="index" :index="index" :item="item" v-if="item.type == 'scratch_card'">
                 </vc-scratch-card>
-                <vc-lottery :key="index" :item="item" v-if="item.type == 'lottery'">
+                <vc-lottery :key="index" :index="index" :item="item" v-if="item.type == 'lottery'">
                 </vc-lottery>
             </div>           
         </div>
@@ -217,14 +217,5 @@
 <style scoped>
     .table {
         margin-bottom: 0;
-    }
-
-    .table-head {
-        color: #fff;
-        background-color: #212529;
-        border-color: #32383e;
-        border-bottom: 2px solid #dee2e6;
-        padding: 10px 0 10px 0;
-        cursor: pointer;
-    }
+    }    
 </style>

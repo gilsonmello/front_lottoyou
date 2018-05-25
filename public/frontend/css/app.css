@@ -13065,6 +13065,37 @@ label.error {
   color: green;
 }
 
+.table .table-head {
+  background-color: #0056b1;
+  border-color: #0056b1;
+  color: #fff;
+  border-bottom: 2px solid #dee2e6;
+  padding: 10px 0 10px 0;
+  cursor: pointer;
+}
+
+.table .table-body .line {
+  cursor: pointer;
+  padding: 0;
+}
+
+.table .table-body .line .collapse {
+  background-color: #fff;
+}
+
+.table .table-body .line .collapse:hover {
+  background-color: #fff;
+}
+
+.table .table-body .line:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table .thead-dark th {
+  background-color: #0056b1;
+  border-color: #0056b1;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

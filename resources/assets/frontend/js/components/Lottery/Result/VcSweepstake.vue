@@ -1,6 +1,6 @@
 <template>
 	<section class="col-lg-12 line">
-		<div class="row columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+sweepstake.id" :style="index % 2 == 0 ? 'background-color: rgba(255,255,255,.05);': ''">
+		<div class="row columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+sweepstake.id" :style="index % 2 == 0 ? 'background-color: rgba(0, 0, 0, 0.05);': ''">
 			<div class="col-lg-2">
 	    		{{ sweepstake.sorteio }}
 	    	</div>
@@ -50,12 +50,6 @@
 		content: "\f067";
 	}	
 
-	.line {
-		background: #212529;
-	    cursor: pointer;
-	    padding: 0;
-	    color: #fff;
-	}
 </style>
 
 <script>

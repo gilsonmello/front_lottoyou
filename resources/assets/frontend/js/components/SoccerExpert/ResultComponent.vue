@@ -68,13 +68,13 @@
 		    	</div>
 		    </div>
 
-		    <div class="row no-margin table-tbody" v-if="loading.pagination">
+		    <div class="row no-margin table-body" v-if="loading.pagination">
 	        	<div class="col-lg-12">
 	        		<load-component></load-component>
 	        	</div>
 	        </div>
 
-	        <div class="row no-margin table-tbody" v-else>
+	        <div class="row no-margin table-body" v-else>
 	        	<ticket-component v-for="(ticket, index) in tickets" :index="index" :key="index" :ticket="ticket" :category="category"></ticket-component>
 	        </div>
 	    </div>
@@ -218,16 +218,5 @@
 </script>
 
 <style scoped>
-	.table-head {
-        color: #fff;
-        background-color: #212529;
-        border-color: #32383e;
-        border-bottom: 2px solid #dee2e6;
-        padding: 10px 0 10px 0;
-        cursor: pointer;
-    }
-
-    .table-head .table-column:hover{
-        color: #928f8f;
-    }
+	
 </style>

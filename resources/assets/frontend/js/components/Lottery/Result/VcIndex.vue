@@ -69,13 +69,13 @@
 		    	</div>
 		    </div>
 
-		    <div class="row no-margin table-tbody" v-if="loading.pagination">
+		    <div class="row no-margin table-body" v-if="loading.pagination">
 	        	<div class="col-lg-12">
 	        		<load-component></load-component>
 	        	</div>
 	        </div>
 
-	        <div class="row no-margin table-tbody" v-else>
+	        <div class="row no-margin table-body" v-else>
 	        	<vc-sweepstake v-for="(sweepstake, index) in sweepstakes" :key="index" :index="index" :sweepstake="sweepstake">
 	        		
 	        	</vc-sweepstake>
@@ -101,13 +101,7 @@
 </template>
 
 <style scoped>
-	.table-head, .table-body {
-        color: #fff;
-        background-color: #212529;
-        border-color: #32383e;
-        border-bottom: 2px solid #dee2e6;
-        padding: 10px 0 10px 0;
-    }
+	
 </style>
 
 <script>
