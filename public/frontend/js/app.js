@@ -107437,6 +107437,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__TicketComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__TicketComponent__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -107550,6 +107552,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	activated: function activated() {},
 	beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
 		next();
+		this.init();
 	},
 	data: function data() {
 		return {
@@ -107591,7 +107594,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			}
 		};
 	},
-	methods: {
+	methods: _defineProperty({
 		retireHour: function retireHour(date) {
 			date = date.split(' ');
 			return date[0];
@@ -107831,6 +107834,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				}
 			}).catch(function (error) {
 				_this4.loading.component = false;
+				_this4.lottery.sweepstakes = [];
 			});
 		},
 		verifyNumberSelected: function verifyNumberSelected(numbers, dicker) {
@@ -108363,8 +108367,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 			this.total = this.item.value * tickets.length;
 		}
+	}, 'init', function init() {
+		if (this.$route.params.hash != undefined) {
+			this.showSoccerExpert();
+		} else if (this.$route.params.id != undefined) {
+			this.showRequest();
+		}
+		window.document.title = this.trans('strings.soccer_expert');
+	}),
+	mounted: function mounted() {
+		this.init();
 	},
-	mounted: function mounted() {},
 	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["c" /* mapState */])({
 		User: function User(state) {
 			return state.User;

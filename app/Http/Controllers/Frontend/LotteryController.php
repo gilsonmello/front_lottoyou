@@ -144,10 +144,10 @@ class LotteryController extends Controller
                         ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'));
                 }
             ])
-            ->whereHas('sweepstakes', function($query) {
+            /*->whereHas('sweepstakes', function($query) {
                 $query->where('active', '=', 1)
                     ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'));
-            })
+            })*/
             ->get()
             ->first();
 

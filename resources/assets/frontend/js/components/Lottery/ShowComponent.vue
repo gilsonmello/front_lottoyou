@@ -113,6 +113,7 @@
 		},
 		beforeRouteUpdate: function(to, from, next) {
 			next();
+			this.init();
         },
 		data: function() {
 			return {
@@ -414,6 +415,7 @@
 					}
 				}).catch((error) => {
 					this.loading.component = false;
+					this.lottery.sweepstakes = []
 				});
 			},
 			verifyNumberSelected(numbers, dicker) {
@@ -959,10 +961,18 @@
 				var tickets = this.getTicketsFinished();
 				
 				this.total = this.item.value * tickets.length;
+			},
+			init() {
+				if(this.$route.params.hash != undefined) {
+					this.showSoccerExpert();
+				} else if(this.$route.params.id != undefined) {
+					this.showRequest();
+				}
+				window.document.title = this.trans('strings.soccer_expert');
 			}
  		},
  		mounted: function() {
-			
+			this.init();
 		},
 		computed: {
             ...mapState({
