@@ -1,9 +1,10 @@
 <style scoped>
 	.btn-xs {
         margin: 2px;
-        font-size: 25px;
+        font-size: 20px;
         color: white;
-        width: 42px;
+        width: 35px;
+        font-weight: bold;
         background-color: #0056b1;
         border-color: #0056b1;
         border-radius: 999px;

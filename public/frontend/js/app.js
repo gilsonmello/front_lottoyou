@@ -110248,7 +110248,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.btn-xs[data-v-48deba6c] {\n        margin: 2px;\n        font-size: 25px;\n        color: white;\n        width: 42px;\n        background-color: #0056b1;\n        border-color: #0056b1;\n        border-radius: 999px;\n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n.btn-default-darking[data-v-48deba6c] {\n    \tbackground-color: #0090b1;\n\t    border-color: black;\n\t    color: black;\n}\n", ""]);
+exports.push([module.i, "\n.btn-xs[data-v-48deba6c] {\n        margin: 2px;\n        font-size: 20px;\n        color: white;\n        width: 35px;\n        font-weight: bold;\n        background-color: #0056b1;\n        border-color: #0056b1;\n        border-radius: 999px;\n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n.btn-default-darking[data-v-48deba6c] {\n    \tbackground-color: #0090b1;\n\t    border-color: black;\n\t    color: black;\n}\n", ""]);
 
 // exports
 
@@ -110259,6 +110259,7 @@ exports.push([module.i, "\n.btn-xs[data-v-48deba6c] {\n        margin: 2px;\n   
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -110437,8 +110438,7 @@ var render = function() {
                 ])
               : _vm._e()
           ])
-        ]),
-        _vm._v("\n\t\ts")
+        ])
       ],
       2
     )

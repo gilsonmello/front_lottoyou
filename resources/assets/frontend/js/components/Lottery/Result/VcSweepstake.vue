@@ -25,7 +25,7 @@
 					</h4>
 				</div>
 			</div>
-		s</div>
+		</div>
     
     </section>
 </template>
