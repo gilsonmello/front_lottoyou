@@ -47,6 +47,19 @@
                     </th>
                     <th>
                         <span>
+                            {{ trans('strings.modality') }}
+                        </span>                     
+                        <span v-if="'modality' === query.column">
+                            <span v-if="query.direction === 'desc'">
+                                &darr;
+                            </span>
+                            <span v-else>
+                                &uarr;
+                            </span>
+                        </span>
+                    </th>
+                    <th>
+                        <span>
                             {{ trans('strings.description') }}
                         </span>                     
                         <span v-if="'confirmacao' === query.column">
@@ -111,6 +124,26 @@
                     <td>
                         {{ balance.created }}
                     </td>
+                    <!-- Modalidade -->
+                    <td v-if="balance.order_item">
+                        {{ trans('strings.game') }}
+                    </td>
+                    <td v-else-if="balance.scratch_card">
+                        {{ trans('strings.scratch_card') }}
+                    </td> 
+                    <td v-else-if="balance.lottery_bet">
+                        {{ trans('strings.lottery') }}
+                    </td> 
+                    <td v-else-if="balance.soccer_expert_bet">
+                        {{ trans('strings.scratch_card') }}
+                    </td> 
+                    <td v-else-if="balance.pagseguro">
+                        Pagseguro
+                    </td> 
+                    <td v-else-if="balance.paypal">
+                        Paypal
+                    </td>
+                    <!-- Descrição -->
                     <td v-if="balance.order_item">
                         <vc-order-item :order_item="balance.order_item"></vc-order-item>
                     </td>

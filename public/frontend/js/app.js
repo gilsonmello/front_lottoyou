@@ -99252,6 +99252,39 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -100436,6 +100469,32 @@ var render = function() {
                   _c("span", [
                     _vm._v(
                       "\n                            " +
+                        _vm._s(_vm.trans("strings.modality")) +
+                        "\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  "modality" === _vm.query.column
+                    ? _c("span", [
+                        _vm.query.direction === "desc"
+                          ? _c("span", [
+                              _vm._v(
+                                "\n                                ↓\n                            "
+                              )
+                            ])
+                          : _c("span", [
+                              _vm._v(
+                                "\n                                ↑\n                            "
+                              )
+                            ])
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("th", [
+                  _c("span", [
+                    _vm._v(
+                      "\n                            " +
                         _vm._s(_vm.trans("strings.description")) +
                         "\n                        "
                     )
@@ -100581,6 +100640,54 @@ var render = function() {
                             "\n                    "
                         )
                       ]),
+                      _vm._v(" "),
+                      balance.order_item
+                        ? _c("td", [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(_vm.trans("strings.game")) +
+                                "\n                    "
+                            )
+                          ])
+                        : balance.scratch_card
+                          ? _c("td", [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(_vm.trans("strings.scratch_card")) +
+                                  "\n                    "
+                              )
+                            ])
+                          : balance.lottery_bet
+                            ? _c("td", [
+                                _vm._v(
+                                  "\n                        " +
+                                    _vm._s(_vm.trans("strings.lottery")) +
+                                    "\n                    "
+                                )
+                              ])
+                            : balance.soccer_expert_bet
+                              ? _c("td", [
+                                  _vm._v(
+                                    "\n                        " +
+                                      _vm._s(
+                                        _vm.trans("strings.scratch_card")
+                                      ) +
+                                      "\n                    "
+                                  )
+                                ])
+                              : balance.pagseguro
+                                ? _c("td", [
+                                    _vm._v(
+                                      "\n                        Pagseguro\n                    "
+                                    )
+                                  ])
+                                : balance.paypal
+                                  ? _c("td", [
+                                      _vm._v(
+                                        "\n                        Paypal\n                    "
+                                      )
+                                    ])
+                                  : _vm._e(),
                       _vm._v(" "),
                       balance.order_item
                         ? _c(

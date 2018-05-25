@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'modality' => 'Modalidade',
     'not_found_results' => 'Resultado não encontrado',
     'unfinished_sweepstake' => 'Sorteio não realizado',
     'remaining_time_for_next_sweepstake' => 'Tempo restante para próximo sorteio',
