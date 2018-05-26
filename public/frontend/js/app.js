@@ -125720,6 +125720,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 		window.googleTranslateElementInit = function () {
 			new google.translate.TranslateElement({ pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+
+			console.log(google);
 		};
 
 		$.getScript("//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit", function (data, textStatus, jqxhr) {});
