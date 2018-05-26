@@ -125722,7 +125722,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			new google.translate.TranslateElement({ pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
 
 			setInterval(function () {
-				console.log($('.skiptranslate iframe'));
+				if ($('.skiptranslate iframe').length > 0 && $('.skiptranslate iframe').parent().is(':visible')) {
+					$('body').css({
+						'padding-top': 0
+					});
+
+					$('.header').css({
+						position: 'relative'
+					});
+				} else {
+
+					console.log('asd');
+					$('.header').css({
+						position: 'fixed'
+					});
+
+					$('body').css({
+						'padding-top': $('.header')[0].clientHeight - 1
+					});
+				}
 			}, 2000);
 
 			/*var mutationObserver = new MutationObserver(function(mutations) {
