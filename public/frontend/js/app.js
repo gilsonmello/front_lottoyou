@@ -125983,9 +125983,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-        _vm._v("\n\t                             \n\t                        ")
-      ])
+      _c("div", { attrs: { id: "google_translate_element" } })
     ])
   },
   function() {

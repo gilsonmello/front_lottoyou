@@ -19,8 +19,7 @@
     <body>
         
         {{-- Tag para que ao inicializar o sistema, faça o download do gif load --}}        
-        <div id="google_translate_element"></div>
-
+        
         <div id="app">
         </div>
         <script>

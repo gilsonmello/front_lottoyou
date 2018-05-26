@@ -118,9 +118,9 @@
 		                        </a>
 		                    </li>
 		                    <li class="list-group-item">
-		                        <a href="#" class="color-blue">
-		                            &nbsp;
-		                        </a>
+		                        
+		                            <div id="google_translate_element"></div>
+		                        
 		                    </li>
 		                    
 		                </ul>               
