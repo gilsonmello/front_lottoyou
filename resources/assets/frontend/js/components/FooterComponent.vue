@@ -217,6 +217,9 @@
 
 		},
 		activated() {
+
+			console.log('askjdalk')
+			
 			$.ajaxSetup({
 			  	cache: true
 			});

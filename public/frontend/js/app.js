@@ -125702,6 +125702,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	created: function created() {},
 	activated: function activated() {
+
+		console.log('askjdalk');
+
 		$.ajaxSetup({
 			cache: true
 		});
