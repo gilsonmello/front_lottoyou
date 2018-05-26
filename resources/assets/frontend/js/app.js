@@ -143,6 +143,11 @@ window.addEventListener('storage', function(event) {
 			window.localStorage.removeItem('refresh_token');
 			window.localStorage.removeItem('authUser');
 			window.location.reload();
+		} else if(JSON.stringify(app.auth) != event.newValue && event.key == 'authUser') {
+	    	window.localStorage.removeItem('access_token');
+			window.localStorage.removeItem('refresh_token');
+			window.localStorage.removeItem('authUser');
+			window.location.reload();
 		} else {
 
 	    	//Se removeu o usuário
