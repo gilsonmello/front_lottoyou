@@ -363,6 +363,7 @@ class CartController extends Controller
                     ]);*/
                 }
 
+                $orderItem->user_id = $request->get('user_id');
                 $orderItem->save();
             }
 

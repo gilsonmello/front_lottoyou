@@ -34,6 +34,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $order->user_id;
         });
 
+        /*$gate->define('frontend.order_items.show', function($user, $order_item) {
+            return $user->id == $order_item->user_id;
+        });*/
+
         //
     }
 }

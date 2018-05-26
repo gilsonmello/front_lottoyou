@@ -41,6 +41,9 @@ class UserController extends Controller
             $query->where('user_id', '=', $id);
         });
 
+        //$user = User::find($request->get('user_id'));
+        //Gate::forUser($user)->allows('frontend.orders.show', $order);
+
         if($request->id && !empty($request->id)) {
             $items->where('id', '=', $request->id);
         }
