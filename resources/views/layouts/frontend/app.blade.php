@@ -19,7 +19,7 @@
     <body>
         
         {{-- Tag para que ao inicializar o sistema, faça o download do gif load --}}        
-       
+        <div id="google_translate_element"></div>
 
         <div id="app">
         </div>
@@ -86,7 +86,7 @@
             window.QueryString = <?php echo json_encode($_GET); ?>;
         </script>
         <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}"></script>
-        <div id="google_translate_element"></div>
+        
         <script type="text/javascript">
             function googleTranslateElementInit() {
               new google.translate.TranslateElement({pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
