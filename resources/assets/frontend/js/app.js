@@ -133,7 +133,17 @@ window.addEventListener('storage', function(event) {
 	    	window.localStorage.removeItem('refresh_token');
 	    	window.localStorage.removeItem('authUser');
 	        window.location.reload();
-	    } else {
+	    } else if(app.auth.access_token != event.newValue && event.key == 'access_token') {
+	    	window.localStorage.removeItem('access_token');
+			window.localStorage.removeItem('refresh_token');
+			window.localStorage.removeItem('authUser');
+			window.location.reload();
+		} else if(app.auth.refresh_token != event.newValue && event.key == 'refresh_token') {
+	    	window.localStorage.removeItem('access_token');
+			window.localStorage.removeItem('refresh_token');
+			window.localStorage.removeItem('authUser');
+			window.location.reload();
+		} else {
 
 	    	//Se removeu o usuário
 			if((event.key == "authUser") && (event.newValue == null)) {
@@ -146,6 +156,7 @@ window.addEventListener('storage', function(event) {
 		    }
 	    }
 	}
+
 
     
 
