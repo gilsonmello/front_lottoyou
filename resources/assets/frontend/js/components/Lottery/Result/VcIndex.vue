@@ -171,6 +171,10 @@
 		        	return config;
 				});
 
+				this.$router.replace({
+                    query: Object.assign(this.query)
+                })
+
 				let url = routes.lotteries.results.replace('{id}', this.id);
 				url += "?page="+this.query.page;
 				url += "&column="+this.query.column;
@@ -184,7 +188,7 @@
 						this.sweepstakes = response.data.data;
 						this.loading.component = false
 						this.loading.pagination = false
-
+						this.scrollToTop();
 						$(this.$el).find('.form-filter [type="load"]').addClass('hide');
                         $(this.$el).find('.form-filter [type="submit"]').removeClass('hide');
 					}
@@ -220,6 +224,27 @@
 			}
 		},
 		mounted() {
+			if(this.$route.query.id) {
+                this.query.id = this.$route.query.id
+            } 
+            if(this.$route.query.page) {
+                this.query.page = this.$route.query.page
+            }           
+            if(this.$route.query.column) {
+                this.query.column = this.$route.query.column
+            }
+            if(this.$route.query.direction) {
+                this.query.direction = this.$route.query.direction
+            }
+            if(this.$route.query.sorteio) {
+                this.query.sorteio = this.$route.query.sorteio
+            }
+            if(this.$route.query.premio) {
+                this.query.premio = this.$route.query.premio
+            }
+            if(this.$route.query.data_fim) {
+                this.query.data_fim = this.$route.query.data_fim
+            }
 			this.id = this.$route.params.id;
 			this.findRequest();
 			this.resultRequest();

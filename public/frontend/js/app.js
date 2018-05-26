@@ -93354,6 +93354,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                         val.data = JSON.parse(val.data);
                     });
                     _this.items = response.data.data;
+                    _this.scrollToTop();
                 }
             }).catch(function (error) {
                 //this.$router.push({name: 'users.account'});                  
@@ -105428,6 +105429,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		this.resultRequest();
 	},
 	activated: function activated() {},
+
 	components: {
 		LoadComponent: __WEBPACK_IMPORTED_MODULE_1__Load___default.a,
 		TicketComponent: __WEBPACK_IMPORTED_MODULE_3__Result_TicketComponent___default.a,
@@ -110450,6 +110452,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				return config;
 			});
 
+			this.$router.replace({
+				query: Object.assign(this.query)
+			});
+
 			var url = __WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].lotteries.results.replace('{id}', this.id);
 			url += "?page=" + this.query.page;
 			url += "&column=" + this.query.column;
@@ -110463,7 +110469,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					_this2.sweepstakes = response.data.data;
 					_this2.loading.component = false;
 					_this2.loading.pagination = false;
-
+					_this2.scrollToTop();
 					$(_this2.$el).find('.form-filter [type="load"]').addClass('hide');
 					$(_this2.$el).find('.form-filter [type="submit"]').removeClass('hide');
 				}
@@ -110499,6 +110505,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		};
 	},
 	mounted: function mounted() {
+		if (this.$route.query.id) {
+			this.query.id = this.$route.query.id;
+		}
+		if (this.$route.query.page) {
+			this.query.page = this.$route.query.page;
+		}
+		if (this.$route.query.column) {
+			this.query.column = this.$route.query.column;
+		}
+		if (this.$route.query.direction) {
+			this.query.direction = this.$route.query.direction;
+		}
+		if (this.$route.query.sorteio) {
+			this.query.sorteio = this.$route.query.sorteio;
+		}
+		if (this.$route.query.premio) {
+			this.query.premio = this.$route.query.premio;
+		}
+		if (this.$route.query.data_fim) {
+			this.query.data_fim = this.$route.query.data_fim;
+		}
 		this.id = this.$route.params.id;
 		this.findRequest();
 		this.resultRequest();

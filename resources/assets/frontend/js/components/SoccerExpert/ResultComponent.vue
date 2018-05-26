@@ -231,7 +231,7 @@
 
 			this.resultRequest();
 		},
-		activated: function() {
+		activated() {
 			
 		},
 		components: {

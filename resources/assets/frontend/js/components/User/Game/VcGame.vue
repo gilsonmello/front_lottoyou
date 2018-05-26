@@ -167,6 +167,7 @@
                             val.data = JSON.parse(val.data);
                         })             
                         this.items = response.data.data;
+                        this.scrollToTop();
                     }
                 }).catch((error) => {
                     //this.$router.push({name: 'users.account'});                  
