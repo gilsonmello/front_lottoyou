@@ -4,7 +4,7 @@
 			<div class="col-lg-2">
 			</div>
 			<div class="col-lg-10 col-12">
-				<h1 class="">Aqui é mais fácil</h1>
+				<h1 class="" style="">Aqui é mais fácil</h1>
 			</div>
 		</div>
 		
@@ -68,9 +68,8 @@
 	}
 	
 	h1 {
-	    font-size: 47px;
-    	text-align: center;
-		max-width: 500px;
+		font-size: 52px;
+	    margin-left: 20px;
 		font-family: "Interstate", sans-serif;
 		font-weight: bold;
 		color: #0056b1;
