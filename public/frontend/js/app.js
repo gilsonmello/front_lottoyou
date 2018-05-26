@@ -125720,8 +125720,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 		window.googleTranslateElementInit = function () {
 			new google.translate.TranslateElement({ pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
-			$('.goog-te-menu2-item').on('click', function () {
-				console.log('alsjdk');
+
+			var mutationObserver = new MutationObserver(function (mutations) {
+				mutations.forEach(function (mutation) {
+					console.log(mutation);
+				});
+			});
+
+			mutationObserver.observe($('.skiptranslate'), {
+				attributes: true,
+				characterData: true,
+				childList: true,
+				subtree: true,
+				attributeOldValue: true,
+				characterDataOldValue: true
 			});
 		};
 
