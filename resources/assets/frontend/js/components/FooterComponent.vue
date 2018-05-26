@@ -240,8 +240,8 @@
 				  	});
 				});
 
-              	console.log(document.querySelector('.skiptranslate'))
-				mutationObserver.observe(document.querySelector('.skiptranslate'), {
+              	console.log(document.querySelector('body'))
+				mutationObserver.observe(document.querySelector('body'), {
 				  	attributes: true,
 				  	characterData: true,
 				  	childList: true,
