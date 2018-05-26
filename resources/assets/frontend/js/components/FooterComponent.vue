@@ -244,8 +244,6 @@
               				position: 'relative'
               			});
               		} else {
-              			
-              			console.log('asd')
               			$('.header').css({
               				position: 'fixed'
               			});

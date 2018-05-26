@@ -114550,37 +114550,6 @@ var render = function() {
           _c(
             "div",
             {
-              staticClass: "row vcenter",
-              staticStyle: { margin: "10px -15px 10px -15px" }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "col-lg-10 col-8 col-md-10 col-sm-10" },
-                [
-                  _c("span", { staticClass: "pull-right" }, [
-                    _vm._v("\n\t\t\t\t\t\tSubtotal\n\t\t\t\t\t")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-4 col-md-2 col-sm-2" }, [
-                _c("span", [
-                  _vm._v(
-                    "\n\t\t\t\t\t\t$ " +
-                      _vm._s(_vm.purchase.sub_total.format(2, true)) +
-                      "\n\t\t\t\t\t"
-                  )
-                ])
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "container" }, [
-          _c(
-            "div",
-            {
               staticClass: "row vcenter border-dotted",
               staticStyle: { margin: "10px -15px 10px -15px" }
             },
@@ -114627,7 +114596,7 @@ var render = function() {
                           ])
                         : _c("span", [
                             _vm._v(
-                              "\n\t\t\t\t\t\tSaldo disponível: $" +
+                              "\n\t\t\t\t\t\tSaldo disponível: $ " +
                                 _vm._s(_vm.auth.balance.value) +
                                 "(Saldo restante: $ 0.00)\n\t\t\t\t\t"
                             )
@@ -114640,7 +114609,7 @@ var render = function() {
                     [
                       _c("span", [
                         _vm._v(
-                          "\n\t\t\t\t\t\tSaldo disponível: $0.00(Saldo restante: $ 0.00)\n\t\t\t\t\t"
+                          "\n\t\t\t\t\t\tSaldo disponível: $ 0.00(Saldo restante: $ 0.00)\n\t\t\t\t\t"
                         )
                       ])
                     ]
@@ -125731,8 +125700,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						position: 'relative'
 					});
 				} else {
-
-					console.log('asd');
 					$('.header').css({
 						position: 'fixed'
 					});
