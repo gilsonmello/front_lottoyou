@@ -125702,10 +125702,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	created: function created() {},
 	activated: function activated() {
-		console.log('kljsdkl');
+		$.ajaxSetup({
+			cache: true
+		});
+
+		window.googleTranslateElementInit = function () {
+			new google.translate.TranslateElement({ pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+		};
+
+		$.getScript("//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit", function (data, textStatus, jqxhr) {});
 	},
 
-	mounted: function mounted() {}
+	mounted: function mounted() {
+		console.log('askjdalk');
+	}
 });
 
 /***/ }),
