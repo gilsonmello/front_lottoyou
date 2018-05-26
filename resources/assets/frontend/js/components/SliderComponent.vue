@@ -71,6 +71,7 @@
 	    font-size: 47px;
     	text-align: center;
 		max-width: 500px;
+		font-family: "Interstate", sans-serif;
 		font-weight: bold;
 		color: #0056b1;
 		text-transform: uppercase;

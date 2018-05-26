@@ -10,6 +10,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="/fonts/vendor/font-intersate/Interstate-Regular_24143.ttf" rel="stylesheet" type="text/css">
         <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet" type="text/css">
         {{-- <link rel="shortcut icon" type="image/png" href="/favicon.ico"/> --}}
 
@@ -85,5 +86,14 @@
             window.QueryString = <?php echo json_encode($_GET); ?>;
         </script>
         <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}"></script>
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+              new google.translate.TranslateElement({pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+        </script>
+        
     </body>
 </html>
