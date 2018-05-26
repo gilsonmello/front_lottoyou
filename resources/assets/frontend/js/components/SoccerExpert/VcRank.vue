@@ -205,8 +205,8 @@
             if(this.$route.query.direction) {
                 this.query.direction = this.$route.query.direction
             }
-            if(this.$route.query.nickname) {
-                this.query.nickname = this.$route.query.nickname
+            if(this.$route.query.nome) {
+                this.query.nome = this.$route.query.nome
             }
             if(this.$route.query.valor) {
                 this.query.valor = this.$route.query.valor

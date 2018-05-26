@@ -104246,8 +104246,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		if (this.$route.query.direction) {
 			this.query.direction = this.$route.query.direction;
 		}
-		if (this.$route.query.nickname) {
-			this.query.nickname = this.$route.query.nickname;
+		if (this.$route.query.nome) {
+			this.query.nome = this.$route.query.nome;
 		}
 		if (this.$route.query.valor) {
 			this.query.valor = this.$route.query.valor;
@@ -105175,7 +105175,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -105340,6 +105340,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				return config;
 			});
 
+			this.$router.replace({
+				query: Object.assign(this.query)
+			});
+
 			var url = __WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].soccer_experts.results.replace('{id}', this.id);
 			url += "?page=" + this.query.page;
 			url += "&column=" + this.query.column;
@@ -105351,6 +105355,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					_this.tickets = response.data.data;
 					_this.loading.component = false;
 					_this.loading.pagination = false;
+					_this.scrollToTop();
 				}
 			}).catch(function (error) {
 				_this.loading.component = false;
@@ -105371,6 +105376,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			tickets: [],
 			model: {},
 			query: {
+				id: '',
 				page: 1,
 				column: 'nome',
 				direction: 'asc',
@@ -105382,6 +105388,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	mounted: function mounted() {
 		var _this2 = this;
+
+		if (this.$route.query.id) {
+			this.query.id = this.$route.query.id;
+		}
+		if (this.$route.query.page) {
+			this.query.page = this.$route.query.page;
+		}
+		if (this.$route.query.column) {
+			this.query.column = this.$route.query.column;
+		}
+		if (this.$route.query.direction) {
+			this.query.direction = this.$route.query.direction;
+		}
+		if (this.$route.query.nome) {
+			this.query.nome = this.$route.query.nome;
+		}
+		if (this.$route.query.valor) {
+			this.query.valor = this.$route.query.valor;
+		}
+		if (this.$route.query.data_termino) {
+			this.query.data_termino = this.$route.query.data_termino;
+		}
 
 		var showRequest = axios.create();
 		this.id = this.$route.params.id;

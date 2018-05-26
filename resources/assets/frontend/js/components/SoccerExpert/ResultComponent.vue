@@ -144,6 +144,10 @@
 		        	return config;
 				});
 
+				this.$router.replace({
+                    query: Object.assign(this.query)
+                })
+
 				let url = routes.soccer_experts.results.replace('{id}', this.id);
 				url += "?page="+this.query.page;
 				url += "&column="+this.query.column;
@@ -154,7 +158,8 @@
 						this.model = response.data;
 						this.tickets = response.data.data;
 						this.loading.component = false
-						this.loading.pagination = false
+						this.loading.pagination = false;
+						this.scrollToTop();
 					}
 				}).catch((error) => {
 					this.loading.component = false
@@ -175,6 +180,7 @@
 				tickets: [],
 				model: {},
 				query: {
+					id: '',
 					page: 1,
 					column: 'nome',
 					direction: 'asc',
@@ -185,6 +191,28 @@
 			}
 		},
 		mounted: function() {
+			if(this.$route.query.id) {
+                this.query.id = this.$route.query.id
+            } 
+            if(this.$route.query.page) {
+                this.query.page = this.$route.query.page
+            }           
+            if(this.$route.query.column) {
+                this.query.column = this.$route.query.column
+            }
+            if(this.$route.query.direction) {
+                this.query.direction = this.$route.query.direction
+            }
+            if(this.$route.query.nome) {
+                this.query.nome = this.$route.query.nome
+            }
+            if(this.$route.query.valor) {
+                this.query.valor = this.$route.query.valor
+            }
+            if(this.$route.query.data_termino) {
+                this.query.data_termino = this.$route.query.data_termino
+            }
+
 			const showRequest = axios.create();
 			this.id = this.$route.params.id;
 			showRequest.interceptors.request.use(config => {
