@@ -125723,7 +125723,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			var mutationObserver = new MutationObserver(function (mutations) {
 				mutations.forEach(function (mutation) {
-					$(mutation).find('[display="none"].skiptranslate');
+					console.log($(mutation).find('[display="none"].skiptranslate'));
 				});
 			});
 
