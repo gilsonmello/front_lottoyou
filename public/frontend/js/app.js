@@ -125720,8 +125720,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 		window.googleTranslateElementInit = function () {
 			new google.translate.TranslateElement({ pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
-
-			console.log(google);
+			$('.goog-te-menu2-item').on('click', function () {
+				console.log('alsjdk');
+			});
 		};
 
 		$.getScript("//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit", function (data, textStatus, jqxhr) {});
