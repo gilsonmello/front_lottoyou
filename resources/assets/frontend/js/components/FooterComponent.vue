@@ -213,13 +213,20 @@
 				
 			}
 		},
+		updated() {
+			console.log('updated')
+		}.
 		created: function() {
-
+			console.log('created')
 		},
 		activated() {
 
-			console.log('askjdalk')
+			console.log('activated')
 			
+			
+		},
+		mounted: function() {
+			console.log('mounted')
 			$.ajaxSetup({
 			  	cache: true
 			});
@@ -230,10 +237,6 @@
 
             $.getScript("//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit", function( data, textStatus, jqxhr ) {
 			});
-			
-		},
-		mounted: function() {
-			console.log('askjdalk')
 		}
 	}
 </script>
