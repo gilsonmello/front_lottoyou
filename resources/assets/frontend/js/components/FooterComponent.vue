@@ -234,6 +234,10 @@
 			window.googleTranslateElementInit = function() {
               	new google.translate.TranslateElement({pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
               	
+              	setInterval(() => {
+              		console.log($('.skiptranslate iframe'))
+              	}, 2000);
+
               	/*var mutationObserver = new MutationObserver(function(mutations) {
 				  	mutations.forEach(function(mutation) {
 				  		if($(mutation.target).find('div.skiptranslate').length > 0) {
