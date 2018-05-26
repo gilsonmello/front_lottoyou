@@ -153,6 +153,26 @@
 		},
 		mounted() {
 			this.id = this.$route.params.id;
+			if(this.$route.query.id) {
+                this.query.id = this.$route.query.id
+            } 
+            if(this.$route.query.page) {
+                this.query.page = this.$route.query.page
+            }           
+            if(this.$route.query.column) {
+                this.query.column = this.$route.query.column
+            }
+            if(this.$route.query.nickname) {
+                this.query.nickname = this.$route.query.nickname
+            }
+            if(this.$route.query.valor) {
+                this.query.valor = this.$route.query.valor
+            }
+
+            if(this.$route.query.data_termino) {
+                this.query.data_termino = this.$route.query.data_termino
+            }
+
 			this.groupRequest();
 			this.rankRequest();
 		},
@@ -220,6 +240,10 @@
 					return config;
 				});
 
+				this.$router.replace({
+                    query: Object.assign(this.query)
+                })
+
 				let url = routes.soccer_groups.ranking.replace('{id}', this.id);
 				url += "?page="+this.query.page;
 				url += "&column="+this.query.column;
@@ -236,6 +260,7 @@
 
                         $(this.$el).find('.form-filter [type="load"]').addClass('hide');
                         $(this.$el).find('.form-filter [type="submit"]').removeClass('hide');
+                        this.scrollToTop();
 					}
 				}).catch((error) => {
 					this.loading.component = false;

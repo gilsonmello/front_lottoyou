@@ -100251,9 +100251,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['balance', 'lottery_bet'],
-	mounted: function mounted() {
-		console.log(this.balance);
-	}
+	mounted: function mounted() {}
 });
 
 /***/ }),
@@ -106425,7 +106423,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -106598,6 +106596,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	mounted: function mounted() {
 		this.id = this.$route.params.id;
+		if (this.$route.query.id) {
+			this.query.id = this.$route.query.id;
+		}
+		if (this.$route.query.page) {
+			this.query.page = this.$route.query.page;
+		}
+		if (this.$route.query.column) {
+			this.query.column = this.$route.query.column;
+		}
+		if (this.$route.query.nickname) {
+			this.query.nickname = this.$route.query.nickname;
+		}
+		if (this.$route.query.valor) {
+			this.query.valor = this.$route.query.valor;
+		}
+
+		if (this.$route.query.data_termino) {
+			this.query.data_termino = this.$route.query.data_termino;
+		}
+
 		this.groupRequest();
 		this.rankRequest();
 	},
@@ -106667,6 +106685,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				return config;
 			});
 
+			this.$router.replace({
+				query: Object.assign(this.query)
+			});
+
 			var url = __WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].soccer_groups.ranking.replace('{id}', this.id);
 			url += "?page=" + this.query.page;
 			url += "&column=" + this.query.column;
@@ -106683,6 +106705,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 					$(_this2.$el).find('.form-filter [type="load"]').addClass('hide');
 					$(_this2.$el).find('.form-filter [type="submit"]').removeClass('hide');
+					_this2.scrollToTop();
 				}
 			}).catch(function (error) {
 				_this2.loading.component = false;

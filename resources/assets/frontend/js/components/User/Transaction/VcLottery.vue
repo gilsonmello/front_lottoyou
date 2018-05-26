@@ -17,7 +17,7 @@
 	export default {
 		props: ['balance', 'lottery_bet'],
 		mounted() {
-			console.log(this.balance)
+			
 		}
 	}
 </script>
