@@ -125727,7 +125727,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				});
 			});
 
-			mutationObserver.observe($('.skiptranslate'), {
+			mutationObserver.observe(document.querySelector('.skiptranslate'), {
 				attributes: true,
 				characterData: true,
 				childList: true,
