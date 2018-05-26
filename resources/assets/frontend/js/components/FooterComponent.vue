@@ -215,7 +215,7 @@
 		},
 		updated() {
 			console.log('updated')
-		}.
+		},
 		created: function() {
 			console.log('created')
 		},

@@ -125484,9 +125484,247 @@ exports.push([module.i, "\n.color-blue[data-v-122aca56]{\n        color: #0056b1
 
 /***/ }),
 /* 695 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token, expected , (218:3)\n\n\u001b[0m \u001b[90m 216 | \u001b[39m\t\tupdated() {\n \u001b[90m 217 | \u001b[39m\t\t\tconsole\u001b[33m.\u001b[39mlog(\u001b[32m'updated'\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 218 | \u001b[39m\t\t}\u001b[33m.\u001b[39m\n \u001b[90m     | \u001b[39m\t\t \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 219 | \u001b[39m\t\tcreated\u001b[33m:\u001b[39m \u001b[36mfunction\u001b[39m() {\n \u001b[90m 220 | \u001b[39m\t\t\tconsole\u001b[33m.\u001b[39mlog(\u001b[32m'created'\u001b[39m)\n \u001b[90m 221 | \u001b[39m\t\t}\u001b[33m,\u001b[39m\u001b[0m\n");
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {};
+	},
+	methods: {
+		redirect: function redirect(el) {
+			window.location.href = el.target.getAttribute('href');
+			window.location.reload();
+		}
+	},
+	updated: function updated() {
+		console.log('updated');
+	},
+
+	created: function created() {
+		console.log('created');
+	},
+	activated: function activated() {
+
+		console.log('activated');
+	},
+
+	mounted: function mounted() {
+		console.log('mounted');
+		$.ajaxSetup({
+			cache: true
+		});
+
+		window.googleTranslateElementInit = function () {
+			new google.translate.TranslateElement({ pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+		};
+
+		$.getScript("//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit", function (data, textStatus, jqxhr) {});
+	}
+});
 
 /***/ }),
 /* 696 */
