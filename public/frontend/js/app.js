@@ -125721,23 +125721,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		window.googleTranslateElementInit = function () {
 			new google.translate.TranslateElement({ pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
 
-			var mutationObserver = new MutationObserver(function (mutations) {
-				mutations.forEach(function (mutation) {
-					if ($(mutation.target).find('div.skiptranslate').length > 0) {
-						console.log($(mutation.target).find('div.skiptranslate'));
-					}
-				});
-			});
-
-			console.log(document.querySelector('body'));
-			mutationObserver.observe(document.querySelector('body'), {
-				attributes: true,
-				characterData: true,
-				childList: true,
-				subtree: true,
-				attributeOldValue: true,
-				characterDataOldValue: true
-			});
+			/*var mutationObserver = new MutationObserver(function(mutations) {
+   mutations.forEach(function(mutation) {
+   if($(mutation.target).find('div.skiptranslate').length > 0) {
+   console.log($(mutation.target).find('div.skiptranslate'));
+   }
+   });
+   });
+   	console.log(document.querySelector('body'))
+   mutationObserver.observe(document.querySelector('body'), {
+   attributes: true,
+   characterData: true,
+   childList: true,
+   subtree: true,
+   attributeOldValue: true,
+   characterDataOldValue: true
+   });*/
 		};
 
 		$.getScript("//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit", function (data, textStatus, jqxhr) {});

@@ -234,7 +234,7 @@
 			window.googleTranslateElementInit = function() {
               	new google.translate.TranslateElement({pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
               	
-              	var mutationObserver = new MutationObserver(function(mutations) {
+              	/*var mutationObserver = new MutationObserver(function(mutations) {
 				  	mutations.forEach(function(mutation) {
 				  		if($(mutation.target).find('div.skiptranslate').length > 0) {
 					    	console.log($(mutation.target).find('div.skiptranslate'));
@@ -250,7 +250,7 @@
 				  	subtree: true,
 				  	attributeOldValue: true,
 				  	characterDataOldValue: true
-				});
+				});*/
 			}
 
             $.getScript("//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit", function( data, textStatus, jqxhr ) {
