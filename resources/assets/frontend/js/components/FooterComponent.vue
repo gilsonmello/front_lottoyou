@@ -236,7 +236,7 @@
               	
               	var mutationObserver = new MutationObserver(function(mutations) {
 				  	mutations.forEach(function(mutation) {
-				    	console.log($(mutation).find('.skiptranslate'));
+				    	console.log($(mutation.target).find('.skiptranslate'));
 				  	});
 				});
 
