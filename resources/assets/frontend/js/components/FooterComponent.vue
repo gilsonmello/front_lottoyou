@@ -240,6 +240,7 @@
 				  	});
 				});
 
+              	console.log(document.querySelector('.skiptranslate'))
 				mutationObserver.observe(document.querySelector('.skiptranslate'), {
 				  	attributes: true,
 				  	characterData: true,

@@ -125727,6 +125727,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				});
 			});
 
+			console.log(document.querySelector('.skiptranslate'));
 			mutationObserver.observe(document.querySelector('.skiptranslate'), {
 				attributes: true,
 				characterData: true,
