@@ -99612,6 +99612,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 _this.loading.component = true;
                 return config;
             });
+
+            this.$router.replace({
+                query: Object.assign(this.query)
+            });
+
             historicRequest.get(url, {}, {}).then(function (response) {
                 if (response.status === 200) {
                     _this.loading.component = false;
@@ -99633,6 +99638,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             model: {},
             balances: [],
             query: {
+                id: '',
                 page: 1,
                 column: 'created',
                 direction: 'desc',
@@ -99641,10 +99647,28 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             }
         };
     },
-
     mounted: function mounted() {
+        if (this.$route.query.id) {
+            this.query.id = this.$route.query.id;
+        }
+        if (this.$route.query.page) {
+            this.query.page = this.$route.query.page;
+        }
+        if (this.$route.query.column) {
+            this.query.column = this.$route.query.column;
+        }
+        if (this.$route.query.direction) {
+            this.query.direction = this.$route.query.direction;
+        }
+        if (this.$route.query.amount) {
+            this.query.amount = this.$route.query.amount;
+        }
+        if (this.$route.query.from) {
+            this.query.from = this.$route.query.from;
+        }
         this.historicRequest();
     },
+
     components: {
         LoadComponent: __WEBPACK_IMPORTED_MODULE_2__Load___default.a,
         VcPagination: __WEBPACK_IMPORTED_MODULE_3__VcPagination___default.a,
