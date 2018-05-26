@@ -118,11 +118,8 @@
 		                        </a>
 		                    </li>
 		                    <li class="list-group-item">
-		                        
-		                            <div id="google_translate_element"></div>
-		                        
+		                        <div id="google_translate_element"></div>
 		                    </li>
-		                    
 		                </ul>               
 		            </div>
 		            <div class="col-lg-4 col-md-6 col-12 col-sm-6">
@@ -218,6 +215,9 @@
 		},
 		created: function() {
 
+		},
+		activated() {
+			console.log('kljsdkl');
 		},
 		mounted: function() {
 			

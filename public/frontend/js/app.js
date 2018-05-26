@@ -125689,9 +125689,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -125704,6 +125701,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	created: function created() {},
+	activated: function activated() {
+		console.log('kljsdkl');
+	},
+
 	mounted: function mounted() {}
 });
 
