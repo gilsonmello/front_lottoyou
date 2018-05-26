@@ -114585,7 +114585,7 @@ var render = function() {
                             _vm._v(
                               "\n\t\t\t\t\t\tSaldo disponível: $" +
                                 _vm._s(_vm.auth.balance.value) +
-                                " (Saldo restante: $ " +
+                                " (Saldo restante: $" +
                                 _vm._s(
                                   (
                                     _vm.auth.balance.value - _vm.purchase.total
@@ -114596,9 +114596,9 @@ var render = function() {
                           ])
                         : _c("span", [
                             _vm._v(
-                              "\n\t\t\t\t\t\tSaldo disponível: $ " +
+                              "\n\t\t\t\t\t\tSaldo disponível: $" +
                                 _vm._s(_vm.auth.balance.value) +
-                                "(Saldo restante: $ 0.00)\n\t\t\t\t\t"
+                                "(Saldo restante: $0.00)\n\t\t\t\t\t"
                             )
                           ])
                     ]
@@ -114609,7 +114609,7 @@ var render = function() {
                     [
                       _c("span", [
                         _vm._v(
-                          "\n\t\t\t\t\t\tSaldo disponível: $ 0.00(Saldo restante: $ 0.00)\n\t\t\t\t\t"
+                          "\n\t\t\t\t\t\tSaldo disponível: $0.00(Saldo restante: $0.00)\n\t\t\t\t\t"
                         )
                       ])
                     ]
@@ -114638,7 +114638,7 @@ var render = function() {
                 : _c(
                     "div",
                     { staticClass: "col-lg-2 col-6 col-md-2 col-sm-2" },
-                    [_c("span", [_vm._v("\n\t\t\t\t\t\t$ 0.00\n\t\t\t\t\t")])]
+                    [_c("span", [_vm._v("\n\t\t\t\t\t\t$0.00\n\t\t\t\t\t")])]
                   )
             ]
           )
@@ -114657,7 +114657,11 @@ var render = function() {
                 { staticClass: "col-lg-10 col-8 col-md-10 col-sm-10" },
                 [
                   _c("span", { staticClass: "pull-right" }, [
-                    _vm._v("\n\t\t\t\t\t\tTotal a pagar \n\t\t\t\t\t")
+                    _vm._v(
+                      "\n\t\t\t\t\t\t" +
+                        _vm._s(_vm.trans("string.total_value")) +
+                        " \n\t\t\t\t\t"
+                    )
                   ])
                 ]
               ),
@@ -114665,7 +114669,7 @@ var render = function() {
               _c("div", { staticClass: "col-lg-2 col-4 col-md-2 col-sm-2" }, [
                 _c("span", [
                   _vm._v(
-                    "\n\t\t\t\t\t\t$ " +
+                    "\n\t\t\t\t\t\t$" +
                       _vm._s(_vm.purchase.total.format(2, true)) +
                       "\n\t\t\t\t\t"
                   )

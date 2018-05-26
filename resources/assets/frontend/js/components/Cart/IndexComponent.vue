@@ -105,15 +105,15 @@
 			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
 				<div class="col-lg-5 col-12 col-md-5 col-sm-6" v-if="auth != undefined">
 					<span v-if="(auth.balance.value - purchase.total) >= 0">
-						Saldo disponível: ${{ auth.balance.value }} (Saldo restante: $ {{ (auth.balance.value - purchase.total).format(2, true) }})
+						Saldo disponível: ${{ auth.balance.value }} (Saldo restante: ${{ (auth.balance.value - purchase.total).format(2, true) }})
 					</span>
 					<span v-else>
-						Saldo disponível: $ {{ auth.balance.value }}(Saldo restante: $ 0.00)
+						Saldo disponível: ${{ auth.balance.value }}(Saldo restante: $0.00)
 					</span>
 				</div>
 				<div class="col-lg-5 col-12 col-md-5 col-sm-6" v-else>
 					<span>
-						Saldo disponível: $ 0.00(Saldo restante: $ 0.00)
+						Saldo disponível: $0.00(Saldo restante: $0.00)
 					</span>
 				</div>
 				<div class="col-lg-5 col-6 col-md-5 col-sm-4">
@@ -128,7 +128,7 @@
 				</div>
 				<div class="col-lg-2 col-6 col-md-2 col-sm-2" v-else>
 					<span>
-						$ 0.00
+						$0.00
 					</span>
 				</div>
 			</div>
@@ -139,12 +139,12 @@
 			<div class="row vcenter" style="margin: 10px -15px 10px -15px">
 				<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 					<span class="pull-right">
-						Total a pagar 
+						{{ trans('string.total_value') }} 
 					</span>
 				</div>
 				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
 					<span>
-						$ {{ (purchase.total).format(2, true) }}
+						${{ (purchase.total).format(2, true) }}
 					</span>
 				</div>
 			</div>
