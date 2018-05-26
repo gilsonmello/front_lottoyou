@@ -142,6 +142,7 @@
 				model: {},
 				bet: {},
 				query: {
+					id: '',
 					page: 1,
 					column: 'pontuacao',
 					direction: 'desc',
@@ -162,13 +163,15 @@
             if(this.$route.query.column) {
                 this.query.column = this.$route.query.column
             }
+            if(this.$route.query.direction) {
+                this.query.direction = this.$route.query.direction
+            }
             if(this.$route.query.nickname) {
                 this.query.nickname = this.$route.query.nickname
             }
             if(this.$route.query.valor) {
                 this.query.valor = this.$route.query.valor
             }
-
             if(this.$route.query.data_termino) {
                 this.query.data_termino = this.$route.query.data_termino
             }

@@ -51,19 +51,19 @@
 <script>
 	export default {
 		props: ['game', 'index', 'ticket'],
-		created: function () {
+		created() {
 
         },
-        mounted: function() {
-        	console.log(this.game)
+        mounted() {
+        	
         },
-        activated: function() {
+        activated() {
             
         },
         methods: {
         	
         },
-        data: function() {
+        data() {
         	return {}
         },
         computed: {

@@ -144,6 +144,10 @@
 		        	return config;
 				});
 
+				this.$router.replace({
+                    query: Object.assign(this.query)
+                })
+                
 				let url = routes.soccer_experts.ranks.replace('{id}', this.id);
 				url += "?page="+this.query.page;
 				url += "&column="+this.query.column;
@@ -155,6 +159,7 @@
 						this.tickets = response.data.data;
 						this.loading.component = false
 						this.loading.pagination = false
+						this.scrollToTop();
 					}
 				}).catch((error) => {
 					this.loading.component = false
@@ -177,6 +182,7 @@
 				model: {},
 				users: [],
 				query: {
+					id: '',
 					page: 1,
 					column: 'nome',
 					direction: 'asc',
@@ -187,6 +193,28 @@
 			}
 		},
 		mounted: function() {
+			if(this.$route.query.id) {
+                this.query.id = this.$route.query.id
+            } 
+            if(this.$route.query.page) {
+                this.query.page = this.$route.query.page
+            }           
+            if(this.$route.query.column) {
+                this.query.column = this.$route.query.column
+            }
+            if(this.$route.query.direction) {
+                this.query.direction = this.$route.query.direction
+            }
+            if(this.$route.query.nickname) {
+                this.query.nickname = this.$route.query.nickname
+            }
+            if(this.$route.query.valor) {
+                this.query.valor = this.$route.query.valor
+            }
+            if(this.$route.query.data_termino) {
+                this.query.data_termino = this.$route.query.data_termino
+            }
+
 			const categoryRequest = axios.create();
 			this.id = this.$route.params.id;
 			categoryRequest.interceptors.request.use(config => {
