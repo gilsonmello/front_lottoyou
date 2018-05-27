@@ -897,8 +897,7 @@
 					let addLotteryRequest = axios.create();
 
 					addLotteryRequest.interceptors.request.use(config => {
-			        	$(event.currentTarget).find('[type="load"]').removeClass('hide');
-			        	$(event.currentTarget).find('[type="submit"]').addClass('hide');
+			        	this.loading.paying = true;
 					  	return config;
 					});
 
@@ -915,6 +914,7 @@
 							})
 						}
 			        }).catch((error) => {
+			        	this.loading.paying = false;
 			        	toast.error('Erro ao adicionar item', 'Por favor tente novamente');
 			        })	
 					

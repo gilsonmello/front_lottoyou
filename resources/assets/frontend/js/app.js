@@ -128,6 +128,23 @@ window.addEventListener('storage', function(event) {
     	window.location.reload();
     } else {
     	
+    	if(app.auth && app.auth.access_token != event.newValue && event.key == 'access_token') {
+	    	window.localStorage.removeItem('access_token');
+			window.localStorage.removeItem('refresh_token');
+			window.localStorage.removeItem('authUser');
+			window.location.reload();
+		} else if(app.auth && app.auth.refresh_token != event.newValue && event.key == 'refresh_token') {
+	    	window.localStorage.removeItem('access_token');
+			window.localStorage.removeItem('refresh_token');
+			window.localStorage.removeItem('authUser');
+			window.location.reload();
+		} else if(app.auth && JSON.stringify(app.auth) != event.newValue && event.key == 'authUser') {
+	    	window.localStorage.removeItem('access_token');
+			window.localStorage.removeItem('refresh_token');
+			window.localStorage.removeItem('authUser');
+			window.location.reload();
+		}
+
     	//Se deletou o token, removo o usuário logado
 	    if((event.key == 'access_token' && event.newValue == null)) {
 	    	window.localStorage.removeItem('refresh_token');
@@ -146,22 +163,6 @@ window.addEventListener('storage', function(event) {
 		    }
 	    }
 
-	    /*else if(app.auth && app.auth.access_token != event.newValue && event.key == 'access_token') {
-	    	window.localStorage.removeItem('access_token');
-			window.localStorage.removeItem('refresh_token');
-			window.localStorage.removeItem('authUser');
-			window.location.reload();
-		} else if(app.auth && app.auth.refresh_token != event.newValue && event.key == 'refresh_token') {
-	    	window.localStorage.removeItem('access_token');
-			window.localStorage.removeItem('refresh_token');
-			window.localStorage.removeItem('authUser');
-			window.location.reload();
-		} else if(app.auth && JSON.stringify(app.auth) != event.newValue && event.key == 'authUser') {
-	    	window.localStorage.removeItem('access_token');
-			window.localStorage.removeItem('refresh_token');
-			window.localStorage.removeItem('authUser');
-			window.location.reload();
-		}*/
 	}
 
 

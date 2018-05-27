@@ -52,12 +52,12 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-lg-12">
-								<button type="submit" class="btn btn-md btn-primary" style="width: 100%;">
-									{{ trans('strings.to_enter') }}
-								</button>							
-								<button style="width: 100%;" @click.prevent="" type="load" class="hide btn btn-md btn-primary">
+							<div class="col-lg-12">							
+								<button v-if="loading.login" style="width: 100%;" @click.prevent="" type="load" class="btn btn-md btn-primary">
 									<i class="fa fa-refresh fa-spin"></i>
+								</button>
+								<button v-else type="submit" class="btn btn-md btn-primary" style="width: 100%;">
+									{{ trans('strings.to_enter') }}
 								</button>
 							</div>
 						</div>
@@ -125,7 +125,8 @@
 				password: '',
 				errors: {},
 				loading: {
-					component: true
+					component: true,
+					login: false
 				},
 			}
 		},
@@ -192,8 +193,7 @@
 		        };
 		        var loginRequest = axios.create();
 		        loginRequest.interceptors.request.use(config => {
-		        	$(this.$el).find('[type="load"]').removeClass('hide');
-		        	$(this.$el).find('[type="submit"]').addClass('hide');
+		        	this.loading.login = true;
 				  	return config;
 				});
 
@@ -201,13 +201,10 @@
 					
 					if(response.status === 200) {
 
-						this.email = '';
-						this.password = '';
-						this.errors = {};
 						window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
 						window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
 
-						this.$router.push({name: 'users.account'});
+						//this.$router.push({name: 'users.account'});
 
 						let time = setInterval(() => {
 							if(this.auth) {
@@ -219,7 +216,7 @@
 					    	}
 						});
 
-			        	/*
+			        	
 			        	var access_token = response.data.access_token
               			var refresh_token = response.data.refresh_token
               			
@@ -229,7 +226,9 @@
 							'Accept': 'application/json',
 	    					'Authorization': 'Bearer ' + access_token
 						}}).then(response_2 => {
-
+							this.email = '';
+							this.password = '';
+							this.errors = {};
 				        	response_2.data.access_token = access_token
 		        	
 		        			response_2.data.refresh_token = refresh_token
@@ -242,22 +241,21 @@
 		                  	
 		                  	//window.location.reload();
 
-		                  	this.$router.push({name: 'users.account'});
-		                  	
-		                  	
+		                  	this.$router.push({name: 'home'});
+
+		                  	$('.modal-login').modal('hide');
 		                
 		                }).catch((error_2) => {
+		                	this.loading.login = false;
+							this.password = '';
 							this.errors = {
 								credentials: 'Usuário ou Senha inválidos'
 							};
-							$(this.$el).find('[type="load"]').addClass('hide');
-		        			$(this.$el).find('[type="submit"]').removeClass('hide');
 		                });
-		                */
+		              
 					}
 				}).catch((error) => {
-					$(this.$el).find('[type="load"]').addClass('hide');
-        			$(this.$el).find('[type="submit"]').removeClass('hide');
+					this.loading.login = false;
 					this.errors = {
 						credentials: 'Usuário ou Senha inválidos'
 					};
