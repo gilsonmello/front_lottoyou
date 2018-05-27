@@ -133,7 +133,20 @@ window.addEventListener('storage', function(event) {
 	    	window.localStorage.removeItem('refresh_token');
 	    	window.localStorage.removeItem('authUser');
 	        window.location.reload();
-	    } else if(app.auth && app.auth.access_token != event.newValue && event.key == 'access_token') {
+	    } else {
+
+	    	//Se removeu o usuário
+			if((event.key == "authUser") && (event.newValue == null)) {
+		        window.location.reload();
+		    }
+
+		    //Se houve alguma alteração no usuário mas não está logado
+		    if((event.key == "authUser") && event.newValue != null && app.auth == null) {
+		    	window.location.reload();
+		    }
+	    }
+
+	    /*else if(app.auth && app.auth.access_token != event.newValue && event.key == 'access_token') {
 	    	window.localStorage.removeItem('access_token');
 			window.localStorage.removeItem('refresh_token');
 			window.localStorage.removeItem('authUser');
@@ -148,18 +161,7 @@ window.addEventListener('storage', function(event) {
 			window.localStorage.removeItem('refresh_token');
 			window.localStorage.removeItem('authUser');
 			window.location.reload();
-		} else {
-
-	    	//Se removeu o usuário
-			if((event.key == "authUser") && (event.newValue == null)) {
-		        window.location.reload();
-		    }
-
-		    //Se houve alguma alteração no usuário mas não está logado
-		    if((event.key == "authUser") && event.newValue != null && app.auth == null) {
-		    	window.location.reload();
-		    }
-	    }
+		}*/
 	}
 
 
