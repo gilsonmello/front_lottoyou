@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Frontend\SoccerExpertGame;
+use DB;
 
 class SoccerTicketController extends Controller
 {
@@ -12,10 +13,15 @@ class SoccerTicketController extends Controller
     public function games($ticket_id)
     {
         return SoccerExpertGame::where('soc_rodada_id', '=', $ticket_id)
+            ->select([
+                '*',                
+                DB::raw("concat(data,' ',hora) as date_end"),
+            ])
             ->with([
                 'outClub',
                 'houseClub'
             ])
+            ->orderBy('date_end', 'asc')
             ->get();
     }
 

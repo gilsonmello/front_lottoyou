@@ -61,7 +61,8 @@ class SoccerExpertBet extends Model
     	return $this->belongsTo(SoccerExpertRound::class, 'soc_rodada_id');
     }
 
-    public function games() {
+    public function games() 
+    {
         return $this->hasMany(SoccerExpertBetGame::class, 'soc_aposta_id');
     }
 

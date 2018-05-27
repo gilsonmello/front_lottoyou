@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Frontend\SoccerExpertRoundGroup;
 use App\Model\Frontend\SoccerExpertBet;
 use App\User;
+use DB;
 
 class SoccerGroupController extends Controller
 {
@@ -29,10 +30,14 @@ class SoccerGroupController extends Controller
                     }
                 },
                 'games' => function($query) use($request) {
-
+                    
                 },
                 'games.game' => function($query) use($request) {
-
+                    $query->select([
+                        '*',                
+                        DB::raw("concat(data,' ',hora) as date_end"),
+                    ])
+                    ->orderBy('date_end', 'asc');
                 },
                 'round' => function($query) {
 
