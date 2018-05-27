@@ -18,10 +18,92 @@
 		</div>
 
 		<div class="row">
-			<div class="col-lg-4 col-12 col-md-6 col-sm-6" v-for="lottery in lotteries">				
-				<card-component :lottery="lottery"></card-component>
+			<div class="col-lg-4 col-12 col-md-6 col-sm-6" v-for="(lottery, index) in lotteries">				
+				<card-component :index="index" :lottery="lottery"></card-component>
 			</div>
 		</div>
+
+
+		<div class="modal fade modal-jackpot-table" id="nivel1" data-backdrop="static" tabindex="-1" aria-labelledby="nivel1" aria-hidden="true">
+		  	<div class="modal-dialog modal-lg">
+		  		<div class="modal-content" v-if="loading.modalJackpotTable == true">
+		  			<div class="modal-body">
+		  				<load-component></load-component>
+		  			</div>
+		  		</div>
+		  		<div class="modal-content" v-else>
+		  			
+					<!-- Modal Header -->
+			      	<div class="modal-header" style="border-bottom: none;" v-if="lotteries[indexClicked]">
+			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
+						<div class="col-lg-12 col-md-12 col-12 col-sm-12">
+		        			<div class="row">
+		        				<div class="col-lg-4 col-md-4 col-sm-12 col-12" :style="backgroundDemo(lotteries[indexClicked].img_loteria)+' padding-right: 0; padding-left: 0; min-height: 106px;'">
+					        	</div>
+					        	<div class="col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions" style="background-color: #155C7B">
+					        		<div class="" style="width: 100%;">
+					        			<div class="row">
+					        				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+						        				<router-link :to="{ name: 'lotteries.show', params: {id: lotteries[indexClicked].id} }" style="display: block" class="btn btn-md btn-primary">
+						        					{{ trans('strings.play_now') }}
+						        				</router-link>
+						        			</div>
+					        			</div>
+					        			<div class="row">
+						        			<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+						        				
+						        			</div>
+						        		</div>
+					        		</div>					        		
+					        	</div>
+		        			</div>
+		        		</div>		        	
+			        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+			      	</div>
+
+			      	<!-- Modal body -->
+			      	<div class="modal-body" style="padding-top: 0;">
+		        		<table class="table table-striped text-center">
+		        			<thead>
+		        				<tr>
+		        					<th>{{ trans('strings.hits') }}</th>
+		        					<th>{{ trans('strings.award_for_ticket') }}</th>
+		        				</tr>
+		        			</thead>
+		        			<tbody>
+		        				<tr>
+		        					<td>5</td>
+		        					<td>$20000</td>
+		        				</tr>
+		        				<tr>
+		        					<td>4</td>
+		        					<td>$20</td>
+		        				</tr>
+		        				<tr>
+		        					<td>3</td>
+		        					<td>$2</td>
+		        				</tr>
+		        				<tr>
+		        					<td>2</td>
+		        					<td>$1</td>
+		        				</tr>
+		        				<tr>
+		        					<td>1</td>
+		        					<td>$0.5</td>
+		        				</tr>
+		        			</tbody>
+		        		</table>
+			      	</div>
+			      	<!-- <p>{{ trans('strings.each_one') }}</p> -->
+					<!-- Modal footer -->
+			      	<!--<div class="modal-footer">
+			      		<p>{{ trans('strings.each_one') }}</p>
+		        	 	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
+			      	</div>-->
+				</div>
+		  	</div>
+		</div>
+
 	</div>
 </template>
 
@@ -33,17 +115,40 @@
 		data: function() {
 			return {
 				loading: {
-					component: true
+					component: true,
+					modalJackpotTable: false
 				},
-				lotteries: []
+				lotteries: [],
+				indexClicked: null
 			}
 		},
 		methods: {
-			
+			handleJackpotTable: function(index) {
+				this.indexClicked = index;
+				$('.modal-jackpot-table').off('hidden.bs.modal');
+				$('.modal-jackpot-table').on('hidden.bs.modal', () => {
+					this.loading.modalJackpotTable = true;
+					this.indexClicked = null;
+				});
+				$('.modal-jackpot-table').modal('toggle');
+				$('.modal-jackpot-table').on('shown.bs.modal', () => {
+					this.loading.modalJackpotTable = false;
+				});				
+			},
+			backgroundDemo(background) {
+				return 'background-image: url('+background.replace(' ', '%20')+'); background-size: 100% 100%;';
+			},
+		},
+		beforeDestroy() {
+			this.$eventBus.$off('handleJackpotTable');
 		},
 		mounted: function() {
 			//window.document.title = window.app.title +' | '+ this.trans('strings.lotteries');
 			window.document.title = this.trans('strings.lotteries');
+
+			this.$eventBus.$on('handleJackpotTable', (index) => {
+				this.handleJackpotTable(index);
+			})
 			
 			var lotteriesRequest = axios.create();
 	        lotteriesRequest.interceptors.request.use(config => {

@@ -11,6 +11,8 @@ return [
       | found in a intuitive way.
       |
      */
+    'award_for_ticket' => 'Prêmio por bilhete',
+    'hits' => 'Acertos',
     'modality' => 'Modalidade',
     'not_found_results' => 'Resultado não encontrado',
     'unfinished_sweepstake' => 'Sorteio não realizado',

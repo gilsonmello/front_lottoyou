@@ -214,19 +214,15 @@
 			}
 		},
 		updated() {
-			console.log('updated')
+
 		},
 		created: function() {
-			console.log('created')
+
 		},
 		activated() {
-
-			console.log('activated')
-			
-			
 		},
 		mounted: function() {
-			console.log('mounted')
+			
 			$.ajaxSetup({
 			  	cache: true
 			});

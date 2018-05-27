@@ -17,7 +17,8 @@
 		<div class="tickets-body">
 			<div class="amount">
 				<!-- <h4>$ {{ lottery.value }}</h4> -->
-				<span class="countdown">
+				<h5 style="margin-bottom: 0;">Realize seu sonho por apenas 1 dólar</h5>
+				<!-- <span class="countdown">
 					<span v-if="days > 1">
 						{{ days }} {{ trans('strings.days') }} e
 					</span>
@@ -25,7 +26,7 @@
 						{{ days }} {{ trans('strings.day') }} e
 					</span>				
 					{{ hours }}:{{ minutes }}:{{ seconds }} {{ trans('strings.hours_left') }}
-				</span>
+				</span> -->
 			</div>
 			<div class="jackpot-table">
 				<div class="row vcenter">
@@ -50,7 +51,7 @@
 
 <script>
 	export default {
-		props: ['lottery'],
+		props: ['lottery', 'index'],
 		data: function() {
 			return {				
     			days: '',
@@ -59,7 +60,13 @@
     			seconds: ''
 			}
 		},
+		beforeDestroy() {
+			this.$eventBus.$off('handleJackpotTable');
+		},
 		methods: {
+			handleJackpotTable() {
+				this.$eventBus.$emit('handleJackpotTable', this.index);
+			},
 			setCountdown(date, timeOut) {
 				this.countdown(date, (d, h, m, s, distance) => {
 	            	this.days = d;
@@ -114,8 +121,7 @@
 	.tickets-body .amount {
 		background: linear-gradient(87.71deg, #1DB2E0 0%, #6AD1ED 50.77%, #1DB2E0 100%);
 	    color: #FFFFFF;
-	    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	    font-size: 15px;
+	    padding: 15px 0 15px 0;
 	    font-weight: bold;
 	    text-align: center;
 	    box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);
