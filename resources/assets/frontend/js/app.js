@@ -133,17 +133,17 @@ window.addEventListener('storage', function(event) {
 	    	window.localStorage.removeItem('refresh_token');
 	    	window.localStorage.removeItem('authUser');
 	        window.location.reload();
-	    } else if(app.auth.access_token != event.newValue && event.key == 'access_token') {
+	    } else if(app.auth && app.auth.access_token != event.newValue && event.key == 'access_token') {
 	    	window.localStorage.removeItem('access_token');
 			window.localStorage.removeItem('refresh_token');
 			window.localStorage.removeItem('authUser');
 			window.location.reload();
-		} else if(app.auth.refresh_token != event.newValue && event.key == 'refresh_token') {
+		} else if(app.auth && app.auth.refresh_token != event.newValue && event.key == 'refresh_token') {
 	    	window.localStorage.removeItem('access_token');
 			window.localStorage.removeItem('refresh_token');
 			window.localStorage.removeItem('authUser');
 			window.location.reload();
-		} else if(JSON.stringify(app.auth) != event.newValue && event.key == 'authUser') {
+		} else if(app.auth && JSON.stringify(app.auth) != event.newValue && event.key == 'authUser') {
 	    	window.localStorage.removeItem('access_token');
 			window.localStorage.removeItem('refresh_token');
 			window.localStorage.removeItem('authUser');
