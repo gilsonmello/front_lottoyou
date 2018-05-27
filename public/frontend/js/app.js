@@ -92194,9 +92194,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['lottery', 'index'],
@@ -92277,18 +92274,47 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "ng-binding" }, [
-          _vm._v(
-            "\n                \t$" +
-              _vm._s(_vm.lottery.value) +
-              "\n                "
-          )
-        ])
+        _c("p", [_vm._v("Realize seu sonho por apenas 1 dólar")])
       ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "tickets-body" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "amount" }, [
+        _c("span", { staticClass: "countdown" }, [
+          _vm.days > 1
+            ? _c("span", [
+                _vm._v(
+                  "\n\t\t\t\t\t\t" +
+                    _vm._s(_vm.days) +
+                    " " +
+                    _vm._s(_vm.trans("strings.days")) +
+                    " e\n\t\t\t\t\t"
+                )
+              ])
+            : _vm.days == 1
+              ? _c("span", [
+                  _vm._v(
+                    "\n\t\t\t\t\t\t" +
+                      _vm._s(_vm.days) +
+                      " " +
+                      _vm._s(_vm.trans("strings.day")) +
+                      " e\n\t\t\t\t\t"
+                  )
+                ])
+              : _vm._e(),
+          _vm._v(
+            "\t\t\t\t\n\t\t\t\t\t" +
+              _vm._s(_vm.hours) +
+              ":" +
+              _vm._s(_vm.minutes) +
+              ":" +
+              _vm._s(_vm.seconds) +
+              " " +
+              _vm._s(_vm.trans("strings.hours_left")) +
+              "\n\t\t\t\t"
+          )
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "jackpot-table" }, [
         _c("div", { staticClass: "row vcenter" }, [
@@ -92343,18 +92369,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "amount" }, [
-      _c("h5", { staticStyle: { "margin-bottom": "0" } }, [
-        _vm._v("Realize seu sonho por apenas 1 dólar")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

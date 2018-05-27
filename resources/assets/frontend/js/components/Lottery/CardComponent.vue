@@ -9,16 +9,13 @@
                 <h2 class="ng-binding">
                 	{{ lottery.nome }}
                 </h2>
-                <p class="ng-binding">
-                	${{ lottery.value }}
-                </p>
+                <p>Realize seu sonho por apenas 1 dólar</p>
             </div>
 		</header>
 		<div class="tickets-body">
 			<div class="amount">
 				<!-- <h4>$ {{ lottery.value }}</h4> -->
-				<h5 style="margin-bottom: 0;">Realize seu sonho por apenas 1 dólar</h5>
-				<!-- <span class="countdown">
+				<span class="countdown">
 					<span v-if="days > 1">
 						{{ days }} {{ trans('strings.days') }} e
 					</span>
@@ -26,7 +23,7 @@
 						{{ days }} {{ trans('strings.day') }} e
 					</span>				
 					{{ hours }}:{{ minutes }}:{{ seconds }} {{ trans('strings.hours_left') }}
-				</span> -->
+				</span>
 			</div>
 			<div class="jackpot-table">
 				<div class="row vcenter">
