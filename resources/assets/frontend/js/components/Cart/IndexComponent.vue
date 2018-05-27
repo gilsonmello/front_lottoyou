@@ -91,7 +91,7 @@
 			</div>
 		</div> -->
 
-		<div class="container">
+		<!-- <div class="container">
 			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
 				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 					<span>
@@ -99,7 +99,7 @@
 					</span>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<div class="container">
 			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">

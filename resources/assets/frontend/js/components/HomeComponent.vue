@@ -17,14 +17,15 @@
 
 					<div class="content-left">
 						<h4>
-							Crie agora mesmo<br>
+							CRIE AGORA MESMO<br>
 							A SUA PRÓPIA LIGA!							
 						</h4>
+						<br>
 						<h4>
 							VOCÊ JÁ COMEÇA
 						</h4>
 						<h3>
-							GANHANDO 5%
+							<strong>GANHANDO 5%</strong>
 						</h3>
 						<h4>
 							DE TODAS AS APOSTAS*

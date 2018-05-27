@@ -147,6 +147,9 @@
 					});
 
 					$('.modal-login').on('hidden.bs.modal', (event) => {
+						this.email = '';
+						this.password = '';
+						this.errors = {};
 						this.loading.component = true;
 					});
 				}
