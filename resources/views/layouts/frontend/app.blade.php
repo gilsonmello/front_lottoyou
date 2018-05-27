@@ -10,7 +10,13 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <link href="/fonts/vendor/font-intersate/Interstate-Regular_24143.ttf" rel="stylesheet" type="text/css">
+        <!-- <link href="/fonts/vendor/font-intersate/Interstate-Regular_24143.ttf" rel="stylesheet" type="text/css"> -->
+        <style type="text/css">
+            @font-face {
+                font-family: "Interstate";
+                src: url(/fonts/vendor/font-intersate/Interstate-Regular_24143.ttf) format("truetype");
+            }
+        </style>
         <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet" type="text/css">
         {{-- <link rel="shortcut icon" type="image/png" href="/favicon.ico"/> --}}
 
