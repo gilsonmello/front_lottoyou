@@ -91509,7 +91509,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "ng-binding" }, [
-                        _vm._v(_vm._s(soccer_expert.nome))
+                        _vm._v(_vm._s(soccer_expert.descricao))
                       ])
                     ])
                   ]),
@@ -94955,7 +94955,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-2" }, [
           _vm._v(
-            "\n\t            " +
+            "\n\t            $ " +
               _vm._s(_vm.getValue(_vm.item.data.total)) +
               "\n\t        "
           )
@@ -100366,6 +100366,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -100380,17 +100384,48 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._v(
-      "\n\t" +
-        _vm._s(_vm.scratch_card.theme.nome) +
-        ", " +
-        _vm._s(_vm.trans("strings.ticket")) +
-        " #" +
-        _vm._s(_vm.scratch_card.id) +
-        "\n"
-    )
-  ])
+  return _c(
+    "div",
+    [
+      _vm._v(
+        "\n\t" +
+          _vm._s(_vm.scratch_card.theme.nome) +
+          ", " +
+          _vm._s(_vm.trans("strings.ticket")) +
+          " #" +
+          _vm._s(_vm.scratch_card.id) +
+          "\n\t"
+      ),
+      _c(
+        "router-link",
+        {
+          staticClass: "btn btn-xs btn-primary",
+          attrs: {
+            to: {
+              name: "users.games",
+              query: {
+                id: _vm.scratch_card.order_item_id,
+                page: 1,
+                column: "created_at",
+                direction: "asc"
+              }
+            }
+          }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-eye",
+            attrs: {
+              "data-toggle": "tooltip",
+              "data-placement": "top",
+              title: _vm.trans("strings.view")
+            }
+          })
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -100510,6 +100545,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -100525,17 +100564,48 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._v(
-      "\n\t" +
-        _vm._s(_vm.soccer_expert_bet.round.nome) +
-        ", " +
-        _vm._s(_vm.trans("strings.group")) +
-        " #" +
-        _vm._s(_vm.soccer_expert_bet.group.id) +
-        "\n"
-    )
-  ])
+  return _c(
+    "div",
+    [
+      _vm._v(
+        "\n\t" +
+          _vm._s(_vm.soccer_expert_bet.round.nome) +
+          ", " +
+          _vm._s(_vm.trans("strings.group")) +
+          " #" +
+          _vm._s(_vm.soccer_expert_bet.group.id) +
+          "\n\t"
+      ),
+      _c(
+        "router-link",
+        {
+          staticClass: "btn btn-xs btn-primary",
+          attrs: {
+            to: {
+              name: "users.games",
+              query: {
+                id: _vm.soccer_expert_bet.order_item_id,
+                page: 1,
+                column: "created_at",
+                direction: "asc"
+              }
+            }
+          }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-eye",
+            attrs: {
+              "data-toggle": "tooltip",
+              "data-placement": "top",
+              title: _vm.trans("strings.view")
+            }
+          })
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

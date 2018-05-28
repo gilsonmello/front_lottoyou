@@ -22,7 +22,7 @@
 						<img class="header-image img-fluid" :alt="soccer_expert.nome" :src="src(soccer_expert.imagem_capa)">
 						<div class="descript">
 	                        <h2 class="ng-binding">{{ soccer_expert.nome }}</h2>
-	                        <p class="ng-binding">{{ soccer_expert.nome }}</p>
+	                        <p class="ng-binding">{{ soccer_expert.descricao }}</p>
 	                    </div>
 					</header>
 
