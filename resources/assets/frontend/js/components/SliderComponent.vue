@@ -4,7 +4,7 @@
 			<div class="col-lg-2">
 			</div>
 			<div class="col-lg-10 col-12">
-				<h1 class="" style="">Aqui é mais fácil</h1>
+				<h1 class="" style=""><em>Aqui é mais fácil</em></h1>
 			</div>
 		</div>
 		
