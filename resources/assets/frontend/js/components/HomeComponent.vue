@@ -10,7 +10,7 @@
 		<div class="container">
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
-			 	<router-link :to="{ name: 'soccer_expert.show', params: {id: 3} }">
+			 	<router-link :to="{ name: 'create_your_league' }">
 					<div class="banner-custom" style="position: relative">
 						<img style="width: 100%; " class="img-fluid" src="/img/banner_custom.png">	
 

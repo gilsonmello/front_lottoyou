@@ -83917,11 +83917,7 @@ var render = function() {
               [
                 _c(
                   "router-link",
-                  {
-                    attrs: {
-                      to: { name: "soccer_expert.show", params: { id: 3 } }
-                    }
-                  },
+                  { attrs: { to: { name: "create_your_league" } } },
                   [
                     _c(
                       "div",
