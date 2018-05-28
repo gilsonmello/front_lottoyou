@@ -75,7 +75,6 @@
 		font-family: "Interstate", sans-serif;
 		font-weight: bold;
 		color: #00448c;
-		font-style: italic;
 		text-transform: uppercase;
 	}
 
