@@ -107869,7 +107869,7 @@ var render = function() {
                 attrs: { src: _vm.ticket.owner.photo }
               })
             : _c("img", {
-                staticClass: "img-fluid",
+                staticClass: "photo",
                 attrs: {
                   src:
                     "//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png"

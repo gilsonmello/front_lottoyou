@@ -7,7 +7,7 @@
 	      	</div>
 	      	<div class="col-lg-2">
 	      		<img v-if="ticket.owner.photo" class="photo" :src="ticket.owner.photo">
-	      		<img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" class="img-fluid">
+	      		<img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" class="photo">
 	      	</div>
 	      	<div class="col-lg-2">
 	      		{{ ticket.owner.nickname }}
