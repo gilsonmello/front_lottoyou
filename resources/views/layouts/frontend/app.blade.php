@@ -14,7 +14,7 @@
         <style type="text/css">
             @font-face {
                 font-family: "Interstate";
-                src: url(/fonts/vendor/font-intersate/Interstate-Regular_24143.ttf) format("truetype");
+                src: url(/fonts/vendor/font-intersate/Interstate-UltraBlackItalic_24187.ttf) format("truetype");
             }
         </style>
         <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet" type="text/css">

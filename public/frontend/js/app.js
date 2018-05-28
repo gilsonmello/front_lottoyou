@@ -83246,7 +83246,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.main-banner[data-v-390308d0] {\n\tmin-height: 356px;\n    background-size: 100% 100%;\n}\n.container-fluid img[data-v-390308d0] {\n\n\twidth: 100%;\n}\nh1[data-v-390308d0] {\n\tfont-size: 52px;\n    margin-left: 20px;\n\tfont-family: \"Interstate\", sans-serif;\n\tfont-weight: bold;\n\tcolor: #0056b1;\n\ttext-transform: uppercase;\n\tfont-weight: 900;\n}\n.jackpot-translation[data-v-390308d0] {\n\tcolor: #fff;\n\theight: 60px;\n\tfont-weight: 900;\n\tfont-size: 40px;\n\ttext-align: left;\n\tline-height: 30px;\n}\n.jackpot-pitch[data-v-390308d0] {\n\tcolor: #012406;\n\tfont-weight: 500;\n\tfont-size: 14px;\n\tdisplay: block;\n\tline-height: 20px;\n\ttext-align: left;\n}\n.jackpot-currency[data-v-390308d0] {\n    margin-left: 0;\n    margin-right: 0;\n    font-weight: 900;\n    font-size: 40px;\n    line-height: 60px;\n    height: 60px;\n    color: #fff;\n}\n.jackpot-million[data-v-390308d0] {\n\tdisplay: inline-block;\n\t-webkit-box-align: end;\n\t    -ms-flex-align: end;\n\t        align-items: flex-end;\n\t-webkit-align-items: flex-end;\n}\n.jackpot-amount[data-v-390308d0]{\n\tfont-weight: 900;\n\tfont-size: 80px;\n\tcolor: #fff\n}\n", ""]);
+exports.push([module.i, "\n.main-banner[data-v-390308d0] {\n\tmin-height: 356px;\n    background-size: 100% 100%;\n}\n.container-fluid img[data-v-390308d0] {\n\n\twidth: 100%;\n}\nh1[data-v-390308d0] {\n\tfont-size: 52px;\n    margin-left: 20px;\n\tfont-family: \"Interstate\", sans-serif;\n\tfont-weight: bold;\n\tcolor: #00448c;\n\tfont-style: italic;\n\ttext-transform: uppercase;\n}\n.jackpot-translation[data-v-390308d0] {\n\tcolor: #fff;\n\theight: 60px;\n\tfont-weight: 900;\n\tfont-size: 40px;\n\ttext-align: left;\n\tline-height: 30px;\n}\n.jackpot-pitch[data-v-390308d0] {\n\tcolor: #012406;\n\tfont-weight: 500;\n\tfont-size: 14px;\n\tdisplay: block;\n\tline-height: 20px;\n\ttext-align: left;\n}\n.jackpot-currency[data-v-390308d0] {\n    margin-left: 0;\n    margin-right: 0;\n    font-weight: 900;\n    font-size: 40px;\n    line-height: 60px;\n    height: 60px;\n    color: #fff;\n}\n.jackpot-million[data-v-390308d0] {\n\tdisplay: inline-block;\n\t-webkit-box-align: end;\n\t    -ms-flex-align: end;\n\t        align-items: flex-end;\n\t-webkit-align-items: flex-end;\n}\n.jackpot-amount[data-v-390308d0]{\n\tfont-weight: 900;\n\tfont-size: 80px;\n\tcolor: #fff\n}\n", ""]);
 
 // exports
 
@@ -83257,6 +83257,8 @@ exports.push([module.i, "\n.main-banner[data-v-390308d0] {\n\tmin-height: 356px;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -83341,7 +83343,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "col-lg-2" }),
             _vm._v(" "),
             _c("div", { staticClass: "col-lg-10 col-12" }, [
-              _c("h1", {}, [_vm._v("Aqui é mais fácil")])
+              _c("h1", {}, [_vm._v("\n\t\t\t\tAqui é mais fácil\n\t\t\t")])
             ])
           ]
         )
