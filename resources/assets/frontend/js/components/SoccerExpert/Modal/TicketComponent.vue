@@ -192,6 +192,46 @@
     				this.setCountdown(date);
     			}, 1000);
 			},
+			addToCartModal(event) {
+        		
+				var item = {
+					hash: this.item.hash,
+					total: this.item.total,
+					soccer_expert: this.item.soccer_expert,
+					tickets: this.item.tickets,
+				};
+
+				//Se não completou nenhuma rodada
+				if(this.item.tickets.length == 0) {
+					this.$store.dispatch('removeItemSoccerExpert', item);
+					alert('Faça pelo menos um jogo');
+				} else {
+					
+
+					let addSoccerExpertRequest = axios.create();
+
+					addSoccerExpertRequest.interceptors.request.use(config => {
+						return config;
+					});
+
+					addSoccerExpertRequest.post(routes.carts.add_soccer_experts, {
+						purchase: item, 
+						auth: this.auth,
+						hash: item.hash
+						
+					}).then(response => {
+						if(response.status === 200) {
+							this.$store.dispatch('setItemSoccerExpert', item);
+			            	this.$router.push({
+								name: 'cart.index'
+							})
+						}
+			        }).catch((error) => {
+			        	this.$eventBus.$emit('notificationPayment');
+			        	toast.error('Erro ao adicionar item', 'Por favor tente novamente');
+			        })	
+				}
+        	},
 			validate(event) {
 
         		var item = {
@@ -259,9 +299,10 @@
 									window.localStorage.setItem('authUser', JSON.stringify(response.data))
 									this.$store.dispatch('setUserObject', response.data);
 									this.$store.dispatch('clearPurchase');
-									this.$router.push({
+									/*this.$router.push({
 										name: 'users.transactions'
-									});	
+									});	*/
+									window.location.reload();
 								}								
 							}).catch((error) => {
 
@@ -297,6 +338,7 @@
         	this.$eventBus.$off('updateData');
         	this.$eventBus.$off('validatePurchase');
         	this.$eventBus.$off('notificationPayment');
+        	this.$eventBus.$off('addToCartModal');
         },
         mounted: function() {
         	//Callback executado ao abrir modal para atualizar o ticket do modal
@@ -314,6 +356,14 @@
             this.$eventBus.$on('validatePurchase', () => {
             	if(!this.hasError()) {
             		this.validate();
+            	} else {
+            		this.$eventBus.$emit('notificationPayment');
+            	}
+            });
+
+            this.$eventBus.$on('addToCartModal', () => {
+            	if(!this.hasError()) {
+            		this.addToCartModal();
             	} else {
             		this.$eventBus.$emit('notificationPayment');
             	}

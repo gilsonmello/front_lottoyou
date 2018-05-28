@@ -10,45 +10,43 @@
 		<div class="container">
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
-				<!-- <router-link :to="{ name: 'soccer_expert.show', params: {id: 3} }"> -->
-				<div class="banner-custom" style="position: relative">
-					<img style="width: 100%; " class="img-fluid" src="/img/banner_custom.png">	
+			 	<router-link :to="{ name: 'soccer_expert.show', params: {id: 3} }">
+					<div class="banner-custom" style="position: relative">
+						<img style="width: 100%; " class="img-fluid" src="/img/banner_custom.png">	
 
+						<div class="content-left">
+							<h4>
+								CRIE AGORA MESMO<br>
+								A SUA PRÓPIA LIGA!							
+							</h4>
+							<br>
+							<h4>
+								VOCÊ JÁ COMEÇA
+							</h4>
+							<h3>
+								<strong>GANHANDO 5%</strong>
+							</h3>
+							<h4>
+								DE TODAS AS APOSTAS*
+							</h4>
+						</div>
 
-					<div class="content-left">
-						<h4>
-							CRIE AGORA MESMO<br>
-							A SUA PRÓPIA LIGA!							
-						</h4>
-						<br>
-						<h4>
-							VOCÊ JÁ COMEÇA
-						</h4>
-						<h3>
-							<strong>GANHANDO 5%</strong>
-						</h3>
-						<h4>
-							DE TODAS AS APOSTAS*
-						</h4>
+						<div class="content-right">
+							<h2>
+								No <strong>Soccer Expert</strong> da <strong>Lottoyou</strong><br>
+								Você pode criar a sua própia liga<br>
+								com <strong>qualquer time do mundo.</strong><br>
+								Convide seus amigos e descubra<br>
+								quem é o "expert" do futebol.
+							</h2>
+
+							<h5>
+								<em>É momento de começar a desfrutar deste<br>
+								mundo de infinitas possibilidades com Lottoyou!</em>
+							</h5>
+						</div>
 					</div>
-
-					<div class="content-right">
-						<h2>
-							No <strong>Soccer Expert</strong> da <strong>Lottoyou</strong><br>
-							Você pode criar a sua própia liga<br>
-							com <strong>qualquer time do mundo.</strong><br>
-							Convide seus amigos e descubra<br>
-							quem é o "expert" do futebol.
-						</h2>
-
-						<h5>
-							<em>É momento de começar a desfrutar deste<br>
-							mundo de infinitas possibilidades com Lottoyou!</em>
-						</h5>
-					</div>
-				</div>
-				
-
+				</router-link>
 			</div>			
 		</div>
 
@@ -56,16 +54,16 @@
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
 				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
-				<!-- <router-link :to="{ name: 'scratch_cards.index' }"> -->
-				
-				<div class="banner-golden-goal" style="position: relative">
-					<img style="width: 100%; " class="img-fluid" src="/img/new1/RASPADINHAS.jpg">	
-					<div class="content-left">
-						<h1>
-							RASPE E GANHE !!!
-						</h1>
+				<router-link :to="{ name: 'scratch_cards.index' }">
+					<div class="banner-golden-goal" style="position: relative">
+						<img style="width: 100%; " class="img-fluid" src="/img/new1/RASPADINHAS.jpg">	
+						<div class="content-left">
+							<h1>
+								RASPE E GANHE !!!
+							</h1>
+						</div>
 					</div>
-				</div>
+				</router-link>
 			</div>
 		</div>
 		
@@ -73,18 +71,17 @@
 		<div class="container">
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
-				<!-- <router-link :to="{ name: 'soccer_expert.index' }"> -->
-					
-
-				<div class="banner-soccer-expert" style="position: relative">
-					<img style="width: 100%; " class="img-fluid" src="/img/new1/Soccer_Exp_S_TX.jpg">	
-					<div class="content-left">
-						<h2>
-							AQUI SEU PALPITE<br>
-							VALE MAIS QUE UM GOL
-						</h2>
+				<router-link :to="{ name: 'soccer_expert.index' }">
+					<div class="banner-soccer-expert" style="position: relative">
+						<img style="width: 100%; " class="img-fluid" src="/img/new1/Soccer_Exp_S_TX.jpg">	
+						<div class="content-left">
+							<h2>
+								AQUI SEU PALPITE<br>
+								VALE MAIS QUE UM GOL
+							</h2>
+						</div>
 					</div>
-				</div>
+				</router-link>
 			</div>
 		</div>
 
@@ -92,15 +89,16 @@
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
 				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
-				<!-- <router-link :to="{ name: 'lotteries.show', params: {id: 3} }"> -->
-				<div class="banner-easy-loteria" style="position: relative">
-					<img style="width: 100%; " class="img-fluid" src="/img/new1/easy_loteria_S_TX.jpg">
-					<div class="content-left">
-						<h2>
-							NUNCA FOI TÃO FÁCIL GANHAR
-						</h2>
+				<router-link :to="{ name: 'lotteries.show', params: {id: 3} }">
+					<div class="banner-easy-loteria" style="position: relative">
+						<img style="width: 100%; " class="img-fluid" src="/img/new1/easy_loteria_S_TX.jpg">
+						<div class="content-left">
+							<h2>
+								NUNCA FOI TÃO FÁCIL GANHAR
+							</h2>
+						</div>
 					</div>
-				</div>
+				</router-link>
 			</div>
 		</div>
 		
@@ -334,6 +332,7 @@
 	.banner-custom .content-right {
 		position: absolute;
 	    top: 18%;
+	    color: #000;
 	    right: 9%;
 	}
 </style>

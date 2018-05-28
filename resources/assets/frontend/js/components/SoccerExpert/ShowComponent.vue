@@ -104,7 +104,7 @@
                     	<button @click="fastBuy($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value > parseFloat(ticket.valor)" class="btn btn-primary">
                             {{ trans('strings.pay_now') }}
                         </button>
-                        <button v-if="!loading.paying" type="button" @click="addToCart" class="btn btn-md btn-primary pull-right">
+                        <button v-if="!loading.paying" type="button" @click="addToCartModal" class="btn btn-md btn-primary pull-right">
 							{{ trans('strings.add_to_cart') }}
 						</button>
                         <!-- <button v-if="!loading.paying" type="button" class="btn btn-danger" data-dismiss="modal">
@@ -161,6 +161,10 @@
         		this.loading.paying = true;
         		this.$eventBus.$emit('validatePurchase');
 			},
+			addToCartModal(event) {
+        		this.loading.paying = true;
+        		this.$eventBus.$emit('addToCartModal');
+			},
         	addToCart(event) {
         		
 				var item = {
@@ -173,9 +177,8 @@
 				//Se não completou nenhuma rodada
 				if(this.item.tickets.length == 0) {
 					this.$store.dispatch('removeItemSoccerExpert', item);
-					alert('Faça pelo menos um jogo');
-				} else {
-					
+					toast.error('Erro ao adicionar item', 'Complete pelo menos uma cartela');
+				} else {				
 
 					let addSoccerExpertRequest = axios.create();
 

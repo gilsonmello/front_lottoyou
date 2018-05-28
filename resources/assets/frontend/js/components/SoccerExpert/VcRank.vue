@@ -15,6 +15,18 @@
            	</router-link>
 		</div>
 
+		<div class="row">
+        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+        		
+        	</div>
+        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+        		<router-link class="btn btn-md btn-back pull-right btn-primary" :to="{name: 'soccer_expert.show', params: { id: category.id }}">
+        			<i class="fa fa-arrow-left"></i>
+        			{{ trans('strings.back') }}
+        		</router-link>
+        	</div>
+        </div>
+
 		<form @submit.prevent="filter">
 			<div class="row">
 			  	<div class="col-lg-4 col-12 col-sm-4 col-md-4">
