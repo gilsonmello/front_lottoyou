@@ -61,7 +61,8 @@ class SoccerGroupController extends Controller
                 'owner_id',
                 'ordem',
                 'soc_rodada_id'
-            ]);
+            ])
+            ->orderBy('posicao', 'asc');
 
         if($request->get('column')) {
             $bets->orderBy($request->get('column'), $request->get('direction'));
@@ -69,7 +70,6 @@ class SoccerGroupController extends Controller
         
 
         $bets = $bets
-            ->orderBy('pontuacao', 'desc')
             ->paginate();
 
         return response()->json($bets, 200);
