@@ -107497,6 +107497,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -107862,10 +107863,18 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-2" }, [
-          _c("img", {
-            staticClass: "photo",
-            attrs: { src: _vm.ticket.owner.photo }
-          })
+          _vm.ticket.owner.photo
+            ? _c("img", {
+                staticClass: "photo",
+                attrs: { src: _vm.ticket.owner.photo }
+              })
+            : _c("img", {
+                staticClass: "img-fluid",
+                attrs: {
+                  src:
+                    "//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png"
+                }
+              })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-2" }, [
