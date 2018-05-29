@@ -300,7 +300,7 @@
 	.banner-easy-loteria .content-left {
 	    left: 30%;
 	    position: absolute;
-	    transform: translate(0,8%);
+	    transform: translate(5%,8%);
 	    color: #000;
 	    bottom: 0;
 	}
