@@ -4,8 +4,6 @@
 		<div class="col-lg-2 no-mobile" style="justify-content: center;" v-if="position == 'left'">
 			
 			<img v-if="ticket.gold_ball_game_id != game.id" @click.prevent="goldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball" style="opacity: 0.5;">				
-				
-
 			<img v-if="ticket.gold_ball_game_id == game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball">			
 				
 		</div>

@@ -1,5 +1,5 @@
 <template>
-	<button @click.prevent="clickNumber($event)" :class="verifyNumberSelected()">
+	<button :class="verifyNumberSelected()">
 		{{ dicker }}
 	</button>
 </template>
@@ -27,29 +27,6 @@
 					}
 				}		
 				return 'btn btn-xs btn-default-color';		
-			},
-			clickNumber: function(event) {
-				var btn = $(event.target);
-				
-				//Se o botão está selecionado
-				if(btn.hasClass('btn-checked')){
-					//Removo a seleção
-					btn.removeClass('btn-checked');
-					//Removo o número do array
-					this.ticket.numbers = this.ticket.numbers.filter((val) => {
-						return val != this.dicker;
-					});
-					
-				} else {
-					//Verifica se já selecionou todos as dezenas
-					if(this.ticket.numbers.length != this.dickersMaxSel.length) {
-						//Adiciono a seleção
-						btn.addClass('btn-checked');
-						//Adiciono no array
-						this.ticket.numbers.push(this.dicker);
-					}
-				}
-
 			}
 		}
 	}

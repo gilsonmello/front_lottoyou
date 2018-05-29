@@ -95642,30 +95642,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}
 			}
 			return 'btn btn-xs btn-default-color';
-		},
-
-		clickNumber: function clickNumber(event) {
-			var _this = this;
-
-			var btn = $(event.target);
-
-			//Se o botão está selecionado
-			if (btn.hasClass('btn-checked')) {
-				//Removo a seleção
-				btn.removeClass('btn-checked');
-				//Removo o número do array
-				this.ticket.numbers = this.ticket.numbers.filter(function (val) {
-					return val != _this.dicker;
-				});
-			} else {
-				//Verifica se já selecionou todos as dezenas
-				if (this.ticket.numbers.length != this.dickersMaxSel.length) {
-					//Adiciono a seleção
-					btn.addClass('btn-checked');
-					//Adiciono no array
-					this.ticket.numbers.push(this.dicker);
-				}
-			}
 		}
 	}
 });
@@ -95678,19 +95654,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "button",
-    {
-      class: _vm.verifyNumberSelected(),
-      on: {
-        click: function($event) {
-          $event.preventDefault()
-          _vm.clickNumber($event)
-        }
-      }
-    },
-    [_vm._v("\n\t" + _vm._s(_vm.dicker) + "\n")]
-  )
+  return _c("button", { class: _vm.verifyNumberSelected() }, [
+    _vm._v("\n\t" + _vm._s(_vm.dicker) + "\n")
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -95820,24 +95786,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}
 			}
 			return 'btn btn-xs btn-default-darking';
-		},
-
-		clickNumber: function clickNumber(event) {
-			var _this = this;
-
-			var btn = $(event.target);
-			if (btn.hasClass('btn-checked')) {
-				btn.removeClass('btn-checked');
-				this.ticket.numbersExtras = this.ticket.numbersExtras.filter(function (val) {
-					return val != _this.dicker;
-				});
-			} else {
-				//Verifica se já selecionou todos as dezenas
-				if (this.ticket.numbersExtras.length != this.dickersExtrasSelect.length) {
-					btn.addClass('btn-checked');
-					this.ticket.numbersExtras.push(this.dicker);
-				}
-			}
 		}
 	}
 });
@@ -95850,19 +95798,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "button",
-    {
-      class: _vm.verifyNumberSelected(),
-      on: {
-        click: function($event) {
-          $event.preventDefault()
-          _vm.clickNumber($event)
-        }
-      }
-    },
-    [_vm._v("\n\t" + _vm._s(_vm.dicker) + "\n")]
-  )
+  return _c("button", { class: _vm.verifyNumberSelected() }, [
+    _vm._v("\n\t" + _vm._s(_vm.dicker) + "\n")
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -103582,8 +103520,6 @@ exports.push([module.i, "\n.shield-img[data-v-732e4e69] {\n\t\twidth: 40px; \n\t
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
