@@ -58,7 +58,7 @@
 					<div class="banner-golden-goal" style="position: relative">
 						<img style="width: 100%; " class="img-fluid" src="/img/new1/RASPADINHAS.jpg">	
 						<div class="content-left">
-							<h1 style="font-weight: bold;">
+							<h1 style="font-weight: bold; text-shadow: 0 1px #808d9300, -1px 0 #cdd2d5, -1px 2px #808d9300, -2px 1px #cdd2d500, -2px 3px #808d93;">
 								RASPE E GANHE !!!
 							</h1>
 						</div>
@@ -206,7 +206,24 @@
 			</div>
 			<br>
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-				<img class="img-fluid" style="width: 100%; " src="/img/new1/explic_piratas.jpg">
+				<div class="banner-explic-ras" style="position: relative">
+					<img class="img-fluid" style="width: 100%; " src="/img/new1/explic_piratas.jpg">
+					<div class="content-left">
+						<h3 style="font-weight: bold; font-style: italic;">
+							{{ trans('strings.scratch_cards') }}
+						</h3>
+						<h4 style="text-align: justify; line-height: 1.2;">
+							<p>
+								Nas raspadinhas Lottoyou você se diverte e ainda ganha dinheiro.<br>
+								Conheça esse universo de possibilidades onde poucos centavos podem render milhares de dólares!!!<br>
+								O Pirates Treasure e o Golden Goal lhe reservam grandes prêmios.
+							</p>
+							<p><strong>A cada 3 bilhetes, um é premiado.</strong></p>
+							<p>Aqui é mais fácil! </p>
+						</h4>
+					</div>
+				</div>
+
 			</div>
 			<br>
 
@@ -273,6 +290,17 @@
 <style scoped>
 	h1 {
 		width: 100%;
+	}
+
+	.banner-explic-ras .content-left {
+	    left: 0;
+	    position: absolute;
+	    transform: translate(2%, 10%);
+	    color: #606361;
+	 	width: 50%;
+	    top: 0;
+	    font-weight: bold;
+	    font-family: sans-serif;
 	}
 
 	.banner-explic-soccer .content-left {
