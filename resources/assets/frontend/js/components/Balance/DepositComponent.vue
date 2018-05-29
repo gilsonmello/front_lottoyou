@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-lg-10 col-12 col-md-8 col-sm-12">
 				<h5 style="margin-bottom: 25px;">
-					Deposite para começar a jogar.
+					Deposite e comece a desfrutar de infinitas possibilidades com a Lottoyou.
 				</h5>
 				<h4 class="choice-payment-method-msg">
 					Por favor escolha o seu método de pagamento:
