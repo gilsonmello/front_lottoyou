@@ -16,6 +16,14 @@
                 font-family: "Interstate";
                 src: url(/fonts/vendor/font-intersate/Interstate-UltraBlackItalic_24187.ttf) format("truetype");
             }
+            @font-face {
+                font-family: "OstrichSans-Heavy";
+                src: url(/fonts/vendor/font-ostrich-sans-heavy/OstrichSans-Heavy.otf) format("truetype");
+            }
+            @font-face {
+                font-family: "Impact";
+                src: url(/fonts/vendor/font-impact/Impact.ttf) format("truetype");
+            }
         </style>
         <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet" type="text/css">
         {{-- <link rel="shortcut icon" type="image/png" href="/favicon.ico"/> --}}

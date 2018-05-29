@@ -82930,7 +82930,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-22829092] {\n\twidth: 100%;\n}\n.banner-explic-easy-loteria .content-left[data-v-22829092] {\n    left: 30%;\n    position: absolute;\n    -webkit-transform: translate(13%, 10%);\n            transform: translate(13%, 10%);\n    color: #000;\n    top: 0;\n    font-weight: bold;\n    font-family: sans-serif;\n}\n.banner-easy-loteria .content-left[data-v-22829092] {\n    left: 30%;\n    position: absolute;\n    -webkit-transform: translate(0,8%);\n            transform: translate(0,8%);\n    color: #000;\n    bottom: 0;\n    font-weight: bold;\n    font-family: sans-serif;\n}\n.banner-soccer-expert .content-left[data-v-22829092] {\n    left: 30%;\n    top: 35%;\n    position: absolute;\n    -webkit-transform: translate(0, -50%);\n    transform: translate(0, -50%);\n    color: #003874;\n    font-weight: bold;\n    font-family: sans-serif;\n}\n.banner-golden-goal .content-left[data-v-22829092] {\n\tleft: 0;\n    top: 50%;\n    margin-left: 8px;\n    position: absolute;\n    -webkit-transform: translate(0, -50%);\n            transform: translate(0, -50%);\n    color: #003874;\n    font-weight: bold;\n    font-family: sans-serif;\n}\n.banner-custom .content-left[data-v-22829092] {\n    position: absolute;\n    bottom: 4%;\n    left: 13%;\n    color: #003874;\n    font-weight: bold;\n    font-family: sans-serif;\n}\n.banner-custom .content-left h4[data-v-22829092], .content-left h3[data-v-22829092] {\n\tmargin-bottom: 0\n}\n.banner-custom .content-right[data-v-22829092] {\n\tposition: absolute;\n    top: 18%;\n    color: #000;\n    right: 9%;\n}\n", ""]);
+exports.push([module.i, "\nh1[data-v-22829092] {\n\t\twidth: 100%;\n}\n.banner-explic-soccer .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #000;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-explic-easy-loteria .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #000;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-easy-loteria .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0,8%);\n\t            transform: translate(0,8%);\n\t    color: #000;\n\t    bottom: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-soccer-expert .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    top: 35%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0, -50%);\n\t    transform: translate(0, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-golden-goal .content-left[data-v-22829092] {\n\t\tleft: 0;\n\t    top: 50%;\n\t    margin-left: 8px;\n\t    position: absolute;\n\t    -webkit-transform: translate(0, -50%);\n\t            transform: translate(0, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-custom .content-left[data-v-22829092] {\n\t    position: absolute;\n\t    bottom: 1.2%;\n    \tleft: 14%;\n\t    color: #003874;\n}\n.banner-custom .content-left h4[data-v-22829092], .banner-custom .content-left h3[data-v-22829092], .banner-custom .content-left h2[data-v-22829092], .banner-custom .content-left h1[data-v-22829092] {\n\t\tmargin-bottom: 0;\n\t\tfont-family: 'OstrichSans-Heavy';\n\t    line-height: 1;\n}\n.banner-custom .content-right[data-v-22829092] {\n\t    position: absolute;\n\t    top: 15%;\n\t    color: #000;\n\t    right: 6%;\n}\n", ""]);
 
 // exports
 
@@ -82947,6 +82947,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CarouselComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__CarouselComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Load__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -83935,7 +83950,7 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("div", { staticClass: "content-left" }, [
-                          _c("h4", [
+                          _c("h2", { staticClass: "text-center" }, [
                             _vm._v("\n\t\t\t\t\t\t\tCRIE AGORA MESMO"),
                             _c("br"),
                             _vm._v(
@@ -83945,30 +83960,32 @@ var render = function() {
                           _vm._v(" "),
                           _c("br"),
                           _vm._v(" "),
-                          _c("h4", [
+                          _c("h2", { staticClass: "text-center" }, [
                             _vm._v(
                               "\n\t\t\t\t\t\t\tVOCÊ JÁ COMEÇA\n\t\t\t\t\t\t"
                             )
                           ]),
                           _vm._v(" "),
-                          _c("h3", [_c("strong", [_vm._v("GANHANDO 5%")])]),
+                          _c("h1", { staticClass: "text-center" }, [
+                            _c("strong", [_vm._v("GANHANDO 5%")])
+                          ]),
                           _vm._v(" "),
-                          _c("h4", [
+                          _c("h2", { staticClass: "text-center" }, [
                             _vm._v(
-                              "\n\t\t\t\t\t\t\tDE TODAS AS APOSTAS*\n\t\t\t\t\t\t"
+                              "\n\t\t\t\t\t\t\tDE TODAS AS APOSTAS\n\t\t\t\t\t\t"
                             )
                           ])
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "content-right" }, [
-                          _c("h2", [
+                          _c("h1", [
                             _vm._v("\n\t\t\t\t\t\t\tNo "),
                             _c("strong", [_vm._v("Soccer Expert")]),
                             _vm._v(" da "),
                             _c("strong", [_vm._v("Lottoyou")]),
                             _c("br"),
                             _vm._v(
-                              "\n\t\t\t\t\t\t\tVocê pode criar a sua própia liga"
+                              "\n\t\t\t\t\t\t\tvocê pode criar a sua própia liga"
                             ),
                             _c("br"),
                             _vm._v("\n\t\t\t\t\t\t\tcom "),
@@ -83983,7 +84000,9 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _c("h5", [
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("h4", [
                             _c("em", [
                               _vm._v("É momento de começar a desfrutar deste"),
                               _c("br"),
@@ -84257,11 +84276,52 @@ var render = function() {
                   "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
               },
               [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  staticStyle: { width: "100%" },
-                  attrs: { src: "/img/new1/explic_soccer.jpg" }
-                })
+                _c(
+                  "div",
+                  {
+                    staticClass: "banner-explic-soccer",
+                    staticStyle: { position: "relative" }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      staticStyle: { width: "100%" },
+                      attrs: { src: "/img/new1/explic_soccer.jpg" }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "content-left" }, [
+                      _c("h3", [
+                        _vm._v("\n\t\t\t\t\t\tSoccer Expert\n\t\t\t\t\t")
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("h4", [
+                        _vm._v(
+                          "\n\t\t\t\t\t\tO Soccer Expert (SE) é um produto do Lottoyou.bet"
+                        ),
+                        _c("br"),
+                        _vm._v(
+                          " \n\t\t\t\t\t\tonde se organizam ligas, no qualcada participante realizará uma"
+                        ),
+                        _c("br"),
+                        _vm._v(
+                          " \n\t\t\t\t\t\taposta indicando o resultado de um conjunto de jogos de futebol dos"
+                        ),
+                        _c("br"),
+                        _vm._v(
+                          " \n\t\t\t\t\t\tprincipais campeonatos do mundo. Escolha uma das três "
+                        ),
+                        _c("br"),
+                        _vm._v(
+                          " \n\t\t\t\t\t\tmodalidades: Word; Special e Custom e junte-se a nós neste mundo"
+                        ),
+                        _c("br"),
+                        _vm._v(" do futebol!\n\t\t\t\t\t")
+                      ])
+                    ])
+                  ]
+                )
               ]
             ),
             _vm._v(" "),
@@ -84999,7 +85059,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.form-group[data-v-4bed359c] {\n\tposition: relative;\n}\n.propaganda[data-v-4bed359c] {\n    height: 50.3%;\n}\n\n", ""]);
+exports.push([module.i, "\n.form-group[data-v-4bed359c] {\n\t\tposition: relative;\n}\n.propaganda[data-v-4bed359c] {\n}\n.banner .content h1[data-v-4bed359c] {\n\t    font-family: \"Interstate\", sans-serif;\n\t    font-weight: bold;\n\t    color: #00448c;\n    \ttext-transform: uppercase;\n}\n.banner .content[data-v-4bed359c] {\n\t    left: 0;\n\t    right: 0;\n\t    top: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0, 20%);\n\t    transform: translate(0, 20%);\n\t    color: #000;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n\t\n", ""]);
 
 // exports
 
@@ -85013,6 +85073,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Load__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -86248,7 +86316,7 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "col-lg-3 col-12 col-md-4 col-sm-12 text-right",
+                  staticClass: "col-lg-3 col-12 col-md-4 col-sm-12 text-center",
                   staticStyle: {
                     "padding-left": "0px",
                     "padding-right": "0",
@@ -86256,10 +86324,29 @@ var render = function() {
                   }
                 },
                 [
-                  _c("img", {
-                    staticClass: "img-fluid propaganda",
-                    attrs: { src: "/img/572x700_marca_22.png" }
-                  })
+                  _c(
+                    "div",
+                    {
+                      staticClass: "banner",
+                      staticStyle: { position: "relative" }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "img-fluid propaganda",
+                        attrs: { src: "/img/572x700_marca_22.png" }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "content" }, [
+                        _c("h1", {}, [
+                          _vm._v("\n\t\t\t\t\t\t\tAqui"),
+                          _c("br"),
+                          _vm._v(" é mais"),
+                          _c("br"),
+                          _vm._v(" fácil\n\t\t\t\t\t\t")
+                        ])
+                      ])
+                    ]
+                  )
                 ]
               )
             ])
@@ -89410,7 +89497,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 									$(vm.$el).find('.scratchpad').wScratchPad('clear');
 
 									if (vm.scratch_card.premio > 0) {
-										this.refreshAuth();
+										vm.refreshAuth();
 										$(vm.$el).find('.btn-result').text('Parabéns, você ganhou: $ ' + vm.scratch_card.premio);
 									} else {
 										$(vm.$el).find('.btn-result').text(vm.trans('strings.good_luck_to_the_next'));

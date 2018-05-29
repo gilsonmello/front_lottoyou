@@ -158,8 +158,16 @@
 					</div>
 					<hr>
 				</div>
-				<div class="col-lg-3 col-12 col-md-4 col-sm-12 text-right" style="padding-left: 0px; padding-right: 0; margin-left: -15px;">
-					<img class="img-fluid propaganda" src="/img/572x700_marca_22.png">
+				<div class="col-lg-3 col-12 col-md-4 col-sm-12 text-center" style="padding-left: 0px; padding-right: 0; margin-left: -15px;">
+					<div class="banner" style="position: relative">
+						<img class="img-fluid propaganda" src="/img/572x700_marca_22.png">
+						<div class="content">
+							<h1 class="" style="">
+								Aqui<br> é mais<br> fácil
+							</h1>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</form>
@@ -412,7 +420,26 @@
 	}
 
 	.propaganda {
-	    height: 50.3%;
+	    
+	}
+
+	.banner .content h1 {
+	    font-family: "Interstate", sans-serif;
+	    font-weight: bold;
+	    color: #00448c;
+    	text-transform: uppercase;
+	}
+
+	.banner .content {
+	    left: 0;
+	    right: 0;
+	    top: 30%;
+	    position: absolute;
+	    -webkit-transform: translate(0, 20%);
+	    transform: translate(0, 20%);
+	    color: #000;
+	    font-weight: bold;
+	    font-family: sans-serif;
 	}
 	
 </style>

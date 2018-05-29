@@ -255,7 +255,7 @@
 							            		.wScratchPad('clear');
 
 						            	if(vm.scratch_card.premio > 0) {
-						            		this.refreshAuth();
+						            		vm.refreshAuth();
 											$(vm.$el)
 												.find('.btn-result')
 												.text('Parabéns, você ganhou: $ '+vm.scratch_card.premio);

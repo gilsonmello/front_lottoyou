@@ -15,35 +15,35 @@
 						<img style="width: 100%; " class="img-fluid" src="/img/banner_custom.png">	
 
 						<div class="content-left">
-							<h4>
+							<h2 class="text-center">
 								CRIE AGORA MESMO<br>
 								A SUA PRÓPIA LIGA!							
-							</h4>
+							</h2>
 							<br>
-							<h4>
+							<h2 class="text-center">
 								VOCÊ JÁ COMEÇA
-							</h4>
-							<h3>
+							</h2>
+							<h1 class="text-center">
 								<strong>GANHANDO 5%</strong>
-							</h3>
-							<h4>
-								DE TODAS AS APOSTAS*
-							</h4>
+							</h1>
+							<h2 class="text-center">
+								DE TODAS AS APOSTAS
+							</h2>
 						</div>
 
 						<div class="content-right">
-							<h2>
+							<h1>
 								No <strong>Soccer Expert</strong> da <strong>Lottoyou</strong><br>
-								Você pode criar a sua própia liga<br>
+								você pode criar a sua própia liga<br>
 								com <strong>qualquer time do mundo.</strong><br>
 								Convide seus amigos e descubra<br>
 								quem é o "expert" do futebol.
-							</h2>
-
-							<h5>
+							</h1>
+							<br>
+							<h4>
 								<em>É momento de começar a desfrutar deste<br>
 								mundo de infinitas possibilidades com Lottoyou!</em>
-							</h5>
+							</h4>
 						</div>
 					</div>
 				</router-link>
@@ -188,7 +188,23 @@
 
 
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-				<img class="img-fluid" style="width: 100%; " src="/img/new1/explic_soccer.jpg">
+
+				<div class="banner-explic-soccer" style="position: relative">
+					<img class="img-fluid" style="width: 100%; " src="/img/new1/explic_soccer.jpg">
+					<div class="content-left">
+						<h3>
+							Soccer Expert
+						</h3>
+						<br>
+						<h4>
+							O Soccer Expert (SE) é um produto do Lottoyou.bet<br> 
+							onde se organizam ligas, no qualcada participante realizará uma<br> 
+							aposta indicando o resultado de um conjunto de jogos de futebol dos<br> 
+							principais campeonatos do mundo. Escolha uma das três <br> 
+							modalidades: Word; Special e Custom e junte-se a nós neste mundo<br> do futebol!
+						</h4>
+					</div>
+				</div>			
 			</div>
 			<br>
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
@@ -198,7 +214,6 @@
 
 		
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
-
 
 				<div class="banner-explic-easy-loteria" style="position: relative">
 					<img class="img-fluid" style="width: 100%; " src="/img/new1/explic_easy.jpg">
@@ -274,6 +289,16 @@
 		width: 100%;
 	}
 
+	.banner-explic-soccer .content-left {
+	    left: 30%;
+	    position: absolute;
+	    transform: translate(13%, 10%);
+	    color: #000;
+	    top: 0;
+	    font-weight: bold;
+	    font-family: sans-serif;
+	}
+
 	.banner-explic-easy-loteria .content-left {
 	    left: 30%;
 	    position: absolute;
@@ -318,21 +343,21 @@
 
 	.banner-custom .content-left {
 	    position: absolute;
-	    bottom: 4%;
-	    left: 13%;
+	    bottom: 1.2%;
+    	left: 14%;
 	    color: #003874;
-	    font-weight: bold;
-	    font-family: sans-serif;
 	}
 
-	.banner-custom .content-left h4, .content-left h3 {
-		margin-bottom: 0
+	.banner-custom .content-left h4, .banner-custom .content-left h3, .banner-custom .content-left h2, .banner-custom .content-left h1 {
+		margin-bottom: 0;
+		font-family: 'OstrichSans-Heavy';
+	    line-height: 1;
 	}
 
 	.banner-custom .content-right {
-		position: absolute;
-	    top: 18%;
+	    position: absolute;
+	    top: 15%;
 	    color: #000;
-	    right: 9%;
+	    right: 6%;
 	}
 </style>
