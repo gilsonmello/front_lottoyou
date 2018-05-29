@@ -14,6 +14,7 @@ return [
     'award_for_ticket' => 'Prêmio por bilhete',
     'hits' => 'Acertos',
     'modality' => 'Modalidade',
+    'results' => 'Resultados',
     'not_found_results' => 'Resultado não encontrado',
     'unfinished_sweepstake' => 'Sorteio não realizado',
     'remaining_time_for_next_sweepstake' => 'Tempo restante para próximo sorteio',
