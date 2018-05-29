@@ -100,7 +100,7 @@
                     <div class="modal-footer">
                     	<div class="col-lg-8 col-md-6 col-12 col-sm-6 no-padding">
                     		<p v-if="chooseGoldBall" class="alert alert-danger">
-                    			Marque a bola lottoyou <img src="/img/gold_ball.png" class="img-fluid gold-ball"> e ganhe 25% a mais da pontuação do jogo escolhido
+                    			Marque a <img src="/img/gold_ball.png" class="img-fluid gold-ball">(Bola Lottoyou) e ganhe 25% a mais da pontuação do jogo escolhido
                     		</p>
                     	</div>
 
@@ -332,7 +332,7 @@
 	    height: 40px;
 	    width: 40px;
 	}
-	
+
 	.btn-xs {
         margin: 2px;
         width: 28px;

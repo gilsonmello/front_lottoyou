@@ -104591,15 +104591,13 @@ var render = function() {
                         [
                           _vm.chooseGoldBall
                             ? _c("p", { staticClass: "alert alert-danger" }, [
-                                _vm._v(
-                                  "\n                    \t\t\tMarque a bola lottoyou "
-                                ),
+                                _vm._v("\n                    \t\t\tMarque a "),
                                 _c("img", {
                                   staticClass: "img-fluid gold-ball",
                                   attrs: { src: "/img/gold_ball.png" }
                                 }),
                                 _vm._v(
-                                  " e ganhe 25% a mais da pontuação do jogo escolhido\n                    \t\t"
+                                  "(Bola Lottoyou) e ganhe 25% a mais da pontuação do jogo escolhido\n                    \t\t"
                                 )
                               ])
                             : _vm._e()
