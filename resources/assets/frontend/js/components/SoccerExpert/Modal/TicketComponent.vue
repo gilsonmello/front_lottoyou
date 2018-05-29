@@ -201,6 +201,8 @@
 					tickets: this.item.tickets,
 				};
 
+
+
 				//Se não completou nenhuma rodada
 				if(this.item.tickets.length == 0) {
 					this.$store.dispatch('removeItemSoccerExpert', item);
@@ -357,6 +359,7 @@
             	if(!this.hasError()) {
             		this.validate();
             	} else {
+            		this.$eventBus.$emit('chooseGoldBall', this.ticket.choseGoldBall);
             		this.$eventBus.$emit('notificationPayment');
             	}
             });
@@ -365,6 +368,7 @@
             	if(!this.hasError()) {
             		this.addToCartModal();
             	} else {
+            		this.$eventBus.$emit('chooseGoldBall', this.ticket.choseGoldBall);
             		this.$eventBus.$emit('notificationPayment');
             	}
             });

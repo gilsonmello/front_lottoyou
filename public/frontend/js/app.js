@@ -91756,7 +91756,7 @@ var render = function() {
                               [
                                 _vm._v(
                                   "\n\t\t\t\t\t\t\t\t\t" +
-                                    _vm._s(_vm.trans("strings.play_now")) +
+                                    _vm._s(_vm.trans("strings.to_enter")) +
                                     "\n\t\t\t\t\t\t\t\t"
                                 )
                               ]
@@ -91786,12 +91786,7 @@ var render = function() {
                 "router-link",
                 {
                   staticClass: "btn create_your_league btn-md btn-warning",
-                  attrs: { to: { name: "create_your_league" } },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                    }
-                  }
+                  attrs: { to: { name: "create_your_league" } }
                 },
                 [
                   _vm._v(
@@ -101860,7 +101855,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.btn-xs[data-v-5953fa40] {\n        margin: 2px;\n        width: 28px;\n        height: 28px;\n        font-size: 12px;\n        border-radius: 999px !important;\n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n.ticket-sweepstake-name[data-v-5953fa40] {\n        display: block;\n}\n@media (min-width: 992px) {\n.modal-xl[data-v-5953fa40] {\n\t    \twidth: 85%;\n}\n}\n#prev-slide-content[data-v-5953fa40]{\n        left: -50px; \n        right: auto;\n        width: 30px !important;\n}\n#next-slide-content[data-v-5953fa40]{\n        left: auto; \n        right: -50px;\n        width: 30px !important;\n}\n.slide[data-v-5953fa40]{\n        width: 100%;\n        margin: 0 auto;\n}\n.carousel .fa[data-v-5953fa40] {\n        font-size: 60px !important;\n}\n@media (max-width: 576px) {\n.slide[data-v-5953fa40]{\n\t        width: 90%;\n\t        margin: 0 auto;\n}\n#prev-slide-content[data-v-5953fa40]{\n\t        left: 0; \n\t        right: auto;\n\t        width: 30px !important;\n}\n#next-slide-content[data-v-5953fa40]{\n\t        left: auto; \n\t        right: 0;\n\t        width: 30px !important;\n}\n}\n.price[data-v-5953fa40] {\n\t\tmargin-right: 15px;\n}\n.well[data-v-5953fa40] {\n\t\tpadding: 0;\n}\n.tickets[data-v-5953fa40] {\n\t\tpadding: 0;\n}\n.tickets-content[data-v-5953fa40] {\n\t\tpadding: 2px 15px 0 15px;\n\t\tbackground-color: initial;\n}\n.club[data-v-5953fa40] {\n\t\tdisplay: block;\n}\n.no-padding[data-v-5953fa40] {\n\t    margin-left: 2px;\n    \tmargin-right: 2px;\n}\n.input-group-addon[data-v-5953fa40] {\n\t\tborder-color: transparent;\t\t\t\t\t\n\t    background-color: transparent;\n\t    color: inherit;\n\t    opacity: 0.7;\n\t    padding: 0;\n\t    -webkit-box-pack: center;\n\t        -ms-flex-pack: center;\n\t            justify-content: center;\n}\n.complete[data-v-5953fa40] {\n\t\tborder: 3px solid #67be13 !important;\n}\n.incomplete[data-v-5953fa40] {\n\t    border: 3px solid #BF390F !important;\n}\n.modal-xl[data-v-5953fa40] {\n        max-width: 85%;\n}\n@media (min-width: 992px)  {\n.modal-xl[data-v-5953fa40] {\n\t        max-width: 90%;\n}\n}\n@media (max-width: 767px){\n.modal-xl[data-v-5953fa40] {\n\t        max-width: 98%;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.gold-ball[data-v-5953fa40] {\n\t\tfont-size: 30px;\n\t    color: gold;\n\t    line-height: 1;\n\t    cursor: pointer;\n\t    margin-right: 5px;\n\t    height: 40px;\n\t    width: 40px;\n}\n.btn-xs[data-v-5953fa40] {\n        margin: 2px;\n        width: 28px;\n        height: 28px;\n        font-size: 12px;\n        border-radius: 999px !important;\n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n.ticket-sweepstake-name[data-v-5953fa40] {\n        display: block;\n}\n@media (min-width: 992px) {\n.modal-xl[data-v-5953fa40] {\n\t    \twidth: 85%;\n}\n}\n#prev-slide-content[data-v-5953fa40]{\n        left: -50px; \n        right: auto;\n        width: 30px !important;\n}\n#next-slide-content[data-v-5953fa40]{\n        left: auto; \n        right: -50px;\n        width: 30px !important;\n}\n.slide[data-v-5953fa40]{\n        width: 100%;\n        margin: 0 auto;\n}\n.carousel .fa[data-v-5953fa40] {\n        font-size: 60px !important;\n}\n@media (max-width: 576px) {\n.slide[data-v-5953fa40]{\n\t        width: 90%;\n\t        margin: 0 auto;\n}\n#prev-slide-content[data-v-5953fa40]{\n\t        left: 0; \n\t        right: auto;\n\t        width: 30px !important;\n}\n#next-slide-content[data-v-5953fa40]{\n\t        left: auto; \n\t        right: 0;\n\t        width: 30px !important;\n}\n}\n.price[data-v-5953fa40] {\n\t\tmargin-right: 15px;\n}\n.well[data-v-5953fa40] {\n\t\tpadding: 0;\n}\n.tickets[data-v-5953fa40] {\n\t\tpadding: 0;\n}\n.tickets-content[data-v-5953fa40] {\n\t\tpadding: 2px 15px 0 15px;\n\t\tbackground-color: initial;\n}\n.club[data-v-5953fa40] {\n\t\tdisplay: block;\n}\n.no-padding[data-v-5953fa40] {\n\t    margin-left: 2px;\n    \tmargin-right: 2px;\n}\n.input-group-addon[data-v-5953fa40] {\n\t\tborder-color: transparent;\t\t\t\t\t\n\t    background-color: transparent;\n\t    color: inherit;\n\t    opacity: 0.7;\n\t    padding: 0;\n\t    -webkit-box-pack: center;\n\t        -ms-flex-pack: center;\n\t            justify-content: center;\n}\n.complete[data-v-5953fa40] {\n\t\tborder: 3px solid #67be13 !important;\n}\n.incomplete[data-v-5953fa40] {\n\t    border: 3px solid #BF390F !important;\n}\n.modal-xl[data-v-5953fa40] {\n        max-width: 85%;\n}\n@media (min-width: 992px)  {\n.modal-xl[data-v-5953fa40] {\n\t        max-width: 90%;\n}\n}\n@media (max-width: 767px){\n.modal-xl[data-v-5953fa40] {\n\t        max-width: 98%;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -101883,6 +101878,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Modal_TicketComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Modal_TicketComponent__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -102030,7 +102034,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				total: 0.00,
 				tickets: []
 			},
-			ticket: null
+			ticket: null,
+			chooseGoldBall: false
 		};
 	},
 	methods: {
@@ -102161,12 +102166,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		this.$eventBus.$on('notificationPayment', function () {
 			_this4.loading.paying = false;
 		});
+
+		this.$eventBus.$on('chooseGoldBall', function (chooseGoldBall) {
+			_this4.chooseGoldBall = !chooseGoldBall;
+		});
 	},
 	beforeDestroy: function beforeDestroy() {
 		this.$eventBus.$off('openModal');
 		this.$eventBus.$off('notificationPayment');
 		this.$eventBus.$off('closeModal');
 		this.$eventBus.$off('validatePurchase');
+		this.$eventBus.$off('chooseGoldBall');
 	},
 
 	components: {
@@ -103447,6 +103457,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			if (!_this7.hasError()) {
 				_this7.validate();
 			} else {
+				_this7.$eventBus.$emit('chooseGoldBall', _this7.ticket.choseGoldBall);
 				_this7.$eventBus.$emit('notificationPayment');
 			}
 		});
@@ -103455,6 +103466,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			if (!_this7.hasError()) {
 				_this7.addToCartModal();
 			} else {
+				_this7.$eventBus.$emit('chooseGoldBall', _this7.ticket.choseGoldBall);
 				_this7.$eventBus.$emit('notificationPayment');
 			}
 		});
@@ -103663,6 +103675,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 												});
 												this.ticket.choseGoldBall = false;
 												this.ticket.gold_ball_game_id = null;
+												this.$eventBus.$emit('chooseGoldBall', false);
 								},
 								goldBall: function goldBall(event) {
 												this.ticket.games.forEach(function (value) {
@@ -103670,6 +103683,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 												});
 												this.game.bola_ouro = true;
 												this.ticket.choseGoldBall = true;
+												this.$eventBus.$emit('chooseGoldBall', true);
 												this.ticket.gold_ball_game_id = this.game.id;
 								},
 
@@ -104568,63 +104582,101 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
-                      _vm.loading.paying
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-md btn-primary",
-                              attrs: { type: "load" },
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
-                          )
-                        : _vm._e(),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "col-lg-8 col-md-6 col-12 col-sm-6 no-padding"
+                        },
+                        [
+                          _vm.chooseGoldBall
+                            ? _c("p", { staticClass: "alert alert-danger" }, [
+                                _vm._v(
+                                  "\n                    \t\t\tMarque a bola lottoyou "
+                                ),
+                                _c("img", {
+                                  staticClass: "img-fluid gold-ball",
+                                  attrs: { src: "/img/gold_ball.png" }
+                                }),
+                                _vm._v(
+                                  " e ganhe 25% a mais da pontuação do jogo escolhido\n                    \t\t"
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      ),
                       _vm._v(" "),
-                      _vm.loading.paying == false &&
-                      _vm.auth &&
-                      _vm.auth.balance.value > parseFloat(_vm.ticket.valor)
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  _vm.fastBuy($event)
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                            " +
-                                  _vm._s(_vm.trans("strings.pay_now")) +
-                                  "\n                        "
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "col-lg-4 col-md-6 col-12 col-sm-6 no-padding"
+                        },
+                        [
+                          _vm.loading.paying
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-md btn-primary",
+                                  attrs: { type: "load" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-refresh fa-spin"
+                                  })
+                                ]
                               )
-                            ]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      !_vm.loading.paying
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-md btn-primary pull-right",
-                              attrs: { type: "button" },
-                              on: { click: _vm.addToCartModal }
-                            },
-                            [
-                              _vm._v(
-                                "\n\t\t\t\t\t\t\t" +
-                                  _vm._s(_vm.trans("strings.add_to_cart")) +
-                                  "\n\t\t\t\t\t\t"
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.loading.paying == false &&
+                          _vm.auth &&
+                          _vm.auth.balance.value > parseFloat(_vm.ticket.valor)
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.fastBuy($event)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n\t                            " +
+                                      _vm._s(_vm.trans("strings.pay_now")) +
+                                      "\n\t                        "
+                                  )
+                                ]
                               )
-                            ]
-                          )
-                        : _vm._e()
+                            : _vm._e(),
+                          _vm._v(" "),
+                          !_vm.loading.paying
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn btn-md btn-primary pull-right",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.addToCartModal }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n\t\t\t\t\t\t\t\t" +
+                                      _vm._s(_vm.trans("strings.add_to_cart")) +
+                                      "\n\t\t\t\t\t\t\t"
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ]
+                      )
                     ])
                   ])
                 : _vm._e()

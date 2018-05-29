@@ -52,7 +52,7 @@
 						<div class="row vcenter" style="margin-top: 15px; background: none;">
 							<div class="col-12 col-md-12 col-xs-12 col-sm-12 text-center">
 								<router-link class="btn btn-primary btn-md play" :to="{ name: 'soccer_expert.show', params: { id: soccer_expert.id } }">
-									{{ trans('strings.play_now') }}
+									{{ trans('strings.to_enter') }}
 								</router-link>
 							</div>
 						</div>
@@ -64,7 +64,7 @@
 			<div class="col-12 col-md-6 col-sm-6 col-lg-4 no-mobile">
 			</div>
 			<div class="col-12 col-md-6 col-sm-6 col-lg-4">
-				<router-link :to="{ name: 'create_your_league' }" class="btn create_your_league btn-md btn-warning" @click.prevent="">
+				<router-link :to="{ name: 'create_your_league' }" class="btn create_your_league btn-md btn-warning">
 					{{ trans('strings.create_your_own_league') }}
 				</router-link>
 			</div>

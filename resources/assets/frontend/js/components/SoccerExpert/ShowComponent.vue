@@ -98,15 +98,24 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                    	<button v-if="loading.paying" @click.prevent="" type="load" class="btn btn-md btn-primary">
-							<i class="fa fa-refresh fa-spin"></i>
-						</button>
-                    	<button @click="fastBuy($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value > parseFloat(ticket.valor)" class="btn btn-primary">
-                            {{ trans('strings.pay_now') }}
-                        </button>
-                        <button v-if="!loading.paying" type="button" @click="addToCartModal" class="btn btn-md btn-primary pull-right">
-							{{ trans('strings.add_to_cart') }}
-						</button>
+                    	<div class="col-lg-8 col-md-6 col-12 col-sm-6 no-padding">
+                    		<p v-if="chooseGoldBall" class="alert alert-danger">
+                    			Marque a bola lottoyou <img src="/img/gold_ball.png" class="img-fluid gold-ball"> e ganhe 25% a mais da pontuação do jogo escolhido
+                    		</p>
+                    	</div>
+
+                    	<div class="col-lg-4 col-md-6 col-12 col-sm-6 no-padding">
+                    		<button v-if="loading.paying" @click.prevent="" type="load" class="btn btn-md btn-primary">
+								<i class="fa fa-refresh fa-spin"></i>
+							</button>
+	                    	<button @click="fastBuy($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value > parseFloat(ticket.valor)" class="btn btn-primary">
+	                            {{ trans('strings.pay_now') }}
+	                        </button>
+	                        <button v-if="!loading.paying" type="button" @click="addToCartModal" class="btn btn-md btn-primary pull-right">
+								{{ trans('strings.add_to_cart') }}
+							</button>
+                    	</div>
+                    	
                         <!-- <button v-if="!loading.paying" type="button" class="btn btn-danger" data-dismiss="modal">
                             {{ trans('strings.to_close') }}
                         </button> -->
@@ -146,6 +155,7 @@
 					tickets: []
 				},
 				ticket: null,
+				chooseGoldBall: false
         	}
         },
         methods: {
@@ -274,12 +284,17 @@
     			this.loading.paying = false;
     		});
 
+    		this.$eventBus.$on('chooseGoldBall', (chooseGoldBall) => {
+    			this.chooseGoldBall = !chooseGoldBall;
+    		});
+
     	},
     	beforeDestroy() {
             this.$eventBus.$off('openModal');
             this.$eventBus.$off('notificationPayment');
             this.$eventBus.$off('closeModal');
             this.$eventBus.$off('validatePurchase');
+            this.$eventBus.$off('chooseGoldBall');
         },
     	components: {
 			LoadComponent,
@@ -308,6 +323,16 @@
 
 <style scoped>
 
+	.gold-ball {
+		font-size: 30px;
+	    color: gold;
+	    line-height: 1;
+	    cursor: pointer;
+	    margin-right: 5px;
+	    height: 40px;
+	    width: 40px;
+	}
+	
 	.btn-xs {
         margin: 2px;
         width: 28px;
