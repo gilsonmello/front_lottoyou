@@ -116936,9 +116936,7 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-lg-10 col-12 col-md-8 col-sm-12" }, [
         _c("h5", { staticStyle: { "margin-bottom": "25px" } }, [
-          _vm._v(
-            "\n\t\t\t\tDeposite para começar a jogar Keno, as suas loterias favoritas e jogos.\n\t\t\t"
-          )
+          _vm._v("\n\t\t\t\tDeposite para começar a jogar.\n\t\t\t")
         ]),
         _vm._v(" "),
         _c("h4", { staticClass: "choice-payment-method-msg" }, [
