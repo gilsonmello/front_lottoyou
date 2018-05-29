@@ -82930,7 +82930,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-22829092] {\n\t\twidth: 100%;\n}\n.banner-explic-soccer .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #606361;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-explic-easy-loteria .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #606361;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-easy-loteria .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0,8%);\n\t            transform: translate(0,8%);\n\t    color: #000;\n\t    bottom: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-soccer-expert .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    top: 35%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0, -50%);\n\t    transform: translate(0, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-golden-goal .content-left[data-v-22829092] {\n\t\tleft: 0;\n\t    top: 50%;\n\t    margin-left: 8px;\n\t    position: absolute;\n\t    -webkit-transform: translate(0, -50%);\n\t            transform: translate(0, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-custom .content-left[data-v-22829092] {\n\t    position: absolute;\n\t    bottom: 1.2%;\n    \tleft: 14%;\n\t    color: #003874;\n}\n.banner-custom .content-left h4[data-v-22829092], .banner-custom .content-left h3[data-v-22829092], .banner-custom .content-left h2[data-v-22829092], .banner-custom .content-left h1[data-v-22829092] {\n\t\tmargin-bottom: 0;\n\t\tfont-family: 'OstrichSans-Heavy';\n\t    line-height: 1;\n}\n.banner-custom .content-right[data-v-22829092] {\n\t    position: absolute;\n\t    top: 15%;\n\t    color: #000;\n\t    right: 6%;\n}\n", ""]);
+exports.push([module.i, "\nh1[data-v-22829092] {\n\t\twidth: 100%;\n}\n.banner-explic-soccer .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #606361;\n\t \twidth: 55%;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-explic-easy-loteria .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #606361;\n\t    top: 0;\n\t    width: 60%;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-easy-loteria .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0,8%);\n\t            transform: translate(0,8%);\n\t    color: #000;\n\t    bottom: 0;\n}\n.banner-soccer-expert .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    top: 35%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0, -50%);\n\t    transform: translate(0, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-golden-goal .content-left[data-v-22829092] {\n\t\tleft: 0;\n\t    top: 50%;\n\t    margin-left: 8px;\n\t    position: absolute;\n\t    -webkit-transform: translate(20%, -50%);\n\t            transform: translate(20%, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-custom .content-left[data-v-22829092] {\n\t    position: absolute;\n\t    bottom: 1.2%;\n    \tleft: 14%;\n\t    color: #003874;\n}\n.banner-custom .content-left h4[data-v-22829092], .banner-custom .content-left h3[data-v-22829092], .banner-custom .content-left h2[data-v-22829092], .banner-custom .content-left h1[data-v-22829092] {\n\t\tmargin-bottom: 0;\n\t\tfont-family: 'OstrichSans-Heavy';\n\t    line-height: 1;\n}\n.banner-custom .content-right[data-v-22829092] {\n\t    position: absolute;\n\t    top: 15%;\n\t    color: #000;\n\t    right: 4%;\n}\n", ""]);
 
 // exports
 
@@ -82947,20 +82947,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CarouselComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__CarouselComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Load__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -84049,7 +84035,7 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("div", { staticClass: "content-left" }, [
-                          _c("h1", [
+                          _c("h1", { staticStyle: { "font-weight": "bold" } }, [
                             _vm._v(
                               "\n\t\t\t\t\t\t\tRASPE E GANHE !!!\n\t\t\t\t\t\t"
                             )
@@ -84139,10 +84125,12 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("div", { staticClass: "content-left" }, [
-                          _c("h2", [
-                            _vm._v(
-                              "\n\t\t\t\t\t\t\tNUNCA FOI TÃO FÁCIL GANHAR\n\t\t\t\t\t\t"
-                            )
+                          _c("h3", [
+                            _c("em", [
+                              _c("strong", [
+                                _vm._v("NUNCA FOI TÃO FÁCIL GANHAR")
+                              ])
+                            ])
                           ])
                         ])
                       ]
@@ -84290,35 +84278,39 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("div", { staticClass: "content-left" }, [
-                      _c("h3", [
-                        _vm._v("\n\t\t\t\t\t\tSoccer Expert\n\t\t\t\t\t")
-                      ]),
+                      _c(
+                        "h3",
+                        {
+                          staticStyle: {
+                            "font-weight": "bold",
+                            "font-style": "italic"
+                          }
+                        },
+                        [_vm._v("\n\t\t\t\t\t\tSoccer Expert\n\t\t\t\t\t")]
+                      ),
                       _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("h4", [
-                        _vm._v(
-                          "\n\t\t\t\t\t\tO Soccer Expert (SE) é um produto do Lottoyou.bet"
-                        ),
-                        _c("br"),
-                        _vm._v(
-                          " \n\t\t\t\t\t\tonde se organizam ligas, no qualcada participante realizará uma"
-                        ),
-                        _c("br"),
-                        _vm._v(
-                          " \n\t\t\t\t\t\taposta indicando o resultado de um conjunto de jogos de futebol dos"
-                        ),
-                        _c("br"),
-                        _vm._v(
-                          " \n\t\t\t\t\t\tprincipais campeonatos do mundo. Escolha uma das três "
-                        ),
-                        _c("br"),
-                        _vm._v(
-                          " \n\t\t\t\t\t\tmodalidades: Word; Special e Custom e junte-se a nós neste mundo"
-                        ),
-                        _c("br"),
-                        _vm._v(" do futebol!\n\t\t\t\t\t")
-                      ])
+                      _c(
+                        "h4",
+                        {
+                          staticStyle: {
+                            "text-align": "justify",
+                            "line-height": "1.5"
+                          }
+                        },
+                        [
+                          _c("p", [
+                            _vm._v(
+                              "O Soccer Expert (SE) é um produto do Lottoyou.bet\n\t\t\t\t\t\tonde se organizam ligas, no qualcada participante realizará uma\taposta indicando o resultado de um conjunto de jogos de futebol dos principais campeonatos do mundo.\n\t\t\t\t\t\t"
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "Escolha uma das três modalidades: Word; Special e Custom e junte-se a nós neste mundo do futebol!"
+                            )
+                          ])
+                        ]
+                      )
                     ])
                   ]
                 )
@@ -84365,45 +84357,47 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("div", { staticClass: "content-left" }, [
-                      _c("h3", [
-                        _vm._v(
-                          "\n\t\t\t\t\t\tEasy Money - A loteria da Lottoyou\n\t\t\t\t\t"
-                        )
-                      ]),
+                      _c(
+                        "h3",
+                        {
+                          staticStyle: {
+                            "font-weight": "bold",
+                            "font-style": "italic"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n\t\t\t\t\t\tEasy Money - A loteria da Lottoyou\n\t\t\t\t\t"
+                          )
+                        ]
+                      ),
                       _vm._v(" "),
                       _c("br"),
                       _vm._v(" "),
-                      _c("h4", [
-                        _vm._v(
-                          "\n\t\t\t\t\t\tQuem nunca sonhou em transformar 1 dólar em $20,000 dólares?"
-                        ),
-                        _c("br"),
-                        _vm._v(
-                          "\n\t\t\t\t\t\tProvavelmente você já tem os seus planos e aqui na Easy Money"
-                        ),
-                        _c("br"),
-                        _vm._v(
-                          "\n\t\t\t\t\t\ttodos os dias você pode concretizá-los. Para ganhar o prêmio máximo"
-                        ),
-                        _c("br"),
-                        _vm._v(
-                          "\n\t\t\t\t\t\tbasta acertar apenas 5 números em um universo de 35 números!!! Na"
-                        ),
-                        _c("br"),
-                        _vm._v(
-                          "\n\t\t\t\t\t\tEasy Money vôcê também ganha acertando 4, 3, 2 ou até mesmo 1"
-                        ),
-                        _c("br"),
-                        _vm._v("\n\t\t\t\t\t\tnúmero.\n\t\t\t\t\t")
-                      ]),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("h4", [
-                        _vm._v(
-                          "\n\t\t\t\t\t\tEasy Money, nunca foi tão fácil ganhar\n\t\t\t\t\t"
-                        )
-                      ])
+                      _c(
+                        "h4",
+                        {
+                          staticStyle: {
+                            "text-align": "justify",
+                            "line-height": "1.2"
+                          }
+                        },
+                        [
+                          _c("p", [
+                            _vm._v(
+                              "Quem nunca sonhou em transformar 1 dólar em $20,000 dólares?"
+                            ),
+                            _c("br"),
+                            _vm._v(
+                              "\n\t\t\t\t\t\tProvavelmente você já tem os seus planos e aqui na Easy Money todos os dias você pode concretizá-los. Para ganhar o prêmio máximo basta acertar apenas 5 números em um universo de 35 números!!!\n\t\t\t\t\t\tNa Easy Money vôcê também ganha acertando 4, 3, 2 ou até mesmo 1 número."
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v("Easy Money, nunca foi tão fácil ganhar")
+                          ])
+                        ]
+                      )
                     ])
                   ]
                 )
@@ -110531,7 +110525,9 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n\t                    Resultado \n\t               \t"
+                      "\n\t                    " +
+                        _vm._s(_vm.trans("strings.results")) +
+                        "\n\t               \t"
                     )
                   ]
                 )
@@ -111763,7 +111759,13 @@ var render = function() {
                   id: "result-component"
                 }
               },
-              [_vm._v("\n                Resultado \n           \t")]
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.trans("strings.results")) +
+                    "\n           \t"
+                )
+              ]
             )
           ],
           1
@@ -116945,51 +116947,58 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row box-payment-method" }, [
-          _c("div", { staticClass: "col-lg-2 col-6 col-md-2 col-sm-4" }, [
-            _c(
-              "a",
-              {
-                staticClass: "payment-method",
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    _vm.changePaymentMethod("paypal", $event)
+        _c(
+          "div",
+          {
+            staticClass: "row box-payment-method",
+            staticStyle: { "align-items": "center" }
+          },
+          [
+            _c("div", { staticClass: "col-lg-2 col-6 col-md-2 col-sm-4" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "payment-method",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.changePaymentMethod("paypal", $event)
+                    }
                   }
-                }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/img/pagseguro.png" }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-2 col-6 col-md-2 col-sm-4" }, [
-            _c(
-              "a",
-              {
-                staticClass: "payment-method",
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    _vm.changePaymentMethod("pagseguro", $event)
+                },
+                [
+                  _c("img", {
+                    staticClass: "img-fluid",
+                    attrs: { src: "/img/pagseguro.png" }
+                  })
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-2 col-6 col-md-2 col-sm-4" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "payment-method",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.changePaymentMethod("pagseguro", $event)
+                    }
                   }
-                }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/img/paypal.png" }
-                })
-              ]
-            )
-          ])
-        ]),
+                },
+                [
+                  _c("img", {
+                    staticClass: "img-fluid",
+                    attrs: { src: "/img/paypal.png" }
+                  })
+                ]
+              )
+            ])
+          ]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "row box-actions-payment" }, [
           _c(
@@ -126325,6 +126334,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -126469,29 +126484,6 @@ var render = function() {
                     "a",
                     {
                       staticClass: "color-blue",
-                      attrs: { href: "/#/br" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          _vm.redirect($event)
-                        }
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n\t                            Português (Brasil)\n\t                        "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._m(6),
-                _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "color-blue",
                       attrs: { href: "/#/" },
                       on: {
                         click: function($event) {
@@ -126508,15 +126500,51 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(7),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "color-blue",
+                      attrs: { href: "/#/es" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.redirect($event)
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n\t                            Espanhol\n\t                        "
+                      )
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
-                _vm._m(8),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "color-blue",
+                      attrs: { href: "/#/br" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.redirect($event)
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n\t                            Português (Brasil)\n\t                        "
+                      )
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
-                _vm._m(9)
+                _vm._m(6)
               ])
-            ]),
-            _vm._v(" "),
-            _vm._m(10)
+            ])
           ])
         ]),
         _vm._v(" "),
@@ -126524,7 +126552,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(11)
+    _vm._m(7)
   ])
 }
 var staticRenderFns = [
@@ -126674,99 +126702,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-        _vm._v(
-          "\n\t                            Deutsch\n\t                        "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-        _vm._v(
-          "\n\t                            Slovak\n\t                        "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-        _vm._v(
-          "\n\t                            Polski\n\t                        "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "list-group-item" }, [
       _c("div", { attrs: { id: "google_translate_element" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-4 col-md-6 col-12 col-sm-6" }, [
-      _c("h3", { staticClass: "page-header" }, [
-        _vm._v("\n\t                     \n\t                ")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-          _vm._v(
-            "\n                            Svenska\n                        "
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-          _vm._v(
-            "\n                            Português\n                        "
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-          _vm._v(
-            "\n                            České\n                        "
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-          _vm._v(
-            "\n                            English (Canada)\n                        "
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-          _vm._v(
-            "\n                            Deutsch (Schweiz)\n                        "
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-          _vm._v("\n                             \n                        ")
-        ])
-      ])
     ])
   },
   function() {

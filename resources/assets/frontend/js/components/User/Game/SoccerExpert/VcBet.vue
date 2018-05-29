@@ -11,7 +11,9 @@
 	    		{{ ticket.data_termino }}
 	    	</div>
 	    	<div class="col-lg-1">
-	    		<button class="btn btn-xs btn-info" @click="">Resultado</button>
+	    		<button class="btn btn-xs btn-info" @click="">
+	    			{{ trans('strings.results') }}
+	    		</button>
 	    	</div>
 	    </div>
 	</section>

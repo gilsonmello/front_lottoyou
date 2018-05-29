@@ -58,7 +58,7 @@
 					<div class="banner-golden-goal" style="position: relative">
 						<img style="width: 100%; " class="img-fluid" src="/img/new1/RASPADINHAS.jpg">	
 						<div class="content-left">
-							<h1>
+							<h1 style="font-weight: bold;">
 								RASPE E GANHE !!!
 							</h1>
 						</div>
@@ -93,9 +93,9 @@
 					<div class="banner-easy-loteria" style="position: relative">
 						<img style="width: 100%; " class="img-fluid" src="/img/new1/easy_loteria_S_TX.jpg">
 						<div class="content-left">
-							<h2>
-								NUNCA FOI TÃO FÁCIL GANHAR
-							</h2>
+							<h3>
+								<em><strong>NUNCA FOI TÃO FÁCIL GANHAR</strong></em>
+							</h3>
 						</div>
 					</div>
 				</router-link>
@@ -192,16 +192,14 @@
 				<div class="banner-explic-soccer" style="position: relative">
 					<img class="img-fluid" style="width: 100%; " src="/img/new1/explic_soccer.jpg">
 					<div class="content-left">
-						<h3>
+						<h3 style="font-weight: bold; font-style: italic;">
 							Soccer Expert
 						</h3>
-						<br>
-						<h4>
-							O Soccer Expert (SE) é um produto do Lottoyou.bet<br> 
-							onde se organizam ligas, no qualcada participante realizará uma<br> 
-							aposta indicando o resultado de um conjunto de jogos de futebol dos<br> 
-							principais campeonatos do mundo. Escolha uma das três <br> 
-							modalidades: Word; Special e Custom e junte-se a nós neste mundo<br> do futebol!
+						<h4 style="text-align: justify; line-height: 1.5;">
+							<p>O Soccer Expert (SE) é um produto do Lottoyou.bet
+							onde se organizam ligas, no qualcada participante realizará uma	aposta indicando o resultado de um conjunto de jogos de futebol dos principais campeonatos do mundo.
+							</p>
+							<p>Escolha uma das três modalidades: Word; Special e Custom e junte-se a nós neste mundo do futebol!</p>
 						</h4>
 					</div>
 				</div>			
@@ -218,32 +216,20 @@
 				<div class="banner-explic-easy-loteria" style="position: relative">
 					<img class="img-fluid" style="width: 100%; " src="/img/new1/explic_easy.jpg">
 					<div class="content-left">
-						<h3>
+						<h3 style="font-weight: bold; font-style: italic;">
 							Easy Money - A loteria da Lottoyou
 						</h3>
 						<br>
-						<h4>
-							Quem nunca sonhou em transformar 1 dólar em $20,000 dólares?<br>
-							Provavelmente você já tem os seus planos e aqui na Easy Money<br>
-							todos os dias você pode concretizá-los. Para ganhar o prêmio máximo<br>
-							basta acertar apenas 5 números em um universo de 35 números!!! Na<br>
-							Easy Money vôcê também ganha acertando 4, 3, 2 ou até mesmo 1<br>
-							número.
-						</h4>
-						<br>
-						<h4>
-							Easy Money, nunca foi tão fácil ganhar
+						<h4 style="text-align: justify; line-height: 1.2;">
+							<p>Quem nunca sonhou em transformar 1 dólar em $20,000 dólares?<br>
+							Provavelmente você já tem os seus planos e aqui na Easy Money todos os dias você pode concretizá-los. Para ganhar o prêmio máximo basta acertar apenas 5 números em um universo de 35 números!!!
+							Na Easy Money vôcê também ganha acertando 4, 3, 2 ou até mesmo 1 número.</p>
+							<!-- <p>Easy Money, <em><strong>nunca foi tão fácil ganhar</strong></em></p> -->
+							<p>Easy Money, nunca foi tão fácil ganhar</p>
 						</h4>
 					</div>
 				</div>
-
-
 			</div>
-		
-
-			
-			
-			
 		</div>
 	</div>
 </template>
@@ -294,6 +280,7 @@
 	    position: absolute;
 	    transform: translate(13%, 10%);
 	    color: #606361;
+	 	width: 55%;
 	    top: 0;
 	    font-weight: bold;
 	    font-family: sans-serif;
@@ -305,6 +292,7 @@
 	    transform: translate(13%, 10%);
 	    color: #606361;
 	    top: 0;
+	    width: 60%;
 	    font-weight: bold;
 	    font-family: sans-serif;
 	}
@@ -315,8 +303,6 @@
 	    transform: translate(0,8%);
 	    color: #000;
 	    bottom: 0;
-	    font-weight: bold;
-	    font-family: sans-serif;
 	}
 
 	.banner-soccer-expert .content-left {
@@ -335,7 +321,7 @@
 	    top: 50%;
 	    margin-left: 8px;
 	    position: absolute;
-	    transform: translate(0, -50%);
+	    transform: translate(20%, -50%);
 	    color: #003874;
 	    font-weight: bold;
 	    font-family: sans-serif;
@@ -358,6 +344,6 @@
 	    position: absolute;
 	    top: 15%;
 	    color: #000;
-	    right: 6%;
+	    right: 4%;
 	}
 </style>

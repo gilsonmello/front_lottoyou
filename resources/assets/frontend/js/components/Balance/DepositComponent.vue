@@ -9,7 +9,7 @@
 				<h4 class="choice-payment-method-msg">
 					Por favor escolha o seu método de pagamento:
 				</h4>
-				<div class="row box-payment-method">
+				<div class="row box-payment-method" style="align-items: center;">
 					<div class="col-lg-2 col-6 col-md-2 col-sm-4">
 						<a @click.prevent="changePaymentMethod('paypal', $event)" href="#" class="payment-method">
 							<img class="img-fluid" src="/img/pagseguro.png">

@@ -9,7 +9,7 @@
 	                    {{ trans('strings.play_on_the') }} {{ lottery.sorteio }} 
 	                </router-link>
 	                <router-link :to="{ name: 'lotteries.results', params: { id: lottery.id } }" class="show active" id="result-component">
-	                    Resultado 
+	                    {{ trans('strings.results') }}
 	               	</router-link>
         		</div>
         	</div>

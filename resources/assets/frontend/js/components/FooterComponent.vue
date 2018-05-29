@@ -92,22 +92,28 @@
 		                    Idioma
 		                </h3>
 		                <ul class="list-group">
-		                    <li class="list-group-item">
-		                        <a @click.prevent="redirect" href="/#/br" class="color-blue">
-		                            Português (Brasil)
-		                        </a>
-		                    </li>
-		                    <li class="list-group-item">
-		                        <a href="#" class="color-blue">
-		                            Deutsch
-		                        </a>
-		                    </li>
-		                    <li class="list-group-item">
+		                	<li class="list-group-item">
 		                        <a @click.prevent="redirect" href="/#/" class="color-blue">
 		                            English
 		                        </a>
 		                    </li>
 		                    <li class="list-group-item">
+		                        <a @click.prevent="redirect" href="/#/es" class="color-blue">
+		                            Espanhol
+		                        </a>
+		                    </li>
+		                    <li class="list-group-item">
+		                        <a @click.prevent="redirect" href="/#/br" class="color-blue">
+		                            Português (Brasil)
+		                        </a>
+		                    </li>
+		                    <!-- <li class="list-group-item">
+		                        <a href="#" class="color-blue">
+		                            Deutsch
+		                        </a>
+		                    </li> -->
+		                    
+		                    <!-- <li class="list-group-item">
 		                        <a href="#" class="color-blue">
 		                            Slovak
 		                        </a>
@@ -116,13 +122,13 @@
 		                        <a href="#" class="color-blue">
 		                            Polski
 		                        </a>
-		                    </li>
+		                    </li> -->
 		                    <li class="list-group-item">
 		                        <div id="google_translate_element"></div>
 		                    </li>
 		                </ul>               
 		            </div>
-		            <div class="col-lg-4 col-md-6 col-12 col-sm-6">
+		            <!-- <div class="col-lg-4 col-md-6 col-12 col-sm-6">
 		                <h3 class="page-header">
 		                    &nbsp;
 		                </h3>
@@ -156,7 +162,7 @@
 	                            &nbsp;
 	                        </a>
 	                    </li>
-		            </div>
+		            </div> -->
 
 		        </div>
 		        
