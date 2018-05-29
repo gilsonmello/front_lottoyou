@@ -93,9 +93,9 @@
 					<div class="banner-easy-loteria" style="position: relative">
 						<img style="width: 100%; " class="img-fluid" src="/img/new1/easy_loteria_S_TX.jpg">
 						<div class="content-left">
-							<h3>
+							<h5 class="text-center">
 								<em><strong>NUNCA FOI TÃO FÁCIL GANHAR</strong></em>
-							</h3>
+							</h5>
 						</div>
 					</div>
 				</router-link>
@@ -326,9 +326,8 @@
 	}
 
 	.banner-easy-loteria .content-left {
-	    left: 30%;
 	    position: absolute;
-	    transform: translate(5%,8%);
+	    width: 100%;
 	    color: #000;
 	    bottom: 0;
 	}
