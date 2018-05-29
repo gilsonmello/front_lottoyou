@@ -102009,8 +102009,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 
@@ -104584,100 +104582,101 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
-                      _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          { staticClass: "col-lg-8 col-md-6 col-12 col-sm-6" },
-                          [
-                            _vm.chooseGoldBall
-                              ? _c("p", { staticClass: "alert alert-danger" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "col-lg-8 col-md-6 col-12 col-sm-6 no-padding"
+                        },
+                        [
+                          _vm.chooseGoldBall
+                            ? _c("p", { staticClass: "alert alert-danger" }, [
+                                _vm._v("\n                    \t\t\tMarque a "),
+                                _c("img", {
+                                  staticClass: "img-fluid gold-ball",
+                                  attrs: { src: "/img/gold_ball.png" }
+                                }),
+                                _vm._v(
+                                  "(Bola Lottoyou) e ganhe 25% a mais da pontuação do jogo escolhido\n                    \t\t"
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "col-lg-4 col-md-6 col-12 col-sm-6 no-padding"
+                        },
+                        [
+                          _vm.loading.paying
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "pull-right btn btn-md btn-primary",
+                                  attrs: { type: "load" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-refresh fa-spin"
+                                  })
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          !_vm.loading.paying
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "pull-right btn btn-md btn-primary pull-right",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.addToCartModal }
+                                },
+                                [
                                   _vm._v(
-                                    "\n\t                    \t\t\tMarque a "
-                                  ),
-                                  _c("img", {
-                                    staticClass: "img-fluid gold-ball",
-                                    attrs: { src: "/img/gold_ball.png" }
-                                  }),
-                                  _vm._v(
-                                    "(Bola Lottoyou) e ganhe 25% a mais da pontuação do jogo escolhido\n\t                    \t\t"
+                                    "\n\t\t\t\t\t\t\t\t" +
+                                      _vm._s(_vm.trans("strings.add_to_cart")) +
+                                      "\n\t\t\t\t\t\t\t"
                                   )
-                                ])
-                              : _vm._e()
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-lg-4 col-md-6 col-12 col-sm-6" },
-                          [
-                            _vm.loading.paying
-                              ? _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-md btn-primary",
-                                    attrs: { type: "load" },
-                                    on: {
-                                      click: function($event) {
-                                        $event.preventDefault()
-                                      }
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.loading.paying == false &&
+                          _vm.auth &&
+                          _vm.auth.balance.value > parseFloat(_vm.ticket.valor)
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "pull-right btn btn-primary",
+                                  staticStyle: { "margin-right": "10px" },
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.fastBuy($event)
                                     }
-                                  },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fa fa-refresh fa-spin"
-                                    })
-                                  ]
-                                )
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _vm.loading.paying == false &&
-                            _vm.auth &&
-                            _vm.auth.balance.value >
-                              parseFloat(_vm.ticket.valor)
-                              ? _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-primary",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.fastBuy($event)
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n\t\t                            " +
-                                        _vm._s(_vm.trans("strings.pay_now")) +
-                                        "\n\t\t                        "
-                                    )
-                                  ]
-                                )
-                              : _vm._e(),
-                            _vm._v(" "),
-                            !_vm.loading.paying
-                              ? _c(
-                                  "button",
-                                  {
-                                    staticClass:
-                                      "btn btn-md btn-primary pull-right",
-                                    attrs: { type: "button" },
-                                    on: { click: _vm.addToCartModal }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n\t\t\t\t\t\t\t\t\t" +
-                                        _vm._s(
-                                          _vm.trans("strings.add_to_cart")
-                                        ) +
-                                        "\n\t\t\t\t\t\t\t\t"
-                                    )
-                                  ]
-                                )
-                              : _vm._e()
-                          ]
-                        )
-                      ])
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n\t                            " +
+                                      _vm._s(_vm.trans("strings.pay_now")) +
+                                      "\n\t                        "
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ]
+                      )
                     ])
                   ])
                 : _vm._e()

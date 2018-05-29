@@ -98,24 +98,22 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                    	<div class="row">
-	                    	<div class="col-lg-8 col-md-6 col-12 col-sm-6">
-	                    		<p v-if="chooseGoldBall" class="alert alert-danger">
-	                    			Marque a <img src="/img/gold_ball.png" class="img-fluid gold-ball">(Bola Lottoyou) e ganhe 25% a mais da pontuação do jogo escolhido
-	                    		</p>
-	                    	</div>
+                    	<div class="col-lg-8 col-md-6 col-12 col-sm-6 no-padding">
+                    		<p v-if="chooseGoldBall" class="alert alert-danger">
+                    			Marque a <img src="/img/gold_ball.png" class="img-fluid gold-ball">(Bola Lottoyou) e ganhe 25% a mais da pontuação do jogo escolhido
+                    		</p>
+                    	</div>
 
-	                    	<div class="col-lg-4 col-md-6 col-12 col-sm-6">
-	                    		<button v-if="loading.paying" @click.prevent="" type="load" class="btn btn-md btn-primary">
-									<i class="fa fa-refresh fa-spin"></i>
-								</button>
-		                    	<button @click="fastBuy($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value > parseFloat(ticket.valor)" class="btn btn-primary">
-		                            {{ trans('strings.pay_now') }}
-		                        </button>
-		                        <button v-if="!loading.paying" type="button" @click="addToCartModal" class="btn btn-md btn-primary pull-right">
-									{{ trans('strings.add_to_cart') }}
-								</button>
-	                    	</div>
+                    	<div class="col-lg-4 col-md-6 col-12 col-sm-6 no-padding">
+                    		<button v-if="loading.paying" @click.prevent="" type="load" class="pull-right btn btn-md btn-primary">
+								<i class="fa fa-refresh fa-spin"></i>
+							</button>
+	                        <button v-if="!loading.paying" type="button" @click="addToCartModal" class="pull-right btn btn-md btn-primary pull-right">
+								{{ trans('strings.add_to_cart') }}
+							</button>
+	                    	<button @click="fastBuy($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value > parseFloat(ticket.valor)" class="pull-right btn btn-primary" style="margin-right: 10px;">
+	                            {{ trans('strings.pay_now') }}
+	                        </button>
                     	</div>
                     	
                         <!-- <button v-if="!loading.paying" type="button" class="btn btn-danger" data-dismiss="modal">
