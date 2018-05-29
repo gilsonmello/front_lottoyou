@@ -188,9 +188,10 @@
 									window.localStorage.setItem('authUser', JSON.stringify(response.data))
 									this.$store.dispatch('setUserObject', response.data);
 									this.$store.dispatch('clearPurchase');
-									this.$router.push({
+									window.location.reload();
+									/*this.$router.push({
 										name: 'users.transactions'
-									});	
+									});	*/
 								}								
 							}).catch((error) => {
 

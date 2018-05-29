@@ -82930,7 +82930,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-22829092] {\n\t\twidth: 100%;\n}\n.banner-explic-soccer .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #000;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-explic-easy-loteria .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #000;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-easy-loteria .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0,8%);\n\t            transform: translate(0,8%);\n\t    color: #000;\n\t    bottom: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-soccer-expert .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    top: 35%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0, -50%);\n\t    transform: translate(0, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-golden-goal .content-left[data-v-22829092] {\n\t\tleft: 0;\n\t    top: 50%;\n\t    margin-left: 8px;\n\t    position: absolute;\n\t    -webkit-transform: translate(0, -50%);\n\t            transform: translate(0, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-custom .content-left[data-v-22829092] {\n\t    position: absolute;\n\t    bottom: 1.2%;\n    \tleft: 14%;\n\t    color: #003874;\n}\n.banner-custom .content-left h4[data-v-22829092], .banner-custom .content-left h3[data-v-22829092], .banner-custom .content-left h2[data-v-22829092], .banner-custom .content-left h1[data-v-22829092] {\n\t\tmargin-bottom: 0;\n\t\tfont-family: 'OstrichSans-Heavy';\n\t    line-height: 1;\n}\n.banner-custom .content-right[data-v-22829092] {\n\t    position: absolute;\n\t    top: 15%;\n\t    color: #000;\n\t    right: 6%;\n}\n", ""]);
+exports.push([module.i, "\nh1[data-v-22829092] {\n\t\twidth: 100%;\n}\n.banner-explic-soccer .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #606361;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-explic-easy-loteria .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #606361;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-easy-loteria .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0,8%);\n\t            transform: translate(0,8%);\n\t    color: #000;\n\t    bottom: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-soccer-expert .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    top: 35%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0, -50%);\n\t    transform: translate(0, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-golden-goal .content-left[data-v-22829092] {\n\t\tleft: 0;\n\t    top: 50%;\n\t    margin-left: 8px;\n\t    position: absolute;\n\t    -webkit-transform: translate(0, -50%);\n\t            transform: translate(0, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-custom .content-left[data-v-22829092] {\n\t    position: absolute;\n\t    bottom: 1.2%;\n    \tleft: 14%;\n\t    color: #003874;\n}\n.banner-custom .content-left h4[data-v-22829092], .banner-custom .content-left h3[data-v-22829092], .banner-custom .content-left h2[data-v-22829092], .banner-custom .content-left h1[data-v-22829092] {\n\t\tmargin-bottom: 0;\n\t\tfont-family: 'OstrichSans-Heavy';\n\t    line-height: 1;\n}\n.banner-custom .content-right[data-v-22829092] {\n\t    position: absolute;\n\t    top: 15%;\n\t    color: #000;\n\t    right: 6%;\n}\n", ""]);
 
 // exports
 
@@ -104145,7 +104145,9 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n\t                    Resultado \n\t               \t"
+                      "\n\t                    " +
+                        _vm._s(_vm.trans("strings.results")) +
+                        "\n\t               \t"
                     )
                   ]
                 ),
@@ -104162,7 +104164,13 @@ var render = function() {
                       id: "result-component"
                     }
                   },
-                  [_vm._v("\n\t\t                Rank \n\t\t           \t")]
+                  [
+                    _vm._v(
+                      "\n\t\t                " +
+                        _vm._s(_vm.trans("strings.rank")) +
+                        "\n\t\t           \t"
+                    )
+                  ]
                 )
               ],
               1
@@ -105449,7 +105457,13 @@ var render = function() {
                   id: "result-component"
                 }
               },
-              [_vm._v("\n                Resultado \n           \t")]
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.trans("strings.results")) +
+                    "\n           \t"
+                )
+              ]
             ),
             _vm._v(" "),
             _c(
@@ -105464,7 +105478,13 @@ var render = function() {
                   id: "result-component"
                 }
               },
-              [_vm._v("\n                Rank \n           \t")]
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.trans("strings.rank")) +
+                    "\n           \t"
+                )
+              ]
             )
           ],
           1
@@ -106779,7 +106799,13 @@ var render = function() {
                   id: "result-component"
                 }
               },
-              [_vm._v("\n                Resultado \n           \t")]
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.trans("strings.results")) +
+                    "\n           \t"
+                )
+              ]
             ),
             _vm._v(" "),
             _c(
@@ -106794,7 +106820,13 @@ var render = function() {
                   id: "result-component"
                 }
               },
-              [_vm._v("\n                Rank \n           \t")]
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.trans("strings.rank")) +
+                    "\n           \t"
+                )
+              ]
             )
           ],
           1
@@ -108621,9 +108653,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 							window.localStorage.setItem('authUser', JSON.stringify(response.data));
 							_this.$store.dispatch('setUserObject', response.data);
 							_this.$store.dispatch('clearPurchase');
-							_this.$router.push({
-								name: 'users.transactions'
-							});
+							window.location.reload();
+							/*this.$router.push({
+       	name: 'users.transactions'
+       });	*/
 						}
 					}).catch(function (error) {});
 				}
@@ -115850,6 +115883,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -116905,7 +116940,9 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("h4", { staticClass: "choice-payment-method-msg" }, [
-          _vm._v("Por favor escolha o seu método de pagamento:")
+          _vm._v(
+            "\n\t\t\t\tPor favor escolha o seu método de pagamento:\n\t\t\t"
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row box-payment-method" }, [
@@ -116925,15 +116962,8 @@ var render = function() {
               [
                 _c("img", {
                   staticClass: "img-fluid",
-                  attrs: {
-                    src:
-                      "https://www.grandesloterias.com/images/deposit/creditcard_icon.svg"
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "payment-method-name" }, [
-                  _vm._v("Paypal")
-                ])
+                  attrs: { src: "/img/pagseguro.png" }
+                })
               ]
             )
           ]),
@@ -116954,15 +116984,8 @@ var render = function() {
               [
                 _c("img", {
                   staticClass: "img-fluid",
-                  attrs: {
-                    src:
-                      "https://www.grandesloterias.com/images/deposit/creditcard_icon.svg"
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "payment-method-name" }, [
-                  _vm._v("Pagseguro")
-                ])
+                  attrs: { src: "/img/paypal.png" }
+                })
               ]
             )
           ])
@@ -116982,135 +117005,11 @@ var render = function() {
             1
           )
         ])
-      ]),
-      _vm._v(" "),
-      _vm._m(0)
+      ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-lg-2 col-12 col-md-4 col-sm-12 text-center" },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 col-md-12 col-lg-12" }, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  href:
-                    "https://www.grandesloterias.com/pt/support-and-service-excellence.html"
-                }
-              },
-              [
-                _c("img", {
-                  attrs: {
-                    border: "0",
-                    alt: "atendimendo ao cliente, Grandesloterias.com, loteria",
-                    src:
-                      "https://www.grandesloterias.com/images/banners/grandesloterias_com/customer_support_stamp_-_pt/160x148-_portuguese.jpg"
-                  }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-12 col-lg-12" }, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  target: "_blank",
-                  href:
-                    "http://www.webutation.net/go/review/grandesloterias.com"
-                }
-              },
-              [
-                _c("img", {
-                  attrs: {
-                    border: "0",
-                    alt: "Webutation, GrandesLoterias",
-                    src:
-                      "https://www.grandesloterias.com/images/banners/grandesloterias_com/__webutation_grandesloterias_pt/160x148-_160x148-grandesloterias_es_webutation.jpg"
-                  }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-12 col-lg-12" }, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  href: "https://www.grandesloterias.com/pt/deposit/funds.html"
-                }
-              },
-              [
-                _c("img", {
-                  attrs: {
-                    border: "0",
-                    alt: "Boleto, Grandes loterias, método de pagamento",
-                    src:
-                      "https://www.grandesloterias.com/images/banners/grandesloterias_com/boleto_bancario/160x300-_boletobancario-160x300.gif"
-                  }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-12 col-lg-12" }, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  href: "https://www.grandesloterias.com/pt/tell-a-friend.html"
-                }
-              },
-              [
-                _c("img", {
-                  attrs: {
-                    border: "0",
-                    alt: "indique um amigo, Grandesloterias.com, loterias",
-                    src:
-                      "https://www.grandesloterias.com/images/banners/grandesloterias_com/tell_a_friend_portuguese/160x300-_tell-afriend-banner-pt.gif"
-                  }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-12 col-lg-12" }, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  href:
-                    "https://www.grandesloterias.com/pt/lottery-horoscope.html"
-                }
-              },
-              [
-                _c("img", {
-                  attrs: {
-                    border: "0",
-                    alt: "Horóscopo para loteria, números da sorte",
-                    src:
-                      "https://www.grandesloterias.com/images/banners/grandesloterias_com/hor__scopo_para_loteria__portugu__s_/160x300-_new-horoscope-160x300-pt.gif"
-                  }
-                })
-              ]
-            )
-          ])
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -126222,6 +126121,9 @@ exports.push([module.i, "\n.color-blue[data-v-122aca56]{\n        color: #0056b1
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(6);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -126424,7 +126326,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['auth'])),
 	data: function data() {
 		return {};
 	},
@@ -126512,7 +126416,47 @@ var render = function() {
       [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "row" }, [
-            _vm._m(1),
+            _c("div", { staticClass: "col-lg-4 col-md-6 col-12 col-sm-6" }, [
+              _c("h3", { staticClass: "page-header" }, [
+                _vm._v(
+                  "\n\t                    Informações\n\t                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-group" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _vm._m(4),
+                _vm._v(" "),
+                _vm.auth
+                  ? _c(
+                      "li",
+                      { staticClass: "list-group-item" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "color-blue",
+                            attrs: { to: { name: "users.games", params: {} } }
+                          },
+                          [
+                            _vm._v(
+                              "\n\t                            Resultados\n\t                        "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm._m(5)
+              ])
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-lg-4 col-md-6 col-12 col-sm-6" }, [
               _c("h3", { staticClass: "page-header" }, [
@@ -126541,7 +126485,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(2),
+                _vm._m(6),
                 _vm._v(" "),
                 _c("li", { staticClass: "list-group-item" }, [
                   _c(
@@ -126564,15 +126508,15 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(3),
+                _vm._m(7),
                 _vm._v(" "),
-                _vm._m(4),
+                _vm._m(8),
                 _vm._v(" "),
-                _vm._m(5)
+                _vm._m(9)
               ])
             ]),
             _vm._v(" "),
-            _vm._m(6)
+            _vm._m(10)
           ])
         ]),
         _vm._v(" "),
@@ -126580,7 +126524,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(7)
+    _vm._m(11)
   ])
 }
 var staticRenderFns = [
@@ -126669,59 +126613,59 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-4 col-md-6 col-12 col-sm-6" }, [
-      _c("h3", { staticClass: "page-header" }, [
-        _vm._v("\n\t                    Informações\n\t                ")
-      ]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "list-group" }, [
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-            _vm._v(
-              "\n\t                            Ajuda\n\t                        "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-            _vm._v(
-              "\n\t                            Proteção do Jogador\n\t                        "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-            _vm._v(
-              "\n\t                            Privacidade\n\t                        "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-            _vm._v(
-              "\n\t                            Termos e Condições\n\t                        "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-            _vm._v(
-              "\n\t                            Resultados\n\t                        "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-            _vm._v(
-              "\n\t                            Pergunte\n\t                        "
-            )
-          ])
-        ])
+    return _c("li", { staticClass: "list-group-item" }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
+        _vm._v(
+          "\n\t                            Ajuda\n\t                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "list-group-item" }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
+        _vm._v(
+          "\n\t                            Proteção do Jogador\n\t                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "list-group-item" }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
+        _vm._v(
+          "\n\t                            Privacidade\n\t                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "list-group-item" }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
+        _vm._v(
+          "\n\t                            Termos e Condições\n\t                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "list-group-item" }, [
+      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
+        _vm._v(
+          "\n\t                            Pergunte\n\t                        "
+        )
       ])
     ])
   },

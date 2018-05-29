@@ -293,7 +293,7 @@
 	    left: 30%;
 	    position: absolute;
 	    transform: translate(13%, 10%);
-	    color: #000;
+	    color: #606361;
 	    top: 0;
 	    font-weight: bold;
 	    font-family: sans-serif;
@@ -303,7 +303,7 @@
 	    left: 30%;
 	    position: absolute;
 	    transform: translate(13%, 10%);
-	    color: #000;
+	    color: #606361;
 	    top: 0;
 	    font-weight: bold;
 	    font-family: sans-serif;

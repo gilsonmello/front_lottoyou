@@ -6,18 +6,20 @@
 				<h5 style="margin-bottom: 25px;">
 					Deposite para começar a jogar Keno, as suas loterias favoritas e jogos.
 				</h5>
-				<h4 class="choice-payment-method-msg">Por favor escolha o seu método de pagamento:</h4>
+				<h4 class="choice-payment-method-msg">
+					Por favor escolha o seu método de pagamento:
+				</h4>
 				<div class="row box-payment-method">
 					<div class="col-lg-2 col-6 col-md-2 col-sm-4">
 						<a @click.prevent="changePaymentMethod('paypal', $event)" href="#" class="payment-method">
-							<img class="img-fluid" src="https://www.grandesloterias.com/images/deposit/creditcard_icon.svg">
-							<span class="payment-method-name">Paypal</span>
+							<img class="img-fluid" src="/img/pagseguro.png">
+							<!-- <span class="payment-method-name">Paypal</span> -->
 						</a>
 					</div>
 					<div class="col-lg-2 col-6 col-md-2 col-sm-4">
 						<a @click.prevent="changePaymentMethod('pagseguro', $event)" href="#" class="payment-method">
-							<img class="img-fluid" src="https://www.grandesloterias.com/images/deposit/creditcard_icon.svg">
-							<span class="payment-method-name">Pagseguro</span>
+							<img class="img-fluid" src="/img/paypal.png">
+							<!-- <span class="payment-method-name">Pagseguro</span> -->
 						</a>
 					</div>
 				</div>
@@ -28,7 +30,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-2 col-12 col-md-4 col-sm-12 text-center">
+			<!-- <div class="col-lg-2 col-12 col-md-4 col-sm-12 text-center">
 				<div class="row">
 					<div class="col-12 col-md-12 col-lg-12">
 						<a href="https://www.grandesloterias.com/pt/support-and-service-excellence.html"><img border="0" alt="atendimendo ao cliente, Grandesloterias.com, loteria" src="https://www.grandesloterias.com/images/banners/grandesloterias_com/customer_support_stamp_-_pt/160x148-_portuguese.jpg"></a>
@@ -47,7 +49,7 @@
 						<img border="0" alt="Horóscopo para loteria, números da sorte" src="https://www.grandesloterias.com/images/banners/grandesloterias_com/hor__scopo_para_loteria__portugu__s_/160x300-_new-horoscope-160x300-pt.gif"></a>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>

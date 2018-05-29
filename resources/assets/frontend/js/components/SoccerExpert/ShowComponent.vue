@@ -8,10 +8,10 @@
 	                    {{ trans('strings.play_on_the') }} {{ item.soccer_expert.nome }}
 	                </router-link>
 	                <router-link :to="{ name: 'soccer_expert.results', params: { id: item.soccer_expert.id } }" class="show" id="result-component">
-	                    Resultado 
+	                    {{ trans('strings.results') }}
 	               	</router-link>
 	               	<router-link :to="{ name: 'soccer_expert.ranks', params: { id: item.soccer_expert.id } }" class="show" id="result-component">
-		                Rank 
+		                {{ trans('strings.rank') }}
 		           	</router-link>
         		</div>
         	</div>

@@ -75,10 +75,10 @@
 		                            Termos e Condições
 		                        </a>
 		                    </li>
-		                    <li class="list-group-item">
-		                        <a href="#" class="color-blue">
+		                    <li class="list-group-item" v-if="auth">
+		                        <router-link :to="{ name: 'users.games', params: {  }}" class="color-blue">
 		                            Resultados
-		                        </a>
+		                        </router-link>
 		                    </li>
 		                    <li class="list-group-item">
 		                        <a href="#" class="color-blue">
@@ -200,7 +200,13 @@
 </template>
 
 <script>
+	import {mapState, mapGetters} from 'vuex'
 	export default {
+		computed: {
+            ...mapGetters([
+                'auth'
+            ])
+        },
 		data: function() {
 			return {
 
@@ -210,7 +216,6 @@
 			redirect: function(el) {
 				window.location.href = el.target.getAttribute('href')
 				window.location.reload();
-				
 			}
 		},
 		updated() {
