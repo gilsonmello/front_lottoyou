@@ -201,8 +201,6 @@
 					tickets: this.item.tickets,
 				};
 
-
-
 				//Se não completou nenhuma rodada
 				if(this.item.tickets.length == 0) {
 					this.$store.dispatch('removeItemSoccerExpert', item);
@@ -230,6 +228,43 @@
 						}
 			        }).catch((error) => {
 			        	this.$eventBus.$emit('notificationPayment');
+			        	toast.error('Erro ao adicionar item', 'Por favor tente novamente');
+			        })	
+				}
+        	},
+        	fastBuy(event) {
+        		
+				var item = {
+					hash: this.item.hash,
+					total: this.item.total,
+					soccer_expert: this.item.soccer_expert,
+					tickets: this.item.tickets,
+				};
+
+				//Se não completou nenhuma rodada
+				if(this.item.tickets.length == 0) {
+					this.$store.dispatch('removeItemSoccerExpert', item);
+					toast.error('Erro ao adicionar item', 'Complete pelo menos uma cartela');
+				} else {				
+
+					let addSoccerExpertRequest = axios.create();
+
+					addSoccerExpertRequest.interceptors.request.use(config => {
+						this.loading.paying = true
+						return config;
+					});
+
+					addSoccerExpertRequest.post(routes.carts.add_soccer_experts, {
+						purchase: item, 
+						auth: this.auth,
+						hash: item.hash
+						
+					}).then(response => {
+						if(response.status === 200) {
+							this.completePurchase();
+						}
+			        }).catch((error) => {
+			        	this.loading.paying = false;
 			        	toast.error('Erro ao adicionar item', 'Por favor tente novamente');
 			        })	
 				}
@@ -275,7 +310,7 @@
 					});		
 				}
 			},
-        	fastBuy(event) {
+        	completePurchase(event) {
 
 				var completePurchaseRequest = axios.create();
 
@@ -294,6 +329,9 @@
 						this.refreshAuthPromise()
 							.then((response) => {
 								if (response.status === 200) {
+									toastr.options.onHidden = function() {
+										window.location.reload();
+									}
 									toastr.success(
 										this.trans('strings.successful_purchase'),
 										this.trans('strings.buy'),
@@ -304,7 +342,6 @@
 									/*this.$router.push({
 										name: 'users.transactions'
 									});	*/
-									window.location.reload();
 								}								
 							}).catch((error) => {
 

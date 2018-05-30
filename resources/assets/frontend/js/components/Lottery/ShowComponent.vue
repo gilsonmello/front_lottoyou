@@ -181,6 +181,9 @@
 						this.refreshAuthPromise()
 							.then((response) => {
 								if (response.status === 200) {
+									toastr.options.onHidden = function() {
+										window.location.reload();
+									}
 									toastr.success(
 										this.trans('strings.successful_purchase'),
 										this.trans('strings.buy'),
@@ -188,7 +191,7 @@
 									window.localStorage.setItem('authUser', JSON.stringify(response.data))
 									this.$store.dispatch('setUserObject', response.data);
 									this.$store.dispatch('clearPurchase');
-									window.location.reload();
+									
 									/*this.$router.push({
 										name: 'users.transactions'
 									});	*/
