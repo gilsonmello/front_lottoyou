@@ -9,9 +9,32 @@ use App\Model\Frontend\OrderItem;
 use Gate;
 use App\User;
 use Auth;
+use App\BalanceOrder;
 
 class OrderController extends Controller
 {
+    public function generateOrder(Request $request) 
+    {
+        $balanceOrder = BalanceOrder::where('owner_id', '=', $request->owner_id)
+            ->where('submit', '=', 0)
+            ->orderBy('created', 'desc')
+            ->get()
+            ->first();
+
+        if(is_null($balanceOrder)) {
+            $balanceOrder = new BalanceOrder;
+            $balanceOrder->owner_id = $request->owner_id;
+            $balanceOrder->total = 0.00;
+            $balanceOrder->sub_total = 0.00;
+            $balanceOrder->status = 'In progress';
+            $balanceOrder->submit = 0;
+            $balanceOrder->save();
+            return response()->json($balanceOrder->id, 200);
+        }
+
+        return response()->json($balanceOrder->id, 200);
+    }
+
     public function items($id, Request $request) 
     {
         $order = Order::find($id);      

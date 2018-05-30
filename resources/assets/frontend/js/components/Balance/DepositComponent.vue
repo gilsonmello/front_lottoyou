@@ -1,24 +1,25 @@
 <template>
-	<div class="container">
+	<vc-load v-if="loading.component"></vc-load>
+	<div class="container" v-else>
 		<h1 class="page-header">Depositar fundos</h1>
 		<div class="row">
-			<div class="col-lg-10 col-12 col-md-8 col-sm-12">
+			<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 				<h5 style="margin-bottom: 25px;">
 					Deposite e comece a desfrutar de infinitas possibilidades com a Lottoyou.
 				</h5>
-				<h4 class="choice-payment-method-msg">
-					Por favor escolha o seu método de pagamento:
+				<h4 class="choice-payment-method-msg" v-if="payment_method == ''">
+					Por favor, clique em um dos métodos de pagamento:
 				</h4>
 				<div class="row box-payment-method" style="align-items: center;">
 					<div class="col-lg-2 col-6 col-md-2 col-sm-4">
 						<a @click.prevent="changePaymentMethod('paypal', $event)" href="#" class="payment-method">
-							<img class="img-fluid" src="/img/pagseguro.png">
+							<img class="img-fluid" src="/img/paypal.png">
 							<!-- <span class="payment-method-name">Paypal</span> -->
 						</a>
 					</div>
 					<div class="col-lg-2 col-6 col-md-2 col-sm-4">
 						<a @click.prevent="changePaymentMethod('pagseguro', $event)" href="#" class="payment-method">
-							<img class="img-fluid" src="/img/paypal.png">
+							<img class="img-fluid" src="/img/pagseguro.png">
 							<!-- <span class="payment-method-name">Pagseguro</span> -->
 						</a>
 					</div>
@@ -55,6 +56,7 @@
 </template>
 
 <script>
+	import VcLoad from '../Load'
 	import {mapState, mapGetters} from 'vuex'
 	import VcPagseguro from './PaymentMethod/VcPagseguro'
 	import PaypalComponent from './PaymentMethod/PaypalComponent'
@@ -65,6 +67,38 @@
 				var parent = $(el.target).parent();
 				parent.addClass('active');
 				this.payment_method = payment_method
+			},
+			orderRequest() {
+				const orderRequest = axios.create();
+				orderRequest.interceptors.request.use(config => {
+					this.counter++;
+					this.loading.component = true;
+		        	return config;
+				});
+				let url = "/orders/generate_order";
+
+				orderRequest.post(
+					url, 
+					{
+						owner_id: this.auth.id
+					}, 
+					{
+
+					}
+				).then(response => {
+					if(response.status === 200) {
+						this.loading.component = false;
+						this.order_id = response.data;
+						this.counter = 0;
+					}
+				}).catch((error) => {
+					if(this.counter == 5) {
+						this.counter = 0;
+						toastr.error(trans('strings.connection_not_found'));
+					} else {
+						this.orderRequest();
+					}
+				});
 			}
 		},
 		computed: {
@@ -76,34 +110,19 @@
 			return {
 				payment_method: '',
 				order_id: '',
+				loading: {
+					component: true
+				},
+				counter: 0
 			}
 		},
 		mounted() {
-			const orderRequest = axios.create();
-			orderRequest.interceptors.request.use(config => {
-	        	return config;
-			});
-			let url = "/pagseguro/generate_order";
-
-			orderRequest.post(
-				url, 
-				{
-					owner_id: this.auth.id
-				}, 
-				{
-
-				}
-			).then(response => {
-				if(response.status === 200){
-					this.order_id = response.data
-				}
-			}).catch((error) => {
-				
-			});
+			this.orderRequest();
 		},
 		components: {
 			PaypalComponent,
-			VcPagseguro
+			VcPagseguro,
+			VcLoad
 		}
 	}
 </script>

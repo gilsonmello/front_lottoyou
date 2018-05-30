@@ -1,7 +1,7 @@
 <template>
 	<div class="row">
 		<div class="col-lg-12">
-			<h4 class="choice-payment-method-msg">Você escolheu Paypal como forma de pagamento</h4>
+			<h4 class="choice-payment-method-msg">Você escolheu o Paypal como forma de pagamento</h4>
 			<h5>
 			</h5>
 			<form @submit.prevent="sendPaypal" id="sendPaypal" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
@@ -12,10 +12,7 @@
 					    	<i class="fa fa-info" title="Mínimo de $15.00"></i>
 					    </label>
 					    </strong>
-						<div class="input-group">
-							<div class="input-group-addon">@</div>
-						    <input type="number" v-model="amount" required class="form-control" id="amount" aria-describedby="amount" :placeholder="'Por favor, indique o valor em USD'" maxlength="5">
-					  	</div>
+					    <input type="text" v-model="amount" required class="form-control" id="amount" :placeholder="'Por favor, indique o valor em USD'">
 					</div>
 				</div>
 				<div class="row">
@@ -66,10 +63,27 @@
 				errors: []
 			}
 		},
+		mounted() {
+			var vm = this;
+			$("#amount").maskMoney({
+				prefix:'$ ', 
+				allowNegative: false, 
+				thousands:'', 
+				decimal:'.', 
+				affixesStay: false
+			}).on("blur", function(event) {
+				let value = parseFloat($(this).val());
+				if(value < 10) {
+					$(this).val('10.00');
+					vm.amount = '10.00';
+				}
+		    });
+		},
 		methods: {
 			sendPaypal: function(event) {
 				var form = $(event.currentTarget);
 				if(this.validate(this.amount)) {
+					this.loading.paying = true;
 
 					var form = $('#sendPaypal');
 
@@ -166,8 +180,7 @@
                     var paymentRequest = axios.create();
 			        
 			        paymentRequest.interceptors.request.use(config => {
-			        	this.loading.paying = true;
-					  	return config;
+			        	return config;
 					});
 
 					paymentRequest.post('/paypal/payment', {
@@ -179,6 +192,21 @@
 						}
 					}).catch((error) => {
 						this.loading.paying = false;
+						$('[name="rm"]').remove();
+						$('[name="cmd"]').remove();
+						$('[name="invoice"]').remove();
+						$('[name="upload"]').remove();
+						$('[name="business"]').remove();
+						$('[name="return"]').remove();
+						$('[name="cancel"]').remove();
+						$('[name="notify_url"]').remove();
+						$('[name="charset"]').remove();
+						$('[name="lc"]').remove();
+						$('[name="country_code"]').remove();
+						$('[name="currency_code"]').remove();
+						$('[name="amount"]').remove();
+						$('[name="item_name"]').remove();
+						$('[name="quantity"]').remove();
 					});
 
                 

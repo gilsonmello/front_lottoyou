@@ -1,7 +1,7 @@
 <template>
 	<div class="row">
 		<div class="col-lg-12">
-			<h4 class="choice-payment-method-msg">Você escolheu O Pagseguro como forma de pagamento</h4>
+			<h4 class="choice-payment-method-msg">Você escolheu o Pagseguro como forma de pagamento</h4>
 			<h5>
 			</h5>
 			<form @submit.prevent="sendPagseguro" id="sendPagseguro" action="https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
@@ -12,10 +12,7 @@
 					    	<i class="fa fa-info" title="Mínimo de $15.00"></i>
 					    </label>
 					    </strong>
-						<div class="input-group">
-							<div class="input-group-addon">@</div>
-						    <input type="number" v-model="amount" required class="form-control" id="amount" aria-describedby="amount" :placeholder="'Por favor, indique o valor em USD'" maxlength="5">
-					  	</div>
+					    <input type="text" v-model="amount" required class="form-control" id="amount" :placeholder="'Por favor, indique o valor em USD'">
 					</div>
 				</div>
 				<div class="row">
@@ -40,7 +37,7 @@
 <script>
 	export default {
 		props: ['order_id'],
-		data: function() {
+		data() {
 			return {
 				amount: '10.00',
 				loading: {
@@ -50,11 +47,27 @@
 				errors: []
 			}
 		},
+		mounted() {
+			var vm = this;
+			$("#amount").maskMoney({
+				prefix:'R$ ', 
+				allowNegative: false, 
+				thousands:'', 
+				decimal:'.', 
+				affixesStay: false
+			}).on("blur", function(event) {
+				let value = parseFloat($(this).val());
+				if(value < 10) {
+					$(this).val('10.00');
+					vm.amount = '10.00';
+				}
+		    });
+		},
 		methods: {
 			sendPagseguro: function(event) {
 				var form = $(event.currentTarget);
 				if(this.validate(this.amount)) {
-
+					this.loading.paying = true;
 					var form = $('#sendPagseguro');
 
 					var receiverEmail = document.createElement('input');
@@ -108,8 +121,7 @@
                     var paymentRequest = axios.create();
 			        
 			        paymentRequest.interceptors.request.use(config => {
-			        	this.loading.paying = true;
-					  	return config;
+			        	return config;
 					});
 
 					paymentRequest.post('/pagseguro/payment', {
@@ -121,48 +133,15 @@
 						}
 					}).catch((error) => {
 						this.loading.paying = false;
+						$('[name="receiverEmail"]').remove();
+						$('[name="currency"]').remove();
+						$('[name="itemId1"]').remove();
+						$('[name="itemDescription1"]').remove();
+						$('[name="itemAmount1"]').remove();
+						$('[name="itemQuantity1"]').remove();
+						$('[name="reference"]').remove();
+						$('[name="return"]').remove();    
 					});
-
-                
-                    
-
-					/*var paymentRequest = axios.create();
-			        
-			        paymentRequest.interceptors.request.use(config => {
-			        	$(this.$el).find('[type="load"]').removeClass('hide');
-			        	$(this.$el).find('[type="submit"]').addClass('hide');
-					  	return config;
-					});
-
-					var url = '?cmd='+this.paypal.cmd;
-					url += '&cmd='+this.paypal.cmd;
-
-					paymentRequest.post('https://www.sandbox.paypal.com/cgi-bin/webscr', {
-						cmd: this.paypal.cmd,
-						upload: this.paypal.upload,
-						business: this.paypal.business,
-						item_name_1: this.paypal.item_name_1,
-						amount_1: this.paypal.amount_1,
-						quantity_1: this.paypal.quantity_1,
-						custom: this.paypal.custom,
-						notify_url: this.paypal.notify_url,
-						return: this.paypal.return,
-						rm: this.paypal.rm,
-						cbt: this.paypal.cbt,
-						cancel_return: this.paypal.cancel_return,
-						lc: 'US',
-						currency_code: 'USD'
-					}, {}).then(response => {
-						if(response.status === 200){
-
-						}
-					}).catch((error) => {
-						$(this.$el).find('[type="load"]').addClass('hide');
-	        			$(this.$el).find('[type="submit"]').removeClass('hide');
-						this.errors = {
-							credentials: 'Usuário ou Senha inválidos'
-						};
-					});*/
 
 				} else {
 					swal({

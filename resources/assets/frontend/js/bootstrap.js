@@ -31,6 +31,7 @@ try {
 
 
     require('jquery-validation');
+    require('jquery-maskmoney/dist/jquery.maskMoney.min.js');
  
     // CommonJS
     window.swal = require('sweetalert2');
