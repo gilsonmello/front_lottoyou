@@ -529,6 +529,10 @@
 	}
 
 	@media (max-width: 767px) {
+		.header-items {
+			text-align: center;
+		}
+		
 		.header-container-logo {
 			justify-content: center !important;
 		}
