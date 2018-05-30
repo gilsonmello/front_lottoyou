@@ -2,7 +2,7 @@
 	<vc-load v-if="loading.component == true"></vc-load>
 	<div class="container" v-else>
 
-		<h1 class="page-header">
+		<h1 class="page-header" v-if="group">
 		  	<span style="display: block;">{{ group.round.category.nome }} - {{ group.round.nome }}</span>
 		  	<span>{{ trans('strings.ranking') }} - Grupo {{ group.identificacao }}</span>
 		</h1>
@@ -125,8 +125,12 @@
 	import VcTicket from './VcTicket'
 	export default {
 		beforeRouteUpdate: function(to, from, next) {
+			
 			next();
-			this.rankRequest();
+			if(this.id != to.params.id) {
+				this.init();
+			}
+			
         },
 		data() {
 			return {
@@ -144,8 +148,8 @@
 				query: {
 					id: '',
 					page: 1,
-					column: 'pontuacao',
-					direction: 'desc',
+					column: 'posicao',
+					direction: 'asc',
 					nickname: '',
 					valor: '',
 					data_termino: '',
@@ -153,31 +157,7 @@
 			}
 		},
 		mounted() {
-			this.id = this.$route.params.id;
-			if(this.$route.query.id) {
-                this.query.id = this.$route.query.id
-            } 
-            if(this.$route.query.page) {
-                this.query.page = this.$route.query.page
-            }           
-            if(this.$route.query.column) {
-                this.query.column = this.$route.query.column
-            }
-            if(this.$route.query.direction) {
-                this.query.direction = this.$route.query.direction
-            }
-            if(this.$route.query.nickname) {
-                this.query.nickname = this.$route.query.nickname
-            }
-            if(this.$route.query.valor) {
-                this.query.valor = this.$route.query.valor
-            }
-            if(this.$route.query.data_termino) {
-                this.query.data_termino = this.$route.query.data_termino
-            }
-
-			this.groupRequest();
-			this.rankRequest();
+			this.init();
 		},
 		components: {
 			VcLoad,
@@ -185,6 +165,33 @@
 			VcTicket
 		},
 		methods: {
+			init() {
+				this.id = this.$route.params.id;
+				if(this.$route.query.id) {
+	                this.query.id = this.$route.query.id
+	            } 
+	            if(this.$route.query.page) {
+	                this.query.page = this.$route.query.page
+	            }           
+	            if(this.$route.query.column) {
+	                this.query.column = this.$route.query.column
+	            }
+	            if(this.$route.query.direction) {
+	                this.query.direction = this.$route.query.direction
+	            }
+	            if(this.$route.query.nickname) {
+	                this.query.nickname = this.$route.query.nickname
+	            }
+	            if(this.$route.query.valor) {
+	                this.query.valor = this.$route.query.valor
+	            }
+	            if(this.$route.query.data_termino) {
+	                this.query.data_termino = this.$route.query.data_termino
+	            }
+
+				this.groupRequest();
+				this.rankRequest();
+			},
 			filter(event) {				
                 $(event.target).find('[type="load"]').removeClass('hide');
                 $(event.target).find('[type="submit"]').addClass('hide');
@@ -206,6 +213,7 @@
 					this.query.direction = 'asc';
 				}
 
+				console.log('lsjfks')
 				this.rankRequest();
 			},
 			prev() {

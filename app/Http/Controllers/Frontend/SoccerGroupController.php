@@ -62,7 +62,8 @@ class SoccerGroupController extends Controller
                 'ordem',
                 'soc_rodada_id'
             ])
-            ->orderBy('posicao', 'asc');
+            ->orderByRaw('posicao is null')
+            ->orderByRaw('posicao asc');
 
         if($request->get('column')) {
             $bets->orderBy($request->get('column'), $request->get('direction'));
