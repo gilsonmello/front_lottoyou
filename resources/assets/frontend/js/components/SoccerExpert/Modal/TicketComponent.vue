@@ -250,7 +250,6 @@
 					let addSoccerExpertRequest = axios.create();
 
 					addSoccerExpertRequest.interceptors.request.use(config => {
-						this.loading.paying = true
 						return config;
 					});
 
@@ -264,7 +263,6 @@
 							this.completePurchase();
 						}
 			        }).catch((error) => {
-			        	this.loading.paying = false;
 			        	toast.error('Erro ao adicionar item', 'Por favor tente novamente');
 			        })	
 				}
