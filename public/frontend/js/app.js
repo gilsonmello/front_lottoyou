@@ -125248,9 +125248,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	methods: {
 		col: function col() {
 			if (this.user != null) {
-				return 'col-lg-9 col-md-9 col-sm-12 col-12 no-padding';
+				return 'col-lg-9 col-md-9 col-sm-9 col-12 no-padding';
 			}
-			return 'col-lg-9 col-md-9 col-sm-12 col-12 no-padding';
+			return 'col-lg-9 col-md-9 col-sm-9 col-12 no-padding';
 		},
 		openTooltip: function openTooltip() {
 			$('.tooltip-item-account').addClass('open');
@@ -125580,7 +125580,7 @@ var render = function() {
         [
           _c(
             "div",
-            { staticClass: "col-lg-3 col-md-3 col-sm-12 col-12 no-padding" },
+            { staticClass: "col-lg-3 col-md-3 col-sm-3 col-12 no-padding" },
             [
               _c("ul", { staticClass: "vcenter header-brand" }, [
                 _c(

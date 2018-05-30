@@ -301,7 +301,7 @@ button.close {
     }
 }
 
-@media (max-width: 767px){
+@media (max-width: 767px) {
     .navbar-brand {
         width: 100% !important;
     }
@@ -325,6 +325,34 @@ button.close {
 
     .mobile {
         display: inherit;
+    }
+
+    .item-cart .cart-right .cart-value {
+        display: none !important;
+    }
+    .item-cart .cart-right .cart-checkout-now {
+        display: none !important;
+    }
+    .item-account span {
+        display: none !important;
+    }
+    .item-balance span {
+        display: none !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .item-cart .cart-right .cart-value {
+        display: none !important;
+    }
+    .item-cart .cart-right .cart-checkout-now {
+        display: none !important;
+    }
+    .item-account span {
+        display: none !important;
+    }
+    .item-balance span {
+        display: none !important;
     }
 }
 
