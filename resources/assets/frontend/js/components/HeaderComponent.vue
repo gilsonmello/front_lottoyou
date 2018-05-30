@@ -123,7 +123,7 @@
 						  								</div>
 						  								<div class="col-lg-10 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'users.games', params: {  } }">
-						  										{{ trans('strings.games') }}
+						  										{{ trans('strings.my_games') }}
 										                    </router-link>
 						  								</div>
 						  							</div>

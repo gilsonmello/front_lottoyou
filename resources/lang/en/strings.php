@@ -129,6 +129,7 @@ return [
 	'transaction' => 'Transação',
     'january' => 'Janeiro',
 	'games' => 'Jogos',
+    'my_games' => 'Meus jogos',
 	'game' => 'Jogo',
     'jan' => 'Jan',
     'error' => 'Erro',
