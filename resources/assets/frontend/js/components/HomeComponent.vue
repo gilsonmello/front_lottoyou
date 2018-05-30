@@ -195,10 +195,10 @@
 							Soccer Expert
 						</h3>
 						<h4 style="text-align: justify; line-height: 1.5;">
-							<p>O Soccer Expert (SE) é um produto do Lottoyou.bet
+							<p style="margin-bottom: 6px;">O Soccer Expert (SE) é um produto do Lottoyou.bet
 							onde se organizam ligas, no qualcada participante realizará uma	aposta indicando o resultado de um conjunto de jogos de futebol dos principais campeonatos do mundo.
 							</p>
-							<p>Escolha uma das três modalidades: Word; Special e Custom e junte-se a nós neste mundo do futebol!</p>
+							<p style="margin-bottom: 6px;">Escolha uma das três modalidades: Word; Special e Custom e junte-se a nós neste mundo do futebol!</p>
 						</h4>
 					</div>
 				</div>			
@@ -494,14 +494,14 @@
 		}
 
 		.banner-explic-ras .content-left h3 {
-			font-size: 12px;
+			font-size: 10px;
 		}
 		.banner-explic-ras .content-left h4 {
-		    font-size: 10px;
+		    font-size: 7px;
 		}
 
 		.banner-explic-easy-loteria .content-left {
-		    
+		    transform: translate(14%, 10%) !important;
 		}
 
 		.banner-explic-easy-loteria p {
@@ -510,20 +510,23 @@
 
 		.banner-explic-easy-loteria .content-left h3 {
 			font-size: 12px;
+			margin-bottom: 6px !important; 
 		}
 		.banner-explic-easy-loteria .content-left h4 {
-		    font-size: 10px;
+		    font-size: 7px;
 		}
 
+
 		.banner-explic-soccer .content-left {
-		    
+		    font-size: 10px;
+		    transform: translate(13%, 0) !importan;
 		}
 
 		.banner-explic-soccer .content-left h3 {
 			font-size: 12px;
 		}
 		.banner-explic-soccer .content-left h4 {
-		    font-size: 10px;
+		    font-size: 7px;
 		}
 
 		.banner-easy-loteria .content-left h5 {
@@ -535,7 +538,7 @@
 		}
 
 		.banner-golden-goal .content-left h2 {
-			font-size: 23px;
+			font-size: 14px;
 		}
 
 
@@ -552,11 +555,11 @@
 		}
 
 		.banner-custom .content-left h2 {
-			font-size: 13px;
+			font-size: 8px;
 		}
 
 		.banner-custom .content-left h1 {
-			font-size: 15px;
+			font-size: 11px;
 		}
 
 		.banner-custom .content-right {
@@ -564,11 +567,15 @@
 		}
 
 		.banner-custom .content-right h1 {
-			font-size: 15px;
+			font-size: 11px;
 		}
 
 		.banner-custom .content-right h4 {
-			font-size: 10px;
+			font-size: 8px;
+		}
+
+		.banner-soccer-expert .content-left h2 {
+		    font-size: 13px
 		}
 	}
 
