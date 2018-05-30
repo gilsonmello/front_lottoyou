@@ -1,9 +1,9 @@
 <template>	
 	<div class="container-fluid vcenter main-banner no-padding" style="background-image: url(/img/new1/BAN-princi_S_TX.png)">
 		<div class="row no-margin" style="width: 100%;">
-			<div class="col-lg-2">
+			<div class="col-lg-2 col-2">
 			</div>
-			<div class="col-lg-10 col-12">
+			<div class="col-lg-10 col-10">
 				<h1 class="" style="">
 					Aqui é mais fácil
 				</h1>

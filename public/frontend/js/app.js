@@ -82931,7 +82931,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-22829092] {\n\t\twidth: 100%;\n}\n.banner-explic-ras .content-left[data-v-22829092] {\n\t    left: 0;\n\t    position: absolute;\n\t    -webkit-transform: translate(2%, 10%);\n\t            transform: translate(2%, 10%);\n\t    color: #606361;\n\t \twidth: 50%;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-explic-soccer .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #606361;\n\t \twidth: 55%;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-explic-easy-loteria .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #606361;\n\t    top: 0;\n\t    width: 60%;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-easy-loteria .content-left[data-v-22829092] {\n\t    position: absolute;\n\t    width: 100%;\n\t    color: #000;\n\t    bottom: 0;\n}\n.banner-soccer-expert .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    top: 35%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0, -50%);\n\t    transform: translate(0, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-golden-goal .content-left[data-v-22829092] {\n\t\tleft: 0;\n\t    top: 50%;\n\t    margin-left: 8px;\n\t    position: absolute;\n\t    -webkit-transform: translate(20%, -50%);\n\t            transform: translate(20%, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-custom .content-left[data-v-22829092] {\n\t    position: absolute;\n\t    bottom: 1.2%;\n    \tleft: 14%;\n\t    color: #003874;\n}\n.banner-custom .content-left h4[data-v-22829092], .banner-custom .content-left h3[data-v-22829092], .banner-custom .content-left h2[data-v-22829092], .banner-custom .content-left h1[data-v-22829092] {\n\t\tmargin-bottom: 0;\n\t\tfont-family: 'OstrichSans-Heavy';\n\t    line-height: 1;\n}\n.banner-custom .content-right[data-v-22829092] {\n\t    position: absolute;\n\t    top: 15%;\n\t    color: #000;\n\t    right: 4%;\n}\n", ""]);
+exports.push([module.i, "\n@media (min-width: 992px) and (max-width: 1200px) {\n.banner-custom .content-left[data-v-22829092] {\n}\n.banner-custom .content-left[data-v-22829092] {\n}\n.banner-custom .content-left h2[data-v-22829092] {\n\t\t\tfont-size: 28px;\n}\n.banner-custom .content-left h1[data-v-22829092] {\n\t\t\tfont-size: 25px;\n}\n.banner-custom .content-right[data-v-22829092] {\n\t\t    right: 4% !important;\n}\n.banner-custom .content-right h1[data-v-22829092] {\n\t\t\tfont-size: 25px;\n}\n.banner-custom .content-right h4[data-v-22829092] {\n\t\t\tfont-size: 20px;\n}\n}\n@media (min-width: 768px) and (max-width: 992px) {\n.banner-explic-ras .content-left[data-v-22829092] {\n\t\t    -webkit-transform: translate(2%, 4%) !important;\n\t\t            transform: translate(2%, 4%) !important;\n}\n.banner-explic-ras p[data-v-22829092] {\n\t\t\tmargin-bottom: 6px;\n}\n.banner-explic-ras .content-left h3[data-v-22829092] {\n\t\t\tfont-size: 18px;\n}\n.banner-explic-ras .content-left h4[data-v-22829092] {\n\t\t    font-size: 15px;\n}\n.banner-explic-easy-loteria .content-left[data-v-22829092] {\n}\n.banner-explic-easy-loteria p[data-v-22829092] {\n\t\t\tmargin-bottom: 6px;\n}\n.banner-explic-easy-loteria .content-left h3[data-v-22829092] {\n\t\t\tfont-size: 18px;\n}\n.banner-explic-easy-loteria .content-left h4[data-v-22829092] {\n\t\t    font-size: 15px;\n}\n.banner-explic-soccer .content-left[data-v-22829092] {\n}\n.banner-explic-soccer .content-left h3[data-v-22829092] {\n\t\t\tfont-size: 12px;\n}\n.banner-explic-soccer .content-left h4[data-v-22829092] {\n\t\t    font-size: 10px;\n}\n.banner-easy-loteria .content-left h5[data-v-22829092] {\n\t\t    margin-bottom: 0px;\n}\n.banner-golden-goal .content-left[data-v-22829092] {\n\t\t\t-webkit-transform: translate(5%, -50%) !important;\n\t\t\t        transform: translate(5%, -50%) !important;\n}\n.banner-golden-goal .content-left h2[data-v-22829092] {\n\t\t\tfont-size: 23px;\n}\n.banner-custom .content-left[data-v-22829092] {\n}\n.banner-custom .content-left[data-v-22829092] {\n}\n.banner-custom .content-left h2[data-v-22829092] {\n\t\t\tfont-size: 15px;\n}\n.banner-custom .content-left h1[data-v-22829092] {\n\t\t\tfont-size: 18px;\n}\n.banner-custom .content-right[data-v-22829092] {\n\t\t    right: 14%\n}\n.banner-custom .content-right h1[data-v-22829092] {\n\t\t\tfont-size: 18px;\n}\n.banner-custom .content-right h4[data-v-22829092] {\n\t\t\tfont-size: 13px;\n}\n}\n@media (min-width: 576px) and (max-width: 768px) {\n.banner-explic-ras .content-left[data-v-22829092] {\n\t\t    -webkit-transform: translate(2%, 4%) !important;\n\t\t            transform: translate(2%, 4%) !important;\n}\n.banner-explic-ras p[data-v-22829092] {\n\t\t\tmargin-bottom: 6px;\n}\n.banner-explic-ras .content-left h3[data-v-22829092] {\n\t\t\tfont-size: 12px;\n}\n.banner-explic-ras .content-left h4[data-v-22829092] {\n\t\t    font-size: 10px;\n}\n.banner-explic-easy-loteria .content-left[data-v-22829092] {\n}\n.banner-explic-easy-loteria p[data-v-22829092] {\n\t\t\tmargin-bottom: 6px;\n}\n.banner-explic-easy-loteria .content-left h3[data-v-22829092] {\n\t\t\tfont-size: 12px;\n}\n.banner-explic-easy-loteria .content-left h4[data-v-22829092] {\n\t\t    font-size: 10px;\n}\n.banner-explic-soccer .content-left[data-v-22829092] {\n}\n.banner-explic-soccer .content-left h3[data-v-22829092] {\n\t\t\tfont-size: 12px;\n}\n.banner-explic-soccer .content-left h4[data-v-22829092] {\n\t\t    font-size: 10px;\n}\n.banner-easy-loteria .content-left h5[data-v-22829092] {\n\t\t    margin-bottom: 0px;\n}\n.banner-golden-goal .content-left[data-v-22829092] {\n\t\t\t-webkit-transform: translate(5%, -50%) !important;\n\t\t\t        transform: translate(5%, -50%) !important;\n}\n.banner-golden-goal .content-left h2[data-v-22829092] {\n\t\t\tfont-size: 23px;\n}\n.banner-custom .content-left[data-v-22829092] {\n}\n.banner-custom .content-left h2[data-v-22829092] {\n\t\t\tfont-size: 13px;\n}\n.banner-custom .content-left h1[data-v-22829092] {\n\t\t\tfont-size: 15px;\n}\n.banner-custom .content-right[data-v-22829092] {\n}\n.banner-custom .content-right h1[data-v-22829092] {\n\t\t\tfont-size: 13px;\n}\n.banner-custom .content-right h4[data-v-22829092] {\n\t\t\tfont-size: 10px;\n}\n}\n@media (max-width: 576px) {\n.banner-explic-ras .content-left[data-v-22829092] {\n\t\t    -webkit-transform: translate(2%, 4%) !important;\n\t\t            transform: translate(2%, 4%) !important;\n}\n.banner-explic-ras p[data-v-22829092] {\n\t\t\tmargin-bottom: 6px;\n}\n.banner-explic-ras .content-left h3[data-v-22829092] {\n\t\t\tfont-size: 12px;\n}\n.banner-explic-ras .content-left h4[data-v-22829092] {\n\t\t    font-size: 10px;\n}\n.banner-explic-easy-loteria .content-left[data-v-22829092] {\n}\n.banner-explic-easy-loteria p[data-v-22829092] {\n\t\t\tmargin-bottom: 6px;\n}\n.banner-explic-easy-loteria .content-left h3[data-v-22829092] {\n\t\t\tfont-size: 12px;\n}\n.banner-explic-easy-loteria .content-left h4[data-v-22829092] {\n\t\t    font-size: 10px;\n}\n.banner-explic-soccer .content-left[data-v-22829092] {\n}\n.banner-explic-soccer .content-left h3[data-v-22829092] {\n\t\t\tfont-size: 12px;\n}\n.banner-explic-soccer .content-left h4[data-v-22829092] {\n\t\t    font-size: 10px;\n}\n.banner-easy-loteria .content-left h5[data-v-22829092] {\n\t\t    margin-bottom: 0px;\n}\n.banner-golden-goal .content-left[data-v-22829092] {\n\t\t\t-webkit-transform: translate(5%, -50%) !important;\n\t\t\t        transform: translate(5%, -50%) !important;\n}\n.banner-golden-goal .content-left h2[data-v-22829092] {\n\t\t\tfont-size: 23px;\n}\n.banner-custom .content-left[data-v-22829092] {\n}\n.banner-custom .content-left h4[data-v-22829092], .banner-custom .content-left h3[data-v-22829092], .banner-custom .content-left h2[data-v-22829092], .banner-custom .content-left h1[data-v-22829092] {\n}\n.banner-custom .content-left[data-v-22829092] {\n}\n.banner-custom .content-left h2[data-v-22829092] {\n\t\t\tfont-size: 13px;\n}\n.banner-custom .content-left h1[data-v-22829092] {\n\t\t\tfont-size: 15px;\n}\n.banner-custom .content-right[data-v-22829092] {\n}\n.banner-custom .content-right h1[data-v-22829092] {\n\t\t\tfont-size: 15px;\n}\n.banner-custom .content-right h4[data-v-22829092] {\n\t\t\tfont-size: 10px;\n}\n}\nh1[data-v-22829092] {\n\t\twidth: 100%;\n}\n.banner-explic-ras .content-left[data-v-22829092] {\n\t    left: 0;\n\t    position: absolute;\n\t    -webkit-transform: translate(2%, 10%);\n\t            transform: translate(2%, 10%);\n\t    color: #606361;\n\t \twidth: 50%;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-explic-soccer .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #606361;\n\t \twidth: 55%;\n\t    top: 0;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-explic-easy-loteria .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    position: absolute;\n\t    -webkit-transform: translate(13%, 10%);\n\t            transform: translate(13%, 10%);\n\t    color: #606361;\n\t    top: 0;\n\t    width: 60%;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-explic-easy-loteria .content-left h3[data-v-22829092] {\n\t\tmargin-bottom: 13px;\n}\n.banner-easy-loteria .content-left[data-v-22829092] {\n\t    position: absolute;\n\t    width: 100%;\n\t    color: #000;\n\t    bottom: 0;\n}\n.banner-soccer-expert .content-left[data-v-22829092] {\n\t    left: 30%;\n\t    top: 35%;\n\t    position: absolute;\n\t    -webkit-transform: translate(0, -50%);\n\t    transform: translate(0, -50%);\n\t    color: #003874;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-golden-goal .content-left[data-v-22829092] {\n\t\tleft: 0;\n\t    top: 50%;\n\t    position: absolute;\n\t    -webkit-transform: translate(35%, -50%);\n\t            transform: translate(35%, -50%);\n\t    color: #002e5f;\n\t    font-weight: bold;\n\t    font-family: sans-serif;\n}\n.banner-custom .content-left[data-v-22829092] {\n\t    position: absolute;\n\t    bottom: 1.2%;\n    \tleft: 14%;\n\t    color: #003874;\n}\n.banner-custom .content-left h4[data-v-22829092], .banner-custom .content-left h3[data-v-22829092], .banner-custom .content-left h2[data-v-22829092], .banner-custom .content-left h1[data-v-22829092] {\n\t\tmargin-bottom: 0;\n\t\tfont-family: 'OstrichSans-Heavy';\n\t    line-height: 1;\n}\n.banner-custom .content-right[data-v-22829092] {\n\t    position: absolute;\n\t    top: 15%;\n\t    color: #000;\n\t    right: 4%;\n}\n", ""]);
 
 // exports
 
@@ -82948,7 +82948,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CarouselComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__CarouselComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Load__);
-//
 //
 //
 //
@@ -83359,9 +83358,9 @@ var staticRenderFns = [
           "div",
           { staticClass: "row no-margin", staticStyle: { width: "100%" } },
           [
-            _c("div", { staticClass: "col-lg-2" }),
+            _c("div", { staticClass: "col-lg-2 col-2" }),
             _vm._v(" "),
-            _c("div", { staticClass: "col-lg-10 col-12" }, [
+            _c("div", { staticClass: "col-lg-10 col-10" }, [
               _c("h1", {}, [_vm._v("\n\t\t\t\tAqui é mais fácil\n\t\t\t")])
             ])
           ]
@@ -83962,13 +83961,18 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("h2", { staticClass: "text-center" }, [
-                            _vm._v(
-                              "\n\t\t\t\t\t\t\tVOCÊ JÁ COMEÇA\n\t\t\t\t\t\t"
-                            )
-                          ]),
+                          _c(
+                            "h2",
+                            {
+                              staticClass: "text-center",
+                              staticStyle: { "margin-bottom": "6px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n\t\t\t\t\t\t\tVOCÊ JÁ COMEÇA\n\t\t\t\t\t\t"
+                              )
+                            ]
+                          ),
                           _vm._v(" "),
                           _c("h1", { staticClass: "text-center" }, [
                             _c("strong", [_vm._v("GANHANDO 5%")])
@@ -84054,7 +84058,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("div", { staticClass: "content-left" }, [
                           _c(
-                            "h1",
+                            "h2",
                             {
                               staticStyle: {
                                 "font-weight": "bold",
@@ -84189,7 +84193,7 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter",
+                  staticClass: "col-lg-4 col-md-4 col-4 col-sm-4 vcenter",
                   staticStyle: { "justify-content": "center" }
                 },
                 [
@@ -84205,7 +84209,7 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter",
+                  staticClass: "col-lg-4 col-md-4 col-4 col-sm-4 vcenter",
                   staticStyle: { "justify-content": "center" }
                 },
                 [
@@ -84221,7 +84225,7 @@ var render = function() {
               _c(
                 "div",
                 {
-                  staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter",
+                  staticClass: "col-lg-4 col-md-4 col-4 col-sm-4 vcenter",
                   staticStyle: { "justify-content": "center" }
                 },
                 [
@@ -84238,47 +84242,35 @@ var render = function() {
             _c("br"),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
-                [
-                  _c("h5", { staticClass: "text-center" }, [
-                    _c("strong", [_vm._v("1. Escolha seus números")])
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-center" }, [
-                    _vm._v("Escolha 5 números no universo de 35 números")
-                  ])
-                ]
-              ),
+              _c("div", { staticClass: "col-lg-4 col-md-4 col-4 col-sm-4" }, [
+                _c("h5", { staticClass: "text-center" }, [
+                  _c("strong", [_vm._v("1. Escolha seus números")])
+                ]),
+                _vm._v(" "),
+                _c("h6", { staticClass: "text-center" }, [
+                  _vm._v("Escolha 5 números no universo de 35 números")
+                ])
+              ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
-                [
-                  _c("h5", { staticClass: "text-center" }, [
-                    _c("strong", [_vm._v("2. Escolha a data do Sorteio")])
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-center" }, [
-                    _vm._v("Os sorteios ocorrem de segunda a sábado")
-                  ])
-                ]
-              ),
+              _c("div", { staticClass: "col-lg-4 col-md-4 col-4 col-sm-4" }, [
+                _c("h5", { staticClass: "text-center" }, [
+                  _c("strong", [_vm._v("2. Escolha a data do Sorteio")])
+                ]),
+                _vm._v(" "),
+                _c("h6", { staticClass: "text-center" }, [
+                  _vm._v("Os sorteios ocorrem de segunda a sábado")
+                ])
+              ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-lg-4 col-md-4 col-xs-12 col-sm-12" },
-                [
-                  _c("h5", { staticClass: "text-center" }, [
-                    _c("strong", [_vm._v("3. Confirme seu bilhete")])
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "text-center" }, [
-                    _vm._v("Escolha como deseja pagar seu jogo com segurança")
-                  ])
-                ]
-              )
+              _c("div", { staticClass: "col-lg-4 col-md-4 col-4 col-sm-4" }, [
+                _c("h5", { staticClass: "text-center" }, [
+                  _c("strong", [_vm._v("3. Confirme seu bilhete")])
+                ]),
+                _vm._v(" "),
+                _c("h6", { staticClass: "text-center" }, [
+                  _vm._v("Escolha como deseja pagar seu jogo com segurança")
+                ])
+              ])
             ])
           ]),
           _vm._v(" "),
@@ -84460,8 +84452,6 @@ var render = function() {
                           )
                         ]
                       ),
-                      _vm._v(" "),
-                      _c("br"),
                       _vm._v(" "),
                       _c(
                         "h4",
@@ -88241,7 +88231,7 @@ var render = function() {
                 [
                   _vm._v(
                     "\n                    " +
-                      _vm._s(_vm.trans("strings.games")) +
+                      _vm._s(_vm.trans("strings.my_games")) +
                       "\n                "
                   )
                 ]
@@ -96047,7 +96037,7 @@ var render = function() {
                   [
                     _vm._v(
                       "\n                    " +
-                        _vm._s(_vm.trans("strings.games")) +
+                        _vm._s(_vm.trans("strings.my_games")) +
                         "\n                "
                     )
                   ]
@@ -96829,7 +96819,7 @@ var render = function() {
                   [
                     _vm._v(
                       "\n                    " +
-                        _vm._s(_vm.trans("strings.games")) +
+                        _vm._s(_vm.trans("strings.my_games")) +
                         "\n                "
                     )
                   ]
@@ -99432,7 +99422,7 @@ var render = function() {
                   [
                     _vm._v(
                       "\n                    " +
-                        _vm._s(_vm.trans("strings.games")) +
+                        _vm._s(_vm.trans("strings.my_games")) +
                         "\n                "
                     )
                   ]
@@ -100286,6 +100276,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -100303,40 +100297,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.order_item.scratch_card
-      ? _c("span", [
-          _vm._v(
-            "\n\t\t" +
-              _vm._s(_vm.order_item.scratch_card.nome) +
-              ", Qtd. " +
-              _vm._s(
-                typeof _vm.order_item.data == "object"
-                  ? _vm.order_item.data.scratch_card.discount_tables.quantity
-                  : ""
-              ) +
-              "\n\t"
-          )
-        ])
-      : _vm.order_item.soccer_expert
+  return _c(
+    "div",
+    [
+      _vm.order_item.scratch_card
         ? _c("span", [
             _vm._v(
               "\n\t\t" +
-                _vm._s(_vm.order_item.soccer_expert.nome) +
+                _vm._s(_vm.order_item.scratch_card.nome) +
                 ", Qtd. " +
                 _vm._s(
                   typeof _vm.order_item.data == "object"
-                    ? _vm.order_item.data.tickets.length
+                    ? _vm.order_item.data.scratch_card.discount_tables.quantity
                     : ""
                 ) +
                 "\n\t"
             )
           ])
-        : _vm.order_item.lottery
+        : _vm.order_item.soccer_expert
           ? _c("span", [
               _vm._v(
                 "\n\t\t" +
-                  _vm._s(_vm.order_item.lottery.nome) +
+                  _vm._s(_vm.order_item.soccer_expert.nome) +
                   ", Qtd. " +
                   _vm._s(
                     typeof _vm.order_item.data == "object"
@@ -100346,8 +100328,52 @@ var render = function() {
                   "\n\t"
               )
             ])
-          : _vm._e()
-  ])
+          : _vm.order_item.lottery
+            ? _c("span", [
+                _vm._v(
+                  "\n\t\t" +
+                    _vm._s(_vm.order_item.lottery.nome) +
+                    ", Qtd. " +
+                    _vm._s(
+                      typeof _vm.order_item.data == "object"
+                        ? _vm.order_item.data.tickets.length
+                        : ""
+                    ) +
+                    "\n\t"
+                )
+              ])
+            : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        {
+          staticClass: "btn btn-xs btn-primary",
+          attrs: {
+            to: {
+              name: "users.games",
+              query: {
+                id: _vm.order_item.id,
+                page: 1,
+                column: "created_at",
+                direction: "asc"
+              }
+            }
+          }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-eye",
+            attrs: {
+              "data-toggle": "tooltip",
+              "data-placement": "top",
+              title: _vm.trans("strings.view")
+            }
+          })
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -101227,7 +101253,7 @@ var render = function() {
               [
                 _vm._v(
                   "\n                " +
-                    _vm._s(_vm.trans("strings.games")) +
+                    _vm._s(_vm.trans("strings.my_games")) +
                     "\n            "
                 )
               ]

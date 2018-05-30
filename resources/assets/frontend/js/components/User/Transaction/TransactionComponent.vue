@@ -6,7 +6,7 @@
                 {{ trans('strings.profile') }}
             </router-link>
             <router-link class="nav-link" :to="{ name: 'users.games', params: {  } }">
-                {{ trans('strings.games') }}
+                {{ trans('strings.my_games') }}
             </router-link>
             <router-link class="nav-link active show" :to="{ name: 'users.transactions', params: {  } }">
                 {{ trans('strings.transactions') }}

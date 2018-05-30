@@ -19,8 +19,7 @@
 								CRIE AGORA MESMO<br>
 								A SUA PRÓPIA LIGA!							
 							</h2>
-							<br>
-							<h2 class="text-center">
+							<h2 class="text-center" style="margin-bottom: 6px;">
 								VOCÊ JÁ COMEÇA
 							</h2>
 							<h1 class="text-center">
@@ -58,9 +57,9 @@
 					<div class="banner-golden-goal" style="position: relative">
 						<img style="width: 100%; " class="img-fluid" src="/img/new1/RASPADINHAS.jpg">	
 						<div class="content-left">
-							<h1 style="font-weight: bold; text-shadow: 0 1px #808d9300, -1px 0 #cdd2d5, -1px 2px #808d9300, -2px 1px #cdd2d500, -2px 3px #808d93;">
+							<h2 style="font-weight: bold; text-shadow: 0 1px #808d9300, -1px 0 #cdd2d5, -1px 2px #808d9300, -2px 1px #cdd2d500, -2px 3px #808d93;">
 								RASPE E GANHE !!!
-							</h1>
+							</h2>
 						</div>
 					</div>
 				</router-link>
@@ -146,17 +145,17 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter" style="justify-content: center;">
+				<div class="col-lg-4 col-md-4 col-4 col-sm-4 vcenter" style="justify-content: center;">
 					<div class="col-lg-4 no-padding">
 						<img src="/img/icon_11.png" class="img-fluid">
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter" style="justify-content: center;">
+				<div class="col-lg-4 col-md-4 col-4 col-sm-4 vcenter" style="justify-content: center;">
 					<div class="col-lg-4 no-padding">
 						<img src="/img/icon_22.png" class="img-fluid">
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 vcenter" style="justify-content: center;">
+				<div class="col-lg-4 col-md-4 col-4 col-sm-4 vcenter" style="justify-content: center;">
 					<div class="col-lg-4 no-padding">
 						<img src="/img/icon_33.png" class="img-fluid">
 					</div>
@@ -164,15 +163,15 @@
 			</div>
 			<br>
 			<div class="row">
-				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+				<div class="col-lg-4 col-md-4 col-4 col-sm-4">
 					<h5 class="text-center"><strong>1. Escolha seus números</strong></h5>
 					<h6 class="text-center">Escolha 5 números no universo de 35 números</h6>
 				</div>
-				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+				<div class="col-lg-4 col-md-4 col-4 col-sm-4">
 					<h5 class="text-center"><strong>2. Escolha a data do Sorteio</strong></h5>
 					<h6 class="text-center">Os sorteios ocorrem de segunda a sábado</h6>
 				</div>
-				<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+				<div class="col-lg-4 col-md-4 col-4 col-sm-4">
 					<h5 class="text-center"><strong>3. Confirme seu bilhete</strong></h5>
 					<h6 class="text-center">Escolha como deseja pagar seu jogo com segurança</h6>
 				</div>
@@ -236,7 +235,7 @@
 						<h3 style="font-weight: bold; font-style: italic;">
 							Easy Money - A loteria da Lottoyou
 						</h3>
-						<br>
+						
 						<h4 style="text-align: justify; line-height: 1.2;">
 							<p>Quem nunca sonhou em transformar 1 dólar em $20,000 dólares?<br>
 							Provavelmente você já tem os seus planos e aqui na Easy Money todos os dias você pode concretizá-los. Para ganhar o prêmio máximo basta acertar apenas 5 números em um universo de 35 números!!!
@@ -288,6 +287,291 @@
 </script>
 
 <style scoped>
+	
+	@media (min-width: 992px) and (max-width: 1200px) {
+		.banner-custom .content-left {
+		    
+		}
+
+		
+		.banner-custom .content-left {
+		    
+		}
+
+		.banner-custom .content-left h2 {
+			font-size: 28px;
+		}
+
+		.banner-custom .content-left h1 {
+			font-size: 25px;
+		}
+
+		.banner-custom .content-right {
+		    right: 4% !important;
+		}
+
+		.banner-custom .content-right h1 {
+			font-size: 25px;
+		}
+
+		.banner-custom .content-right h4 {
+			font-size: 20px;
+		}
+	}
+
+	@media (min-width: 768px) and (max-width: 992px) {
+	   	.banner-explic-ras .content-left {
+		    transform: translate(2%, 4%) !important;
+		}
+
+		.banner-explic-ras p {
+			margin-bottom: 6px;
+		}
+
+		.banner-explic-ras .content-left h3 {
+			font-size: 18px;
+		}
+		.banner-explic-ras .content-left h4 {
+		    font-size: 15px;
+		}
+
+		.banner-explic-easy-loteria .content-left {
+		    
+		}
+
+		.banner-explic-easy-loteria p {
+			margin-bottom: 6px;
+		}
+
+		.banner-explic-easy-loteria .content-left h3 {
+			font-size: 18px;
+		}
+		.banner-explic-easy-loteria .content-left h4 {
+		    font-size: 15px;
+		}
+
+		.banner-explic-soccer .content-left {
+		    
+		}
+
+		.banner-explic-soccer .content-left h3 {
+			font-size: 12px;
+		}
+		.banner-explic-soccer .content-left h4 {
+		    font-size: 10px;
+		}
+
+		.banner-easy-loteria .content-left h5 {
+		    margin-bottom: 0px;
+		}
+
+		.banner-golden-goal .content-left {
+			transform: translate(5%, -50%) !important;
+		}
+
+		.banner-golden-goal .content-left h2 {
+			font-size: 23px;
+		}
+
+
+		.banner-custom .content-left {
+		    
+		}
+
+		
+		.banner-custom .content-left {
+		    
+		}
+
+		.banner-custom .content-left h2 {
+			font-size: 15px;
+		}
+
+		.banner-custom .content-left h1 {
+			font-size: 18px;
+		}
+
+		.banner-custom .content-right {
+		    right: 14%
+		}
+
+		.banner-custom .content-right h1 {
+			font-size: 18px;
+		}
+
+		.banner-custom .content-right h4 {
+			font-size: 13px;
+		}
+	}
+
+	@media (min-width: 576px) and (max-width: 768px) {
+	   	.banner-explic-ras .content-left {
+		    transform: translate(2%, 4%) !important;
+		}
+
+		.banner-explic-ras p {
+			margin-bottom: 6px;
+		}
+
+		.banner-explic-ras .content-left h3 {
+			font-size: 12px;
+		}
+		.banner-explic-ras .content-left h4 {
+		    font-size: 10px;
+		}
+
+		.banner-explic-easy-loteria .content-left {
+		    
+		}
+
+		.banner-explic-easy-loteria p {
+			margin-bottom: 6px;
+		}
+
+		.banner-explic-easy-loteria .content-left h3 {
+			font-size: 12px;
+		}
+		.banner-explic-easy-loteria .content-left h4 {
+		    font-size: 10px;
+		}
+
+		.banner-explic-soccer .content-left {
+		    
+		}
+
+		.banner-explic-soccer .content-left h3 {
+			font-size: 12px;
+		}
+		.banner-explic-soccer .content-left h4 {
+		    font-size: 10px;
+		}
+
+		.banner-easy-loteria .content-left h5 {
+		    margin-bottom: 0px;
+		}
+
+		.banner-golden-goal .content-left {
+			transform: translate(5%, -50%) !important;
+		}
+
+		.banner-golden-goal .content-left h2 {
+			font-size: 23px;
+		}
+
+
+		.banner-custom .content-left {
+		    
+		}
+
+		.banner-custom .content-left h2 {
+			font-size: 13px;
+		}
+
+		.banner-custom .content-left h1 {
+			font-size: 15px;
+		}
+
+		.banner-custom .content-right {
+		    
+		}
+
+		.banner-custom .content-right h1 {
+			font-size: 13px;
+		}
+
+		.banner-custom .content-right h4 {
+			font-size: 10px;
+		}
+	}
+
+	@media (max-width: 576px) {
+	    .banner-explic-ras .content-left {
+		    transform: translate(2%, 4%) !important;
+		}
+
+		.banner-explic-ras p {
+			margin-bottom: 6px;
+		}
+
+		.banner-explic-ras .content-left h3 {
+			font-size: 12px;
+		}
+		.banner-explic-ras .content-left h4 {
+		    font-size: 10px;
+		}
+
+		.banner-explic-easy-loteria .content-left {
+		    
+		}
+
+		.banner-explic-easy-loteria p {
+			margin-bottom: 6px;
+		}
+
+		.banner-explic-easy-loteria .content-left h3 {
+			font-size: 12px;
+		}
+		.banner-explic-easy-loteria .content-left h4 {
+		    font-size: 10px;
+		}
+
+		.banner-explic-soccer .content-left {
+		    
+		}
+
+		.banner-explic-soccer .content-left h3 {
+			font-size: 12px;
+		}
+		.banner-explic-soccer .content-left h4 {
+		    font-size: 10px;
+		}
+
+		.banner-easy-loteria .content-left h5 {
+		    margin-bottom: 0px;
+		}
+
+		.banner-golden-goal .content-left {
+			transform: translate(5%, -50%) !important;
+		}
+
+		.banner-golden-goal .content-left h2 {
+			font-size: 23px;
+		}
+
+
+		.banner-custom .content-left {
+		    
+		}
+
+		.banner-custom .content-left h4, .banner-custom .content-left h3, .banner-custom .content-left h2, .banner-custom .content-left h1 {
+			
+		}
+
+		.banner-custom .content-left {
+		    
+		}
+
+		.banner-custom .content-left h2 {
+			font-size: 13px;
+		}
+
+		.banner-custom .content-left h1 {
+			font-size: 15px;
+		}
+
+		.banner-custom .content-right {
+		    
+		}
+
+		.banner-custom .content-right h1 {
+			font-size: 15px;
+		}
+
+		.banner-custom .content-right h4 {
+			font-size: 10px;
+		}
+	}
+
 	h1 {
 		width: 100%;
 	}
@@ -325,6 +609,10 @@
 	    font-family: sans-serif;
 	}
 
+	.banner-explic-easy-loteria .content-left h3 {
+		margin-bottom: 13px;
+	}
+
 	.banner-easy-loteria .content-left {
 	    position: absolute;
 	    width: 100%;
@@ -346,10 +634,9 @@
 	.banner-golden-goal .content-left {
 		left: 0;
 	    top: 50%;
-	    margin-left: 8px;
 	    position: absolute;
-	    transform: translate(20%, -50%);
-	    color: #003874;
+	    transform: translate(35%, -50%);
+	    color: #002e5f;
 	    font-weight: bold;
 	    font-family: sans-serif;
 	}

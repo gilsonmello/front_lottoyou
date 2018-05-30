@@ -13,6 +13,10 @@
 		<span v-else-if="order_item.lottery">
 			{{ order_item.lottery.nome }}, Qtd. {{ typeof order_item.data == 'object' ? order_item.data.tickets.length : '' }}
 		</span>
+		<router-link :to="{name: 'users.games', query: {id: order_item.id, page: 1, column: 'created_at', direction: 'asc'}}" class="btn btn-xs btn-primary">
+			<i class="fa fa-eye" data-toggle="tooltip" data-placement="top" :title="trans('strings.view')">
+			</i>
+		</router-link>
 	</div>
 </template>
 
