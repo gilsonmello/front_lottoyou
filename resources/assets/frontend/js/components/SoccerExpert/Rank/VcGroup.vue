@@ -5,9 +5,11 @@
 				<img :src="category.imagem_capa" class="img-fluid">
 			</div>
 			<div class="col-lg-6">
-				<h5>Grupo {{ group.identificacao }}</h5>
-				<h5>Quantidade {{ group.count }}</h5>
-				<h5>Status {{ group.status }}</h5>
+				<h5>{{ trans('strings.group') }} #{{ group.identificacao }}</h5>
+				<h5>{{ trans('strings.quantity') }} {{ group.count }}</h5>
+				<h5>
+					{{ group.status == 1 ? trans('strings.available') : trans('strings.unavailable') }}
+				</h5>
 			</div>
 		</div>
 	</div>

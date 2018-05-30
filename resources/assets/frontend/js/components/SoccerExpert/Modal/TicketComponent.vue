@@ -329,7 +329,7 @@
 								if (response.status === 200) {
 									toastr.options.onHidden = function() {
 										window.location.reload();
-									}
+									};
 									toastr.success(
 										this.trans('strings.successful_purchase'),
 										this.trans('strings.buy'),
