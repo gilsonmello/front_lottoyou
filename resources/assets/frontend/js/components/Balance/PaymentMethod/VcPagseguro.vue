@@ -26,7 +26,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12 buttons">
-						<button v-if="loading.paying" @click.prevent="" type="load" class="hide btn btn-md btn-primary">
+						<button v-if="loading.paying" @click.prevent="" type="load" class="btn btn-md btn-primary">
 							<i class="fa fa-refresh fa-spin"></i>
 						</button>
 						<button v-else type="submit" class="btn btn-primary btn-md">Efeutuar compra</button>

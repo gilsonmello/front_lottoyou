@@ -116424,7 +116424,7 @@ var render = function() {
                 ? _c(
                     "button",
                     {
-                      staticClass: "hide btn btn-md btn-primary",
+                      staticClass: "btn btn-md btn-primary",
                       attrs: { type: "load" },
                       on: {
                         click: function($event) {
@@ -116948,7 +116948,7 @@ var render = function() {
                 ? _c(
                     "button",
                     {
-                      staticClass: "hide btn btn-md btn-primary",
+                      staticClass: "btn btn-md btn-primary",
                       attrs: { type: "load" },
                       on: {
                         click: function($event) {
