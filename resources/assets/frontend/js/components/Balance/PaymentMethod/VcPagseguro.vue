@@ -52,23 +52,26 @@
 			$("#amount").maskMoney({
 				prefix:'R$ ', 
 				allowNegative: false, 
-				thousands:'', 
-				decimal:'.', 
+				thousands: '.', 
+				decimal: ',', 
 				affixesStay: false
-			}).on("blur", function(event) {
-				let value = parseFloat($(this).val());
-				if(value < 10) {
-					$(this).val('10.00');
-					vm.amount = '10.00';
-				}
-		    });
+			});
 		},
 		methods: {
+			getValue() {
+				let value = $("#amount").val();
+				value = value.replace(/\R\$\ /g, '');
+				value = value.replace(/\./g, '');
+				value = value.replace(/,/g, '.');
+				this.amount = value;
+				return parseFloat(value);
+			},
 			sendPagseguro: function(event) {
 				var form = $(event.currentTarget);
 				if(this.validate(this.amount)) {
 					this.loading.paying = true;
 					var form = $('#sendPagseguro');
+
 
 					var receiverEmail = document.createElement('input');
                     receiverEmail.setAttribute('name', "receiverEmail");
@@ -97,7 +100,7 @@
                     var itemAmount1 = document.createElement('input');
                     itemAmount1.setAttribute('name', "itemAmount1");
                     itemAmount1.setAttribute('type', "hidden");
-                    itemAmount1.setAttribute('value', this.amount);
+                    itemAmount1.setAttribute('value', this.getValue());
                     form.append(itemAmount1);
 
                     var itemQuantity1 = document.createElement('input');

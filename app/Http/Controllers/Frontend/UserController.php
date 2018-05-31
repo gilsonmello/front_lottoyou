@@ -36,8 +36,10 @@ class UserController extends Controller
             'soccerExpert',
             'scratchCard',
             'lottery',
-            'lotteryGame' => function($query) {
-
+            'lotteryGame' => function($query) use($request) {
+                if($request->lottery_bet_id) {
+                    $query->where('id', '=', $request->lottery_bet_id);
+                }
             },
             'lotteryGame.numbers' => function($query) {
                 

@@ -93861,7 +93861,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 id: '',
                 page: 1,
                 column: 'created_at',
-                direction: 'desc'
+                direction: 'desc',
+                lottery_bet_id: ''
             }
         };
     },
@@ -93877,6 +93878,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             url += "&column=" + this.query.column;
             url += "&direction=" + this.query.direction;
             url += "&id=" + this.query.id;
+            url += "&lottery_bet_id=" + this.query.lottery_bet_id;
 
             this.$router.replace({
                 query: Object.assign(this.query)
@@ -93946,6 +93948,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
         if (this.$route.query.direction) {
             this.query.direction = this.$route.query.direction;
+        }
+        if (this.$route.query.lottery_bet_id) {
+            this.query.lottery_bet_id = this.$route.query.lottery_bet_id;
         }
 
         this.itemsRequest();
@@ -100943,7 +100948,8 @@ var render = function() {
                 id: _vm.lottery_bet.order_item_id,
                 page: 1,
                 column: "created_at",
-                direction: "asc"
+                direction: "asc",
+                lottery_bet_id: _vm.lottery_bet.id
               }
             }
           }
@@ -116375,19 +116381,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		$("#amount").maskMoney({
 			prefix: 'R$ ',
 			allowNegative: false,
-			thousands: '',
-			decimal: '.',
+			thousands: '.',
+			decimal: ',',
 			affixesStay: false
-		}).on("blur", function (event) {
-			var value = parseFloat($(this).val());
-			if (value < 10) {
-				$(this).val('10.00');
-				vm.amount = '10.00';
-			}
 		});
 	},
 
 	methods: {
+		getValue: function getValue() {
+			var value = $("#amount").val();
+			value = value.replace(/\R\$\ /g, '');
+			value = value.replace(/\./g, '');
+			value = value.replace(/,/g, '.');
+			this.amount = value;
+			return parseFloat(value);
+		},
+
 		sendPagseguro: function sendPagseguro(event) {
 			var _this = this;
 
@@ -116423,7 +116432,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				var itemAmount1 = document.createElement('input');
 				itemAmount1.setAttribute('name', "itemAmount1");
 				itemAmount1.setAttribute('type', "hidden");
-				itemAmount1.setAttribute('value', this.amount);
+				itemAmount1.setAttribute('value', this.getValue());
 				form.append(itemAmount1);
 
 				var itemQuantity1 = document.createElement('input');
@@ -116838,19 +116847,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		$("#amount").maskMoney({
 			prefix: '$ ',
 			allowNegative: false,
-			thousands: '',
+			thousands: ',',
 			decimal: '.',
 			affixesStay: false
-		}).on("blur", function (event) {
-			var value = parseFloat($(this).val());
-			if (value < 10) {
-				$(this).val('10.00');
-				vm.amount = '10.00';
-			}
 		});
 	},
 
 	methods: {
+		getValue: function getValue() {
+			var value = $("#amount").val();
+			value = value.replace(/\$\ /g, '');
+			value = value.replace(/,/g, '');
+			this.amount = value;
+			return parseFloat(value);
+		},
+
 		sendPaypal: function sendPaypal(event) {
 			var _this = this;
 
@@ -116935,7 +116946,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				var amount = document.createElement('input');
 				amount.setAttribute('name', "amount");
 				amount.setAttribute('type', "hidden");
-				amount.setAttribute('value', parseFloat(this.amount).format(2, true));
+				amount.setAttribute('value', this.getValue());
 				form.append(amount);
 
 				var item_name = document.createElement('input');

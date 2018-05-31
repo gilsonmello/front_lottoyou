@@ -136,6 +136,7 @@
                     page: 1,
                     column: 'created_at',
                     direction: 'desc',
+                    lottery_bet_id: '',
                 }
             }
         },
@@ -148,6 +149,7 @@
                 url += "&column="+this.query.column;
                 url += "&direction="+this.query.direction;
                 url += "&id="+this.query.id;
+                url += "&lottery_bet_id="+this.query.lottery_bet_id;
 
                 this.$router.replace({
                     query: Object.assign(this.query)
@@ -221,7 +223,10 @@
             }
             if(this.$route.query.direction) {
                 this.query.direction = this.$route.query.direction
-            } 
+            }
+            if(this.$route.query.lottery_bet_id) {
+                this.query.lottery_bet_id = this.$route.query.lottery_bet_id
+            }
 
             this.itemsRequest(); 
         },

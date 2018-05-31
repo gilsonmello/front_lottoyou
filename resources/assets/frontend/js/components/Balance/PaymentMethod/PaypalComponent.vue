@@ -66,20 +66,21 @@
 		mounted() {
 			var vm = this;
 			$("#amount").maskMoney({
-				prefix:'$ ', 
+				prefix: '$ ', 
 				allowNegative: false, 
-				thousands:'', 
-				decimal:'.', 
+				thousands: ',', 
+				decimal: '.', 
 				affixesStay: false
-			}).on("blur", function(event) {
-				let value = parseFloat($(this).val());
-				if(value < 10) {
-					$(this).val('10.00');
-					vm.amount = '10.00';
-				}
-		    });
+			});
 		},
 		methods: {
+			getValue() {
+				let value = $("#amount").val();
+				value = value.replace(/\$\ /g, '');
+				value = value.replace(/,/g, '');
+				this.amount = value;
+				return parseFloat(value);
+			},
 			sendPaypal: function(event) {
 				var form = $(event.currentTarget);
 				if(this.validate(this.amount)) {
@@ -162,7 +163,7 @@
                     var amount = document.createElement('input');
                     amount.setAttribute('name', "amount");
                     amount.setAttribute('type', "hidden");
-                    amount.setAttribute('value', parseFloat(this.amount).format(2, true));
+                    amount.setAttribute('value', this.getValue());
                     form.append(amount);
 
                     var item_name = document.createElement('input');
