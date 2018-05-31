@@ -57,7 +57,7 @@
 					<div class="banner-golden-goal" style="position: relative">
 						<img style="width: 100%; " class="img-fluid" src="/img/new1/RASPADINHAS.jpg">	
 						<div class="content-left">
-							<h2 style="font-weight: bold; text-shadow: 0 1px #808d9300, -1px 0 #cdd2d5, -1px 2px #808d9300, -2px 1px #cdd2d500, -2px 3px #808d93;">
+							<h2 style="font-size: 50px; font-weight: bold; text-shadow: 0 1px #808d9300, -1px 0 #cdd2d5, -1px 2px #808d9300, -2px 1px #cdd2d500, -2px 3px #808d93;">
 								RASPE E GANHE !!!
 							</h2>
 						</div>
@@ -642,7 +642,7 @@
 		left: 0;
 	    top: 50%;
 	    position: absolute;
-	    transform: translate(35%, -50%);
+	    transform: translate(1%, -50%);
 	    color: #002e5f;
 	    font-weight: bold;
 	    font-family: sans-serif;
