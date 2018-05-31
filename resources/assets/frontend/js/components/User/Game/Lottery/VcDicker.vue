@@ -21,7 +21,6 @@
 		methods: {
 			verifyNumberSelected() {
 				//
-				
 				for(var i = 0; i < this.ticket.numbers.length; i++) {
 					if(this.dicker == this.ticket.numbers[i].numero && this.ticket.numbers[i].acerto == 1) {
 						return 'btn btn-xs btn-success';

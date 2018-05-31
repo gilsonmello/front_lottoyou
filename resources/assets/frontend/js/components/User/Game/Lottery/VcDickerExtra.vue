@@ -21,8 +21,12 @@
 		methods: {
 			verifyNumberSelected() {
 				//
-				for(var i = 0; i < this.ticket.numbersExtras.length; i++) {
-					if(this.dicker == this.ticket.numbersExtras[i]) {
+				for(var i = 0; i < this.ticket.numbers_extras.length; i++) {
+					if(this.dicker == this.ticket.numbers_extras[i].numero && this.ticket.numbers_extras[i].acerto == 1) {
+						return 'btn btn-xs btn-success';
+						//continue;
+					}
+					if(this.dicker == this.ticket.numbers_extras[i]) {
 						return 'btn btn-xs btn-default-darking btn-checked';
 						//continue;
 					}
