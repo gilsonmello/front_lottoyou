@@ -17,7 +17,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
-						<input type="checkbox" v-model="terms" required name="terms" id="terms">
+						<input type="checkbox" @click="handleTerms" v-model="terms" required name="terms" id="terms">
 						&nbsp;Eu li e aceito os <router-link :to="{ name: 'terms.index' }" target="_blank">termos e condições</router-link> de uso deste site.                    
 					</div>
 				</div>
@@ -37,9 +37,14 @@
 <script>
 	export default {
 		props: ['order_id'],
+		watch: {
+			amount: function(newValue, oldValue) {
+				
+			}
+		},
 		data() {
 			return {
-				amount: '10.00',
+				amount: '10,00',
 				loading: {
 					paying: false
 				},
@@ -55,20 +60,33 @@
 				thousands: '.', 
 				decimal: ',', 
 				affixesStay: false
-			});
+			}).on("blur", function(event) {
+				let value = $(this).val();
+				vm.amount = value;
+				//value = value.replace(/\R\$\ /g, '');
+				value = value.replace(/\./g, '');
+				value = value.replace(/,/g, '.');
+				value = parseFloat(value);				
+				
+				if(value < 10) {
+					$(this).val('10,00');
+					vm.amount = '10,00';
+				}
+		    });
 		},
 		methods: {
-			getValue() {
+			handleTerms() {
+			},
+			getAmount() {
 				let value = $("#amount").val();
 				value = value.replace(/\R\$\ /g, '');
 				value = value.replace(/\./g, '');
 				value = value.replace(/,/g, '.');
-				this.amount = value;
-				return parseFloat(value);
+				return parseFloat(value).format(2, true);
 			},
 			sendPagseguro: function(event) {
 				var form = $(event.currentTarget);
-				if(this.validate(this.amount)) {
+				if(this.validate(this.getAmount())) {
 					this.loading.paying = true;
 					var form = $('#sendPagseguro');
 
@@ -100,7 +118,7 @@
                     var itemAmount1 = document.createElement('input');
                     itemAmount1.setAttribute('name', "itemAmount1");
                     itemAmount1.setAttribute('type', "hidden");
-                    itemAmount1.setAttribute('value', this.getValue());
+                    itemAmount1.setAttribute('value', this.getAmount());
                     form.append(itemAmount1);
 
                     var itemQuantity1 = document.createElement('input');
@@ -129,7 +147,7 @@
 
 					paymentRequest.post('/pagseguro/payment', {
 						order_id: this.order_id,
-						amount: this.amount
+						amount: this.getAmount()
 					}, {}).then(response => {
 						if(response.status === 200) {
 							form.submit();
@@ -148,7 +166,7 @@
 
 				} else {
 					swal({
-					  	title: "Informe um valor maior do que $10.00",
+					  	title: "Informe um valor maior do que R$10.00",
 		                type: "error",
 		                html: true,
 		                showCancelButton: false,

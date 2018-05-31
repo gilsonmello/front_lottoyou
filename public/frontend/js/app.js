@@ -116366,9 +116366,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['order_id'],
+	watch: {
+		amount: function amount(newValue, oldValue) {}
+	},
 	data: function data() {
 		return {
-			amount: '10.00',
+			amount: '10,00',
 			loading: {
 				paying: false
 			},
@@ -116384,24 +116387,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			thousands: '.',
 			decimal: ',',
 			affixesStay: false
+		}).on("blur", function (event) {
+			var value = $(this).val();
+			vm.amount = value;
+			//value = value.replace(/\R\$\ /g, '');
+			value = value.replace(/\./g, '');
+			value = value.replace(/,/g, '.');
+			value = parseFloat(value);
+
+			if (value < 10) {
+				$(this).val('10,00');
+				vm.amount = '10,00';
+			}
 		});
 	},
 
 	methods: {
-		getValue: function getValue() {
+		handleTerms: function handleTerms() {},
+		getAmount: function getAmount() {
 			var value = $("#amount").val();
 			value = value.replace(/\R\$\ /g, '');
 			value = value.replace(/\./g, '');
 			value = value.replace(/,/g, '.');
-			this.amount = value;
-			return parseFloat(value);
+			return parseFloat(value).format(2, true);
 		},
 
 		sendPagseguro: function sendPagseguro(event) {
 			var _this = this;
 
 			var form = $(event.currentTarget);
-			if (this.validate(this.amount)) {
+			if (this.validate(this.getAmount())) {
 				this.loading.paying = true;
 				var form = $('#sendPagseguro');
 
@@ -116432,7 +116447,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				var itemAmount1 = document.createElement('input');
 				itemAmount1.setAttribute('name', "itemAmount1");
 				itemAmount1.setAttribute('type', "hidden");
-				itemAmount1.setAttribute('value', this.getValue());
+				itemAmount1.setAttribute('value', this.getAmount());
 				form.append(itemAmount1);
 
 				var itemQuantity1 = document.createElement('input');
@@ -116461,7 +116476,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 				paymentRequest.post('/pagseguro/payment', {
 					order_id: this.order_id,
-					amount: this.amount
+					amount: this.getAmount()
 				}, {}).then(function (response) {
 					if (response.status === 200) {
 						form.submit();
@@ -116479,7 +116494,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				});
 			} else {
 				swal({
-					title: "Informe um valor maior do que $10.00",
+					title: "Informe um valor maior do que R$10.00",
 					type: "error",
 					html: true,
 					showCancelButton: false,
@@ -116591,6 +116606,7 @@ var render = function() {
                       : _vm.terms
                   },
                   on: {
+                    click: _vm.handleTerms,
                     change: function($event) {
                       var $$a = _vm.terms,
                         $$el = $event.target,
@@ -116850,23 +116866,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			thousands: ',',
 			decimal: '.',
 			affixesStay: false
+		}).on("blur", function (event) {
+			var value = $(this).val();
+			vm.amount = value;
+			value = value.replace(/,/g, '');
+			value = parseFloat(value);
+			if (value < 10) {
+				$(this).val('10.00');
+				vm.amount = '10.00';
+			}
 		});
 	},
 
 	methods: {
-		getValue: function getValue() {
+		getAmount: function getAmount() {
 			var value = $("#amount").val();
+			this.amount = value;
 			value = value.replace(/\$\ /g, '');
 			value = value.replace(/,/g, '');
-			this.amount = value;
-			return parseFloat(value);
+			return parseFloat(value).format(2, true);
 		},
 
 		sendPaypal: function sendPaypal(event) {
 			var _this = this;
 
 			var form = $(event.currentTarget);
-			if (this.validate(this.amount)) {
+			if (this.validate(this.getAmount())) {
 				this.loading.paying = true;
 
 				var form = $('#sendPaypal');
@@ -116946,7 +116971,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				var amount = document.createElement('input');
 				amount.setAttribute('name', "amount");
 				amount.setAttribute('type', "hidden");
-				amount.setAttribute('value', this.getValue());
+				amount.setAttribute('value', this.getAmount());
 				form.append(amount);
 
 				var item_name = document.createElement('input');
@@ -116969,7 +116994,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 				paymentRequest.post('/paypal/payment', {
 					order_id: this.order_id,
-					amount: this.amount
+					amount: this.getAmount()
 				}, {}).then(function (response) {
 					if (response.status === 200) {
 						form.submit();

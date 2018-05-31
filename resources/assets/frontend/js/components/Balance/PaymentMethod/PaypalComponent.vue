@@ -71,19 +71,28 @@
 				thousands: ',', 
 				decimal: '.', 
 				affixesStay: false
-			});
+			}).on("blur", function(event) {
+				let value = $(this).val();
+				vm.amount = value;
+				value = value.replace(/,/g, '');
+				value = parseFloat(value);
+				if(value < 10) {
+					$(this).val('10.00');
+					vm.amount = '10.00';
+				}
+		    });
 		},
 		methods: {
-			getValue() {
+			getAmount() {
 				let value = $("#amount").val();
+				this.amount = value;
 				value = value.replace(/\$\ /g, '');
 				value = value.replace(/,/g, '');
-				this.amount = value;
-				return parseFloat(value);
+				return parseFloat(value).format(2, true);
 			},
 			sendPaypal: function(event) {
 				var form = $(event.currentTarget);
-				if(this.validate(this.amount)) {
+				if(this.validate(this.getAmount())) {
 					this.loading.paying = true;
 
 					var form = $('#sendPaypal');
@@ -163,7 +172,7 @@
                     var amount = document.createElement('input');
                     amount.setAttribute('name', "amount");
                     amount.setAttribute('type', "hidden");
-                    amount.setAttribute('value', this.getValue());
+                    amount.setAttribute('value', this.getAmount());
                     form.append(amount);
 
                     var item_name = document.createElement('input');
@@ -186,7 +195,7 @@
 
 					paymentRequest.post('/paypal/payment', {
 						order_id: this.order_id,
-						amount: this.amount
+						amount: this.getAmount()
 					}, {}).then(response => {
 						if(response.status === 200) {
 							form.submit();
