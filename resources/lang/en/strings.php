@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'left_filling' => 'Falta preencher',
     'my_account' => 'Minha conta',
     'connection_not_found' => 'Conexão não encontrada',
     'award_for_ticket' => 'Prêmio por bilhete',

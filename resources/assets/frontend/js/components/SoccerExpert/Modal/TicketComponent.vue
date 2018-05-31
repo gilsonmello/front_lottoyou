@@ -63,7 +63,8 @@
     			seconds: '',
     			valid: true,
     			empty: true,
-    			allSelected: true
+    			allSelected: true,
+    			quantityEmpty: 0
         	}
         },
         methods: {
@@ -90,6 +91,8 @@
 
 				this.allSelected = true;
 
+				this.quantityEmpty = 0;
+
 				//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
 				//Não foi concluído o preenchimento na rodada
 				this.ticket.games_left.filter((val) => {
@@ -98,7 +101,7 @@
 						|| (val.result_house_club === '' || val.result_house_club === null)) {
 						complete = false
 						this.allSelected = false;
-						
+						this.quantityEmpty++;
 					}
 					
 					//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
@@ -116,6 +119,7 @@
 						|| (val.result_house_club === '' || val.result_house_club === null)) {
 						complete = false
 						this.allSelected = false;
+						this.quantityEmpty++;
 						
 					}
 					
@@ -170,7 +174,8 @@
 					$(this.$el).addClass('incomplete');
 					$(this.$el).removeClass('complete');
 				}
-				
+				this.$eventBus.$emit('quantityEmpty', this.quantityEmpty);
+				this.$eventBus.$emit('chooseGoldBall', this.ticket.choseGoldBall);
     			this.$eventBus.$emit('updateData');
 			},
 			setCountdown(date) {

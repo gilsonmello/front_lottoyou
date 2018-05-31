@@ -102023,6 +102023,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -102049,7 +102053,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				tickets: []
 			},
 			ticket: null,
-			chooseGoldBall: false
+			chooseGoldBall: false,
+			quantityEmpty: 0
 		};
 	},
 	methods: {
@@ -102182,7 +102187,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		});
 
 		this.$eventBus.$on('chooseGoldBall', function (chooseGoldBall) {
-			_this4.chooseGoldBall = !chooseGoldBall;
+			_this4.chooseGoldBall = chooseGoldBall;
+		});
+
+		this.$eventBus.$on('quantityEmpty', function (quantityEmpty) {
+			_this4.quantityEmpty = quantityEmpty;
 		});
 	},
 	beforeDestroy: function beforeDestroy() {
@@ -102191,6 +102200,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		this.$eventBus.$off('closeModal');
 		this.$eventBus.$off('validatePurchase');
 		this.$eventBus.$off('chooseGoldBall');
+		this.$eventBus.$off('quantityEmpty');
 	},
 
 	components: {
@@ -103194,7 +103204,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			seconds: '',
 			valid: true,
 			empty: true,
-			allSelected: true
+			allSelected: true,
+			quantityEmpty: 0
 		};
 	},
 	methods: {
@@ -103222,6 +103233,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 			this.allSelected = true;
 
+			this.quantityEmpty = 0;
+
 			//Verificando se encontrou algum dado vazio na rodada, se estiver, complete passa a ser falso, ou seja,
 			//Não foi concluído o preenchimento na rodada
 			this.ticket.games_left.filter(function (val) {
@@ -103229,6 +103242,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				if (val.result_out_club === '' || val.result_out_club === null || val.result_house_club === '' || val.result_house_club === null) {
 					complete = false;
 					_this.allSelected = false;
+					_this.quantityEmpty++;
 				}
 
 				//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
@@ -103244,6 +103258,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				if (val.result_out_club === '' || val.result_out_club === null || val.result_house_club === '' || val.result_house_club === null) {
 					complete = false;
 					_this.allSelected = false;
+					_this.quantityEmpty++;
 				}
 
 				//Se encontrou algum diferente de vazio, é porque a rodada não encontra-se completamente vazia
@@ -103294,7 +103309,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				$(this.$el).addClass('incomplete');
 				$(this.$el).removeClass('complete');
 			}
-
+			this.$eventBus.$emit('quantityEmpty', this.quantityEmpty);
+			this.$eventBus.$emit('chooseGoldBall', this.ticket.choseGoldBall);
 			this.$eventBus.$emit('updateData');
 		},
 		setCountdown: function setCountdown(date) {
@@ -104639,16 +104655,44 @@ var render = function() {
                             "col-lg-8 col-md-6 col-12 col-sm-6 no-padding"
                         },
                         [
-                          _vm.chooseGoldBall
-                            ? _c("p", { staticClass: "alert alert-danger" }, [
-                                _vm._v("\n                    \t\t\tMarque a "),
-                                _c("img", {
-                                  staticClass: "img-fluid gold-ball",
-                                  attrs: { src: "/img/gold_ball.png" }
-                                }),
-                                _vm._v(
-                                  "(Bola Lottoyou) e ganhe 25% a mais da pontuação do jogo escolhido\n                    \t\t"
-                                )
+                          _vm.quantityEmpty > 0 || !_vm.chooseGoldBall
+                            ? _c("div", { staticClass: "alert alert-danger" }, [
+                                _vm.quantityEmpty > 0
+                                  ? _c(
+                                      "span",
+                                      { staticStyle: { display: "block" } },
+                                      [
+                                        _vm._v(
+                                          "\n\t                    \t\t\t" +
+                                            _vm._s(
+                                              _vm.trans("strings.left_filling")
+                                            ) +
+                                            " " +
+                                            _vm._s(_vm.quantityEmpty) +
+                                            " " +
+                                            _vm._s(
+                                              _vm.quantityEmpty > 1
+                                                ? _vm.trans("strings.games")
+                                                : _vm.trans("strings.game")
+                                            ) +
+                                            "\n\t                    \t\t"
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                !_vm.chooseGoldBall
+                                  ? _c("span", [
+                                      _vm._v("Marque a "),
+                                      _c("img", {
+                                        staticClass: "img-fluid gold-ball",
+                                        attrs: { src: "/img/gold_ball.png" }
+                                      }),
+                                      _vm._v(
+                                        "(Bola Lottoyou) e ganhe 25% a mais da pontuação do jogo escolhido"
+                                      )
+                                    ])
+                                  : _vm._e()
                               ])
                             : _vm._e()
                         ]

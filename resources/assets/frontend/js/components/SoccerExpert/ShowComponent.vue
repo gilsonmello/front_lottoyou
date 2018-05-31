@@ -99,9 +99,13 @@
                     <!-- Modal footer -->
                     <div class="modal-footer">
                     	<div class="col-lg-8 col-md-6 col-12 col-sm-6 no-padding">
-                    		<p v-if="chooseGoldBall" class="alert alert-danger">
-                    			Marque a <img src="/img/gold_ball.png" class="img-fluid gold-ball">(Bola Lottoyou) e ganhe 25% a mais da pontuação do jogo escolhido
-                    		</p>
+                    		
+                    		<div class="alert alert-danger" v-if="quantityEmpty > 0 || !chooseGoldBall">
+                    			<span v-if="quantityEmpty > 0" style="display: block;">
+	                    			{{ trans('strings.left_filling') }} {{ quantityEmpty }} {{ quantityEmpty > 1 ? trans('strings.games') : trans('strings.game') }}
+	                    		</span>
+                    			<span v-if="!chooseGoldBall">Marque a <img src="/img/gold_ball.png" class="img-fluid gold-ball">(Bola Lottoyou) e ganhe 25% a mais da pontuação do jogo escolhido</span>
+                    		</div>
                     	</div>
 
                     	<div class="col-lg-4 col-md-6 col-12 col-sm-6 no-padding">
@@ -155,7 +159,8 @@
 					tickets: []
 				},
 				ticket: null,
-				chooseGoldBall: false
+				chooseGoldBall: false,
+				quantityEmpty: 0
         	}
         },
         methods: {
@@ -285,7 +290,11 @@
     		});
 
     		this.$eventBus.$on('chooseGoldBall', (chooseGoldBall) => {
-    			this.chooseGoldBall = !chooseGoldBall;
+    			this.chooseGoldBall = chooseGoldBall;
+    		});
+
+    		this.$eventBus.$on('quantityEmpty', (quantityEmpty) => {
+    			this.quantityEmpty = quantityEmpty;
     		});
 
     	},
@@ -295,6 +304,7 @@
             this.$eventBus.$off('closeModal');
             this.$eventBus.$off('validatePurchase');
             this.$eventBus.$off('chooseGoldBall');
+            this.$eventBus.$off('quantityEmpty');
         },
     	components: {
 			LoadComponent,
