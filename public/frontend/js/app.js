@@ -95293,7 +95293,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -95332,37 +95331,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				clearInterval(interval);
 				$(_this.$el).find('.' + _this.item.id).on('show.bs.collapse', function (event) {
 
-					var sweepstakeRequest = axios.create();
-
-					sweepstakeRequest.interceptors.request.use(function (config) {
-						_this.loading.sweepstake = true;
-						return config;
-					});
-
-					var url = __WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].lotteries.sweepstake.replace('{sweepstake_id}', _this.item.data.sweepstake.id);
-
-					sweepstakeRequest.get(url, {}, {}).then(function (response) {
-						if (response.status === 200) {
-							_this.result = response.data;
-							_this.loading.sweepstake = false;
-						}
-					}).catch(function (error) {});
+					/*const sweepstakeRequest = axios.create();
+     sweepstakeRequest.interceptors.request.use(config => {
+     this.loading.sweepstake = true;
+         	return config;
+     });
+     let url = routes.lotteries.sweepstake.replace('{sweepstake_id}', this.item.data.sweepstake.id);
+     sweepstakeRequest.get(url, {}, {}).then(response => {
+     if(response.status === 200) {
+     this.result = response.data;
+     this.loading.sweepstake = false;
+     }
+     }).catch((error) => {
+     						});*/
 				});
 
 				$(_this.$el).find('.' + _this.item.id).on('hide.bs.collapse', function (event) {});
 			}
 		}, 1000);
 
-		for (var i = 1; i <= this.item.data.lottery.dezena; i++) {
+		for (var i = 1; i <= this.item.lottery.dezena; i++) {
 			this.dickers.push(i);
 		}
-		for (var i = 1; i <= this.item.data.lottery.dezena_sel; i++) {
+		for (var i = 1; i <= this.item.lottery.dezena_sel; i++) {
 			this.dickersMaxSel.push(i);
 		}
-		for (var i = 1; i <= this.item.data.lottery.dezena_extra; i++) {
+		for (var i = 1; i <= this.item.lottery.dezena_extra; i++) {
 			this.dickersExtras.push(i);
 		}
-		for (var i = 1; i <= this.item.data.lottery.dezena_extra_sel; i++) {
+		for (var i = 1; i <= this.item.lottery.dezena_extra_sel; i++) {
 			this.dickersExtrasSelect.push(i);
 		}
 		var date = this.formatDate(this.item.data.sweepstake.data_fim);
@@ -95667,16 +95664,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	methods: {
 		verifyNumberSelected: function verifyNumberSelected() {
 			//
+
 			for (var i = 0; i < this.ticket.numbers.length; i++) {
-				if (this.result.result.numbers[i]) {
-					if (this.ticket.numbers[i] == this.result.result.numbers[i].numero) {
-						return 'btn btn-xs btn-hit';
-					}
-				} else {
-					if (this.dicker == this.ticket.numbers[i]) {
-						return 'btn btn-xs btn-default-color btn-checked';
-						//continue;
-					}
+				if (this.dicker == this.ticket.numbers[i].numero && this.ticket.numbers[i].acerto == 1) {
+					return 'btn btn-xs btn-success';
+					//continue;
+				}
+
+				if (this.dicker == this.ticket.numbers[i].numero) {
+					return 'btn btn-xs btn-default-color btn-checked';
 				}
 			}
 			return 'btn btn-xs btn-default-color';
@@ -95979,23 +95975,21 @@ var render = function() {
                 staticClass: "row no-margin",
                 staticStyle: { display: "flex !important" }
               },
-              _vm._l(_vm.item.data.tickets, function(ticket, idx) {
-                return !_vm.loading.sweepstake
-                  ? _c("vc-ticket", {
-                      key: idx,
-                      attrs: {
-                        tickets: _vm.item.data.tickets,
-                        result: _vm.result,
-                        dickers: _vm.dickers,
-                        dickersMaxSel: _vm.dickersMaxSel,
-                        dickersExtras: _vm.dickersExtras,
-                        item: _vm.item,
-                        dickersExtrasSelect: _vm.dickersExtrasSelect,
-                        ticket: ticket,
-                        index: idx
-                      }
-                    })
-                  : _vm._e()
+              _vm._l(_vm.item.lottery_game, function(ticket, idx) {
+                return _c("vc-ticket", {
+                  key: idx,
+                  attrs: {
+                    tickets: _vm.item.data.tickets,
+                    result: _vm.result,
+                    dickers: _vm.dickers,
+                    dickersMaxSel: _vm.dickersMaxSel,
+                    dickersExtras: _vm.dickersExtras,
+                    item: _vm.item,
+                    dickersExtrasSelect: _vm.dickersExtrasSelect,
+                    ticket: ticket,
+                    index: idx
+                  }
+                })
               })
             ),
         _vm._v(" "),

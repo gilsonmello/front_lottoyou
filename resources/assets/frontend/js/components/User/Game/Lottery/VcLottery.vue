@@ -20,8 +20,7 @@
 			<load-component v-if="loading.sweepstake"></load-component>	
 			<div class="row no-margin" style="display: flex !important;" v-else>
 				
-				<vc-ticket v-if="!loading.sweepstake " v-for="(ticket, idx) in item.data.tickets" :tickets="item.data.tickets" :result="result" :dickers="dickers" :dickersMaxSel="dickersMaxSel" :dickersExtras="dickersExtras" :item="item" :dickersExtrasSelect="dickersExtrasSelect" :ticket="ticket" :index="idx" :key="idx"></vc-ticket>
-				
+				<vc-ticket v-for="(ticket, idx) in item.lottery_game" :tickets="item.data.tickets" :result="result" :dickers="dickers" :dickersMaxSel="dickersMaxSel" :dickersExtras="dickersExtras" :item="item" :dickersExtrasSelect="dickersExtrasSelect" :ticket="ticket" :index="idx" :key="idx"></vc-ticket>
 			</div>
 
 			<div class="row no-margin text-left">
@@ -84,7 +83,7 @@
 					clearInterval(interval);
 					$(this.$el).find('.'+this.item.id).on('show.bs.collapse', (event) => {
 
-					  	const sweepstakeRequest = axios.create();
+					  	/*const sweepstakeRequest = axios.create();
 
 						sweepstakeRequest.interceptors.request.use(config => {
 							this.loading.sweepstake = true;
@@ -100,7 +99,7 @@
 							}
 						}).catch((error) => {
 							
-						});
+						});*/
 					});
 
 					$(this.$el).find('.'+this.item.id).on('hide.bs.collapse', (event) => {
@@ -109,16 +108,16 @@
 				}
 			}, 1000);
 
-		 	for (var i = 1; i <= this.item.data.lottery.dezena; i++) {
+		 	for (var i = 1; i <= this.item.lottery.dezena; i++) {
             	this.dickers.push(i);
             }
-            for (var i = 1; i <= this.item.data.lottery.dezena_sel; i++) {
+            for (var i = 1; i <= this.item.lottery.dezena_sel; i++) {
             	this.dickersMaxSel.push(i);
             }
-            for (var i = 1; i <= this.item.data.lottery.dezena_extra; i++) {
+            for (var i = 1; i <= this.item.lottery.dezena_extra; i++) {
             	this.dickersExtras.push(i);
             }
-            for (var i = 1; i <= this.item.data.lottery.dezena_extra_sel; i++) {
+            for (var i = 1; i <= this.item.lottery.dezena_extra_sel; i++) {
             	this.dickersExtrasSelect.push(i);
             }
             var date = this.formatDate(this.item.data.sweepstake.data_fim);				

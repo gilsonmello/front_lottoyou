@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Model\Frontend\Lottery;
 use App\Model\Frontend\LotteryUserNumber;
+use App\Model\Frontend\LotteryUserNumberExtra;
 use App\Model\Frontend\LotterySweepstake;
 use App\User;
 
@@ -62,7 +63,12 @@ class LotteryUser extends Model
 
     public function numbers() 
     {
-        return $this->belongsTo(LotteryUserNumber::class, 'lot_users_jogo_id');
+        return $this->hasMany(LotteryUserNumber::class, 'lot_users_jogo_id');
+    }
+
+    public function numbersExtras() 
+    {
+        return $this->hasMany(LotteryUserNumberExtra::class, 'lot_users_jogo_id');
     }
 
 }

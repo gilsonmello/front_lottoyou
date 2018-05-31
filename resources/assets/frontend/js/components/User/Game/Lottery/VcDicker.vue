@@ -21,18 +21,17 @@
 		methods: {
 			verifyNumberSelected() {
 				//
+				
 				for(var i = 0; i < this.ticket.numbers.length; i++) {
-					if(this.result.result.numbers[i]) {
-						if(this.ticket.numbers[i] == this.result.result.numbers[i].numero) {
-							return 'btn btn-xs btn-hit';
-						}
-					} else {
-						if(this.dicker == this.ticket.numbers[i]) {
-							return 'btn btn-xs btn-default-color btn-checked';
-							//continue;
-						}
+					if(this.dicker == this.ticket.numbers[i].numero && this.ticket.numbers[i].acerto == 1) {
+						return 'btn btn-xs btn-success';
+						//continue;
 					}
-				}		
+
+					if(this.dicker == this.ticket.numbers[i].numero) {
+						return 'btn btn-xs btn-default-color btn-checked';
+					}
+				}	
 				return 'btn btn-xs btn-default-color';		
 			}
 		}

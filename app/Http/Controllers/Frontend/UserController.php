@@ -35,7 +35,16 @@ class UserController extends Controller
             },
             'soccerExpert',
             'scratchCard',
-            'lottery'
+            'lottery',
+            'lotteryGame' => function($query) {
+
+            },
+            'lotteryGame.numbers' => function($query) {
+                
+            },
+            'lotteryGame.numbersExtras' => function($query) {
+                
+            }
         ])
         ->whereHas('order', function($query) use($id, $request) {
             $query->where('user_id', '=', $id);
