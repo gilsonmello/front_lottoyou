@@ -10,6 +10,26 @@ use DB;
 
 class LotteryController extends Controller
 {
+
+    public function sweepstake($id) 
+    {
+        $sweepstake = LotterySweepstake::where('id', '=', $id)
+            ->with([
+                'result',
+                'result.numbers',
+                'result.numbersExtras'
+            ])
+            ->get()
+            ->first();
+
+        if(is_null($sweepstake)) {
+            return response()->json([
+                'msg' => ''
+            ], 422);
+        }
+        return response()->json($sweepstake, 200);
+    }
+
     public function sweepstakes($id) 
     {
         $sweepstakes = LotterySweepstake::where('lot_categoria_id', '=', $id)

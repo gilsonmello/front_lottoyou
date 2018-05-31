@@ -5081,7 +5081,9 @@ var routes = {
 		show: host + '/lotteries/{id}',
 		results: host + '/lotteries/results/{id}',
 		find: host + '/lotteries/find/{id}',
-		sweepstakes: host + '/lotteries/sweepstakes/{id}'
+		sweepstakes: host + '/lotteries/sweepstakes/{id}',
+		sweepstake: host + '/lotteries/sweepstake/{sweepstake_id}'
+
 	},
 	carts: {
 		store: host + '/carts',
@@ -95238,8 +95240,11 @@ exports.push([module.i, "\n.container-tickets[data-v-6531f391] {\n\tcursor: poin
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VcTicket__ = __webpack_require__(345);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VcTicket___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__VcTicket__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_routes__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__VcTicket__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__VcTicket___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__VcTicket__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Load__);
 //
 //
 //
@@ -95289,6 +95294,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -95299,8 +95306,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			dickersMaxSel: [],
 			dickersExtras: [],
 			dickersExtrasSelect: [],
+			result: {
+				result: {
+					numbers: [],
+					numbers_extras: []
+				}
+			},
 			loading: {
-				game: false
+				game: false,
+				sweepstake: false
 			},
 			next_lottery: {
 				days: '',
@@ -95312,6 +95326,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	mounted: function mounted() {
 		var _this = this;
+
+		var interval = setInterval(function () {
+			if ($(_this.$el).find('.' + _this.item.id).length > 0) {
+				clearInterval(interval);
+				$(_this.$el).find('.' + _this.item.id).on('show.bs.collapse', function (event) {
+
+					var sweepstakeRequest = axios.create();
+
+					sweepstakeRequest.interceptors.request.use(function (config) {
+						_this.loading.sweepstake = true;
+						return config;
+					});
+
+					var url = __WEBPACK_IMPORTED_MODULE_0__api_routes__["a" /* routes */].lotteries.sweepstake.replace('{sweepstake_id}', _this.item.data.sweepstake.id);
+
+					sweepstakeRequest.get(url, {}, {}).then(function (response) {
+						if (response.status === 200) {
+							_this.result = response.data;
+							_this.loading.sweepstake = false;
+						}
+					}).catch(function (error) {});
+				});
+
+				$(_this.$el).find('.' + _this.item.id).on('hide.bs.collapse', function (event) {});
+			}
+		}, 1000);
 
 		for (var i = 1; i <= this.item.data.lottery.dezena; i++) {
 			this.dickers.push(i);
@@ -95351,7 +95391,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	components: {
-		VcTicket: __WEBPACK_IMPORTED_MODULE_0__VcTicket___default.a
+		VcTicket: __WEBPACK_IMPORTED_MODULE_1__VcTicket___default.a,
+		LoadComponent: __WEBPACK_IMPORTED_MODULE_2__Load___default.a
 	}
 });
 
@@ -95506,7 +95547,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	mounted: function mounted() {},
 
-	props: ['index', 'ticket', 'tickets', 'item', 'dickers', 'dickersMaxSel', 'dickersExtras', 'dickersExtrasSelect'],
+	props: ['index', 'ticket', 'tickets', 'item', 'dickers', 'dickersMaxSel', 'dickersExtras', 'dickersExtrasSelect', 'result'],
 	methods: {
 		wow: function wow(bet) {
 			return bet.complete && bet.completeExtras ? 'complete' : '';
@@ -95601,7 +95642,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.btn-xs[data-v-6b4c8afc] {\n        margin: 2px;\n        width: 28px;\n        height: 28px;\n        font-size: 12px;\n        \n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n", ""]);
+exports.push([module.i, "\n.btn-hit[data-v-6b4c8afc] {\n\t\tbackgroud-color: green;\n}\n.btn-xs[data-v-6b4c8afc] {\n        margin: 2px;\n        width: 28px;\n        height: 28px;\n        font-size: 12px;\n        \n        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);\n        -webkit-transition: -webkit-box-shadow 0.15s ease-out;\n        transition: -webkit-box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out;\n        transition: box-shadow 0.15s ease-out, -webkit-box-shadow 0.15s ease-out;\n        padding: 0;\n}\n", ""]);
 
 // exports
 
@@ -95620,16 +95661,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['index', 'dicker', 'item', 'tickets', 'ticket', 'dickersMaxSel'],
+	props: ['index', 'dicker', 'item', 'tickets', 'ticket', 'dickersMaxSel', 'result'],
 	mounted: function mounted() {},
 
 	methods: {
 		verifyNumberSelected: function verifyNumberSelected() {
 			//
 			for (var i = 0; i < this.ticket.numbers.length; i++) {
-				if (this.dicker == this.ticket.numbers[i]) {
-					return 'btn btn-xs btn-default-color btn-checked';
-					//continue;
+				if (this.result.result.numbers[i]) {
+					if (this.ticket.numbers[i] == this.result.result.numbers[i].numero) {
+						return 'btn btn-xs btn-hit';
+					}
+				} else {
+					if (this.dicker == this.ticket.numbers[i]) {
+						return 'btn btn-xs btn-default-color btn-checked';
+						//continue;
+					}
 				}
 			}
 			return 'btn btn-xs btn-default-color';
@@ -95764,7 +95811,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['index', 'dicker', 'item', 'tickets', 'ticket', 'dickersExtrasSelect'],
+	props: ['index', 'dicker', 'item', 'tickets', 'ticket', 'dickersExtrasSelect', 'result'],
 	mounted: function mounted() {},
 
 	methods: {
@@ -95826,6 +95873,7 @@ var render = function() {
             return _c("vc-dicker", {
               key: index,
               attrs: {
+                result: _vm.result,
                 ticket: _vm.ticket,
                 tickets: _vm.tickets,
                 item: _vm.item,
@@ -95844,6 +95892,7 @@ var render = function() {
             return _c("vc-dicker-extra", {
               key: index,
               attrs: {
+                result: _vm.result,
                 ticket: _vm.ticket,
                 tickets: _vm.tickets,
                 item: _vm.item,
@@ -95922,7 +95971,7 @@ var render = function() {
       [
         _c("br"),
         _vm._v(" "),
-        _vm.loading.game
+        _vm.loading.sweepstake
           ? _c("load-component")
           : _c(
               "div",
@@ -95931,19 +95980,22 @@ var render = function() {
                 staticStyle: { display: "flex !important" }
               },
               _vm._l(_vm.item.data.tickets, function(ticket, idx) {
-                return _c("vc-ticket", {
-                  key: idx,
-                  attrs: {
-                    tickets: _vm.item.data.tickets,
-                    dickers: _vm.dickers,
-                    dickersMaxSel: _vm.dickersMaxSel,
-                    dickersExtras: _vm.dickersExtras,
-                    item: _vm.item,
-                    dickersExtrasSelect: _vm.dickersExtrasSelect,
-                    ticket: ticket,
-                    index: idx
-                  }
-                })
+                return !_vm.loading.sweepstake
+                  ? _c("vc-ticket", {
+                      key: idx,
+                      attrs: {
+                        tickets: _vm.item.data.tickets,
+                        result: _vm.result,
+                        dickers: _vm.dickers,
+                        dickersMaxSel: _vm.dickersMaxSel,
+                        dickersExtras: _vm.dickersExtras,
+                        item: _vm.item,
+                        dickersExtrasSelect: _vm.dickersExtrasSelect,
+                        ticket: ticket,
+                        index: idx
+                      }
+                    })
+                  : _vm._e()
               })
             ),
         _vm._v(" "),
@@ -125807,7 +125859,9 @@ var render = function() {
                                             [
                                               _vm._v(
                                                 _vm._s(
-                                                  _vm.trans("strings.account")
+                                                  _vm.trans(
+                                                    "strings.my_account"
+                                                  )
                                                 )
                                               )
                                             ]
@@ -125913,7 +125967,7 @@ var render = function() {
                                                           "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t\t" +
                                                             _vm._s(
                                                               _vm.trans(
-                                                                "strings.account"
+                                                                "strings.my_account"
                                                               )
                                                             ) +
                                                             "\n\t\t\t\t\t\t\t  \t\t\t\t\t\t\t\t"
@@ -126551,6 +126605,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -126576,7 +126637,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		});
 
 		window.googleTranslateElementInit = function () {
-			new google.translate.TranslateElement({ pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+			new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
 
 			setInterval(function () {
 				if ($('.skiptranslate iframe').length > 0 && $('.skiptranslate iframe').parent().is(':visible')) {
@@ -126642,21 +126703,15 @@ var render = function() {
       [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-4 col-md-6 col-12 col-sm-6" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-4 col-md-4 col-12 col-sm-4" }, [
               _c("h3", { staticClass: "page-header" }, [
-                _vm._v(
-                  "\n\t                    Informações\n\t                "
-                )
+                _vm._v("\n\t                     \n\t                ")
               ]),
               _vm._v(" "),
               _c("ul", { staticClass: "list-group" }, [
-                _vm._m(1),
-                _vm._v(" "),
                 _vm._m(2),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _vm._m(4),
                 _vm._v(" "),
                 _vm.auth
                   ? _c(
@@ -126680,11 +126735,11 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm._m(5)
+                _vm._m(3)
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-6 col-12 col-sm-6" }, [
+            _c("div", { staticClass: "col-lg-4 col-md-4 col-12 col-sm-4" }, [
               _c("h3", { staticClass: "page-header" }, [
                 _vm._v("\n\t                    Idioma\n\t                ")
               ]),
@@ -126753,7 +126808,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(6)
+                _vm._m(4)
               ])
             ])
           ])
@@ -126763,7 +126818,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(7)
+    _vm._m(5)
   ])
 }
 var staticRenderFns = [
@@ -126852,35 +126907,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-        _vm._v(
-          "\n\t                            Ajuda\n\t                        "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-        _vm._v(
-          "\n\t                            Proteção do Jogador\n\t                        "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "list-group-item" }, [
-      _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
-        _vm._v(
-          "\n\t                            Privacidade\n\t                        "
-        )
+    return _c("div", { staticClass: "col-lg-4 col-md-4 col-12 col-sm-4" }, [
+      _c("h3", { staticClass: "page-header" }, [
+        _vm._v("\n\t                    Informações\n\t                ")
+      ]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "list-group" }, [
+        _c("li", { staticClass: "list-group-item" }, [
+          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
+            _vm._v(
+              "\n\t                            Ajuda\n\t                        "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "list-group-item" }, [
+          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
+            _vm._v(
+              "\n\t                            Proteção do Jogador\n\t                        "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "list-group-item" }, [
+          _c("a", { staticClass: "color-blue", attrs: { href: "#" } }, [
+            _vm._v(
+              "\n\t                            Privacidade\n\t                        "
+            )
+          ])
+        ])
       ])
     ])
   },

@@ -50,7 +50,7 @@
 		<div class="container-fluid footer-plataform-container" style="border-bottom: 1px solid #d9deda">
 			<div class="container">
 			    <div class="row">
-		            <div class="col-lg-4 col-md-6 col-12 col-sm-6">
+		            <div class="col-lg-4 col-md-4 col-12 col-sm-4">
 		                <h3 class="page-header">
 		                    Informações
 		                </h3>
@@ -70,6 +70,13 @@
 		                            Privacidade
 		                        </a>
 		                    </li>
+		                </ul>               
+		            </div>
+		            <div class="col-lg-4 col-md-4 col-12 col-sm-4">
+		                <h3 class="page-header">
+		                    &nbsp;
+		                </h3>
+		                <ul class="list-group">
 		                    <li class="list-group-item">
 		                        <a href="#" class="color-blue">
 		                            Termos e Condições
@@ -87,7 +94,7 @@
 		                    </li>
 		                </ul>               
 		            </div>
-		            <div class="col-lg-4 col-md-6 col-12 col-sm-6">
+		            <div class="col-lg-4 col-md-4 col-12 col-sm-4">
 		                <h3 class="page-header">
 		                    Idioma
 		                </h3>
@@ -239,8 +246,8 @@
 			});
 
 			window.googleTranslateElementInit = function() {
-              	new google.translate.TranslateElement({pageLanguage: 'pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-              	
+			  	new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+
               	setInterval(() => {
               		if($('.skiptranslate iframe').length > 0 && $('.skiptranslate iframe').parent().is(':visible')) {
               			$('body').css({

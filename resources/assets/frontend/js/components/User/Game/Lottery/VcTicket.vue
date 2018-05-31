@@ -16,11 +16,11 @@
 				</div>
 			</div> -->
 			<div class="tickets-content">
-				<vc-dicker v-for="(dicker, index) in dickers" :ticket="ticket" :tickets="tickets" :item="item" :index="index" :key="index" :dicker="dicker" :dickersMaxSel="dickersMaxSel">					
+				<vc-dicker v-for="(dicker, index) in dickers" :result="result" :ticket="ticket" :tickets="tickets" :item="item" :index="index" :key="index" :dicker="dicker" :dickersMaxSel="dickersMaxSel">					
 				</vc-dicker>
 			</div>
 			<div class="tickets-extras">
-				<vc-dicker-extra v-for="(dicker, index) in dickersExtras" :ticket="ticket" :tickets="tickets" :item="item" :index="index" :key="index" :dicker="dicker" :dickersExtrasSelect="dickersExtrasSelect">					
+				<vc-dicker-extra v-for="(dicker, index) in dickersExtras" :result="result" :ticket="ticket" :tickets="tickets" :item="item" :index="index" :key="index" :dicker="dicker" :dickersExtrasSelect="dickersExtrasSelect">					
 				</vc-dicker-extra>
 			</div>
 			<!-- <div class="tickets-footer">
@@ -57,7 +57,8 @@
 			'dickers',
 			'dickersMaxSel',
 			'dickersExtras',
-			'dickersExtrasSelect'
+			'dickersExtrasSelect',
+			'result'
 		],
 		methods: {
 			wow(bet) {

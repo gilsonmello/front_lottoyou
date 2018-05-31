@@ -81,7 +81,7 @@
 						  					</div>
 						  					<div class="row">
 						  						<div class="col-lg-12 no-padding">
-						  							<span class="account">{{ trans('strings.account') }}</span>
+						  							<span class="account">{{ trans('strings.my_account') }}</span>
 						  						</div>
 						  					</div>
 						  				</div>
@@ -111,7 +111,7 @@
 						  								</div>
 						  								<div class="col-lg-10 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'users.account' }" class="">
-							  									{{ trans('strings.account') }}
+							  									{{ trans('strings.my_account') }}
 							  								</router-link>
 						  								</div>
 						  							</div>

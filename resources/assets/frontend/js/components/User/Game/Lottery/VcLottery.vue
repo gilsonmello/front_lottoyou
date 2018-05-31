@@ -17,10 +17,10 @@
 
         <div :class="'collapse '+item.id">
         	<br>
-			<load-component v-if="loading.game"></load-component>	
+			<load-component v-if="loading.sweepstake"></load-component>	
 			<div class="row no-margin" style="display: flex !important;" v-else>
 				
-				<vc-ticket v-for="(ticket, idx) in item.data.tickets" :tickets="item.data.tickets" :dickers="dickers" :dickersMaxSel="dickersMaxSel" :dickersExtras="dickersExtras" :item="item" :dickersExtrasSelect="dickersExtrasSelect" :ticket="ticket" :index="idx" :key="idx"></vc-ticket>
+				<vc-ticket v-if="!loading.sweepstake " v-for="(ticket, idx) in item.data.tickets" :tickets="item.data.tickets" :result="result" :dickers="dickers" :dickersMaxSel="dickersMaxSel" :dickersExtras="dickersExtras" :item="item" :dickersExtrasSelect="dickersExtrasSelect" :ticket="ticket" :index="idx" :key="idx"></vc-ticket>
 				
 			</div>
 
@@ -48,7 +48,9 @@
 </template>
 
 <script>
+	import {routes} from '../../../../api_routes'
 	import VcTicket from './VcTicket'
+	import LoadComponent from '../../../Load'
 	export default {
 		props: ['item', 'id', 'index'],
 		data: function() {
@@ -57,8 +59,15 @@
 				dickersMaxSel: [],
 				dickersExtras: [],
 				dickersExtrasSelect: [],
+				result: {
+					result: {
+						numbers: [],
+						numbers_extras: []
+					}
+				},
 				loading: {
-					game: false
+					game: false,
+					sweepstake: false
 				},
 				next_lottery: {
 					days: '',
@@ -70,6 +79,36 @@
 		},
 		mounted() {
 			
+			var interval = setInterval(() => {
+				if($(this.$el).find('.'+this.item.id).length > 0) {
+					clearInterval(interval);
+					$(this.$el).find('.'+this.item.id).on('show.bs.collapse', (event) => {
+
+					  	const sweepstakeRequest = axios.create();
+
+						sweepstakeRequest.interceptors.request.use(config => {
+							this.loading.sweepstake = true;
+				        	return config;
+						});
+
+						let url = routes.lotteries.sweepstake.replace('{sweepstake_id}', this.item.data.sweepstake.id);
+
+						sweepstakeRequest.get(url, {}, {}).then(response => {
+							if(response.status === 200) {
+								this.result = response.data;
+								this.loading.sweepstake = false;
+							}
+						}).catch((error) => {
+							
+						});
+					});
+
+					$(this.$el).find('.'+this.item.id).on('hide.bs.collapse', (event) => {
+						
+					})
+				}
+			}, 1000);
+
 		 	for (var i = 1; i <= this.item.data.lottery.dezena; i++) {
             	this.dickers.push(i);
             }
@@ -105,7 +144,8 @@
 			},
 		},
 		components: {
-			VcTicket
+			VcTicket,
+			LoadComponent
 		}
 	}
 </script>

@@ -12,7 +12,8 @@
 			'item',
 			'tickets',
 			'ticket',
-			'dickersMaxSel'
+			'dickersMaxSel',
+			'result'
 		],
 		mounted() {
 			
@@ -21,9 +22,15 @@
 			verifyNumberSelected() {
 				//
 				for(var i = 0; i < this.ticket.numbers.length; i++) {
-					if(this.dicker == this.ticket.numbers[i]) {
-						return 'btn btn-xs btn-default-color btn-checked';
-						//continue;
+					if(this.result.result.numbers[i]) {
+						if(this.ticket.numbers[i] == this.result.result.numbers[i].numero) {
+							return 'btn btn-xs btn-hit';
+						}
+					} else {
+						if(this.dicker == this.ticket.numbers[i]) {
+							return 'btn btn-xs btn-default-color btn-checked';
+							//continue;
+						}
 					}
 				}		
 				return 'btn btn-xs btn-default-color';		
@@ -33,6 +40,10 @@
 </script>
 
 <style scoped>
+	.btn-hit {
+		backgroud-color: green;
+	}
+
 	.btn-xs {
         margin: 2px;
         width: 28px;

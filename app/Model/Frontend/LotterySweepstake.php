@@ -67,8 +67,8 @@ class LotterySweepstake extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function results() {
-    	return $this->hasMany(LotteryResult::class, 'lot_jogo_id');
+    public function result() {
+    	return $this->hasOne(LotteryResult::class, 'lot_jogo_id');
     }
 
     public function getDataFimAttribute($date) {

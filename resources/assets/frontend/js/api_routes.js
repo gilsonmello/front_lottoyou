@@ -77,6 +77,8 @@ export const routes = {
 		results: host+'/lotteries/results/{id}',
 		find: host+'/lotteries/find/{id}',
 		sweepstakes: host+'/lotteries/sweepstakes/{id}',
+		sweepstake: host+'/lotteries/sweepstake/{sweepstake_id}',
+
 	},
 	carts: {
 		store: host + '/carts',

@@ -12,7 +12,8 @@
 			'item',
 			'tickets',
 			'ticket',
-			'dickersExtrasSelect'
+			'dickersExtrasSelect',
+			'result'
 		],
 		mounted() {
 			
