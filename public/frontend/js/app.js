@@ -104664,16 +104664,16 @@ var render = function() {
                                       [
                                         _vm._v(
                                           "\n\t                    \t\t\t" +
-                                            _vm._s(
-                                              _vm.trans("strings.left_filling")
-                                            ) +
-                                            " " +
                                             _vm._s(_vm.quantityEmpty) +
                                             " " +
                                             _vm._s(
                                               _vm.quantityEmpty > 1
-                                                ? _vm.trans("strings.games")
-                                                : _vm.trans("strings.game")
+                                                ? _vm.trans(
+                                                    "strings.remaining_games"
+                                                  )
+                                                : _vm.trans(
+                                                    "strings.remaining_game"
+                                                  )
                                             ) +
                                             "\n\t                    \t\t"
                                         )

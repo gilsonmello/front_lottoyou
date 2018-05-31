@@ -102,7 +102,7 @@
                     		
                     		<div class="alert alert-danger" v-if="quantityEmpty > 0 || !chooseGoldBall">
                     			<span v-if="quantityEmpty > 0" style="display: block;">
-	                    			{{ trans('strings.left_filling') }} {{ quantityEmpty }} {{ quantityEmpty > 1 ? trans('strings.games') : trans('strings.game') }}
+	                    			{{ quantityEmpty }} {{ quantityEmpty > 1 ? trans('strings.remaining_games') : trans('strings.remaining_game') }}
 	                    		</span>
                     			<span v-if="!chooseGoldBall">Marque a <img src="/img/gold_ball.png" class="img-fluid gold-ball">(Bola Lottoyou) e ganhe 25% a mais da pontuação do jogo escolhido</span>
                     		</div>

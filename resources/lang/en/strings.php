@@ -11,6 +11,8 @@ return [
       | found in a intuitive way.
       |
      */
+    'remaining_game' => 'Jogo restante',
+    'remaining_games' => 'Jogos restante',
     'left_filling' => 'Falta preencher',
     'my_account' => 'Minha conta',
     'connection_not_found' => 'Conexão não encontrada',
