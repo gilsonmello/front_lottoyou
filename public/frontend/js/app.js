@@ -116327,6 +116327,9 @@ exports.push([module.i, "\n.choice-payment-method-msg[data-v-38aafcdf] {\n    ba
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Load__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Load___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Load__);
+//
 //
 //
 //
@@ -116364,16 +116367,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+	components: {
+		VcLoad: __WEBPACK_IMPORTED_MODULE_0__Load___default.a
+	},
 	props: ['order_id'],
 	watch: {
 		amount: function amount(newValue, oldValue) {}
 	},
 	data: function data() {
 		return {
-			amount: '10,00',
+			amount: '',
 			loading: {
-				paying: false
+				paying: false,
+				quotation: false
 			},
 			terms: '',
 			errors: [],
@@ -116382,26 +116390,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	mounted: function mounted() {
 		this.getQuotationDolar();
-		var vm = this;
-		$("#amount").maskMoney({
-			prefix: 'R$ ',
-			allowNegative: false,
-			thousands: '.',
-			decimal: ',',
-			affixesStay: false
-		}).on("blur", function (event) {
-			var value = $(this).val();
-			vm.amount = value;
-			//value = value.replace(/\R\$\ /g, '');
-			value = value.replace(/\./g, '');
-			value = value.replace(/,/g, '.');
-			value = parseFloat(value);
-
-			if (value < 10) {
-				$(this).val('10,00');
-				vm.amount = '10,00';
-			}
-		});
 	},
 
 	methods: {
@@ -116409,18 +116397,52 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var _this = this;
 
 			var quotationDolarRequest = axios.create();
+
 			quotationDolarRequest.interceptors.request.use(function (config) {
+				_this.loading.quotation = true;
 				return config;
 			});
-			var url = "https://api.promasters.net.br/cotacao/v1/valores";
+			var url = "/quotation_dolar";
 
 			quotationDolarRequest.get(url, {}, {}).then(function (response) {
+
 				if (response.status === 200) {
-					console.log(response);
+					_this.loading.quotation = false;
 					_this.quotation = response.data;
 
-					console.log(_this.getAmount());
-					console.log(_this.quotation.valores.USD.valor);
+					var formatBr = (10 * _this.quotation.valores.USD.valor).format(2, true) + '';
+					formatBr = formatBr.replace('.', ',');
+					_this.amount = formatBr;
+
+					var vm = _this;
+
+					var time = setInterval(function () {
+						if ($("#amount").length > 0) {
+							clearInterval(time);
+
+							$("#amount").maskMoney({
+								prefix: 'R$ ',
+								allowNegative: false,
+								thousands: '.',
+								decimal: ',',
+								affixesStay: false
+							}).on("blur", function (event) {
+								var value = $(this).val();
+								vm.amount = value;
+								//value = value.replace(/\R\$\ /g, '');
+								value = value.replace(/\./g, '');
+								value = value.replace(/,/g, '.');
+								value = parseFloat(value);
+
+								if (value < 10) {
+									formatBr = (10 * vm.quotation.valores.USD.valor).format(2, true) + '';
+									formatBr = formatBr.replace('.', ',');
+									$(this).val(formatBr);
+									vm.amount = formatBr;
+								}
+							});
+						}
+					});
 				}
 			}).catch(function (error) {});
 		},
@@ -116543,171 +116565,172 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-lg-12" }, [
-      _c("h4", { staticClass: "choice-payment-method-msg" }, [
-        _vm._v("Você escolheu o Pagseguro como forma de pagamento")
-      ]),
-      _vm._v(" "),
-      _c("h5"),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          attrs: {
-            id: "sendPagseguro",
-            action:
-              "https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html",
-            method: "post"
-          },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              _vm.sendPagseguro($event)
-            }
-          }
-        },
-        [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-12 col-12 col-sm-12 col-md-12" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.amount,
-                    expression: "amount"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  required: "",
-                  id: "amount",
-                  placeholder: "Por favor, indique o valor em USD"
-                },
-                domProps: { value: _vm.amount },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.amount = $event.target.value
-                  }
+  return _vm.loading.quotation
+    ? _c("vc-load")
+    : _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("h4", { staticClass: "choice-payment-method-msg" }, [
+            _vm._v("Você escolheu o Pagseguro como forma de pagamento")
+          ]),
+          _vm._v(" "),
+          _c("h5"),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              attrs: {
+                id: "sendPagseguro",
+                action:
+                  "https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html",
+                method: "post"
+              },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  _vm.sendPagseguro($event)
                 }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-lg-12" },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.terms,
-                      expression: "terms"
-                    }
-                  ],
-                  attrs: {
-                    type: "checkbox",
-                    required: "",
-                    name: "terms",
-                    id: "terms"
-                  },
-                  domProps: {
-                    checked: Array.isArray(_vm.terms)
-                      ? _vm._i(_vm.terms, null) > -1
-                      : _vm.terms
-                  },
-                  on: {
-                    click: _vm.handleTerms,
-                    change: function($event) {
-                      var $$a = _vm.terms,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 && (_vm.terms = $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            (_vm.terms = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
-                        }
-                      } else {
-                        _vm.terms = $$c
-                      }
-                    }
-                  }
-                }),
-                _vm._v("\n\t\t\t\t\t Eu li e aceito os "),
+              }
+            },
+            [
+              _c("div", { staticClass: "row" }, [
                 _c(
-                  "router-link",
-                  { attrs: { to: { name: "terms.index" }, target: "_blank" } },
-                  [_vm._v("termos e condições")]
-                ),
-                _vm._v(" de uso deste site.                    \n\t\t\t\t")
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-12 buttons" }, [
-              _vm.loading.paying
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-md btn-primary",
-                      attrs: { type: "load" },
+                  "div",
+                  { staticClass: "col-lg-12 col-12 col-sm-12 col-md-12" },
+                  [
+                    _c("strong", [
+                      _c("label", { attrs: { for: "amount" } }, [
+                        _vm._v("* Quantia a ser depositada  \n\t\t\t\t    \t"),
+                        _c("i", {
+                          staticClass: "fa fa-info",
+                          attrs: { title: "Mínimo de $15.00" }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.amount,
+                          expression: "amount"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        required: "",
+                        id: "amount",
+                        placeholder: "Por favor, indique o valor em USD"
+                      },
+                      domProps: { value: _vm.amount },
                       on: {
-                        click: function($event) {
-                          $event.preventDefault()
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.amount = $event.target.value
                         }
                       }
-                    },
-                    [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
-                  )
-                : _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary btn-md",
-                      attrs: { type: "submit" }
-                    },
-                    [_vm._v("Efeutuar compra")]
-                  )
-            ])
-          ])
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("strong", [
-      _c("label", { attrs: { for: "amount" } }, [
-        _vm._v("* Quantia a ser depositada  \n\t\t\t\t    \t"),
-        _c("i", {
-          staticClass: "fa fa-info",
-          attrs: { title: "Mínimo de $15.00" }
-        })
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-lg-12" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.terms,
+                          expression: "terms"
+                        }
+                      ],
+                      attrs: {
+                        type: "checkbox",
+                        required: "",
+                        name: "terms",
+                        id: "terms"
+                      },
+                      domProps: {
+                        checked: Array.isArray(_vm.terms)
+                          ? _vm._i(_vm.terms, null) > -1
+                          : _vm.terms
+                      },
+                      on: {
+                        click: _vm.handleTerms,
+                        change: function($event) {
+                          var $$a = _vm.terms,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 && (_vm.terms = $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                (_vm.terms = $$a
+                                  .slice(0, $$i)
+                                  .concat($$a.slice($$i + 1)))
+                            }
+                          } else {
+                            _vm.terms = $$c
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v("\n\t\t\t\t\t Eu li e aceito os "),
+                    _c(
+                      "router-link",
+                      {
+                        attrs: { to: { name: "terms.index" }, target: "_blank" }
+                      },
+                      [_vm._v("termos e condições")]
+                    ),
+                    _vm._v(" de uso deste site.                    \n\t\t\t\t")
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-lg-12 buttons" }, [
+                  _vm.loading.paying
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-md btn-primary",
+                          attrs: { type: "load" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-refresh fa-spin" })]
+                      )
+                    : _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-md",
+                          attrs: { type: "submit" }
+                        },
+                        [_vm._v("Efeutuar compra")]
+                      )
+                ])
+              ])
+            ]
+          )
+        ])
       ])
-    ])
-  }
-]
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

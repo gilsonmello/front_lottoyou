@@ -1,5 +1,6 @@
 <template>
-	<div class="row">
+	<vc-load v-if="loading.quotation"></vc-load>
+	<div class="row" v-else>
 		<div class="col-lg-12">
 			<h4 class="choice-payment-method-msg">Você escolheu o Pagseguro como forma de pagamento</h4>
 			<h5>
@@ -35,7 +36,11 @@
 </template>
 
 <script>
+	import VcLoad from '../../Load'
 	export default {
+		components: {
+			VcLoad
+		},
 		props: ['order_id'],
 		watch: {
 			amount: function(newValue, oldValue) {
@@ -44,9 +49,10 @@
 		},
 		data() {
 			return {
-				amount: '10,00',
+				amount: '',
 				loading: {
-					paying: false
+					paying: false,
+					quotation: false,
 				},
 				terms: '',
 				errors: [],
@@ -55,43 +61,61 @@
 		},
 		mounted() {
 			this.getQuotationDolar();
-			var vm = this;
-			$("#amount").maskMoney({
-				prefix:'R$ ', 
-				allowNegative: false, 
-				thousands: '.', 
-				decimal: ',', 
-				affixesStay: false
-			}).on("blur", function(event) {
-				let value = $(this).val();
-				vm.amount = value;
-				//value = value.replace(/\R\$\ /g, '');
-				value = value.replace(/\./g, '');
-				value = value.replace(/,/g, '.');
-				value = parseFloat(value);				
-				
-				if(value < 10) {
-					$(this).val('10,00');
-					vm.amount = '10,00';
-				}
-		    });
 		},
 		methods: {
 			getQuotationDolar() {
 				const quotationDolarRequest = axios.create();
+				
 				quotationDolarRequest.interceptors.request.use(config => {
+					this.loading.quotation = true;
 		        	return config;
 				});
-				let url = "https://api.promasters.net.br/cotacao/v1/valores";
+				let url = "/quotation_dolar";
 
-				quotationDolarRequest.get(url, {}, {})
+				quotationDolarRequest.get(url, {}, {
+
+				})
 				.then((response) => {
+
 					if(response.status === 200) { 
-						console.log(response)
+						this.loading.quotation = false;
 						this.quotation = response.data;
 
-						console.log(this.getAmount())
-						console.log(this.quotation.valores.USD.valor)
+						var formatBr = (10 * this.quotation.valores.USD.valor).format(2, true) + '';
+						formatBr = formatBr.replace('.', ',');
+						this.amount = formatBr;
+						
+						var vm = this;
+
+						var time = setInterval(() => {
+							if($("#amount").length > 0) {
+								clearInterval(time);
+
+								$("#amount").maskMoney({
+									prefix:'R$ ', 
+									allowNegative: false, 
+									thousands: '.', 
+									decimal: ',', 
+									affixesStay: false
+								}).on("blur", function(event) {
+									let value = $(this).val();
+									vm.amount = value;
+									//value = value.replace(/\R\$\ /g, '');
+									value = value.replace(/\./g, '');
+									value = value.replace(/,/g, '.');
+									value = parseFloat(value);				
+									
+									if(value < 10) {
+										formatBr = (10 * vm.quotation.valores.USD.valor).format(2, true) + '';
+										formatBr = formatBr.replace('.', ',')
+										$(this).val(formatBr);
+										vm.amount = formatBr;
+									}
+							    });
+							}
+						})
+						
+						
 					}
 				}).catch((error) => {
 					
