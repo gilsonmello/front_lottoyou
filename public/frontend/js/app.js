@@ -116376,10 +116376,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				paying: false
 			},
 			terms: '',
-			errors: []
+			errors: [],
+			quotation: {}
 		};
 	},
 	mounted: function mounted() {
+		this.getQuotationDolar();
 		var vm = this;
 		$("#amount").maskMoney({
 			prefix: 'R$ ',
@@ -116403,6 +116405,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 	methods: {
+		getQuotationDolar: function getQuotationDolar() {
+			var _this = this;
+
+			var quotationDolarRequest = axios.create();
+			quotationDolarRequest.interceptors.request.use(function (config) {
+				return config;
+			});
+			var url = "https://api.promasters.net.br/cotacao/v1/valores";
+
+			quotationDolarRequest.get(url, {}, {}).then(function (response) {
+				if (response.status === 200) {
+					console.log(response);
+					_this.quotation = response.data;
+
+					console.log(_this.getAmount());
+					console.log(_this.quotation.valores.USD.valor);
+				}
+			}).catch(function (error) {});
+		},
 		handleTerms: function handleTerms() {},
 		getAmount: function getAmount() {
 			var value = $("#amount").val();
@@ -116413,7 +116434,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 
 		sendPagseguro: function sendPagseguro(event) {
-			var _this = this;
+			var _this2 = this;
 
 			var form = $(event.currentTarget);
 			if (this.validate(this.getAmount())) {
@@ -116482,7 +116503,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						form.submit();
 					}
 				}).catch(function (error) {
-					_this.loading.paying = false;
+					_this2.loading.paying = false;
 					$('[name="receiverEmail"]').remove();
 					$('[name="currency"]').remove();
 					$('[name="itemId1"]').remove();

@@ -49,10 +49,12 @@
 					paying: false
 				},
 				terms: '',
-				errors: []
+				errors: [],
+				quotation: {},
 			}
 		},
 		mounted() {
+			this.getQuotationDolar();
 			var vm = this;
 			$("#amount").maskMoney({
 				prefix:'R$ ', 
@@ -75,6 +77,26 @@
 		    });
 		},
 		methods: {
+			getQuotationDolar() {
+				const quotationDolarRequest = axios.create();
+				quotationDolarRequest.interceptors.request.use(config => {
+		        	return config;
+				});
+				let url = "https://api.promasters.net.br/cotacao/v1/valores";
+
+				quotationDolarRequest.get(url, {}, {})
+				.then((response) => {
+					if(response.status === 200) { 
+						console.log(response)
+						this.quotation = response.data;
+
+						console.log(this.getAmount())
+						console.log(this.quotation.valores.USD.valor)
+					}
+				}).catch((error) => {
+					
+				});
+			},
 			handleTerms() {
 			},
 			getAmount() {

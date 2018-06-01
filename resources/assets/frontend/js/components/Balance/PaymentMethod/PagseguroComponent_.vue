@@ -145,6 +145,7 @@
 				card_token: '',
 				sender_hash: '',
 				method: 'creditCard',
+				quotation: {},
 				query: {
 					page: 1,
 					column: 'pontuacao',
@@ -156,6 +157,22 @@
 			}
 		},
 		methods: {
+			getQuotationDolar() {
+				const paymentRequest = axios.create();
+				paymentRequest.interceptors.request.use(config => {
+		        	return config;
+				});
+				let url = "http://api.promasters.net.br/cotacao/v1/valores";
+
+				paymentRequest.get(url)
+				.then((response) => {
+					if(response.status === 200) { 
+						this.quotation = response.data;
+					}
+				}).catch((error) => {
+					
+				});
+			},
 			cardPersonal() {
 				if(!this.validateCPF(this.card_personal_id)) {
 					swal("CPF", "Por favor, informe um CPF válido", "error");
