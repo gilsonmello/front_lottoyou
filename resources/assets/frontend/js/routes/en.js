@@ -29,6 +29,12 @@ export default {
                     component: require('../components/VcPrivacy.vue')
                 },
                 {
+                    path: 'play_protection',
+                    name: 'play_protection',
+                    props: true,
+                    component: require('../components/VcPlayerProtection.vue')
+                },
+                {
 			  		path: 'how_to_play_soccer_expert',
 			        name: 'how_to_play_soccer_expert', 
 			        props: true,
