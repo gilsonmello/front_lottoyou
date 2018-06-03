@@ -4,8 +4,6 @@
 		<slider-component></slider-component>
 		<br>
 		<carousel-component></carousel-component>
-
-
 		<br>
 		<div class="container">
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
@@ -196,9 +194,11 @@
 						</h3>
 						<h4 style="text-align: justify; line-height: 1.5;">
 							<p style="margin-bottom: 6px;">O Soccer Expert (SE) é um produto do Lottoyou.bet
-							onde se organizam ligas, no qualcada participante realizará uma	aposta indicando o resultado de um conjunto de jogos de futebol dos principais campeonatos do mundo.
+							onde se organizam ligas, no qual cada participante realizará uma	aposta indicando o resultado de um conjunto de jogos de futebol dos principais campeonatos do mundo.
 							</p>
-							<p style="margin-bottom: 6px;">Escolha uma das três modalidades: Word; Special e Custom e junte-se a nós neste mundo do futebol!</p>
+							<p style="margin-bottom: 6px;">
+								Escolha uma das três modalidades: Word; Special e Custom e junte-se a nós neste mundo do futebol!
+							</p>
 						</h4>
 					</div>
 				</div>			

@@ -56,9 +56,9 @@
 		                </h3>
 		                <ul class="list-group">
 		                    <li class="list-group-item">
-		                        <a href="#" class="color-blue">
+		                        <router-link :to="{name: 'help'}" class="color-blue">
 		                            Ajuda
-		                        </a>
+		                        </router-link>
 		                    </li>
 		                    <li class="list-group-item">
 		                        <a href="#" class="color-blue">

@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'help' => 'Ajuda',
     'remaining_game' => 'Jogo restante',
     'remaining_games' => 'Jogos restante',
     'left_filling' => 'Falta preencher',

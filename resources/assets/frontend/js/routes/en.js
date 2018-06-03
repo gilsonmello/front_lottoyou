@@ -15,8 +15,14 @@ export default {
 			        name: 'create_your_league', 
 			        props: true,
 			        component: require('../components/VcCreateYourLeague.vue')
-			    }, 
-			    {   
+			    },
+                {
+                    path: 'help',
+                    name: 'help',
+                    props: true,
+                    component: require('../components/VcHelp.vue')
+                },
+                {
 			  		path: 'how_to_play_soccer_expert',
 			        name: 'how_to_play_soccer_expert', 
 			        props: true,
