@@ -66,9 +66,9 @@
 		                        </a>
 		                    </li>
 		                    <li class="list-group-item">
-		                        <a href="#" class="color-blue">
+								<router-link :to="{name: 'privacy'}" class="color-blue">
 		                            Privacidade
-		                        </a>
+								</router-link>
 		                    </li>
 		                </ul>               
 		            </div>

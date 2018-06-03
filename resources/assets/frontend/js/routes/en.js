@@ -23,16 +23,22 @@ export default {
                     component: require('../components/VcHelp.vue')
                 },
                 {
+                    path: 'privacy',
+                    name: 'privacy',
+                    props: true,
+                    component: require('../components/VcPrivacy.vue')
+                },
+                {
 			  		path: 'how_to_play_soccer_expert',
 			        name: 'how_to_play_soccer_expert', 
 			        props: true,
 			        component: require('../components/VcHowToPlaySoccerExpert.vue')
 			    },
 			    {   
-			  		path: 'how_to_play_lottery',
-			        name: 'how_to_play_lottery', 
+			  		path: 'how_to_play_easy_money',
+			        name: 'how_to_play_easy_money',
 			        props: true,
-			        component: require('../components/VcHowToPlayLottery.vue')
+			        component: require('../components/VcHowToPlayEasyMoney.vue')
 			    },
 			  	{   
 			  		path: 'login',

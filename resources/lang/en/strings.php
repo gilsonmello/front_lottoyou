@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'privacy' => 'Privacidade',
     'help' => 'Ajuda',
     'remaining_game' => 'Jogo restante',
     'remaining_games' => 'Jogos restante',
