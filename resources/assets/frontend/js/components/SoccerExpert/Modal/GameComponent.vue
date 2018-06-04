@@ -16,7 +16,7 @@
 				
 		</div>
 
-		<div class="col-lg-10">
+		<div class="col-lg-10 col-12 no-padding">
 			<div class="row no-margin vcenter">
 				<div class="col-4 col-sm-4 col-md-5 col-lg-4">
 					<!-- <label class="club">{{ game.out_club.nome }}</label> -->
@@ -207,6 +207,6 @@
 
 	.form-control {
 		display: inline-block;
-    	width: 40px;
+    	width: 30px;
 	}
 </style>
