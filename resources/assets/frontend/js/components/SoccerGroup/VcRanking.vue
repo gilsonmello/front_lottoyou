@@ -2,10 +2,20 @@
 	<vc-load v-if="loading.component == true"></vc-load>
 	<div class="container" v-else>
 
-		<h1 class="page-header" v-if="group">
-		  	<span style="display: block;">{{ group.round.category.nome }} - {{ group.round.nome }}</span>
-		  	<span>{{ trans('strings.ranking') }} - Grupo {{ group.identificacao }}</span>
-		</h1>
+		<div class="row">
+			<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+				<h1 class="page-header" v-if="group">
+					<span style="display: block;">{{ group.round.category.nome }} - {{ group.round.nome }}</span>
+					<span>{{ trans('strings.ranking') }} - Grupo {{ group.identificacao }}</span>
+				</h1>
+			</div>
+			<div class="col-lg-6 col-6 col-md-6 col-sm-6">
+				<router-link class="btn btn-md btn-back pull-right btn-primary" :to="{name: 'soccer_expert.show', params: { id: group.round.category.id }}">
+					<i class="fa fa-arrow-left"></i>
+					{{ trans('strings.back') }}
+				</router-link>
+			</div>
+		</div>
 
 
 		<form @submit.prevent="filter" class="form-filter">
@@ -253,7 +263,7 @@
 
 				this.$router.replace({
                     query: Object.assign(this.query)
-                })
+                });
 
 				let url = routes.soccer_groups.ranking.replace('{id}', this.id);
 				url += "?page="+this.query.page;
