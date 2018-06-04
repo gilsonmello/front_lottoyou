@@ -15,7 +15,7 @@
 						<div class="content-left">
 							<h2 class="text-center">
 								CRIE AGORA MESMO<br>
-								A SUA PRÓPIA LIGA!							
+								A SUA PRÓPRIA LIGA!
 							</h2>
 							<h2 class="text-center" style="margin-bottom: 6px;">
 								VOCÊ JÁ COMEÇA

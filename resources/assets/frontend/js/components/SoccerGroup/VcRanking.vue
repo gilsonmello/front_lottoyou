@@ -4,13 +4,13 @@
 
 		<div class="row">
 			<div class="col-lg-6 col-6 col-md-6 col-sm-6">
-				<h1 class="page-header" v-if="group">
-					<span style="display: block;">{{ group.round.category.nome }} - {{ group.round.nome }}</span>
+				<h1 class="page-header" v-if="group" style="margin-top: 0; border: none;">
+					<span style="display: block; ">{{ group.round.category.nome }} - {{ group.round.nome }}</span>
 					<span>{{ trans('strings.ranking') }} - Grupo {{ group.identificacao }}</span>
 				</h1>
 			</div>
 			<div class="col-lg-6 col-6 col-md-6 col-sm-6">
-				<router-link class="btn btn-md btn-back pull-right btn-primary" :to="{name: 'soccer_expert.show', params: { id: group.round.category.id }}">
+				<router-link class="btn btn-md btn-back pull-right btn-primary" :to="{name: 'soccer_expert.ranks', params: { id: group.round.category.id }}">
 					<i class="fa fa-arrow-left"></i>
 					{{ trans('strings.back') }}
 				</router-link>
