@@ -78,9 +78,9 @@
 		                </h3>
 		                <ul class="list-group">
 		                    <li class="list-group-item">
-		                        <a href="#" class="color-blue">
-		                            Termos e Condições
-		                        </a>
+								<router-link :to="{ name: 'terms'}" class="color-blue">
+		                            {{ trans('strings.terms_and_conditions') }}
+								</router-link>
 		                    </li>
 		                    <li class="list-group-item" v-if="auth">
 		                        <router-link :to="{ name: 'users.games', params: {  }}" class="color-blue">

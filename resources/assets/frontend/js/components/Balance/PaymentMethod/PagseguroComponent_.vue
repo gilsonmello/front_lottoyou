@@ -19,7 +19,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<input type="checkbox" v-model="terms" required name="terms" id="terms">
-					&nbsp;Eu li e aceito os <router-link :to="{ name: 'terms.index' }" target="_blank">termos e condições</router-link> de uso deste site.                    
+					&nbsp;Eu li e aceito os <router-link :to="{ name: 'terms' }" target="_blank">termos e condições</router-link> de uso deste site.
 				</div>
 			</div>
 

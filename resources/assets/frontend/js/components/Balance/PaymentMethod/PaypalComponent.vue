@@ -18,7 +18,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<input type="checkbox" v-model="terms" required name="terms" id="terms">
-						&nbsp;Eu li e aceito os <router-link :to="{ name: 'terms.index' }" target="_blank">termos e condições</router-link> de uso deste site.                    
+						&nbsp;Eu li e aceito os <router-link :to="{ name: 'terms' }" target="_blank">termos e condições</router-link> de uso deste site.
 					</div>
 				</div>
 				<div class="row">
@@ -65,11 +65,42 @@
 		},
 		mounted() {
 			var vm = this;
-			$("#amount").maskMoney({
-				prefix: '$ ', 
-				allowNegative: false, 
-				thousands: ',', 
-				decimal: '.', 
+
+            this.setMask();
+            $("#amount").on("blur", function(event) {
+				let value = $(this).val();
+				vm.amount = value;
+                value = value.replace(/\$\ /g, '');
+                value = value.replace(/ /g, '');
+				value = value.replace(/,/g, '');
+				value = parseFloat(value);
+				if(value < 10) {
+					$(this).val(VMasker.toMoney('10.00', {
+                        // Decimal precision -> "90"
+                        precision: 2,
+                        // Decimal separator -> ",90"
+                        separator: '.',
+                        // Number delimiter -> "12.345.678"
+                        delimiter: ',',
+                        unit: '$',
+                    }));
+					vm.amount = VMasker.toMoney('10.00', {
+                        // Decimal precision -> "90"
+                        precision: 2,
+                        // Decimal separator -> ",90"
+                        separator: '.',
+                        // Number delimiter -> "12.345.678"
+                        delimiter: ',',
+                        unit: '$',
+                    });
+                }
+		    });
+
+			/*$("#amount").maskMoney({
+				prefix: '$ ',
+				allowNegative: false,
+				thousands: ',',
+				decimal: '.',
 				affixesStay: false
 			}).on("blur", function(event) {
 				let value = $(this).val();
@@ -80,13 +111,25 @@
 					$(this).val('10.00');
 					vm.amount = '10.00';
 				}
-		    });
+		    });*/
 		},
 		methods: {
+		    setMask() {
+                VMasker(document.querySelector("#amount")).maskMoney({
+                    // Decimal precision -> "90"
+                    precision: 2,
+                    // Decimal separator -> ",90"
+                    separator: '.',
+                    // Number delimiter -> "12.345.678"
+                    delimiter: ',',
+                    unit: '$',
+                });
+            },
 			getAmount() {
 				let value = $("#amount").val();
 				this.amount = value;
 				value = value.replace(/\$\ /g, '');
+                value = value.replace(/ /g, '');
 				value = value.replace(/,/g, '');
 				return parseFloat(value).format(2, true);
 			},

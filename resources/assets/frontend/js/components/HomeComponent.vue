@@ -31,7 +31,7 @@
 						<div class="content-right">
 							<h1>
 								No <strong>Soccer Expert</strong> da <strong>Lottoyou</strong><br>
-								você pode criar a sua própia liga<br>
+								você pode criar a sua própria liga<br>
 								com <strong>qualquer time do mundo.</strong><br>
 								Convide seus amigos e descubra<br>
 								quem é o "expert" do futebol.

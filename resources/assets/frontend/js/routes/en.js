@@ -181,10 +181,9 @@ export default {
 			    },
 			    {   
 			  		path: 'terms',
-			        name: 'terms.index', 
+			        name: 'terms',
 			        props: true,
-			        meta: { requiresAuth: true },
-			        component: require('../components/Balance/DepositComponent.vue')
+			        component: require('../components/VcTerms')
 			    },
 			    {   
 			  		path: '/orders',

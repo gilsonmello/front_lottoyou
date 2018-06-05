@@ -19,7 +19,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<input type="checkbox" @click="handleTerms" v-model="terms" required name="terms" id="terms">
-						&nbsp;Eu li e aceito os <router-link :to="{ name: 'terms.index' }" target="_blank">termos e condições</router-link> de uso deste site.                    
+						&nbsp;Eu li e aceito os <router-link :to="{ name: 'terms' }" target="_blank">termos e condições</router-link> de uso deste site.
 					</div>
 				</div>
 				<div class="row">
@@ -63,6 +63,17 @@
 			this.getQuotationDolar();
 		},
 		methods: {
+            setMask() {
+                VMasker(document.querySelector("#amount")).maskMoney({
+                    // Decimal precision -> "90"
+                    precision: 2,
+                    // Decimal separator -> ",90"
+                    separator: ',',
+                    // Number delimiter -> "12.345.678"
+                    delimiter: '.',
+                    unit: 'R$',
+                });
+            },
 			getQuotationDolar() {
 				const quotationDolarRequest = axios.create();
 				
@@ -91,7 +102,39 @@
 							if($("#amount").length > 0) {
 								clearInterval(time);
 
-								$("#amount").maskMoney({
+                                this.setMask();
+                                $("#amount").on("blur", function(event) {
+                                    let value = $(this).val();
+                                    vm.amount = value;
+                                    value = value.replace(/\R\$\ /g, '');
+                                    value = value.replace(/\./g, '');
+                                    value = value.replace(/,/g, '.');
+                                    value = parseFloat(value);
+                                    if(value < 10) {
+                                        formatBr = (10 * vm.quotation.valores.USD.valor).format(2, true) + '';
+                                        formatBr = formatBr.replace('.', ',');
+                                        $(this).val(VMasker.toMoney(formatBr, {
+                                            // Decimal precision -> "90"
+                                            precision: 2,
+                                            // Decimal separator -> ",90"
+                                            separator: ',',
+                                            // Number delimiter -> "12.345.678"
+                                            delimiter: '.',
+                                            unit: 'R$',
+                                        }));
+                                        vm.amount = VMasker.toMoney(formatBr, {
+                                            // Decimal precision -> "90"
+                                            precision: 2,
+                                            // Decimal separator -> ",90"
+                                            separator: ',',
+                                            // Number delimiter -> "12.345.678"
+                                            delimiter: '.',
+                                            unit: 'R$',
+                                        });
+                                    }
+                                });
+
+								/*$("#amount").maskMoney({
 									prefix:'R$ ', 
 									allowNegative: false, 
 									thousands: '.', 
@@ -100,7 +143,7 @@
 								}).on("blur", function(event) {
 									let value = $(this).val();
 									vm.amount = value;
-									//value = value.replace(/\R\$\ /g, '');
+									value = value.replace(/\R\$\ /g, '');
 									value = value.replace(/\./g, '');
 									value = value.replace(/,/g, '.');
 									value = parseFloat(value);				
@@ -111,7 +154,7 @@
 										$(this).val(formatBr);
 										vm.amount = formatBr;
 									}
-							    });
+							    });*/
 							}
 						})
 						

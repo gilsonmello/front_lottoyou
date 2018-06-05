@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'terms_and_conditions' => 'Termos e Condições',
     'privacy' => 'Privacidade',
     'help' => 'Ajuda',
     'remaining_game' => 'Jogo restante',
