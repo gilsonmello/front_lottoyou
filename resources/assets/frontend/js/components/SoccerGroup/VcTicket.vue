@@ -2,24 +2,24 @@
 	<section class="col-lg-12 line">
 		
 		<div class="row columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(0, 0, 0, 0.05);': ''"> 	
-    		<div class="col-lg-2">
+    		<div class="col-lg-3 col-3 col-sm-3 col-md-2">
 	      		{{ ticket.posicao != null ? ticket.posicao : '-'}}
 	      	</div>
-	      	<div class="col-lg-2">
+	      	<div class="col-lg-3 col-3 col-sm-3 col-md-2">
 	      		<img v-if="ticket.owner.photo" class="photo" :src="ticket.owner.photo">
 	      		<img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" class="photo">
 	      	</div>
-	      	<div class="col-lg-2">
+	      	<div class="col-lg-3 col-3 col-sm-3 col-md-2">
 	      		{{ ticket.owner.nickname }}
 	      	</div>
-	      	<div class="col-lg-2">
+	      	<div class="col-lg-2 col-2 col-sm-2 col-md-2">
 	      		{{ ticket.pontuacao }}
 	      	</div>
         </div>
 
         <div :class="'collapse '+ticket.id">
         	<div class="row no-margin">
-        		<div class="col-lg-6 col-sm-6 col-md-6 col-12">
+        		<div class="col-lg-6 col-sm-6 col-md-6 col-12 no-padding">
         			<div class="tickets">
 						<!-- <header class="tickets-header">
 							<span>{{ ticket.round.nome }}</span>

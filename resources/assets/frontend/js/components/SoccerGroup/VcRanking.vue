@@ -2,18 +2,17 @@
 	<vc-load v-if="loading.component == true"></vc-load>
 	<div class="container" v-else>
 
+
 		<div class="row">
-			<div class="col-lg-6 col-6 col-md-6 col-sm-6">
-				<h1 class="page-header" v-if="group" style="margin-top: 0; border: none;">
-					<span style="display: block; ">{{ group.round.category.nome }} - {{ group.round.nome }}</span>
+			<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+				<h1 class="page-header" v-if="group" style="border: none;">
+					<span style="display: block;">{{ group.round.category.nome }} - {{ group.round.nome }}</span>
 					<span>{{ trans('strings.ranking') }} - Grupo {{ group.identificacao }}</span>
+					<router-link class="btn btn-md btn-back pull-right btn-primary" :to="{name: 'soccer_expert.ranks', params: { id: group.round.category.id }}">
+						<i class="fa fa-arrow-left"></i>
+						{{ trans('strings.back') }}
+					</router-link>
 				</h1>
-			</div>
-			<div class="col-lg-6 col-6 col-md-6 col-sm-6">
-				<router-link class="btn btn-md btn-back pull-right btn-primary" :to="{name: 'soccer_expert.ranks', params: { id: group.round.category.id }}">
-					<i class="fa fa-arrow-left"></i>
-					{{ trans('strings.back') }}
-				</router-link>
 			</div>
 		</div>
 
@@ -43,7 +42,7 @@
 
         <div class="table text-center">
         	<div class="row no-margin table-head">
-        		<div class="col-lg-2 table-column" @click="toggle('posicao')">
+        		<div class="col-lg-3 col-3 col-sm-3 col-md-3 table-column" @click="toggle('posicao')">
 	        		<span>
 						{{ trans('strings.positions') }}
 					</span>			    		
@@ -56,7 +55,7 @@
 			    		</span>
 		    		</span>
 	        	</div>
-	        	<div class="col-lg-2 table-column">
+	        	<div class="col-lg-3 col-3 col-sm-3 col-md-3 table-column">
 	        		<span>
 						{{ trans('strings.photo') }}
 					</span>
@@ -69,7 +68,7 @@
 			    		</span>
 		    		</span>
 	        	</div>
-	        	<div class="col-lg-2 table-column" @click="toggle('owner_id')">
+	        	<div class="col-lg-3 col-3 col-sm-3 col-md-3 table-column" @click="toggle('owner_id')">
 	        		<span>
 		      			{{ trans('strings.user') }}
 		      		</span>
@@ -82,7 +81,7 @@
 			    		</span>
 		    		</span>
 	        	</div>
-	        	<div class="col-lg-2 table-column" @click="toggle('pontuacao')">
+	        	<div class="col-lg-2 col-2 col-sm-2 col-md-2 table-column" @click="toggle('pontuacao')">
 	        		<span>
 		      			{{ trans('strings.points') }}
 		      		</span>
@@ -263,7 +262,7 @@
 
 				this.$router.replace({
                     query: Object.assign(this.query)
-                });
+                })
 
 				let url = routes.soccer_groups.ranking.replace('{id}', this.id);
 				url += "?page="+this.query.page;

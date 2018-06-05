@@ -1,15 +1,15 @@
 <template>	
 	<section class="col-lg-12 line">
 		<div class="row columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(0, 0, 0, 0.05);': ''">
-	    	<div class="col-lg-2">
-	    		{{ ticket.nome }}
-	    	</div>
-	    	<div class="col-lg-2">
-	    		$ {{ ticket.valor }}
-	    	</div>
-	    	<div class="col-lg-2">
-	    		{{ ticket.data_termino }}
-	    	</div>
+			<div class="col-lg-4 col-md-4 col-4 col-sm-4">
+				{{ ticket.nome }}
+			</div>
+			<div class="col-lg-3 col-3 col-sm-3 col-md-3">
+				$ {{ ticket.valor }}
+			</div>
+			<div class="col-lg-4 col-4 col-sm-4 col-md-4">
+				{{ ticket.data_termino }}
+			</div>
 	    </div>
 
     	<div :class="'collapse '+ticket.id">

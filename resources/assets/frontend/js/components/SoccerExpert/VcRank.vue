@@ -59,17 +59,11 @@
         
        	<div class="table text-center">
         	<div class="row no-margin table-head">
-		    	<div class="col-lg-2" @click="toggle(column)" v-for="(column, index) in columns">
-		    		<span v-if="column === 'nome'">
-		    			{{ trans('strings.name') }}
-		    		</span>
-		    		<span v-else-if="column === 'valor'">
-		    			{{ trans('strings.value') }}
-		    		</span>
-		    		<span v-else-if="column === 'data_termino'">
-		    			{{ trans('strings.date_end') }}
-		    		</span>
-		    		<span v-if="column === query.column">
+				<div class="col-lg-4 col-4 col-sm-4 col-md-4 table-column" @click="toggle('nome')">
+	        		<span>
+						{{ trans('strings.name') }}
+					</span>
+					<span v-if="'nome' === query.column">
 		    			<span v-if="query.direction === 'desc'">
 		    				&darr;
 			    		</span>
@@ -77,7 +71,33 @@
 		    				&uarr;
 			    		</span>
 		    		</span>
-		    	</div>
+				</div>
+				<div class="col-lg-3 col-3 col-sm-3 col-md-3 table-column" @click="toggle('valor')">
+	        		<span>
+						{{ trans('strings.value') }}
+					</span>
+					<span v-if="'valor' === query.column">
+		    			<span v-if="query.direction === 'desc'">
+		    				&darr;
+			    		</span>
+			    		<span v-else>
+		    				&uarr;
+			    		</span>
+		    		</span>
+				</div>
+				<div class="col-lg-4 col-4 col-sm-4 col-md-4 table-column" @click="toggle('data_termino')">
+	        		<span>
+		      			{{ trans('strings.date_end') }}
+		      		</span>
+					<span v-if="'data_termino' === query.column">
+		    			<span v-if="query.direction === 'desc'">
+		    				&darr;
+			    		</span>
+			    		<span v-else>
+		    				&uarr;
+			    		</span>
+		    		</span>
+				</div>
 		    </div>
 
 		    <div class="row no-margin table-body" v-if="loading.pagination">

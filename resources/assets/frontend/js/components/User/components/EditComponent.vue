@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-lg-2 col-2 col-sm-2 col-md-2" style="padding-right: 0;">
+                        <div class="col-lg-2 col-3 col-sm-2 col-md-2" style="padding-right: 0;">
                             <div class="form-group">
                                 <label for="gender">&nbsp;</label>
                                 <select v-model="gender" required class="form-control" id="gender" aria-describedby="gender" :placeholder="trans('strings.gender')">
@@ -34,7 +34,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-12 col-sm-4 col-md-4">
+                        <div class="col-lg-4 col-9 col-sm-4 col-md-4">
                             <div class="form-group">
                                 <label for="name">{{ trans('strings.name') }}</label>
                                 <input readonly disabled v-model="name" type="text" class="form-control" id="name" aria-describedby="name" name="name" :placeholder="trans('strings.name')">
@@ -63,7 +63,7 @@
                                 <input v-model="street" type="text" class="form-control" id="street" aria-describedby="street" name="street" :placeholder="trans('strings.street')">
                             </div>
                         </div>
-                        <div class="col-lg-2 col-2 col-sm-2 col-md-2">
+                        <div class="col-lg-2 col-6 col-sm-2 col-md-2">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.number">
                                     <div v-for="number in errors.number" >{{ number }}</div>
@@ -72,7 +72,7 @@
                                 <input v-model="number" type="number" class="form-control" id="number" aria-describedby="number" name="number" :placeholder="trans('strings.number')">
                             </div>
                         </div>
-                        <div class="col-lg-2 col-2 col-sm-2 col-md-2">
+                        <div class="col-lg-2 col-6 col-sm-2 col-md-2">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.cep">
                                     <div v-for="zip in errors.cep" >{{ cep }}</div>

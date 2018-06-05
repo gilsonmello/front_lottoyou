@@ -18,7 +18,7 @@
 
 		<div class="col-lg-10 col-12 no-padding">
 			<div class="row no-margin vcenter">
-				<div class="col-4 col-sm-4 col-md-5 col-lg-4">
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4">
 					<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 					<div class="container-club" style="justify-content: flex-end;">
 						<span style="line-height: 1; flex: 5; text-align: right;">{{ game.house_club.nome }}</span>
@@ -27,7 +27,7 @@
 				</div>
 
 
-				<div class="col-4 col-sm-3 col-md-2 col-lg-3 no-padding" style="text-align: center">
+				<div class="col-4 col-sm-3 col-md-4 col-lg-3 no-padding" style="text-align: center">
 					<input min="0" v-model="game.result_house_club" @change.prevent="houseClubResult(index, $event)" type="number" class="form-control no-padding">
 		            <span class="x">X</span>
 		            <input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(index, $event)" type="number" class="form-control no-padding">
@@ -46,7 +46,7 @@
 					<input min="0" v-model="game.result_out_club" @change.prevent="outClubResult(index, $event)" type="number" class="form-control no-padding">
 				</div> -->
 
-		        <div class="col-4 col-sm-4 col-md-5 col-lg-4">
+		        <div class="col-4 col-sm-4 col-md-4 col-lg-4">
 					<!-- <label class="club">{{ game.out_club.nome }}</label> -->
 					<div class="container-club" style="justify-content: flex-start;">
 						<img class="shield-img" v-if="game.out_club.escudo != undefined" style="margin-right: 5px;" :title="game.out_club.nome" :src="game.out_club.escudo">
@@ -208,5 +208,41 @@
 	.form-control {
 		display: inline-block;
     	width: 30px;
+	}
+
+	@media (min-width: 768px) and (max-width: 992px) {
+		.container-club .shield-img {
+			height: 20px;
+			width: 20px;
+		}
+		.container-club span {
+			font-size: 12px;
+		}
+		.gold-ball {
+			height: 30px;
+			width: 30px;
+		}
+	}
+
+	@media (min-width: 576px) and (max-width: 768px) {
+
+	}
+
+	@media (max-width: 576px) {
+		.container-club .shield-img {
+			height: 20px;
+			width: 20px;
+		}
+		.container-club span {
+			font-size: 10px;
+		}
+		.container-club {
+			justify-content: space-around;
+		}
+
+		.gold-ball {
+			height: 30px;
+			width: 30px;
+		}
 	}
 </style>

@@ -4,13 +4,13 @@
 		<div class="row">
         	<div class="col-lg-12">
         		<div class="sub-navigation">
-        			<router-link :to="{ name: 'soccer_expert.show', params: { id: item.soccer_expert.id } }" class="active show" id="play-component">
+        			<router-link :to="{ name: 'soccer_expert.show', params: { id: item.soccer_expert.id } }" class="active show">
 	                    {{ trans('strings.play_on_the') }} {{ item.soccer_expert.nome }}
 	                </router-link>
-	                <router-link :to="{ name: 'soccer_expert.results', params: { id: item.soccer_expert.id } }" class="show" id="result-component">
+	                <router-link :to="{ name: 'soccer_expert.results', params: { id: item.soccer_expert.id } }" class="show">
 	                    {{ trans('strings.results') }}
 	               	</router-link>
-	               	<router-link :to="{ name: 'soccer_expert.ranks', params: { id: item.soccer_expert.id } }" class="show" id="result-component">
+	               	<router-link :to="{ name: 'soccer_expert.ranks', params: { id: item.soccer_expert.id } }" class="show">
 		                {{ trans('strings.rank') }}
 		           	</router-link>
         		</div>

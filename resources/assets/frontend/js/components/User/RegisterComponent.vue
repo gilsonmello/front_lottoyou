@@ -76,11 +76,19 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6 col-12 col-sm-6 col-md-12">
+						<div class="col-12 col-lg-6">
+							<label for="birth_day">Data nasc.*</label>
+						</div>
+						<div class="col-12 col-lg-6 no-mobile">
+							<label for="birth_day">{{ trans('strings.country') }}</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 col-12 col-sm-12 col-md-12">
 							<div class="row">
-								<div class="col-lg-4 col-sm-6 col-md-4 col-6">
+								<div class="col-lg-4 col-sm-4 col-md-4 col-3">
 									<div class="form-group">
-										<label for="birth_day">Data nasc.*</label>
+										<!--<label for="birth_day">&nbsp;</label>-->
 									    <select v-model="birth_day" class="form-control" id="birth_day">
 									      	<option :value="day" v-for="day in days">
 									      		{{ day }}
@@ -91,9 +99,9 @@
 										</div>
 								  	</div>
 								</div>
-								<div class="col-lg-4 col-sm-6 col-md-4 col-6">
+								<div class="col-lg-4 col-sm-4 col-md-4 col-3">
 									<div class="form-group">
-										<label for="birth_month">&nbsp;</label>
+										<!--<label for="birth_month">&nbsp;</label>-->
 									    <select v-model="birth_month" class="form-control" id="birth_month" @change="changeBirthMonth">
 									      	<option :value="month.value" :data-key="key" v-for="(month, key) in months">
 									      		{{ month.name }}
@@ -104,9 +112,9 @@
 										</div>
 								  	</div>
 								</div>
-								<div class="col-lg-4 col-sm-12 col-md-12 col-12">
+								<div class="col-lg-4 col-sm-4 col-md-4 col-6">
 									<div class="form-group">
-										<label for="birth_year">&nbsp;</label>
+										<!--<label for="birth_year">&nbsp;</label>-->
 									    <select v-model="birth_year" class="form-control" id="birth_year">
 									      	<option :value="val" v-for="(val, index) in rangeYear(1900, date.getFullYear() - 18)">
 									      		{{ val }}
@@ -121,7 +129,7 @@
 						</div>
 						<div class="col-lg-6 col-12 col-sm-6 col-md-6">
 							<div class="form-group">
-								<label for="country">{{ trans('strings.country') }}</label>
+								<label class="mobile" for="country">{{ trans('strings.country') }}</label>
 							    <select v-model="country" class="form-control" id="country">
 							    	<option :value="value.id" v-for="value in countries">
 							    		{{ value.name }}
@@ -134,7 +142,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
+						<div class="col-lg-4 col-12 col-sm-12 col-md-4">
 							<div class="form-group">
 								<label class="" for="terms">
 									<input type="checkbox" v-model="terms" name="terms" id="terms"> 
