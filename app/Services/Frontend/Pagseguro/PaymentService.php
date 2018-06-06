@@ -31,7 +31,7 @@ trait PaymentService
         // Close request to clear up some resources
         curl_close($curl);
 
-
+        $resp = json_encode($resp);
         Log::info($resp->results);
 
         $pagseguroOrder = new PagseguroOrder;
