@@ -31,7 +31,9 @@ trait PaymentService
         // Close request to clear up some resources
         curl_close($curl);
 
-        Log::info($resp);
+        $resp = json_decode($resp);
+
+        Log::info($resp['results']);
 
         $pagseguroOrder = new PagseguroOrder;
         $carbon = Carbon::parse($dataXml->date);
