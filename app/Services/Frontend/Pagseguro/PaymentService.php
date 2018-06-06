@@ -80,16 +80,16 @@ trait PaymentService
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
-            $historicBalance->amount = ($dataXml->netAmount / $resp->results->currencies->USD->buy) * -1;
+            $historicBalance->amount = ($dataXml->grossAmount / $resp->results->currencies->USD->buy) * -1;
 
-            $balance->value -= $dataXml->netAmount / $resp->results->currencies->USD->buy;
+            $balance->value -= $dataXml->grossAmount / $resp->results->currencies->USD->buy;
 
             $historicBalance->to = $balance->value;
             $historicBalance->save();
 
             $balance->save();
         }
-        Log::info($order->status_pagseguro);
+        Log::info($order->status_pagseguro, $dataXml->status);
 
         //Verifico se o pagamento foi aprovado
         if (in_array($dataXml->status, [3, 4]) 
@@ -105,9 +105,9 @@ trait PaymentService
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
-            $historicBalance->amount = $dataXml->netAmount / $resp->results->currencies->USD->buy;
+            $historicBalance->amount = $dataXml->grossAmount / $resp->results->currencies->USD->buy;
 
-            $balance->value += $dataXml->netAmount / $resp->results->currencies->USD->buy;
+            $balance->value += $dataXml->grossAmount / $resp->results->currencies->USD->buy;
 
             $historicBalance->to = $balance->value;
             $historicBalance->save();
