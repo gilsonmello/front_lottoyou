@@ -32,7 +32,7 @@ trait PaymentService
         curl_close($curl);
 
 
-        Log::info($resp['results']);
+        Log::info($resp->results);
 
         $pagseguroOrder = new PagseguroOrder;
         $carbon = Carbon::parse($dataXml->date);
