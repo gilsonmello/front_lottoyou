@@ -32,7 +32,7 @@ trait PaymentService
         curl_close($curl);
 
 
-        Log::info($resp);
+        Log::info($resp['results']);
 
         $pagseguroOrder = new PagseguroOrder;
         $carbon = Carbon::parse($dataXml->date);
@@ -49,7 +49,7 @@ trait PaymentService
         $pagseguroOrder->paymentMethodCode = $dataXml->paymentMethod->code;
         $pagseguroOrder->grossAmount = $dataXml->grossAmount;
         $pagseguroOrder->discountAmount = $dataXml->discountAmount;
-        $pagseguroOrder->feeAmount = $dataXml->feeAmount * $resp->results->currencies->USD->buy;
+        //$pagseguroOrder->feeAmount = $dataXml->feeAmount * $resp->results->currencies->USD->buy;
         $pagseguroOrder->netAmount = $dataXml->netAmount;
         $pagseguroOrder->extraAmount = $dataXml->extraAmount;
         $pagseguroOrder->installmentCount = $dataXml->installmentCount;
