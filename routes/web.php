@@ -42,7 +42,7 @@ Route::get('/quotation_dolar', function() {
 	// Set some options - we are passing in a useragent too here
 	curl_setopt_array($curl, array(
 	    CURLOPT_RETURNTRANSFER => 1,
-	    CURLOPT_URL => 'https://api.promasters.net.br/cotacao/v1/valores',
+	    CURLOPT_URL => 'https://api.hgbrasil.com/finance?format=json&key=d58b8e61',
 	));
 	// Send the request & save response to $resp
 	$resp = curl_exec($curl);

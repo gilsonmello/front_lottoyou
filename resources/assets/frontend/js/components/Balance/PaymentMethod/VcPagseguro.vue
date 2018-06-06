@@ -10,7 +10,7 @@
 					<div class="col-lg-12 col-12 col-sm-12 col-md-12">
 					    <strong>
 					    	<label for="amount">* Quantia a ser depositada &nbsp;
-					    	<i class="fa fa-info" title="Mínimo de $15.00"></i>
+					    	<i class="fa fa-info" title="Mínimo de $10.00"></i>
 					    </label>
 					    </strong>
 					    <input type="text" v-model="amount" required class="form-control" id="amount" :placeholder="'Por favor, indique o valor em USD'">
@@ -18,7 +18,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
-						<input type="checkbox" @click="handleTerms" v-model="terms" required name="terms" id="terms">
+						<input type="checkbox" v-model="terms" required name="terms" id="terms">
 						&nbsp;Eu li e aceito os <router-link :to="{ name: 'terms' }" target="_blank">termos e condições</router-link> de uso deste site.
 					</div>
 				</div>
@@ -44,7 +44,7 @@
 		props: ['order_id'],
 		watch: {
 			amount: function(newValue, oldValue) {
-				
+
 			}
 		},
 		data() {
@@ -92,7 +92,7 @@
 						this.loading.quotation = false;
 						this.quotation = response.data;
 
-						var formatBr = (10 * this.quotation.valores.USD.valor).format(2, true) + '';
+						var formatBr = (10 * this.quotation.results.currencies.USD.buy).format(2, true) + '';
 						formatBr = formatBr.replace('.', ',');
 						this.amount = formatBr;
 						
@@ -103,6 +103,16 @@
 								clearInterval(time);
 
                                 this.setMask();
+                                vm.amount = VMasker.toMoney(formatBr, {
+                                    // Decimal precision -> "90"
+                                    precision: 2,
+                                    // Decimal separator -> ",90"
+                                    separator: ',',
+                                    // Number delimiter -> "12.345.678"
+                                    delimiter: '.',
+                                    unit: 'R$',
+                                });
+
                                 $("#amount").on("blur", function(event) {
                                     let value = $(this).val();
                                     vm.amount = value;
@@ -111,7 +121,7 @@
                                     value = value.replace(/,/g, '.');
                                     value = parseFloat(value);
                                     if(value < 10) {
-                                        formatBr = (10 * vm.quotation.valores.USD.valor).format(2, true) + '';
+                                        formatBr = (10 * vm.quotation.results.currencies.USD.buy).format(2, true) + '';
                                         formatBr = formatBr.replace('.', ',');
                                         $(this).val(VMasker.toMoney(formatBr, {
                                             // Decimal precision -> "90"
@@ -165,6 +175,7 @@
 				});
 			},
 			handleTerms() {
+                console.log('sad')
 			},
 			getAmount() {
 				let value = $("#amount").val();
@@ -225,7 +236,7 @@
                     var return1 = document.createElement('input');
                     return1.setAttribute('name', "return");
                     return1.setAttribute('type', "hidden");
-                    return1.setAttribute('value', 'http://dev.lottoyou.bet');
+                    return1.setAttribute('value', 'http://lottoyou.bet');
                     form.append(return1);
 
                     var paymentRequest = axios.create();

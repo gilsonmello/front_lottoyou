@@ -6,7 +6,7 @@ use App\PagseguroOrder;
 use App\Balance;
 use App\HistoricBalance;
 use Carbon\Carbon;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Created by PhpStorm.
@@ -19,6 +19,22 @@ trait PaymentService
 {
     public function updateFromPagseguroFeedback($dataXml) 
     {
+        // Get cURL resource
+        $curl = curl_init();
+        // Set some options - we are passing in a useragent too here
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => 'https://api.hgbrasil.com/finance?format=json&key=d58b8e61',
+        ));
+        // Send the request & save response to $resp
+        $resp = curl_exec($curl);
+        // Close request to clear up some resources
+        curl_close($curl);
+
+        $resp = json_decode($resp);
+
+        Log::info($resp);
+
         $pagseguroOrder = new PagseguroOrder;
         $carbon = Carbon::parse($dataXml->date);
         $pagseguroOrder->date = $carbon->toDateTimeString();
@@ -34,7 +50,7 @@ trait PaymentService
         $pagseguroOrder->paymentMethodCode = $dataXml->paymentMethod->code;
         $pagseguroOrder->grossAmount = $dataXml->grossAmount;
         $pagseguroOrder->discountAmount = $dataXml->discountAmount;
-        $pagseguroOrder->feeAmount = $dataXml->feeAmount;
+        $pagseguroOrder->feeAmount = $dataXml->feeAmount * $resp['results']['currencies']['USD']['buy'];
         $pagseguroOrder->netAmount = $dataXml->netAmount;
         $pagseguroOrder->extraAmount = $dataXml->extraAmount;
         $pagseguroOrder->installmentCount = $dataXml->installmentCount;
