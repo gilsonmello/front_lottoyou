@@ -19,21 +19,17 @@ trait PaymentService
 {
     public function updateFromPagseguroFeedback($dataXml) 
     {
-        // Get cURL resource
-        $curl = curl_init();
-        // Set some options - we are passing in a useragent too here
+
+        /*$curl = curl_init();
+
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => 'https://api.hgbrasil.com/finance?format=json&key=d58b8e61',
         ));
-        // Send the request & save response to $resp
+
         $resp = curl_exec($curl);
-        // Close request to clear up some resources
         curl_close($curl);
-
-        $resp = json_decode($resp);
-
-        Log::info($resp->results->currencies->USD->buy);
+        $resp = json_decode($resp);*/
 
         $pagseguroOrder = new PagseguroOrder;
         $carbon = Carbon::parse($dataXml->date);
@@ -50,7 +46,7 @@ trait PaymentService
         $pagseguroOrder->paymentMethodCode = $dataXml->paymentMethod->code;
         $pagseguroOrder->grossAmount = $dataXml->grossAmount;
         $pagseguroOrder->discountAmount = $dataXml->discountAmount;
-        //$pagseguroOrder->feeAmount = $dataXml->feeAmount * $resp->results->currencies->USD->buy;
+        $pagseguroOrder->feeAmount = $dataXml->feeAmount;
         $pagseguroOrder->netAmount = $dataXml->netAmount;
         $pagseguroOrder->extraAmount = $dataXml->extraAmount;
         $pagseguroOrder->installmentCount = $dataXml->installmentCount;
