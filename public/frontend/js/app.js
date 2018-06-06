@@ -121108,7 +121108,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				var upload = document.createElement('input');
 				upload.setAttribute('name', "upload");
 				upload.setAttribute('type', "hidden");
-				upload.setAttribute('value', 1);
+				upload.setAttribute('value', '1');
 				form.append(upload);
 
 				var business = document.createElement('input');
@@ -121120,19 +121120,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				var return1 = document.createElement('input');
 				return1.setAttribute('name', "return");
 				return1.setAttribute('type', "hidden");
-				return1.setAttribute('value', 'http://dev.lottoyou.bet');
+				return1.setAttribute('value', 'http://lottoyou.bet');
 				form.append(return1);
 
 				var cancel = document.createElement('input');
 				cancel.setAttribute('name', "cancel");
 				cancel.setAttribute('type', "hidden");
-				cancel.setAttribute('value', 'http://dev.lottoyou.bet/cancel');
+				cancel.setAttribute('value', 'http://lottoyou.bet/cancel');
 				form.append(cancel);
 
 				var notify_url = document.createElement('input');
 				notify_url.setAttribute('name', "notify_url");
 				notify_url.setAttribute('type', "hidden");
-				notify_url.setAttribute('value', 'http://dev.lottoyou.bet/paypal/feedback');
+				notify_url.setAttribute('value', 'http://lottoyou.bet/paypal/feedback');
 				form.append(notify_url);
 
 				var charset = document.createElement('input');
