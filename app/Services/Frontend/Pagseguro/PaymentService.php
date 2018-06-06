@@ -19,17 +19,21 @@ trait PaymentService
 {
     public function updateFromPagseguroFeedback($dataXml) 
     {
-
-        /*$curl = curl_init();
-
+        // Get cURL resource
+        $curl = curl_init();
+        // Set some options - we are passing in a useragent too here
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => 'https://api.hgbrasil.com/finance?format=json&key=d58b8e61',
         ));
-
+        // Send the request & save response to $resp
         $resp = curl_exec($curl);
+        // Close request to clear up some resources
         curl_close($curl);
-        $resp = json_decode($resp);*/
+
+        $resp = json_decode($resp);
+
+        //Log::info($resp->results->currencies->USD->buy);
 
         $pagseguroOrder = new PagseguroOrder;
         $carbon = Carbon::parse($dataXml->date);
@@ -77,7 +81,7 @@ trait PaymentService
             $historicBalance->owner_id = $balance->owner_id;
             $historicBalance->amount = $dataXml->grossAmount * -1;
 
-            $balance->value -= $dataXml->grossAmount;
+            $balance->value -= $dataXml->netAmount / $resp->results->currencies->USD->buy;
 
             $historicBalance->to = $balance->value;
             $historicBalance->save();
@@ -101,7 +105,7 @@ trait PaymentService
             $historicBalance->owner_id = $balance->owner_id;
             $historicBalance->amount = $dataXml->grossAmount;
 
-            $balance->value += $dataXml->grossAmount;
+            $balance->value += $dataXml->netAmount / $resp->results->currencies->USD->buy;
 
             $historicBalance->to = $balance->value;
             $historicBalance->save();
