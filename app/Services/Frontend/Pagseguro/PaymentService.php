@@ -45,7 +45,8 @@ trait PaymentService
         $pagseguroOrder->reference = $dataXml->reference;
         $pagseguroOrder->type = $dataXml->type;
         $pagseguroOrder->status = $dataXml->status;
-        $pagseguroOrder->lastEventDate = $dataXml->lastEventDate;
+        $carbon = Carbon::parse($dataXml->lastEventDate);
+        $pagseguroOrder->lastEventDate = $carbon->toDateTimeString();
         $pagseguroOrder->paymentMethodType = $dataXml->paymentMethod->type;
         $pagseguroOrder->paymentMethodCode = $dataXml->paymentMethod->code;
         $pagseguroOrder->grossAmount = $dataXml->grossAmount;
@@ -88,6 +89,7 @@ trait PaymentService
 
             $balance->save();
         }
+        Log::info($order->status_pagseguro);
 
         //Verifico se o pagamento foi aprovado
         if (in_array($dataXml->status, [3, 4]) 
