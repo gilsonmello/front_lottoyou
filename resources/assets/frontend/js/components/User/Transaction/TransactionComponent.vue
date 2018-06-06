@@ -135,7 +135,7 @@
                         {{ trans('strings.lottery') }}
                     </td> 
                     <td v-else-if="balance.soccer_expert_bet">
-                        {{ trans('strings.scratch_card') }}
+                        {{ trans('strings.soccer_expert') }}
                     </td> 
                     <td v-else-if="balance.pagseguro">
                         Pagseguro

@@ -105438,7 +105438,7 @@ var render = function() {
                                   _vm._v(
                                     "\n                        " +
                                       _vm._s(
-                                        _vm.trans("strings.scratch_card")
+                                        _vm.trans("strings.soccer_expert")
                                       ) +
                                       "\n                    "
                                   )
