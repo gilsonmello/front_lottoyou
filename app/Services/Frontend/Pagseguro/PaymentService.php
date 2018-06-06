@@ -79,7 +79,7 @@ trait PaymentService
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
-            $historicBalance->amount = $dataXml->grossAmount * -1;
+            $historicBalance->amount = ($dataXml->netAmount / $resp->results->currencies->USD->buy) * -1;
 
             $balance->value -= $dataXml->netAmount / $resp->results->currencies->USD->buy;
 
@@ -103,7 +103,7 @@ trait PaymentService
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
-            $historicBalance->amount = $dataXml->grossAmount;
+            $historicBalance->amount = $dataXml->netAmount / $resp->results->currencies->USD->buy;
 
             $balance->value += $dataXml->netAmount / $resp->results->currencies->USD->buy;
 
