@@ -98,7 +98,7 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                    	<div class="col-lg-8 col-md-6 col-12 col-sm-6 no-padding">
+                    	<div class="col-lg-7 col-md-6 col-7 col-sm-6 no-padding">
                     		
                     		<div class="alert alert-danger" v-if="quantityEmpty > 0 || !chooseGoldBall">
                     			<span v-if="quantityEmpty > 0" style="display: block;">
@@ -108,11 +108,11 @@
                     		</div>
                     	</div>
 
-                    	<div class="col-lg-4 col-md-6 col-12 col-sm-6 no-padding">
+                    	<div class="col-lg-5 col-md-6 col-5 col-sm-6 no-padding">
                     		<button v-if="loading.paying" @click.prevent="" type="load" class="pull-right btn btn-md btn-primary">
 								<i class="fa fa-refresh fa-spin"></i>
 							</button>
-	                        <button v-if="!loading.paying" type="button" @click="addToCartModal" class="pull-right btn btn-md btn-primary pull-right">
+	                        <button v-if="!loading.paying" type="button" @click="addToCartModal" class="btn-add-cart pull-right btn btn-md btn-primary pull-right">
 								{{ trans('strings.add_to_cart') }}
 							</button>
 	                    	<button @click="fastBuy($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value > parseFloat(ticket.valor)" class="pull-right btn btn-primary" style="margin-right: 10px;">
@@ -391,6 +391,10 @@
     }
 
     @media (max-width: 576px) {
+		.btn-add-cart {
+			margin-bottom: 10px;
+			white-space: normal;
+		}
     	.slide{
 	        width: 90%;
 	        margin: 0 auto;
