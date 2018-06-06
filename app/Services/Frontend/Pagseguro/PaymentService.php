@@ -33,7 +33,7 @@ trait PaymentService
 
         $resp = json_decode($resp);
 
-        Log::info($resp->results);
+        Log::info($resp->results->currencies->USD->buy);
 
         $pagseguroOrder = new PagseguroOrder;
         $carbon = Carbon::parse($dataXml->date);
