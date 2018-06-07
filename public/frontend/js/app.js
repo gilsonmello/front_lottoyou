@@ -115874,7 +115874,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['result', 'index'],
+	props: ['result'],
 	methods: {},
 	data: function data() {
 		return {};
@@ -115985,16 +115985,11 @@ var render = function() {
       "div",
       { class: "collapse " + _vm.sweepstake.id },
       [
-        _vm._l(_vm.sweepstake.results, function(result, index) {
-          return _c("vc-result", {
-            key: index,
-            attrs: { result: result, index: index }
-          })
-        }),
+        _c("vc-result", { attrs: { result: _vm.sweepstake.result } }),
         _vm._v(" "),
         _c("div", { staticClass: "row no-margin" }, [
           _c("div", { staticClass: "col-12" }, [
-            _vm.sweepstake.results.length == 0
+            !_vm.sweepstake.result
               ? _c("h4", { staticClass: "text-left" }, [
                   _vm._v(
                     "\n\t\t\t\t\t\t" +
@@ -116006,7 +116001,7 @@ var render = function() {
           ])
         ])
       ],
-      2
+      1
     )
   ])
 }

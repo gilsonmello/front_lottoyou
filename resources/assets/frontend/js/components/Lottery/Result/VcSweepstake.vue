@@ -16,11 +16,11 @@
 	    </div>
 
     	<div :class="'collapse '+sweepstake.id">
-			<vc-result v-for="(result, index) in sweepstake.results" :key="index" :result="result" :index="index">
+			<vc-result :result="sweepstake.result">
 			</vc-result>
 			<div class="row no-margin">
 				<div class="col-12">
-					<h4 class="text-left" v-if="sweepstake.results.length == 0">
+					<h4 class="text-left" v-if="!sweepstake.result">
 						{{ trans('strings.unfinished_sweepstake') }}
 					</h4>
 				</div>

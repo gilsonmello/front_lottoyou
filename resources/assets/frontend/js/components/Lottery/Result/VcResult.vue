@@ -47,7 +47,7 @@
 
 <script>
 	export default {
-		props: ['result', 'index'],
+		props: ['result'],
 		methods: {
 		},
 		data() {
