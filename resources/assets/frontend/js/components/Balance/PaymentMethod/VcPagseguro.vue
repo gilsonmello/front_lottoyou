@@ -2,18 +2,27 @@
 	<vc-load v-if="loading.quotation"></vc-load>
 	<div class="row" v-else>
 		<div class="col-lg-12">
-			<h4 class="choice-payment-method-msg">Você escolheu o Pagseguro como forma de pagamento</h4>
+			<h4 class="choice-payment-method-msg">Você escolheu o Pagseguro como forma de pagamento(Válido só no Brasil)</h4>
 			<h5>
 			</h5>
 			<form @submit.prevent="sendPagseguro" id="sendPagseguro" action="https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
-				<div class="row">
-					<div class="col-lg-12 col-12 col-sm-12 col-md-12">
-					    <strong>
-					    	<label for="amount">* Quantia a ser depositada &nbsp;
-					    	<i class="fa fa-info" title="Mínimo de $10.00"></i>
-					    </label>
-					    </strong>
+                <div class="row">
+                    <div class="col-lg-12 col-12 col-sm-12 col-md-12">
+                        <strong>
+                            <label for="amount">* Quantia a ser depositada &nbsp;
+                                <i class="fa fa-info" title="Mínimo de $10.00"></i>
+                            </label>
+                        </strong>
+                    </div>
+                </div>
+                <div class="row">
+					<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 					    <input type="text" v-model="amount" required class="form-control" id="amount" :placeholder="'Por favor, indique o valor em USD'">
+					</div>
+					<div class="col-lg-8 col-sm-8 col-md-8 col-12">
+						<h6 v-if="quotation.results">Você será direcionado a uma página no Brasil para realizar o pagamento em reais.<br>
+							Dólar comercial: {{ parseFloat(quotation.results.currencies.USD.buy).format(2, true) }}
+						</h6>
 					</div>
 				</div>
 				<div class="row">

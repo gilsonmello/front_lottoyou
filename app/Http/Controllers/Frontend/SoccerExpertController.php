@@ -16,7 +16,8 @@ class SoccerExpertController extends Controller
 {
     public function ranks($id, Request $request) 
     {
-        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $id);
+        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $id)
+            ->where('fechada', '=', 1);
 
         if($request->get('column')) {
             $tickets->orderBy($request->get('column'), $request->get('direction'));

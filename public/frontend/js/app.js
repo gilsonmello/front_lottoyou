@@ -120446,6 +120446,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -120705,7 +120714,9 @@ var render = function() {
     : _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-lg-12" }, [
           _c("h4", { staticClass: "choice-payment-method-msg" }, [
-            _vm._v("Você escolheu o Pagseguro como forma de pagamento")
+            _vm._v(
+              "Você escolheu o Pagseguro como forma de pagamento(Válido só no Brasil)"
+            )
           ]),
           _vm._v(" "),
           _c("h5"),
@@ -120734,14 +120745,24 @@ var render = function() {
                   [
                     _c("strong", [
                       _c("label", { attrs: { for: "amount" } }, [
-                        _vm._v("* Quantia a ser depositada  \n\t\t\t\t    \t"),
+                        _vm._v(
+                          "* Quantia a ser depositada  \n                                "
+                        ),
                         _c("i", {
                           staticClass: "fa fa-info",
                           attrs: { title: "Mínimo de $10.00" }
                         })
                       ])
-                    ]),
-                    _vm._v(" "),
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-lg-4 col-12 col-sm-4 col-md-4" },
+                  [
                     _c("input", {
                       directives: [
                         {
@@ -120768,6 +120789,30 @@ var render = function() {
                         }
                       }
                     })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-lg-8 col-sm-8 col-md-8 col-12" },
+                  [
+                    _vm.quotation.results
+                      ? _c("h6", [
+                          _vm._v(
+                            "Você será direcionado a uma página no Brasil para realizar o pagamento em reais."
+                          ),
+                          _c("br"),
+                          _vm._v(
+                            "\n\t\t\t\t\t\t\tDólar comercial: " +
+                              _vm._s(
+                                parseFloat(
+                                  _vm.quotation.results.currencies.USD.buy
+                                ).format(2, true)
+                              ) +
+                              "\n\t\t\t\t\t\t"
+                          )
+                        ])
+                      : _vm._e()
                   ]
                 )
               ]),
@@ -120819,13 +120864,13 @@ var render = function() {
                         }
                       }
                     }),
-                    _vm._v("\n\t\t\t\t\t Eu li e aceito os "),
+                    _vm._v("\n\t\t\t\t\t\t Eu li e aceito os "),
                     _c(
                       "router-link",
                       { attrs: { to: { name: "terms" }, target: "_blank" } },
                       [_vm._v("termos e condições")]
                     ),
-                    _vm._v(" de uso deste site.\n\t\t\t\t")
+                    _vm._v(" de uso deste site.\n\t\t\t\t\t")
                   ],
                   1
                 )
