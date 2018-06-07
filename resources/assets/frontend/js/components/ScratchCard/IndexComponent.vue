@@ -117,9 +117,9 @@
 			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
 						<div class="col-lg-12 col-md-12 col-12 col-sm-12">
 		        			<div class="row">
-		        				<div v-if="scratch_card_jackpot_available.img_card_url" class="col-lg-4 col-md-4 col-sm-12 col-12" :style="backgroundDemo(scratch_card_jackpot_available.img_card_url)+' padding-right: 0; padding-left: 0; min-height: 106px;'">
+		        				<div v-if="scratch_card_jackpot_available.img_card_url" class="col-lg-4 col-md-4 col-sm-4 col-12" :style="backgroundDemo(scratch_card_jackpot_available.img_card_url)+' padding-right: 0; padding-left: 0; min-height: 106px;'">
 					        	</div>
-					        	<div class="col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions" style="background-color: #155C7B">
+					        	<div class="col-lg-8 col-md-8 col-sm-8 col-12 vcenter container-actions" style="background-color: #155C7B">
 					        		
 					        		<div class="" style="width: 100%;">
 					        			<div class="row">

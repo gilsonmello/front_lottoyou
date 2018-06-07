@@ -90759,7 +90759,7 @@ var render = function() {
                                 _vm.scratch_card_jackpot_available.img_card_url
                                   ? _c("div", {
                                       staticClass:
-                                        "col-lg-4 col-md-4 col-sm-12 col-12",
+                                        "col-lg-4 col-md-4 col-sm-4 col-12",
                                       style:
                                         _vm.backgroundDemo(
                                           _vm.scratch_card_jackpot_available
@@ -90773,7 +90773,7 @@ var render = function() {
                                   "div",
                                   {
                                     staticClass:
-                                      "col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions",
+                                      "col-lg-8 col-md-8 col-sm-8 col-12 vcenter container-actions",
                                     staticStyle: {
                                       "background-color": "#155C7B"
                                     }

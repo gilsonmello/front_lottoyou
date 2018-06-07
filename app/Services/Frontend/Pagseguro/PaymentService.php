@@ -89,7 +89,7 @@ trait PaymentService
 
             $balance->save();
         }
-        Log::info($order->status_pagseguro, $dataXml->status);
+        //Log::info($order->status_pagseguro, $dataXml->status);
 
         //Verifico se o pagamento foi aprovado
         if (in_array($dataXml->status, [3, 4]) 
