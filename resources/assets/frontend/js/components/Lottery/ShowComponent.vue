@@ -82,7 +82,7 @@
 					<button type="submit" class="btn btn-md btn-primary pull-right" v-if="!loading.paying">
 						{{ trans('strings.add_to_cart') }}
 					</button>
-					<button @click="validate($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value > total" class="btn-pay-now pull-right btn btn-primary">
+					<button @click="validate($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value >= total" class="btn-pay-now pull-right btn btn-primary">
                         {{ trans('strings.pay_now') }}
                     </button>
 					<button v-if="loading.paying" @click.prevent="" type="load" class="pull-right btn btn-md btn-primary">

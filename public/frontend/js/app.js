@@ -108559,7 +108559,7 @@ var render = function() {
                           _vm._v(" "),
                           _vm.loading.paying == false &&
                           _vm.auth &&
-                          _vm.auth.balance.value > parseFloat(_vm.ticket.valor)
+                          _vm.auth.balance.value >= parseFloat(_vm.ticket.valor)
                             ? _c(
                                 "button",
                                 {
@@ -115078,7 +115078,7 @@ var render = function() {
                       _vm._v(" "),
                       _vm.loading.paying == false &&
                       _vm.auth &&
-                      _vm.auth.balance.value > _vm.total
+                      _vm.auth.balance.value >= _vm.total
                         ? _c(
                             "button",
                             {
@@ -120430,7 +120430,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	data: function data() {
 		return {
-			amount: '',
+			amount: '$ 10.00',
 			loading: {
 				paying: false,
 				quotation: false
@@ -120450,10 +120450,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				// Decimal precision -> "90"
 				precision: 2,
 				// Decimal separator -> ",90"
-				separator: ',',
+				separator: '.',
 				// Number delimiter -> "12.345.678"
-				delimiter: '.',
-				unit: 'R$'
+				delimiter: ',',
+				unit: '$'
 			});
 		},
 		getQuotationDolar: function getQuotationDolar() {
@@ -120473,9 +120473,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					_this.loading.quotation = false;
 					_this.quotation = response.data;
 
-					var formatBr = (10 * _this.quotation.results.currencies.USD.buy).format(2, true) + '';
-					formatBr = formatBr.replace('.', ',');
-					_this.amount = formatBr;
+					//var formatBr = (10 * this.quotation.results.currencies.USD.buy).format(2, true) + '';
+					//formatBr = formatBr.replace('.', ',');
+					//this.amount = formatBr;
 
 					var vm = _this;
 
@@ -120484,43 +120484,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 							clearInterval(time);
 
 							_this.setMask();
-							vm.amount = VMasker.toMoney(formatBr, {
+							vm.amount = VMasker.toMoney('10.00', {
 								// Decimal precision -> "90"
 								precision: 2,
 								// Decimal separator -> ",90"
-								separator: ',',
+								separator: '.',
 								// Number delimiter -> "12.345.678"
-								delimiter: '.',
-								unit: 'R$'
+								delimiter: ',',
+								unit: '$'
 							});
 
 							$("#amount").on("blur", function (event) {
 								var value = $(this).val();
 								vm.amount = value;
-								value = value.replace(/\R\$\ /g, '');
-								value = value.replace(/\./g, '');
-								value = value.replace(/,/g, '.');
+								value = value.replace(/\$\ /g, '');
+								value = value.replace(/ /g, '');
+								value = value.replace(/,/g, '');
 								value = parseFloat(value);
 								if (value < 10) {
-									formatBr = (10 * vm.quotation.results.currencies.USD.buy).format(2, true) + '';
-									formatBr = formatBr.replace('.', ',');
-									$(this).val(VMasker.toMoney(formatBr, {
+									//formatBr = (10 * vm.quotation.results.currencies.USD.buy).format(2, true) + '';
+									//formatBr = formatBr.replace('.', ',');
+									$(this).val(VMasker.toMoney('10.00', {
 										// Decimal precision -> "90"
 										precision: 2,
 										// Decimal separator -> ",90"
-										separator: ',',
+										separator: '.',
 										// Number delimiter -> "12.345.678"
-										delimiter: '.',
-										unit: 'R$'
+										delimiter: ',',
+										unit: '$'
 									}));
-									vm.amount = VMasker.toMoney(formatBr, {
+									vm.amount = VMasker.toMoney('10.00', {
 										// Decimal precision -> "90"
 										precision: 2,
 										// Decimal separator -> ",90"
-										separator: ',',
+										separator: '.',
 										// Number delimiter -> "12.345.678"
-										delimiter: '.',
-										unit: 'R$'
+										delimiter: ',',
+										unit: '$'
 									});
 								}
 							});
@@ -120556,9 +120556,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		getAmount: function getAmount() {
 			var value = $("#amount").val();
-			value = value.replace(/\R\$\ /g, '');
-			value = value.replace(/\./g, '');
-			value = value.replace(/,/g, '.');
+			value = value.replace(/\$\ /g, '');
+			value = value.replace(/ /g, '');
+			value = value.replace(/,/g, '');
 			return parseFloat(value).format(2, true);
 		},
 
@@ -120597,7 +120597,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				var itemAmount1 = document.createElement('input');
 				itemAmount1.setAttribute('name', "itemAmount1");
 				itemAmount1.setAttribute('type', "hidden");
-				itemAmount1.setAttribute('value', this.getAmount());
+				itemAmount1.setAttribute('value', (this.getAmount() * this.quotation.results.currencies.USD.buy).format(2, true));
 				form.append(itemAmount1);
 
 				var itemQuantity1 = document.createElement('input');

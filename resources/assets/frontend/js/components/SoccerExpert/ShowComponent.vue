@@ -115,7 +115,7 @@
 	                        <button v-if="!loading.paying" type="button" @click="addToCartModal" class="btn-add-cart pull-right btn btn-md btn-primary pull-right">
 								{{ trans('strings.add_to_cart') }}
 							</button>
-	                    	<button @click="fastBuy($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value > parseFloat(ticket.valor)" class="pull-right btn btn-primary" style="margin-right: 10px;">
+	                    	<button @click="fastBuy($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value >= parseFloat(ticket.valor)" class="pull-right btn btn-primary" style="margin-right: 10px;">
 	                            {{ trans('strings.pay_now') }}
 	                        </button>
                     	</div>
