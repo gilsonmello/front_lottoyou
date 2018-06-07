@@ -230,6 +230,9 @@
 
 			    //Fechando o modal de login
 			    $('.modal').modal('hide');
+
+                var navMain = $("#navbarCollapse");
+                navMain.collapse('hide');
 			});			
 		},
 		components: {

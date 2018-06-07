@@ -523,7 +523,7 @@
 
 		.banner-explic-soccer .content-left {
 		    font-size: 10px;
-		    transform: translate(13%, 0) !importan;
+		    transform: translate(13%, 0) !important;
 		}
 
 		.banner-explic-soccer .content-left h3 {
@@ -535,6 +535,7 @@
 
 		.banner-easy-loteria .content-left h5 {
 		    margin-bottom: 0px;
+			font-size: 10px !important;
 		}
 
 		.banner-golden-goal .content-left {
@@ -542,7 +543,7 @@
 		}
 
 		.banner-golden-goal .content-left h2 {
-			font-size: 22px !important;
+			font-size: 15px !important;
 		}
 
 
