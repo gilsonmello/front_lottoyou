@@ -83449,7 +83449,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.main-banner[data-v-390308d0] {\n\tmin-height: 356px;\n    background-size: 100% 100%;\n}\n.container-fluid img[data-v-390308d0] {\n\n\twidth: 100%;\n}\nh1[data-v-390308d0] {\n\tfont-size: 52px;\n    margin-left: 20px;\n\tfont-family: \"Interstate\", sans-serif;\n\tfont-weight: bold;\n\tcolor: #00448c;\n\ttext-transform: uppercase;\n}\n.jackpot-translation[data-v-390308d0] {\n\tcolor: #fff;\n\theight: 60px;\n\tfont-weight: 900;\n\tfont-size: 40px;\n\ttext-align: left;\n\tline-height: 30px;\n}\n.jackpot-pitch[data-v-390308d0] {\n\tcolor: #012406;\n\tfont-weight: 500;\n\tfont-size: 14px;\n\tdisplay: block;\n\tline-height: 20px;\n\ttext-align: left;\n}\n.jackpot-currency[data-v-390308d0] {\n    margin-left: 0;\n    margin-right: 0;\n    font-weight: 900;\n    font-size: 40px;\n    line-height: 60px;\n    height: 60px;\n    color: #fff;\n}\n.jackpot-million[data-v-390308d0] {\n\tdisplay: inline-block;\n\t-webkit-box-align: end;\n\t    -ms-flex-align: end;\n\t        align-items: flex-end;\n\t-webkit-align-items: flex-end;\n}\n.jackpot-amount[data-v-390308d0]{\n\tfont-weight: 900;\n\tfont-size: 80px;\n\tcolor: #fff\n}\n", ""]);
+exports.push([module.i, "\n@media (min-width: 1200px) and (max-width: 1400px) {\n}\n@media (min-width: 768px) and (max-width: 992px) {\n.banner-main .content-left[data-v-390308d0] {\n\t\t-webkit-transform: translate(90%, 0%) !important;\n\t\t        transform: translate(90%, 0%) !important;\n}\nh1[data-v-390308d0] {\n\t\tfont-size: 22px !important;\n}\n}\n@media (min-width: 576px) and (max-width: 768px) {\n.banner-main .content-left[data-v-390308d0] {\n\t\t-webkit-transform: translate(85%, 0%) !important;\n\t\t        transform: translate(85%, 0%) !important;\n}\nh1[data-v-390308d0] {\n\t\tfont-size: 18px !important;\n}\n}\n@media (max-width: 576px) {\n.banner-main .content-left[data-v-390308d0] {\n\t\t-webkit-transform: translate(65%, 0%) !important;\n\t\t        transform: translate(65%, 0%) !important;\n}\nh1[data-v-390308d0] {\n\t\tfont-size: 15px !important;\n}\n}\n@media (min-width: 300px) and (max-width: 370px){\n.banner-main .content-left[data-v-390308d0] {\n\t\t-webkit-transform: translate(65%, 0%) !important;\n\t\t        transform: translate(65%, 0%) !important;\n}\nh1[data-v-390308d0] {\n\t\tfont-size: 10px !important;\n}\n}\n.banner-main .content-left[data-v-390308d0] {\n\t-webkit-transform: translate(53%, 0%);\n\t        transform: translate(53%, 0%);\n\ttop: 38%;\n\tposition: absolute;\n}\n\n/*.main-banner {\n\tmin-height: 356px;\n    background-size: 100% 100%;\n}*/\n.container-fluid img[data-v-390308d0] {\n\n\twidth: 100%;\n}\nh1[data-v-390308d0] {\n\tfont-size: 52px;\n\tfont-family: \"Interstate\", sans-serif;\n\tfont-weight: bold;\n\tcolor: #00448c;\n\ttext-transform: uppercase;\n}\n.jackpot-translation[data-v-390308d0] {\n\tcolor: #fff;\n\theight: 60px;\n\tfont-weight: 900;\n\tfont-size: 40px;\n\ttext-align: left;\n\tline-height: 30px;\n}\n.jackpot-pitch[data-v-390308d0] {\n\tcolor: #012406;\n\tfont-weight: 500;\n\tfont-size: 14px;\n\tdisplay: block;\n\tline-height: 20px;\n\ttext-align: left;\n}\n.jackpot-currency[data-v-390308d0] {\n    margin-left: 0;\n    margin-right: 0;\n    font-weight: 900;\n    font-size: 40px;\n    line-height: 60px;\n    height: 60px;\n    color: #fff;\n}\n.jackpot-million[data-v-390308d0] {\n\tdisplay: inline-block;\n\t-webkit-box-align: end;\n\t    -ms-flex-align: end;\n\t        align-items: flex-end;\n\t-webkit-align-items: flex-end;\n}\n.jackpot-amount[data-v-390308d0]{\n\tfont-weight: 900;\n\tfont-size: 80px;\n\tcolor: #fff\n}\n", ""]);
 
 // exports
 
@@ -83460,6 +83460,15 @@ exports.push([module.i, "\n.main-banner[data-v-390308d0] {\n\tmin-height: 356px;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -83532,22 +83541,41 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      {
-        staticClass: "container-fluid vcenter main-banner no-padding",
-        staticStyle: {
-          "background-image": "url(/img/new1/BAN-princi_S_TX.png)"
-        }
-      },
+      { staticClass: "container-fluid vcenter main-banner no-padding" },
       [
         _c(
           "div",
           { staticClass: "row no-margin", staticStyle: { width: "100%" } },
           [
-            _c("div", { staticClass: "col-lg-2 col-2" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-10 col-10" }, [
-              _c("h1", {}, [_vm._v("\n\t\t\t\tAqui é mais fácil\n\t\t\t")])
-            ])
+            _c(
+              "div",
+              {
+                staticClass:
+                  "vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding"
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "banner-main",
+                    staticStyle: { position: "relative" }
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "img-fluid",
+                      staticStyle: { width: "100%" },
+                      attrs: { src: "/img/new1/BAN-princi_S_TX.png" }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "content-left" }, [
+                      _c("h1", {}, [
+                        _vm._v("\n\t\t\t\t\t\tAqui é mais fácil\n\t\t\t\t\t")
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            )
           ]
         )
       ]

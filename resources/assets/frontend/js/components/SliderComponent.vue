@@ -1,15 +1,24 @@
 <template>	
-	<div class="container-fluid vcenter main-banner no-padding" style="background-image: url(/img/new1/BAN-princi_S_TX.png)">
+	<div class="container-fluid vcenter main-banner no-padding">
 		<div class="row no-margin" style="width: 100%;">
-			<div class="col-lg-2 col-2">
-			</div>
-			<div class="col-lg-10 col-10">
-				<h1 class="" style="">
-					Aqui é mais fácil
-				</h1>
+
+			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
+
+				<div class="banner-main" style="position: relative">
+					<img style="width: 100%; " class="img-fluid" src="/img/new1/BAN-princi_S_TX.png">
+
+					<div class="content-left">
+						<h1 class="" style="">
+							Aqui é mais fácil
+						</h1>
+					</div>
+				</div>
 			</div>
 		</div>
-		
+
+
+
 		<!--<div class="container">
 			<div class="row">
 				<div class="col-lg-9 col-9 col-md-5 col-sm-5" style="min-height: 260px; padding: 21px;">
@@ -59,10 +68,59 @@
 </script>
 
 <style scoped>
-	.main-banner {
+
+	@media (min-width: 1200px) and (max-width: 1400px) {
+
+	}
+
+	@media (min-width: 768px) and (max-width: 992px) {
+		.banner-main .content-left {
+			transform: translate(90%, 0%) !important;
+		}
+		h1 {
+			font-size: 22px !important;
+		}
+	}
+
+	@media (min-width: 576px) and (max-width: 768px) {
+		.banner-main .content-left {
+			transform: translate(85%, 0%) !important;
+		}
+		h1 {
+			font-size: 18px !important;
+		}
+	}
+
+	@media (max-width: 576px) {
+		.banner-main .content-left {
+			transform: translate(65%, 0%) !important;
+		}
+
+		h1 {
+			font-size: 15px !important;
+		}
+	}
+
+	@media (min-width: 300px) and (max-width: 370px){
+		.banner-main .content-left {
+			transform: translate(65%, 0%) !important;
+		}
+
+		h1 {
+			font-size: 10px !important;
+		}
+	}
+
+	.banner-main .content-left {
+		transform: translate(53%, 0%);
+		top: 38%;
+		position: absolute;
+	}
+
+	/*.main-banner {
 		min-height: 356px;
 	    background-size: 100% 100%;
-	}
+	}*/
 
 	.container-fluid img {
 	
@@ -71,7 +129,6 @@
 	
 	h1 {
 		font-size: 52px;
-	    margin-left: 20px;
 		font-family: "Interstate", sans-serif;
 		font-weight: bold;
 		color: #00448c;
