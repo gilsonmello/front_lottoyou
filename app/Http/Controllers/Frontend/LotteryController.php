@@ -55,13 +55,13 @@ class LotteryController extends Controller
 
         $sweepstakes = LotterySweepstake::where('lot_categoria_id', '=', $id)
             ->with([
-                'results' => function($query) {
+                'result' => function($query) {
 
                 },
-                'results.numbers' => function($query) {
+                'result.numbers' => function($query) {
 
                 },
-                'results.numbersExtras' => function($query) {
+                'result.numbersExtras' => function($query) {
 
                 },
             ]);
