@@ -70,9 +70,9 @@ trait PaymentService
 
         $amount = 0;
         if($dataXml->installmentCount == 1) {
-            $amount = $dataXml->grossAmount / $resp->results->currencies->USD->buy;
+            $amount = $dataXml->grossAmount / $order->quotation_dolar;
         } else {
-            $amount = $dataXml->netAmount / $resp->results->currencies->USD->buy;
+            $amount = $dataXml->netAmount / $order->quotation_dolar;
         }
         
         if (in_array($dataXml->status, [5, 6, 7])) {
