@@ -70,7 +70,7 @@ trait PaymentService
 
         $amount = 0;
         if($dataXml->installmentCount == 1) {
-            $amount = $dataXml->grossAmount / $order->quotation_dolar;
+            $amount = $order->sub_total;
         } else {
             $amount = $dataXml->netAmount / $order->quotation_dolar;
         }
