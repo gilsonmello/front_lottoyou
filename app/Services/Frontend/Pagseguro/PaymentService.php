@@ -67,6 +67,13 @@ trait PaymentService
         if ($order->date_confirmation == null) {
             $order->date_confirmation = Carbon::now();
         }
+
+        $amount = 0;
+        if($dataXml->installmentCount == 1) {
+            $amount = $dataXml->grossAmount / $resp->results->currencies->USD->buy;
+        } else {
+            $amount = $dataXml->netAmount / $resp->results->currencies->USD->buy;
+        }
         
         if (in_array($dataXml->status, [5, 6, 7])) {
 
@@ -80,9 +87,9 @@ trait PaymentService
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
-            $historicBalance->amount = ($dataXml->grossAmount / $resp->results->currencies->USD->buy) * -1;
+            $historicBalance->amount = $amount * -1;
 
-            $balance->value -= $dataXml->grossAmount / $resp->results->currencies->USD->buy;
+            $balance->value -= $amount;
 
             $historicBalance->to = $balance->value;
             $historicBalance->save();
@@ -105,9 +112,9 @@ trait PaymentService
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
-            $historicBalance->amount = $dataXml->grossAmount / $resp->results->currencies->USD->buy;
+            $historicBalance->amount = $amount;
 
-            $balance->value += $dataXml->grossAmount / $resp->results->currencies->USD->buy;
+            $balance->value += $amount;
 
             $historicBalance->to = $balance->value;
             $historicBalance->save();
