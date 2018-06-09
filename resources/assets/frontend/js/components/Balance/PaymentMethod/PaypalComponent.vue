@@ -167,7 +167,7 @@
                     var business = document.createElement('input');
                     business.setAttribute('name', "business");
                     business.setAttribute('type', "hidden");
-                    business.setAttribute('value', 'lottoyou.adm-facilitator@gmail.com');
+                    business.setAttribute('value', 'lottoyou.adm@gmail.com');
                     form.append(business);
 
                     var return1 = document.createElement('input');
