@@ -4,7 +4,7 @@
 			<h4 class="choice-payment-method-msg">Você escolheu o Paypal como forma de pagamento</h4>
 			<h5>
 			</h5>
-			<form @submit.prevent="sendPaypal" id="sendPaypal" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+			<form @submit.prevent="sendPaypal" id="sendPaypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 				<div class="row">
 					<div class="col-lg-12 col-12 col-sm-12 col-md-12">
 					    <strong>

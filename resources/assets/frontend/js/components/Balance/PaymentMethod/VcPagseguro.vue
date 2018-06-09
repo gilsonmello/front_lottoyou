@@ -5,7 +5,7 @@
 			<h4 class="choice-payment-method-msg">Você escolheu o Pagseguro como forma de pagamento(Válido só no Brasil)</h4>
 			<h5>
 			</h5>
-			<form @submit.prevent="sendPagseguro" id="sendPagseguro" action="https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
+			<form @submit.prevent="sendPagseguro" id="sendPagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
                 <div class="row">
                     <div class="col-lg-12 col-12 col-sm-12 col-md-12">
                         <strong>
