@@ -88,9 +88,9 @@
 		                        </router-link>
 		                    </li>
 		                    <li class="list-group-item">
-		                        <a href="#" class="color-blue">
+								<router-link :to="{ name: 'ask', params: {  }}" class="color-blue">
 		                            Pergunte
-		                        </a>
+								</router-link>
 		                    </li>
 		                </ul>               
 		            </div>

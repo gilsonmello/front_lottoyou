@@ -185,6 +185,12 @@ export default {
 			        props: true,
 			        component: require('../components/VcTerms')
 			    },
+                {
+                    path: 'ask',
+                    name: 'ask',
+                    props: true,
+                    component: require('../components/VcAsk')
+                },
 			    {   
 			  		path: '/orders',
 			        name: 'orders.index', 
