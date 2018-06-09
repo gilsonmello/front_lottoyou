@@ -598,7 +598,7 @@ return [
     'apply' => 'Aplicar',
     'asktheteacher' => 'Tira dúvida',
     'doubt' => 'Dúvida',
-    'ask' => 'Pergunta',
+    'ask' => 'Pergunte',
     'original' => 'Original',
     'original_question' => 'Inédita',
     'adaptada' => 'Adaptada',

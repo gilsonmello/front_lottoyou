@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <h1 class="page-header text-justify" style="border: none; margin: 44px 0 0;">
-            Termos e Privacidade
+            {{ trans('strings.ask') }}
         </h1>
 
        <h6>
