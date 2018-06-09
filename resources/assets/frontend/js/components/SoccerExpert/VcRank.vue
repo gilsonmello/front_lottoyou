@@ -191,7 +191,7 @@
 						this.tickets = response.data.data;
 						this.loading.component = false
 						this.loading.pagination = false
-						this.scrollToTop();
+						//this.scrollToTop();
 					}
 				}).catch((error) => {
 					this.loading.component = false

@@ -280,7 +280,7 @@
 
                         $(this.$el).find('.form-filter [type="load"]').addClass('hide');
                         $(this.$el).find('.form-filter [type="submit"]').removeClass('hide');
-                        this.scrollToTop();
+                        //this.scrollToTop();
 					}
 				}).catch((error) => {
 					this.loading.component = false;

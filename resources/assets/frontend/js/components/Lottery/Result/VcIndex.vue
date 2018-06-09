@@ -188,7 +188,7 @@
 						this.sweepstakes = response.data.data;
 						this.loading.component = false
 						this.loading.pagination = false
-						this.scrollToTop();
+						//this.scrollToTop();
 						$(this.$el).find('.form-filter [type="load"]').addClass('hide');
                         $(this.$el).find('.form-filter [type="submit"]').removeClass('hide');
 					}

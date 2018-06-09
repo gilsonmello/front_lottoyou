@@ -167,9 +167,9 @@
                         //console.log(response.data.data)
                         response.data.data.forEach((val) => {
                             val.data = JSON.parse(val.data);
-                        })             
+                        });
                         this.items = response.data.data;
-                        this.scrollToTop();
+                        //this.scrollToTop();
                     }
                 }).catch((error) => {
                     //this.$router.push({name: 'users.account'});                  

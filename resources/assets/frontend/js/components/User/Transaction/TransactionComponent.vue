@@ -255,14 +255,14 @@
                 
                 this.$router.replace({
                     query: Object.assign(this.query)
-                })
+                });
 
                 historicRequest.get(url, {}, {}).then(response => {
                     if(response.status === 200) {
                         this.loading.component = false;
                         this.model = response.data;
                         this.balances = response.data.data;
-                        this.scrollToTop();                          
+                        //this.scrollToTop();
                     }
                 }).catch((error) => {
                     this.loading.component = false                   
