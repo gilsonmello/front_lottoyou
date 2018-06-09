@@ -68,12 +68,7 @@ trait PaymentService
             $order->date_confirmation = Carbon::now();
         }
 
-        $amount = 0;
-        if($dataXml->installmentCount == 1) {
-            $amount = $order->sub_total;
-        } else {
-            $amount = $dataXml->netAmount / $order->quotation_dolar;
-        }
+        $amount = $order->sub_total;
         
         if (in_array($dataXml->status, [5, 6, 7])) {
 
