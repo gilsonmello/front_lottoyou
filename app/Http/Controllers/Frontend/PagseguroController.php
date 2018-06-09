@@ -67,10 +67,10 @@ class PagseguroController extends Controller
         //$code = '7F7AA96F474A474A222664BC9F8EFA8680C4';
 
         $request = [
-            'url' => 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/notifications/'.$code.'?email=lottoyou.adm@gmail.com&token=0AA8C0B8F9F74F46B9CCB2E7C5D1FFAD',
+            'url' => 'https://ws.pagseguro.uol.com.br/v2/transactions/notifications/'.$code.'?email=lottoyou.adm@gmail.com&token=83480F8B2B634D80904E6B11461BA65C',
             'params' => [
                 'email' => 'lottoyou.adm@gmail.com',
-                'token' => '0AA8C0B8F9F74F46B9CCB2E7C5D1FFAD'
+                'token' => '83480F8B2B634D80904E6B11461BA65C'
             ]
         ];
 
@@ -107,7 +107,7 @@ class PagseguroController extends Controller
     {
         $credentials = array(
             'email' => 'lottoyou.adm@gmail.com',
-            'token' => '0AA8C0B8F9F74F46B9CCB2E7C5D1FFAD'
+            'token' => '83480F8B2B634D80904E6B11461BA65C'
         );
 
         $data = '';
@@ -117,7 +117,7 @@ class PagseguroController extends Controller
 
         $data = rtrim($data, '&');
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://ws.sandbox.pagseguro.uol.com.br/v2/sessions');
+        curl_setopt($ch, CURLOPT_URL, 'https://ws.pagseguro.uol.com.br/v2/sessions');
         curl_setopt($ch, CURLOPT_POST, count($credentials));
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
