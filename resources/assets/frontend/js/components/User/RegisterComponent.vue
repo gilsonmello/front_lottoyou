@@ -146,7 +146,9 @@
 							<div class="form-group">
 								<label class="" for="terms">
 									<input type="checkbox" v-model="terms" name="terms" id="terms"> 
-										Li e aceito os <a href="#">Termos de Uso</a> 
+										Li e aceito os <a class="btn-link" href="/termos-principal.docx" target="_blank">
+											Termos de Uso
+										</a>
 								</label>
 								<div class="alert alert-danger" v-if="errors.terms">
 								  	<div v-for="term in errors.terms" >{{ term }}</div>
@@ -312,7 +314,10 @@
 				for(var i = 1; i <= this.months[index].finalDay; i++){
 					this.days.push(i);
 				}
-				this.birth_day = this.days[0]
+
+				//Caso o mês selecionado tenha dias menor do que o mês anterior selecionado
+				//Fazer troca de dia pelo último dia do mês selecionado
+				this.birth_day = this.birth_day > this.days[this.days.length - 1] ? this.days[this.days.length - 1] : this.birth_day;
 			},
 			rangeDay: function() {
 				var result = [];

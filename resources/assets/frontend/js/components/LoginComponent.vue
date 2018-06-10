@@ -43,7 +43,10 @@
 						</div>
 						<div class="row">
 							<div class="col-lg-12">
-								<router-link class="pull-right" :to="{ name: 'users.forgot_password' }">
+								<!--<router-link class="pull-right" :to="{ name: 'users.forgot_password' }">
+									{{ trans('strings.I_forgot_my_password') }}
+								</router-link>-->
+								<router-link class="pull-right" :to="{ name: 'ask' }">
 									{{ trans('strings.I_forgot_my_password') }}
 								</router-link>
 								<router-link style="margin-right: 10px;" class="pull-right" :to="{ name: 'users.register' }">

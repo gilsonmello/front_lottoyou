@@ -26,7 +26,7 @@
 						<button v-if="loading.paying" @click.prevent="" type="load" class="btn btn-md btn-primary">
 							<i class="fa fa-refresh fa-spin"></i>
 						</button>
-						<button v-else type="submit" class="btn btn-primary btn-md">Efeutuar compra</button>
+						<button v-else type="submit" class="btn btn-primary btn-md">Efetuar compra</button>
 					</div>
 				</div>
 			</form>
