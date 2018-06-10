@@ -4,7 +4,7 @@
         	<div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header items-center" style="border-bottom: none;">
-                	<img src="/imgs/logo.png" style="width: 125px; height: 50;">
+                	<img src="/imgs/logo.png" style="width: 125px; height: 50px;">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -115,7 +115,6 @@
 				</div>
 			</div>
 		</form>  -->
-	</div>
 </template>
 <script>
 	import {mapGetters} from 'vuex'
@@ -194,6 +193,7 @@
 		            password: this.password,
 		            scope: '',
 		        };
+
 		        var loginRequest = axios.create();
 		        loginRequest.interceptors.request.use(config => {
 		        	this.loading.login = true;
@@ -220,8 +220,8 @@
 						});
 
 			        	
-			        	var access_token = response.data.access_token
-              			var refresh_token = response.data.refresh_token
+			        	var access_token = response.data.access_token;
+              			var refresh_token = response.data.refresh_token;
               			
               			var loginRequest = axios.create();
 						//Fazendo busca do usuário logado, para setar na estrutura de dados
@@ -232,9 +232,9 @@
 							this.email = '';
 							this.password = '';
 							this.errors = {};
-				        	response_2.data.access_token = access_token
-		        	
-		        			response_2.data.refresh_token = refresh_token
+				        	response_2.data.access_token = access_token;
+
+		        			response_2.data.refresh_token = refresh_token;
 
 		        			var authUser = response_2.data;
 

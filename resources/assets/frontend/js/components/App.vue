@@ -56,9 +56,9 @@
 					this.refreshAuthPromise()
 					.then(response => {
 						if(response.status === 200) {
-							response.data.access_token = access_token
-				        	response.data.refresh_token = refresh_token
-							window.localStorage.setItem('authUser', JSON.stringify(response.data))
+							response.data.access_token = access_token;
+				        	response.data.refresh_token = refresh_token;
+							window.localStorage.setItem('authUser', JSON.stringify(response.data));
 							this.$store.dispatch('setUserObject', response.data);
 						}
 				    }).catch((error) => {

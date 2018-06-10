@@ -147,7 +147,7 @@
 								<label class="" for="terms">
 									<input type="checkbox" v-model="terms" name="terms" id="terms"> 
 										Li e aceito os <a class="btn-link" href="/termos-principal.docx" target="_blank">
-											Termos de Uso
+											Termos e Condições
 										</a>
 								</label>
 								<div class="alert alert-danger" v-if="errors.terms">
@@ -187,8 +187,12 @@
 <script>
 	import {routes} from '../../api_routes'
 	import LoadComponent from '../Load'
+    import {mapGetters} from 'vuex'
 	export default {
 		computed: {
+            ...mapGetters([
+                'auth'
+            ]),
 			leapYear: function() {
 				var date = this.date;
 				if((date.getFullYear() % 4 == 0) && (date.getFullYear() % 100 != 0) || (date.getFullYear() % 400 == 0)){
@@ -342,6 +346,94 @@
 	            };
 	            return result.reverse();
 	        },
+			login() {
+                const data = {
+                    grant_type: 'password',
+                    client_id: 2,
+                    client_secret: '7UzbybHT5HsZ9x2CX09aZIBSx90KxUDhKdjznNjF',
+                    username: this.email,
+                    password: this.password,
+                    scope: '',
+                };
+
+                var loginRequest = axios.create();
+                loginRequest.interceptors.request.use(config => {
+                    return config;
+                });
+
+                loginRequest.post(routes.auth.login, qs.stringify(data)).then(response => {
+
+                    if(response.status === 200) {
+
+                        window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
+                        window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+
+                        //this.$router.push({name: 'users.account'});
+
+                        let time = setInterval(() => {
+                            if(this.auth) {
+                                var header = $('.header');
+                                $('body').css({
+                                    'padding-top': header[0].clientHeight - 1
+                                });
+                                clearInterval(time);
+                            }
+                        });
+
+
+                        var access_token = response.data.access_token;
+                        var refresh_token = response.data.refresh_token;
+
+                        var loginRequest = axios.create();
+                        //Fazendo busca do usuário logado, para setar na estrutura de dados
+                        loginRequest.get(routes.auth.user, { headers: {
+                                'Accept': 'application/json',
+                                'Authorization': 'Bearer ' + access_token
+                            }}).then(response_2 => {
+
+                            this.name = '';
+                            this.last_name = '';
+                            this.email = '';
+                            this.password = '';
+                            this.birth_day = '';
+                            this.birth_month = '';
+                            this.birth_year = '';
+                            this.country = '';
+                            this.gender = '';
+                            this.terms = '';
+                            this.confirm_password = '';
+                            response_2.data.access_token = access_token;
+
+                            response_2.data.refresh_token = refresh_token;
+
+                            var authUser = response_2.data;
+
+                            window.localStorage.setItem('authUser', JSON.stringify(authUser));
+
+                            this.$store.dispatch('setUserObject', response_2.data);
+
+                            //window.location.reload();
+
+                            this.$router.push({name: 'home'});
+
+                            $('.modal-login').modal('hide');
+
+                        }).catch((error_2) => {
+                            this.loading.login = false;
+                            this.password = '';
+                            this.errors = {
+                                credentials: 'Usuário ou Senha inválidos'
+                            };
+                        });
+
+                    }
+                }).catch((error) => {
+                    this.loading.login = false;
+                    this.errors = {
+                        credentials: 'Usuário ou Senha inválidos'
+                    };
+                });
+			},
 			register: function() {
 				var registerRequest = axios.create();
 				registerRequest.interceptors.request.use(config => {
@@ -364,45 +456,17 @@
 					terms: this.terms,
 					nickname: this.nickname
 				})).then((response) => {
-					if(response.status === 200){
-						this.name = '';						
-						this.last_name = '';
-						this.email = '';
-						this.password = '';
-						this.birth_day = '';
-						this.birth_month = '';
-						this.birth_year = '';
-						this.country = '';
-						this.gender = '';
-						this.terms = '';
-						this.confirm_password = '';
-				
-						this.$router.push({name: 'home'})
+					if(response.status === 200) {
+
+						//this.$router.push({name: 'home'});
 						toastr.options.timeOut = 10000;
-						toastr.options.newestOnTop = true
+						toastr.options.newestOnTop = true;
 						toastr.success(
 							this.trans('alerts.users.create.success'),
 							this.trans('strings.success')
 						);
-						/*const authUser = {};
-              			authUser.access_token = response.data
-						window.localStorage.setItem('authUser', JSON.stringify(authUser))
-						//Fazendo busca do usuário logado, para setar na estrutura de dados authUser
-						axios.get(rt.users.logged, {headers: getHeader()}).then(response => {
-							this.name = '';
-							this.email = '';
-							this.password = '';
-							this.confirm_password = '';
-							this.birth_date = '';
-							this.errors = [];
-							this.user_load_create = false;
-		                  	authUser.email = response.data.email
-		                  	authUser.name = response.data.name
-		                  	window.localStorage.setItem('authUser', JSON.stringify(authUser))
-		                  	this.$store.dispatch('setUserObject', authUser)
-		                  	//this.$router.push({name: 'dashboard'})
-							toastr.success('Cadastrado com sucesso');
-		                })*/
+
+                       	this.login();
 					}
 					$(this.$el).find('[type="load"]').addClass('hide');
 		        	$(this.$el).find('[type="submit"]').removeClass('hide');
