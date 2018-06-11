@@ -91,11 +91,11 @@ class PaypalController extends Controller
             $order->date_confirmation = Carbon::now();
         }
 
-        if($request->payment_status == 'Canceled_Reversal' || 
+        if(($request->payment_status == 'Canceled_Reversal' ||
             $request->payment_status == 'Denied' ||
             $request->payment_status == 'Expired' ||
             $request->payment_status == 'Reversed' ||
-            $request->payment_status == 'Voided'
+            $request->payment_status == 'Voided')
             && ($order->status_paypal != 'Canceled_Reversal'
                 && $order->status_paypal != 'Denied'
                 && $order->status_paypal != 'Expired'
