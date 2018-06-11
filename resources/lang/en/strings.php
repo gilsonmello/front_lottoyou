@@ -599,6 +599,7 @@ return [
     'asktheteacher' => 'Tira dúvida',
     'doubt' => 'Dúvida',
     'ask' => 'Pergunte',
+    'world_cup_now' => 'Copa do Mundo Agora',
     'original' => 'Original',
     'original_question' => 'Inédita',
     'adaptada' => 'Adaptada',
