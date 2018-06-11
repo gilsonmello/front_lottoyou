@@ -419,11 +419,7 @@
                             $('.modal-login').modal('hide');
 
                         }).catch((error_2) => {
-                            this.loading.login = false;
-                            this.password = '';
-                            this.errors = {
-                                credentials: 'Usuário ou Senha inválidos'
-                            };
+
                         });
 
                     }

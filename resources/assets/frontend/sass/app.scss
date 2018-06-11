@@ -192,7 +192,7 @@ main {
 }
 
 .mobile {
-    display: none;
+    display: none !important;
 }
 
 .page-header {
@@ -283,7 +283,7 @@ button.close {
     }
 
     .mobile {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -293,7 +293,7 @@ button.close {
         margin-bottom: 12px;
     }
     .no-mobile {
-        display: none;
+        display: none !important;
     }
 
     .mobile {
@@ -320,7 +320,7 @@ button.close {
         font-size: 15px !important;
     }
     .no-mobile {
-        display: none;
+        display: none !important;
     }
 
     .mobile {
@@ -368,7 +368,7 @@ button.close {
         width: 100% !important;
     }
     .no-mobile {
-        display: none;
+        display: none !important;
     }
 
     .mobile {
@@ -428,7 +428,7 @@ button.close {
     }
 
     .no-mobile {
-        display: none;
+        display: none !important;
     }
 
     .mobile {

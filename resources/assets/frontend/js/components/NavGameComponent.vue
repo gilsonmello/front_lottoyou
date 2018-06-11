@@ -21,6 +21,22 @@
 	            <router-link tag="li" :to="{ name: 'lotteries.index' }">
 	            	<a class="nav-link">{{ trans('strings.lotteries') }}</a>
             	</router-link>
+
+				<li class="no-mobile">
+					<a>&nbsp</a>
+				</li>
+				<li class="no-mobile">
+					<a>&nbsp</a>
+				</li>
+				<li class="no-mobile">
+					<a>&nbsp</a>
+				</li>
+
+				<router-link class="active" tag="li" :to="{ name: 'soccer_expert.show', params: {id: 2} }">
+					<a class="nav-link">
+						Play Word Cup
+					</a>
+				</router-link>
 	            <!-- <li class="nav-item">
 	          		<router-link class="nav-link" :to="{ name: 'lotteries.index' }">
 	          			{{ trans('strings.lotteries') }}</span>
