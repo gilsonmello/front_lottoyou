@@ -96,7 +96,11 @@ class PaypalController extends Controller
             $request->payment_status == 'Expired' ||
             $request->payment_status == 'Reversed' ||
             $request->payment_status == 'Voided'
-        ) {
+            && ($order->status_paypal != 'Canceled_Reversal'
+                && $order->status_paypal != 'Denied'
+                && $order->status_paypal != 'Expired'
+                && $order->status_paypal != 'Reversed'
+                && $order->status_paypal != 'Voided')) {
             $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
 
             $historicBalance = new HistoricBalance;

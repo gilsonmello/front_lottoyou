@@ -56,7 +56,8 @@ trait PaymentService
 
         $amount = $order->sub_total;
         
-        if (in_array($dataXml->status, [5, 6, 7])) {
+        if (in_array($dataXml->status, [5, 6, 7])
+            && ($order->status_pagseguro != 5 && $order->status_pagseguro != 6 && $order->status_pagseguro != 7)) {
 
             $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
 
