@@ -110,6 +110,7 @@ class PaypalController extends Controller
             $historicBalance->amount = $request->payment_gross * -1;
 
             $balance->value -= $request->payment_gross;
+            $balance->value = $balance->value < 0 ? 0 : $balance->value;
 
             $historicBalance->to = $balance->value;
             $historicBalance->save();

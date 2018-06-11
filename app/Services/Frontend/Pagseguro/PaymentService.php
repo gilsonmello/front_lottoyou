@@ -71,6 +71,7 @@ trait PaymentService
             $historicBalance->amount = $amount * -1;
 
             $balance->value -= $amount;
+            $balance->value = $balance->value < 0 ? 0 : $balance->value;
 
             $historicBalance->to = $balance->value;
             $historicBalance->save();
