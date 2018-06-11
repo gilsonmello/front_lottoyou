@@ -32,7 +32,7 @@
 					<a>&nbsp</a>
 				</li>
 
-				<router-link class="active" tag="li" :to="{ name: 'soccer_expert.show', params: {id: 2} }">
+				<router-link class="world_cup_now" tag="li" :to="{ name: 'soccer_expert.show', params: {id: 2} }">
 					<a class="nav-link">
 						{{ trans('strings.world_cup_now') }}
 					</a>
@@ -54,7 +54,51 @@
 </template>
 <script>
 	export default {
+	    methods: {
+	        interval() {
+	            if($('.world_cup_now').hasClass('active')) {
+                    $('.world_cup_now')
+                        .removeClass('active')
+                        .css({
+                            visibility: 'hidden'
+                        });
+                }  else {
+                    $('.world_cup_now')
+                        .addClass('active')
+                        .css({
+                            visibility: 'visible'
+                        });
+                }
 
+            },
+            handleSetInterval() {
+
+                var time = setInterval(this.interval, 800);
+
+                $('.world_cup_now').mouseover(() => {
+                    clearInterval(time);
+                    time = null;
+                    $('.world_cup_now')
+                        .addClass('active')
+                        .css({
+                            visibility: 'visible'
+                        });
+                });
+
+                $('.world_cup_now').mouseout(() => {
+                    $('.world_cup_now')
+                        .addClass('active')
+                        .css({
+                            visibility: 'visible'
+                        });
+                    time = null;
+                    time = setInterval(this.interval, 800);
+                });
+            }
+        },
+		mounted() {
+	        this.handleSetInterval();
+		}
 	}
 </script>
 
