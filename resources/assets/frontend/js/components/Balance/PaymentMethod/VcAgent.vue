@@ -8,7 +8,7 @@
             </h5>
 
             <table class="table table-hover table-striped table-responsive">
-                <thead style="background-color: #000546; border-color: #000546;">
+                <thead style="background-color: rgb(15, 19, 70); border-color: rgb(15, 19, 70); color: #fff">
                     <th class="text-left" colspan="2">GT Investimentos</th>
                 </thead>
                 <tbody>
