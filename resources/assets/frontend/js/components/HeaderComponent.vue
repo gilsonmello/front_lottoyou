@@ -3,7 +3,7 @@
 		<div class="container container-fluid-header">
 			<nav class="navbar navbar-toggleable-md navbar-light bg-inverse" style="padding: 0;">
 				
-  				<div class="col-lg-3 col-md-3 col-sm-3 col-12 no-padding">
+  				<div class="col-lg-3 col-md-2 col-sm-3 col-12 no-padding">
 					<ul class="vcenter header-brand">
   						<li style="padding: 0;">
   							<router-link :to="{ name: 'home' }">
@@ -89,10 +89,10 @@
 						  			<div class="tooltip-item-account">
 						  				<div class="tooltip-item-account-header">
 						  					<div class="row vcenter">
-						  						<div class="col-lg-6 col-md-6 col-sm-6">
+						  						<div class="col-lg-6 col-md-6 col-4 col-sm-6">
 						  							<span class="title">Minha Lottoyou</span>
 						  						</div>
-						  						<div class="col-lg-6 col-md-6 col-sm-6">
+						  						<div class="col-lg-6 col-8 col-md-6 col-sm-6">
 						  							<span class="balance" v-if="auth && auth.balance">
 							  							Crédito: $ {{ auth.balance.value }}
 							  						</span>
@@ -106,10 +106,10 @@
 						  					<ul class="account">
 						  						<li class="account-item">
 						  							<div class="row vcenter">
-						  								<div class="col-lg-2 col-md-2 col-sm-2">
+						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
 						  									<i class="fa fa-user-circle" style="font-size: 27px; color: initial;"></i>
 						  								</div>
-						  								<div class="col-lg-10 col-md-10 col-sm-10">
+						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'users.account' }" class="">
 							  									{{ trans('strings.my_account') }}
 							  								</router-link>
@@ -118,10 +118,10 @@
 						  						</li>
 						  						<li class="account-item">
 						  							<div class="row vcenter">
-						  								<div class="col-lg-2 col-md-2 col-sm-2">
+						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
 						  									<i class="fa fa-gamepad" style="font-size: 27px; color: initial;"></i>
 						  								</div>
-						  								<div class="col-lg-10 col-md-10 col-sm-10">
+						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'users.games', params: {  } }">
 						  										{{ trans('strings.my_games') }}
 										                    </router-link>
@@ -142,10 +142,10 @@
 						  						</li> -->
 						  						<li class="account-item">
 						  							<div class="row vcenter">
-						  								<div class="col-lg-2 col-md-2 col-sm-2">
+						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
 						  									<i class="fa fa fa-credit-card-alt" style="font-size: 27px; color: initial;"></i>
 						  								</div>
-						  								<div class="col-lg-10 col-md-10 col-sm-10">
+						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'users.transactions' }" class="">
 							  									{{ trans('strings.transactions') }}
 							  								</router-link>
@@ -215,9 +215,9 @@
 		methods: {
 			col() {
 				if(this.user != null) {
-					return 'col-lg-9 col-md-9 col-sm-9 col-12 no-padding'
+					return 'col-lg-9 col-md-10 col-sm-9 col-12 no-padding'
 				}
-				return 'col-lg-9 col-md-9 col-sm-9 col-12 no-padding'
+				return 'col-lg-9 col-md-10 col-sm-9 col-12 no-padding'
 			},
 			openTooltip() {
 				$('.tooltip-item-account')
@@ -542,17 +542,6 @@
 		}
 	}
 
-	@media (max-width: 576px) {
-		.header-items {
-			text-align: center;
-		}
-
-		ul li {
-		    padding-bottom: 0 !important;
-    		padding-top: 5px !important;
-		}
-	}
-
 	.tooltip-item-account {
 		display: none;
 	}
@@ -631,6 +620,36 @@
 	    height: 40px;
 	    border-radius: 999px;
 	    margin-right: 21px;
+	}
+
+	@media (max-width: 576px) {
+		.header-items li {
+			padding: 0 20px 0 10px;
+		}
+
+		.item-account .open {
+			width: 260px;
+			bottom: -258px;
+			right: -38px;
+		}
+
+		.header-items {
+			text-align: center;
+		}
+
+	}
+
+	.tooltip-item-account-header .title {
+		display: initial !important;
+	}
+	.tooltip-item-account-header .balance {
+		display: initial !important;
+	}
+	.item-balance .account {
+		display: initial !important;
+	}
+	.tooltip-item-account-content .answer {
+		display: initial !important;
 	}
 	
 </style>

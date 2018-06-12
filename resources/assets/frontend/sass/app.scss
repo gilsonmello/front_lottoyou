@@ -297,7 +297,7 @@ button.close {
     }
 
     .mobile {
-        display: inherit;
+        display: inherit !important;
     }
 }
 
@@ -324,7 +324,7 @@ button.close {
     }
 
     .mobile {
-        display: inherit;
+        display: inherit !important;
     }
 
     .item-cart .cart-right .cart-value {
@@ -372,7 +372,7 @@ button.close {
     }
 
     .mobile {
-        display: inherit;
+        display: inherit !important;
     }
 }
 
@@ -391,6 +391,7 @@ button.close {
     .item-cart .cart-right .cart-checkout-now {
         display: none !important;
     }
+
     .item-account span {
         display: none !important;
     }
@@ -432,7 +433,7 @@ button.close {
     }
 
     .mobile {
-        display: inherit;
+        display: inherit !important;
     }
 }
 
