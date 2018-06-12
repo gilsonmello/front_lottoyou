@@ -1,10 +1,11 @@
 <template>
     <div class="row">
         <div class="col-lg-12">
-            <h4 class="choice-payment-method-msg">
+            <h6 class="choice-payment-method-msg">
                 Você escolheu Agente de Pagamento como forma de pagamento (Válido só no Brasil)
-            </h4>
-
+            </h6>
+            <h5>
+            </h5>
             <h6><strong>O que é um Agente de Pagamento?</strong></h6>
             <h6 style="text-align: justify">
                 Um agente de pagamentos atua como um intermediário entre os clientes e a Lottoyou.bet. O agente de pagamentos processa depósitos e retiradas para os clientes que desejam usar métodos específicos de dinheiro eletrônico ou moedas locais não oferecidos pela Lottoyou.bet.

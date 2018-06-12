@@ -1,7 +1,7 @@
 <template>
 	<div class="row">
 		<div class="col-lg-12">
-			<h4 class="choice-payment-method-msg">Você escolheu o Paypal como forma de pagamento</h4>
+			<h6 class="choice-payment-method-msg"><strong>Você escolheu o Paypal como forma de pagamento</strong></h6>
 			<h5>
 			</h5>
 			<form @submit.prevent="sendPaypal" id="sendPaypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">

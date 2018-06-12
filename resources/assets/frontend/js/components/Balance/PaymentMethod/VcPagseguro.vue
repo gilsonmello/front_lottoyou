@@ -2,7 +2,7 @@
 	<vc-load v-if="loading.quotation"></vc-load>
 	<div class="row" v-else>
 		<div class="col-lg-12">
-			<h4 class="choice-payment-method-msg">Você escolheu o Pagseguro como forma de pagamento (Válido só no Brasil)</h4>
+			<h6 class="choice-payment-method-msg"><strong>Você escolheu o Pagseguro como forma de pagamento (Válido só no Brasil)</strong></h6>
 			<h5>
 			</h5>
 			<form @submit.prevent="sendPagseguro" id="sendPagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html" method="post">
