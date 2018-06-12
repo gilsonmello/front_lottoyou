@@ -1,5 +1,5 @@
 <template>
-	<app-load-component v-if="loading.component == true"></app-load-component>
+	<app-load-component v-if="loading.component === true"></app-load-component>
 	<main role="main" v-else>
 		<header-component></header-component>
 		<section class="content">
@@ -125,12 +125,12 @@
 					var access_token = JSON.parse(window.localStorage.getItem('access_token'));
 					access_token = access_token != null ? access_token : null;
 
-				    if(to.meta.requiresAuth == true && access_token) {
+				    if(to.meta.requiresAuth === true && access_token) {
 				    	next();
 				    }
 
 				    //Se a rota depende de login
-					if(to.meta.requiresAuth == true && access_token == null) {
+					if(to.meta.requiresAuth === true && access_token == null) {
 
 						//Verificando se é diferente da rota para edição de conta do usuário
 						//Pois se não o fizer, a requisição será executada 2 vezes, porque

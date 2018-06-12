@@ -23,11 +23,18 @@
 							<!-- <span class="payment-method-name">Pagseguro</span> -->
 						</a>
 					</div>
+					<div class="col-lg-2 col-6 col-md-2 col-sm-4">
+						<a @click.prevent="changePaymentMethod('payment_agent', $event)" href="#" class="payment-method">
+							<img class="img-fluid" src="/img/payment_agent.png">
+							<!-- <span class="payment-method-name">Pagseguro</span> -->
+						</a>
+					</div>
 				</div>
 				<div class="row box-actions-payment">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-12">
 						<paypal-component :order_id="order_id" v-if="payment_method == 'paypal' "></paypal-component>
 						<vc-pagseguro :order_id="order_id" v-else-if=" payment_method == 'pagseguro' "></vc-pagseguro>
+						<vc-agent :order_id="order_id" v-else-if=" payment_method == 'payment_agent' "></vc-agent>
 					</div>
 				</div>
 			</div>
@@ -60,6 +67,7 @@
 	import {mapState, mapGetters} from 'vuex'
 	import VcPagseguro from './PaymentMethod/VcPagseguro'
 	import PaypalComponent from './PaymentMethod/PaypalComponent'
+    import VcAgent from './PaymentMethod/VcAgent'
 	export default {
 		methods: {
 			changePaymentMethod: function(payment_method, el) {
@@ -122,7 +130,8 @@
 		components: {
 			PaypalComponent,
 			VcPagseguro,
-			VcLoad
+			VcLoad,
+            VcAgent
 		}
 	}
 </script>

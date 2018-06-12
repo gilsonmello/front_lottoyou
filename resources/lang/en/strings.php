@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'coin' => 'Moeda',
     'terms_and_conditions' => 'Termos e Condições',
     'privacy' => 'Privacidade',
     'help' => 'Ajuda',
@@ -180,7 +181,6 @@ return [
     'reveal_all' => 'Revelar Todas',
     'jackpot_available' => 'Prêmios disponíveis',
     'amount' => 'Quantia',
-    'soccer_expert' => 'Soccer Expert',
     'home' => 'Home',    
     'number_of_cards' => 'Número de Cartões',
     'play_now' => 'Jogue Agora',
@@ -320,12 +320,10 @@ return [
     'rating' => 'Avaliação',
     'period' => 'Período',
     'create_supplier' => 'Criar Fornecedor',
-    'supplier' => 'Fornecedor',
     'country' => 'País',
     'company_name' => 'Nome da Companhia',
     'beginOfCourse' => 'Informe a previsão de início',
     'here' => 'Aqui',
-    'all_rights_reserved' => 'Todos os direitos reservados.',
     'annual_orders' => 'Vendas por mês no último ano',
     'anything_you_want' => 'Qualquer coisa que você quiser',
     'backend' => [
