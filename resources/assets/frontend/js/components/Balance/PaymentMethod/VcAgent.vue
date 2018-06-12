@@ -8,13 +8,13 @@
             </h5>
 
             <table class="table table-hover table-striped table-responsive">
-                <thead class="thead-dark">
-                    <th class="text-left" colspan="2">Grupo Compre Seguro</th>
+                <thead style="background-color: #000546; border-color: #000546;">
+                    <th class="text-left" colspan="2">GT Investimentos</th>
                 </thead>
                 <tbody>
                 <tr style="border: none;">
                     <td>{{ trans('strings.name') }}</td>
-                    <td>Grupo Compre Seguro</td>
+                    <td>George Telles</td>
                 </tr>
                 <tr>
                     <td>{{ trans('strings.coin') }}</td>
@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <td>{{ trans('strings.email') }}</td>
-                    <td>george_1@hotmail.com.br</td>
+                    <td>gtinvestimentos@outlook.com</td>
                 </tr>
                 <tr>
                     <td>{{ trans('strings.phone') }}</td>
