@@ -81,7 +81,6 @@
             <h6>
                 Este processo pode demorar até 24 horas após a confirmação do valor na conta do agente de pagamento.
             </h6>
-            <br>
             <h6>
                 <strong>
                     Importante salientar que as taxas de transferência são arcadas pelo cliente.
