@@ -53,7 +53,7 @@
                 </tr>
                 </tbody>
             </table>
-
+            <br>
             <h6><strong>O que é um Agente de Pagamento?</strong></h6>
             <h6 style="text-align: justify">
                 Um agente de pagamentos atua como um intermediário entre os clientes e a Lottoyou.bet. O agente de pagamentos processa depósitos e retiradas para os clientes que desejam usar métodos específicos de dinheiro eletrônico ou moedas locais não oferecidos pela Lottoyou.bet.
@@ -86,6 +86,7 @@
                     Importante salientar que as taxas de transferência são arcadas pelo cliente.
                 </strong>
             </h6>
+            <br>
             <h6>
                 <strong>
                     Por que os clientes escolhem usar agentes de pagamentos?
