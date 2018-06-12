@@ -111,5 +111,15 @@
 </script>
 
 <style scoped>
-
+    .choice-payment-method-msg {
+        background-color: #EFEFEF;
+        padding: 15px;
+        font-size: 17px;
+        display: inline-block;
+        width: 100%;
+        -webkit-transition: background-color 0.5s ease;
+        -moz-transition: background-color 0.5s ease;
+        -o-transition: background-color 0.5s ease;
+        transition: background-color 0.5s ease;
+    }
 </style>
