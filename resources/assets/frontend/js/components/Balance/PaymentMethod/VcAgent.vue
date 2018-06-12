@@ -9,12 +9,12 @@
 
             <table class="table table-hover table-striped table-responsive">
                 <thead class="thead-dark">
-                    <th class="text-left" colspan="2">Grupo Compre Segundo</th>
+                    <th class="text-left" colspan="2">Grupo Compre Seguro</th>
                 </thead>
                 <tbody>
                 <tr style="border: none;">
                     <td>{{ trans('strings.name') }}</td>
-                    <td>Grupo Compre Segundo</td>
+                    <td>Grupo Compre Seguro</td>
                 </tr>
                 <tr>
                     <td>{{ trans('strings.coin') }}</td>
