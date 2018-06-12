@@ -8,10 +8,13 @@
             </h5>
 
             <table class="table table-hover table-striped table-responsive">
+                <thead class="thead-dark">
+                    <th class="text-left" colspan="2">Grupo Compre Segundo</th>
+                </thead>
                 <tbody>
                 <tr style="border: none;">
                     <td>{{ trans('strings.name') }}</td>
-                    <td>George Telles</td>
+                    <td>Grupo Compre Segundo</td>
                 </tr>
                 <tr>
                     <td>{{ trans('strings.coin') }}</td>
@@ -102,7 +105,6 @@
                     É rápido e seguro
                 </li>
             </ul>
-            <br>
         </div>
     </div>
 </template>
