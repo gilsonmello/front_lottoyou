@@ -55,7 +55,7 @@ class SoccerExpertBet extends Model
      *
      * @var int
      */
-    protected $perPage = 15;
+    public $perPage = 45;
 
     public function round() {
     	return $this->belongsTo(SoccerExpertRound::class, 'soc_rodada_id');
