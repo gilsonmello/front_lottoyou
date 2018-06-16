@@ -53,7 +53,7 @@
 			<div class="row">
 				<div class="col-lg-3 col-12 col-md-4 col-sm-4">
 					<div class="form-group">
-						<label for="date">{{ trans('strings.sweepstake_date') }}</label>
+						<label for="lot_jogo_id">{{ trans('strings.sweepstake_date') }}</label>
 					    <select v-model="lot_jogo_id" class="form-control" id="lot_jogo_id">
 					      	<option :value="key" :data-key="key" v-for="(sweepstake, key) in lottery.sweepstakes">
 					      		{{ retireHour(sweepstake.data_fim) }}
@@ -63,7 +63,7 @@
 				</div>
 				<div class="col-lg-3 col-12 col-md-4 col-sm-4">
 					<div class="form-group">
-						<label for="date">{{ trans('strings.remaining_time_for_next_sweepstake') }}</label>
+						<label>{{ trans('strings.remaining_time_for_next_sweepstake') }}</label>
 						<span class="countdown form-control">
 							<span v-if="next_lottery.days > 1">
 								{{ next_lottery.days }} {{ trans('strings.days') }} e
@@ -243,8 +243,8 @@
 					});
 
 					validateRequest.post(
-						routes.carts.validate, 
-						this.purchase, 
+						routes.carts.validate_lottery_fast_payment,
+                        item,
 						{}
 					).then(response => {
 						if(response.status === 200) {
@@ -290,14 +290,34 @@
 					return config;
 				});
 
-				addLotteryRequest.post(routes.carts.add_lotteries, {
+				addLotteryRequest.post(routes.carts.complete_fast_payment_lottery, {
 					purchase: item, 
 					auth: this.auth,
 					hash: item.hash
-					
 				}).then(response => {
 		            if(response.status === 200) {
-						this.completePurchase();
+						//this.completePurchase();
+                        this.refreshAuthPromise()
+                            .then((response) => {
+                                if (response.status === 200) {
+                                    toastr.options.onHidden = function() {
+                                        window.location.reload();
+                                    };
+                                    toastr.success(
+                                        this.trans('strings.successful_purchase'),
+                                        this.trans('strings.buy'),
+                                    );
+                                    window.localStorage.setItem('authUser', JSON.stringify(response.data));
+                                    this.$store.dispatch('setUserObject', response.data);
+                                    this.$store.dispatch('clearPurchase');
+
+                                    /*this.$router.push({
+                                        name: 'users.transactions'
+                                    });	*/
+                                }
+                            }).catch((error) => {
+
+                        });
 					}
 		        }).catch((error) => {
 		        	this.loading.paying = false;
@@ -307,7 +327,7 @@
 			sweepstakesRequest() {				
 
 				const sweepstakesRequest = axios.create();
-				let url = routes.lotteries.sweepstakes.replace('{id}', this.$route.params.id)
+				let url = routes.lotteries.sweepstakes.replace('{id}', this.$route.params.id);
 
 				sweepstakesRequest.interceptors.request.use(config => {		        
 				  	return config;

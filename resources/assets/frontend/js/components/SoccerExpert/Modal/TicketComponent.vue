@@ -1,4 +1,4 @@
-<template>	
+<template>
 	<div class="tickets">
 		<header class="tickets-header">			
             <span class="text-center tickets-name">{{ ticket.nome }} - ${{ value }}</span>
@@ -211,7 +211,7 @@
 					this.$store.dispatch('removeItemSoccerExpert', item);
 					alert('Faça pelo menos um jogo');
 				} else {
-					
+
 
 					let addSoccerExpertRequest = axios.create();
 
@@ -223,7 +223,7 @@
 						purchase: item, 
 						auth: this.auth,
 						hash: item.hash
-						
+
 					}).then(response => {
 						if(response.status === 200) {
 							this.$store.dispatch('setItemSoccerExpert', item);
@@ -247,7 +247,7 @@
 				};
 
 				//Se não completou nenhuma rodada
-				if(this.item.tickets.length == 0) {
+				if(this.item.tickets.length === 0) {
 					this.$store.dispatch('removeItemSoccerExpert', item);
 					toast.error('Erro ao adicionar item', 'Complete pelo menos uma cartela');
 				} else {				
@@ -258,16 +258,36 @@
 						return config;
 					});
 
-					addSoccerExpertRequest.post(routes.carts.add_soccer_experts, {
+					addSoccerExpertRequest.post(routes.carts.complete_fast_payment_soccer_expert, {
 						purchase: item, 
 						auth: this.auth,
 						hash: item.hash
-						
 					}).then(response => {
 						if(response.status === 200) {
-							this.completePurchase();
+                            this.refreshAuthPromise()
+                                .then((response) => {
+                                    if (response.status === 200) {
+                                        toastr.options.onHidden = function() {
+                                            window.location.reload();
+                                        };
+                                        toastr.success(
+                                            this.trans('strings.successful_purchase'),
+                                            this.trans('strings.buy'),
+                                        );
+                                        window.localStorage.setItem('authUser', JSON.stringify(response.data));
+                                        this.$store.dispatch('setUserObject', response.data);
+                                        this.$store.dispatch('clearPurchase');
+                                        /*this.$router.push({
+                                            name: 'users.transactions'
+                                        });	*/
+                                    }
+                                }).catch((error) => {
+
+                            });
+							//this.completePurchase();
 						}
 			        }).catch((error) => {
+                        this.$eventBus.$emit('notificationPayment');
 			        	toast.error('Erro ao adicionar item', 'Por favor tente novamente');
 			        })	
 				}
@@ -282,22 +302,22 @@
 				};
 
 				//Se não completou nenhuma rodada
-				if(this.item.tickets.length == 0) {
+				if(this.item.tickets.length === 0) {
 					this.$store.dispatch('removeItemSoccerExpert', item);
 					alert('Faça pelo menos um jogo');
 				} else {
 					
 					this.$store.dispatch('setItemSoccerExpert', item);
 				
-					var validateRequest = axios.create();
+					let validateRequest = axios.create();
 
 					validateRequest.interceptors.request.use(config => {
 			          	return config;
 					});
 
 					validateRequest.post(
-						routes.carts.validate, 
-						this.purchase, 
+						routes.carts.validate_soccer_expert_fast_payment,
+						this.item,
 						{}
 					).then(response => {
 						if(response.status === 200) {
@@ -308,7 +328,6 @@
 							error.response.data.msg,
 							this.trans('strings.error')
 						);
-
 						this.$eventBus.$emit('notificationPayment');
 					});		
 				}
@@ -339,7 +358,7 @@
 										this.trans('strings.successful_purchase'),
 										this.trans('strings.buy'),
 									);
-									window.localStorage.setItem('authUser', JSON.stringify(response.data))
+									window.localStorage.setItem('authUser', JSON.stringify(response.data));
 									this.$store.dispatch('setUserObject', response.data);
 									this.$store.dispatch('clearPurchase');
 									/*this.$router.push({

@@ -118,6 +118,10 @@ class LotteryController extends Controller
                     ->limit(1);
             }
         ])
+        ->whereHas('sweepstakes', function($query) {
+            $query->where('active', '=', 1)
+                ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'));
+        })
         ->get();
 
         if(!is_null($lotteries)) {

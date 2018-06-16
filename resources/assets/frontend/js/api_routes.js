@@ -89,6 +89,10 @@ export const routes = {
 		destroy: host + '/carts/{hash}',
 		complete_purchase: host + '/carts/complete_purchase',
 		validate: host + '/carts/validate',
+        validate_soccer_expert_fast_payment: host + '/carts/validate_soccer_expert_fast_payment',
+        complete_fast_payment_soccer_expert: host + '/carts/complete_fast_payment_soccer_expert',
+        validate_lottery_fast_payment: host + '/carts/validate_lottery_fast_payment',
+        complete_fast_payment_lottery: host + '/carts/complete_fast_payment_lottery',
 	},
 	soccer_tickets: {
 		games: host + '/soccer_tickets/{ticket_id}/games',

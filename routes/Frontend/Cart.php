@@ -1,5 +1,17 @@
 <?php
 
+Route::post('/carts/complete_fast_payment_lottery', 'CartController@completeFastPaymentLottery')
+    ->name('frontend.carts.complete_fast_payment_lottery');
+
+Route::post('/carts/validate_lottery_fast_payment', 'CartController@validateLotteryFastPayment')
+    ->name('frontend.carts.validate_lottery_fast_payment');
+
+Route::post('/carts/complete_fast_payment_soccer_expert', 'CartController@completeFastPaymentSoccerExpert')
+    ->name('frontend.carts.complete_fast_payment_soccer_expert');
+
+Route::post('/carts/validate_soccer_expert_fast_payment', 'CartController@validateSoccerExpertFastPayment')
+    ->name('frontend.carts.validate_soccer_expert_fast_payment');
+
 Route::post('/carts/add_scratch_cards', 'CartController@addScratchCard')
 	->name('frontend.carts.add_scratch_cards');
 
@@ -22,7 +34,9 @@ Route::resource('carts', 'CartController', [
         'store' => 'frontend.carts.store',
         'edit' => 'frontend.carts.edit',
         'update' => 'frontend.carts.update',
-        'destroy' => 'frontend.carts.destroy',
-        'show' => 'frontend.carts.show'
+        'destroy' => 'frontend.carts.destroy'
+    ],
+    'except' => [
+        'show'
     ]
 ]);
