@@ -18,6 +18,24 @@ use DB;
 
 class CartController extends Controller
 {
+    private function scratchCardValidate($theme_id, $quantity)
+    {
+        $scratchCard = ScratchCard::select([
+            DB::raw('count(temas_raspadinha_id) as total_tickets_available')
+        ])->where('ativo', '=', 0)
+            ->where('temas_raspadinha_id', '=', $theme_id)
+            ->groupBy([
+                'temas_raspadinha_id',
+            ])
+            ->get()
+            ->first();
+
+        if($scratchCard) {
+            return $scratchCard->total_tickets_available > $quantity ? true : false;
+        }
+
+        return false;
+    }
 
     /**
      * @param Request $request
