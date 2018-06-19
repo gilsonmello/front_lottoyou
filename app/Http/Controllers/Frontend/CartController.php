@@ -143,8 +143,6 @@ class CartController extends Controller
     {
         $data = $request->all();
 
-        dd($data);
-
         $valid = [
             'valid' => true, 
             'msg' => 'ok'
