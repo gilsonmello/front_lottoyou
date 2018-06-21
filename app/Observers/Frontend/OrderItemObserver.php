@@ -186,14 +186,16 @@ class OrderItemObserver
         $description = 'buy';
         if($item->type == 'lottery') {
             $this->lottery($item, $data);
+            $item->amount = $data->value;
         } else if($item->type == 'soccer_expert') {
             $this->soccerExpert($item, $data);
+            $item->amount = $data->total;
         } else if($item->type == 'scratch_card') {
             $this->scratchCard($item, $data);
+            $item->amount = $data->total;
         }
 
         $order = $item->order;
-        $item->amount = $data->total;
         $item->save();
 
         $balance = Balance::where('owner_id', '=', $order->user_id)->get()->first();
