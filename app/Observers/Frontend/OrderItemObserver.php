@@ -193,6 +193,8 @@ class OrderItemObserver
         }
 
         $order = $item->order;
+        $item->amount = $data->total;
+        $item->save();
 
         $balance = Balance::where('owner_id', '=', $order->user_id)->get()->first();
         $historicBalance = new HistoricBalance;
