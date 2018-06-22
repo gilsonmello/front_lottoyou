@@ -165,10 +165,12 @@
                         this.loading.component = false;
                         this.model = response.data;  
                         //console.log(response.data.data)
-                        response.data.data.forEach((val) => {
+                        /*response.data.data.forEach((val) => {
                             val.data = JSON.parse(val.data);
-                        });
+                        });*/
+                        //this.items = response.data.data;
                         this.items = response.data.data;
+                        //console.log(this.items)
                         //this.scrollToTop();
                     }
                 }).catch((error) => {

@@ -1,5 +1,5 @@
 <template>
-	<div :style="index == 0 ? 'margin: 0 5px 0 15px;' : 'margin: 0 5px 0 5px;'" class="no-padding col-lg-2 col-8 col-md-5 col-sm-5">
+	<div class="no-padding col-lg-2 col-8 col-md-5 col-sm-5">
 		<div :class="'tickets'+' '+wow(index)">
 			<!-- <div class="tickets-header">
 				<strong>&nbsp;</strong>
@@ -16,11 +16,11 @@
 				</div>
 			</div> -->
 			<div class="tickets-content">
-				<vc-dicker v-for="(dicker, index) in dickers" :result="result" :ticket="ticket" :tickets="tickets" :item="item" :index="index" :key="index" :dicker="dicker" :dickersMaxSel="dickersMaxSel">					
+				<vc-dicker v-for="(dicker, index) in dickers" :result="result" :ticket="ticket" :item="item" :index="index" :key="index" :dicker="dicker" :dickersMaxSel="dickersMaxSel">					
 				</vc-dicker>
 			</div>
 			<div class="tickets-extras">
-				<vc-dicker-extra v-for="(dicker, index) in dickersExtras" :result="result" :ticket="ticket" :tickets="tickets" :item="item" :index="index" :key="index" :dicker="dicker" :dickersExtrasSelect="dickersExtrasSelect">					
+				<vc-dicker-extra v-for="(dicker, index) in dickersExtras" :result="result" :ticket="ticket" :item="item" :index="index" :key="index" :dicker="dicker" :dickersExtrasSelect="dickersExtrasSelect">					
 				</vc-dicker-extra>
 			</div>
 			<!-- <div class="tickets-footer">
@@ -52,7 +52,6 @@
 		props: [
 			'index', 
 			'ticket', 
-			'tickets',
 			'item',
 			'dickers',
 			'dickersMaxSel',

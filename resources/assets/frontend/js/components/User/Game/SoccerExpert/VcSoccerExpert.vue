@@ -5,10 +5,10 @@
 	      		{{ item.soccer_expert.nome }}
 	      	</div>
 	      	<div class="col-lg-2">
-	      		$ {{ getGameTotal(item) }}
+	      		$ {{ item.amount }}
 	      	</div>
 	      	<div class="col-lg-2">
-	      		{{ item.data.tickets.length }}
+	      		1
 	      	</div>
 	      	<div class="col-lg-2">
 	      		{{ item.created_at }}
@@ -16,11 +16,10 @@
         </div>
 
         <div :class="'collapse '+item.id">
-        	<br>
-			<load-component v-if="loading.game"></load-component>
+        	<load-component v-if="loading.game"></load-component>
 			<div class="row no-margin" v-else>
-				<div class="col-lg-6 col-sm-6 col-md-6 col-12" v-for="(ticket, idx) in item.data.tickets">
-					<vc-ticket :ticket="ticket" :index="idx" :category="item.soccer_expert"></vc-ticket>
+				<div class="col-lg-6 col-sm-6 col-md-6 col-12 no-padding">
+					<vc-ticket :ticket="item.soccer_expert_game" :category="item.soccer_expert"></vc-ticket>
 				</div>
 			</div>
 		</div>

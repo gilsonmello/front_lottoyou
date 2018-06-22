@@ -11,6 +11,7 @@ use App\Model\Frontend\Lottery;
 use App\Model\Frontend\LotteryUser;
 use App\Model\Frontend\ScratchCard;
 use App\Model\Frontend\SoccerExpertRound;
+use App\Model\Frontend\SoccerExpertBet;
 
 class OrderItem extends Model
 {
@@ -85,7 +86,7 @@ class OrderItem extends Model
     }
 
     /**
-     Jogo de Raspadinha ou seja, a cartela gerada pelo mesmo item
+     Jogo de Raspadinha ou seja, gerada pelo mesmo item
     */
     public function scratchCardGame() {
         return $this->hasMany(ScratchCard::class, 'order_item_id');
@@ -95,7 +96,7 @@ class OrderItem extends Model
      Jogo de Soccer Expert ou seja, as cartelas geradas pelo mesmo item
     */
     public function soccerExpertGame() {
-        return $this->hasMany(SoccerExpertRound::class, 'order_item_id');
+        return $this->hasOne(SoccerExpertBet::class, 'order_item_id');
     }
 
     public function getCreatedAtAttribute($date) 

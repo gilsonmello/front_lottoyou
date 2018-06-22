@@ -17,7 +17,7 @@
             	{{ category.nome }}
             </span>
 		</header> -->
-		<div class="tickets-content" :style="backgroundTicket(ticket.imagem_capa)">
+		<div class="tickets-content" :style="backgroundTicket(ticket.round.imagem_capa)">
 			<div class="row no-margin">
 				<div class="col-lg-12 col-sm-6 col-md-6 col-12" v-for="(game, index) in ticket.games">
 					<vc-game :game="game" :ticket="ticket" :index="index"></vc-game>
@@ -37,7 +37,7 @@
 <script>
 	import VcGame from './VcGame'
 	export default {
-		props: ['ticket', 'index', 'type', 'category'],
+		props: ['ticket', 'type', 'category'],
 		data: function() {
         	return {
         		loading: {
@@ -80,7 +80,8 @@
 			},
         },
         mounted() {	
-            this.init();
+        	//console.log(this.ticket)
+            //this.init();
 		},
 		components: {
 			VcGame

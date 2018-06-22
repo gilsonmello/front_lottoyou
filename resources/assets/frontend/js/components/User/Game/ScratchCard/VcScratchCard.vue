@@ -5,10 +5,10 @@
 	            {{ item.scratch_card.nome }}
 	        </div>
 	        <div class="col-lg-2">
-	            $ {{ getValue(item.data.total) }}
+	            $ {{ item.amount }}
 	        </div>
 	        <div class="col-lg-2">
-	            {{ item.data.scratch_card.discount_tables.quantity }}
+	            {{ item.scratch_card_game.length }}
 	        </div>
 	        <div class="col-lg-2">
 	            {{ item.created_at }}
