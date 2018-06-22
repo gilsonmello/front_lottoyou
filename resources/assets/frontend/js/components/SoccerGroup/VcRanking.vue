@@ -41,8 +41,8 @@
         <br>
 
         <div class="table">
-        	<div class="row no-margin table-head">
-        		<div class="col-lg-3 col-3 col-sm-3 col-md-3 table-column text-center" @click="toggle('posicao')">
+        	<div class="row no-margin table-head" style="overflow: auto;">
+        		<div class="col-lg-3 col-4 col-sm-3 col-md-3 table-column text-center" @click="toggle('posicao')">
 	        		<span>
 						{{ trans('strings.position') }}
 					</span>			    		
@@ -55,7 +55,7 @@
 			    		</span>
 		    		</span>
 	        	</div>
-	        	<div class="col-lg-1 col-1 col-sm-1 col-md-1 table-column text-center" @click="toggle('pontuacao')">
+	        	<div class="col-lg-1 col-2 col-sm-2 col-md-1 table-column text-center" @click="toggle('pontuacao')">
 	        		<span data-toggle="tooltip" data-placement="top" :title="trans('strings.point')">
 		      			P
 		      		</span>
@@ -68,7 +68,7 @@
 			    		</span>
 		    		</span>
 	        	</div>
-	        	<div class="col-lg-1 col-1 col-sm-1 col-md-1 table-column text-center" @click="toggle('pontuacao_bola_ouro')" >
+	        	<div class="col-lg-1 col-2 col-sm-2 col-md-1 table-column text-center" @click="toggle('pontuacao_bola_ouro')" >
 	        		<span data-toggle="tooltip" data-placement="top" :title="trans('strings.gold_ball')">
 		      			BO
 		      		</span>
@@ -81,7 +81,7 @@
 			    		</span>
 		    		</span>
 	        	</div>
-	        	<div class="col-lg-1 col-1 col-sm-1 col-md-1 table-column text-center" @click="toggle('qtd_acertos_placares')">
+	        	<div class="col-lg-1 col-2 col-sm-2 col-md-1 table-column text-center" @click="toggle('qtd_acertos_placares')">
 	        		<span data-toggle="tooltip" data-placement="top" :title="trans('strings.score_hits')">
 		      			AP
 		      		</span>
@@ -94,7 +94,7 @@
 			    		</span>
 		    		</span>
 	        	</div>
-	        	<div class="col-lg-1 col-1 col-sm-1 col-md-1 table-column text-center" @click="toggle('qtd_acertos_diferenca_gols_ou_empate')">
+	        	<div class="col-lg-1 col-2 col-sm-2 col-md-1 table-column text-center" @click="toggle('qtd_acertos_diferenca_gols_ou_empate')">
 	        		<span data-toggle="tooltip" data-placement="top" :title="trans('strings.goal_difference_or_draws')">
 		      			DG/E
 		      		</span>
@@ -115,7 +115,7 @@
 	        	</div>
 	        </div>
 
-	        <div class="row no-margin table-body" v-else>
+	        <div class="row no-margin table-body" style="overflow: auto;" v-else>
 	        	<vc-ticket v-for="(ticket, index) in tickets" :key="index" :index="index" :ticket="ticket">
 			    	
 			    </vc-ticket>
