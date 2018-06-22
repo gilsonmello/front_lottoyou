@@ -102,10 +102,6 @@
 
 <style scoped>
 
-	.collapse {
-		padding-top: 20px;
-	}
-
 	.columns {
 		padding: 10px 0 10px 0;
 	}

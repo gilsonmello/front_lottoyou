@@ -2,18 +2,23 @@
 	<section class="col-lg-12 line">
 		
 		<div class="row columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(0, 0, 0, 0.05);': ''"> 	
-    		<div class="col-lg-3 col-3 col-sm-3 col-md-2">
-	      		{{ ticket.posicao != null ? ticket.posicao : '-'}}
-	      	</div>
-	      	<div class="col-lg-3 col-3 col-sm-3 col-md-2">
+    		<div class="col-lg-3 col-3 col-sm-3 col-md-3">
+	      		{{ ticket.posicao != null ? ticket.posicao : '-'}}&nbsp;&nbsp;
 	      		<img v-if="ticket.owner.photo" class="photo" :src="ticket.owner.photo">
-	      		<img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" class="photo">
-	      	</div>
-	      	<div class="col-lg-3 col-3 col-sm-3 col-md-2">
+	      		<img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" class="photo">&nbsp;&nbsp;
 	      		{{ ticket.owner.nickname }}
 	      	</div>
-	      	<div class="col-lg-2 col-2 col-sm-2 col-md-2">
-	      		{{ ticket.pontuacao }}
+	      	<div class="col-lg-1 col-1 col-sm-1 col-md-1 text-center">
+	      		{{ ticket.pontuacao != null ? ticket.pontuacao : '0' }}
+	      	</div>
+	      	<div class="col-lg-1 col-1 col-sm-1 col-md-1 text-center">
+	      		{{ ticket.pontuacao_bola_ouro != null ? ticket.pontuacao_bola_ouro : '0' }}
+	      	</div>
+	      	<div class="col-lg-1 col-1 col-sm-1 col-md-1 text-center">
+	      		{{ ticket.qtd_acertos_placares != null ? ticket.qtd_acertos_placares : '0' }}
+	      	</div>
+	      	<div class="col-lg-1 col-1 col-sm-1 col-md-1 text-center">
+	      		{{ ticket.qtd_acertos_diferenca_gols_ou_empate != null ? ticket.qtd_acertos_diferenca_gols_ou_empate : '0' }}
 	      	</div>
         </div>
 
@@ -83,6 +88,8 @@
 <style scoped>
 	.columns {
 		padding: 10px 0 10px 0;
+		word-wrap: break-word;
+    	-webkit-line-break: after-white-space;
 	}
 
 	.line .columns:after {

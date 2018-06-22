@@ -40,11 +40,11 @@
         
         <br>
 
-        <div class="table text-center">
+        <div class="table">
         	<div class="row no-margin table-head">
-        		<div class="col-lg-3 col-3 col-sm-3 col-md-3 table-column" @click="toggle('posicao')">
+        		<div class="col-lg-3 col-3 col-sm-3 col-md-3 table-column text-center" @click="toggle('posicao')">
 	        		<span>
-						{{ trans('strings.positions') }}
+						{{ trans('strings.position') }}
 					</span>			    		
 					<span v-if="'posicao' === query.column">
 		    			<span v-if="query.direction === 'desc'">
@@ -55,37 +55,50 @@
 			    		</span>
 		    		</span>
 	        	</div>
-	        	<div class="col-lg-3 col-3 col-sm-3 col-md-3 table-column">
-	        		<span>
-						{{ trans('strings.photo') }}
-					</span>
-					<span v-if="'photo' === query.column">
-		    			<span v-if="query.direction === 'desc'">
-		    				&darr;
-			    		</span>
-			    		<span v-else>
-		    				&uarr;
-			    		</span>
-		    		</span>
-	        	</div>
-	        	<div class="col-lg-3 col-3 col-sm-3 col-md-3 table-column" @click="toggle('owner_id')">
-	        		<span>
-		      			{{ trans('strings.user') }}
-		      		</span>
-		      		<span v-if="'owner_id' === query.column">
-		    			<span v-if="query.direction === 'desc'">
-		    				&darr;
-			    		</span>
-			    		<span v-else>
-		    				&uarr;
-			    		</span>
-		    		</span>
-	        	</div>
-	        	<div class="col-lg-2 col-2 col-sm-2 col-md-2 table-column" @click="toggle('pontuacao')">
-	        		<span>
-		      			{{ trans('strings.points') }}
+	        	<div class="col-lg-1 col-1 col-sm-1 col-md-1 table-column text-center" @click="toggle('pontuacao')">
+	        		<span data-toggle="tooltip" data-placement="top" :title="trans('strings.point')">
+		      			P
 		      		</span>
 		      		<span v-if="'pontuacao' === query.column">
+		    			<span v-if="query.direction === 'desc'">
+		    				&darr;
+			    		</span>
+			    		<span v-else>
+		    				&uarr;
+			    		</span>
+		    		</span>
+	        	</div>
+	        	<div class="col-lg-1 col-1 col-sm-1 col-md-1 table-column text-center" @click="toggle('pontuacao_bola_ouro')" >
+	        		<span data-toggle="tooltip" data-placement="top" :title="trans('strings.gold_ball')">
+		      			BO
+		      		</span>
+		      		<span v-if="'pontuacao_bola_ouro' === query.column">
+		    			<span v-if="query.direction === 'desc'">
+		    				&darr;
+			    		</span>
+			    		<span v-else>
+		    				&uarr;
+			    		</span>
+		    		</span>
+	        	</div>
+	        	<div class="col-lg-1 col-1 col-sm-1 col-md-1 table-column text-center" @click="toggle('qtd_acertos_placares')">
+	        		<span data-toggle="tooltip" data-placement="top" :title="trans('strings.score_hits')">
+		      			AP
+		      		</span>
+		      		<span v-if="'qtd_acertos_placares' === query.column">
+		    			<span v-if="query.direction === 'desc'">
+		    				&darr;
+			    		</span>
+			    		<span v-else>
+		    				&uarr;
+			    		</span>
+		    		</span>
+	        	</div>
+	        	<div class="col-lg-1 col-1 col-sm-1 col-md-1 table-column text-center" @click="toggle('qtd_acertos_diferenca_gols_ou_empate')">
+	        		<span data-toggle="tooltip" data-placement="top" :title="trans('strings.goal_difference_or_draws')">
+		      			DG/E
+		      		</span>
+		      		<span v-if="'qtd_acertos_diferenca_gols_ou_empate' === query.column">
 		    			<span v-if="query.direction === 'desc'">
 		    				&darr;
 			    		</span>
@@ -200,7 +213,7 @@
 
 				this.groupRequest();
 				this.rankRequest();
-			},
+	      	},
 			filter(event) {				
                 $(event.target).find('[type="load"]').removeClass('hide');
                 $(event.target).find('[type="submit"]').addClass('hide');
@@ -221,8 +234,6 @@
 					this.query.column = column
 					this.query.direction = 'asc';
 				}
-
-				console.log('lsjfks')
 				this.rankRequest();
 			},
 			prev() {

@@ -60,7 +60,10 @@ class SoccerGroupController extends Controller
                 'posicao',
                 'owner_id',
                 'ordem',
-                'soc_rodada_id'
+                'soc_rodada_id',
+                'pontuacao_bola_ouro',
+                'qtd_acertos_placares',
+                'qtd_acertos_diferenca_gols_ou_empate'
             ])
             ->orderByRaw('posicao is null');
 

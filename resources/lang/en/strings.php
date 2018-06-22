@@ -11,6 +11,9 @@ return [
       | found in a intuitive way.
       |
      */
+    'score_hits' => 'Acerto de Placares',
+    'goal_difference_or_draws' => 'Diferença de gols ou Empates',
+    'gold_ball' => 'Bola de ouro',
     'coin' => 'Moeda',
     'terms_and_conditions' => 'Termos e Condições',
     'privacy' => 'Privacidade',
