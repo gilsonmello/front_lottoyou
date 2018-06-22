@@ -243,6 +243,7 @@
 	.form-control {
 		display: inline-block;
     	width: 40px;
+     	height: 30px;
 	}
 
 	@media (min-width: 768px) and (max-width: 992px) {
