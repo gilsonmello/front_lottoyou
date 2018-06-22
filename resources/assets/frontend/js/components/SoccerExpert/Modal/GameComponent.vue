@@ -157,11 +157,11 @@
 					  	if(result.dismiss) {
 				  			input.val("");
 					  	}	
-						this.game.result_house_club = input.val();
+						this.game.result_out_club = input.val();
 						this.$emit('updateTicket');
 					});
 				} else {
-					this.game.result_house_club = input.val();
+					this.game.result_out_club = input.val();
 					this.$emit('updateTicket');
 				}
 				//this.$emit('outClubResult', this.game, index);
