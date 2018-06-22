@@ -2,10 +2,8 @@
 	<div class="row text-center games no-margin">
 
 		<div class="col-lg-2 no-mobile" style="justify-content: center;" v-if="position == 'left'">
-			
 			<img v-if="ticket.gold_ball_game_id != game.id" @click.prevent="goldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball" style="opacity: 0.5;">				
 			<img v-if="ticket.gold_ball_game_id == game.id" @click.prevent="changeGoldBall($event)" src="/img/gold_ball.png" class="img-fluid gold-ball">			
-				
 		</div>
 
 		<div class="col-lg-2 mobile" style="justify-content: center;">
@@ -109,14 +107,33 @@
 				//Pegando o valor informado pelo usuário
 				var input = $(event.currentTarget);
 
-				if(input.val() < 0)
+				if(input.val() < 0) {
 					input.val(input.val() * -1)
+				}
 
+				if(input.val() >= 10) {
+					swal({
+					  	title: 'Deseja continuar?',
+					  	text: "Número maior do que 10!",
+					  	type: 'warning',
+					  	showCancelButton: true,
+					  	confirmButtonColor: '#3085d6',
+					  	cancelButtonColor: '#d33',
+					  	confirmButtonText: 'Sim',
+					  	cancelButtonText: 'Desfazer'
+					}).then((result) => {
+					  	if(result.dismiss) {
+				  			input.val("");
+					  	}	
+						this.game.result_house_club = input.val();
+						this.$emit('updateTicket');
+					});
+				} else {
+					this.game.result_house_club = input.val();
+					this.$emit('updateTicket');
+				}
 	            //this.$emit('houseClubResult', this.game, index);
 
-	            this.game.result_house_club = input.val();
-
-	            this.$emit('updateTicket');
 			},
 			//Column = rodada disponível no array
 			//Line = jogo da roda disponível no array
@@ -125,10 +142,28 @@
 				
 				if(input.val() < 0)
 					input.val(input.val() * -1)
-
-				this.game.result_out_club = input.val();
-
-	            this.$emit('updateTicket');
+				
+				if(input.val() >= 10) {
+					swal({
+					  	title: 'Deseja continuar?',
+					  	text: "Número maior do que 10!",
+					  	type: 'warning',
+					  	showCancelButton: true,
+					  	confirmButtonColor: '#3085d6',
+					  	cancelButtonColor: '#d33',
+					  	confirmButtonText: 'Sim',
+					  	cancelButtonText: 'Desfazer'
+					}).then((result) => {
+					  	if(result.dismiss) {
+				  			input.val("");
+					  	}	
+						this.game.result_house_club = input.val();
+						this.$emit('updateTicket');
+					});
+				} else {
+					this.game.result_house_club = input.val();
+					this.$emit('updateTicket');
+				}
 				//this.$emit('outClubResult', this.game, index);
 			},
         },
@@ -207,7 +242,7 @@
 
 	.form-control {
 		display: inline-block;
-    	width: 30px;
+    	width: 40px;
 	}
 
 	@media (min-width: 768px) and (max-width: 992px) {
