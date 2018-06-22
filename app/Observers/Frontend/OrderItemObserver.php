@@ -13,6 +13,7 @@ use App\Model\Frontend\SoccerExpertRoundGroup;
 use App\Model\Frontend\SoccerExpertRound;
 use App\HistoricBalance;
 use App\Balance;
+use DB;
 
 class OrderItemObserver
 {
@@ -210,6 +211,10 @@ class OrderItemObserver
         $balance->value = $balance->value - $data->total;
         
         $balance->save();
+
+        DB::table('order_items')
+            ->where('id', $item->id)
+            ->update(['data' => null]);
     }
 
     /**

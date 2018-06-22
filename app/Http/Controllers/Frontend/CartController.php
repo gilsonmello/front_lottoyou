@@ -399,6 +399,8 @@ class CartController extends Controller
                 $orderItem->type = $value['type'];
                 $data = null;
                 if($value['type'] == 'lottery') {
+                    $data = json_encode($value['lottery']);
+                    $orderItem->data = $data;
                     $orderItem->amount = $value['lottery']['value'];
                     $orderItem->lottery_id = $value['lottery']['id'];
                     $orderItem->hash = $value['lottery']['hash'];
@@ -409,6 +411,7 @@ class CartController extends Controller
                 } else if($value['type'] == 'soccer_expert') {
                     $data = json_encode($value['soccer_expert']);
                     $orderItem->amount = $value['soccer_expert']['total'];
+                    $orderItem->data = $data;
                     $orderItem->hash = $value['soccer_expert']['hash'];
                     $orderItem->quantity = count($value['soccer_expert']['tickets']);
                     $orderItem->soccer_expert_id = $value['soccer_expert']['soccer_expert']['id'];
@@ -416,6 +419,8 @@ class CartController extends Controller
                         'data' => $data
                     ]);*/
                 } else if($value['type'] == 'scratch_card') {
+                    $data = json_encode($value['scratch_card']);
+                    $orderItem->data = $data;
                     $orderItem->quantity = $value['scratch_card']['scratch_card']['discount_tables']['quantity'];
                     $orderItem->amount = $value['scratch_card']['total'];
                     $orderItem->hash = $value['scratch_card']['hash'];
@@ -469,6 +474,8 @@ class CartController extends Controller
             $orderItem = new OrderItem;
             $orderItem->order_id = $order->id;
             $orderItem->type = 'lottery';
+            $data = json_encode($request['purchase']);
+            $orderItem->data = $data;
             $orderItem->hash = $request['purchase']['hash'];
             $orderItem->lottery_id = $request['purchase']['lottery']['id'];
             $orderItem->amount = $request['purchase']['total'];
@@ -493,6 +500,8 @@ class CartController extends Controller
             $orderItem = new OrderItem;
             $orderItem->order_id = $order->id;
             $orderItem->type = 'soccer_expert';
+            $data = json_encode($request['purchase']);
+            $orderItem->data = $data;
             $orderItem->soccer_expert_id = $request['purchase']['soccer_expert']['id'];
             $orderItem->hash = $request['purchase']['hash'];
             $orderItem->user_id = $order->user_id;
