@@ -39,10 +39,10 @@
         
         <div class="row">
         	<div class="col-lg-12">
-        		<small>Pts = pontos;</small>&nbsp;&nbsp;
-        		<small>PBL = pontos bola lottoyou;</small>&nbsp;&nbsp;
-        		<small>AP = número de acerto de placares;</small>&nbsp;&nbsp;
-        		<small>DG = número de acerto de diferença de gol (inclui empate sem acertar o placar)</small>
+        		<small>Pts = pontos;</small>&nbsp;
+        		<small>PBL = pontos bola lottoyou;</small>&nbsp;
+        		<small>AP = número de acerto de placares;</small>&nbsp;
+        		<small>DG = número de acerto de diferença de gol (inclui empate sem acertar o placar);</small>
         	</div>
         </div>
         <div class="table">
