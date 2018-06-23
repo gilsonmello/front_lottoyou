@@ -49,7 +49,7 @@
         	<div class="row no-margin table-head" style="overflow: auto;">
         		<div class="col-lg-3 col-4 col-sm-3 col-md-3 table-column text-center" @click="toggle('posicao')">
 	        		<span>
-						Pts
+						&nbsp;
 					</span>			    		
 					<span v-if="'posicao' === query.column">
 		    			<span v-if="query.direction === 'desc'">
@@ -62,7 +62,7 @@
 	        	</div>
 	        	<div class="col-lg-1 col-2 col-sm-2 col-md-1 table-column text-center" @click="toggle('pontuacao')">
 	        		<span data-toggle="tooltip" data-placement="top" :title="trans('strings.point')">
-		      			P
+		      			Pts
 		      		</span>
 		      		<span v-if="'pontuacao' === query.column">
 		    			<span v-if="query.direction === 'desc'">
