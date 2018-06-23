@@ -146,6 +146,7 @@ class PaypalController extends Controller
         }
 
         $order->status_paypal = $request->payment_status;
+        $order->status = $request->payment_status;
         $order->save();
         
     }

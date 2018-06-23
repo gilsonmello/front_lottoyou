@@ -106,6 +106,7 @@ trait PaymentService
         }
 
         $order->status_pagseguro = $dataXml->status;
+        $order->status = $dataXml->status;
 
         $order->save();
     }
