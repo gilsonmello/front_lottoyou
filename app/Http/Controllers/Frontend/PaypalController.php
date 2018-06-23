@@ -24,6 +24,7 @@ class PaypalController extends Controller
         $order->sub_total = $request->amount;
         $order->total = $request->amount;
         $order->status_paypal = 'In progress';
+        $order->status = 'In progress';
         if($order->save()) {
             return response()->json([
                 'msg' => 'ok'

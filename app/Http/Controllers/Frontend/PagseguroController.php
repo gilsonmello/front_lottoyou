@@ -180,6 +180,7 @@ class PagseguroController extends Controller
         $order->submit = 1;
         $order->sub_total = $request->amount;
         $order->total = $request->amount;
+        $order->status = 'In progress';
         $order->status_pagseguro = 'In progress';
         $order->quotation_dolar = $resp->results->currencies->USD->buy;
         if($order->save()) {
