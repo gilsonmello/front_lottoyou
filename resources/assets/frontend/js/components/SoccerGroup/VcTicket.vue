@@ -2,12 +2,12 @@
 	<section class="col-lg-12 line">
 		
 		<div class="row columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+ticket.id" :style="index % 2 == 0 ? 'background-color: rgba(0, 0, 0, 0.05);': ''"> 	
-    		<div class="col-lg-3 col-4 col-sm-3 col-md-3">
+    		<div class="col-lg-3 col-4 col-sm-3 col-md-3 no-padding">
     			<div class="info-user" style="">
-    				<span style="flex: 1">{{ ticket.posicao != null ? ticket.posicao : '-'}}</span>&nbsp;&nbsp;
+    				<span style="flex: 1">&nbsp;{{ ticket.posicao != null ? ticket.posicao : '-'}}</span>&nbsp;&nbsp;
 		      		<img v-if="ticket.owner.photo" class="photo" :src="ticket.owner.photo">
 		      		<img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" class="photo">&nbsp;&nbsp;
-		      		<span style="flex: 5;">{{ ticket.owner.nickname }}</span>
+		      		<span style="flex: 6;">{{ ticket.owner.nickname }}</span>
     			</div>	      		
 	      	</div>
 	      	<div class="col-lg-1 col-2 col-sm-2 col-md-1 text-center no-padding">
@@ -111,7 +111,7 @@
 	}
 
 	.photo {
-		flex: 3;
+		flex: 2;
 		width: 70px;
 	    height: 70px;
 	    border-radius: 999px;
@@ -127,16 +127,24 @@
 
 	@media (min-width: 576px) and (max-width: 768px) {
 		.info-user {
-			flex-direction: column; 
 			align-items: center;
 		}
+		.photo {
+			width: 30px;
+			height: 30px;
+	    	margin-right: 0px;
+		}	
 	}
 
 	@media (max-width: 576px) {
 		.info-user {
-			flex-direction: column; 
 			align-items: center;
 		}
-		
+		.photo {
+			display: none;
+			width: 30px;
+			height: 30px;
+	    	margin-right: 0px;
+		}		
 	}
 </style>

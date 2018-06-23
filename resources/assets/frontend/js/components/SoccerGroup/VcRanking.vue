@@ -5,14 +5,14 @@
 
 		<div class="row">
 			<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-				<h1 class="page-header" v-if="group" style="border: none;">
+				<h3 class="page-header" v-if="group" style="border: none; margin-bottom: 0;">
 					<span style="display: block;">{{ group.round.category.nome }} - {{ group.round.nome }}</span>
 					<span>{{ trans('strings.ranking') }} - Grupo {{ group.identificacao }}</span>
 					<router-link class="btn btn-md btn-back pull-right btn-primary" :to="{name: 'soccer_expert.ranks', params: { id: group.round.category.id }}">
 						<i class="fa fa-arrow-left"></i>
 						{{ trans('strings.back') }}
 					</router-link>
-				</h1>
+				</h3>
 			</div>
 		</div>
 
@@ -25,26 +25,31 @@
 	                    <input v-model="query.nickname" type="text" class="form-control" id="nickname" aria-describedby="nickname" name="nickname" :placeholder="trans('strings.nickname')">
 	                </div>
 	            </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <button type="submit" class="btn btn-md btn-primary">
-                        {{ trans('strings.filter') }}
+	            <div class="col-lg-4 col-12 col-sm-4 col-md-4">
+	            	<label>&nbsp;</label>
+	            	<button style="display: block" type="submit" class="btn btn-md btn-primary">
+                        {{ trans('strings.search') }}
                     </button>
-                    <button @click.prevent="" type="load" class="hide btn btn-md btn-primary">
+                    <button style="display: block" @click.prevent="" type="load" class="hide btn btn-md btn-primary">
                         <i class="fa fa-refresh fa-spin"></i>
                     </button>
-                </div>
+	            </div>
             </div>
 		</form>
         
-        <br>
-
+        <div class="row">
+        	<div class="col-lg-12">
+        		<small>Pts = pontos;</small>&nbsp;&nbsp;
+        		<small>PBL = pontos bola lottoyou;</small>&nbsp;&nbsp;
+        		<small>AP = número de acerto de placares;</small>&nbsp;&nbsp;
+        		<small>DG = número de acerto de diferença de gol (inclui empate sem acertar o placar)</small>
+        	</div>
+        </div>
         <div class="table">
         	<div class="row no-margin table-head" style="overflow: auto;">
         		<div class="col-lg-3 col-4 col-sm-3 col-md-3 table-column text-center" @click="toggle('posicao')">
 	        		<span>
-						{{ trans('strings.position') }}
+						Pts
 					</span>			    		
 					<span v-if="'posicao' === query.column">
 		    			<span v-if="query.direction === 'desc'">
@@ -96,7 +101,7 @@
 	        	</div>
 	        	<div class="col-lg-1 col-2 col-sm-2 col-md-1 table-column text-center" @click="toggle('qtd_acertos_diferenca_gols_ou_empate')">
 	        		<span data-toggle="tooltip" data-placement="top" :title="trans('strings.goal_difference_or_draws')">
-		      			DG/E
+		      			DG
 		      		</span>
 		      		<span v-if="'qtd_acertos_diferenca_gols_ou_empate' === query.column">
 		    			<span v-if="query.direction === 'desc'">
