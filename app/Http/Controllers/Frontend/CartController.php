@@ -4,17 +4,14 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\Cart;
-use App\Model\Frontend\CartItem;
-use App\Model\Frontend\Order;
-use App\Model\Frontend\OrderItem;
-use App\Model\Frontend\SoccerExpert;
-use App\Model\Frontend\SoccerExpertRound;
-use App\Model\Frontend\Lottery;
-use App\Model\Frontend\LotterySweepstake;
-use App\Model\Frontend\ScratchCardTheme;
-use App\Model\Frontend\ScratchCard;
-use DB;
+use App\Cart;
+use App\CartItem;
+use App\Order;
+use App\OrderItem;
+use App\SoccerExpertRound;
+use App\LotterySweepstake;
+use App\ScratchCard;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {

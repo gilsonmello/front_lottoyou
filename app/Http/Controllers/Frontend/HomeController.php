@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use File;
-use Log;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {

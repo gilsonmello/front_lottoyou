@@ -4,13 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\SoccerExpert;
-use App\Model\Frontend\SoccerExpertRound;
-use App\Model\Frontend\SoccerExpertCycle;
-use App\Model\Frontend\SoccerExpertRoundGroup;
-use App\Model\Frontend\SoccerExpertBet;
-use App\Model\Frontend\SoccerExpertGame;
-use DB;
+use App\SoccerExpert;
+use App\SoccerExpertRound;
+use App\SoccerExpertCycle;
+use Illuminate\Support\Facades\DB;
 
 class SoccerExpertController extends Controller
 {

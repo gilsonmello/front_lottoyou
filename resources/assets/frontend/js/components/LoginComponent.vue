@@ -68,6 +68,10 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
+                	<fb:login-button 
+					  scope="public_profile,email"
+					  onlogin="authLogin">
+					</fb:login-button>
                     <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">
                         {{ trans('strings.to_close') }}
                     </button> -->
@@ -130,6 +134,7 @@
 					component: true,
 					login: false
 				},
+				facebook: {}
 			}
 		},
 		watch: {
@@ -142,6 +147,9 @@
         },
 		mounted: function() {
 			this.loading.component = false;
+			FB.getLoginStatus((response) => {
+			    this.facebook = response;
+			});
 			var interval = setInterval(() => {
 				if($('.modal-login').length > 0) {
 					clearInterval(interval);
@@ -159,6 +167,16 @@
 			})
 		},
 		methods: {
+			authLogin() {
+				console.log(this.facebook)
+				if(this.facebook.status === 'connected') {
+
+				} else if(this.facebook.status === 'not_authorized') {
+
+				} else {
+
+				}
+			},
 			viewPassword(event) {
 				var target = $(event.target);
 				

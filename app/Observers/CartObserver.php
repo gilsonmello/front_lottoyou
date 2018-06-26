@@ -1,23 +1,26 @@
 <?php
 
-namespace App\Observers\Frontend;
+namespace App\Observers;
 
-use App\Model\Frontend\Cart;
+use App\Cart;
 
 class CartObserver
 {
     /**
      * Listen to the User created event.
      *
-     * @param  \App\User  $user
+     * @param Cart $cart
      * @return void
      */
-    public function created(Cart $order)
+    public function created(Cart $cart)
     {
         //
     }
 
-    public function saved(Cart $order)
+    /**
+     * @param Cart $cart
+     */
+    public function saved(Cart $cart)
     {
         //
     }
@@ -25,10 +28,10 @@ class CartObserver
     /**
      * Listen to the User deleting event.
      *
-     * @param  \App\User  $user
+     * @param Cart $cart
      * @return void
      */
-    public function deleting(Cart $order)
+    public function deleting(Cart $cart)
     {
         //
     }

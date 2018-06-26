@@ -34,6 +34,7 @@ Route::group(['namespace' => 'Frontend'], function() {
 	require __DIR__.'/Frontend/HistoricBalance.php';
 	require __DIR__.'/Frontend/Pagseguro.php';
 	require __DIR__.'/Frontend/Paypal.php';
+    require __DIR__.'/Frontend/Contact.php';
 });
 
 Route::get('/quotation_dolar', function() {

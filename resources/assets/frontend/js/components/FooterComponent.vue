@@ -84,14 +84,19 @@
 		                    </li>
 		                    <li class="list-group-item" v-if="auth">
 		                        <router-link :to="{ name: 'users.games', params: {  }}" class="color-blue">
-		                            Resultados
+									{{ trans('strings.results') }}
 		                        </router-link>
 		                    </li>
 		                    <li class="list-group-item">
 								<router-link :to="{ name: 'ask', params: {  }}" class="color-blue">
-		                            Pergunte
+									{{ trans('strings.ask') }}
 								</router-link>
 		                    </li>
+							<li class="list-group-item">
+								<router-link :to="{ name: 'contacts.create', params: {  }}" class="color-blue">
+									{{ trans('strings.contact') }}
+								</router-link>
+							</li>
 		                </ul>               
 		            </div>
 		            <div class="col-lg-4 col-md-4 col-12 col-sm-4">
@@ -170,10 +175,8 @@
 	                        </a>
 	                    </li>
 		            </div> -->
-
-		        </div>
-		        
-			</div>
+				</div>
+		    </div>
 			<br>
 		</div>
 

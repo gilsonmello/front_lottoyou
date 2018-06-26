@@ -7,16 +7,53 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\CreateUserRequest;
 use App\Http\Requests\Frontend\User\UpdateUserRequest;
 use App\User;
-use App\Balance;
-use App\Model\Frontend\Order;
-use App\Model\Frontend\OrderItem;
-use App\Model\Frontend\SoccerExpertBet;
-use App\Model\Frontend\SoccerExpertRound;
-use App\Model\Frontend\ScratchCard;
-use App\Model\Frontend\LotteryUser;
+use App\Order;
+use App\OrderItem;
+use App\SoccerExpertRound;
+use App\Repositories\Frontend\User\UserContract;
 
 class UserController extends Controller
 {
+    /**
+     * @var UserContract
+     */
+    private $repository;
+
+    /**
+     * UserController constructor.
+     * @param UserContract $repository
+     */
+    public function __construct(UserContract $repository) {
+        $this->repository = $repository;
+    }
+
+    /**
+     * Recebe o post para ativar a conta do usuário
+     *
+     * @param $hash
+     * @param Request $request
+     */
+    public function activated($hash, Request $request)
+    {
+
+    }
+
+    /**
+     * Recebe o post para ativar a conta do usuário
+     *
+     * @param $hash
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function activate($hash, Request $request)
+    {
+        if($this->repository->activate($hash)) {
+            return redirect('/#/?toastr_title=Conta ativada com sucesso&toastr_desc=teste');
+        }
+
+        return redirect('/');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,6 +64,11 @@ class UserController extends Controller
         return User::where('group_id', '=', 3)->get();
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function items($id, Request $request)
     {
         $items = OrderItem::with([
@@ -87,6 +129,11 @@ class UserController extends Controller
         return response()->json($items, 200);
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
     public function soccerExperts($id, Request $request) 
     {
         return SoccerExpertRound::whereHas('bets', function($query) use ($id) {
@@ -105,11 +152,21 @@ class UserController extends Controller
         
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
     public function games($id, Request $request) 
     {
         return Order::where('user_id', '=', $id)->with('item');
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function orders($id, Request $request) 
     {
         $orders = Order::where('user_id', '=', $id);
@@ -123,6 +180,10 @@ class UserController extends Controller
         return response()->json($orders, 200);
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     */
     public function transactions($id, Request $request) 
     {
 
@@ -146,33 +207,9 @@ class UserController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
-        $user = new User;
-        $user->name = $request->get('name');
-        $user->last_name = $request->get('last_name');
-        $user->username = $request->get('email');
-        $user->laravel_password = bcrypt($request->get('password'));
-        $user->password = '';
-        $user->group_id = 3;
-        $user->gel_empresa_id = 8;
-        $user->birth_day = (int) $request->get('birth_day') < 10 ? '0'.$request->get('birth_day') : $request->get('birth_day');
-        $user->birth_month = $request->get('birth_month');
-        $user->birth_year = $request->get('birth_year');
-        $user->country_id = $request->get('country');
-        $user->gender = $request->get('gender');
-        $user->nickname = $request->get('nickname');
-        if($user->save()) {
-            $user->nickname2 = $user->name . '_' . $user->id;
-            
-            Balance::create([
-                'owner_id' => $user->id,
-                'value' => 0,
-            ]);
-
-            $user->save();
-            
+        if($this->repository->create($request->all())) {
             return response()->json(['message' => trans('alerts.users.create.success')], 200);
         }
-
         return response()->json(['message' => trans('alerts.users.create.error')], 422);
     }
 
@@ -201,9 +238,9 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param UpdateUserRequest $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(UpdateUserRequest $request, $id)
     {
@@ -228,7 +265,7 @@ class UserController extends Controller
                     $name = $user->id. '.' .$file->getClientOriginalExtension();
                     $request->file('photo')->move(public_path('files/profile'), $name);
                     $user->photo = request()->root() . '/files/profile/' . $name;
-                } catch (Illuminate\Filesystem\FileNotFoundException $e) {
+                } catch (\Illuminate\Filesystem\FileNotFoundException $e) {
 
                 }
             } 

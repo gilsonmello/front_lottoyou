@@ -7,6 +7,10 @@ export const routes = {
 	historic_balances: {
 		of_the_user: host+'/historic_balances/of_the_user/{id}'
 	},
+	contacts: {
+		create: host+'/contacts',
+        categories: host+'/contacts/categories',
+	},
 	auth: {
 		login: host+'/oauth/token',
 		user: host+'/api/user'

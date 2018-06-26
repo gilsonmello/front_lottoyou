@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\SoccerExpertRoundGroup;
-use App\Model\Frontend\SoccerExpertBet;
+use App\SoccerExpertRoundGroup;
+use App\SoccerExpertBet;
 use App\User;
-use DB;
+use Illuminate\Support\Facades\DB;
 
+/**
+ * Class SoccerGroupController
+ * @package App\Http\Controllers\Frontend
+ */
 class SoccerGroupController extends Controller
 {
     public function find($id)

@@ -3,16 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Balance;
-use App\HistoricBalanceSoccer;
-use App\HistoricBalanceDevolution;
-use App\HistoricBalanceLottery;
-use App\Model\Frontend\OrderItem;
-use App\PagseguroOrder;
-use App\PaypalOrder;
-use App\Model\Frontend\ScratchCard;
-use App\Model\Frontend\SoccerExpertBet;
-use App\Model\Frontend\LotteryUser;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 
 class HistoricBalance extends Model

@@ -3,7 +3,6 @@
 namespace App\Model\Frontend;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Frontend\LotteryResult;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 
 class LotteryNumber extends Model

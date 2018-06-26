@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\BalanceOrder;
 use App\Services\Frontend\Paypal\PaymentService;
-use Log;
+use Illuminate\Support\Facades\Log;
 use App\PaypalOrder;
 use App\HistoricBalance;
 use App\Balance;

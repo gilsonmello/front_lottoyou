@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\SoccerExpertRoundGroup;
+use App\SoccerExpertRoundGroup;
 
+/**
+ * Class SoccerRoundController
+ * @package App\Http\Controllers\Frontend
+ */
 class SoccerRoundController extends Controller
 {
     public function groups($round_id) 

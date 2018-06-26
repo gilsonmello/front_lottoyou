@@ -4,8 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\User;
-use App\OrderItem;
 
 class Order extends Model
 {
@@ -60,6 +58,31 @@ class Order extends Model
     public function user() 
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function lotteries() 
+    {
+        return $this->belongsToMany(Lottery::class, 'orders_has_lotteries', 'order_id', 'lottery_id');
+    }
+
+    public function soccerExperts() 
+    {
+        return $this->belongsToMany(
+            SoccerExpert::class, 
+            'orders_has_soccer_experts', 
+            'order_id', 
+            'soccer_expert_id'
+        );
+    }
+
+    public function scratchCards() 
+    {
+        return $this->belongsToMany(
+            ScratchCardTheme::class, 
+            'orders_has_scratch_cards', 
+            'order_id', 
+            'scratch_card_id'
+        );
     }
 
     public function getCreatedAtAttribute($date) 

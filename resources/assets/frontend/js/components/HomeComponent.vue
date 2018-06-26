@@ -275,8 +275,13 @@
 			
 		},
 		mounted: function() {
-			this.loading.component = false
+			this.loading.component = false;
 			window.document.title = window.app.title;
+			console.log(this.$route)
+            if(this.$route.query.toastr_desc != null
+				&& this.$route.query.toastr_title != null) {
+				toastr.success(this.$route.query.toastr_title, this.$route.query.toastr_desc);
+			}
 		},
 		components: {
 			SliderComponent,

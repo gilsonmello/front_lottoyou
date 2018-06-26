@@ -1,16 +1,18 @@
 <?php
 
-namespace App\Model\Frontend;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use App\User;
-use App\Model\Frontend\HistoricBalance;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Balance extends Model
+class LotteryNumberExtra extends Model
 {
-    use SoftDeletes;
+    const CREATED_AT = 'created';
+
+    const UPDATED_AT = 'modified';
     
+    //const DELETED_AT = 'deleted_at';
+
     /**
      * @var bool
      */
@@ -26,7 +28,7 @@ class Balance extends Model
      * 
      * @var array
      */
-    public $table = 'balances';
+    public $table = 'lot_jogos_numeros_extras';
 
     /**
      * The attributes that are mass assignable.
@@ -46,11 +48,8 @@ class Balance extends Model
         
     ];
 
-    public function user() {
-        return $this->belongsTo(User::class, 'owner_id');
-    }
-
-    public function historic() {
-        return $this->hasMany(HistoricBalance::class, 'balance_id');
+    public function result() 
+    {
+        return $this->belongsTo(LotteryResult::class, 'lot_jogos_resultado_id');
     }
 }

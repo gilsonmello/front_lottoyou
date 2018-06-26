@@ -524,4 +524,11 @@ return [
         'index' => 'Perfis'
     ],
 
+    'contacts' => [
+        'create' => 'Criar contato',
+        'edit' => 'Editar contato',
+        'delete' => 'Deletar contato',
+        'index' => 'Contatos',
+    ]
+
 ];

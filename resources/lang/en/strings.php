@@ -11,6 +11,8 @@ return [
       | found in a intuitive way.
       |
      */
+    'category' => 'Categoria',
+    'categories' => 'Categorias',
     'score_hits' => 'Acerto de Placares',
     'goal_difference_or_draws' => 'Diferença de gols ou Empates',
     'gold_ball' => 'Bola de ouro',

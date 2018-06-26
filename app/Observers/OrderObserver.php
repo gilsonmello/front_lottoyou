@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Observers\Frontend;
+namespace App\Observers;
 
-use App\Model\Frontend\Order;
+use App\Order;
 use App\HistoricBalance;
 use App\Balance;
 
@@ -11,7 +11,7 @@ class OrderObserver
     /**
      * Listen to the User created event.
      *
-     * @param  \App\User  $user
+     * @param Order $order
      * @return void
      */
     public function created(Order $order)
@@ -19,6 +19,9 @@ class OrderObserver
         //
     }
 
+    /**
+     * @param Order $order
+     */
     public function saved(Order $order)
     {
         /*$balance = Balance::where('owner_id', '=', $order->user_id)->get()->first();
@@ -39,7 +42,7 @@ class OrderObserver
     /**
      * Listen to the User deleting event.
      *
-     * @param  \App\User  $user
+     * @param Order $order
      * @return void
      */
     public function deleting(Order $order)

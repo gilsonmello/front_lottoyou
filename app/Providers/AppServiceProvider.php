@@ -4,17 +4,16 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use Validator;
-use App\User;
-use App\Model\Frontend\Order;
-use App\Model\Frontend\Cart;
-use App\Model\Frontend\ScratchCard;
-use App\Model\Frontend\OrderItem;
-use App\Observers\UserObserver;
-use App\Observers\Frontend\OrderObserver;
-use App\Observers\Frontend\OrderItemObserver;
-use App\Observers\Frontend\ScratchCardObserver;
-use App\Observers\Frontend\CartObserver;
+use App\Order;
+use App\Cart;
+use App\ScratchCard;
+use App\OrderItem;
+use App\Observers\OrderObserver;
+use App\Observers\OrderItemObserver;
+use App\Observers\ScratchCardObserver;
+use App\Observers\CartObserver;
+use App\Repositories\Frontend\User\UserRepository;
+use App\Repositories\Frontend\User\UserEloquent;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,6 +39,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 }

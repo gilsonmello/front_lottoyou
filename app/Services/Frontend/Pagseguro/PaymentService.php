@@ -1,4 +1,6 @@
-<?php namespace App\Services\Frontend\Pagseguro;
+<?php
+
+namespace App\Services\Frontend\Pagseguro;
 
 use App\BalanceOrder;
 use App\User;

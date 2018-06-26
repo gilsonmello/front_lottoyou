@@ -1,33 +1,36 @@
 <?php
 
-namespace App\Observers\Frontend;
+namespace App\Observers;
 
-use App\Model\Frontend\OrderItem;
-use App\Model\Frontend\SoccerExpertBet;
-use App\Model\Frontend\SoccerExpertBetGame;
-use App\Model\Frontend\ScratchCard;
-use App\Model\Frontend\LotteryUser;
-use App\Model\Frontend\LotteryUserNumber;
-use App\Model\Frontend\LotteryUserNumberExtra;
-use App\Model\Frontend\SoccerExpertRoundGroup;
-use App\Model\Frontend\SoccerExpertRound;
+use App\OrderItem;
+use App\SoccerExpertBet;
+use App\SoccerExpertBetGame;
+use App\ScratchCard;
+use App\LotteryUser;
+use App\LotteryUserNumber;
+use App\LotteryUserNumberExtra;
+use App\SoccerExpertRoundGroup;
 use App\HistoricBalance;
 use App\Balance;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class OrderItemObserver
 {
     /**
-     * Listen to the User created event.
+     * Listen to the OrderItem created event.
      *
-     * @param  \App\User  $user
-     * @return void
+     * @param OrderItem $item
      */
     public function created(OrderItem $item)
     {
         //
     }
 
+    /**
+     * @param $item
+     * @param $data
+     * @return bool
+     */
     private function lottery($item, $data) 
     {
         //Percorrendo todas as cartelas feitas pelo usuário
@@ -61,6 +64,11 @@ class OrderItemObserver
         return true;
     }
 
+    /**
+     * @param $item
+     * @param $data
+     * @return bool
+     */
     private function soccerExpert($item, $data) 
     {
         $order = $item->order;
@@ -160,7 +168,11 @@ class OrderItemObserver
         return true;
     }
 
-
+    /**
+     * @param $item
+     * @param $data
+     * @return bool
+     */
     private function scratchCard($item, $data) 
     {
         //Pegando raspadinhas com base na quantidade selecionado pelo o usuário
@@ -180,6 +192,9 @@ class OrderItemObserver
         return true;
     }
 
+    /**
+     * @param OrderItem $item
+     */
     public function saved(OrderItem $item)
     {
         $data = json_decode($item->data);
@@ -220,7 +235,7 @@ class OrderItemObserver
     /**
      * Listen to the User deleting event.
      *
-     * @param  \App\User  $user
+     * @param OrderItem $item
      * @return void
      */
     public function deleting(OrderItem $item)

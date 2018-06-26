@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\ScratchCard;
+use App\ScratchCard;
 
 class ScratchCardController extends Controller
 {
@@ -20,7 +20,7 @@ class ScratchCardController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return ScratchCard[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {

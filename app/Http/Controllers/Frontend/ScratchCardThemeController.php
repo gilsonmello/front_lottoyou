@@ -4,13 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\ScratchCardTheme;
-use App\Model\Frontend\ScratchCardLot;
-use App\Model\Frontend\ScratchCardDemo;
-use App\Model\Frontend\ScratchCardJackpotTable;
-use App\Model\Frontend\ScratchCard;
-use App\Model\Frontend\ScratchCardDiscountTable;
-use DB;
+use App\ScratchCardTheme;
+use App\ScratchCardDemo;
+use App\ScratchCard;
+use App\ScratchCardDiscountTable;
+use Illuminate\Support\Facades\DB;
 
 class ScratchCardThemeController extends Controller
 {

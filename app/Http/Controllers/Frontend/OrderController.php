@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\Order;
-use App\Model\Frontend\OrderItem;
-use Gate;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use App\Order;
+use App\OrderItem;
 use App\User;
-use Auth;
 use App\BalanceOrder;
 
 class OrderController extends Controller

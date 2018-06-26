@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\ScratchCardLot;
+use App\ScratchCardLot;
 
 class ScratchCardLotController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return ScratchCardLot[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {

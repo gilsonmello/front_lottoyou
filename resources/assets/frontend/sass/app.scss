@@ -10,15 +10,16 @@
 
 @import '~font-awesome/scss/font-awesome';
 
-input.error{
-  border: 1px solid rgba(255, 0, 0, 0.61);
+input.error, textarea.error {
+  border: 1px solid red;
 }
-input.error:focus{
-  border: 1px solid rgba(255, 0, 0, 0.61);
+input.error:focus, textarea.error:focus{
+  border: 1px solid red;
 }
 
 label.error{
-  color: rgba(255, 0, 0, 0.61);
+    font-size: 10px;
+    color: red;
 }
 
 .ok {

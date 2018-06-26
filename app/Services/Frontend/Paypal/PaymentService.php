@@ -1,4 +1,6 @@
-<?php namespace App\Services\Frontend\Paypal;
+<?php
+
+namespace App\Services\Frontend\Paypal;
 
 use App\BalanceOrder;
 use App\User;

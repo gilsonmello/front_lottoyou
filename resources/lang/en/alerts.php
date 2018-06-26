@@ -503,6 +503,21 @@ return [
         ],
     ],
 
+    'contact' => [
+        'create' => [
+            'success' => 'Contato registrado com sucesso.',
+            'error' => 'Erro ao registrar contato. Tente novamente.'
+        ],
+        'edit' => [
+            'success' => 'Tag editada com sucesso.',
+            'error' => 'Erro ao editar Tag.'
+        ],
+        'delete' => [
+            'error' => 'Erro ao deletar Perfil.',
+            'success' => 'Tag deletada com sucesso.',
+        ],
+    ],
+
     
 
 ];

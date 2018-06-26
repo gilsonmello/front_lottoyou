@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\Lottery;
-use App\Model\Frontend\LotterySweepstake;
-use DB;
+use App\Lottery;
+use App\LotterySweepstake;
+use Illuminate\Support\Facades\DB;
 
 class LotteryController extends Controller
 {

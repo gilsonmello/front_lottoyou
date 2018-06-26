@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\BalanceOrder;
 use App\Services\Frontend\Pagseguro\PaymentService;
-use Log;
+use Illuminate\Support\Facades\Log;
 
 class PagseguroController extends Controller
 {

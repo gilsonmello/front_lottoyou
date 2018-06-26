@@ -41,10 +41,15 @@
                 title: '{!! config('app.name') !!}',
                 basePath: '{!! url('/') !!}/',
             }
-            var query = location.hash.split('/');           
-            window.document.cookie = query[1] != undefined ? 'hash=' + query[1] : 'hash=en';
 
-            if(query[1] == ''){
+            let query = location.hash.split('/');
+            window.document.cookie = query[1] !== undefined ? 'hash=' + query[1] : 'hash=en';
+
+            if(query.length === 0) {
+                query.push('en');
+            }
+
+            if(query[1] === ''){
                 query[1] = 'en';
             }
 
@@ -53,7 +58,7 @@
             let token = document.head.querySelector('meta[name="csrf-token"]');
             xhttp.setRequestHeader("X-CSRF-TOKEN", token.content);
             xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
+                if (this.readyState === 4 && this.status === 200) {
                   window.trans = JSON.parse(this.response);
                 }
             };
@@ -108,8 +113,25 @@
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'UA-121313526-1');
-        </script>
+        </script> 
 
-        
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '218659952283316',
+                    xfbml      : true,
+                    version    : 'v3.0'
+                });
+                FB.AppEvents.logPageView();
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>      
     </body>
 </html>

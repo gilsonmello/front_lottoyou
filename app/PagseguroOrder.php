@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\BalanceOrder;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PagseguroOrder extends Model

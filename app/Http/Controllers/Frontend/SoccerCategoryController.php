@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\SoccerExpert;
+use App\SoccerExpert;
 
 class SoccerCategoryController extends Controller
 {

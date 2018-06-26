@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Frontend\SoccerExpertGame;
-use DB;
+use App\SoccerExpertGame;
+use Illuminate\Support\Facades\DB;
 
+/**
+ * Class SoccerTicketController
+ * @package App\Http\Controllers\Frontend
+ */
 class SoccerTicketController extends Controller
 {
 

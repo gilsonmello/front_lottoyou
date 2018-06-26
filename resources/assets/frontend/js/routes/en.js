@@ -23,6 +23,12 @@ export default {
                     component: require('../components/VcHelp.vue')
                 },
                 {
+                    path: 'contacts/create',
+                    name: 'contacts.create',
+                    props: true,
+                    component: require('../components/Contact/VcCreate')
+                },
+                {
                     path: 'privacy',
                     name: 'privacy',
                     props: true,
@@ -57,7 +63,13 @@ export default {
 			        name: 'users.register', 
 			        props: true,
 			        component: require('../components/User/RegisterComponent.vue')
-			    },  
+			    },
+                {
+                    path: 'account/activated',
+                    name: 'account.activated',
+                    props: true,
+                    component: require('../components/User/VcActivated.vue')
+                },
 			    {   
 			  		path: 'users/forgot_password',
 			        name: 'users.forgot_password', 
