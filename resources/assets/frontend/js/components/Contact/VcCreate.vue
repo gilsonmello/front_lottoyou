@@ -91,7 +91,10 @@
             },
             recaptchaCheckRequest() {
                 let categoriesRequest = axios.create();
-                return categoriesRequest.post(routes.recaptcha.check);                
+                return categoriesRequest.post(routes.recaptcha.check, {
+                    token: this.token,
+                    sitekey: this.sitekey
+                });                
             },
             getCategories() {
                 let categoriesRequest = axios.create();
@@ -101,6 +104,7 @@
                         this.categories = response.data;
                     }
                 }).catch((response) => {
+
                 });
             },
             store() {
@@ -154,6 +158,7 @@
                     $('#contacts-create').validate({
                         submitHandler: function(form) {
                             vm.store();
+                            return false;
                         },
                         rules: {
                             email: {

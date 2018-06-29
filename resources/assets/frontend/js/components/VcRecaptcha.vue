@@ -59,15 +59,15 @@ export default {
     },
     methods: {
         submitData (event) {
-        event.preventDefault()
-        if (typeof window === 'undefined') return
-        if (this.validate() === true || typeof this.validate === 'undefined') {
-            if (typeof this.size === 'undefined') {
-                window.grecaptcha.execute(this.recaptchaId)
-            } else {
-                this.getToken(window.grecaptcha.getResponse(this.recaptchaId))
+            event.preventDefault()
+            if (typeof window === 'undefined') return
+            if (this.validate() === true || typeof this.validate === 'undefined') {
+                if (typeof this.size === 'undefined') {
+                    window.grecaptcha.execute(this.recaptchaId)
+                } else {
+                    this.getToken(window.grecaptcha.getResponse(this.recaptchaId))
+                }
             }
-        }
         },
         getToken (token) {
             if (typeof window === 'undefined') return
