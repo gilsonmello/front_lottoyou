@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
+use Log;
 
 class RecaptchaController extends Controller
 {
@@ -17,6 +18,8 @@ class RecaptchaController extends Controller
                 'remoteip' => $request->ip(),
             ],
         ]);
+
+        Log::info($response->getBody());
  
         $response = json_decode((string) $response->getBody(), true);
  
