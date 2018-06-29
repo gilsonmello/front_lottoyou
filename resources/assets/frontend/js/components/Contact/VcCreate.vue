@@ -109,7 +109,7 @@
             },
             store() {
                 this.recaptchaCheckRequest().then((response) => {
-                    if(response.status === 200) {
+                    if(response.status === 200 && response.data == true) {
                         
                         let storeRequest = axios.create();
                         storeRequest.post(routes.contacts.create, {
@@ -136,6 +136,11 @@
                             );
                         });
 
+                    } else {
+                       toastr.error(
+                            'Captcha inválido',
+                            this.trans('strings.error')
+                        ); 
                     }
                 }).catch((response) => {
                     toastr.error(
