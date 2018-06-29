@@ -1,6 +1,6 @@
 <?php
 
-Route::get('recaptcha/check', 'RecaptchaController@check');
+Route::post('recaptcha/check', 'RecaptchaController@check');
 
 Route::resource('recaptcha', 'RecaptchaController', [
     'names' => [
