@@ -90,11 +90,11 @@
                 this.token = token;
             },
             recaptchaCheckRequest() {
-                let categoriesRequest = axios.create();
-                return categoriesRequest.post(routes.recaptcha.check, {
+                let recaptchaCheckRequest = axios.create();
+                return recaptchaCheckRequest.post(routes.recaptcha.check, {
                     token: this.token,
                     sitekey: this.sitekey
-                });                
+                });
             },
             getCategories() {
                 let categoriesRequest = axios.create();
@@ -108,7 +108,7 @@
                 });
             },
             store() {
-                this.recaptchaCheckRequest.then((response) => {
+                this.recaptchaCheckRequest().then((response) => {
                     if(response.status === 200) {
                         
                         let storeRequest = axios.create();
