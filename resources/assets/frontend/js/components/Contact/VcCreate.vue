@@ -4,32 +4,34 @@
         <h2 class="page-header">Entre em contato conosco</h2>
         <form id="contacts-create">
             <div class="row">
-                <div class="col-lg-3 col-12 col-sm-4 col-md-4">
+                <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="contacts-name">{{ trans('strings.name') }}*</label>
                         <input name="name" v-model="name" type="text" class="form-control" id="contacts-name" aria-describedby="name" :placeholder="trans('strings.name')">
                     </div>
                 </div>
-                <div class="col-lg-3 col-12 col-sm-4 col-md-4">
+                <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="contacts-email">{{ trans('strings.email') }}*</label>
                         <input name="email" v-model="email" type="email" class="form-control" id="contacts-email" aria-describedby="email" :placeholder="trans('strings.email')">
                     </div>
                 </div>
-                <div class="col-lg-3 col-12 col-sm-4 col-md-4">
-                    <div class="form-group">
-                        <label for="contacts-subject">{{ trans('strings.subject') }}*</label>
-                        <input name="subject" v-model="subject" type="text" class="form-control" id="contacts-subject" aria-describedby="name" :placeholder="trans('strings.subject')">
-                    </div>
-                </div>
-                <div class="col-lg-3 col-12 col-sm-4 col-md-4">
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="contacts-category">{{ trans('strings.category') }}*</label>
                         <select name="category" id="contacts-category" v-model="category" class="form-control" :placeholder="trans('strings.category')">
-                            <option :value="value.id" v-for="value in categories">
+                            <option :key="index" :value="value.id" v-for="(value, index) in categories">
                                 {{ value.name }}
                             </option>
                         </select>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="contacts-subject">{{ trans('strings.subject') }}*</label>
+                        <input name="subject" v-model="subject" type="text" class="form-control" id="contacts-subject" aria-describedby="name" :placeholder="trans('strings.subject')">
                     </div>
                 </div>
             </div>
@@ -41,10 +43,15 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-12 col-12 col-sm-12 col-md-12">
+                    <vc-recaptcha :sitekey="sitekey" :callback="recaptchaCallback"></vc-recaptcha>
+                </div>
+            </div>
             <br>
             <div class="row">
                 <div class="col-lg-12 col-12 col-sm-12 col-md-12">
-                    <button type="submit" v-if="!loading.submit" class="pull-right btn btn-md btn-primary">
+                    <button type="submit" v-if="!loading.submit" class="btn btn-md btn-primary">
                         {{ trans('strings.save_button') }}
                     </button>
                     <button v-else @click.prevent="" type="submit" class="hide btn btn-md btn-primary">
@@ -60,6 +67,7 @@
 <script>
     import {routes} from '../../api_routes'
     import LoadComponent from '../Load'
+    import VcRecaptcha from '../VcRecaptcha'
     export default {
         name: "VcCreate",
         data() {
@@ -73,10 +81,14 @@
                 loading: {
                     component: true,
                     submit: false,
-                }
+                },
+                sitekey: '6LeNc2EUAAAAABpFaOINnceFbni9gooWNYAMHkC6'
             }
         },
         methods: {
+            recaptchaCallback() {
+
+            },
             getCategories() {
                 let categoriesRequest = axios.create();
                 categoriesRequest.get(routes.contacts.categories)
@@ -175,7 +187,8 @@
 
         },
         components: {
-            LoadComponent
+            LoadComponent,
+            VcRecaptcha
         }
     }
 </script>

@@ -120,7 +120,6 @@ const app = new Vue({
 	},
 });
 
-
 window.addEventListener('storage', function(event) {
     
     //Se foi tudo deletado

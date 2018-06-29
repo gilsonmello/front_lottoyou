@@ -47,23 +47,33 @@
 									</router-link>
 					  			</li>
 					  			<li class="item-balance" v-if="auth && auth.balance">
-					  				<router-link :to="{ name: 'balances.deposit' }" class="pull-left" style="width: 100%;">
+					  				<div class="pull-left" style="width: 100%;">
 						  				<div class="pull-left">
-						  					<i class="fa fa-credit-card-alt" style="font-size: 27px;"></i>
+						  					<i class="fa fa-credit-card-alt" style="font-size: 27px; color: #0056b1"></i>
 						  				</div>
 						  				<div class="pull-right">
 						  					<div class="row">
 						  						<div class="col-lg-12 no-padding">
-						  							<span class="balance-amount">$ {{ auth.balance.value }}</span>
+						  							<span class="balance-amount" style="cursor: initial">$ {{ auth.balance.value }}</span>
 						  						</div>
 						  					</div>
 						  					<div class="row">
 						  						<div class="col-lg-12 no-padding">
-						  							<span class="balance-deposit">Depositar créditos</span>
+						  							<router-link :to="{ name: 'balances.deposit' }">
+														<span class="balance-deposit" style="display: initial">
+															{{trans('strings.to_deposit')}}
+														</span>
+						  							</router-link>
+													&nbsp;/&nbsp;
+													<router-link :to="{ name: 'balances.withdrawal' }">
+														<span class="balance-deposit" style="display: initial">
+															{{trans('strings.withdraw')}}
+														</span>
+						  							</router-link>
 						  						</div>
 						  					</div>
 						  				</div>
-					  				</router-link>
+					  				</div>
 					  			</li>
 					  			<li class="item-account" data-toggle="tooltip" v-if="auth" @mouseover="openTooltip" @mouseleave="closeTooltip">
 					  				<router-link :to="{ name: 'users.account' }" class="pull-left" style="width: 100%;">

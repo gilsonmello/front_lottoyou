@@ -39,6 +39,7 @@
         
         <div class="row">
         	<div class="col-lg-12">
+				<small>Ps/U = {{ trans('strings.position') }}/{{ trans('strings.user') }};</small>&nbsp;
         		<small>Pts = pontos;</small>&nbsp;
         		<small>PBL = pontos bola lottoyou;</small>&nbsp;
         		<small>AP = número de acerto de placares;</small>&nbsp;
@@ -49,7 +50,7 @@
         	<div class="row no-margin table-head" style="overflow: auto;">
         		<div class="col-lg-3 col-4 col-sm-3 col-md-3 table-column text-center" @click="toggle('posicao')">
 	        		<span>
-						&nbsp;
+						Ps/U
 					</span>			    		
 					<span v-if="'posicao' === query.column">
 		    			<span v-if="query.direction === 'desc'">
@@ -75,7 +76,7 @@
 	        	</div>
 	        	<div class="col-lg-1 col-2 col-sm-2 col-md-1 table-column text-center" @click="toggle('pontuacao_bola_ouro')" >
 	        		<span data-toggle="tooltip" data-placement="top" :title="trans('strings.gold_ball')">
-		      			BO
+		      			PBL
 		      		</span>
 		      		<span v-if="'pontuacao_bola_ouro' === query.column">
 		    			<span v-if="query.direction === 'desc'">

@@ -13,19 +13,19 @@
 				<div class="row box-payment-method" style="align-items: center;">
 					<div class="col-lg-2 col-6 col-md-2 col-sm-4">
 						<a @click.prevent="changePaymentMethod('paypal', $event)" href="#" class="payment-method">
-							<img class="img-fluid" src="/img/paypal.png">
+							<img class="img-fluid" alt="Paypal" title="Paypal" src="/img/paypal.png">
 							<!-- <span class="payment-method-name">Paypal</span> -->
 						</a>
 					</div>
 					<div class="col-lg-2 col-6 col-md-2 col-sm-4">
 						<a @click.prevent="changePaymentMethod('pagseguro', $event)" href="#" class="payment-method">
-							<img class="img-fluid" src="/img/pagseguro.png">
+							<img class="img-fluid" alt="Pagseguro" title="Pagseguro" src="/img/pagseguro.png">
 							<!-- <span class="payment-method-name">Pagseguro</span> -->
 						</a>
 					</div>
 					<div class="col-lg-2 col-6 col-md-2 col-sm-4">
 						<a @click.prevent="changePaymentMethod('payment_agent', $event)" href="#" class="payment-method">
-							<img class="img-fluid" src="/img/payment_agent.png">
+							<img class="img-fluid" alt="Agente de pagamento" title="Agente de Pagamento" src="/img/payment_agent.png">
 							<!-- <span class="payment-method-name">Pagseguro</span> -->
 						</a>
 					</div>
@@ -71,6 +71,9 @@
 	export default {
 		methods: {
 			changePaymentMethod: function(payment_method, el) {
+				this.$router.replace({
+                    query: Object.assign({})
+                })
 				$('.box-payment-method').find('.active').removeClass('active');
 				var parent = $(el.target).parent();
 				parent.addClass('active');
@@ -125,6 +128,9 @@
 			}
 		},
 		mounted() {
+			if(this.$route.query.payment_method && this.$route.query.payment_method != '') {
+				this.payment_method = this.$route.query.payment_method
+			} 
 			this.orderRequest();
 		},
 		components: {

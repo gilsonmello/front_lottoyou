@@ -190,7 +190,14 @@ export default {
 			        props: true,
 			        meta: { requiresAuth: true },
 			        component: require('../components/Balance/DepositComponent.vue')
-			    },
+				},
+				{   
+					path: 'balances/withdrawal',
+				  	name: 'balances.withdrawal', 
+				  	props: true,
+				  	meta: { requiresAuth: true },
+				  	component: require('../components/Balance/VcWithdrawal.vue')
+			  	},
 			    {   
 			  		path: 'terms',
 			        name: 'terms',

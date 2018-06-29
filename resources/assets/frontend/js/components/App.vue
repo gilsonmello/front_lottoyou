@@ -224,6 +224,9 @@
 			this.init();		
 
 			router.afterEach((to, from) => {
+				ga('set', 'page', to.path);
+  				ga('send', 'pageview');
+				
 				this.loading.component = false;
 			    var height = $('main').prop('scrollHeight');
 			    $('html, body').animate({

@@ -68,10 +68,10 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                	<fb:login-button 
+                	<!-- <fb:login-button 
 					  scope="public_profile,email"
 					  onlogin="authLogin">
-					</fb:login-button>
+					</fb:login-button> -->
                     <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">
                         {{ trans('strings.to_close') }}
                     </button> -->
@@ -147,9 +147,9 @@
         },
 		mounted: function() {
 			this.loading.component = false;
-			FB.getLoginStatus((response) => {
+			/* FB.getLoginStatus((response) => {
 			    this.facebook = response;
-			});
+			}); */
 			var interval = setInterval(() => {
 				if($('.modal-login').length > 0) {
 					clearInterval(interval);

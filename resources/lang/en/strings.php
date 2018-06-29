@@ -11,6 +11,9 @@ return [
       | found in a intuitive way.
       |
      */
+    'funds' => 'Fundos',
+    'withdraw' => 'Retirar',
+    'withdrawal' => 'Retirada',
     'category' => 'Categoria',
     'categories' => 'Categorias',
     'score_hits' => 'Acerto de Placares',
@@ -54,6 +57,8 @@ return [
     'no_tickets_left' => 'Não restam bilhetes',
     'group' => 'Grupo',
     'deposit' => 'Depósito',
+    'to_deposit' => 'Depositar',
+    'libertadores_now' => 'Libertadores agora',
     'awaiting payment' => 'Aguardando Pagamento',
     'in analysis' => 'Em análise',
     'pay' => 'Paga',
