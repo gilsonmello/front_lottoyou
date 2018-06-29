@@ -23,7 +23,7 @@ class RecaptchaController extends Controller
  
         $response = json_decode($response->getBody());
  
-        return $response['success'];
+        return $response->success;
     }
 
     /**
