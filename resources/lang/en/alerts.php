@@ -503,7 +503,7 @@ return [
         ],
     ],
 
-    'contact' => [
+    'contacts' => [
         'create' => [
             'success' => 'Contato registrado com sucesso.',
             'error' => 'Erro ao registrar contato. Tente novamente.'

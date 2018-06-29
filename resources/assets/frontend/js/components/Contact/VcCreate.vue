@@ -81,12 +81,17 @@
                     component: true,
                     submit: false,
                 },
-                sitekey: '6LeNc2EUAAAAABpFaOINnceFbni9gooWNYAMHkC6'
+                sitekey: '6LeNc2EUAAAAABpFaOINnceFbni9gooWNYAMHkC6',
+                token: '',
             }
         },
         methods: {
             recaptchaCallback(token) {
-                console.log(token)
+                this.token = token;
+            },
+            recaptchaCheckRequest() {
+                let categoriesRequest = axios.create();
+                return categoriesRequest.post(routes.recaptcha.check);                
             },
             getCategories() {
                 let categoriesRequest = axios.create();
@@ -99,30 +104,42 @@
                 });
             },
             store() {
-                let storeRequest = axios.create();
-                storeRequest.post(routes.contacts.create, {
-                    name: this.name,
-                    email: this.email,
-                    category: this.category,
-                    description: this.description,
-                    subject: this.subject
-                }).then((response) => {
+                this.recaptchaCheckRequest.then((response) => {
                     if(response.status === 200) {
-                        toastr.options.timeOut = 3000;
-                        toastr.options.newestOnTop = true;
-                        toastr.success(
-                            this.trans('alerts.contact.create.success'),
-                            this.trans('strings.success')
-                        );
+                        
+                        let storeRequest = axios.create();
+                        storeRequest.post(routes.contacts.create, {
+                            name: this.name,
+                            email: this.email,
+                            category: this.category,
+                            description: this.description,
+                            subject: this.subject
+                        }).then((response) => {
+                            if(response.status === 200) {
+                                toastr.options.timeOut = 5000;
+                                toastr.options.newestOnTop = true;
+                                toastr.success(
+                                    this.trans('alerts.contacts.create.success'),
+                                    this.trans('strings.success')
+                                );
+                            }
+                        }).catch((response) => {
+                            toastr.options.timeOut = 3000;
+                            toastr.options.newestOnTop = true;
+                            toastr.error(
+                                this.trans('alerts.contacts.create.error'),
+                                this.trans('strings.error')
+                            );
+                        });
+
                     }
                 }).catch((response) => {
-                    toastr.options.timeOut = 3000;
-                    toastr.options.newestOnTop = true;
                     toastr.error(
-                        this.trans('alerts.contact.create.error'),
+                        'Captcha inválido',
                         this.trans('strings.error')
                     );
                 });
+                
             }
         },
         mounted() {

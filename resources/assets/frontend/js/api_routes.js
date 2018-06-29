@@ -7,6 +7,9 @@ export const routes = {
 	historic_balances: {
 		of_the_user: host+'/historic_balances/of_the_user/{id}'
 	},
+	recaptcha: {
+		check: host+'/recaptcha/check',
+	},
 	contacts: {
 		create: host+'/contacts',
         categories: host+'/contacts/categories',
