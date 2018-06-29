@@ -19,7 +19,7 @@ class RecaptchaController extends Controller
             ],
         ]);
 
-        Log::info($response['success']);
+        Log::info($response->success);
  
         return $response['success'];
     }
