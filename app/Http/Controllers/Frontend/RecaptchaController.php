@@ -19,11 +19,11 @@ class RecaptchaController extends Controller
             ],
         ]);
 
-        Log::info($response->getBody());
  
         $response = json_decode($response->getBody());
+        Log::info($response->success);
  
-        return $response->success;
+        return response()->json($response->success, 200);
     }
 
     /**
