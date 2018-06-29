@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'field_required' => 'Campo obrigatório',
     'funds' => 'Fundos',
     'withdraw' => 'Retirar',
     'withdrawal' => 'Retirada',

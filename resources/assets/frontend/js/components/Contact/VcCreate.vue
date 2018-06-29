@@ -46,6 +46,9 @@
             <div class="row">
                 <div class="col-lg-12 col-12 col-sm-12 col-md-12">
                     <vc-recaptcha :sitekey="sitekey" :callback="recaptchaCallback"></vc-recaptcha>
+                    <label v-if="token === '' && submited == true" class="error" for="contacts-name">
+                        {{ trans('strings.field_required') }}
+                    </label>
                 </div>
             </div>
             <br>
@@ -71,6 +74,7 @@
         name: "VcCreate",
         data() {
             return {
+                submited: false,
                 name: '',
                 description: '',
                 email: '',
@@ -178,17 +182,17 @@
                         },
                         messages: {
                             name: {
-                                required: 'Campo Obrigatório',
+                                required: vm.trans('strings.field_required'),
                             },
                             description: {
-                                required: 'Campo Obrigatório',
+                                required: vm.trans('strings.field_required'),
                             },
                             subject: {
-                                required: 'Campo Obrigatório',
+                                required: vm.trans('strings.field_required'),
                             },
                             email: {
-                                required: 'Campo Obrigatório',
-                                email: 'Informe um e-mail válido',
+                                required: vm.trans('strings.field_required'),
+                                email: vm.trans('validation.user.create.email.email'),
                             }
                         },
                         highlight: function (input) {
@@ -205,6 +209,7 @@
                         }
                     });
                     $('#contacts-create').on('submit', function(e) {
+                        vm.submited = true;
                         var isvalid = $('#contacts-create').valid();
                         if (isvalid) {
                             e.preventDefault();
