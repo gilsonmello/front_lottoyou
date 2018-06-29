@@ -38,7 +38,7 @@ export default {
         window.recaptchaLoaded.then(() => {
             try {
                 const options = {
-                sitekey: this.sitekey
+                    sitekey: this.sitekey
                 }
                 if (typeof this.badge !== 'undefined') options.badge = this.badge
                 if (typeof this.type !== 'undefined') options.type = this.type

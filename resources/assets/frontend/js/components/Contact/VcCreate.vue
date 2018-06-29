@@ -60,7 +60,6 @@
                 </div>
             </div>
         </form>
-
     </div>
 </template>
 
@@ -86,8 +85,8 @@
             }
         },
         methods: {
-            recaptchaCallback() {
-
+            recaptchaCallback(token) {
+                console.log(token)
             },
             getCategories() {
                 let categoriesRequest = axios.create();
