@@ -19,7 +19,9 @@ class RecaptchaController extends Controller
             ],
         ]);
 
-        Log::info($response->success);
+        Log::info($response->getBody());
+ 
+        $response = json_decode($response->getBody());
  
         return $response['success'];
     }
