@@ -156,10 +156,6 @@
                 if($('#contacts-create').length > 0) {
                     clearInterval(time);
                     $('#contacts-create').validate({
-                        submitHandler: function(form) {
-                            vm.store();
-                            return false;
-                        },
                         rules: {
                             email: {
                                 required: true,
@@ -201,6 +197,13 @@
                         errorPlacement: function (error, element) {
                             $(element).parents('.input-group').append(error);
                             $(element).parents('.form-group').append(error);
+                        }
+                    });
+                    $('#contacts-create').on('submit', function(e) {
+                        var isvalid = $('#contacts-create').valid();
+                        if (isvalid) {
+                            e.preventDefault();
+                            vm.store();
                         }
                     });
                 }
