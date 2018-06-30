@@ -75,6 +75,9 @@
                     <button type="button" class="btn btn-info" @click="loginFacebook" data-dismiss="modal">
 						Facebook
                     </button>
+					<button type="button" class="btn btn-info" @click="logoutFacebook" data-dismiss="modal">
+						Sair
+                    </button>
                 </div>
             </div>
         </div>
@@ -147,9 +150,6 @@
 		},
 		watch: {
 			facebook(newValue, oldValue) {
-				window.FB.logout((response) => {
-					console.log(response)
-				});
 				if(newValue.status === 'connected') {
 					console.log('connected')
 					window.FB.api('/me?scope=email&fields=id,first_name,last_name,middle_name,name,name_format,picture,short_name,email', (response) => {
@@ -185,6 +185,11 @@
 			})
 		},
 		methods: {
+			logoutFacebook() {
+				window.FB.logout((response) => {
+					console.log(response)
+				});
+			},
 			loginFacebook() {
 				window.FB.login((response) => {
 					this.facebook = response;
