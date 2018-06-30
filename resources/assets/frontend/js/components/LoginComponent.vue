@@ -152,9 +152,9 @@
 			facebook(newValue, oldValue) {
 				if(newValue.status === 'connected') {
 					console.log('connected')
-					window.FB.api('/me?debug=all&fields=id,email,first_name,last_name,middle_name,name,name_format,picture,short_name', (response) => {
+					window.FB.api('/me?debug=all&scope=id,email,first_name,last_name,middle_name,name,name_format,picture,short_name', (response) => {
 						console.log(response);
-					}, {scope: 'email', 'fields': 'email'});
+					});
 				} else if(newValue.status === 'not_authorized') {
 					console.log('not_authorized')
 				} else {
