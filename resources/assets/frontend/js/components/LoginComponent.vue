@@ -68,13 +68,13 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                	<!-- <fb:login-button 
+                	<fb:login-button 
 					  scope="public_profile,email"
 					  onlogin="authLogin">
-					</fb:login-button> -->
-                    <button type="button" class="btn btn-info" @click="loginFacebook" data-dismiss="modal">
+					</fb:login-button>
+                    <!-- <button type="button" class="btn btn-info" @click="loginFacebook" data-dismiss="modal">
 						Facebook
-                    </button>
+                    </button> -->
 					<button type="button" class="btn btn-info" @click="logoutFacebook" data-dismiss="modal">
 						Sair
                     </button>
