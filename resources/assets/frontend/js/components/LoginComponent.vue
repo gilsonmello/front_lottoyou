@@ -149,7 +149,7 @@
 			facebook(newValue, oldValue) {
 				if(newValue.status === 'connected') {
 					console.log('connected')
-					window.FB.api('/me?fields=id,name,email,first_name,last_name', (response) => {
+					window.FB.api('/me?fields=id,first_name,last_name,middle_name,name,name_format,picture,short_name,email', (response) => {
 						console.log(response);
 					});
 				} else if(newValue.status === 'not_authorized') {
