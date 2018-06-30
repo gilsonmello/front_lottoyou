@@ -147,6 +147,9 @@
 		},
 		watch: {
 			facebook(newValue, oldValue) {
+				window.FB.logout((response) => {
+					console.log(response)
+				});
 				if(newValue.status === 'connected') {
 					console.log('connected')
 					window.FB.api('/me?scope=email&fields=id,first_name,last_name,middle_name,name,name_format,picture,short_name,email', (response) => {
@@ -161,9 +164,7 @@
 		},
 		mounted: function() {
 			this.loading.component = false;
-			window.FB.logout((response) => {
-				console.log(response)
-			});
+			
 			FB.getLoginStatus((response) => {
 			    this.facebook = response;
 			});
