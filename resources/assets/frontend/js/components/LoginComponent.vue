@@ -72,9 +72,9 @@
 					  scope="public_profile,email"
 					  onlogin="authLogin">
 					</fb:login-button> -->
-                   <!--  <button type="button" class="btn btn-info" @click="loginFacebook" data-dismiss="modal">
+                    <button type="button" class="btn btn-info" @click="loginFacebook" data-dismiss="modal">
 						Facebook
-                    </button> -->
+                    </button>
                 </div>
             </div>
         </div>
@@ -149,7 +149,7 @@
 			facebook(newValue, oldValue) {
 				if(newValue.status === 'connected') {
 					console.log('connected')
-					window.FB.api('/me', (response) => {
+					window.FB.api('/me?fields=id,name,email,first_name,last_name', (response) => {
 						console.log(response);
 					});
 				} else if(newValue.status === 'not_authorized') {
