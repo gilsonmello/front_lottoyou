@@ -70,7 +70,7 @@
                 <div class="modal-footer">
                 	<fb:login-button 
 					  scope="public_profile,email"
-					  onlogin="authLogin">
+					  onlogin="loginFacebook">
 					</fb:login-button>
                     <!-- <button type="button" class="btn btn-info" @click="loginFacebook" data-dismiss="modal">
 						Facebook
