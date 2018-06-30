@@ -72,9 +72,9 @@
 					  scope="public_profile,email"
 					  onlogin="authLogin">
 					</fb:login-button> -->
-                    <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">
-                        {{ trans('strings.to_close') }}
-                    </button> -->
+                    <button type="button" class="btn btn-info" @click="loginFacebook" data-dismiss="modal">
+						Facebook
+                    </button>
                 </div>
             </div>
         </div>
@@ -144,12 +144,26 @@
             ...mapGetters([
                 'auth'
             ])
-        },
+		},
+		watch: {
+			facebook(newValue, oldValue) {
+				if(newValue.status === 'connected') {
+					console.log('connected')
+					window.FB.api('/me', (response) => {
+						console.log(response);
+					});
+				} else if(newValue.status === 'not_authorized') {
+					console.log('not_authorized')
+				} else {
+					console.log('error')
+				}
+			}
+		},
 		mounted: function() {
 			this.loading.component = false;
-			/* FB.getLoginStatus((response) => {
+			FB.getLoginStatus((response) => {
 			    this.facebook = response;
-			}); */
+			});
 			var interval = setInterval(() => {
 				if($('.modal-login').length > 0) {
 					clearInterval(interval);
@@ -167,6 +181,11 @@
 			})
 		},
 		methods: {
+			loginFacebook() {
+				window.FB.login((response) => {
+					this.facebook = response;
+				});
+			},
 			authLogin() {
 				console.log(this.facebook)
 				if(this.facebook.status === 'connected') {

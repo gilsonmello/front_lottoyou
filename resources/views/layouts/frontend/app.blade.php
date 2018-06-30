@@ -123,7 +123,7 @@
             gtag('js', new Date());
             gtag('config', 'UA-121313526-1');
         </script>  --}}
-        {{--
+        
         <script>
             window.fbAsyncInit = function() {
                 FB.init({
@@ -141,6 +141,6 @@
                 js.src = "https://connect.facebook.net/en_US/sdk.js";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
-        </script>  --}}    
+        </script>
     </body>
 </html>

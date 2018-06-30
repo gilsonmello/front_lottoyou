@@ -8,14 +8,14 @@
 
 <script>
 if (typeof window !== 'undefined') {
-  window.recaptchaLoaded = new Promise((resolve) => {
-    window.vueRecaptchaInit = resolve
-  })
-  const recaptchaScript = document.createElement('script')
-  recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js?onload=vueRecaptchaInit&render=explicit')
-  recaptchaScript.setAttribute('async', '')
-  recaptchaScript.setAttribute('defer', '')
-  document.body.appendChild(recaptchaScript)
+    window.recaptchaLoaded = new Promise((resolve) => {
+        window.vueRecaptchaInit = resolve
+    })
+    const recaptchaScript = document.createElement('script')
+    recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js?onload=vueRecaptchaInit&render=explicit')
+    recaptchaScript.setAttribute('async', '')
+    recaptchaScript.setAttribute('defer', '')
+    document.body.appendChild(recaptchaScript)
 }
 export default {
     props: {
