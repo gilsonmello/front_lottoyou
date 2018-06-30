@@ -161,6 +161,9 @@
 		},
 		mounted: function() {
 			this.loading.component = false;
+			window.FB.logout((response) => {
+				console.log(response)
+			});
 			FB.getLoginStatus((response) => {
 			    this.facebook = response;
 			});
