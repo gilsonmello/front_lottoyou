@@ -8,14 +8,15 @@
 
 namespace App\Repositories\Frontend\Contact;
 
+use Illuminate\Http\Request;
 
 interface ContactContract
 {
     /**
-     * @param array $attributes
+     * @param \Illuminate\Http\Request $request
      * @return mixed
      */
-    public function create(array $attributes);
+    public function create(Request $request);
 
     /**
      * @param $id

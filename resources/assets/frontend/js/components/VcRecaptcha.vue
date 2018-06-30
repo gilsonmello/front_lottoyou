@@ -58,6 +58,9 @@ export default {
         })
     },
     methods: {
+        refresh() {
+            window.grecaptcha.reset();
+        },
         submitData (event) {
             event.preventDefault()
             if (typeof window === 'undefined') return

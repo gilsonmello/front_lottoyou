@@ -57,7 +57,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        if($this->repository->create($request->all())) {
+        if($this->repository->create($request)) {
             return response()->json(['msg' => 'Contato registrado com sucesso'], 200);
         }
         return response()->json(['msg' => 'Erro ao registrar contato. Tente novamente'], 422);

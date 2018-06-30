@@ -35,8 +35,7 @@ class CreateContactMail extends Mailable
     public function build()
     {
         return $this->view('emails.contacts.create')
-            ->from('sender@lottoyou.bet')
-            ->subject($this->contact->subject)
+            ->subject('Consulta sobre '.$this->contact->subject. ' recebida')
             ->with('contact', $this->contact);
     }
 }

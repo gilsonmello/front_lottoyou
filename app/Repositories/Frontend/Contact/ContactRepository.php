@@ -13,16 +13,18 @@ use App\Contact;
 use App\ContactCategory;
 use App\Mail\Contact\CreateContactMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
 
 class ContactRepository implements ContactContract
 {
 
     /**
-     * @param array $attributes
+     * @param Request $request
      * @return bool|mixed
      */
-    public function create(array $attributes)
+    public function create(Request $request)
     {
+        $attributes = $request->all();
         $contact = new Contact;
         $contact->email = $attributes['email'];
         $contact->name = $attributes['name'];
@@ -30,7 +32,19 @@ class ContactRepository implements ContactContract
         $contact->description = $attributes['description'];
         $contact->subject = $attributes['subject'];
         if($contact->save()) {
-            Mail::to('contacts@lottoyou.bet')
+            if ($request->hasFile('file')) {
+                if($request->file('file')->isValid()) {
+                    try {
+                        $file = $request->file('file');
+                        $name = $contact->id. '.' .$file->getClientOriginalExtension();
+                        $request->file('file')->move(public_path('files/contacts'), $name);
+                        $contact->file = request()->root() . '/files/contacts/' . $name;
+                    } catch (\Illuminate\Filesystem\FileNotFoundException $e) {
+    
+                    }
+                } 
+            }
+            Mail::to($contact->email)
                 ->send(new CreateContactMail($contact));
             return true;
         }

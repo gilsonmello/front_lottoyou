@@ -505,7 +505,7 @@ return [
 
     'contacts' => [
         'create' => [
-            'success' => 'Contato registrado com sucesso.',
+            'success' => 'Foi encaminhado uma mensagem para seu e-mail. ATENÇÃO: Em alguns casos o e-mail pode cair na caixa lixo eletrônico ou spam',
             'error' => 'Erro ao registrar contato. Tente novamente.'
         ],
         'edit' => [
