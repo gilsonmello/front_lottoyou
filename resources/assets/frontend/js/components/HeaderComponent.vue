@@ -66,7 +66,7 @@
 															{{trans('strings.to_deposit')}}
 														</span>
 						  							</router-link>
-													<span class="no-mobile">&nbsp;/&nbsp;</span>
+													<span class="no-mobile" style="display: initial">&nbsp;/&nbsp;</span>
 													<router-link :to="{ name: 'balances.withdrawal' }">
 														<span class="balance-deposit" style="display: initial">
 															{{trans('strings.withdraw')}}
