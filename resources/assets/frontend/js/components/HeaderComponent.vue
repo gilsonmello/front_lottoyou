@@ -54,7 +54,9 @@
 						  				<div class="pull-right">
 						  					<div class="row">
 						  						<div class="col-lg-12 no-padding">
-						  							<span class="balance-amount" style="cursor: initial">$ {{ auth.balance.value }}</span>
+													<router-link :to="{ name: 'users.account' }" class="pull-left" style="width: 100%;">
+						  								<span class="balance-amount" style="cursor: initial">$ {{ auth.balance.value }}</span>
+													</router-link>
 						  						</div>
 						  					</div>
 						  					<div class="row">
@@ -64,7 +66,7 @@
 															{{trans('strings.to_deposit')}}
 														</span>
 						  							</router-link>
-													&nbsp;/&nbsp;
+													<span class="no-mobile">&nbsp;/&nbsp;</span>
 													<router-link :to="{ name: 'balances.withdrawal' }">
 														<span class="balance-deposit" style="display: initial">
 															{{trans('strings.withdraw')}}
