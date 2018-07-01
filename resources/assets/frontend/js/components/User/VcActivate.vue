@@ -21,6 +21,11 @@ export default {
             //Fazendo requisição para criar o usuário
             activateRequest.post(url, {}, {})
                 .then((response) => {
+
+                    toastr.success(
+						this.trans('alerts.users.account_active'),
+						this.trans('strings.success')
+					);
                     
                     var access_token = response.data.access_token;
                     var refresh_token = response.data.refresh_token;
@@ -51,7 +56,6 @@ export default {
                     }).catch((error_2) => {
                         
                     });
-
                 })
                 .catch((response) => {
 					this.$store.dispatch('clearAuthUser');

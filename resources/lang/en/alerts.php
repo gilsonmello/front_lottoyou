@@ -77,6 +77,7 @@ return [
             'success' => 'Usuário deletado com sucesso',
             'error' => 'Erro ao deletar usuário'
         ],
+        'account_active' => 'Confirmação de cadastro realizada com sucesso.',
         'activated' => 'A conta já encontra-se ativada',
         'not_active' => 'A conta encontra-se desativada<br>Acesse seu e-mail e clique no link para ativá-la',
         'updated' => 'O usuário foi atualizado com sucesso.',
