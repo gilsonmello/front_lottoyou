@@ -170,7 +170,7 @@
 								window.localStorage.setItem('authUser', JSON.stringify(response2.data));
 								this.$store.dispatch('setUserObject', response2.data);
 								
-								window.location.reload();
+								//window.location.reload();
 
 								this.$router.push({name: 'home'});
 							}
