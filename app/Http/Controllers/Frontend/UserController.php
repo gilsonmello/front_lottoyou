@@ -209,7 +209,7 @@ class UserController extends Controller
     {
         $user = $this->repository->createFromFacebook($request->all());
         if($user != false) {
-            return response()->json($user, 200);
+            return response()->json($user->with('country', 'balance'), 200);
         }
         return response()->json(['message' => trans('alerts.users.create.error')], 422);
     }
