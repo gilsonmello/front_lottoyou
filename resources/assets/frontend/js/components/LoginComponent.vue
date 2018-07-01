@@ -328,7 +328,8 @@
 					}
 				}).catch((error) => {
 					this.loading.login = false;
-					if(error.message != '') {
+					console.log(error.response)
+					if(error.response.data.message != '') {
 						toastr.error(
 							error.message,
 							this.trans('strings.error')
