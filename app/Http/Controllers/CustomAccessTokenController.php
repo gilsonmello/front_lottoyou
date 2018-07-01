@@ -22,7 +22,7 @@ class CustomAccessTokenController extends AccessTokenController
         // 1.
         if ($httpRequest->grant_type == 'password') {
             // 2.
-            $user = \App\User::where('email', $httpRequest->username)
+            $user = \App\User::where('username', $httpRequest->username)
                 ->where('active', '=', 1)
                 ->first();
 
