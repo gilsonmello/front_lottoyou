@@ -207,7 +207,8 @@ class UserController extends Controller
      */
     public function createFromFacebook(Request $request)
     {
-        if($user = $this->repository->createFromFacebook($request->all()) != false) {
+        $user = $this->repository->createFromFacebook($request->all());
+        if($user != false) {
             dd($user);
             return response()->json($user, 200);
         }
