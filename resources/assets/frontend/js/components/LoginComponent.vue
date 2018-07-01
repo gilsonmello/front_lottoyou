@@ -178,9 +178,9 @@
 						});
 					});
 				} else if(newValue.status === 'not_authorized') {
-					console.log('not_authorized')
+					this.$store.dispatch('clearAuthUser');
 				} else {
-					console.log('error')
+					this.$store.dispatch('clearAuthUser');
 				}
 			}
 		},

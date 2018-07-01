@@ -59,6 +59,15 @@ class UserRepository implements UserContract
         $user->active = 1;
         $user->provider = 'facebook';
         $user->last_login = date('Y-m-d H:i:s');
+        $user->gender = $attributes['gender'] != null ? $attributes['gender'] : null;
+        if($user->birth_day != null) {
+            $user->birth_day = (int) $attributes['birth_day'] < 10 ? '0'.$attributes['birth_day'] : $attributes['birth_day'];
+        } else {
+            $user->birth_day = null;
+        }
+        $user->birth_month = $attributes['birth_month'] != null ? $attributes['birth_month'] : null;
+        $user->birth_year = $attributes['birth_year'] != null ? $attributes['birth_year'] : null;
+        $user->country_id = $attributes['country'] != null ? $attributes['country'] : 231;
         if($user->save()) {
             $user->nickname2 = $user->name . '_' . $user->id;
             $user->save();
