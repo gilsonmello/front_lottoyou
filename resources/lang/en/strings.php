@@ -483,6 +483,7 @@ return [
     'holderphone' => 'Telefone do titular',
     'district' => 'Bairro',
     'professional_number' => 'OAB',
+    'contact_us' => 'Fale conosco',
     'email_contact_us' => 'E-mail Fale Conosco',
     'youtube' => 'Youtube',
     'twitter' => 'Twitter',

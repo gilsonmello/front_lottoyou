@@ -1,7 +1,7 @@
 <template>
     <load-component v-if="loading.component"></load-component>
     <div class="container" v-else>
-        <h2 class="page-header">Entre em contato conosco</h2>
+        <h2 class="page-header">{{ trans('strings.contact_us') }}</h2>
         <form id="contacts-create">
             <div class="row">
                 <div class="col-lg-3 col-12 col-sm-6 col-md-3">
