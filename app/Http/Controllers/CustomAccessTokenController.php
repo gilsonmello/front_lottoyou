@@ -28,6 +28,9 @@ class CustomAccessTokenController extends AccessTokenController
 
             // Perform your validation here
 
+            if(is_null($user))
+                return false;
+
             // If the validation is successfull:
             return $this->issueToken($request);
         }
