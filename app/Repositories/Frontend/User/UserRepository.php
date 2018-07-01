@@ -60,6 +60,11 @@ class UserRepository implements UserContract
         if($user->save()) {
             $user->nickname2 = $user->name . '_' . $user->id;
             $user->save();
+            dd($user);
+            Balance::create([
+                'owner_id' => $user->id,
+                'value' => 0,
+            ]);
             /*$user->save();
             Mail::to($user->username)
                 ->send(new CreateEmail($user));*/
@@ -101,8 +106,8 @@ class UserRepository implements UserContract
                 'value' => 0,
             ]);
 
-            /*$user->save();
-            Mail::to($user->username)
+            $user->save();
+            /*Mail::to($user->username)
                 ->send(new CreateEmail($user));*/
             return true;
         }
