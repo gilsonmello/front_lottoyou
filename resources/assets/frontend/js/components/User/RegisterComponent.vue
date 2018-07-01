@@ -457,7 +457,7 @@
 							showCloseButton: true,
 							type: 'success',
 							title: this.trans('strings.success'),
-							html: `<p style="text-align: left"><strong>${this.name} </strong>${this.trans('alerts.users.create.success')}</p>`,
+							html: `<p style="text-align: left"><strong>${this.name} </strong>,${this.trans('alerts.users.create.success')}</p>`,
 							showConfirmButton: true,
 						})
 						//this.$router.push({name: 'home'});
