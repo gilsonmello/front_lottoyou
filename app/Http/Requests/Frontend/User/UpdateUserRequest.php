@@ -37,7 +37,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'username' => 'required|email|unique:users,username,'.$this->id.',id',
+            //'username' => 'required|email|unique:users,username,'.$this->id.',id',
             'photo' => isset($this->photo) ? 'required|image|mimes:jpg,jpeg,png,gif' : '',
         ];
         
