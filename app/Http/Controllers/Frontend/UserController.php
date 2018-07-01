@@ -49,7 +49,7 @@ class UserController extends Controller
     public function activate($hash, Request $request)
     {
         $user = $this->repository->activate($hash);
-        dd(Crypt::decrypt($user->laravel_password));
+        dd($user->laravel_password, Crypt::decryptString($user->laravel_password));
         if($user != false) {
             
             $http = new GuzzleHttp\Client;
