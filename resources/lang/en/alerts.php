@@ -78,6 +78,7 @@ return [
             'error' => 'Erro ao deletar usuário'
         ],
         'activated' => 'A conta já encontra-se ativada',
+        'not_active' => 'A conta encontra-se desativada<br>Acesse seu e-mail e clique no link para ativá-la',
         'updated' => 'O usuário foi atualizado com sucesso.',
         'deleted' => 'O usuário foi excluído com sucesso.',
         'deleted_permanently' => 'O usuário foi excluído permanentemente.',

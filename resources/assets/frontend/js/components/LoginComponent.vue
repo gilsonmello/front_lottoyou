@@ -328,9 +328,16 @@
 					}
 				}).catch((error) => {
 					this.loading.login = false;
-					this.errors = {
-						credentials: 'Usuário ou Senha inválidos'
-					};
+					if(error.data.message != '') {
+						toastr.error(
+							this.trans('alerts.users.not_active'),
+							this.trans('strings.error')
+						);
+					} else {
+						this.errors = {
+							credentials: 'Usuário ou Senha inválidos'
+						};
+					}
 				});
 			}
 		},
