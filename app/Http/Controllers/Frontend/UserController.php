@@ -49,9 +49,12 @@ class UserController extends Controller
      */
     public function activate($hash, Request $request)
     {
+        $key = config('app.key');
+        Crypt::setKey($key);
         $user = $this->repository->activate($hash);
         try {
-            echo decrypt($user->laravel_password);
+            $decripted = Crypt::decrypt($user->laravel_password);
+            dd($decripted);
         } catch (DecryptException $e) {
             dd($e);
         }
