@@ -44,7 +44,7 @@ class UserRepository implements UserContract
 	{
         $user = User::where('username', '=', $attributes['email'])->get()->first();
         if(!is_null($user)) {
-            $user->last_login = date('Y-m-d H:is:');
+            $user->last_login = date('Y-m-d H:i:s');
             $user->save();
             return $user;
         } 
@@ -54,8 +54,9 @@ class UserRepository implements UserContract
         $user->last_name = $attributes['last_name'];
         $user->username = $attributes['email'];
         $user->nickname2 = $attributes['short_name'];
+        $user->active = 1;
         $user->provider = 'facebook';
-        $user->last_login = date('Y-m-d H:is:');
+        $user->last_login = date('Y-m-d H:i:s');
         if($user->save()) {
             /*$user->save();
             Mail::to($user->username)
