@@ -12,7 +12,7 @@ use App\OrderItem;
 use App\SoccerExpertRound;
 use App\Repositories\Frontend\User\UserContract;
 use Crypt;
-use use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class UserController extends Controller
 {
