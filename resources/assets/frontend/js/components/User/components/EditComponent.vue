@@ -409,7 +409,24 @@
             let authUser = JSON.parse(window.localStorage.getItem('authUser'));
             authUser = authUser != null ? authUser : null;
             if(authUser.provider != '') {
-                this.loading.component = false
+                this.loading.component = false;
+                this.gender = authUser.gender ? authUser.gender : '';
+                this.nickname = authUser.nickname;
+                this.name = authUser.name;
+                this.last_name = authUser.last_name;
+                this.address = authUser.address;
+                this.street = authUser.street;
+                this.number = authUser.number;
+                this.cep = authUser.cep;
+                this.photo = authUser.photo;
+                this.city = authUser.city;
+                this.username = authUser.username;
+                this.state = authUser.state;
+                this.date_birth = 31 + '/' +12+ '/' + 1994; 
+                this.id = authUser.id;
+                this.complement = authUser.complement
+                this.country = authUser.country.name
+                this.phone_code = '+'+authUser.country.phonecode
             } else {
                 this.userRequest();
             }          
