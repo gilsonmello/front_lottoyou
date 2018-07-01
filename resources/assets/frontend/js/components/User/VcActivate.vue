@@ -52,6 +52,7 @@ export default {
 
                 })
                 .catch((response) => {
+                    this.$router.push({name: 'home'});
                     toastr.warning(
 						this.trans('alerts.users.activated'),
 						this.trans('strings.warning')
