@@ -169,7 +169,7 @@
 							if(response2.status === 200) {
 								window.localStorage.setItem('authUser', JSON.stringify(response2.data));
 								this.$store.dispatch('setUserObject', response2.data);
-								
+								$('.modal-login').hide();
 								//window.location.reload();
 
 								this.$router.push({name: 'home'});
