@@ -197,7 +197,7 @@
 			loginFacebook() {
 				window.FB.login((response) => {
 					this.facebook = response;
-				});
+				}, {scope: 'public_profile,email'});
 			},
 			authLogin() {
 				console.log(this.facebook)
