@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-12 text-justify">
-                <a class="btn-link" href="/termos-principal.docx" target="_blank">
+                <a class="btn-link" href="/termos_e_condicoes.pdf" target="_blank">
                     Clique aqui para ter acesso aos termos de uso
                 </a>
             </div>

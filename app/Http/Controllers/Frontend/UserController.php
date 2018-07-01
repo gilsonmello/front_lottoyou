@@ -39,6 +39,22 @@ class UserController extends Controller
     }
 
     /**
+     * 
+     */
+    public function changePassword(Request $request) 
+    {
+        
+    }
+
+    /**
+     * 
+     */
+    public function forgotPassword(Request $request) 
+    {
+        dd($request->all());
+    }
+
+    /**
      * Recebe o post para ativar a conta do usuário
      *
      * @param $hash

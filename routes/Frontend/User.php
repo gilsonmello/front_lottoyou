@@ -1,6 +1,13 @@
 <?php
+
 Route::post('users/create_from_facebook', 'UserController@createFromFacebook')
     ->name('frontend.users.create_from_facebook');
+
+Route::post('users/forgot_password', 'UserController@forgotPassword')
+    ->name('frontend.users.forgot_password');
+
+Route::post('users/change_password', 'UserController@changePassword')
+    ->name('frontend.users.change_password');
 
 Route::resource('users', 'UserController', [
     'names' => [

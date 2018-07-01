@@ -71,18 +71,26 @@ export default {
                     component: require('../components/User/VcActivate.vue')
                 },
 			    {   
-			  		path: 'users/forgot_password',
-			        name: 'users.forgot_password', 
-			        props: true,
-			        component: require('../components/User/ForgotPasswordComponent.vue')
-			    }, 
-			    {   
 			  		path: 'users/account',
 			        name: 'users.account',
 			        props: true,
 			        meta: { requiresAuth: true },
 			        component: require('../components/User/AccountComponent.vue')
-			    },
+				},
+				{   
+					path: 'users/forgot_password',
+				  	name: 'users.forgot_password',
+				  	props: true,
+				  	meta: { },
+				  	component: require('../components/User/VcForgotPassword.vue')
+				  },
+				  {   
+					path: 'users/change_password/:hash',
+				  	name: 'users.change_password',
+				  	props: true,
+				  	meta: { },
+				  	component: require('../components/User/VcChangePassword')
+			  	},
 			    {   
 			  		path: 'users/games',
 			        name: 'users.games',

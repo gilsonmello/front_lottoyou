@@ -16,7 +16,23 @@ class UserRepository implements UserContract
 	public function __construct() 
 	{
 
-	}
+    }
+    
+    /**
+     * 
+     */
+    public function forgotPassword(array $attributes) 
+    {
+        
+    }
+
+    /**
+     * 
+     */
+    public function changePassword(array $attributes) 
+    {
+        
+    }
 
     /**
      * @param string $hash

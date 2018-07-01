@@ -30,6 +30,7 @@ export const routes = {
 		index: host+'/order_items/{user_id}',
 	},
 	users: {
+		forgot_password: host+'/users/forgot_password',
 		index: host+'/users',
 		create: host+'/users',
 		edit: host+'/{id}/user',

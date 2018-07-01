@@ -70,6 +70,7 @@ return [
         'total' => 'Total de Subseções',
     ],
     'users' => [
+        'I_forgot_my_password' => 'Esqueci minha senha',
         'confirmed' => 'Confirmado',
         'created' => 'Criado em',
         'delete_permanently' => 'Deletar Permanentemente',

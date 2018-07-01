@@ -27,7 +27,9 @@
 		        weekStart: 0
 		    };
 		    
-		    let options = {};
+		    let options = {
+				
+			};
 
 		    if(this.options != undefined) {
 		    	this.options['language'] = 'pt-br';

@@ -264,7 +264,7 @@
             }
         },
         mounted() {
-            console.log(this.$refs)
+            
             this.getCategories();
             window.document.title = this.trans('crud.contacts.create');
             this.loading.component = false;

@@ -31,5 +31,15 @@ interface UserContract
      * @param $id
      * @return mixed
      */
-	public function delete($id);
+    public function delete($id);
+    
+    /**
+     * 
+     */
+    public function forgotPassword(array $attributes);
+
+    /**
+     * 
+     */
+    public function changePassword(array $attributes);
 }

@@ -77,6 +77,11 @@ return [
             'success' => 'Usuário deletado com sucesso',
             'error' => 'Erro ao deletar usuário'
         ],
+        'forgot_password' => [
+            'success' => 'Foi encaminhado uma mensagem para seu e-mail.<br>ATENÇÃO: Em alguns casos o e-mail pode cair na caixa lixo eletrônico ou spam.',
+            'not_found' => 'Usuário não encontrado.',
+            'error' => 'Erro ao encaminhar mensagem para seu e-mail. Tente novamente.',
+        ],
         'account_active' => 'Confirmação de cadastro realizada com sucesso.',
         'activated' => 'A conta já encontra-se ativada',
         'not_active' => 'A conta encontra-se desativada<br>Acesse seu e-mail e clique no link para ativá-la',
