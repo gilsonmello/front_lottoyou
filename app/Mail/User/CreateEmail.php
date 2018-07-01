@@ -32,7 +32,7 @@ class CreateEmail extends Mailable
     public function build()
     {
         return $this->view('emails.users.create')
-            ->subject('Novo registro')
+            ->subject(trans('strings.confirmation_of_registration').' '.config('app.name'))
             ->with('user', $this->user);
     }
 }

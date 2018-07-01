@@ -484,6 +484,7 @@ return [
     'district' => 'Bairro',
     'professional_number' => 'OAB',
     'contact_us' => 'Fale conosco',
+    'confirmation_of_registration' => 'Confirmação de cadastro',
     'email_contact_us' => 'E-mail Fale Conosco',
     'youtube' => 'Youtube',
     'twitter' => 'Twitter',

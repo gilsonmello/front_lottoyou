@@ -66,7 +66,7 @@ return [
     ],
     'users' => [
         'create' => [
-            'success' => 'Usuário criado com sucesso',
+            'success' => 'foi encaminhada uma mensagem para seu e-mail para confirmar seu cadastro.<br><br>ATENÇÃO: Em alguns casos o e-mail pode cair na caixa lixo eletrônico ou spam',
             'error' => 'Erro ao criar usuário'
         ],
         'update' => [
@@ -76,10 +76,6 @@ return [
         'delete' => [
             'success' => 'Usuário deletado com sucesso',
             'error' => 'Erro ao deletar usuário'
-        ],
-        'create' => [
-            'success' => 'O usuário foi criado com sucesso.',
-            'error' => 'Erro ao criar usuário'
         ],
         'updated' => 'O usuário foi atualizado com sucesso.',
         'deleted' => 'O usuário foi excluído com sucesso.',

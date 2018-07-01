@@ -453,16 +453,23 @@
 					nickname: this.nickname
 				})).then((response) => {
 					if(response.status === 200) {
-
+						swal({
+							showCloseButton: true,
+							type: 'success',
+							title: this.trans('strings.success'),
+							html: `<p style="text-align: left"><strong>${this.name} </strong>${this.trans('alerts.users.create.success')}</p>`,
+							showConfirmButton: true,
+						})
 						//this.$router.push({name: 'home'});
-						toastr.options.timeOut = 10000;
+						/* toastr.options.timeOut = 8000;
 						toastr.options.newestOnTop = true;
 						toastr.success(
-							this.trans('alerts.users.create.success'),
+							this.name+' '+this.trans('alerts.users.create.success'),
 							this.trans('strings.success')
-						);
+						); */
+						this.$router.push({name: 'home'});
 
-                       	this.login();
+                       	//this.login();
 					}
 					$(this.$el).find('[type="load"]').addClass('hide');
 		        	$(this.$el).find('[type="submit"]').removeClass('hide');

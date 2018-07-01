@@ -117,8 +117,8 @@ class UserRepository implements UserContract
             ]);
 
             $user->save();
-            /*Mail::to($user->username)
-                ->send(new CreateEmail($user));*/
+            Mail::to($user->username)
+                ->send(new CreateEmail($user));
             return true;
         }
 
