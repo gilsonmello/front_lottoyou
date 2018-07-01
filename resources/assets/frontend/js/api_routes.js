@@ -43,6 +43,7 @@ export const routes = {
 		scratch_cards: host+'/users/{id}/scratch_cards',
 		lotteries: host+'/users/{id}/lotteries',
 		items: host+'/users/{id}/items',
+		activate: host+'/users/activate/{hash}',
 		create_from_facebook: host+'/users/create_from_facebook'
 	},
 	packages: {

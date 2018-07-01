@@ -26,11 +26,10 @@ class UserRepository implements UserContract
             /*->where('active', '=', 0)*/
             ->get()
             ->first();
-
         if($user) {
             $user->active = 1;
             if($user->save()) {
-                return true;
+                return $user;
             }
         }
         return false;

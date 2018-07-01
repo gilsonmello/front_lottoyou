@@ -4,7 +4,7 @@
     <thead>
         <tr>
             <th align="center">
-                <img src="{{ asset('imgs/logo.png') }}" class="img-fluid logo" style="height: 54px; width: 127px;">
+                <img src="{{ asset('public/imgs/logo.png') }}" class="img-fluid logo" style="height: 54px; width: 127px;">
             </th>
         </tr>
     </thead>
@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <p>
-                <a href="{{route('frontend.users.activate', $user->email_verified)}}">
+                <a href="{{route('frontend.users.activate@get', $user->email_verified)}}">
                     Clique no link para confirmar seu cadastro e desfrute de infinitas possibilidades
                 </a>
             </p>

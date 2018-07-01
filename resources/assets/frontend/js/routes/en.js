@@ -65,10 +65,10 @@ export default {
 			        component: require('../components/User/RegisterComponent.vue')
 			    },
                 {
-                    path: 'account/activated',
-                    name: 'account.activated',
+                    path: 'users/activate/:hash',
+                    name: 'users.activate',
                     props: true,
-                    component: require('../components/User/VcActivated.vue')
+                    component: require('../components/User/VcActivate.vue')
                 },
 			    {   
 			  		path: 'users/forgot_password',

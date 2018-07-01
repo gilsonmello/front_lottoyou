@@ -47,11 +47,29 @@ class UserController extends Controller
      */
     public function activate($hash, Request $request)
     {
-        if($this->repository->activate($hash)) {
-            return redirect('/#/?toastr_title=Conta ativada com sucesso&toastr_desc=teste');
+        $user = $this->repository->activate($hash);
+        dd($user);
+        if($user != false) {
+            
+            $http = new GuzzleHttp\Client;
+
+            $response = $http->post('/oauth/token', [
+                'form_params' => [
+                    'grant_type' => 'password',
+                    'client_id' => 2,
+                    'client_secret' => '7UzbybHT5HsZ9x2CX09aZIBSx90KxUDhKdjznNjF',
+                    'username' => $user->username,
+                    'password' => $user->password,
+                    'scope' => ''
+                ],
+            ]);
+
+            return json_decode((string) $response->getBody(), true);
+            
+            //return response()->json($user, 200);
         }
 
-        return redirect('/');
+        return response()->json([], 422);
     }
 
     /**

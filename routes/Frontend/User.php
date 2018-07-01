@@ -21,7 +21,9 @@ Route::get('users/{id}/soccer_experts', 'UserController@soccerExperts');
 Route::get('users/{id}/scratch_cards', 'UserController@scratchCards');
 Route::get('users/{id}/lotteries', 'UserController@lotteries');
 Route::get('users/{id}/items', 'UserController@items');
-Route::get('users/{hash}/activate', 'UserController@activate')
-    ->name('frontend.users.activate');
+Route::get('/#/users/activate/{hash}', 'UserController@activate')
+    ->name('frontend.users.activate@get');
+Route::post('users/activate/{hash}', 'UserController@activate')
+    ->name('frontend.users.activate@post');
 Route::get('users/{hash}/activated', 'UserController@activated')
     ->name('frontend.users.activated');
