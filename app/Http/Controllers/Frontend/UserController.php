@@ -12,6 +12,7 @@ use App\OrderItem;
 use App\SoccerExpertRound;
 use App\Repositories\Frontend\User\UserContract;
 use Crypt;
+use use Illuminate\Contracts\Encryption\DecryptException;
 
 class UserController extends Controller
 {
@@ -49,7 +50,12 @@ class UserController extends Controller
     public function activate($hash, Request $request)
     {
         $user = $this->repository->activate($hash);
-        dd($user->laravel_password);
+        try {
+            echo decrypt($user->laravel_password);
+        } catch (DecryptException $e) {
+            dd($e);
+        }
+        
         if($user != false) {
             
             $http = new GuzzleHttp\Client;
