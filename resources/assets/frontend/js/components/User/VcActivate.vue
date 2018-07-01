@@ -54,6 +54,10 @@ export default {
 
                 })
                 .catch((response) => {
+					this.$store.dispatch('clearAuthUser');
+					window.localStorage.removeItem('authUser');
+					window.localStorage.removeItem('access_token');
+					window.localStorage.removeItem('refresh_token');
                     this.$router.push({name: 'home'});
                     toastr.warning(
 						this.trans('alerts.users.activated'),
