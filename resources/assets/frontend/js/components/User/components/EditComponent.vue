@@ -328,6 +328,51 @@
             },
             openImages() {
                 document.getElementById('photo').click();
+            },
+            userRequest() {
+                const access_token = JSON.parse(window.localStorage.getItem('access_token'));            
+
+                var userRequest = axios.create();
+                userRequest.interceptors.request.use(config => {
+                    this.loading.component = true
+                    return config;
+                });
+
+                //Fazendo busca do usuário logado, para setar na estrutura de dados
+                userRequest.get(routes.auth.user, { headers: {
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + access_token
+                }}).then(response => {
+                    response.data['access_token'] = access_token;
+                    window.localStorage.setItem('authUser', JSON.stringify(response.data))
+                    this.$store.dispatch('setUserObject', response.data)
+                    this.user = response.data                            
+
+                    this.errors = [];
+
+                    this.gender = this.user.gender ? this.user.gender : '';
+                    this.nickname = this.user.nickname;
+                    this.name = this.user.name;
+                    this.last_name = this.user.last_name;
+                    this.address = this.user.address;
+                    this.street = this.user.street;
+                    this.number = this.user.number;
+                    this.cep = this.user.cep;
+                    this.photo = this.user.photo;
+                    this.city = this.user.city;
+                    this.username = this.user.username;
+                    this.state = this.user.state;
+                    this.date_birth = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
+                    this.id = this.user.id;
+                    this.complement = this.user.complement
+                    this.country = this.user.country.name
+                    this.phone_code = '+'+this.user.country.phonecode
+
+                    this.loading.component = false
+                    
+                }).catch((error) => {
+                    this.loading.component = false
+                });
             }
         },
         data: function() {
@@ -361,50 +406,13 @@
             }
         },
         mounted: function() {
-
-            const access_token = JSON.parse(window.localStorage.getItem('access_token'));            
-
-            var authRequest = axios.create();
-            authRequest.interceptors.request.use(config => {
-                this.loading.component = true
-                return config;
-            });
-
-            //Fazendo busca do usuário logado, para setar na estrutura de dados
-            authRequest.get(routes.auth.user, { headers: {
-                'Accept': 'application/json',
-                'Authorization': 'Bearer ' + access_token
-            }}).then(response => {
-                response.data['access_token'] = access_token;
-                window.localStorage.setItem('authUser', JSON.stringify(response.data))
-                this.$store.dispatch('setUserObject', response.data)
-                this.user = response.data                            
-
-                this.errors = [];
-
-                this.gender = this.user.gender ? this.user.gender : '';
-                this.nickname = this.user.nickname;
-                this.name = this.user.name;
-                this.last_name = this.user.last_name;
-                this.address = this.user.address;
-                this.street = this.user.street;
-                this.number = this.user.number;
-                this.cep = this.user.cep;
-                this.photo = this.user.photo;
-                this.city = this.user.city;
-                this.username = this.user.username;
-                this.state = this.user.state;
-                this.date_birth = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
-                this.id = this.user.id;
-                this.complement = this.user.complement
-                this.country = this.user.country.name
-                this.phone_code = '+'+this.user.country.phonecode
-
+            let authUser = JSON.parse(window.localStorage.getItem('authUser'));
+            authUser = authUser != null ? authUser : null;
+            if(authUser.provider != '') {
                 this.loading.component = false
-                
-            }).catch((error) => {
-                this.loading.component = false
-            });
+            } else {
+                this.userRequest();
+            }          
 
         },
         components: {
