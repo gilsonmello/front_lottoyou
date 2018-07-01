@@ -54,13 +54,14 @@ class UserRepository implements UserContract
         $user->last_name = $attributes['last_name'];
         $user->username = $attributes['email'];
         $user->nickname = $attributes['short_name'];
+        $user->group_id = 3;
+        $user->gel_empresa_id = 8;
         $user->active = 1;
         $user->provider = 'facebook';
         $user->last_login = date('Y-m-d H:i:s');
         if($user->save()) {
             $user->nickname2 = $user->name . '_' . $user->id;
             $user->save();
-            dd($user->name);
             Balance::create([
                 'owner_id' => $user->id,
                 'value' => 0,
