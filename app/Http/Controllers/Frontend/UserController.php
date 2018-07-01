@@ -11,8 +11,6 @@ use App\Order;
 use App\OrderItem;
 use App\SoccerExpertRound;
 use App\Repositories\Frontend\User\UserContract;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Contracts\Encryption\DecryptException;
 
 class UserController extends Controller
 {
@@ -50,29 +48,8 @@ class UserController extends Controller
     public function activate($hash, Request $request)
     {
         $user = $this->repository->activate($hash);
-       
-        $decripted = Crypt::decrypt($user->laravel_password);
-        dd($decripted);
-        
-        
         if($user != false) {
-            
-            $http = new GuzzleHttp\Client;
-
-            $response = $http->post('/oauth/token', [
-                'form_params' => [
-                    'grant_type' => 'password',
-                    'client_id' => 2,
-                    'client_secret' => '7UzbybHT5HsZ9x2CX09aZIBSx90KxUDhKdjznNjF',
-                    'username' => $user->username,
-                    'password' => $user->laravel_password,
-                    'scope' => ''
-                ],
-            ]);
-
-            return json_decode((string) $response->getBody(), true);
-            
-            //return response()->json($user, 200);
+            return response()->json($user, 200);
         }
 
         return response()->json([], 422);

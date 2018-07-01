@@ -7,9 +7,12 @@ use App\Balance;
 use App\Mail\User\CreateEmail;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
+use App\Traits\PassportToken;
 
 class UserRepository implements UserContract
 {
+    use PassportToken;
+    
 	public function __construct() 
 	{
 
@@ -29,7 +32,7 @@ class UserRepository implements UserContract
         if($user) {
             $user->active = 1;
             if($user->save()) {
-                return $user;
+                return $this->getBearerTokenByUser($user, 1, false);
             }
         }
         return false;
