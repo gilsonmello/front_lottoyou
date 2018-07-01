@@ -11,22 +11,19 @@
     <tbody>
         <tr>
             <td>
-                {{ $user->name }} {{ $user->last_name }}, bem-vindo(a) a Lottoyou.
+                <p>{{ $user->name }} {{ $user->last_name }}, bem-vindo(a) a Lottoyou.</p>
             </td>
         </tr>
         <tr>
-            <a href="{{route('frontend.users.activate', $user->email_verified)}}">
-                Clique no link para confirmar seu cadastro e desfrute de infinitas possibilidades
-            </a>
-        </tr>
-        <tr>
             <p>
-                Atenciosamente,
+                <a href="{{route('frontend.users.activate', $user->email_verified)}}">
+                    Clique no link para confirmar seu cadastro e desfrute de infinitas possibilidades
+                </a>
             </p>
         </tr>
         <tr>
             <p>
-                &nbsp;
+                Atenciosamente,
             </p>
         </tr>
         <tr>
