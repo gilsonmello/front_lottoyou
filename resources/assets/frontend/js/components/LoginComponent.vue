@@ -168,7 +168,7 @@
 							short_name: response.short_name,
 						})).then((response2) => {
 							if(response2.status === 200) {
-								window.localStorage.setItem('authUser', JSON.stringify(response2));
+								window.localStorage.setItem('authUser', JSON.stringify(response2.data));
 								this.$store.dispatch('setUserObject', response2.data);
 								
 								//window.location.reload();
