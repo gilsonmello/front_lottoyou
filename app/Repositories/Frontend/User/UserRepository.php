@@ -25,7 +25,7 @@ class UserRepository implements UserContract
 	public function activate(string $hash)
     {
         $user = User::where('email_verified', '=', $hash)
-            ->where('email_token_expires', '>=', date('Y-m-d H:i:s'))
+            /* ->where('email_token_expires', '>=', date('Y-m-d H:i:s')) */
             ->where('active', '=', 0)
             ->get()
             ->first();
@@ -109,7 +109,7 @@ class UserRepository implements UserContract
         $user->nickname = $attributes['nickname'];
         $user->email_verified = str_random(50);
         $date = Carbon::create();
-        $user->email_token_expires = $date->addDays(1);
+        //$user->email_token_expires = $date->addDays(1);
         if($user->save()) {
             $user->nickname2 = $user->name . '_' . $user->id;
             
