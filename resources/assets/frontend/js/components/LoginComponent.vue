@@ -152,7 +152,7 @@
 			facebook(newValue, oldValue) {
 				if(newValue.status === 'connected') {
 					window.FB.api('/me', {
-						fields: 'id,email,first_name,last_name,middle_name,name,name_format,picture,short_name,user_birthday',
+						fields: 'id,email,first_name,last_name,middle_name,name,name_format,picture,short_name',
 						debug: 'all'
 					}, (response) => {
 						console.log(response);
