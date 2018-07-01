@@ -328,10 +328,9 @@
 					}
 				}).catch((error) => {
 					this.loading.login = false;
-					console.log(error)
 					if(error.message != '') {
 						toastr.error(
-							this.trans('alerts.users.not_active'),
+							error.message,
 							this.trans('strings.error')
 						);
 					} else {
