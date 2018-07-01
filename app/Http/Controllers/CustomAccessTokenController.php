@@ -28,10 +28,11 @@ class CustomAccessTokenController extends AccessTokenController
 
             // Perform your validation here
 
-            if(is_null($user))
+            if(is_null($user)) {
                 return response()->json([
-                    'message' => trans('alerts.users.create.error')
+                    'message' => trans('alerts.users.not_active')
                 ], 422);
+            }
 
             // If the validation is successfull:
             return $this->issueToken($request);
