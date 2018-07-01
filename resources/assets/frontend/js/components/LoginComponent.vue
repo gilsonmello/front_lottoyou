@@ -153,9 +153,8 @@
 				if(newValue.status === 'connected') {
 					console.log('connected')
 					window.FB.api('/me', {
-						fields: 'id,email,first_name,last_name,middle_name,name,name_format,picture,short_name',
-						debug: 'all',
-						scope: 'public_profile,email,user_birthday'
+						fields: 'id,email,first_name,last_name,middle_name,name,name_format,picture,short_name,user_birthday',
+						debug: 'all'
 					}, (response) => {
 						console.log(response);
 					});
