@@ -328,10 +328,9 @@
 					}
 				}).catch((error) => {
 					this.loading.login = false;
-					console.log(error.response)
-					if(error.response.data.message != '') {
+					if(error.response.data.message != null && error.response.data.message != '') {
 						toastr.error(
-							error.message,
+							error.response.data.message,
 							this.trans('strings.error')
 						);
 					} else {
