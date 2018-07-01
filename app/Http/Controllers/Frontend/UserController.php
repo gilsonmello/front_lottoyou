@@ -11,7 +11,7 @@ use App\Order;
 use App\OrderItem;
 use App\SoccerExpertRound;
 use App\Repositories\Frontend\User\UserContract;
-use Crypt;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 
 class UserController extends Controller
@@ -49,15 +49,11 @@ class UserController extends Controller
      */
     public function activate($hash, Request $request)
     {
-        $key = config('app.key');
-        Crypt::setKey($key);
         $user = $this->repository->activate($hash);
-        try {
-            $decripted = Crypt::decrypt($user->laravel_password);
-            dd($decripted);
-        } catch (DecryptException $e) {
-            dd($e);
-        }
+       
+        $decripted = Crypt::decrypt($user->laravel_password);
+        dd($decripted);
+        
         
         if($user != false) {
             
