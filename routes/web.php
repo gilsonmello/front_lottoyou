@@ -1,6 +1,10 @@
 <?php
 use Illuminate\Http\Request;
 
+Route::post('/oauth/token', [
+    'uses' => 'CustomAccessTokenController@issueUserToken'
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

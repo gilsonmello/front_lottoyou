@@ -107,7 +107,7 @@ trait PassportToken
     }
 
     /**
-     * @param \App\Entities\User $user
+     * @param \App\User $user
      * @param $clientId
      * @param bool $output default = true
      * @return array | \League\OAuth2\Server\ResponseTypes\BearerTokenResponse
