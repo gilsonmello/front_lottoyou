@@ -274,7 +274,6 @@ class UserController extends Controller
         $user->cep = $request->get('cep');
         $user->city = $request->get('city');
         $user->complement = $request->get('complement');
-        $user->username = $request->get('username');
         $user->state = $request->get('state');
         $user->tell_phone = $request->get('tell_phone');
         $user->nickname = $request->get('nickname');
