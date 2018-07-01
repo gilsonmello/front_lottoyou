@@ -169,6 +169,7 @@
 						})).then((response2) => {
 							if(response2.status === 200) {
 								window.localStorage.setItem('authUser', JSON.stringify(response2.data));
+								window.localStorage.setItem('provider', 'facebook');
 								this.$store.dispatch('setUserObject', response2.data);
 								
 								//window.location.reload();
