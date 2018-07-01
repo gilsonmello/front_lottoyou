@@ -155,7 +155,7 @@
 					window.FB.api('/me', {
 						fields: 'id,email,first_name,last_name,middle_name,name,name_format,picture,short_name',
 						debug: 'all',
-						scope: 'public_profile,email'
+						scope: 'public_profile,email,user_birthday'
 					}, (response) => {
 						console.log(response);
 					});
