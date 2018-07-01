@@ -155,7 +155,6 @@
 						fields: 'id,email,first_name,last_name,middle_name,name,name_format,picture,short_name',
 						debug: 'all'
 					}, (response) => {
-						console.log(response);
 						var registerRequest = axios.create();
 						registerRequest.interceptors.request.use(config => {
 							return config;
@@ -171,7 +170,7 @@
 								window.localStorage.setItem('authUser', JSON.stringify(response2.data));
 								this.$store.dispatch('setUserObject', response2.data);
 								
-								//window.location.reload();
+								window.location.reload();
 
 								this.$router.push({name: 'home'});
 							}
@@ -209,7 +208,7 @@
 		methods: {
 			logoutFacebook() {
 				window.FB.logout((response) => {
-					console.log(response)
+					
 				});
 			},
 			loginFacebook() {
@@ -218,7 +217,6 @@
 				}, {scope: 'public_profile,email,user_birthday'});
 			},
 			authLogin() {
-				console.log(this.facebook)
 				if(this.facebook.status === 'connected') {
 
 				} else if(this.facebook.status === 'not_authorized') {
