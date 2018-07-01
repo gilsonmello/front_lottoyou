@@ -50,7 +50,7 @@ class UserRepository implements UserContract
         } 
 
 		$user = new User;
-        $user->name = $attributes['name'];
+        $user->name = $attributes['first_name'];
         $user->last_name = $attributes['last_name'];
         $user->username = $attributes['email'];
         $user->nickname2 = $attributes['short_name'];
