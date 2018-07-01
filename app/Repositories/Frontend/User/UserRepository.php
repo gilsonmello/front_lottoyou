@@ -53,11 +53,13 @@ class UserRepository implements UserContract
         $user->name = $attributes['name'];
         $user->last_name = $attributes['last_name'];
         $user->username = $attributes['email'];
-        $user->nickname2 = $attributes['short_name'];
+        $user->nickname = $attributes['short_name'];
         $user->active = 1;
         $user->provider = 'facebook';
         $user->last_login = date('Y-m-d H:i:s');
         if($user->save()) {
+            $user->nickname2 = $user->name . '_' . $user->id;
+            $user->save();
             /*$user->save();
             Mail::to($user->username)
                 ->send(new CreateEmail($user));*/
