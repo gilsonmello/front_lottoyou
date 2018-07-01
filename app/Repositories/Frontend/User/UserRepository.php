@@ -105,7 +105,7 @@ class UserRepository implements UserContract
         $user->birth_year = $attributes['birth_year'];
         $user->country_id = $attributes['country'];
         $user->gender = $attributes['gender'];
-        //$user->active = 0;
+        $user->active = 0;
         $user->nickname = $attributes['nickname'];
         $user->email_verified = str_random(50);
         $date = Carbon::create();
