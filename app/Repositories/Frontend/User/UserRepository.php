@@ -42,7 +42,7 @@ class UserRepository implements UserContract
      */
 	public function createFromFacebook(array $attributes) 
 	{
-        $user = User::where('email', '=', $attributes['email'])->get()->first();
+        $user = User::where('username', '=', $attributes['email'])->get()->first();
         if(!is_null($user)) {
             $user->last_login = date('Y-m-d H:is:');
             $user->save();
