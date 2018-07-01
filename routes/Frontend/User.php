@@ -1,4 +1,6 @@
 <?php
+Route::post('users/create_from_facebook', 'UserController@createFromFacebook')
+    ->name('frontend.users.create_from_facebook');
 
 Route::resource('users', 'UserController', [
     'names' => [

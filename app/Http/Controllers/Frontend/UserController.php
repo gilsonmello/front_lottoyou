@@ -205,6 +205,20 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function createFromFacebook(Request $request)
+    {
+        if($this->repository->create($request->all()) != false) {
+            return response()->json($user, 200);
+        }
+        return response()->json(['message' => trans('alerts.users.create.error')], 422);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(CreateUserRequest $request)
     {
         if($this->repository->create($request->all())) {

@@ -130,14 +130,16 @@
 					this.loading.component = true;
 					//Pegando os dados do usuário no localstorage
 					var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+					var authUser = JSON.parse(window.localStorage.getItem('authUser'));
 					access_token = access_token != null ? access_token : null;
+					authUser = authUser != null ? authUser : null;
 
-				    if(to.meta.requiresAuth === true && access_token) {
+				    if(to.meta.requiresAuth === true && (access_token && authUser)) {
 				    	next();
 				    }
 
 				    //Se a rota depende de login
-					if(to.meta.requiresAuth === true && access_token == null) {
+					if(to.meta.requiresAuth === true && (access_token == null && authUser == null)) {
 
 						//Verificando se é diferente da rota para edição de conta do usuário
 						//Pois se não o fizer, a requisição será executada 2 vezes, porque

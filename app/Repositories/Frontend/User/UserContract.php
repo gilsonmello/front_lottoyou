@@ -12,7 +12,13 @@ interface UserContract
      * @param array $attributes
      * @return mixed
      */
-	public function create(array $attributes);
+    public function create(array $attributes);
+    
+    /**
+     * @param array $attributes
+     * @return mixed
+     */
+	public function createFromFacebook(array $attributes);
 
     /**
      * @param $id

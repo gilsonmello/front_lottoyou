@@ -40,6 +40,36 @@ class UserRepository implements UserContract
      * @param array $attributes
      * @return bool|mixed
      */
+	public function createFromFacebook(array $attributes) 
+	{
+        $user = User::where('email', '=', $attributes['email'])->get()->first();
+        if(!is_null($user)) {
+            $user->last_login = date('Y-m-d H:is:');
+            $user->save();
+            return $user;
+        } 
+
+		$user = new User;
+        $user->name = $attributes['name'];
+        $user->last_name = $attributes['last_name'];
+        $user->username = $attributes['email'];
+        $user->nickname2 = $attributes['short_name'];
+        $user->provider = 'facebook';
+        $user->last_login = date('Y-m-d H:is:');
+        if($user->save()) {
+            /*$user->save();
+            Mail::to($user->username)
+                ->send(new CreateEmail($user));*/
+            return $user;
+        }
+
+        return false;
+	}
+
+    /**
+     * @param array $attributes
+     * @return bool|mixed
+     */
 	public function create(array $attributes) 
 	{
 		$user = new User;
