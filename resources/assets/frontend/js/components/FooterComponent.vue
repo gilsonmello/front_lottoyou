@@ -252,22 +252,25 @@
 			  	new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
 
               	setInterval(() => {
+					let header = $('.header');
               		if($('.skiptranslate iframe').length > 0 && $('.skiptranslate iframe').parent().is(':visible')) {
               			$('body').css({
               				'padding-top': 0
               			});
 
-              			$('.header').css({
+              			header.css({
               				position: 'relative'
               			});
               		} else {
-              			$('.header').css({
+              			header.css({
               				position: 'fixed'
               			});
 
-				    	$('body').css({
-				    		'padding-top': $('.header')[0].clientHeight - 1
-				    	});
+						if(header.length > 0) {
+							$('body').css({
+								'padding-top': $('.header')[0].clientHeight - 1
+							});
+						}
               		}
               	}, 2000);
 
