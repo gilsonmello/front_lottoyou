@@ -77,6 +77,7 @@ return [
             'success' => 'Usuário deletado com sucesso',
             'error' => 'Erro ao deletar usuário'
         ],
+        'activated' => 'A conta já encontra-se ativada',
         'updated' => 'O usuário foi atualizado com sucesso.',
         'deleted' => 'O usuário foi excluído com sucesso.',
         'deleted_permanently' => 'O usuário foi excluído permanentemente.',

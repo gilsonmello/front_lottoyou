@@ -12,7 +12,7 @@ use App\Traits\PassportToken;
 class UserRepository implements UserContract
 {
     use PassportToken;
-    
+
 	public function __construct() 
 	{
 
@@ -26,7 +26,7 @@ class UserRepository implements UserContract
     {
         $user = User::where('email_verified', '=', $hash)
             ->where('email_token_expires', '>=', date('Y-m-d H:i:s'))
-            /*->where('active', '=', 0)*/
+            ->where('active', '=', 0)
             ->get()
             ->first();
         if($user) {

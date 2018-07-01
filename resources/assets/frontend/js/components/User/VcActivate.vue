@@ -1,7 +1,7 @@
 <template>
     <load-component v-if="loading.component"></load-component>
     <div class="container" v-else>
-        <h1>Ativado</h1>
+        
     </div>
 </template>
 
@@ -14,6 +14,7 @@ export default {
         activateRequest() {
             var activateRequest = axios.create();
             activateRequest.interceptors.request.use(config => {
+                this.loading.component = true;
                 return config;
             });
             let url = routes.users.activate.replace('{hash}', this.$route.params.hash);
@@ -35,11 +36,8 @@ export default {
                         this.errors = {};
                         this.loading.login = false;
                         response_2.data.access_token = access_token;
-
                         response_2.data.refresh_token = refresh_token;
-
                         var authUser = response_2.data;
-
                         window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
                         this.$store.dispatch('setUserObject', response_2.data);
@@ -54,7 +52,10 @@ export default {
 
                 })
                 .catch((response) => {
-
+                    toastr.warning(
+						this.trans('alerts.users.activated'),
+						this.trans('strings.warning')
+					);
                 })
         }
     },

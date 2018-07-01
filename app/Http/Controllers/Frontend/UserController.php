@@ -50,8 +50,9 @@ class UserController extends Controller
         $user = $this->repository->activate($hash);
         if($user != false) {
             return response()->json($user, 200);
+        } else if($user == false) {
+            return response()->json([], 422);
         }
-
         return response()->json([], 422);
     }
 
