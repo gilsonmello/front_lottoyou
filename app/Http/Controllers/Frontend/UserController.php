@@ -11,6 +11,7 @@ use App\Order;
 use App\OrderItem;
 use App\SoccerExpertRound;
 use App\Repositories\Frontend\User\UserContract;
+use Crypt;
 
 class UserController extends Controller
 {
@@ -48,7 +49,7 @@ class UserController extends Controller
     public function activate($hash, Request $request)
     {
         $user = $this->repository->activate($hash);
-        dd($user);
+        dd(Crypt::decrypt($user->laravel_password));
         if($user != false) {
             
             $http = new GuzzleHttp\Client;
@@ -59,7 +60,7 @@ class UserController extends Controller
                     'client_id' => 2,
                     'client_secret' => '7UzbybHT5HsZ9x2CX09aZIBSx90KxUDhKdjznNjF',
                     'username' => $user->username,
-                    'password' => $user->password,
+                    'password' => $user->laravel_password,
                     'scope' => ''
                 ],
             ]);
