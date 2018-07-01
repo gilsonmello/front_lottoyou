@@ -144,8 +144,13 @@ window.addEventListener('storage', function(event) {
 			window.location.reload();
 		}
 
+		if(app.auth == null) {
+			window.localStorage.removeItem('refresh_token');
+	    	window.localStorage.removeItem('authUser');
+	        window.location.reload();
+		}
     	//Se deletou o token, removo o usuário logado
-	    if((event.key == 'access_token' && event.newValue == null)) {
+	    else if((event.key == 'access_token' && event.newValue == null)) {
 	    	window.localStorage.removeItem('refresh_token');
 	    	window.localStorage.removeItem('authUser');
 	        window.location.reload();
