@@ -13059,6 +13059,21 @@ textarea.error:focus {
   border: 1px solid red;
 }
 
+.btn-facebook {
+  color: #fff !important;
+  background-color: #3b5998;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-social {
+  position: relative;
+  padding-left: 44px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 label.error {
   font-size: 10px;
   color: red;

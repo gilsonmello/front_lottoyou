@@ -72,12 +72,12 @@
 					  scope="public_profile,email"
 					  onlogin="authLogin">
 					</fb:login-button> -->
-                    <button type="button" class="btn btn-info" @click="loginFacebook" data-dismiss="modal">
-						Facebook
-                    </button>
-					<button type="button" class="btn btn-info" @click="logoutFacebook" data-dismiss="modal">
+					<a class="btn btn-block btn-social btn-facebook" @click.prevent="loginFacebook">
+						<span class="fa fa-facebook"></span> Login com o facebook
+					</a>
+					<!-- <button type="button" class="btn btn-info" @click="logoutFacebook" data-dismiss="modal">
 						Sair
-                    </button>
+                    </button> -->
                 </div>
             </div>
         </div>
