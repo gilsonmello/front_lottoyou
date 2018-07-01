@@ -118,7 +118,7 @@
                                     <div v-for="username in errors.username" >{{ username }}</div>
                                 </div>
                                 <label for="username">E-mail</label>
-                                <input v-model="username" name="username" required type="text" class="form-control" id="username" aria-describedby="username" :placeholder="trans('strings.username')">
+                                <input v-model="username" name="username" required type="text" class="form-control" id="username" aria-describedby="username" :placeholder="trans('strings.email')">
                             </div>
                         </div>
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">

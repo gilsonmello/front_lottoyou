@@ -298,6 +298,7 @@
 							this.email = '';
 							this.password = '';
 							this.errors = {};
+							this.loading.login = false;
 				        	response_2.data.access_token = access_token;
 
 		        			response_2.data.refresh_token = refresh_token;
