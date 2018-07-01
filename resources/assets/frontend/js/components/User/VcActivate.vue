@@ -24,6 +24,8 @@ export default {
                     
                     var access_token = response.data.access_token;
                     var refresh_token = response.data.refresh_token;
+                    window.localStorage.setItem('access_token', JSON.stringify(access_token));
+                    window.localStorage.setItem('refresh_token', JSON.stringify(refresh_token));
                     
                     var loginRequest = axios.create();
                     //Fazendo busca do usuário logado, para setar na estrutura de dados
