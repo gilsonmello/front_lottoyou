@@ -133,7 +133,7 @@ export default {
 			        component: require('../components/ScratchCard/IndexComponent.vue')
 			    },
 			    {   
-			  		path: '/soccer_expert',
+			  		path: 'soccer_expert',
 			        name: 'soccer_expert.index', 
 			        component: require('../components/SoccerExpert/IndexComponent.vue')
 			    },
@@ -144,19 +144,19 @@ export default {
 			        component: require('../components/SoccerExpert/ShowComponent.vue')
 			    },
 			    {   
-			  		path: '/soccer_expert/ranks/:id',
+			  		path: 'soccer_expert/ranks/:id',
 			        name: 'soccer_expert.ranks', 
 			        props: true,
 			        component: require('../components/SoccerExpert/VcRank.vue')
 			    },
 			    {   
-			  		path: '/soccer_expert/results/:id',
+			  		path: 'soccer_expert/results/:id',
 			        name: 'soccer_expert.results', 
 			        props: true,
 			        component: require('../components/SoccerExpert/ResultComponent.vue')
 			    },
 			    {   
-			  		path: '/soccer_groups/ranking/:id',
+			  		path: 'soccer_groups/ranking/:id',
 			        name: 'soccer_groups.ranking', 
 			        props: true,
 			        component: require('../components/SoccerGroup/VcRanking.vue')
@@ -219,14 +219,14 @@ export default {
                     component: require('../components/VcAsk')
                 },
 			    {   
-			  		path: '/orders',
+			  		path: 'orders',
 			        name: 'orders.index', 
 			        props: true,
 			        meta: { requiresAuth: true },
 			        component: require('../components/Order/IndexComponent.vue')
 			    },
 			    {   
-			  		path: '/orders/finish',
+			  		path: 'orders/finish',
 			        name: 'orders.finish', 
 			        props: true,
 			        meta: { requiresAuth: true },
