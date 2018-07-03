@@ -73,15 +73,21 @@
             if(query.length === 0) {
                 query.push('en_US');
             }
+
             if(query[1] === ''){
                 query[1] = 'en_US';
             }
 
-            window.document.cookie = query[1] !== undefined ? 'hash=' + query[1] : 'hash=en_US';        
+            if(query[1] != 'en_US' && query[1] != 'es_ES' && query[1] != 'pt_BR') {
+                query[1] = 'en_US';
+            }
+
+            window.document.cookie = query[1] !== undefined ? 'hash=' + query[1] : 'hash=en_US';
+            window.document.cookie = query[1] !== undefined ? 'locale=' + query[1] : 'locale=en_US';        
 
             
 
-            /* var xhttp = new XMLHttpRequest();
+            var xhttp = new XMLHttpRequest();
             xhttp.open("POST", "/getTranslations/"+query[1], false);
             let token = document.head.querySelector('meta[name="csrf-token"]');
             xhttp.setRequestHeader("X-CSRF-TOKEN", token.content);
@@ -90,13 +96,13 @@
                   window.trans = JSON.parse(this.response);
                 }
             };
-            xhttp.send(); */
+            xhttp.send(); 
 
 
-            <?php 
+            <?php /*
                 $locale = '';
-                if(isset($_COOKIE['hash'])){
-                    switch($_COOKIE['hash']) {
+                if(isset($_COOKIE['locale'])){
+                    switch($_COOKIE['locale']) {
                         case 'pt_BR': {
                             $locale = 'pt_BR';
                             break;
@@ -111,15 +117,15 @@
                         }
                     }
                 }
-            ?>  
+            */?>
 
-            window.trans = <?php
-                $locale = isset($_COOKIE['locale']) && !empty($_COOKIE['locale']) ? $_COOKIE['locale'] : $locale;
+            /*window.trans = <?php
+/*                //$locale = isset($_COOKIE['locale']) && !empty($_COOKIE['locale']) ? $_COOKIE['locale'] : $locale;
                 
                 if($locale == ''){
                     $locale = "en_US";
                 }
-                // copy all translations from /resources/lang/CURRENT_LOCALE/* to global JS variable
+                // copy all translations from /resources/lang/CURRENT_LOCALE/!* to global JS variable
                 $lang_files = File::files(resource_path() . '/lang/' . $locale);
                 $trans = [];
                 foreach ($lang_files as $f) {
@@ -127,10 +133,10 @@
                     $trans[$filename] = trans($filename);
                 }
                 echo json_encode($trans);
-            ?>;    
+            */?>;*/
 
             //window.locale = query[1];
-            window.locale = '<?php echo $locale; ?>';
+            window.locale = query[1];
             window.QueryString = <?php echo json_encode($_GET); ?>;
         </script>
 

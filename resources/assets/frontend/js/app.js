@@ -162,8 +162,24 @@ window.addEventListener('storage', function(event) {
 	    }
 
 	}
-
-
-    
-
 });
+
+/* window.onload = function() {
+	alert('onload');
+};
+
+window.onbeforeunload = function() {
+	alert('onbeforeunload');
+};
+
+window.onunload = function () {
+    alert('onunload');
+}
+
+window.addEventListener('popstate', function(e) {
+	alert('popstate');
+});
+
+window.addEventListener('hashchange', function(e) {
+	alert('hashchange');
+}); */
