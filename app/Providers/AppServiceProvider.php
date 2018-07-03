@@ -32,6 +32,9 @@ class AppServiceProvider extends ServiceProvider
         ScratchCard::observe(ScratchCardObserver::class);
         Cart::observe(CartObserver::class);
         Schema::defaultStringLength(191);
+        if(config('app.url_locale') == 'en_US/') {
+            config(['app.url_locale' => '']);
+        }
     }
 
     /**

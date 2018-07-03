@@ -187,6 +187,48 @@ if (!function_exists('format_without_mask')) {
 
 }
 
+if (!function_exists('format_without_mask_pt_br')) {
+
+	/**
+	 * Helper to return a Carbon object from a date timestamp
+	 * and a custom format
+	 *
+	 * @param string $date
+	 * @param string $condition
+	 * @return mixed
+	 */
+	function format_without_mask_pt_br($date, $condition) {
+		if ($date == NULL) {
+			return NULL;
+		}else{
+			return implode('-', array_reverse(explode($condition, $date)));
+		}
+	}
+
+}
+
+if (!function_exists('format_without_mask_en_us')) {
+
+	/**
+	 * Helper to return a Carbon object from a date timestamp
+	 * and a custom format
+	 *
+	 * @param string $date
+	 * @param string $condition
+	 * @return mixed
+	 */
+	function format_without_mask_en_us($date, $condition = '/') {
+		if ($date == NULL) {
+			return NULL;
+		} else {
+			$date = explode($condition, $date);
+			return $date[2].'-'.$date[0].'-'.$date[1];
+		}
+	}
+
+}
+
+
 
 if (!function_exists('format')) {
 
@@ -198,11 +240,29 @@ if (!function_exists('format')) {
 	 * @param $format
 	 * @return mixed
 	 */
-	function format($date, $format) {
-		if ($date == null)
+	function format($date, $format, $locale = null) {
+		if ($date == null) {
 			return "";
-		else
-			return Carbon\Carbon::parse($date)->format($format);
+		}
+		
+		if($locale != null && $locale != '') {
+			switch($locale) {
+				case 'pt_BR': {
+					$date = format_without_mask_pt_br($date, '/');
+					break;
+				}
+				case 'es_ES': {
+					$date = format_without_mask_pt_br($date, '/');
+					break;
+				}
+				default: {
+					$date = format_without_mask_en_us($date, '/');
+					break;
+				}
+			}
+			return $date;
+		}
+		return Carbon\Carbon::parse($date)->format($format);		
 	}
 
 }

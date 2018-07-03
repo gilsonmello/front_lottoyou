@@ -36,24 +36,54 @@
         
         <div id="app">
         </div>
+
+        <?php 
+            /*$email = "<script>document.write(window.localStorage.getItem('access_token'));</script>";
+            echo "Olá $email";*/
+        ?>
         <script>
+            
+            
+            function setCookie(name, value, days) {
+                var expires = "";
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days*24*60*60*1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+            }
+            function getCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0;i < ca.length;i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+                return null;
+            }
+
             window.app = {
                 title: '{!! config('app.name') !!}',
                 basePath: '{!! url('/') !!}/',
             }
 
             let query = location.hash.split('/');
-            window.document.cookie = query[1] !== undefined ? 'hash=' + query[1] : 'hash=en';
-
             if(query.length === 0) {
-                query.push('en');
+                query.push('en_US');
             }
-
             if(query[1] === ''){
-                query[1] = 'en';
+                query[1] = 'en_US';
             }
 
-            var xhttp = new XMLHttpRequest();
+            window.document.cookie = query[1] !== undefined ? 'hash=' + query[1] : 'hash=en_US';
+            window.document.cookie = query[1] !== undefined ? 'locale=' + query[1] : 'locale=en_US';
+          
+
+            
+
+            /* var xhttp = new XMLHttpRequest();
             xhttp.open("POST", "/getTranslations/"+query[1], false);
             let token = document.head.querySelector('meta[name="csrf-token"]');
             xhttp.setRequestHeader("X-CSRF-TOKEN", token.content);
@@ -62,33 +92,34 @@
                   window.trans = JSON.parse(this.response);
                 }
             };
-            xhttp.send();
+            xhttp.send(); */
 
 
-            /*<?php 
+            <?php 
                 $locale = '';
                 if(isset($_COOKIE['hash'])){
                     switch($_COOKIE['hash']) {
-                        case 'br': {
+                        case 'pt_BR': {
                             $locale = 'pt_BR';
                             break;
                         }
-                        case 'es': {
+                        case 'es_ES': {
                             $locale = 'es_ES';
                             break;
                         }
                         default: {
-                            $locale = 'en';
+                            $locale = 'en_US';
                             break;
                         }
                     }
                 }
-            ?>            
+            ?>  
 
             window.trans = <?php
-                $locale = isset($_GET['locale']) && !empty($_GET['locale']) ? $_GET['locale'] : $locale;
+                $locale = isset($_COOKIE['locale']) && !empty($_COOKIE['locale']) ? $_COOKIE['locale'] : $locale;
+                
                 if($locale == ''){
-                    $locale = "en";
+                    $locale = "en_US";
                 }
                 // copy all translations from /resources/lang/CURRENT_LOCALE/* to global JS variable
                 $lang_files = File::files(resource_path() . '/lang/' . $locale);
@@ -98,9 +129,10 @@
                     $trans[$filename] = trans($filename);
                 }
                 echo json_encode($trans);
-            ?>;     */       
+            ?>;    
 
-            window.locale = query[1];
+            //window.locale = query[1];
+            window.locale = '<?php echo $locale; ?>';
             window.QueryString = <?php echo json_encode($_GET); ?>;
         </script>
 

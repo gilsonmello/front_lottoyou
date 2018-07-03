@@ -63,14 +63,15 @@ class HomeController extends Controller
     public function getTranslations($locale = null) {
         // copy all translations from /resources/lang/CURRENT_LOCALE/* to global JS variable
         switch ($locale) {
-            case 'br':
+            case 'pt_BR':
                 $locale = 'pt_BR';
                 break;
-            case 'es': {
+            case 'es_ES': {
                 $locale = 'es_ES';
+                break;
             }
             default:
-                $locale = 'en';
+                $locale = 'en_US';
                 break;
         }
         $lang_files = File::files(resource_path() . '/lang/' . $locale);

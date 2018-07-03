@@ -46,7 +46,7 @@
 								<!--<router-link class="pull-right" :to="{ name: 'users.forgot_password' }">
 									{{ trans('strings.I_forgot_my_password') }}
 								</router-link>-->
-								<router-link class="pull-right" :to="{ name: 'ask' }">
+								<router-link class="pull-right" :to="{ name: 'users.forgot_password' }">
 									{{ trans('strings.I_forgot_my_password') }}
 								</router-link>
 								<router-link style="margin-right: 10px;" class="pull-right" :to="{ name: 'users.register' }">

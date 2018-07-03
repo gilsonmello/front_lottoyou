@@ -12,6 +12,9 @@ class CreateEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    /**
+     * User $user
+     */
     private $user;
 
     /**

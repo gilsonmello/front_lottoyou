@@ -30,6 +30,9 @@ export const routes = {
 		index: host+'/order_items/{user_id}',
 	},
 	users: {
+		check_token_password_recovery: host+'/users/check_token_password_recovery/{hash}',
+		check_token_forgot_password: host+'/users/check_token_forgot_password/{hash}',
+		password_recovery: host+'/users/password_recovery/{hash}',
 		forgot_password: host+'/users/forgot_password',
 		index: host+'/users',
 		create: host+'/users',
@@ -45,6 +48,7 @@ export const routes = {
 		lotteries: host+'/users/{id}/lotteries',
 		items: host+'/users/{id}/items',
 		activate: host+'/users/activate/{hash}',
+		check_token_activation: host+'/users/check_token_activation/{token}',
 		create_from_facebook: host+'/users/create_from_facebook'
 	},
 	packages: {

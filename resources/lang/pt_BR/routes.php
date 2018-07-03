@@ -1,6 +1,6 @@
 <?php 
 
-	return [
-		'home' => '',
-		'login' => 'login',
-	];
+return [
+	'home' => '',
+	'login' => 'login',
+];

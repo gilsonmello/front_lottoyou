@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Balance;
 use App\Country;
+use App\PasswordReset;
 
 
 class User extends Authenticatable
@@ -72,5 +73,13 @@ class User extends Authenticatable
 
     public function country() {
         return $this->belongsTo(Country::class, 'country_id');
+    }
+
+    /**
+     * 
+     */
+    public function passwordResets() 
+    {
+        return $this->hasMany(PasswordReset::class, 'user_id');
     }
 }

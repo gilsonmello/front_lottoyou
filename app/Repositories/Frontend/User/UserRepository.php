@@ -2,12 +2,16 @@
 
 namespace App\Repositories\Frontend\User;
 
+use App\PasswordReset;
 use App\User;
 use App\Balance;
 use App\Mail\User\CreateEmail;
+use App\Mail\User\ForgotPasswordEmail;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use App\Traits\PassportToken;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 
 class UserRepository implements UserContract
 {
@@ -23,15 +27,98 @@ class UserRepository implements UserContract
      */
     public function forgotPassword(array $attributes) 
     {
+        $locale = Cookie::get('locale');
+        $birth_date = format($attributes['birth_date'], 'd-m-Y', $locale);        
         
+        $user = User::where('username', '=', $attributes['email'])
+            ->where(DB::raw("concat(birth_year, '-', birth_month, '-', birth_day)"), '=', $birth_date)
+            ->get()
+            ->first();
+
+        if(!is_null($user)) {
+            $passwordReset = new PasswordReset;
+            $passwordReset->user_id = $user->id;
+            $passwordReset->token = str_random(191);
+            $passwordReset->save();
+            Mail::to($user->username)
+                ->send(new ForgotPasswordEmail($user, $passwordReset));
+            return true;
+        }
+        return false;
     }
 
     /**
      * 
      */
-    public function changePassword(array $attributes) 
+    public function checkTokenActivation($token) 
     {
-        
+        return false;
+    }
+
+    /**
+     * 
+     */
+    public function checkTokenForgotPassword($token) 
+    {
+        $passwordReset = PasswordReset::where('token', '=', $token)
+            ->where('active', '=', 1)
+            ->get()
+            ->first();
+
+        if(!is_null($passwordReset)) {
+            $passwordReset->active = 0;
+            if($passwordReset->save()) {
+                return true;
+            }
+            return false;
+        }
+
+        return false;
+    }
+
+    /**
+     * 
+     */
+    public function checkTokenPasswordRecovery($token) 
+    {
+        $passwordReset = PasswordReset::where('token', '=', $token)
+            ->where('active', '=', 1)
+            ->get()
+            ->first();
+
+        if(!is_null($passwordReset)) {
+            $passwordReset->active = 0;
+            if($passwordReset->save()) {
+                return true;
+            }
+            return false;
+        }
+
+        return false;
+    }
+
+    /**
+     * 
+     */
+    public function passwordRecovery($token, array $attributes) 
+    {
+        $passwordReset = PasswordReset::where('token', '=', $token)
+            ->get()
+            ->first();
+
+        $user = User::find($passwordReset->user_id);
+
+        if(!is_null($passwordReset)) {
+            $user->laravel_password = bcrypt($attributes['password']);
+            if($user->save()) {
+                return true;
+            } else {
+                return false;
+            }
+            return true;
+        }
+
+        return false;
     }
 
     /**

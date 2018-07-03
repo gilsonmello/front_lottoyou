@@ -66,14 +66,31 @@ return [
     ],
     'users' => [
         'create' => [
-            'success' => 'O usuário foi criado com sucesso.',
+            'success' => 'foi encaminhada uma mensagem para seu e-mail para confirmar seu cadastro.<br><br>ATENÇÃO: Em alguns casos o e-mail pode cair na caixa lixo eletrônico ou spam',
             'error' => 'Erro ao criar usuário'
         ],
-        'updated' => 'O usuário foi atualizado com sucesso.',
+        'update' => [
+            'success' => 'Usuário editado com sucesso',
+            'error' => 'Erro ao editar usuário'
+        ],
         'delete' => [
             'success' => 'Usuário deletado com sucesso',
-            'error' => 'Erro ao deletar usuário.'
+            'error' => 'Erro ao deletar usuário'
         ],
+        'forgot_password' => [
+            'success' => 'Foi encaminhado uma mensagem para seu e-mail.<br>ATENÇÃO: Em alguns casos o e-mail pode cair na caixa lixo eletrônico ou spam.',
+            'not_found' => 'Usuário não encontrado.',
+            'error' => 'E-mail e data de nascimento não confere. Tente novamente',
+        ],
+        'change_password' => [
+            'success' => 'Senha alterada com sucesso',
+            'not_found' => 'Token inválido',
+            'error' => 'Erro ao alterar senha',
+        ],
+        'account_active' => 'Confirmação de cadastro realizada com sucesso.',
+        'activated' => 'A conta já encontra-se ativada',
+        'not_active' => 'A conta encontra-se desativada<br>Acesse seu e-mail e clique no link para ativá-la',
+        'updated' => 'O usuário foi atualizado com sucesso.',
         'deleted' => 'O usuário foi excluído com sucesso.',
         'deleted_permanently' => 'O usuário foi excluído permanentemente.',
         'restored' => 'O usuário foi restaurado com sucesso.',
@@ -484,6 +501,21 @@ return [
         'create' => [
             'success' => 'Tag criada com sucesso.',
             'error' => 'Erro ao criar Tag.'
+        ],
+        'edit' => [
+            'success' => 'Tag editada com sucesso.',
+            'error' => 'Erro ao editar Tag.'
+        ],
+        'delete' => [
+            'error' => 'Erro ao deletar Perfil.',
+            'success' => 'Tag deletada com sucesso.',
+        ],
+    ],
+
+    'contacts' => [
+        'create' => [
+            'success' => 'Foi encaminhado uma mensagem para seu e-mail. ATENÇÃO: Em alguns casos o e-mail pode cair na caixa lixo eletrônico ou spam',
+            'error' => 'Erro ao registrar contato. Tente novamente.'
         ],
         'edit' => [
             'success' => 'Tag editada com sucesso.',

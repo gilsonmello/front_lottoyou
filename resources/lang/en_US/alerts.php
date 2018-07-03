@@ -80,7 +80,12 @@ return [
         'forgot_password' => [
             'success' => 'Foi encaminhado uma mensagem para seu e-mail.<br>ATENÇÃO: Em alguns casos o e-mail pode cair na caixa lixo eletrônico ou spam.',
             'not_found' => 'Usuário não encontrado.',
-            'error' => 'Erro ao encaminhar mensagem para seu e-mail. Tente novamente.',
+            'error' => 'E-mail e data de nascimento não confere. Tente novamente',
+        ],
+        'change_password' => [
+            'success' => 'Senha alterada com sucesso',
+            'not_found' => 'Token inválido',
+            'error' => 'Erro ao alterar senha',
         ],
         'account_active' => 'Confirmação de cadastro realizada com sucesso.',
         'activated' => 'A conta já encontra-se ativada',

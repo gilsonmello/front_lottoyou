@@ -62,7 +62,10 @@
 							this.$store.dispatch('setUserObject', response.data);
 						}
 				    }).catch((error) => {
-						
+						this.$store.dispatch('clearAuthUser');
+						window.localStorage.removeItem('authUser');
+						window.localStorage.removeItem('access_token');
+						window.localStorage.removeItem('refresh_token');
 				    });
 				}
 

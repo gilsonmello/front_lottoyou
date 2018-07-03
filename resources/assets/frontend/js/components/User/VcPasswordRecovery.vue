@@ -1,19 +1,19 @@
 <template>
 	<load-component v-if="loading.component"></load-component>
 	<div class="container" v-else>
-        <h2 class="page-header">{{ trans('strings.I_forgot_my_password') }}</h2>
-		<form id="forgot-password">
+        <h2 class="page-header">{{ trans('strings.password_recovery') }}</h2>
+		<form id="password-recovery">
 			<div class="row">
-                <div class="col-lg-4 col-12 col-sm-6 col-md-3">
+				<div class="col-lg-4 col-12 col-sm-6 col-md-3">
                     <div class="form-group">
-                         <label for="forgot-password-email">{{ trans('strings.email') }}*</label>
-                        <input name="email" v-model="email" type="email" class="form-control" id="forgot-password-email" aria-describedby="email" :placeholder="trans('strings.email')">
+                        <label for="password-recovery-password">{{ trans('strings.password') }}*</label>
+                        <input name="password" v-model="password" type="password" class="form-control" id="password-recovery-password" aria-describedby="password" :placeholder="trans('strings.password')">
                     </div>
                 </div>
 				<div class="col-lg-4 col-12 col-sm-6 col-md-3">
                     <div class="form-group">
-                        <label for="forgot-password-birth_date">{{ trans('strings.email') }}*</label>
-                        <datepicker ref="birth_date" :options="{language: 'pt-br', zIndexOffset: 1030}" autocomplete="off" id="forgot-password-birth_date" name="birth_date" v-model="birth_date" class="form-control" :placeholder="trans('strings.birth_date')" ></datepicker>
+                        <label for="password-recovery-confirm_password">{{ trans('strings.confirm_password') }}*</label>
+                        <input name="confirm_password" v-model="confirm_password" type="password" class="form-control" id="password-recovery-confirm_password" aria-describedby="password" :placeholder="trans('strings.confirm_password')">
                     </div>
                 </div>
 			</div>
@@ -35,15 +35,12 @@
 	import {routes} from '../../api_routes'
     import LoadComponent from '../Load'
 	export default {
-		name: "VcForgotPassword",
-		watch: {
-			birth_date(newValue, oldValue) {
-				this.$refs.birth_date.updateValue(newValue);
-			}
-		},
+		name: "VcPasswordRecovery",
 		data() {
             return {
 				email: '',
+				password: '',
+				confirm_password: '',
 				birth_date: '',
                 loading: {
                     component: true,
@@ -52,37 +49,39 @@
             }
         },
 		methods: {
-			requestCheckTokenForgotPassword() {
-				let requestCheckTokenForgotPassword = axios.create();
-				requestCheckTokenForgotPassword.interceptors.request.use(config => {
+			requestCheckTokenPasswordRecovery() {
+				let requestCheckTokenPasswordRecovery = axios.create();
+				requestCheckTokenPasswordRecovery.interceptors.request.use(config => {
 					return config;
 				});
-				let url = routes.users.check_token_forgot_password.replace('{hash}', this.$route.params.hash);
-				requestCheckTokenForgotPassword.post(url)
+				let url = routes.users.check_token_password_recovery.replace('{hash}', this.$route.params.hash);
+				requestCheckTokenPasswordRecovery.post(url)
 				.then((response) => {
 					if(response.status === 200) {
 						//this.password = '';
 						//this.confirm_password = '';
 					}
 				}).catch((error) => {
+					toastr.error(
+						this.trans('strings.invalid_token'),
+						this.trans('strings.error')
+					);
 					this.$router.push({name: 'home'});
 				});
 			},
-			requestForgotPassword() {
-				let requestForgotPassword = axios.create();
-				requestForgotPassword.interceptors.request.use(config => {
+			requestPasswordRecovery() {
+				let requestPasswordRecovery = axios.create();
+				requestPasswordRecovery.interceptors.request.use(config => {
 					this.loading.submit = true;
 					return config;
 				});
-				requestForgotPassword.post(routes.users.forgot_password, 
+				let url = routes.users.password_recovery.replace('{hash}', this.$route.params.hash);
+				requestPasswordRecovery.post(url, 
 					{
-						email: this.email,
-						birth_date: this.birth_date
+						password: this.password
 					}
 				).then((response) => {
 					if(response.status === 200) {
-						toastr.options.timeOut = 5000;
-						toastr.options.newestOnTop = true;
 						if(response.data.message != null && response.data.message != '') {
 							swal({
 								showCloseButton: true,
@@ -96,18 +95,19 @@
 								showCloseButton: true,
 								type: 'success',
 								title: this.trans('strings.success'),
-								html: `<p style="text-align: left">${this.trans('alerts.users.forgot_password.success')}</p>`,
+								html: `<p style="text-align: left">${this.trans('alerts.users.change_password.success')}</p>`,
 								showConfirmButton: true,
 							});
-						}						
+						}
+						this.$router.push({name: 'home'});				
 						this.loading.submit = false;
-						this.email = '';
-						this.birth_date = '';
+						this.password = '';
+						this.confirm_password = '';
 					}
 				}).catch((error) => {
 					this.loading.submit = false;
-					this.email = '';
-					this.birth_date = '';
+					this.password = '';
+					this.confirm_password = '';
 					if(error.response.data.message != null && error.response.data.message != '') {
 						swal({
 							showCloseButton: true,
@@ -121,7 +121,7 @@
 							showCloseButton: true,
 							type: 'error',
 							title: this.trans('strings.success'),
-							html: `<p style="text-align: left">${this.trans('alerts.users.forgot_password.error')}</p>`,
+							html: `<p style="text-align: left">${this.trans('alerts.users.change_password.error')}</p>`,
 							showConfirmButton: true,
 						});
 					}
@@ -129,31 +129,36 @@
 			}
 		},
 		mounted() {
-			window.document.title = this.trans('crud.users.I_forgot_my_password');
+			window.document.title = this.trans('strings.password_recovery');
 			this.loading.component = false;
 			let vm = this;
+			this.requestCheckTokenPasswordRecovery();
 			let time = setInterval(() => {
-                if($('#forgot-password').length > 0) {
+                if($('#password-recovery').length > 0) {
                     clearInterval(time);
-					let form = $('#forgot-password');
+					let form = $('#password-recovery');
                     form.validate({
                         rules: {
-                            email: {
-                                required: true,
-                                email: true,
-							},
-							birth_date: {
+                            password: {
 								required: true,
-							}
+								minlength: 6,
+							},
+							confirm_password: {
+								equalTo: '[name="password"]',
+								minlength: 6,
+								required: true
+							},
                         },
                         messages: {
-                            birth_date: {
-                                required: vm.trans('strings.field_required'),
-                            },
-                            email: {
-                                required: vm.trans('strings.field_required'),
-                                email: vm.trans('validation.user.create.email.email'),
-                            }
+							password: {
+								required: vm.trans('strings.field_required'),
+								minlength: vm.trans('strings.minimum_size')+' 6',
+							},
+							confirm_password: {
+								minlength: vm.trans('strings.minimum_size')+' 6',
+								required: vm.trans('strings.field_required'),
+								equalTo: vm.trans('strings.the_field_confirm_the_password_must_be_the_same_as_the_password_field')
+							},
                         },
                         highlight: function (input) {
                             $(input).addClass('error');
@@ -169,11 +174,11 @@
                         }
                     });
                     form.on('submit', function(e) {
-                        vm.submit = true;
                         var isvalid = form.valid();
                         if (isvalid) {
+                        	vm.loading.submit = true;
                             e.preventDefault();
-                            vm.requestForgotPassword();
+                            vm.requestPasswordRecovery();
                         }
                     });
                 }

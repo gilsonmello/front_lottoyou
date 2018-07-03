@@ -35,23 +35,73 @@ class UserController extends Controller
      */
     public function activated($hash, Request $request)
     {
-
-    }
-
-    /**
-     * 
-     */
-    public function changePassword(Request $request) 
-    {
         
     }
 
     /**
+     * Verifica se o token ainda é válido
+     * 
+     */
+    public function checkTokenActivation(Request $request, $token) 
+    {
+        //Verifica se o token ainda é válido
+        if($this->repository->checkTokenActivation($token)) {
+            return response()->json([
+                'message' => 'valid'
+            ], 200);
+        }
+        return response()->json([
+            'message' => 'invalid'
+        ], 422);
+    }
+
+    /**
+     * 
+     */
+    public function checkTokenPasswordRecovery(Request $request, $token) 
+    {
+        if($this->repository->checkTokenPasswordRecovery($token)) {
+            return response()->json([
+                'message' => 'valid'
+            ], 200);
+        }
+        return response()->json([
+            'message' => 'invalid'
+        ], 422);
+    }
+
+    /**
+     * Trocar a senha do usuário
+     * 
+     */
+    public function passwordRecovery(Request $request, $token) 
+    {
+        if($this->repository->passwordRecovery($token, $request->all())) {
+            return response()->json([
+                'message' => trans('alerts.users.change_password.success')
+            ], 200);
+        }
+
+        return response()->json([
+            'message' => trans('alerts.users.change_password.error')
+        ], 422);
+    }
+
+    /**
+     * Esquecer a senha, Envia e-mail para o usuário com um link de recuperação
      * 
      */
     public function forgotPassword(Request $request) 
     {
-        dd($request->all());
+        if($this->repository->forgotPassword($request->all())) {
+            return response()->json([
+                'message' => trans('alerts.users.forgot_password.success')
+            ], 200);
+        }
+
+        return response()->json([
+            'message' => trans('alerts.users.forgot_password.error')
+        ], 422);
     }
 
     /**

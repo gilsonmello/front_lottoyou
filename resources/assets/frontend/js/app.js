@@ -77,24 +77,22 @@ export function getTrans(key) {
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-import VueResource from 'vue-resource'
-import router from './router'
-import store from './store'
-import Select2 from './components/Select2Component'
-import InputMask from './components/InputMaskComponent'
-import VcDatePicker from './components/VcDatePicker'
-import VcDateTimePicker from './components/VcDateTimePicker'
-import Load from './components/Load'
-import {mapState, mapGetters} from 'vuex'
+import VueResource from 'vue-resource';
+import VueCookies from 'vue-cookies';
+import router from './router';
+import store from './store';
+import Select2 from './components/Select2Component';
+import InputMask from './components/InputMaskComponent';
+import Load from './components/Load';
+import {mapState, mapGetters} from 'vuex';
 
-import App from './components/App'
+import App from './components/App';
 
+Vue.use(VueCookies);
 Vue.use(VueResource);
 
 Vue.component('select2', Select2);
 Vue.component('inputmask', InputMask);
-Vue.component('datepicker', VcDatePicker);
-Vue.component('datetimepicker', VcDateTimePicker);
 Vue.component('load', Load);
 
 Vue.component('app', App);
@@ -104,11 +102,11 @@ const app = new Vue({
 	store,
     el: '#app',
     render: h => h(App),
-    created: function() {
+    created() {
     	
     },
-    mounted: function() {
-    	
+    mounted() {
+    	//this.$cookies.set("locale", window.locale);
     },
     computed: {
 		...mapState({
@@ -127,30 +125,26 @@ window.addEventListener('storage', function(event) {
     	window.location.reload();
     } else {
     	
-    	if(app.auth && app.auth.access_token != event.newValue && event.key == 'access_token') {
+    	if(app.auth && app.auth.access_token != event.newValue && event.key == 'access_token' && event.oldValue != '') {
 	    	window.localStorage.removeItem('access_token');
 			window.localStorage.removeItem('refresh_token');
 			window.localStorage.removeItem('authUser');
 			window.location.reload();
-		} else if(app.auth && app.auth.refresh_token != event.newValue && event.key == 'refresh_token') {
+		} else if(app.auth && app.auth.refresh_token != event.newValue && event.key == 'refresh_token' && event.oldValue != '') {
 	    	window.localStorage.removeItem('access_token');
 			window.localStorage.removeItem('refresh_token');
 			window.localStorage.removeItem('authUser');
 			window.location.reload();
-		} else if(app.auth && JSON.stringify(app.auth) != event.newValue && event.key == 'authUser') {
+		} else if(app.auth && JSON.stringify(app.auth) != event.newValue && event.key == 'authUser' && event.oldValue != '') {
 	    	window.localStorage.removeItem('access_token');
 			window.localStorage.removeItem('refresh_token');
 			window.localStorage.removeItem('authUser');
 			window.location.reload();
 		}
 
-		if(app.auth == null) {
-			window.localStorage.removeItem('refresh_token');
-	    	window.localStorage.removeItem('authUser');
-	        window.location.reload();
-		}
+		
     	//Se deletou o token, removo o usuário logado
-	    else if((event.key == 'access_token' && event.newValue == null)) {
+	    if((event.key == 'access_token' && event.newValue == null)) {
 	    	window.localStorage.removeItem('refresh_token');
 	    	window.localStorage.removeItem('authUser');
 	        window.location.reload();

@@ -11,6 +11,9 @@ return [
       | found in a intuitive way.
       |
      */
+    'new' => 'Novo(a)',
+    'the_field_confirm_the_password_must_be_the_same_as_the_password_field' => 'O campo confirme a senha deve ser igual ao campo senha',
+    'minimum_size' => 'Tamanho mínimo',
     'field_required' => 'Campo obrigatório',
     'funds' => 'Fundos',
     'withdraw' => 'Retirar',
@@ -346,6 +349,7 @@ return [
         'permission' => 'Baseado na Permissão do Usuário - ',
         'role' => 'Baseado no Papel do Usuário - ',
     ],
+    'invalid_token' => 'Token inválido',
     'total_responses' => 'Total de execuções',
     'count_not_answred' => 'Quantidade de não respondida',
     'count_right' => 'Quantidade de acertos',
@@ -354,6 +358,8 @@ return [
     'hit_percentage' => 'Porcentagem de acerto',
     'be_right_back' => 'Aguarde um momento.',
     'cancel_button' => 'Cancelar',
+    'password_recovery' => 'Recuperação de senha',
+    'recover_password' => 'Recuperar senha',
     'click_here_to_confirm_account' => 'Clique aqui para confirmar sua conta:',
     'click_here_to_reset' => 'Clique aqui para recuperar sua senha:',
     'choice_subsections' => 'Escolha a Seção Associada',

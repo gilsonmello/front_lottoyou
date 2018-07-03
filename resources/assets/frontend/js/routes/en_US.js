@@ -83,13 +83,13 @@ export default {
 				  	props: true,
 				  	meta: { },
 				  	component: require('../components/User/VcForgotPassword.vue')
-				  },
-				  {   
-					path: 'users/change_password/:hash',
-				  	name: 'users.change_password',
+				},
+				{   
+					path: 'users/password_recovery/:hash',
+				  	name: 'users.password_recovery',
 				  	props: true,
 				  	meta: { },
-				  	component: require('../components/User/VcChangePassword')
+				  	component: require('../components/User/VcPasswordRecovery')
 			  	},
 			    {   
 			  		path: 'users/games',

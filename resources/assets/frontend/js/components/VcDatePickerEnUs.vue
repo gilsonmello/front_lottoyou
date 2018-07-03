@@ -14,7 +14,7 @@
 		},
 		props: ['options'],
 		mounted() {
-			$.fn.datepicker.dates['pt-br'] = {
+			/* $.fn.datepicker.dates['pt-br'] = {
 		        days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
 		        daysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
 		        daysMin: ["Do", "Se", "Te", "Qua", "Qui", "Se", "Sa"],
@@ -25,7 +25,7 @@
 		        format: "dd/mm/yyyy",
 		        titleFormat: "MM yyyy",
 		        weekStart: 0
-		    };
+		    }; */
 		    
 		    let options = {
 				
@@ -41,7 +41,9 @@
 			});
 		},
 		methods: {
-
+			updateValue(val) {
+				$(this.$el).val(val);
+			}
 		}
 	}
 </script>

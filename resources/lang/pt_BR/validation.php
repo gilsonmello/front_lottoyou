@@ -249,17 +249,24 @@ return [
         'create' => [
             'name' => [
                 'required' => 'O campo nome é obrigatório',
-                'min' => 'Informe o nome com no mínimo 5 letras',
+                'min' => 'Informe o nome com no mínimo 3 letras',
                 'regex' => 'Informe o nome somente com letras',
                 'unique' => 'O Nome informado ja existe',
             ],
+            'nickname' => [
+                'required' => 'O campo usuário é obrigatório',
+                'min' => 'Informe o usuário com no mínimo 3 letras',
+                'regex' => 'Informe o usuário somente com letras',
+                'unique' => 'O usuário informado já existe',
+            ],
             'last_name' => [
                 'required' => '',
-                'min' => 'Informe o sobrenome com no mínimo 5 letras',
+                'min' => 'Informe o sobrenome com no mínimo 3 letras',
             ],
             'email' => [
                 'required' => 'O campo e-mail é obrigatório',
-                'email' => 'E-mail inválido'
+                'email' => 'E-mail inválido',
+                'unique' => 'E-mail já encontra-se em uso'
             ],
             'birth_day' => [
                 'required' => 'O campo dia é obrigatório',

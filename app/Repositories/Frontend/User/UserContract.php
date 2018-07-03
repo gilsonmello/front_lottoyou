@@ -41,5 +41,20 @@ interface UserContract
     /**
      * 
      */
-    public function changePassword(array $attributes);
+    public function passwordRecovery($token, array $attributes);
+
+    /**
+     * 
+     */
+    public function checkTokenPasswordRecovery($token);
+
+    /**
+     * 
+     */
+    public function checkTokenForgotPassword($token);
+    
+    /**
+     * 
+     */
+    public function checkTokenActivation($token);
 }

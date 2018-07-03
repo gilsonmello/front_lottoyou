@@ -78,7 +78,9 @@ return [
     |
     */
 
-    'locale' => isset($_GET['locale']) && !empty($_GET['locale']) ? $_GET['locale'] : 'en',
+    'url_locale' => isset($_COOKIE['locale']) && !empty($_COOKIE['locale']) ? $_COOKIE['locale'].'/' : 'en_US',
+
+    'locale' => isset($_COOKIE['locale']) && !empty($_COOKIE['locale']) ? $_COOKIE['locale'] : 'en_US',
 
     /*
     |--------------------------------------------------------------------------

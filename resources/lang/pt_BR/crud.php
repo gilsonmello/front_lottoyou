@@ -70,6 +70,7 @@ return [
         'total' => 'Total de Subseções',
     ],
     'users' => [
+        'I_forgot_my_password' => 'Esqueci minha senha',
         'confirmed' => 'Confirmado',
         'created' => 'Criado em',
         'delete_permanently' => 'Deletar Permanentemente',
@@ -523,5 +524,12 @@ return [
         'destroy' => 'Deletar Perfil',
         'index' => 'Perfis'
     ],
+
+    'contacts' => [
+        'create' => 'Criar contato',
+        'edit' => 'Editar contato',
+        'delete' => 'Deletar contato',
+        'index' => 'Contatos',
+    ]
 
 ];
