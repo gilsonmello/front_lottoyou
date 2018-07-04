@@ -127,6 +127,11 @@
                 <h6>
                     Em caso de empate na pontuação final, os valores dos prêmios serão somados e divididos entre os ganhadores
                 </h6>
+                <h6>
+                    <strong>
+                        Em caso de campeonatos em fase mata-mata: Quando o jogo terminar empatado nos 90 minutos iniciais, o placar válido será aquele do final da prorrogação.
+                    </strong>
+                </h6>
             </div>
         </div>
 
