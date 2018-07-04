@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Psr\Http\Message\ServerRequestInterface;
 use Laravel\Passport\Http\Controllers\AccessTokenController;
 
+/**
+ * Class CustomAccessTokenController
+ * @package App\Http\Controllers
+ */
 class CustomAccessTokenController extends AccessTokenController
 {
     /**

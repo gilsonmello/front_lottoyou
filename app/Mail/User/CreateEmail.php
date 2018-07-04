@@ -13,12 +13,13 @@ class CreateEmail extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * User $user
+     * @var User
      */
     private $user;
 
     /**
      * Create a new message instance.
+     *
      * CreateEmail constructor.
      * @param User $user
      */

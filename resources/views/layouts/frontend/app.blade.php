@@ -72,7 +72,7 @@
             window.app = {
                 title: '{!! config('app.name') !!}',
                 basePath: '{!! url('/') !!}/',
-            }
+            };
 
             let query = location.hash.split('/');
             if(query.length === 0) {

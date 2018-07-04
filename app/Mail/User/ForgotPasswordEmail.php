@@ -14,19 +14,21 @@ class ForgotPasswordEmail extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * User $user
+     * @var User
      */
     private $user;
 
     /**
-     * PasswordReset $passwordReset
+     * @var PasswordReset
      */
     private $passwordReset;
 
     /**
      * Create a new message instance.
      *
-     * @return void
+     * ForgotPasswordEmail constructor.
+     * @param User $user
+     * @param PasswordReset $passwordReset
      */
     public function __construct(User $user, PasswordReset $passwordReset)
     {

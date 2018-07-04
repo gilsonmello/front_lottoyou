@@ -12,6 +12,10 @@ use App\OrderItem;
 use App\SoccerExpertRound;
 use App\Repositories\Frontend\User\UserContract;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers\Frontend
+ */
 class UserController extends Controller
 {
     /**
@@ -40,7 +44,10 @@ class UserController extends Controller
 
     /**
      * Verifica se o token ainda é válido
-     * 
+     *
+     * @param Request $request
+     * @param $token
+     * @return \Illuminate\Http\JsonResponse
      */
     public function checkTokenActivation(Request $request, $token) 
     {
@@ -56,7 +63,9 @@ class UserController extends Controller
     }
 
     /**
-     * 
+     * @param Request $request
+     * @param $token
+     * @return \Illuminate\Http\JsonResponse
      */
     public function checkTokenPasswordRecovery(Request $request, $token) 
     {
@@ -72,7 +81,10 @@ class UserController extends Controller
 
     /**
      * Trocar a senha do usuário
-     * 
+     *
+     * @param Request $request
+     * @param $token
+     * @return \Illuminate\Http\JsonResponse
      */
     public function passwordRecovery(Request $request, $token) 
     {
@@ -210,6 +222,10 @@ class UserController extends Controller
         ->paginate(15);
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     */
     public function scratchCards($id, Request $request) 
     {
 
