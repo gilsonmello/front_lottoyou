@@ -125,7 +125,7 @@
         <div class="row">
             <div class="col-12 text-justify">
                 <h6>
-                    Em caso de empate na pontuação final, os valores dos prêmios serão somados e divididos entre os ganhadores
+                    Em caso de empate na pontuação final, os valores dos prêmios serão somados e divididos entre os ganhadores.
                 </h6>
                 <h6>
                     <strong>
