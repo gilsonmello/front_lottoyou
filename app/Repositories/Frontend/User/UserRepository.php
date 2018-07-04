@@ -214,11 +214,22 @@ class UserRepository implements UserContract
         $date = Carbon::create();
         //$user->email_token_expires = $date->addDays(1);
         if($user->save()) {
-            $user->nickname2 = $user->name . '_' . $user->id;
-            
+            $user->nickname2 = $user->name . '_' . $user->id;           
+
+            $balance = 0.05;
+
+            /* $quantity_users = User::where('active', '=', 1)
+                ->where('group_id', '=', 3)
+                ->where('gel_empresa_id', '=', 8)
+                ->get();
+
+            if($quantity_user->count() >= 2000) {
+                $balance = 0.05;
+            } */
+
             Balance::create([
                 'owner_id' => $user->id,
-                'value' => 0,
+                'value' => $balance,
             ]);
 
             $user->save();
