@@ -16,12 +16,10 @@
         "bootstrap": "^4.0.0-beta.3",
         "cross-env": "^5.1",
         "font-awesome": "^4.7.0",
-        "html-webpack-plugin": "^3.2.0",
         "jquery": "^3.2",
         "laravel-mix": "^2.0",
         "lodash": "^4.17.10",
         "popper.js": "^1.12",
-        "prerender-spa-plugin": "^3.2.1",
         "vue": "^2.5.7"
     },
     "dependencies": {
