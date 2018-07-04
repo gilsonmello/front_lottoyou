@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3ce6a11e4f73f843db69243d574fde8b",
-    "content-hash": "db4c663c3a5e6c500412b2da8135f3b8",
+    "hash": "4b98bd2cccc3036749778cf3da8f3126",
+    "content-hash": "18f51f8c2f05d5e6d2214fa21688572c",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -1516,6 +1516,49 @@
                 "php"
             ],
             "time": "2018-01-25 21:31:33"
+        },
+        {
+            "name": "nutsweb/laravel-prerender",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeroennoten/Laravel-Prerender.git",
+                "reference": "cb51eae23d41c8e48e98b5cadbf975bbf18fc4af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeroennoten/Laravel-Prerender/zipball/cb51eae23d41c8e48e98b5cadbf975bbf18fc4af",
+                "reference": "cb51eae23d41c8e48e98b5cadbf975bbf18fc4af",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.0",
+                "illuminate/support": "~5.0.14|~5.1",
+                "php": ">=5.5.9",
+                "symfony/psr-http-message-bridge": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nutsweb\\LaravelPrerender\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeroen Noten",
+                    "email": "jeroennoten@me.com"
+                }
+            ],
+            "description": "Laravel middleware for prerendering javascript-rendered pages on the fly for SEO",
+            "keywords": [
+                "laravel",
+                "prerender"
+            ],
+            "time": "2018-04-10 05:15:04"
         },
         {
             "name": "paragonie/random_compat",

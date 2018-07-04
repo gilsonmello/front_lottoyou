@@ -164,6 +164,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Nutsweb\LaravelPrerender\LaravelPrerenderServiceProvider::class,
+
 
         /*
          * Application Service Providers...
