@@ -31,6 +31,7 @@ class ContactRepository implements ContactContract
         $contact->category_id = $attributes['category'];
         $contact->description = $attributes['description'];
         $contact->subject = $attributes['subject'];
+        $contact->domain = request()->root();
         if($contact->save()) {
             if ($request->hasFile('file')) {
                 if($request->file('file')->isValid()) {
@@ -38,7 +39,8 @@ class ContactRepository implements ContactContract
                         $file = $request->file('file');
                         $name = $contact->id. '.' .$file->getClientOriginalExtension();
                         $request->file('file')->move(public_path('files/contacts'), $name);
-                        $contact->file = request()->root() . '/files/contacts/' . $name;
+                        //$contact->file = request()->root() . '/files/contacts/' . $name;
+                        $contact->file = '/files/contacts/' . $name;
                     } catch (\Illuminate\Filesystem\FileNotFoundException $e) {
     
                     }
