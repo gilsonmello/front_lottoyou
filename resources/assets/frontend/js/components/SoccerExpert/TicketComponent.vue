@@ -14,7 +14,7 @@
 				{{ hours }}:{{ minutes }}:{{ seconds }} {{ trans('strings.hours_left') }}
 			</span>
 			<span class="text-center tickets-limit" v-if="ticket.limite == null">
-				Ilimitado
+				{{ ticket.group.count }} / Ilimitado
             	<i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Quantidade de Jogadores"></i>
             </span>        	
 			<span class="text-center tickets-limit" v-else>				
