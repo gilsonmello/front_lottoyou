@@ -42,6 +42,7 @@ class ContactRepository implements ContactContract
                         $request->file('file')->move(public_path('files/contacts'), $name);
                         //$contact->file = request()->root() . '/files/contacts/' . $name;
                         $contact->file = '/files/contacts/' . $name;
+                        $contact->save();
                     } catch (\Illuminate\Filesystem\FileNotFoundException $e) {
     
                     }
