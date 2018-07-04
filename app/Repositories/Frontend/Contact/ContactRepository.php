@@ -32,6 +32,7 @@ class ContactRepository implements ContactContract
         $contact->description = $attributes['description'];
         $contact->subject = $attributes['subject'];
         $contact->domain = request()->root();
+        $contact->locale = config('app.locale');
         if($contact->save()) {
             if ($request->hasFile('file')) {
                 if($request->file('file')->isValid()) {
