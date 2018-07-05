@@ -1,6 +1,5 @@
 export default {
-	mode: 'history',
-  	routes: [
+	routes: [
   		{
   			path: '/',
 	        component: require('../components/MainComponent.vue'),
