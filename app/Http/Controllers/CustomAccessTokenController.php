@@ -23,6 +23,7 @@ class CustomAccessTokenController extends AccessTokenController
     {
         $httpRequest = request();
 
+
         // 1.
         if ($httpRequest->grant_type == 'password') {
             // 2.
