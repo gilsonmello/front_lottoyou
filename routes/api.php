@@ -19,8 +19,8 @@ use App\User;
 //});
 
 Route::group(['middleware' => 'auth:api', 'namespace' => 'API'], function(){
-    dd('sdhfkjds');
-    Route::get('user', function(Request $request){
+    Route::get('user', function(Request $request) {
+        dd('sdhfkjds');
     	return User::where('id', '=', $request->user()->id)
     		->with('country', 'balance')
     		->get()
