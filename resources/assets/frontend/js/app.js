@@ -79,6 +79,7 @@ export function getTrans(key) {
  */
 import VueResource from 'vue-resource';
 import VueCookies from 'vue-cookies';
+import Meta from 'vue-meta'
 import router from './router';
 import store from './store';
 import Select2 from './components/Select2Component';
@@ -90,6 +91,7 @@ import App from './components/App';
 
 Vue.use(VueCookies);
 Vue.use(VueResource);
+Vue.use(Meta);
 
 Vue.component('select2', Select2);
 Vue.component('inputmask', InputMask);

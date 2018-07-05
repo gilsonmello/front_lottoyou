@@ -369,6 +369,7 @@ return [
     'date' => 'Data',
     'carousel' => 'Carrossel',
     'is_active' => 'Ativo',
+    'activated' => 'Ativado',
     'desactived' => 'Desativado',
     'duration' => 'Duração',
     'edit' => 'Editar',

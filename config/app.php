@@ -164,7 +164,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Nutsweb\LaravelPrerender\LaravelPrerenderServiceProvider::class,
+        //Nutsweb\LaravelPrerender\LaravelPrerenderServiceProvider::class,
+
+        Barryvdh\Cors\ServiceProvider::class,
 
 
         /*

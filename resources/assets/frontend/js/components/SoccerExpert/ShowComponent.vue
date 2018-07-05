@@ -141,6 +141,16 @@
 	import TicketComponent from './TicketComponent'
 	import ModalTicketComponent from './Modal/TicketComponent'
 	export default {
+        metaInfo () {
+            return {
+                title: this.trans('strings.soccer_expert'),
+                meta: [
+                    {
+                        vmid: 'description', name: 'description', content: this.item.soccer_expert.nome
+                    }
+                ]
+            }
+        },
 		beforeRouteUpdate: function(to, from, next) {
 			next();
 			this.init();
@@ -262,7 +272,7 @@
 				} else if(this.$route.params.id != undefined) {
 					this.showRequest();
 				}
-				window.document.title = this.trans('strings.soccer_expert');
+				//window.document.title = this.trans('strings.soccer_expert');
 			},
 			
 		},

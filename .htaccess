@@ -2,7 +2,6 @@ RequestHeader set X-Prerender-Token "0FWybu3ZM5p6dGflHq29"
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteRule ^(.*)$ public/$1 [L]
-
 </IfModule>
 <IfModule mod_expires.c>
    # Habilita a expiração
