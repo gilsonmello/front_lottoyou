@@ -117,8 +117,8 @@ trait PaymentService
     {
         $pagseguro_data = array();
 
-        $pagseguro_data['email'] = 'lottoyou.adm@gmail.com';
-        $pagseguro_data['token'] = '0AA8C0B8F9F74F46B9CCB2E7C5D1FFAD';
+        $pagseguro_data['email'] = env('PAGSEGURO_EMAIL');
+        $pagseguro_data['token'] = env('PAGSEGURO_TOKEN');
         $pagseguro_data['currency'] = 'BRL';
 
 

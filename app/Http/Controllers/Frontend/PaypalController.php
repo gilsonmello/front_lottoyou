@@ -153,40 +153,7 @@ class PaypalController extends Controller
 
     public function sessionId()
     {
-        $credentials = array(
-            'email' => 'lottoyou.adm@gmail.com',
-            'token' => '0AA8C0B8F9F74F46B9CCB2E7C5D1FFAD'
-        );
 
-        $data = '';
-        foreach ($credentials as $key => $value) {
-            $data .= $key . '=' . $value . '&';
-        }
-
-        $data = rtrim($data, '&');
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://ws.sandbox.pagseguro.uol.com.br/v2/sessions');
-        curl_setopt($ch, CURLOPT_POST, count($credentials));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        if (app()->environment() == 'production') {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-        } else {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        }
-        $result = curl_exec($ch);
-
-        if (FALSE === $result)
-            throw new GeneralException(curl_error($ch) . curl_errno($ch));
-
-        $result = simplexml_load_string(curl_exec($ch));
-        
-        curl_close($ch);
-        
-        $result = (array) $result;
-
-        //Session::put('pagseguro.sessionId', $result->id);
-        return response()->json($result, 200);
     }
 
     /**

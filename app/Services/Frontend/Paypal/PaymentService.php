@@ -36,14 +36,14 @@ trait PaymentService
 
         $pagseguro_data['upload'] = 1;
         $pagseguro_data['business'] = 'lottoyou.adm-facilitator@gmail.com';
-        $pagseguro_data['return'] = 'http://dev.lottoyou.bet';
+        $pagseguro_data['return'] = 'https://lottoyou.bet';
         
-        $pagseguro_data['cancel'] = "http://dev.lottoyou.bet/cancel";
+        $pagseguro_data['cancel'] = "https://lottoyou.bet/cancel";
         //number_format($item->value, 2, '.', '');
         
         
         //Em produção, mudar para os dados oficiais
-        $pagseguro_data['notify_url'] = 'http://dev.lottoyou.bet/paypal/feedback';
+        $pagseguro_data['notify_url'] = 'https://lottoyou.bet/paypal/feedback';
         $pagseguro_data['charset'] = 'utf-8';
 
 
