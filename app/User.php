@@ -14,6 +14,8 @@ use App\PasswordReset;
 
 class User extends Authenticatable
 {
+    use HasApiTokens, Notifiable;
+
     const CREATED_AT = 'created';
 
     const UPDATED_AT = 'modified';
@@ -24,8 +26,6 @@ class User extends Authenticatable
      * @var bool
      */
     public $timestamps = true;
-
-    use HasApiTokens, Notifiable;
 
     /**
      * 
