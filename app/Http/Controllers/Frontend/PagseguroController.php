@@ -66,8 +66,8 @@ class PagseguroController extends Controller
     public function sessionId()
     {
         $credentials = array(
-            'email' => 'lottoyou.adm@gmail.com',
-            'token' => '83480F8B2B634D80904E6B11461BA65C'
+            'email' => env('PAGSEGURO_EMAIL'),
+            'token' => env('PAGSEGURO_TOKEN')
         );
 
         $data = '';
