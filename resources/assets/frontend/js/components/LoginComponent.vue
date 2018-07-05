@@ -256,10 +256,10 @@
 				const data = {
 		            grant_type: 'password',
 		            client_id: 2,
-		            client_secret: 'SZWtWyqqviXrXfHFTSrAsOn7JWnJBY9dTo0fEmVj',
+		            client_secret: 'O2W2FsnINTLpz8gW0LYoSedZFYiEKjqNHSJP88en',
 		            username: this.email,
 		            password: this.password,
-		            scope: '',
+		            scope: '*',
 		        };
 
 		        var loginRequest = axios.create();
