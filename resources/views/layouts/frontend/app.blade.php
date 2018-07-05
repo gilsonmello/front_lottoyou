@@ -178,7 +178,7 @@
             ga('send', 'pageview');
         </script>
         
-        <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}?q={{time()}}"></script>
         
        {{--
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121313526-1"></script>
