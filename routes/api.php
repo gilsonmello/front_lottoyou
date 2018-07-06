@@ -18,11 +18,18 @@ use App\User;
 //    return $request->user();
 //});
 
-Route::group(['middleware' => 'auth:api', 'namespace' => 'API'], function() {
+Route::post('user', function(Request $request){
+    return User::where('id', '=', 34)
+        ->with('country', 'balance')
+        ->get()
+        ->first();
+});
+
+/*Route::group(['middleware' => 'auth:api', 'namespace' => 'API'], function() {
     Route::post('user', function(Request $request){
     	return User::where('id', '=', $request->user()->id)
     		->with('country', 'balance')
     		->get()
     		->first();
     });
-});
+});*/
