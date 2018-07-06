@@ -16,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        //'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -30,9 +30,9 @@ class AuthServiceProvider extends ServiceProvider
         Passport::routes();
 
 
-        $gate->define('frontend.orders.show', function($user, $order) {
+        /*$gate->define('frontend.orders.show', function($user, $order) {
             return $user->id == $order->user_id;
-        });
+        });*/
 
         /*$gate->define('frontend.order_items.show', function($user, $order_item) {
             return $user->id == $order_item->user_id;
