@@ -293,7 +293,7 @@
 
                         let loginRequest = axios.create();
 						//Fazendo busca do usuário logado, para setar na estrutura de dados
-						loginRequest.post(routes.auth.user, { headers: {
+						loginRequest.get(routes.auth.user, { headers: {
 							'Content-Type' : 'application/json',
 							'Accept' : 'application/json',
 	    					'Authorization': 'Bearer ' + access_token
