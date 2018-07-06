@@ -1,6 +1,6 @@
 /node_modules
 /public/hot
-/public/files/*
+/public/files/contacts
 /public/files/profile
 /public/storage
 /storage/*.key
