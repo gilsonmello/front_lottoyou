@@ -288,13 +288,14 @@
 						});
 
 			        	
-			        	var access_token = response.data.access_token;
-              			var refresh_token = response.data.refresh_token;
-              			
-              			var loginRequest = axios.create();
+			        	let access_token = response.data.access_token;
+                        let refresh_token = response.data.refresh_token;
+
+                        let loginRequest = axios.create();
 						//Fazendo busca do usuário logado, para setar na estrutura de dados
 						loginRequest.get(routes.auth.user, { headers: {
-							'Accept': 'application/json',
+							'Content-Type' : 'application/json',
+							'Accept' : 'application/json',
 	    					'Authorization': 'Bearer ' + access_token
 						}}).then(response_2 => {
 							this.email = '';
@@ -305,7 +306,7 @@
 
 		        			response_2.data.refresh_token = refresh_token;
 
-		        			var authUser = response_2.data;
+                            let authUser = response_2.data;
 
 							window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
