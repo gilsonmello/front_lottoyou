@@ -188,9 +188,9 @@
 		mounted: function() {
 			this.loading.component = false;
 			
-			FB.getLoginStatus((response) => {
+			/*FB.getLoginStatus((response) => {
 			    this.facebook = response;
-			});
+			});*/
 			var interval = setInterval(() => {
 				if($('.modal-login').length > 0) {
 					clearInterval(interval);

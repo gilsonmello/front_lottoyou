@@ -311,8 +311,8 @@
     	beforeDestroy() {
             this.$eventBus.$off('openModal');
             this.$eventBus.$off('notificationPayment');
-            this.$eventBus.$off('closeModal');
-            this.$eventBus.$off('validatePurchase');
+            //this.$eventBus.$off('closeModal');
+            //this.$eventBus.$off('validatePurchase');
             this.$eventBus.$off('chooseGoldBall');
             this.$eventBus.$off('quantityEmpty');
         },

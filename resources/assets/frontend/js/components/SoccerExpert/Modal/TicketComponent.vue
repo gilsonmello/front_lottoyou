@@ -396,12 +396,12 @@
 			}
         },
         beforeDestroy() {
-        	this.$eventBus.$off('updateData');
+        	//this.$eventBus.$off('updateData');
         	this.$eventBus.$off('validatePurchase');
-        	this.$eventBus.$off('notificationPayment');
+        	//this.$eventBus.$off('notificationPayment');
         	this.$eventBus.$off('addToCartModal');
         },
-        mounted: function() {
+        mounted() {
         	//Callback executado ao abrir modal para atualizar o ticket do modal
 			$(".modal-ticket")
 				.on('shown.bs.modal', (event) => {
@@ -409,7 +409,7 @@
 					this.updateTicket();
 				})	
 
-            //Abrindo o modal
+            //Fechando o modal
             $('.modal-ticket').on('hidden.bs.modal', (event) => {
             	this.hasError();
 			});
