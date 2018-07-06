@@ -19,7 +19,7 @@ class CustomAccessTokenController extends AccessTokenController
      * @param  ServerRequestInterface $request
      * @return mixed
      */
-    public function issueUserToken(ServerRequestInterface $request)
+    /*public function issueUserToken(ServerRequestInterface $request)
     {
         $httpRequest = request();
 
@@ -42,5 +42,5 @@ class CustomAccessTokenController extends AccessTokenController
             // If the validation is successfull:
             return $this->issueToken($request);
         }
-    }
+    }*/
 }
