@@ -31,7 +31,7 @@ class VerifyCsrfToken extends Middleware
      */
     public function handle($request, Closure $next)
     {        
-        if ($request->header('origin') == 'http://spa.lottoyou.bet') {
+        if ($request->header('origin') == 'http://spa.lottoyou.bet' || $request->header('origin') == 'https://www.lottoyou.bet') {
             // skip CSRF check
             return $next($request);
         }
