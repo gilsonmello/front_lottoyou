@@ -31,7 +31,7 @@ class VerifyCsrfToken extends Middleware
      */
     public function handle($request, Closure $next)
     {
-        $referrer = request()->header();
+        $referrer = request()->header('origin');
         return response()->json($referrer, 200);
         
         if ($request->getHost() == 'spa.lottoyou.bet') {
