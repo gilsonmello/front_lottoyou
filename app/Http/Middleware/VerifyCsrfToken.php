@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
+        '/*',
         'getTranslations/en_US',
         '/oauth/token',
         'http://spa.lottoyou.bet',
