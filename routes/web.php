@@ -63,7 +63,7 @@ Route::post('/oauth/token', [
 //Estas rotas serve para renderizar sempre o arquivo app.blade
 Route::get('/', function () {
 	return view('layouts.frontend.app');
-});
+})->name('frontend.home');
 
 //Estas rotas serve para renderizar sempre o arquivo app.blade	
 Route::get('/{param_1}/{param_2?}', function ($param_1) {
