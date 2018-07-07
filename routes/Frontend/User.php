@@ -6,7 +6,7 @@ Route::post('users/create_from_facebook', 'UserController@createFromFacebook')
 Route::post('users/forgot_password', 'UserController@forgotPassword')
     ->name('frontend.users.forgot_password');
 
-Route::get('/#/'.config('app.url_locale').'users/password_recovery/{hash}', 'UserController@passwordRecovery')
+Route::get('/'.config('app.url_locale').'users/password_recovery/{hash}', 'UserController@passwordRecovery')
     ->name('frontend.users.password_recovery@get');
 
 Route::post('users/password_recovery/{hash}', 'UserController@passwordRecovery')
@@ -40,7 +40,7 @@ Route::get('users/{id}/soccer_experts', 'UserController@soccerExperts');
 Route::get('users/{id}/scratch_cards', 'UserController@scratchCards');
 Route::get('users/{id}/lotteries', 'UserController@lotteries');
 Route::get('users/{id}/items', 'UserController@items');
-Route::get('/#/'.config('app.url_locale').'users/activate/{hash}', 'UserController@activate')
+Route::get('/'.config('app.url_locale').'users/activate/{hash}', 'UserController@activate')
     ->name('frontend.users.activate@get');
 Route::post('users/activate/{hash}', 'UserController@activate')
     ->name('frontend.users.activate@post');
