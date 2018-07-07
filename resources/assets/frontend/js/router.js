@@ -16,7 +16,8 @@ switch (window.locale) {
 	case 'pt_BR': {
 		routes = require('./routes/pt_BR.js');
 		url = '/#/pt_BR';
-		Vue.component('money-component', MoneyBrComponent);
+		//Vue.component('money-component', MoneyBrComponent);
+		Vue.component('money-component', MoneyComponent);
 		Vue.component('datepicker', VcDatePickerPtBr);
 		Vue.component('datetimepicker', VcDateTimePickerPtBr);
 		break;
@@ -25,8 +26,8 @@ switch (window.locale) {
 		routes = require('./routes/es_ES.js');
 		url = '/#/es_ES';
 		Vue.component('money-component', MoneyComponent);
-		Vue.component('datepicker', VcDatePickerEsEs);
-		Vue.component('datetimepicker', VcDatePickerEnUs);
+		Vue.component('datepicker', VcDatePickerPtBr);
+		Vue.component('datetimepicker', VcDateTimePickerPtBr);
 		break;
 	}
 	default: {
