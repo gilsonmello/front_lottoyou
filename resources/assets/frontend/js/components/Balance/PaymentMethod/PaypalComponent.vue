@@ -35,6 +35,7 @@
 </template>
 
 <script>
+	import {routes} from '../../../api_routes'
 	export default {
 		props: ['order_id'],
 		data: function() {
@@ -236,7 +237,7 @@
 			        	return config;
 					});
 
-					paymentRequest.post('/paypal/payment', {
+					paymentRequest.post(routes.paypal.payment, {
 						order_id: this.order_id,
 						amount: this.getAmount()
 					}, {}).then(response => {

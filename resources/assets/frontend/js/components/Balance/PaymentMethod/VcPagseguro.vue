@@ -45,6 +45,7 @@
 </template>
 
 <script>
+	import {routes} from '../../../api_routes'
 	import VcLoad from '../../Load'
 	export default {
 		components: {
@@ -90,7 +91,8 @@
 					this.loading.quotation = true;
 		        	return config;
 				});
-				let url = "/quotation_dolar";
+				
+				let url = routes.quotation_dolar;
 
 				quotationDolarRequest.get(url, {}, {
 

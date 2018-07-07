@@ -64,6 +64,7 @@
 
 <script>
 	import VcLoad from '../Load'
+	import {routes} from '../../api_routes'
 	import {mapState, mapGetters} from 'vuex'
 	import VcPagseguro from './PaymentMethod/VcPagseguro'
 	import PaypalComponent from './PaymentMethod/PaypalComponent'
@@ -86,7 +87,7 @@
 					this.loading.component = true;
 		        	return config;
 				});
-				let url = "/orders/generate_order";
+				let url = routes.orders.generate_order;
 
 				orderRequest.post(
 					url, 
