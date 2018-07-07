@@ -31,7 +31,8 @@ class VerifyCsrfToken extends Middleware
      */
     public function handle($request, Closure $next)
     {
-        dd($request->getHost());
+        return response()->json($request->getHost(), 200);
+        
         if ($request->getHost() == 'spa.lottoyou.bet') {
             // skip CSRF check
             return $next($request);
