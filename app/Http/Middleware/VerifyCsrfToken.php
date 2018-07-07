@@ -13,12 +13,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'getTranslations/en_US',
-        'http://spa.lottoyou.bet',
-        'paypal/feedback',
-        'pagseguro/feedback',
-        'https://www.sandbox.paypal.com',
-        'https://sandbox.pagseguro.uol.com.br'
+        '/*',
     ];
 
     /**
@@ -28,13 +23,13 @@ class VerifyCsrfToken extends Middleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    /*public function handle($request, Closure $next)
     {
-        //if ($request->getHost() == 'spa.lottoyou.bet') {
+        if ($request->getHost() == 'spa.lottoyou.bet') {
             // skip CSRF check
             return $next($request);
-        //}
+        }
 
-        //return parent::handle($request, $next);
-    }
+        return parent::handle($request, $next);
+    }*/
 }
