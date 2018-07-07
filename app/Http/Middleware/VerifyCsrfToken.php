@@ -13,7 +13,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'getTranslations/en_US',
         'http://spa.lottoyou.bet',
         'paypal/feedback',
         'pagseguro/feedback',
