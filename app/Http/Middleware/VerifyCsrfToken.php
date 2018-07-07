@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Closure;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 
 class VerifyCsrfToken extends Middleware
@@ -30,7 +31,7 @@ class VerifyCsrfToken extends Middleware
     public function handle($request, Closure $next)
     {
         dd($request->getHost());
-        if ($request->getHost() == 'http://spa.lottoyou.bet') {
+        if ($request->getHost() == 'spa.lottoyou.bet') {
             // skip CSRF check
             return $next($request);
         }
