@@ -14,6 +14,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'getTranslations/en_US',
+        '/oauth/token',
         'http://spa.lottoyou.bet',
         'paypal/feedback',
         'pagseguro/feedback',
