@@ -359,6 +359,7 @@ class UserController extends Controller
         $user->state = $request->get('state');
         $user->tell_phone = $request->get('tell_phone');
         $user->nickname = $request->get('nickname');
+        $user->photo_domain = request()->root();
 
         if ($request->hasFile('photo')) {
             if($request->file('photo')->isValid()) {
@@ -366,7 +367,7 @@ class UserController extends Controller
                     $file = $request->file('photo');
                     $name = $user->id. '.' .$file->getClientOriginalExtension();
                     $request->file('photo')->move(public_path('files/profile'), $name);
-                    $user->photo = request()->root() . '/files/profile/' . $name;
+                    $user->photo = '/files/profile/' . $name;
                 } catch (\Illuminate\Filesystem\FileNotFoundException $e) {
 
                 }
