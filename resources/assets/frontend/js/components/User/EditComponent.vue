@@ -1,6 +1,6 @@
 <template>
     <load-component v-if="loading.component == true"></load-component>
-    <div class="container" v-else>
+    <div class="container no-padding" v-else>
         <form class="user-edit" @submit.prevent="handleEdit" enctype="multipart/form-data">
             <input type="hidden" name="id" v-model="id">
             <div class="row">
@@ -12,31 +12,44 @@
             </div>
             <div class="row">
                 <div class="col-lg-3">
-                    <img src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
-                    <label for="photo">Selecione a imagem do perfil</label>
-                    <input accept="image/*" @change.prevent="changePhoto" type="file" name="photo" id="photo">
+                    <img v-if="photo" :src="photo_domain+photo" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
+                    <img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
+                    <label for="photo">Imagem do perfil (jpg ou png)</label>
+                    <span @click="openImages" class="btn btn-primary btn-md">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>{{ trans('strings.select_an_image') }}</span>
+                        <input accept="image/*" @change.prevent="changePhoto" type="file" name="photo" id="photo">
+                    </span>
+                    <span class="file-name">{{ trans('strings.no_file_selected') }}</span>
+                    <label>Tamanho de arquivo até 5mb*</label>
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-lg-2 col-12 col-sm-6 col-md-6">
+                        <div class="col-lg-2 col-3 col-sm-2 col-md-2" style="padding-right: 0;">
                             <div class="form-group">
-                                <label for="gender">{{ trans('strings.title') }}</label>
-                                <select readyonly disabled name="gender" v-model="gender" class="form-control" id="gender">
-                                    <option value="M">{{ trans('strings.man') }}</option>
-                                    <option value="F">{{ trans('strings.woman') }}</option>
+                                <label for="gender">&nbsp;</label>
+                                <select v-model="gender" required class="form-control" id="gender" aria-describedby="gender" :placeholder="trans('strings.gender')">
+                                    <option value="M" selected>Sr.</option>
+                                    <option value="F">Srª</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-12 col-sm-6 col-md-6">
+                        <div class="col-lg-4 col-9 col-sm-4 col-md-4">
                             <div class="form-group">
                                 <label for="name">{{ trans('strings.name') }}</label>
                                 <input readonly disabled v-model="name" type="text" class="form-control" id="name" aria-describedby="name" name="name" :placeholder="trans('strings.name')">
                             </div>
                         </div>
-                        <div class="col-lg-6 col-12 col-sm-6 col-md-6">
+                        <div class="col-lg-3 col-12 col-sm-4 col-md-4">
                             <div class="form-group">
                                 <label for="last_name">{{ trans('strings.last_name') }}</label>
                                 <input disabled readonly v-model="last_name" type="text" class="form-control" id="last_name" aria-describedby="last_name" name="last_name" :placeholder="trans('strings.last_name')">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-12 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <label for="nickname">{{ trans('strings.user') }}</label>
+                                <input v-model="nickname" type="text" class="form-control" id="nickname" aria-describedby="nickname" name="nickname" :placeholder="trans('strings.nickname')">
                             </div>
                         </div>
                     </div>
@@ -50,22 +63,22 @@
                                 <input v-model="street" type="text" class="form-control" id="street" aria-describedby="street" name="street" :placeholder="trans('strings.street')">
                             </div>
                         </div>
-                        <div class="col-lg-2 col-2 col-sm-2 col-md-2">
+                        <div class="col-lg-2 col-6 col-sm-2 col-md-2">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.number">
                                     <div v-for="number in errors.number" >{{ number }}</div>
                                 </div>
                                 <label for="number">{{ trans('strings.number') }}</label>
-                                <input v-model="number" type="text" class="form-control" id="number" aria-describedby="number" name="number" :placeholder="trans('strings.number')">
+                                <input v-model="number" type="number" class="form-control" id="number" aria-describedby="number" name="number" :placeholder="trans('strings.number')">
                             </div>
                         </div>
-                        <div class="col-lg-2 col-2 col-sm-2 col-md-2">
+                        <div class="col-lg-2 col-6 col-sm-2 col-md-2">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.cep">
                                     <div v-for="zip in errors.cep" >{{ cep }}</div>
                                 </div>
-                                <label for="cep">{{ trans('strings.zip') }}</label>
-                                <input v-model="cep" name="cep" type="text" class="form-control" id="cep" aria-describedby="cep" :placeholder="trans('strings.zip')">
+                                <label for="cep">{{ trans('strings.postal_code') }}</label>
+                                <input v-model="cep" name="cep" type="number" class="form-control" id="cep" aria-describedby="cep" :placeholder="trans('strings.zip')">
                             </div>
                         </div>
                         <div class="col-lg-4 col-12 col-sm-6 col-md-6">
@@ -105,7 +118,7 @@
                                     <div v-for="username in errors.username" >{{ username }}</div>
                                 </div>
                                 <label for="username">E-mail</label>
-                                <input v-model="username" name="username" required type="text" class="form-control" id="username" aria-describedby="username" :placeholder="trans('strings.username')">
+                                <input disabled readonly v-model="username" name="username" required type="text" class="form-control" id="username" aria-describedby="username" :placeholder="trans('strings.email')">
                             </div>
                         </div>
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">
@@ -134,7 +147,7 @@
                                     <div v-for="tell_phone in errors.tell_phone" >{{ tell_phone }}</div>
                                 </div>
                                 <label for="tell_phone">{{ trans('strings.tell_phone') }}</label>
-                                <input v-model="tell_phone" name="tell_phone" type="text" class="form-control" id="tell_phone" aria-describedby="tell_phone" :placeholder="trans('strings.tell_phone')">
+                                <input v-model="tell_phone" name="tell_phone" type="number" class="form-control" id="tell_phone" aria-describedby="tell_phone" :placeholder="trans('strings.tell_phone')">
                             </div>
                         </div>
                     </div>
@@ -189,10 +202,10 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <button type="submit" class="btn btn-xs btn-success">
+                            <button type="submit" class="btn pull-right btn-md btn-primary">
                                 {{ trans('strings.save_button') }}
                             </button>
-                            <button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-success">
+                            <button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-primary">
                                 <i class="fa fa-refresh fa-spin"></i>
                             </button>
                         </div>
@@ -204,25 +217,36 @@
 </template>
 
 <script>
-    import {routes} from '../../api_routes'
-    import LoadComponent from '../Load'
+    import {routes} from '../../../api_routes'
+    import LoadComponent from '../../Load'
     export default {
         methods: {
             changePhoto: function(event) {
                 var file = null;
                 var form = $('.user-edit');
                 file = event.currentTarget.files[0];
-                if(window.FileReader){
-                    if(file.type.indexOf('image') >= 0){
-                        var reader = new FileReader();
-                        reader.onprogress = function(evt){
-                        };
-                        reader.onloadend = function(e){
-                            form.find('#user-edit-photo').attr('src', e.target.result);
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                }            
+                
+                var acceptFileTypes = /^image\/(jpg|jpeg|png)$/i;
+                if (!acceptFileTypes.test(file['type'])) {
+                    toastr.error(this.trans('strings.invalid_file'));
+                } else if(file.size > 5000000) {
+                    toastr.error(this.trans('strings.size_larger_than_allowed'));
+                } else {
+
+                    if(window.FileReader){
+                        if(file.type.indexOf('image') >= 0){
+                            $('.file-name').text(file.name);
+                            var reader = new FileReader();
+                            reader.onprogress = function(evt) {
+                                
+                            };
+                            reader.onloadend = function(e){
+                                form.find('#user-edit-photo').attr('src', e.target.result);
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    }    
+                }        
             },
             handleEdit: function(event) {
                 var vm = this;
@@ -230,32 +254,9 @@
                 var formData = new FormData(form[0]);
                 formData.append('_method', 'put');
 
-                /*var contentType = 'multipart/form-data';
-                $.ajax({
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: routes.users.update.replace('{id}', vm.id),
-                    data:  formData,
-                    contentType: false,
-                    processData: false,
-                    beforeSend: function() {
-                        
-                    },
-                    success: function(result) {
-
-                    },
-                    error: function(data) {
-                    
-                    }
-                });
-*/
-
                 var updateRequest = axios.create();
 
                 updateRequest.interceptors.request.use(config => {
-                    this.loading.component = true
                     $(this.$el).find('[type="load"]').removeClass('hide');
                     $(this.$el).find('[type="submit"]').addClass('hide');
                     return config;
@@ -287,22 +288,92 @@
                             window.localStorage.setItem('authUser', JSON.stringify(response_2.data))
                             this.$store.dispatch('setUserObject', response_2.data);
                             toastr.success(this.trans('alerts.users.update.success'));
-                            this.loading.component = false
+                            
+                            this.user = response_2.data                   
+                            this.errors = [];
+                            this.gender = this.user.gender ? this.user.gender : '';
+                            this.nickname = this.user.nickname;
+                            this.name = this.user.name;
+                            this.last_name = this.user.last_name;
+                            this.address = this.user.address;
+                            this.street = this.user.street;
+                            this.number = this.user.number;
+                            this.cep = this.user.cep;
+                            this.photo = this.user.photo;
+                            this.photo_domain = this.user.photo_domain;
+                            this.city = this.user.city;
+                            this.username = this.user.username;
+                            this.state = this.user.state;
+                            this.date_birth = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
+                            this.id = this.user.id;
+                            this.complement = this.user.complement
+                            this.country = this.user.country.name
+                            this.phone_code = '+'+this.user.country.phonecode
+
                             //window.location.href = "/painel"
                             //this.$router.push({name: 'home'});
                         }).catch((error_2) => {
                             $(this.$el).find('[type="load"]').addClass('hide');
                             $(this.$el).find('[type="submit"]').removeClass('hide');
-                            this.loading.component = false
+                            
                         });
                         this.errors = [];
                     }
                 }).catch((error) => {
-                    this.loading.component = false
+                    
                     this.errors = error.response.data.errors
-                    toastr.success(this.trans('alerts.users.update.error'));
+                    toastr.error(this.trans('alerts.users.update.error'));
                     $(this.$el).find('[type="load"]').addClass('hide');
                     $(this.$el).find('[type="submit"]').removeClass('hide');                    
+                });
+            },
+            openImages() {
+                document.getElementById('photo').click();
+            },
+            userRequest() {
+                const access_token = JSON.parse(window.localStorage.getItem('access_token'));            
+
+                var userRequest = axios.create();
+                userRequest.interceptors.request.use(config => {
+                    this.loading.component = true
+                    return config;
+                });
+
+                //Fazendo busca do usuário logado, para setar na estrutura de dados
+                userRequest.get(routes.auth.user, { headers: {
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + access_token
+                }}).then(response => {
+                    response.data['access_token'] = access_token;
+                    window.localStorage.setItem('authUser', JSON.stringify(response.data))
+                    this.$store.dispatch('setUserObject', response.data)
+                    this.user = response.data                            
+
+                    this.errors = [];
+
+                    this.gender = this.user.gender ? this.user.gender : '';
+                    this.nickname = this.user.nickname;
+                    this.name = this.user.name;
+                    this.last_name = this.user.last_name;
+                    this.address = this.user.address;
+                    this.street = this.user.street;
+                    this.number = this.user.number;
+                    this.cep = this.user.cep;
+                    this.photo = this.user.photo;
+                    this.photo_domain = this.user.photo_domain;
+                    this.city = this.user.city;
+                    this.username = this.user.username;
+                    this.state = this.user.state;
+                    this.date_birth = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
+                    this.id = this.user.id;
+                    this.complement = this.user.complement
+                    this.country = this.user.country.name
+                    this.phone_code = '+'+this.user.country.phonecode
+
+                    this.loading.component = false
+                    
+                }).catch((error) => {
+                    this.loading.component = false
                 });
             }
         },
@@ -313,12 +384,14 @@
                 last_name: '',
                 address: '',
                 street: '',
+                photo: '',
                 number: '',
                 cep: '',
                 city: '',
                 username: '',
                 state: '',
                 date_birth: '',
+                photo_domain: '',
                 id: '',
                 old_password: '',
                 password: '',
@@ -327,6 +400,7 @@
                 country: '',
                 tell_phone: '',
                 phone_code: '',
+                nickname: '',
                 countries: [],
                 errors: [],
                 loading: {
@@ -335,46 +409,31 @@
             }
         },
         mounted: function() {
-            const access_token = JSON.parse(window.localStorage.getItem('access_token'));            
-
-            var authRequest = axios.create();
-            authRequest.interceptors.request.use(config => {
-                this.loading.component = true
-                return config;
-            });
-
-            //Fazendo busca do usuário logado, para setar na estrutura de dados
-            authRequest.get(routes.auth.user, { headers: {
-                'Accept': 'application/json',
-                'Authorization': 'Bearer ' + access_token
-            }}).then(response => {
-                response.data['access_token'] = access_token;
-                window.localStorage.setItem('authUser', JSON.stringify(response.data))
-                this.$store.dispatch('setUserObject', response.data)
-                this.user = response.data                            
-
-                this.errors = [];
-
-                this.gender = this.user.gender ? this.user.gender : '';
-                this.name = this.user.name;
-                this.last_name = this.user.last_name;
-                this.address = this.user.address;
-                this.street = this.user.street;
-                this.number = this.user.number;
-                this.cep = this.user.cep;
-                this.city = this.user.city;
-                this.username = this.user.username;
-                this.state = this.user.state;
-                this.date_birth = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
-                this.id = this.user.id;
-                this.complement = this.user.complement
-                this.country = this.user.country.name
-                this.phone_code = '+'+this.user.country.phonecode
-
-                this.loading.component = false
-            }).catch((error) => {
-                this.loading.component = false
-            });
+            let authUser = JSON.parse(window.localStorage.getItem('authUser'));
+            authUser = authUser != null ? authUser : null;
+            if(authUser.provider != '') {
+                this.loading.component = false;
+                this.gender = authUser.gender ? authUser.gender : '';
+                this.nickname = authUser.nickname;
+                this.name = authUser.name;
+                this.last_name = authUser.last_name;
+                this.address = authUser.address;
+                this.street = authUser.street;
+                this.number = authUser.number;
+                this.cep = authUser.cep;
+                this.photo = authUser.photo;
+                this.photo_domain = this.user.photo_domain;
+                this.city = authUser.city;
+                this.username = authUser.username;
+                this.state = authUser.state;
+                this.date_birth = 31 + '/' +12+ '/' + 1994; 
+                this.id = authUser.id;
+                this.complement = authUser.complement
+                this.country = authUser.country.name
+                this.phone_code = '+'+authUser.country.phonecode
+            } else {
+                this.userRequest();
+            }          
 
         },
         components: {
@@ -384,5 +443,11 @@
 </script>
 
 <style scoped>
+    .file-name {
+        display: block;
+    }
 
+    #photo {
+        display: none;
+    }
 </style>

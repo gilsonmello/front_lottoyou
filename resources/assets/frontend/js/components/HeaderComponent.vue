@@ -80,7 +80,7 @@
 					  			<li class="item-account" data-toggle="tooltip" v-if="auth" @mouseover="openTooltip" @mouseleave="closeTooltip">
 					  				<router-link :to="{ name: 'users.account' }" class="pull-left" style="width: 100%;">
 						  				<div class="pull-left vcenter">
-						  					<img class="photo" :src="auth.photo" v-if="auth.photo">
+						  					<img class="photo" :src="auth.photo_domain+auth.photo" v-if="auth.photo">
 						  					<i class="fa fa-user-circle" style="font-size: 27px;" v-else></i>
 						  				</div>
 						  				<div class="pull-right">
