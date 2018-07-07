@@ -19,4 +19,21 @@ class VerifyCsrfToken extends Middleware
         'https://www.sandbox.paypal.com',
         'https://sandbox.pagseguro.uol.com.br'
     ];
+
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        if ($request->getHost() == 'http://spa.lottoyou.bet') {
+            // skip CSRF check
+            return $next($request);
+        }
+
+        return parent::handle($request, $next);
+    }
 }
