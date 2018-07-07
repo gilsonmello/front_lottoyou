@@ -1,5 +1,11 @@
 <?php
+
 use Illuminate\Http\Request;
+
+/*
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	Não alterar a ordem das rotas
+*/
 
 Route::post('/oauth/token', [
     'uses' => 'CustomAccessTokenController@issueUserToken'
@@ -16,11 +22,7 @@ Route::post('/oauth/token', [
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-Route::group(['namespace' => 'Frontend'], function() {
+/*Route::group(['namespace' => 'Frontend', 'prefix' => 'frontend'], function() {
 	require __DIR__.'/Frontend/Home.php';
 	require __DIR__.'/Frontend/User.php';
 	require __DIR__.'/Frontend/ScratchCard.php';
@@ -40,20 +42,35 @@ Route::group(['namespace' => 'Frontend'], function() {
 	require __DIR__.'/Frontend/Paypal.php';
     require __DIR__.'/Frontend/Contact.php';
     require __DIR__.'/Frontend/Recaptcha.php';
+    Route::get('/quotation_dolar', function() {
+		// Get cURL resource
+		$curl = curl_init();
+		// Set some options - we are passing in a useragent too here
+		curl_setopt_array($curl, array(
+		    CURLOPT_RETURNTRANSFER => 1,
+		    CURLOPT_URL => 'https://api.hgbrasil.com/finance?format=json&key=d58b8e61',
+		));
+		// Send the request & save response to $resp
+		$resp = curl_exec($curl);
+		// Close request to clear up some resources
+		curl_close($curl);
+
+		return $resp;
+	});
+});*/
+
+
+//Estas rotas serve para renderizar sempre o arquivo app.blade
+Route::get('/', function () {
+	return view('layouts.frontend.app');
 });
 
-Route::get('/quotation_dolar', function() {
-	// Get cURL resource
-	$curl = curl_init();
-	// Set some options - we are passing in a useragent too here
-	curl_setopt_array($curl, array(
-	    CURLOPT_RETURNTRANSFER => 1,
-	    CURLOPT_URL => 'https://api.hgbrasil.com/finance?format=json&key=d58b8e61',
-	));
-	// Send the request & save response to $resp
-	$resp = curl_exec($curl);
-	// Close request to clear up some resources
-	curl_close($curl);
+//Estas rotas serve para renderizar sempre o arquivo app.blade	
+Route::get('/{param_1}/{param_2?}', function ($param_1) {
+	return view('layouts.frontend.app');
+})->where('param_2', '(.*)');
 
-	return $resp;
+//Serve somente para nomear rotas
+Route::group(['namespace' => 'Frontend'], function() {
+	require __DIR__.'/Frontend/User.php';
 });

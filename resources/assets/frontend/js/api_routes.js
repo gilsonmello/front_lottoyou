@@ -1,22 +1,31 @@
 export const protocol = "http://"
 export const enviroment = "production";
-export const host = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '');
+export const host = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '')+'/api';
 
 
 export const routes = {
+	quotation_dolar: host+'/quotation_dolar',
 	historic_balances: {
 		of_the_user: host+'/historic_balances/of_the_user/{id}'
 	},
 	recaptcha: {
 		check: host+'/recaptcha/check',
 	},
+	pagseguro: {
+
+	},
+	paypal: {
+		payment: host+'/paypal/payment',
+	},
 	contacts: {
 		create: host+'/contacts',
         categories: host+'/contacts/categories',
 	},
 	auth: {
-		login: host+'/oauth/token',
-		user: host+'/api/user'
+		/*login: host+'/oauth/token',
+		user: host+'/api/user'*/
+		login: '/oauth/token',
+		user: '/api/user'
 	},
 	countries: {
 		index: host+'/countries',
@@ -25,6 +34,7 @@ export const routes = {
 	orders: {
 		show: host+'/orders/{id}',
 		items: host+'/orders/{id}/items',
+		generate_order: host+'/orders/generate_order',
 	},
 	order_items: {
 		index: host+'/order_items/{user_id}',

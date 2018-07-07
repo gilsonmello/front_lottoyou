@@ -235,5 +235,6 @@ export default {
   			]
   		}
   	],
-    linkExactActiveClass: 'active'
+    linkExactActiveClass: 'active',
+    mode: 'history'
 }

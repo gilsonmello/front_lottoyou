@@ -105,17 +105,17 @@
 		                </h3>
 		                <ul class="list-group">
 		                	<li class="list-group-item">
-		                        <a @click.prevent="redirect" href="/#/" lang="en_US" class="color-blue">
+		                        <a @click.prevent="redirect" href="/" lang="en_US" class="color-blue">
 		                            English
 		                        </a>
 		                    </li>
 		                    <li class="list-group-item">
-		                        <a @click.prevent="redirect" href="/#/es_ES" lang="es_ES" class="color-blue">
+		                        <a @click.prevent="redirect" href="/es_ES" lang="es_ES" class="color-blue">
 		                            Espanhol
 		                        </a>
 		                    </li>
 		                    <li class="list-group-item">
-		                        <a @click.prevent="redirect" href="/#/pt_BR" lang="pt_BR" class="color-blue">
+		                        <a @click.prevent="redirect" href="/pt_BR" lang="pt_BR" class="color-blue">
 		                            Português (Brasil)
 		                        </a>
 		                    </li>
@@ -231,10 +231,10 @@
 		methods: {
 			redirect: function(el) {
 				this.$cookies.set("locale", el.target.getAttribute('lang'));
-				setTimeout(() => {
-					window.location.href = el.target.getAttribute('href')
-					window.location.reload();
-				}, 500);
+				//setTimeout(() => {
+					window.location.href = el.target.getAttribute('href');
+					//window.location.reload();
+				//}, 500);
 			}
 		},
 		updated() {

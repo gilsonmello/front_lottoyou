@@ -1,15 +1,15 @@
 <?php
 
-Route::post('users/create_from_facebook', 'UserController@createFromFacebook')
+/*Route::post('users/create_from_facebook', 'UserController@createFromFacebook')
     ->name('frontend.users.create_from_facebook');
 
 Route::post('users/forgot_password', 'UserController@forgotPassword')
-    ->name('frontend.users.forgot_password');
+    ->name('frontend.users.forgot_password');*/
 
-Route::get('/#/'.config('app.url_locale').'users/password_recovery/{hash}', 'UserController@passwordRecovery')
+Route::get('/'.config('app.url_locale').'users/password_recovery/{hash}', 'UserController@passwordRecovery')
     ->name('frontend.users.password_recovery@get');
 
-Route::post('users/password_recovery/{hash}', 'UserController@passwordRecovery')
+/*Route::post('users/password_recovery/{hash}', 'UserController@passwordRecovery')
     ->name('frontend.users.password_recovery@post');
 
 Route::post('users/check_token_password_recovery/{hash}', 'UserController@checkTokenPasswordRecovery')
@@ -30,7 +30,8 @@ Route::resource('users', 'UserController', [
         'update' => 'frontend.users.update',
         'destroy' => 'frontend.users.destroy',
         'show' => 'frontend.users.show'
-    ]
+    ],
+    'except' => ['index']
 ]);
 
 Route::get('users/{id}/games', 'UserController@games');
@@ -39,10 +40,10 @@ Route::get('users/{id}/orders', 'UserController@orders');
 Route::get('users/{id}/soccer_experts', 'UserController@soccerExperts');
 Route::get('users/{id}/scratch_cards', 'UserController@scratchCards');
 Route::get('users/{id}/lotteries', 'UserController@lotteries');
-Route::get('users/{id}/items', 'UserController@items');
-Route::get('/#/'.config('app.url_locale').'users/activate/{hash}', 'UserController@activate')
+Route::get('users/{id}/items', 'UserController@items');*/
+Route::get('/'.config('app.url_locale').'users/activate/{hash}', 'UserController@activate')
     ->name('frontend.users.activate@get');
-Route::post('users/activate/{hash}', 'UserController@activate')
+/*Route::post('users/activate/{hash}', 'UserController@activate')
     ->name('frontend.users.activate@post');
 Route::get('users/{hash}/activated', 'UserController@activated')
-    ->name('frontend.users.activated');
+    ->name('frontend.users.activated');*/

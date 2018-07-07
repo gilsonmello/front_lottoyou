@@ -2,7 +2,6 @@
 <html lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
-        <meta name="fragment" content="!">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -75,7 +74,8 @@
                 basePath: '{!! url('/') !!}/',
             };
 
-            let query = location.hash.split('/');
+            let query = location.pathname.split('/');
+            
             if(query.length === 0) {
                 query.push('en_US');
             }
@@ -94,7 +94,7 @@
             
 
             var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "/getTranslations/"+query[1], false);
+            xhttp.open("POST", "/api/getTranslations/"+query[1], false);
             let token = document.head.querySelector('meta[name="csrf-token"]');
             xhttp.setRequestHeader("X-CSRF-TOKEN", token.content);
             xhttp.onreadystatechange = function() {

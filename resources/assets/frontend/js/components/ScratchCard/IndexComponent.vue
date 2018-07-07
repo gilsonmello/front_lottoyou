@@ -639,6 +639,7 @@
 				});
 				
 				var url = routes.scratch_card_themes.index;
+				
 				if(this.auth)
 					url = url+'?user_id='+this.auth.id;
 

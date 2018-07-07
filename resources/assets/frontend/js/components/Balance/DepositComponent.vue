@@ -106,7 +106,7 @@
 				}).catch((error) => {
 					if(this.counter == 5) {
 						this.counter = 0;
-						toastr.error(trans('strings.connection_not_found'));
+						toastr.error(this.trans('strings.connection_not_found'));
 					} else {
 						this.orderRequest();
 					}
