@@ -256,7 +256,8 @@ if (!function_exists('format')) {
 					break;
 				}
 				default: {
-					$date = format_without_mask_en_us($date, '/');
+					//$date = format_without_mask_en_us($date, '/');
+					$date = format_without_mask_pt_br($date, '/');
 					break;
 				}
 			}
