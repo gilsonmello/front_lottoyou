@@ -33,8 +33,10 @@ switch (window.locale) {
 		routes = require('./routes/en_US.js');
 		url = '/#/';
 		Vue.component('money-component', MoneyComponent);
-		Vue.component('datepicker', VcDatePickerEnUs);
-		Vue.component('datetimepicker', VcDateTimePickerEnUs);
+		//Vue.component('datepicker', VcDatePickerEnUs);
+		Vue.component('datepicker', VcDatePickerPtBr);
+		Vue.component('datetimepicker', VcDateTimePickerPtBr);
+		//Vue.component('datetimepicker', VcDateTimePickerEnUs);
 		break;
 	}
 }
