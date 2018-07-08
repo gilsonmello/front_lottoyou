@@ -1,6 +1,6 @@
 <h3>
-    Olá {{ $contato->name }}
+    Olá {{ $contact->name }}
 </h3>
 <p>
-   	{{ $contato->answer }}
+   	{{ $contact->answer }}
 </p>
