@@ -14,4 +14,4 @@ Route::resource('contacts', 'ContactController', [
     ]
 ]);
 
-Route::get('contacts/{id}/reply_email', 'ContactController@replyEmail');
+Route::post('contacts/{id}/reply_email', 'ContactController@replyEmail');
