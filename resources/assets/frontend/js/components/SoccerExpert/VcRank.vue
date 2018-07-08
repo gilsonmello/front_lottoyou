@@ -137,6 +137,14 @@
 	import VcPagination from '../VcPagination'
 	import VcTicket from './Rank/VcTicket'
 	export default {
+		metaInfo () {
+			return {
+				title: this.trans('strings.soccer_expert')+' '+this.category.nome,
+				meta: [
+		          	{ name: 'description', content: 'Rank '+ this.category.nome }
+		        ]
+		    }
+		},
 		methods: {
 			paginate(page) {
 				this.query.page = page;

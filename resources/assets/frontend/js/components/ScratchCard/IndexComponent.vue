@@ -348,6 +348,12 @@
 	import LoadComponent from '../Load'
 	import {mapState, mapGetters} from 'vuex'
 	export default {
+		metaInfo () {
+			return {
+				title: this.trans('strings.scratch_cards'),
+				meta: this.metas
+		    }
+		},
 		props: [],
 		created: function() {
 			
@@ -646,7 +652,13 @@
 				request.get(url, {}).then(response => {
 		            if(response.status === 200){
 		            	this.item.hash = this.makeid();
-		            	this.scratch_card_themes = response.data
+		            	this.scratch_card_themes = response.data;
+		            	for(var i = 0; i < this.scratch_card_themes.length; i++) {
+		            		this.metas.push({
+		            			name: 'description',
+		            			content: this.scratch_card_themes[i].nome,
+		            		});
+		            	}
 		            	this.scratch_card_themes = this.scratch_card_themes.filter((val) => {
 		            		//Selecionado a primeira linha
 	            			val.positionSelected = 0
@@ -660,7 +672,7 @@
 		        })
 			}
 		},
-		data: function() {
+		data () {
 			return {
 				scratch_card_themes: [],
 				scratch_card_jackpot_available: {},
@@ -671,6 +683,7 @@
 					modalJackpotTable: false,
 					component: true
 				},
+				metas: [],
 				id: null,
 				scratch_card_demo: {},
 				item: {
@@ -689,7 +702,7 @@
 		},
 		mounted() {
 			//window.document.title = this.trans('strings.scratch_cards') +' - '+ window.app.title;
-			window.document.title = this.trans('strings.scratch_cards');
+			//window.document.title = this.trans('strings.scratch_cards');
 			
 			this.init();
 		},

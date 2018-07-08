@@ -126,6 +126,17 @@
 	import VcPagination from '../VcPagination'
 	import TicketComponent from './Result/TicketComponent'
 	export default {
+		metaInfo () {
+			return {
+				title: this.trans('strings.result')+' '+this.category.nome,
+				meta: [
+		          	{ 
+		          		name: 'description', 
+		          		content: this.trans('strings.result')+' '+this.category.nome 
+		          	}
+		        ]
+		    }
+		},
 		methods: {
 			paginate(page) {
 				this.query.page = page;

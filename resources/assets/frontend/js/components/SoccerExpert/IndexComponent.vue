@@ -161,6 +161,14 @@
 	import {routes} from '../../api_routes'
 	import LoadComponent from '../Load'
 	export default {
+		metaInfo () {
+			return {
+				title: this.trans('strings.soccer_expert'),
+				meta: [
+		          	{name: 'description', content: this.trans('strings.soccer_expert')}
+		        ]
+		    }
+		},
 		created: function() {
 
 		},
@@ -192,7 +200,6 @@
 			}
 		},
 		mounted: function() {
-			window.document.title = this.trans('strings.soccer_expert');
 			/*$(this.$el).find('.scratchpad').each(function () {
 				$(this).wScratchPad({
 					bg: '/img/raspadinha/0.01.png',

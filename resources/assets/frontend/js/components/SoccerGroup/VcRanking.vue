@@ -152,6 +152,9 @@
 	import VcPagination from '../VcPagination'
 	import VcTicket from './VcTicket'
 	export default {
+	 	metaInfo () {
+
+		},
 		beforeRouteUpdate: function(to, from, next) {
 			
 			next();

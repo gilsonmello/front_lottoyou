@@ -141,16 +141,14 @@
 	import TicketComponent from './TicketComponent'
 	import ModalTicketComponent from './Modal/TicketComponent'
 	export default {
-        metaInfo () {
-            return {
-                title: this.trans('strings.soccer_expert'),
-                meta: [
-                    {
-                        vmid: 'description', name: 'description', content: this.item.soccer_expert.nome
-                    }
-                ]
-            }
-        },
+		metaInfo () {
+			return {
+				title: this.item.soccer_expert.nome,
+				meta: [
+		          	{ name: 'description', content: this.item.soccer_expert.nome }
+		        ]
+		    }
+		},
 		beforeRouteUpdate: function(to, from, next) {
 			next();
 			this.init();
