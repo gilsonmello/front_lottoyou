@@ -24,7 +24,7 @@
 
 <script>
     import {routes} from '../../api_routes'
-    import EditComponent from './components/EditComponent.vue'
+    import EditComponent from './EditComponent'
 	export default {
         data: function() {
             return {

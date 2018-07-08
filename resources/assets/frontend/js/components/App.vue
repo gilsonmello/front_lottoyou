@@ -105,14 +105,7 @@
 			onReady() {
 				router.onReady(() => {
 
-					//Verificando se está tentando acessar a página de fininalização de pedido
-					if(this.$router.history.current.name === "orders.finish") {
-						this.$router.push({
-							name: 'orders.index'
-						})
-					}
-
-                  	/*if(this.$router.history.current.query.route_name != null
+					/*if(this.$router.history.current.query.route_name != null
 						&& this.$router.history.current.query.route_name !== '') {
                     	this.$router.push({
                       		name: this.$router.history.current.query.route_name

@@ -47,3 +47,6 @@ Route::post('users/activate/{hash}', 'UserController@activate')
     ->name('api.users.activate@post');
 Route::get('users/{hash}/activated', 'UserController@activated')
     ->name('api.users.activated');
+
+Route::post('users/disable', 'UserController@disable');
+

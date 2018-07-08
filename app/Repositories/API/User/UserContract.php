@@ -57,4 +57,9 @@ interface UserContract
      * 
      */
     public function checkTokenActivation($token);
+
+    /**
+     * @return mixed
+     */
+    public function disable($request);
 }

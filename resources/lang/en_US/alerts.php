@@ -69,6 +69,7 @@ return [
             'success' => 'foi encaminhada uma mensagem para seu e-mail para confirmar seu cadastro.<br><br>ATENÇÃO: Em alguns casos o e-mail pode cair na caixa lixo eletrônico ou spam',
             'error' => 'Erro ao criar usuário'
         ],
+        'account_disable' => 'Conta desabilitada.<br>Entre em contato com contacts@lottoyou.bet para solicitar a habilitação.',
         'update' => [
             'success' => 'Usuário editado com sucesso',
             'error' => 'Erro ao editar usuário'
@@ -86,6 +87,10 @@ return [
             'success' => 'Senha alterada com sucesso',
             'not_found' => 'Token inválido',
             'error' => 'Erro ao alterar senha',
+        ],
+        'disable' => [
+            'success' => 'Conta desabilitada com sucesso.',
+            'error' => 'Erro ao desabilitar conta.'
         ],
         'account_active' => 'Confirmação de cadastro realizada com sucesso.',
         'activated' => 'A conta já encontra-se ativada',

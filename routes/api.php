@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\File;
 Route::group(['middleware' => 'auth:api', 'namespace' => 'API'], function(){
     Route::get('user', function(Request $request){
     	return User::where('id', '=', $request->user()->id)
+    		->where('active', '=', 1)
     		->with('country', 'balance')
     		->get()
     		->first();

@@ -75,7 +75,7 @@ export default {
 			        name: 'users.account',
 			        props: true,
 			        meta: { requiresAuth: true },
-			        component: require('../components/User/AccountComponent.vue')
+			        component: require('../components/User/VcAccount.vue')
 				},
 				{   
 					path: 'users/forgot_password',
@@ -111,6 +111,13 @@ export default {
 			        props: true,
 			        meta: { requiresAuth: true },
 			        component: require('../components/User/Order/VcIndex.vue')
+			    },
+			    {   
+			  		path: 'users/disable',
+			        name: 'users.disable', 
+			        props: true,
+			        meta: { requiresAuth: true },
+			        component: require('../components/User/VcDisable.vue')
 			    },
 			    {   
 			  		path: 'orders/show/:id',

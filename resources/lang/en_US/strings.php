@@ -11,6 +11,11 @@ return [
       | found in a intuitive way.
       |
      */
+    'cancel' => 'Cancelar',
+    'months' => 'Meses',
+    'definitive' => 'Definitivo',
+    'to_disable' => 'Desabilitar',
+    'disable_account' => 'Desabilitar conta',
     'new' => 'Novo(a)',
     'the_field_confirm_the_password_must_be_the_same_as_the_password_field' => 'O campo confirme a senha deve ser igual ao campo senha',
     'minimum_size' => 'Tamanho mínimo',

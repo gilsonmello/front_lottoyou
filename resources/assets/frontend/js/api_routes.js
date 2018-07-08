@@ -59,7 +59,8 @@ export const routes = {
 		items: host+'/users/{id}/items',
 		activate: host+'/users/activate/{hash}',
 		check_token_activation: host+'/users/check_token_activation/{token}',
-		create_from_facebook: host+'/users/create_from_facebook'
+		create_from_facebook: host+'/users/create_from_facebook',
+		disable: host+'/users/disable',
 	},
 	packages: {
 		create: host+'/packages',

@@ -12,6 +12,10 @@ use Carbon\Carbon;
 use App\Traits\PassportToken;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use App\SoccerExpertBet;
+use App\ScratchCard;
+use App\LotteryUser;
+use App\UserExclusion;
 
 class UserRepository implements UserContract
 {
@@ -20,6 +24,49 @@ class UserRepository implements UserContract
 	public function __construct() 
 	{
 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function disable($request) {
+        $user = User::find($request->owner_id);
+
+        /*$soccerExpertBet = SoccerExpertBet::where('owner_id', '=', $user->id)->get()->isEmpty();
+        $scratchCard = ScratchCard::where('owner', '=', $user->id)->get()->isEmpty();
+        $lotteryUser = LotteryUser::where('jogador_id', '=', $user->id)->get()->isEmpty();*/
+
+        $userExclusion = new UserExclusion;
+        $userExclusion->owner_id = $user->id;
+        $userExclusion->forever = 0;
+        $userExclusion->type_exclusion = $request->type_exclusion;
+        $carbon = new Carbon();
+        if($request->type_exclusion == 4) {
+            $userExclusion->forever = 1;
+        } else if($request->type_exclusion == 0) {
+            $userExclusion->expired = $carbon->addMonths(1);
+        } else if($request->type_exclusion == 1) {
+            $userExclusion->expired = $carbon->addMonths(3);
+        } else if($request->type_exclusion == 2) {            
+            $userExclusion->expired = $carbon->addMonths(6);
+        } else if($request->type_exclusion == 3) {
+            $userExclusion->expired = $carbon->addYears(1);
+        }
+        
+
+        if($userExclusion->save()) {
+            $user->active = 0;
+
+            /*if($soccerExpertBet && $scratchCard && $lotteryUser) {
+                $user->deleted = Carbon::now();
+            }*/
+            
+            if($user->save()) {
+                return true;
+            }
+        }
+
+        return false;
     }
     
     /**

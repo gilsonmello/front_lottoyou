@@ -1,6 +1,24 @@
 <template>
     <load-component v-if="loading.component == true"></load-component>
     <div class="container no-padding" v-else>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="sub-navigation">
+                    <router-link class="nav-link active show" :to="{ name: 'users.account', params: {  } }">
+                        {{ trans('strings.profile') }}
+                    </router-link>
+                    <router-link class="nav-link" :to="{ name: 'users.games', params: {  } }">
+                        {{ trans('strings.my_games') }}
+                    </router-link>
+                    <router-link class="nav-link" :to="{ name: 'users.transactions', params: {  } }">
+                        {{ trans('strings.transactions') }}
+                    </router-link>
+                    <!-- <router-link class="nav-link" :to="{ name: 'users.orders', params: {  } }">
+                        {{ trans('strings.orders') }}
+                    </router-link> -->
+                </div>
+            </div>
+        </div>
         <form class="user-edit" @submit.prevent="handleEdit" enctype="multipart/form-data">
             <input type="hidden" name="id" v-model="id">
             <div class="row">
@@ -12,7 +30,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-3">
-                    <img v-if="photo" :src="photo_domain+photo" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
+                    <img v-if="photo" :src="photo" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
                     <img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
                     <label for="photo">Imagem do perfil (jpg ou png)</label>
                     <span @click="openImages" class="btn btn-primary btn-md">
@@ -202,6 +220,9 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
+                            <router-link :to="{ name: 'users.disable' }" class="pull-left">
+                                {{ trans('strings.to_disable') }} {{ trans('strings.account') }}
+                            </router-link>
                             <button type="submit" class="btn pull-right btn-md btn-primary">
                                 {{ trans('strings.save_button') }}
                             </button>
@@ -217,8 +238,8 @@
 </template>
 
 <script>
-    import {routes} from '../../../api_routes'
-    import LoadComponent from '../../Load'
+    import {routes} from '../../api_routes'
+    import LoadComponent from '../Load'
     export default {
         methods: {
             changePhoto: function(event) {
@@ -300,7 +321,6 @@
                             this.number = this.user.number;
                             this.cep = this.user.cep;
                             this.photo = this.user.photo;
-                            this.photo_domain = this.user.photo_domain;
                             this.city = this.user.city;
                             this.username = this.user.username;
                             this.state = this.user.state;
@@ -360,7 +380,6 @@
                     this.number = this.user.number;
                     this.cep = this.user.cep;
                     this.photo = this.user.photo;
-                    this.photo_domain = this.user.photo_domain;
                     this.city = this.user.city;
                     this.username = this.user.username;
                     this.state = this.user.state;
@@ -391,7 +410,6 @@
                 username: '',
                 state: '',
                 date_birth: '',
-                photo_domain: '',
                 id: '',
                 old_password: '',
                 password: '',
@@ -422,7 +440,6 @@
                 this.number = authUser.number;
                 this.cep = authUser.cep;
                 this.photo = authUser.photo;
-                this.photo_domain = this.user.photo_domain;
                 this.city = authUser.city;
                 this.username = authUser.username;
                 this.state = authUser.state;

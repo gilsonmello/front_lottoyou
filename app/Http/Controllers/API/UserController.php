@@ -37,6 +37,25 @@ class UserController extends Controller
      * @param $hash
      * @param Request $request
      */
+    public function disable(Request $request)
+    {
+        //Verifica se o token ainda é válido
+        if($this->repository->disable($request)) {
+            return response()->json([
+                'message' => trans('alerts.users.disable.success')
+            ], 200);
+        }
+        return response()->json([
+            'message' => trans('alerts.users.disable.error')
+        ], 422);
+    }
+
+    /**
+     * Recebe o post para ativar a conta do usuário
+     *
+     * @param $hash
+     * @param Request $request
+     */
     public function activated($hash, Request $request)
     {
         
