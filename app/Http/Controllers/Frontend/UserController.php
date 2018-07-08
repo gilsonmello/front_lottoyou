@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Frontend\User\CreateUserRequest;
-use App\Http\Requests\Frontend\User\UpdateUserRequest;
+use App\Http\Requests\API\User\CreateUserRequest;
+use App\Http\Requests\API\User\UpdateUserRequest;
 use App\User;
 use App\Order;
 use App\OrderItem;
 use App\SoccerExpertRound;
-use App\Repositories\Frontend\User\UserContract;
+use App\Repositories\API\User\UserContract;
 
 /**
  * Class UserController
