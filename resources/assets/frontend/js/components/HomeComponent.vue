@@ -255,6 +255,12 @@
 	import CarouselComponent from './CarouselComponent'
 	import LoadComponent from './Load'
 	export default {
+		metaInfo () {
+			return {
+				title: 'Lottoyou',
+				meta: []
+		    }
+		},
 		data: function() {
 			return {
 				loading: {
@@ -262,21 +268,21 @@
 				}
 			}
 		},
-		beforeCreate: function() {
+		beforeCreate () {
 			
 		},
-		beforeMount: function() {
+		beforeMount () {
 			this.loading.component = true
 		},
 		methods: {
 
 		},
-		created: function() {
+		created () {
 			
 		},
-		mounted: function() {
+		mounted () {
 			this.loading.component = false;
-			window.document.title = window.app.title;
+			//window.document.title = window.app.title;
             if(this.$route.query.toastr_desc != null
 				&& this.$route.query.toastr_title != null) {
 				toastr.success(this.$route.query.toastr_title, this.$route.query.toastr_desc);
