@@ -178,6 +178,7 @@
             ga('send', 'pageview');
         </script>
         
+        {{-- <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}?q={{time()}}"></script> --}}
         <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}?q={{time()}}"></script>
         
        {{--
