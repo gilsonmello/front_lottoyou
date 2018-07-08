@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Repositories\Frontend\Contact\ContactContract;
+use App\Repositories\API\Contact\ContactContract;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -19,6 +19,21 @@ class ContactController extends Controller
     public function categories()
     {
         return $this->repository->categories();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function replyEmail(Request $request, $id)
+    {
+        if($this->repository->replyEmail($request, $id)) {
+            return response()->json([
+                'message' => 'ok'
+            ], 200);
+        }
+        return response()->json([
+            'message' => 'error'
+        ], 422);
     }
 
     /**

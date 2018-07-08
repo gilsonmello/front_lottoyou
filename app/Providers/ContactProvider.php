@@ -19,8 +19,8 @@ class ContactProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\Repositories\Frontend\Contact\ContactContract',
-            'App\Repositories\Frontend\Contact\ContactRepository'
+            'App\Repositories\API\Contact\ContactContract',
+            'App\Repositories\API\Contact\ContactRepository'
         );
     }
 

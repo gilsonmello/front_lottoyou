@@ -13,3 +13,5 @@ Route::resource('contacts', 'ContactController', [
         'show' => 'api.contacts.show'
     ]
 ]);
+
+Route::post('contacts/{id}/reply_email', 'ContactController@replyEmail');

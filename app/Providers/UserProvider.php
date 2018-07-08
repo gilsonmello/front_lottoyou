@@ -19,8 +19,8 @@ class UserProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\Repositories\Frontend\User\UserContract',
-            'App\Repositories\Frontend\User\UserRepository'
+            'App\Repositories\API\User\UserContract',
+            'App\Repositories\API\User\UserRepository'
         );
     }
 

@@ -13,10 +13,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        '/*',
-        'getTranslations/en_US',
-        '/oauth/token',
-        'http://spa.lottoyou.bet',
         'paypal/feedback',
         'pagseguro/feedback',
         'https://www.sandbox.paypal.com',
@@ -32,7 +28,7 @@ class VerifyCsrfToken extends Middleware
      */
     public function handle($request, Closure $next)
     {        
-        if ($request->header('origin') == 'http://spa.lottoyou.bet' 
+        if ($request->header('origin') == 'http://lottoyou-adm.com' 
             || $request->header('origin') == 'https://www.lottoyou.bet'
             || $request->header('origin') == 'https://lottoyou.bet'
             || $request->header('origin') == 'http://lottoyou.bet') {

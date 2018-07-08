@@ -13,8 +13,6 @@ use App\Observers\OrderObserver;
 use App\Observers\OrderItemObserver;
 use App\Observers\ScratchCardObserver;
 use App\Observers\CartObserver;
-use App\Repositories\Frontend\User\UserRepository;
-use App\Repositories\Frontend\User\UserEloquent;
 
 class AppServiceProvider extends ServiceProvider
 {
