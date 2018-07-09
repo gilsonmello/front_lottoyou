@@ -3,6 +3,9 @@
 Route::post('users/create_from_facebook', 'UserController@createFromFacebook')
     ->name('api.users.create_from_facebook');
 
+Route::post('users/exists', 'UserController@exists')
+    ->name('api.users.exists');
+
 Route::post('users/forgot_password', 'UserController@forgotPassword')
     ->name('api.users.forgot_password');
 
