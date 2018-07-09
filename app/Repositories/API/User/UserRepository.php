@@ -29,14 +29,9 @@ class UserRepository implements UserContract
     public function exists($request) 
     {
         $user = User::where('username', '=', $request->email)->get()->first();
-
         if($user != null) {
-            return User::where('username', '=', $request->email)
-                ->with('country', 'balance')
-                ->get()
-                ->first();
-        }        
-        
+            return $this->getBearerTokenByUser($user, 1, false);
+        }                
         return false;
     }
 
@@ -244,7 +239,7 @@ class UserRepository implements UserContract
             /*$user->save();
             Mail::to($user->username)
                 ->send(new CreateEmail($user));*/
-            return $user;
+            return $this->getBearerTokenByUser($user, 1, false);
         }
 
         return false;

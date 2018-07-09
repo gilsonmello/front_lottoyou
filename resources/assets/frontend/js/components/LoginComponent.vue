@@ -222,8 +222,37 @@
 					email: responseF.email
 				}).then((response) => {
 					if(response.status === 200) {
-						window.localStorage.setItem('authUser', JSON.stringify(response.data));
-						this.$store.dispatch('setUserObject', response.data);
+						window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
+						window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+						let access_token = response.data.access_token;
+						let refresh_token = response.data.refresh_token;
+						
+						let loginRequest = axios.create();
+						//Fazendo busca do usuário logado, para setar na estrutura de dados
+						loginRequest.get(routes.auth.user, { headers: {
+							'Content-Type' : 'application/json',
+							'Accept' : 'application/json',
+	    					'Authorization': 'Bearer ' + access_token
+						}}).then(response_2 => {
+							this.email = '';
+							this.password = '';
+							this.errors = {};
+							this.loading.login = false;
+				        	response_2.data.access_token = access_token;
+
+		        			response_2.data.refresh_token = refresh_token;
+
+                            let authUser = response_2.data;
+							window.localStorage.setItem('authUser', JSON.stringify(authUser));
+							this.$store.dispatch('setUserObject', response_2.data);
+		                  	
+		                  	//window.location.reload();
+
+		                  	this.$router.push({name: 'home'});
+		                
+		                }).catch((error_2) => {
+
+		                });
 					}
 				}).catch((error) => {
 					var registerRequest = axios.create();

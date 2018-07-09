@@ -33,9 +33,9 @@ class UserController extends Controller
 
     public function exists(Request $request) 
     {
-        $user = $this->repository->exists($request);
-        if($user != false) {
-            return response()->json($user, 200);
+        $accessToken = $this->repository->exists($request);
+        if($accessToken != false) {
+            return response()->json($accessToken, 200);
         }
         return response()->json([
             'message' => ''
