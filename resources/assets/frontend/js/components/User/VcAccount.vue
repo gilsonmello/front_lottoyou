@@ -427,9 +427,9 @@
             }
         },
         mounted: function() {
-            let authUser = JSON.parse(window.localStorage.getItem('authUser'));
-            authUser = authUser != null ? authUser : null;
-            if(authUser.provider != '') {
+            /* let authUser = JSON.parse(window.localStorage.getItem('authUser'));
+            authUser = authUser != null ? authUser : null; */
+            /* if(authUser.provider != '') {
                 this.loading.component = false;
                 this.gender = authUser.gender ? authUser.gender : '';
                 this.nickname = authUser.nickname;
@@ -450,8 +450,8 @@
                 this.phone_code = '+'+authUser.country.phonecode
             } else {
                 this.userRequest();
-            }          
-
+            }          */ 
+            this.userRequest();
         },
         components: {
             LoadComponent
