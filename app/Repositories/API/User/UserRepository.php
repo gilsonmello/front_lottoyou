@@ -26,6 +26,20 @@ class UserRepository implements UserContract
 
     }
 
+    public function exists($request) 
+    {
+        $user = User::where('username', '=', $request->email)->get()->first();
+
+        if($user != null) {
+            return User::where('username', '=', $request->email)
+                ->with('country', 'balance')
+                ->get()
+                ->first();
+        }        
+        
+        return false;
+    }
+
     /**
      * @return mixed
      */

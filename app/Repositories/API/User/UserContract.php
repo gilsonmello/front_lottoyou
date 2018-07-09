@@ -62,4 +62,9 @@ interface UserContract
      * @return mixed
      */
     public function disable($request);
+
+    /**
+     * 
+     */
+    public function exists($request);
 }

@@ -31,6 +31,17 @@ class UserController extends Controller
         $this->repository = $repository;
     }
 
+    public function exists(Request $request) 
+    {
+        $user = $this->repository->exists($request);
+        if($user != false) {
+            return response()->json($user, 200);
+        }
+        return response()->json([
+            'message' => ''
+        ], 422);
+    }
+
     /**
      * Recebe o post para ativar a conta do usuário
      *
