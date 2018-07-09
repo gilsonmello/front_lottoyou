@@ -52,7 +52,7 @@
 				var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
 				refresh_token = refresh_token != null ? refresh_token : '';
 
-				if(access_token) {
+				if(access_token && this.$route.name != 'users.account') {
 					this.refreshAuthPromise()
 					.then(response => {
 						if(response.status === 200) {
