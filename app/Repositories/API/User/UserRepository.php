@@ -273,7 +273,7 @@ class UserRepository implements UserContract
         if($user->save()) {
             $user->nickname2 = $user->name . '_' . $user->id;           
 
-            $balance = 0.05;
+            $balance = 0.00;
 
             /* $quantity_users = User::where('active', '=', 1)
                 ->where('group_id', '=', 3)
