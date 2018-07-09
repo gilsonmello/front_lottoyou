@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="modal-body" v-if="loading.component == true">
-                	Carregando...
+                	{{ trans('strings.loading') }}...
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body" v-else>
@@ -43,9 +43,6 @@
 						</div>
 						<div class="row">
 							<div class="col-lg-12">
-								<!--<router-link class="pull-right" :to="{ name: 'users.forgot_password' }">
-									{{ trans('strings.I_forgot_my_password') }}
-								</router-link>-->
 								<router-link class="pull-right" :to="{ name: 'users.forgot_password' }">
 									{{ trans('strings.I_forgot_my_password') }}
 								</router-link>
@@ -179,12 +176,11 @@
 
 						});
 					});
-				} else if(newValue.status === 'not_authorized') {
-					this.$store.dispatch('clearAuthUser');
-					window.localStorage.removeItem('authUser');
 				} else {
 					this.$store.dispatch('clearAuthUser');
 					window.localStorage.removeItem('authUser');
+					window.localStorage.removeItem('access_token');
+					window.localStorage.removeItem('refresh_token');
 				}
 			}
 		},
@@ -282,15 +278,6 @@
 				window.FB.login((response) => {
 					this.facebook = response;
 				}, {scope: 'public_profile,email,user_birthday'});
-			},
-			authLogin() {
-				if(this.facebook.status === 'connected') {
-
-				} else if(this.facebook.status === 'not_authorized') {
-
-				} else {
-
-				}
 			},
 			viewPassword(event) {
 				var target = $(event.target);

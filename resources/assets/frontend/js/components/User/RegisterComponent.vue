@@ -181,6 +181,13 @@
 				</div>
 			</div>
 		</form>
+		<div class="row">
+			<div class="col-lg-12">
+				<a class="btn btn-block btn-social btn-facebook" @click.prevent="loginFacebook">
+					<span class="fa fa-facebook"></span> Cadastre-se com o facebook
+				</a>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -203,6 +210,7 @@
 		},
 		data: function() {
 			return {
+				facebook: '',
 				countries: [],
 				months: [
 					{
@@ -311,6 +319,11 @@
 			});
 		},
 		methods: {
+			loginFacebook() {
+				window.FB.login((response) => {
+					this.facebook = response;
+				}, {scope: 'public_profile,email,user_birthday'});
+			},
 			changeBirthMonth: function(el) {
 				var index = $('option:selected', el.target).attr('data-key');
 				//var index = el.target.getAttribute('data-key');
@@ -485,7 +498,44 @@
 			}
 		},
 		watch: {
-			birth_year: function(newValue, oldValue) {}
+			birth_year: function(newValue, oldValue) {},
+			facebook(newValue, oldValue) {
+				if(newValue.status === 'connected') {
+					window.FB.api('/me', {
+						fields: 'id,email,first_name,last_name,middle_name,name,name_format,picture,short_name',
+						debug: 'all'
+					}, (responseF) => {
+						//this.userExistsRequest(responseF);
+						var registerRequest = axios.create();
+						registerRequest.interceptors.request.use(config => {
+							return config;
+						});
+						//Fazendo requisição para criar o usuário
+						registerRequest.post(routes.users.create_from_facebook, qs.stringify({
+							name: responseF.first_name,
+							last_name: responseF.last_name,
+							email: responseF.email,
+							short_name: responseF.short_name,
+						})).then((response) => {
+							if(response.status === 200) {
+								window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
+								window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+								this.refreshAuth();
+								$('.modal-login').modal('hide');
+								//window.location.reload();
+								this.$router.push({name: 'home'});
+							}
+						}).catch((error) => {
+
+						});
+					});
+				} else {
+					this.$store.dispatch('clearAuthUser');
+					window.localStorage.removeItem('authUser');
+					window.localStorage.removeItem('access_token');
+					window.localStorage.removeItem('refresh_token');
+				}
+			}
 		},
 		components: {
 			LoadComponent
