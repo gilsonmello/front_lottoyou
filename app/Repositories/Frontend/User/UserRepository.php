@@ -141,6 +141,20 @@ class UserRepository implements UserContract
         return false;
     }
 
+    public function exists($request) 
+    {
+        $user = User::where('username', '=', $request->email)->get()->first();
+
+        if($user != null) {
+            return User::where('username', '=', $request->email)
+                ->with('country', 'balance')
+                ->get()
+                ->first();
+        }        
+        
+        return false;
+    }
+
     /**
      * @param array $attributes
      * @return bool|mixed
@@ -156,6 +170,8 @@ class UserRepository implements UserContract
 
 		$user = new User;
         $user->name = $attributes['name'];
+        $user->password = null;
+        $user->req_fi_cpt = 0;
         $user->last_name = $attributes['last_name'];
         $user->username = $attributes['email'];
         $user->nickname = $attributes['short_name'];

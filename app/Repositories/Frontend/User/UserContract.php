@@ -57,4 +57,9 @@ interface UserContract
      * 
      */
     public function checkTokenActivation($token);
+
+    /**
+     * 
+     */
+    public function exists($request);
 }

@@ -155,7 +155,8 @@
 						fields: 'id,email,first_name,last_name,middle_name,name,name_format,picture,short_name',
 						debug: 'all'
 					}, (response) => {
-						var registerRequest = axios.create();
+						this.userExistsRequest(response);
+						/* var registerRequest = axios.create();
 						registerRequest.interceptors.request.use(config => {
 							return config;
 						});
@@ -174,7 +175,9 @@
 
 								this.$router.push({name: 'home'});
 							}
-						});
+						}).catch((error) => {
+
+						}); */
 					});
 				} else if(newValue.status === 'not_authorized') {
 					this.$store.dispatch('clearAuthUser');
@@ -208,6 +211,44 @@
 			})
 		},
 		methods: {
+			userExistsRequest(responseF) {
+				let userExistsRequest = axios.create();
+				userExistsRequest.interceptors.request.use(config => {
+					return config;
+				});
+				let url = routes.users.exists;
+				//Fazendo requisição para criar o usuário
+				userExistsRequest.post(url, {
+					email: responseF.email
+				}).then((response) => {
+					if(response.status === 200) {
+						window.localStorage.setItem('authUser', JSON.stringify(response.data));
+						this.$store.dispatch('setUserObject', response.data);
+					}
+				}).catch((error) => {
+					var registerRequest = axios.create();
+					registerRequest.interceptors.request.use(config => {
+						return config;
+					});
+					//Fazendo requisição para criar o usuário
+					registerRequest.post(routes.users.create_from_facebook, qs.stringify({
+						name: response.first_name,
+						last_name: response.last_name,
+						email: response.email,
+						short_name: response.short_name,
+					})).then((response2) => {
+						if(response2.status === 200) {
+							window.localStorage.setItem('authUser', JSON.stringify(response2.data));
+							this.$store.dispatch('setUserObject', response2.data);
+							//$('.modal-login').modal('hide');
+							//window.location.reload();
+							this.$router.push({name: 'home'});
+						}
+					}).catch((error) => {
+
+					});
+				});
+			},
 			logoutFacebook() {
 				window.FB.logout((response) => {
 					

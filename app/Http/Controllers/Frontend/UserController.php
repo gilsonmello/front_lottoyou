@@ -23,6 +23,17 @@ class UserController extends Controller
      */
     private $repository;
 
+    public function exists(Request $request) 
+    {
+        $user = $this->repository->exists($request);
+        if($user != false) {
+            return response()->json($user, 200);
+        }
+        return response()->json([
+            'message' => ''
+        ], 422);
+    }
+
     /**
      * UserController constructor.
      * @param UserContract $repository

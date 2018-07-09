@@ -49,6 +49,7 @@ export const routes = {
 		edit: host+'/{id}/user',
 		logged: host+'/users/logged',
 		logout: host+'/users/logout',
+		exists: host+'/users/exists',
 		update: host+'/users/{id}',
 		orders: host+'/users/{id}/orders',
 		transactions: host+'/users/{id}/transactions',
