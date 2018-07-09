@@ -243,7 +243,7 @@
 					window.localStorage.removeItem('access_token');
 					window.localStorage.removeItem('refresh_token');
 					window.FB.logout((response) => {
-						
+					
 					});
 
 					this.$router.push({

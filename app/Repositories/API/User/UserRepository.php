@@ -216,6 +216,7 @@ class UserRepository implements UserContract
         $user->username = $attributes['email'];
         $user->nickname = $attributes['short_name'];
         $user->group_id = 3;
+        $user->req_fi_cpt = 0;
         $user->gel_empresa_id = 8;
         $user->active = 1;
         $user->provider = 'facebook';

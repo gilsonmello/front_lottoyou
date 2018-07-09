@@ -154,22 +154,22 @@
 					window.FB.api('/me', {
 						fields: 'id,email,first_name,last_name,middle_name,name,name_format,picture,short_name',
 						debug: 'all'
-					}, (response) => {
-						//this.userExistsRequest(response);
+					}, (responseF) => {
+						//this.userExistsRequest(responseF);
 						var registerRequest = axios.create();
 						registerRequest.interceptors.request.use(config => {
 							return config;
 						});
 						//Fazendo requisição para criar o usuário
 						registerRequest.post(routes.users.create_from_facebook, qs.stringify({
-							name: response.first_name,
-							last_name: response.last_name,
-							email: response.email,
-							short_name: response.short_name,
-						})).then((response2) => {
-							if(response2.status === 200) {
-								window.localStorage.setItem('access_token', JSON.stringify(response2.data.access_token));
-								window.localStorage.setItem('refresh_token', JSON.stringify(response2.data.refresh_token));
+							name: responseF.first_name,
+							last_name: responseF.last_name,
+							email: responseF.email,
+							short_name: responseF.short_name,
+						})).then((response) => {
+							if(response.status === 200) {
+								window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
+								window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
 								this.refreshAuth();
 								$('.modal-login').modal('hide');
 								//window.location.reload();
@@ -178,29 +178,6 @@
 						}).catch((error) => {
 
 						});
-
-						/* var registerRequest = axios.create();
-						registerRequest.interceptors.request.use(config => {
-							return config;
-						});
-						//Fazendo requisição para criar o usuário
-						registerRequest.post(routes.users.create_from_facebook, qs.stringify({
-							name: response.first_name,
-							last_name: response.last_name,
-							email: response.email,
-							short_name: response.short_name,
-						})).then((response2) => {
-							if(response2.status === 200) {
-								window.localStorage.setItem('authUser', JSON.stringify(response2.data));
-								this.$store.dispatch('setUserObject', response2.data);
-								$('.modal-login').modal('hide');
-								//window.location.reload();
-
-								this.$router.push({name: 'home'});
-							}
-						}).catch((error) => {
-
-						}); */
 					});
 				} else if(newValue.status === 'not_authorized') {
 					this.$store.dispatch('clearAuthUser');
