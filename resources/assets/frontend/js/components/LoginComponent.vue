@@ -155,7 +155,30 @@
 						fields: 'id,email,first_name,last_name,middle_name,name,name_format,picture,short_name',
 						debug: 'all'
 					}, (response) => {
-						this.userExistsRequest(response);
+						//this.userExistsRequest(response);
+						var registerRequest = axios.create();
+						registerRequest.interceptors.request.use(config => {
+							return config;
+						});
+						//Fazendo requisição para criar o usuário
+						registerRequest.post(routes.users.create_from_facebook, qs.stringify({
+							name: response.first_name,
+							last_name: response.last_name,
+							email: response.email,
+							short_name: response.short_name,
+						})).then((response2) => {
+							if(response2.status === 200) {
+								window.localStorage.setItem('access_token', JSON.stringify(response2.data.access_token));
+								window.localStorage.setItem('refresh_token', JSON.stringify(response2.data.refresh_token));
+								this.refreshAuth();
+								$('.modal-login').modal('hide');
+								//window.location.reload();
+								this.$router.push({name: 'home'});
+							}
+						}).catch((error) => {
+
+						});
+
 						/* var registerRequest = axios.create();
 						registerRequest.interceptors.request.use(config => {
 							return config;
@@ -234,20 +257,15 @@
 							'Accept' : 'application/json',
 	    					'Authorization': 'Bearer ' + access_token
 						}}).then(response_2 => {
-							this.email = '';
-							this.password = '';
-							this.errors = {};
-							this.loading.login = false;
 				        	response_2.data.access_token = access_token;
-
-		        			response_2.data.refresh_token = refresh_token;
+							response_2.data.refresh_token = refresh_token;
 
                             let authUser = response_2.data;
 							window.localStorage.setItem('authUser', JSON.stringify(authUser));
 							this.$store.dispatch('setUserObject', response_2.data);
 		                  	
 		                  	//window.location.reload();
-
+							$('.modal-login').modal('hide');
 		                  	this.$router.push({name: 'home'});
 		                
 		                }).catch((error_2) => {

@@ -321,13 +321,9 @@ class UserController extends Controller
      */
     public function createFromFacebook(Request $request)
     {
-        $user = $this->repository->createFromFacebook($request->all());
-        if($user != false) {
-            $user = User::where('id', '=', $user->id)
-    		    ->with('country', 'balance')
-    		    ->get()
-    		    ->first();
-            return response()->json($user, 200);
+        $accessToken = $this->repository->createFromFacebook($request->all());
+        if($accessToken != false) {
+            return response()->json($accessToken, 200);
         }
         return response()->json(['message' => trans('alerts.users.create.error')], 422);
     }

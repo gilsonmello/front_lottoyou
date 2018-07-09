@@ -67,7 +67,7 @@ Vue.prototype.formatDate = function(dateBR) {
 	return year +'-'+ month +'-'+day +' '+hour +':'+minute;
 };
 
-Vue.prototype.refreshAuth = function() {
+Vue.prototype.refreshAuth = function(onSuccess, onError) {
 	//Token de acesso
 	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
 	access_token = access_token != null ? access_token : null;
@@ -86,16 +86,20 @@ Vue.prototype.refreshAuth = function() {
 		'Accept': 'application/json',
 		'Authorization': 'Bearer ' + access_token
 	}}).then(response => {
-
 		if(response.status === 200) {
         	response.data.access_token = access_token
         	response.data.refresh_token = refresh_token
 			window.localStorage.setItem('authUser', JSON.stringify(response.data))
 			this.$store.dispatch('setUserObject', response.data);
+
+			if(onSuccess != undefined && typeof onSuccess == 'function') {
+				onSuccess();
+			}
 		}
-      	
     }).catch((error) => {
-		
+		if(onError != undefined && typeof onError == 'function') {
+			onError();
+		}
     });
 };
 

@@ -207,7 +207,7 @@ class UserRepository implements UserContract
         if(!is_null($user)) {
             $user->last_login = date('Y-m-d H:i:s');
             $user->save();
-            return $user;
+            return $this->getBearerTokenByUser($user, 1, false);
         } 
 
 		$user = new User;
