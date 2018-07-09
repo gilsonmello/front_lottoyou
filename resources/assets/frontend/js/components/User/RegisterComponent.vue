@@ -146,7 +146,7 @@
 							<div class="form-group">
 								<label class="" for="terms">
 									<input type="checkbox" v-model="terms" name="terms" id="terms"> 
-										Li e aceito os <a class="btn-link" href="/termos-principal.docx" target="_blank">
+										Li e aceito os <a class="btn-link" href="/termos_e_condicoes.pdf" target="_blank">
 											Termos e Condições
 										</a>
 								</label>
@@ -158,6 +158,9 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-12 col-12 col-sm-12 col-md-12">
+							<a class="btn btn-social btn-facebook" @click.prevent="loginFacebook">
+								<span class="fa fa-facebook"></span> Cadastre-se com o facebook
+							</a>
 							<button type="submit" class="pull-right btn btn-md btn-primary">
 								{{ trans('strings.save_button') }}
 							</button>
@@ -181,13 +184,6 @@
 				</div>
 			</div>
 		</form>
-		<div class="row">
-			<div class="col-lg-12">
-				<a class="btn btn-block btn-social btn-facebook" @click.prevent="loginFacebook">
-					<span class="fa fa-facebook"></span> Cadastre-se com o facebook
-				</a>
-			</div>
-		</div>
 	</div>
 </template>
 
@@ -196,6 +192,17 @@
 	import LoadComponent from '../Load'
     import {mapGetters} from 'vuex'
 	export default {
+		metaInfo () {
+			return {
+				title: this.trans('strings.register'),
+				meta: [
+					{
+						name: 'description',
+						content: this.trans('strings.register') + ' Lottoyou',
+					}
+				]
+		    }
+		},
 		computed: {
             ...mapGetters([
                 'auth'
@@ -295,7 +302,7 @@
 			}
 		},
 		mounted: function() {
-			window.document.title = window.app.title +' | '+ this.trans('strings.register');
+			//window.document.title = window.app.title +' | '+ this.trans('strings.register');
 			this.birth_year = this.date.getFullYear() - 18;
 			this.birth_month = this.months[0].value;
 			this.days = this.rangeDay();
