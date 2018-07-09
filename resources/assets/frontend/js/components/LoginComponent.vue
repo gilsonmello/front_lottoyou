@@ -67,18 +67,18 @@
 					</form>
                 </div>
                 <!-- Modal footer -->
-                <!-- <div class="modal-footer"> -->
+                <div class="modal-footer">
                 	<!-- <fb:login-button 
 					  scope="public_profile,email"
 					  onlogin="authLogin">
 					</fb:login-button> -->
-					<!-- <a class="btn btn-block btn-social btn-facebook" @click.prevent="loginFacebook">
+					<a class="btn btn-block btn-social btn-facebook" @click.prevent="loginFacebook">
 						<span class="fa fa-facebook"></span> Login com o facebook
-					</a> -->
+					</a>
 					<!-- <button type="button" class="btn btn-info" @click="logoutFacebook" data-dismiss="modal">
 						Sair
                     </button> -->
-                <!-- </div> -->
+                </div>
             </div>
         </div>
     </div>
@@ -188,9 +188,9 @@
 		mounted: function() {
 			this.loading.component = false;
 			
-			/*FB.getLoginStatus((response) => {
+			FB.getLoginStatus((response) => {
 			    this.facebook = response;
-			});*/
+			});
 			var interval = setInterval(() => {
 				if($('.modal-login').length > 0) {
 					clearInterval(interval);
