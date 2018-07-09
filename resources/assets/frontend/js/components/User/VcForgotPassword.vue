@@ -35,6 +35,17 @@
 	import {routes} from '../../api_routes'
     import LoadComponent from '../Load'
 	export default {
+		metaInfo () {
+			return {
+				title: this.trans('crud.users.I_forgot_my_password') + ' | '+this.trans('strings.lottoyou'),
+				meta: [
+					{
+						name: 'description', 
+						content: this.trans('crud.users.I_forgot_my_password')
+					}
+				]
+			}
+		},
 		name: "VcForgotPassword",
 		watch: {
 			birth_date(newValue, oldValue) {
@@ -129,7 +140,7 @@
 			}
 		},
 		mounted() {
-			window.document.title = this.trans('crud.users.I_forgot_my_password');
+			//window.document.title = this.trans('crud.users.I_forgot_my_password');
 			this.loading.component = false;
 			let vm = this;
 			let time = setInterval(() => {
