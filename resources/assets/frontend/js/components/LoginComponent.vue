@@ -70,7 +70,7 @@
 					  onlogin="authLogin">
 					</fb:login-button> -->
 					<a class="btn btn-block btn-social btn-facebook" @click.prevent="loginFacebook">
-						<span class="fa fa-facebook"></span> Login com o facebook
+						<span class="fa fa-facebook"></span> Cadastre-se com o facebook
 					</a>
 					<!-- <button type="button" class="btn btn-info" @click="logoutFacebook" data-dismiss="modal">
 						Sair

@@ -12,8 +12,8 @@
                 </div>
 				<div class="col-lg-4 col-12 col-sm-6 col-md-3">
                     <div class="form-group">
-                        <label for="forgot-password-birth_date">{{ trans('strings.email') }}*</label>
-                        <datepicker ref="birth_date" :options="{language: 'pt-br', zIndexOffset: 1030}" autocomplete="off" id="forgot-password-birth_date" name="birth_date" v-model="birth_date" class="form-control" :placeholder="trans('strings.birth_date')" ></datepicker>
+                        <label for="forgot-password-birth_date">{{ trans('strings.birth_date') }}*</label>
+                        <datepicker ref="birth_date" :options="{language: 'pt-br', zIndexOffset: 1030}" autocomplete="off" id="forgot-password-birth_date" name="birth_date" v-model="birth_date" class="form-control" ></datepicker>
                     </div>
                 </div>
 			</div>

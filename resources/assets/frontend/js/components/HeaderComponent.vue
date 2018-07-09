@@ -39,13 +39,13 @@
 										</div>
 									</a>
 					  			</li>
-					  			<li class="item-register-login" v-if="!auth">
+					  			<!-- <li class="item-register-login" v-if="!auth">
 					  				<router-link :to="{ name: 'users.register' }" class="pull-left" style="width: 100%;">
 					  					<div class="pull-right">
 											<span style="font-size: 14px">{{ trans('strings.register') }}</span>
 										</div>
 									</router-link>
-					  			</li>
+					  			</li> -->
 					  			<li class="item-balance" v-if="auth && auth.balance">
 					  				<div class="pull-left" style="width: 100%;">
 						  				<div class="pull-left">

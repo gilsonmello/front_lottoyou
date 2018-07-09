@@ -198,7 +198,14 @@ export default {
 			        props: true,
 			        meta: { requiresAuth: true },
 			        component: require('../components/Balance/IndexComponent.vue')
-			    },
+				},
+				{   
+					path: 'balances/withdraw',
+					name: 'balances.withdraw', 
+					props: true,
+					meta: { requiresAuth: true },
+					component: require('../components/Balance/VcWithdraw.vue')
+				},
 			    {   
 			  		path: 'balances/deposit',
 			        name: 'balances.deposit', 

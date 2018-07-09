@@ -11,6 +11,8 @@ return [
       | found in a intuitive way.
       |
      */
+    'effect_withdraw' => 'Efetuar retirada',
+    'lottoyou' => 'Lottoyou',
     'cancel' => 'Cancelar',
     'months' => 'Meses',
     'definitive' => 'Definitivo',
@@ -89,14 +91,17 @@ return [
     'devolution paypal' => 'Devolução Paypal',
     'how_to_play' => 'Como jogar',
     'groups' => 'Grupos',
+    'to_undo' => 'Desfazer',
     'confirmation' => 'Confirmação',
     'balance' => 'Saldo',
+    'left_balance' => 'Saldo restante',
     'scratchcard' => 'Raspadinha',
     'balances' => 'Saldos',
     'historic_balance' => 'Histórico do Saldo',
     'jackpot' => 'Prêmio',
     'sweepstake' => 'Sorteio',
     'contest' => 'Concurso',
+    'do_you_wish_to_continue' => 'Deseja continuar?',
     'to_view' => 'Visualizar',
     'view' => 'Visualizar',
     'unavailable' => 'Indisponível',

@@ -2,6 +2,13 @@
 	<load-component v-if="loading.component"></load-component>
 	<div class="container" v-else>
 		<h1 class="page-header text-center">Crie uma conta para desfrutar de infinitas possibilidades</h1>
+		<!-- <div class="row">
+			<div class="col-12 col-lg-12 col-md-12 col-sm-12">
+				<a class="btn btn-social btn-facebook" @click.prevent="loginFacebook">
+					<span class="fa fa-facebook"></span> Cadastre-se com o facebook
+				</a>
+			</div>
+		</div> -->
 		<form @submit.prevent="register">
 			<div class="row">
 				<div class="col-lg-9 col-12 col-sm-12 col-md-12" style="padding-right: 30px;">
@@ -158,9 +165,6 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-12 col-12 col-sm-12 col-md-12">
-							<a class="btn btn-social btn-facebook" @click.prevent="loginFacebook">
-								<span class="fa fa-facebook"></span> Cadastre-se com o facebook
-							</a>
 							<button type="submit" class="pull-right btn btn-md btn-primary">
 								{{ trans('strings.save_button') }}
 							</button>
@@ -479,7 +483,7 @@
 							title: this.trans('strings.success'),
 							html: `<p style="text-align: left"><strong>${this.name} </strong>,${this.trans('alerts.users.create.success')}</p>`,
 							showConfirmButton: true,
-						})
+						});
 						//this.$router.push({name: 'home'});
 						/* toastr.options.timeOut = 8000;
 						toastr.options.newestOnTop = true;

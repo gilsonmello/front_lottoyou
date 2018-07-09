@@ -531,6 +531,12 @@ return [
             'success' => 'Tag deletada com sucesso.',
         ],
     ],
+    'balances' => [
+        'withdraw' => [
+            'success' => 'Solicitação para retirada efetuada com sucesso.',
+            'error' => 'Erro ao solicitar retirada, tente novamente.'
+        ]
+    ]
 
     
 

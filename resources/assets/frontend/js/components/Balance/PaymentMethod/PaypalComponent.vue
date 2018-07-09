@@ -9,7 +9,7 @@
 					<div class="col-lg-12 col-12 col-sm-12 col-md-12">
 					    <strong>
 					    	<label for="amount">* Quantia a ser depositada &nbsp;
-					    	<i class="fa fa-info" title="Mínimo de $15.00"></i>
+					    	<i class="fa fa-info" title="Mínimo de $10.00"></i>
 					    </label>
 					    </strong>
 					    <input type="text" v-model="amount" required class="form-control" id="amount" :placeholder="'Por favor, indique o valor em USD'">

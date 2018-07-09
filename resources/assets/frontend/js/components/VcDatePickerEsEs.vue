@@ -1,5 +1,5 @@
 <template>
-	<input type="text" class="form-control">
+	<input type="text" class="form-control" placeholder="dd/mm/yyyy">
 </template>
 
 <script>

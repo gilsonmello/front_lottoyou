@@ -81,6 +81,17 @@
     import LoadComponent from '../Load'
     import VcRecaptcha from '../VcRecaptcha'
     export default {
+        metaInfo () {
+            return {
+                title: this.trans('crud.contacts.create') + ' | '+this.trans('strings.lottoyou'),
+                meta: [
+                    {
+                        name: 'description', 
+                        content: this.trans('crud.contacts.create') + ' | '+this.trans('strings.lottoyou')
+                    }
+                ]
+            }
+        },
         name: "VcCreate",
         data() {
             return {
@@ -263,10 +274,9 @@
                 
             }
         },
-        mounted() {
-            
+        mounted() {            
             this.getCategories();
-            window.document.title = this.trans('crud.contacts.create');
+            //window.document.title = this.trans('crud.contacts.create');
             this.loading.component = false;
             var vm = this;
 

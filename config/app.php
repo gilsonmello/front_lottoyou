@@ -173,7 +173,8 @@ return [
          * Application Service Providers...
          */
         App\Providers\UserProvider::class,
-        App\Providers\ContactProvider::class
+        App\Providers\ContactProvider::class,
+        App\Providers\BalanceProvider::class,
     ],
 
     /*

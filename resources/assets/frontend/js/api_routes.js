@@ -8,6 +8,9 @@ export const routes = {
 	historic_balances: {
 		of_the_user: host+'/historic_balances/of_the_user/{id}'
 	},
+	balance: {
+		withdraw: host+'/balances/withdraw',
+	},
 	recaptcha: {
 		check: host+'/recaptcha/check',
 	},
