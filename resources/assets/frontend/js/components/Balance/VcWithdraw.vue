@@ -40,7 +40,7 @@ export default {
             agency: '',
             name: '',
             account_type: '1',
-            cpf: '',
+            identification: '',
             value: 10.00
         }
     },
@@ -83,6 +83,7 @@ export default {
                 value: this.value
             }).then(response => {
                 if(response.status === 200) {
+                    this.refreshAuth();
                     if(response.data.message) {
                         toastr.success(response.data.message);
                     }
@@ -137,7 +138,7 @@ export default {
                 delimiter: ',',
                 unit: '$',
             });
-            document.querySelector("#amount").on("blur", function(event) {
+            $("#amount").on("blur", function(event) {
                 let value = $(this).val();
                 vm.amount = value;
                 value = parseFloat(vm.getAmount());
@@ -198,7 +199,7 @@ export default {
                             number: {
                                 required: true,
                             },
-                            cpf: {
+                            identification: {
                                 required: true,
                             }
                         },
@@ -218,7 +219,7 @@ export default {
                             number: {
                                 required: vm.trans('strings.field_required'),
                             },
-                            cpf: {
+                            identification: {
                                 required: vm.trans('strings.field_required'),
                             }
                         },
@@ -276,7 +277,7 @@ export default {
                 <div class="col-lg-3 col-12 col-md-3 col-sm-3">
                     <div class="form-group">
                         <label for="name">{{ trans('strings.name') }}*</label>
-                        <input type="text" name="name" v-model="name" required class="form-control" id="name" :placeholder="'Nome impresso no cartão'">
+                        <input type="text" name="name" v-model="name" required class="form-control" id="name" :placeholder="'Nome do titular da conta'">
                     </div>
                 </div>
                 <div class="col-lg-4 col-12 col-md-4 col-sm-4">
@@ -314,8 +315,8 @@ export default {
                 </div>
                 <div class="col-lg-3 col-12 col-md-3 col-sm-3">
                     <div class="form-group">
-                        <label for="cpf">{{ trans('strings.cpf') }}*</label>
-                        <input type="text" name="cpf" v-model="cpf" required class="form-control" id="cpf" :placeholder="trans('strings.example')+': 99999999999'">
+                        <label for="identification">{{ trans('strings.identification') }}*</label>
+                        <input type="text" name="identification" v-model="identification" required class="form-control" id="identification" :placeholder="trans('strings.example')+': 99999999999'">
                     </div>
                 </div>
                 <div class="col-lg-4 col-12 col-sm-4 col-md-4">
@@ -357,5 +358,3 @@ export default {
         </form>
     </div>
 </template>
-
-

@@ -142,6 +142,7 @@ return [
     'example' => 'Exemplo',
     'savings' => 'Poupança',
     'account_type' => 'Tipo de conta',
+    'identification' => 'Identificação',
     'current_account' => 'Conta corrente',
     'hours_left' => 'Horas Restantes',
     'to_update' => 'Atualizar',
