@@ -33,6 +33,14 @@ export default {
             },
             amount: '',
             terms: '',
+            country: '',
+            countries: [],
+            number: '',
+            bank: '',
+            agency: '',
+            name: '',
+            account_type: '1',
+            cpf: '',
             value: 10.00
         }
     },
@@ -97,6 +105,7 @@ export default {
                     vm.value = 10.00;
                 }
             });
+            this.getCountries();
         },
         requestWithdraw() {
             let request = axios.create();
@@ -123,7 +132,7 @@ export default {
                 this.loading.submit = false;
             })
         },
-        submitWithdraw(el) {
+        /* submitWithdraw(el) {
             if(this.value <= this.auth.balance.value && this.value > 0) {
                 swal({
                     title: this.trans('strings.do_you_wish_to_continue'),
@@ -146,7 +155,7 @@ export default {
                     this.trans('strings.error')
                 );
             }
-        },
+        }, */
         getAmount() {
             let value = $("#amount").val();
             this.amount = value;
@@ -166,6 +175,94 @@ export default {
                 unit: '$',
             });
         },
+        validateFormWithdraw() {
+            let vm = this;
+            let time = setInterval(() => {
+                var form = $(this.$el).find('form');
+                if(form.length > 0) {
+                    clearInterval(time);
+                    form.validate({
+                        rules: {
+                            name: {
+                                required: true,
+                            },
+                            terms: {
+                                required: true,
+                            },
+                            bank: {
+                                required: true,
+                            },
+                            agency: {
+                                required: true,
+                            },
+                            number: {
+                                required: true,
+                            },
+                            cpf: {
+                                required: true,
+                            }
+                        },
+                        messages: {
+                            name: {
+                                required: vm.trans('strings.field_required'),
+                            },
+                            terms: {
+                                required: vm.trans('strings.field_required'),
+                            },
+                            bank: {
+                                required: vm.trans('strings.field_required'),
+                            },
+                            agency: {
+                                required: vm.trans('strings.field_required'),
+                            },
+                            number: {
+                                required: vm.trans('strings.field_required'),
+                            },
+                            cpf: {
+                                required: vm.trans('strings.field_required'),
+                            }
+                        },
+                        highlight: function (input) {
+                            $(input).addClass('error');
+                            $(input).parents('.form-control').addClass('error');
+                        },
+                        unhighlight: function (input) {
+                            $(input).removeClass('error');
+                            $(input).parents('.form-control').removeClass('error');
+                        },
+                        errorPlacement: function (error, element) {
+                            $(element).parents('.input-group').append(error);
+                            $(element).parents('.form-group').append(error);
+                        }
+                    });
+                    form.on('submit', function(e) {
+                        vm.submit = true;
+                        var isvalid = form.valid();
+                        if (isvalid) {
+                            e.preventDefault();
+                            vm.submitWithdraw();
+                        }
+                    });
+                }
+            });
+        },
+        getCountries() {
+            let countryRequest = axios.create();
+			countryRequest.interceptors.request.use(config => {
+				this.loading.component = true
+				return config;
+			});
+			countryRequest.get(routes.countries.index, {}).then(response => {
+				if(response.status === 200) {
+	            	this.countries = response.data;
+                    this.country = ''+this.countries[0].id;
+                    this.loading.component = false
+                    this.validateFormWithdraw();
+	            }
+			}).catch((error) => {
+				this.loading.component = false
+			});
+        }
     }
   }
 </script>
@@ -174,22 +271,73 @@ export default {
     <load v-if="loading.component"></load>
     <div class="container" v-else>
         <h1 class="page-header">{{trans('strings.withdraw')}} {{trans('strings.funds')}}</h1>
-        <form @submit.prevent="submitWithdraw($el)" v-if="auth.balance.value >= 10">
+        <form v-if="auth.balance.value >= 10">
             <div class="row">
-                <div class="col-lg-3 col-12 col-sm-3 col-md-3">
+                <div class="col-lg-3 col-12 col-md-3 col-sm-3">
+                    <div class="form-group">
+                        <label for="name">{{ trans('strings.name') }}*</label>
+                        <input type="text" name="name" v-model="name" required class="form-control" id="name" :placeholder="'Nome impresso no cartão'">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12 col-md-4 col-sm-4">
+                    <div class="form-group">
+                        <label for="bank">{{ trans('strings.bank') }}*</label>
+                        <input type="text" name="bank" v-model="bank" required class="form-control" id="bank" :placeholder="trans('strings.example')+': Banco do Brasil, Bradesco'">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-12 col-md-3 col-sm-3">
+                    <div class="form-group">
+                        <label for="agency">{{ trans('strings.agency') }}*</label>
+                        <input type="text" name="agency" v-model="agency" required class="form-control" id="agency" :placeholder="trans('strings.example')+': 9999999-9'">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-12 col-md-2 col-sm-2">
+                    <div class="form-group">
+                        <label for="number">{{ trans('strings.number') }}*</label>
+                        <input type="text" name="number" v-model="number" required class="form-control" id="number" :placeholder="trans('strings.example')+': 9999999-9'">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-12 col-md-3 col-sm-3">
+                    <div class="form-group">
+                        <label for="account_type">{{ trans('strings.account_type') }}</label>
+                        <select v-model="account_type" class="form-control" id="account_type">
+                            <option value="1">
+                                {{ trans('strings.current_account') }}
+                            </option>
+                            <option value="2">
+                                {{ trans('strings.savings') }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-12 col-md-3 col-sm-3">
+                    <div class="form-group">
+                        <label for="cpf">{{ trans('strings.cpf') }}*</label>
+                        <input type="text" name="cpf" v-model="cpf" required class="form-control" id="cpf" :placeholder="trans('strings.example')+': 99999999999'">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-12 col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <label for="country">{{ trans('strings.country') }}</label>
+                        <select v-model="country" class="form-control" id="country">
+                            <option :value="value.id" :key="index" v-for="(value, index) in countries">
+                                {{ value.name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12 col-sm-4 col-md-4">
                     <strong>
                         <label for="amount">* Quantia a ser retirada &nbsp;
                             <i class="fa fa-info" title="Mínimo de $1.00"></i>
+                            &nbsp;&nbsp;{{ trans('strings.left_balance') }}: ${{ parseFloat(auth.balance.value - value).format(2, true) }}
                         </label>
                     </strong>
                     <input type="text" v-model="amount" required class="form-control" id="amount" :placeholder="'Por favor, indique o valor em USD'">
-                </div>
-                <div class="col-lg-4 col-12 col-md-4 col-sm-4">
-                    <strong>
-                        <label for="value">
-                            {{ trans('strings.left_balance') }}: ${{ parseFloat(auth.balance.value - value).format(2, true) }}
-                        </label>
-                    </strong>
                 </div>
             </div>
             <div class="row">
