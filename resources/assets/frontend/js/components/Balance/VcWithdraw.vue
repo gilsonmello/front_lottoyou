@@ -67,44 +67,6 @@ export default {
     },
     methods: {
         init() {
-            this.amount = VMasker.toMoney('10.00', {
-                // Decimal precision -> "90"
-                precision: 2,
-                // Decimal separator -> ",90"
-                separator: '.',
-                // Number delimiter -> "12.345.678"
-                delimiter: ',',
-                unit: '$',
-            });
-            let vm = this;
-            this.setMask();
-            $("#amount").on("blur", function(event) {
-                let value = $(this).val();
-                vm.amount = value;
-                value = parseFloat(vm.getAmount());
-                vm.value = parseFloat(value).format(2, true);
-                if(value > vm.auth.balance.value) {
-                    $(this).val(VMasker.toMoney('10.00', {
-                        // Decimal precision -> "90"
-                        precision: 2,
-                        // Decimal separator -> ",90"
-                        separator: '.',
-                        // Number delimiter -> "12.345.678"
-                        delimiter: ',',
-                        unit: '$',
-                    }));
-                    vm.amount = VMasker.toMoney('10.00', {
-                        // Decimal precision -> "90"
-                        precision: 2,
-                        // Decimal separator -> ",90"
-                        separator: '.',
-                        // Number delimiter -> "12.345.678"
-                        delimiter: ',',
-                        unit: '$',
-                    });
-                    vm.value = 10.00;
-                }
-            });
             this.getCountries();
         },
         requestWithdraw() {
@@ -165,6 +127,7 @@ export default {
             return value;
         },
         setMask() {
+            let vm = this;
             VMasker(document.querySelector("#amount")).maskMoney({
                 // Decimal precision -> "90"
                 precision: 2,
@@ -174,12 +137,49 @@ export default {
                 delimiter: ',',
                 unit: '$',
             });
+            document.querySelector("#amount").on("blur", function(event) {
+                let value = $(this).val();
+                vm.amount = value;
+                value = parseFloat(vm.getAmount());
+                vm.value = parseFloat(value).format(2, true);
+                if(value > vm.auth.balance.value) {
+                    $(this).val(VMasker.toMoney('10.00', {
+                        // Decimal precision -> "90"
+                        precision: 2,
+                        // Decimal separator -> ",90"
+                        separator: '.',
+                        // Number delimiter -> "12.345.678"
+                        delimiter: ',',
+                        unit: '$',
+                    }));
+                    vm.amount = VMasker.toMoney('10.00', {
+                        // Decimal precision -> "90"
+                        precision: 2,
+                        // Decimal separator -> ",90"
+                        separator: '.',
+                        // Number delimiter -> "12.345.678"
+                        delimiter: ',',
+                        unit: '$',
+                    });
+                    vm.value = 10.00;
+                }
+            });
         },
         validateFormWithdraw() {
             let vm = this;
             let time = setInterval(() => {
                 var form = $(this.$el).find('form');
                 if(form.length > 0) {
+                    this.amount = VMasker.toMoney('10.00', {
+                        // Decimal precision -> "90"
+                        precision: 2,
+                        // Decimal separator -> ",90"
+                        separator: '.',
+                        // Number delimiter -> "12.345.678"
+                        delimiter: ',',
+                        unit: '$',
+                    });
+                    this.setMask();
                     clearInterval(time);
                     form.validate({
                         rules: {
