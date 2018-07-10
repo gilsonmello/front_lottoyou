@@ -132,7 +132,7 @@ export default {
                 this.loading.submit = false;
             })
         },
-        /* submitWithdraw(el) {
+        submitWithdraw(el) {
             if(this.value <= this.auth.balance.value && this.value > 0) {
                 swal({
                     title: this.trans('strings.do_you_wish_to_continue'),
@@ -155,7 +155,7 @@ export default {
                     this.trans('strings.error')
                 );
             }
-        }, */
+        },
         getAmount() {
             let value = $("#amount").val();
             this.amount = value;
