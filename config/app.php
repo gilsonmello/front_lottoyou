@@ -151,7 +151,7 @@ return [
 
         Laravel\Passport\PassportServiceProvider::class,
 
-        Sichikawa\LaravelSendgridDriver\SendgridTransportServiceProvider::class
+        Sichikawa\LaravelSendgridDriver\SendgridTransportServiceProvider::class,
 
         /*
          * Package Service Providers...
