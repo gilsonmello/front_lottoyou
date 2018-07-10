@@ -58,9 +58,6 @@ class HistoricBalanceController extends Controller
             'lotteryBet.sweepstake' => function($query) {
 
             },
-            'devolution' => function($query) {
-
-            },
         ]);
         
         return response()->json($historicBalances->paginate(), 200);

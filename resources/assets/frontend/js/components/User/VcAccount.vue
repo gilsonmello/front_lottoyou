@@ -30,7 +30,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-3">
-                    <img v-if="photo" :src="photo" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
+                    <img v-if="photo" :src="photo_domain+photo" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
                     <img v-else src="//www.lottoland.com/skins/lottoland/images/profile/profileImageDummySquare-9e4d5d1b70298254.png" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
                     <label for="photo">Imagem do perfil (jpg ou png)</label>
                     <span @click="openImages" class="btn btn-primary btn-md">
@@ -241,6 +241,17 @@
     import {routes} from '../../api_routes'
     import LoadComponent from '../Load'
     export default {
+        metaInfo () {
+            return {
+                title: this.trans('strings.account') + ' | '+this.trans('strings.lottoyou'),
+                meta: [
+                    {
+                        name: 'description', 
+                        content: this.trans('strings.account')
+                    }
+                ]
+            }
+        },
         methods: {
             changePhoto: function(event) {
                 var file = null;
@@ -319,6 +330,7 @@
                             this.address = this.user.address;
                             this.street = this.user.street;
                             this.number = this.user.number;
+                            this.photo_domain = this.user.photo_domain;
                             this.cep = this.user.cep;
                             this.photo = this.user.photo;
                             this.city = this.user.city;
@@ -380,6 +392,7 @@
                     this.number = this.user.number;
                     this.cep = this.user.cep;
                     this.photo = this.user.photo;
+                    this.photo_domain = this.user.photo_domain;
                     this.city = this.user.city;
                     this.username = this.user.username;
                     this.state = this.user.state;
@@ -400,6 +413,7 @@
             return {
                 gender: '',
                 name: '',
+                photo_domain: '',
                 last_name: '',
                 address: '',
                 street: '',

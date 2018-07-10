@@ -33,50 +33,71 @@ export default {
             },
             amount: '',
             terms: '',
-            value: 0
+            value: 10.00
         }
     },
     mounted() {
-        this.amount = VMasker.toMoney('0.00', {
-            // Decimal precision -> "90"
-            precision: 2,
-            // Decimal separator -> ",90"
-            separator: '.',
-            // Number delimiter -> "12.345.678"
-            delimiter: ',',
-            unit: '$',
-        });
-        let vm = this;
-        this.setMask();
-        $("#amount").on("blur", function(event) {
-            let value = $(this).val();
-            vm.amount = value;
-            value = parseFloat(vm.getAmount());
-            vm.value = parseFloat(value).format(2, true);
-            if(value > vm.auth.balance.value) {
-                $(this).val(VMasker.toMoney(vm.auth.balance.value+'', {
-                    // Decimal precision -> "90"
-                    precision: 2,
-                    // Decimal separator -> ",90"
-                    separator: '.',
-                    // Number delimiter -> "12.345.678"
-                    delimiter: ',',
-                    unit: '$',
-                }));
-                vm.amount = VMasker.toMoney(vm.auth.balance.value+'', {
-                    // Decimal precision -> "90"
-                    precision: 2,
-                    // Decimal separator -> ",90"
-                    separator: '.',
-                    // Number delimiter -> "12.345.678"
-                    delimiter: ',',
-                    unit: '$',
+        if(this.auth.balance.value >= 10) {
+            this.init();
+        } else {
+            swal({
+                title: 'Saldo menor do que $10.00',
+                type: 'warning',
+                showCloseButton: true,
+                showConfirmButton: false,
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: this.trans('strings.yes'),
+                cancelButtonText: this.trans('strings.cancel')
+            }).then((result) => {
+                this.$router.push({
+                    name: 'users.account'
                 });
-                vm.value = vm.auth.balance.value;
-            }
-        });
+            });
+        }
     },
     methods: {
+        init() {
+            this.amount = VMasker.toMoney('10.00', {
+                // Decimal precision -> "90"
+                precision: 2,
+                // Decimal separator -> ",90"
+                separator: '.',
+                // Number delimiter -> "12.345.678"
+                delimiter: ',',
+                unit: '$',
+            });
+            let vm = this;
+            this.setMask();
+            $("#amount").on("blur", function(event) {
+                let value = $(this).val();
+                vm.amount = value;
+                value = parseFloat(vm.getAmount());
+                vm.value = parseFloat(value).format(2, true);
+                if(value > vm.auth.balance.value) {
+                    $(this).val(VMasker.toMoney('10.00', {
+                        // Decimal precision -> "90"
+                        precision: 2,
+                        // Decimal separator -> ",90"
+                        separator: '.',
+                        // Number delimiter -> "12.345.678"
+                        delimiter: ',',
+                        unit: '$',
+                    }));
+                    vm.amount = VMasker.toMoney('10.00', {
+                        // Decimal precision -> "90"
+                        precision: 2,
+                        // Decimal separator -> ",90"
+                        separator: '.',
+                        // Number delimiter -> "12.345.678"
+                        delimiter: ',',
+                        unit: '$',
+                    });
+                    vm.value = 10.00;
+                }
+            });
+        },
         requestWithdraw() {
             let request = axios.create();
             request.interceptors.request.use(config => {
@@ -95,6 +116,9 @@ export default {
                         toastr.success(response.data.message);
                     }
                     this.loading.submit = false;
+                    this.$router.push({
+                        name: 'users.transactions'
+                    });
                 }
             }).catch((error) => {
                 this.loading.submit = false;
@@ -151,7 +175,7 @@ export default {
     <load v-if="loading.component"></load>
     <div class="container" v-else>
         <h1 class="page-header">{{trans('strings.withdraw')}} {{trans('strings.funds')}}</h1>
-        <form @submit.prevent="submitWithdraw($el)">
+        <form @submit.prevent="submitWithdraw($el)" v-if="auth.balance.value >= 10">
             <div class="row">
                 <div class="col-lg-3 col-12 col-sm-3 col-md-3">
                     <strong>

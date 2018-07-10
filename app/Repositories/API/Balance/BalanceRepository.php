@@ -39,14 +39,14 @@ class BalanceRepository implements BalanceContract
             $balanceWithdraw = new BalanceWithdraw;
             $balanceWithdraw->owner_id = $user->id;
             $balanceWithdraw->value = $request->value;
-            $save = $balanceWithdraw->save();
+            $balanceWithdraw->save();
             
             $balance->value -= $request->value;
-            $save = $balance->save();
+            $balance->save();
 
             $historicBalance->balance_withdraw_id = $balanceWithdraw->id;
             $historicBalance->to = $balance->value;
-            $save = $historicBalance->save();
+            $historicBalance->save();
 
             DB::commit();
             return true;

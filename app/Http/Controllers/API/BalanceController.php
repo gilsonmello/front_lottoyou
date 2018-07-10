@@ -14,8 +14,8 @@ class BalanceController extends Controller
     private $repository;
     
     /**
-     * UserController constructor.
-     * @param UserContract $repository
+     * BalanceController constructor.
+     * @param BalanceContract $repository
      */
     public function __construct(BalanceContract $repository) {
         $this->repository = $repository;
