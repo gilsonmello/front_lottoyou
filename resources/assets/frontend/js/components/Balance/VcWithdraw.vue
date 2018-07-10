@@ -315,7 +315,7 @@ export default {
                 </div>
                 <div class="col-lg-3 col-12 col-md-3 col-sm-3">
                     <div class="form-group">
-                        <label for="identification">{{ trans('strings.identification') }}*</label>
+                        <label for="identification">Doc. de {{ trans('strings.identification') }}*</label>
                         <input type="text" name="identification" v-model="identification" required class="form-control" id="identification" :placeholder="trans('strings.example')+': 99999999999'">
                     </div>
                 </div>
