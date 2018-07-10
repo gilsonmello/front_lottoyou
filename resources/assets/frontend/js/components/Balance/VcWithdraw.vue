@@ -115,7 +115,6 @@ export default {
                     if(response.data.message) {
                         toastr.success(response.data.message);
                     }
-                    this.loading.submit = false;
                     this.$router.push({
                         name: 'users.transactions'
                     });

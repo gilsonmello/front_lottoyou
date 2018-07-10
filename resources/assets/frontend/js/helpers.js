@@ -67,7 +67,8 @@ Vue.prototype.formatDate = function(dateBR) {
 	return year +'-'+ month +'-'+day +' '+hour +':'+minute;
 };
 
-Vue.prototype.refreshAuth = function(onSuccess, onError) {
+Vue.prototype.refreshAuth = function(params) {
+	params = params != undefined ? params : {}
 	//Token de acesso
 	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
 	access_token = access_token != null ? access_token : null;
@@ -79,6 +80,9 @@ Vue.prototype.refreshAuth = function(onSuccess, onError) {
 	var authRequest = axios.create();
 
 	authRequest.interceptors.request.use(config => {
+		if(params.onBefore != undefined && typeof params.onBefore == 'function') {
+			params.onBefore();
+		}
 		return config;
 	});
 	//Fazendo busca do usuário logado, para setar na estrutura de dados
@@ -92,13 +96,13 @@ Vue.prototype.refreshAuth = function(onSuccess, onError) {
 			window.localStorage.setItem('authUser', JSON.stringify(response.data))
 			this.$store.dispatch('setUserObject', response.data);
 
-			if(onSuccess != undefined && typeof onSuccess == 'function') {
-				onSuccess();
+			if(params.onSuccess != undefined && typeof params.onSuccess == 'function') {
+				params.onSuccess();
 			}
 		}
     }).catch((error) => {
-		if(onError != undefined && typeof onError == 'function') {
-			onError();
+		if(params.onError != undefined && typeof params.onError == 'function') {
+			params.onError();
 		}
     });
 };
