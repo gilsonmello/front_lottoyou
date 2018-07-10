@@ -15,7 +15,7 @@ return [
     */
 
     'mandrill' => [
-        'secret' => 'mbaWEkQ_tG_5AZluXsE7dw',
+        'secret' => env('MANDRILL_SECRET'),
     ],
 
     'mailgun' => [
