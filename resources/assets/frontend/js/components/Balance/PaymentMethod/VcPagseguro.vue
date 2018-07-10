@@ -247,7 +247,7 @@
                     var return1 = document.createElement('input');
                     return1.setAttribute('name', "return");
                     return1.setAttribute('type', "hidden");
-                    return1.setAttribute('value', 'http://lottoyou.bet');
+                    return1.setAttribute('value', routes.base);
                     form.append(return1);
 
                     var paymentRequest = axios.create();

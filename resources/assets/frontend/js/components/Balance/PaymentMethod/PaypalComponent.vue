@@ -134,7 +134,7 @@
 				value = value.replace(/,/g, '');
 				return parseFloat(value).format(2, true);
 			},
-			sendPaypal: function(event) {
+			sendPaypal(event) {
 				var form = $(event.currentTarget);
 				if(this.validate(this.getAmount())) {
 					this.loading.paying = true;
@@ -174,19 +174,19 @@
                     var return1 = document.createElement('input');
                     return1.setAttribute('name', "return");
                     return1.setAttribute('type', "hidden");
-                    return1.setAttribute('value', 'http://lottoyou.bet');
+                    return1.setAttribute('value', routes.base);
                     form.append(return1);
 
                     var cancel = document.createElement('input');
                     cancel.setAttribute('name', "cancel");
                     cancel.setAttribute('type', "hidden");
-                    cancel.setAttribute('value', 'http://lottoyou.bet/cancel');
+                    cancel.setAttribute('value', routes.paypal.cancel);
                     form.append(cancel);
 
                     var notify_url = document.createElement('input');
                     notify_url.setAttribute('name', "notify_url");
                     notify_url.setAttribute('type', "hidden");
-                    notify_url.setAttribute('value', 'http://lottoyou.bet/paypal/feedback');
+                    notify_url.setAttribute('value', routes.paypal.feedback);
                     form.append(notify_url);
 
                     var charset = document.createElement('input');

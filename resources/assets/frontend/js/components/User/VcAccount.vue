@@ -220,9 +220,9 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <router-link :to="{ name: 'users.disable' }" class="pull-left">
+                            <!-- <router-link :to="{ name: 'users.disable' }" class="pull-left">
                                 {{ trans('strings.to_disable') }} {{ trans('strings.account') }}
-                            </router-link>
+                            </router-link> -->
                             <button type="submit" class="btn pull-right btn-md btn-primary">
                                 {{ trans('strings.save_button') }}
                             </button>

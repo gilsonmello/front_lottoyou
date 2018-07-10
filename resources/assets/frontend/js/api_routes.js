@@ -4,6 +4,7 @@ export const host = window.location.protocol + '//'+ window.location.hostname + 
 
 
 export const routes = {
+	base: host,
 	quotation_dolar: host+'/quotation_dolar',
 	historic_balances: {
 		of_the_user: host+'/historic_balances/of_the_user/{id}'
@@ -19,6 +20,8 @@ export const routes = {
 	},
 	paypal: {
 		payment: host+'/paypal/payment',
+		feedback: host+'/paypal/feedback',
+		cancel: host,
 	},
 	contacts: {
 		create: host+'/contacts',
