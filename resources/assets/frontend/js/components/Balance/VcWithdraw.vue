@@ -289,13 +289,13 @@ export default {
                 <div class="col-lg-3 col-12 col-md-3 col-sm-3">
                     <div class="form-group">
                         <label for="agency">{{ trans('strings.agency') }}*</label>
-                        <input type="text" name="agency" v-model="agency" required class="form-control" id="agency" :placeholder="trans('strings.example')+': 9999999-9'">
+                        <input type="text" name="agency" v-model="agency" required class="form-control" id="agency" :placeholder="'9999999-9'">
                     </div>
                 </div>
                 <div class="col-lg-2 col-12 col-md-2 col-sm-2">
                     <div class="form-group">
                         <label for="number">{{ trans('strings.number') }}*</label>
-                        <input type="text" name="number" v-model="number" required class="form-control" id="number" :placeholder="trans('strings.example')+': 9999999-9'">
+                        <input type="text" name="number" v-model="number" required class="form-control" id="number" :placeholder="'9999999-9'">
                     </div>
                 </div>
             </div>
@@ -316,7 +316,7 @@ export default {
                 <div class="col-lg-3 col-12 col-md-3 col-sm-3">
                     <div class="form-group">
                         <label for="identification">Doc. de {{ trans('strings.identification') }}*</label>
-                        <input type="text" name="identification" v-model="identification" required class="form-control" id="identification" :placeholder="trans('strings.example')+': 99999999999'">
+                        <input type="text" name="identification" v-model="identification" required class="form-control" id="identification" :placeholder="'99999999999'">
                     </div>
                 </div>
                 <div class="col-lg-4 col-12 col-sm-4 col-md-4">
@@ -343,8 +343,10 @@ export default {
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <input type="checkbox" v-model="terms" required name="terms" id="terms">
-                    &nbsp;Eu li e aceito os <router-link :to="{ name: 'terms' }" target="_blank">termos e condições</router-link> de uso deste site.
+                    <div class="form-group">
+                        <input type="checkbox" v-model="terms" required name="terms" id="terms">
+                        &nbsp;Eu li e aceito os <router-link :to="{ name: 'terms' }" target="_blank">termos e condições</router-link> de uso deste site.
+                    </div>
                 </div>
             </div>
             <div class="row">

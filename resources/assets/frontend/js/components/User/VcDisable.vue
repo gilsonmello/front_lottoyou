@@ -32,7 +32,7 @@
     				<div class="row">
     					<div class="col-lg-4 col-sm-4 col-md-4 col-12">
     						<div class="form-group">
-								<label for="type_exclusion">Tipo de Exclusão</label>
+								<label for="type_exclusion">Tempo de Exclusão</label>
 							    <select v-model="type_exclusion" class="form-control" id="type_exclusion">
 							      	<option value="0">
 							      		1 {{ trans('strings.month') }}
