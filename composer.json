@@ -13,7 +13,8 @@
         "laravel/passport": "~5.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
-        "nutsweb/laravel-prerender": "^2.0"
+        "nutsweb/laravel-prerender": "^2.0",
+        "s-ichikawa/laravel-sendgrid-driver": "^2.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b7b308ffc45cb0e50abd54d61a8c919e",
-    "content-hash": "b52db0440f3c3f7caf2e3482f7308563",
+    "hash": "81dcc465fd5d532fa62f3a40e21a72fe",
+    "content-hash": "5e409a5acad810bc36febfdaca658b57",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2158,6 +2158,62 @@
                 "uuid"
             ],
             "time": "2018-01-20 00:28:24"
+        },
+        {
+            "name": "s-ichikawa/laravel-sendgrid-driver",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/s-ichikawa/laravel-sendgrid-driver.git",
+                "reference": "6091b0156e259879408f99d8e887d3e7684c32a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/s-ichikawa/laravel-sendgrid-driver/zipball/6091b0156e259879408f99d8e887d3e7684c32a4",
+                "reference": "6091b0156e259879408f99d8e887d3e7684c32a4",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~5.3|~6.2",
+                "illuminate/mail": "~5.5"
+            },
+            "require-dev": {
+                "illuminate/container": "~5.5",
+                "illuminate/filesystem": "~5.5",
+                "phpunit/phpunit": "~5.7"
+            },
+            "suggest": {
+                "s-ichikawa/sendgrid-api-builder": "support to build json for sendgrid api"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Sichikawa\\LaravelSendgridDriver\\SendgridTransportServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sichikawa\\LaravelSendgridDriver\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "shingo.ichikawa",
+                    "email": "ichikawa.shingo.0829@gmail.com"
+                }
+            ],
+            "description": "This library adds a 'sendgrid' mail driver to Laravel.",
+            "keywords": [
+                "laravel",
+                "sendgrid"
+            ],
+            "time": "2017-12-28 14:54:25"
         },
         {
             "name": "swiftmailer/swiftmailer",
