@@ -2,13 +2,13 @@
 	<load-component v-if="loading.component"></load-component>
 	<div class="container" v-else>
 		<h1 class="page-header text-center">Crie uma conta para desfrutar de infinitas possibilidades</h1>
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-12 col-lg-12 col-md-12 col-sm-12">
 				<a class="btn btn-social btn-facebook" @click.prevent="loginFacebook">
 					<span class="fa fa-facebook"></span> Cadastre-se com o facebook
 				</a>
 			</div>
-		</div>
+		</div> -->
 		<form @submit.prevent="register">
 			<div class="row">
 				<div class="col-lg-9 col-12 col-sm-12 col-md-12" style="padding-right: 30px;">
