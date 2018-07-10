@@ -256,7 +256,7 @@
 			        	return config;
 					});
 
-					paymentRequest.post('/pagseguro/payment', {
+					paymentRequest.post(routes.pagseguro.payment, {
 						order_id: this.order_id,
 						amount: this.getAmount()
 					}, {}).then(response => {

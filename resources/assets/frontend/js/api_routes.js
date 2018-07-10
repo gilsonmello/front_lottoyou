@@ -16,7 +16,7 @@ export const routes = {
 		check: host+'/recaptcha/check',
 	},
 	pagseguro: {
-
+		payment: host+'/pagseguro/payment'
 	},
 	paypal: {
 		payment: host+'/paypal/payment',
