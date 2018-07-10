@@ -1,10 +1,11 @@
 export const protocol = "http://"
 export const enviroment = "production";
 export const host = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '')+'/api';
+const base = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '');
 
 
 export const routes = {
-	base: host,
+	base: base,
 	quotation_dolar: host+'/quotation_dolar',
 	historic_balances: {
 		of_the_user: host+'/historic_balances/of_the_user/{id}'
