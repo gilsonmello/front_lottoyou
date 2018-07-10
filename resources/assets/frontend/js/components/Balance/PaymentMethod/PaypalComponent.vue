@@ -180,7 +180,7 @@
                     var cancel = document.createElement('input');
                     cancel.setAttribute('name', "cancel");
                     cancel.setAttribute('type', "hidden");
-                    cancel.setAttribute('value', routes.paypal.cancel);
+                    cancel.setAttribute('value', routes.base);
                     form.append(cancel);
 
                     var notify_url = document.createElement('input');
