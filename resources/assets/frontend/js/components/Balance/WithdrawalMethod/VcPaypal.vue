@@ -46,7 +46,7 @@ export default {
     },
     mounted() {
         if(this.auth.balance.value >= 10) {
-            this.init();
+            this.validateFormPaypal();
         } else {
             swal({
                 title: 'Saldo menor do que $10.00',
@@ -67,37 +67,30 @@ export default {
     },
     methods: {
         init() {
-            this.getCountries();
+            
         },
-        requestAgent() {
+        requestPaypal() {
             let request = axios.create();
             request.interceptors.request.use(config => {
                 this.loading.submit = true;
                 return config;
             });
             
-            let url = routes.balance.agent_withdraw;
+            let url = routes.balance.paypal_withdraw;
             
             request.post(url, {
                 owner_id: this.auth.id,
-                country_id: this.country,
-                number: this.number,
-                bank: this.bank,
-                agency: this.agency,
-                name: this.name,
-                account_type: this.account_type,
-                identification: this.identification,
-                operation: this.operation,
                 value: this.value
             }).then(response => {
                 if(response.status === 200) {
-                    this.refreshAuth();
+                    this.loading.submit = false;
+                    /*this.refreshAuth();
                     if(response.data.message) {
                         toastr.success(response.data.message);
                     }
                     this.$router.push({
                         name: 'users.transactions'
-                    });
+                    });*/
                 }
             }).catch((error) => {
                 if(error.response.data.message) {
@@ -106,7 +99,7 @@ export default {
                 this.loading.submit = false;
             })
         },
-        submitAgent(el) {
+        submitPaypal(el) {
             if(this.value <= this.auth.balance.value && this.value > 0) {
                 swal({
                     title: this.trans('strings.do_you_wish_to_continue'),
@@ -120,7 +113,7 @@ export default {
                     if(result.dismiss) {
                         
                     } else {
-                        this.requestAgent();
+                        this.requestPaypal();
                     }
                 });
             } else {
@@ -177,7 +170,7 @@ export default {
                 }
             });
         },
-        validateFormAgent() {
+        validateFormPaypal() {
             let vm = this;
             let time = setInterval(() => {
                 var form = $(this.$el).find('form');
@@ -195,44 +188,14 @@ export default {
                     clearInterval(time);
                     form.validate({
                         rules: {
-                            name: {
-                                required: true,
-                            },
                             terms: {
                                 required: true,
                             },
-                            bank: {
-                                required: true,
-                            },
-                            agency: {
-                                required: true,
-                            },
-                            number: {
-                                required: true,
-                            },
-                            identification: {
-                                required: true,
-                            }
                         },
                         messages: {
-                            name: {
-                                required: vm.trans('strings.field_required'),
-                            },
                             terms: {
                                 required: vm.trans('strings.field_required'),
                             },
-                            bank: {
-                                required: vm.trans('strings.field_required'),
-                            },
-                            agency: {
-                                required: vm.trans('strings.field_required'),
-                            },
-                            number: {
-                                required: vm.trans('strings.field_required'),
-                            },
-                            identification: {
-                                required: vm.trans('strings.field_required'),
-                            }
                         },
                         highlight: function (input) {
                             $(input).addClass('error');
@@ -252,28 +215,11 @@ export default {
                         var isvalid = form.valid();
                         if (isvalid) {
                             e.preventDefault();
-                            vm.submitAgent();
+                            vm.submitPaypal();
                         }
                     });
                 }
             });
-        },
-        getCountries() {
-            let countryRequest = axios.create();
-			countryRequest.interceptors.request.use(config => {
-				this.loading.component = true
-				return config;
-			});
-			countryRequest.get(routes.countries.index, {}).then(response => {
-				if(response.status === 200) {
-	            	this.countries = response.data;
-                    this.country = ''+this.countries[0].id;
-                    this.loading.component = false
-                    this.validateFormAgent();
-	            }
-			}).catch((error) => {
-				this.loading.component = false
-			});
         }
     }
   }
@@ -283,75 +229,11 @@ export default {
     <load v-if="loading.component"></load>
     <div class="row" v-else>
 		<div class="col-lg-12">
-            <h6 class="choice-payment-method-msg"><strong>Você escolheu o Agente de pagamento como forma de retirada </strong></h6>
+            <h6 class="choice-payment-method-msg"><strong>Você escolheu o Paypal como forma de retirada </strong></h6>
             <h5>
             </h5>
             <!-- <h1 class="page-header">{{trans('strings.withdraw')}} {{trans('strings.funds')}}</h1> -->
-            <form v-if="auth.balance.value >= 10">
-                <div class="row">
-                    <div class="col-lg-3 col-12 col-md-3 col-sm-3">
-                        <div class="form-group">
-                            <label for="name">{{ trans('strings.name') }}*</label>
-                            <input type="text" name="name" v-model="name" required class="form-control" id="name" :placeholder="'Nome do titular da conta'">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-12 col-md-4 col-sm-4">
-                        <div class="form-group">
-                            <label for="bank">{{ trans('strings.bank') }}*</label>
-                            <input type="text" name="bank" v-model="bank" required class="form-control" id="bank" :placeholder="trans('strings.example')+': Banco do Brasil, Bradesco'">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-12 col-md-3 col-sm-3">
-                        <div class="form-group">
-                            <label for="agency">{{ trans('strings.agency') }}*</label>
-                            <input type="text" name="agency" v-model="agency" required class="form-control" id="agency" :placeholder="'9999999-9'">
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-12 col-md-2 col-sm-2">
-                        <div class="form-group">
-                            <label for="number">{{ trans('strings.number') }}*</label>
-                            <input type="text" name="number" v-model="number" required class="form-control" id="number" :placeholder="'9999999-9'">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-12 col-md-3 col-sm-3">
-                        <div class="form-group">
-                            <label for="account_type">{{ trans('strings.account_type') }}</label>
-                            <select v-model="account_type" class="form-control" id="account_type">
-                                <option value="1">
-                                    {{ trans('strings.current_account') }}
-                                </option>
-                                <option value="2">
-                                    {{ trans('strings.savings') }}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-12 col-md-3 col-sm-3">
-                        <div class="form-group">
-                            <label for="operation">{{ trans('strings.operation') }}</label>
-                            <input type="text" name="operation" v-model="operation" class="form-control" id="operation" :placeholder="'999'">
-                            <small>{{ trans('strings.if_there_is') }}</small>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-12 col-md-3 col-sm-3">
-                        <div class="form-group">
-                            <label for="identification">Doc. de {{ trans('strings.identification') }}*</label>
-                            <input type="text" name="identification" v-model="identification" required class="form-control" id="identification" :placeholder="'99999999999'">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-12 col-sm-3 col-md-3">
-                        <div class="form-group">
-                            <label for="country">{{ trans('strings.country') }}</label>
-                            <select v-model="country" class="form-control" id="country">
-                                <option :value="value.id" :key="index" v-for="(value, index) in countries">
-                                    {{ value.name }}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+            <form v-if="auth.balance.value >= 10" action="https://svcs.sandbox.paypal.com/AdaptivePayments/Pay">
                 <div class="row">
                     <div class="col-lg-6 col-12 col-sm-4 col-md-4">
                         <strong>

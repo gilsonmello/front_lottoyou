@@ -1,5 +1,6 @@
 <?php
-Route::post('balances/withdraw', 'BalanceController@withdraw');
+Route::post('balances/agent_withdraw', 'BalanceController@agentWithdraw');
+Route::post('balances/paypal_withdraw', 'BalanceController@paypalWithdraw');
 Route::resource('balances', 'BalanceController', [
     'names' => [
         'index' => 'api.balances.index',

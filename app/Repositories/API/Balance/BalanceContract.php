@@ -15,7 +15,12 @@ interface BalanceContract
     /**
      * 
      */
-    public function withdraw($request);
+    public function paypalWithdraw($request);
+
+    /**
+     * 
+     */
+    public function agentWithdraw($request);
 
     /**
      * @param \Illuminate\Http\Request $request

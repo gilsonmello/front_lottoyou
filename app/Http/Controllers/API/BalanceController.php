@@ -9,10 +9,10 @@ use App\Repositories\API\Balance\BalanceContract;
 class BalanceController extends Controller
 {
     /**
-     * @var UserContract
+     * @var BalanceContract
      */
     private $repository;
-    
+
     /**
      * BalanceController constructor.
      * @param BalanceContract $repository
@@ -22,11 +22,30 @@ class BalanceController extends Controller
     }
 
     /**
-     * 
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function withdraw(Request $request) 
+    public function paypalWithdraw(Request $request) 
     {
-        if($this->repository->withdraw($request)) {
+        $teste = $this->repository->paypalWithdraw($request);
+        return response()->json($teste, 200);
+        if($this->repository->paypalWithdraw($request)) {
+            return response()->json([
+                'message' => trans('alerts.balances.withdraw.success')
+            ], 200);
+        }
+        return response()->json([
+            'message' => trans('alerts.balances.withdraw.error')
+        ], 422);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function agentWithdraw(Request $request) 
+    {
+        if($this->repository->agentWithdraw($request)) {
             return response()->json([
                 'message' => trans('alerts.balances.withdraw.success')
             ], 200);

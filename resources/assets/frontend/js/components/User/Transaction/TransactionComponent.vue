@@ -138,10 +138,13 @@
                         {{ trans('strings.soccer_expert') }}
                     </td> 
                     <td v-else-if="balance.pagseguro">
-                        Pagseguro
+                        {{ trans('strings.deposit') }}
                     </td> 
                     <td v-else-if="balance.paypal">
-                        Paypal
+                        {{ trans('strings.deposit') }}
+                    </td>
+                    <td v-else-if="balance.agent_withdraw || balance.paypal_withdraw">
+                        {{ trans('strings.withdrawal') }}
                     </td>
                     <!-- Descrição -->
                     <td v-if="balance.order_item">
@@ -161,6 +164,9 @@
                     </td> 
                     <td v-else-if="balance.paypal">
                         <vc-paypal :balance="balance" :paypal="balance.paypal"></vc-paypal>
+                    </td> 
+                    <td v-else-if="balance.agent_withdraw">
+                        <vc-withdraw-agent :balance="balance" :withdraw="balance.agent_withdraw" />
                     </td> 
                     <td>
                         {{ trans('strings.'+balance.description) }}
@@ -183,17 +189,29 @@
 </template>
 
 <script>
-    import {routes} from '../../../api_routes'	
-    import {mapState, mapGetters} from 'vuex'
-    import LoadComponent from '../../Load'
-    import VcPagination from '../../VcPagination'
-    import VcOrderItem from './VcOrderItem'
-    import VcScratchcard from './VcScratchcard'
-    import VcSoccerExpert from './VcSoccerExpert'
-    import VcLottery from './VcLottery'
-    import VcPaypal from './VcPaypal'
-    import VcPagseguro from './VcPagseguro'
+    import {routes} from '../../../api_routes';	
+    import {mapState, mapGetters} from 'vuex';
+    import LoadComponent from '../../Load';
+    import VcPagination from '../../VcPagination';
+    import VcOrderItem from './VcOrderItem';
+    import VcScratchcard from './VcScratchcard';
+    import VcSoccerExpert from './VcSoccerExpert';
+    import VcLottery from './VcLottery';
+    import VcPaypal from './VcPaypal';
+    import VcPagseguro from './VcPagseguro';
+    import VcWithdrawAgent from './VcWithdrawAgent';
     export default {
+        metaInfo () {
+            return {
+                title: this.trans('strings.transactions') + ' | '+this.trans('strings.lottoyou'),
+                meta: [
+                    {
+                        name: 'description', 
+                        content: this.trans('strings.transactions') + ' | '+this.trans('strings.lottoyou')
+                    }
+                ]
+            }
+        },
         methods: {
             confirmation(balance) {
                 if(balance.order) {
@@ -241,12 +259,14 @@
             historicRequest() {
                 var historicRequest = axios.create();
 
-                var url = routes.historic_balances.of_the_user.replace('{id}', this.auth.id);
+                /*var url = routes.historic_balances.of_the_user.replace('{id}', this.auth.id);
                 url += "?page="+this.query.page;
                 url += "&column="+this.query.column;
                 url += "&direction="+this.query.direction;
                 url += "&amount="+this.query.amount;
-                url += "&from="+this.query.from;
+                url += "&from="+this.query.from;*/
+
+                var url = routes.historic_balances.of_the_user;
 
                 historicRequest.interceptors.request.use(config => {
                     this.loading.component = true
@@ -257,7 +277,14 @@
                     query: Object.assign(this.query)
                 });
 
-                historicRequest.get(url, {}, {}).then(response => {
+                historicRequest.post(url, {
+                    owner_id: this.auth.id,
+                    page: this.query.page,
+                    column: this.query.column,
+                    direction: this.query.direction,
+                    amount: this.query.amount,
+                    from: this.query.from
+                }, {}).then(response => {
                     if(response.status === 200) {
                         this.loading.component = false;
                         this.model = response.data;
@@ -316,7 +343,8 @@
             VcSoccerExpert,
             VcLottery,
             VcPaypal,
-            VcPagseguro
+            VcPagseguro,
+            VcWithdrawAgent,
         },
         computed: {
             ...mapGetters([

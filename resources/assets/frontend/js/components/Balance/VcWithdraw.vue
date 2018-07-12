@@ -41,6 +41,7 @@ export default {
             name: '',
             account_type: '1',
             identification: '',
+            operation: '',
             value: 10.00
         }
     },
@@ -80,6 +81,14 @@ export default {
             
             request.post(url, {
                 owner_id: this.auth.id,
+                country_id: this.country,
+                number: this.number,
+                bank: this.bank,
+                agency: this.agency,
+                name: this.name,
+                account_type: this.account_type,
+                identification: this.identification,
+                operation: this.operation,
                 value: this.value
             }).then(response => {
                 if(response.status === 200) {
@@ -92,6 +101,9 @@ export default {
                     });
                 }
             }).catch((error) => {
+                if(error.response.data.message) {
+                    toastr.error(error.response.data.message);
+                }
                 this.loading.submit = false;
             })
         },
@@ -315,11 +327,18 @@ export default {
                 </div>
                 <div class="col-lg-3 col-12 col-md-3 col-sm-3">
                     <div class="form-group">
+                        <label for="operation">{{ trans('strings.operation') }}</label>
+                        <input type="text" name="operation" v-model="operation" class="form-control" id="operation" :placeholder="'999'">
+                        <small>{{ trans('strings.if_there_is') }}</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-12 col-md-3 col-sm-3">
+                    <div class="form-group">
                         <label for="identification">Doc. de {{ trans('strings.identification') }}*</label>
                         <input type="text" name="identification" v-model="identification" required class="form-control" id="identification" :placeholder="'99999999999'">
                     </div>
                 </div>
-                <div class="col-lg-4 col-12 col-sm-4 col-md-4">
+                <div class="col-lg-3 col-12 col-sm-3 col-md-3">
                     <div class="form-group">
                         <label for="country">{{ trans('strings.country') }}</label>
                         <select v-model="country" class="form-control" id="country">

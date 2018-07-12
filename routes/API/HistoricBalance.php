@@ -13,4 +13,4 @@ Route::resource('historic_balances', 'HistoricBalanceController', [
 ]);
 
 Route::get('historic_balances/find/{id}', 'HistoricBalanceController@find');
-Route::get('historic_balances/of_the_user/{id}', 'HistoricBalanceController@ofTheUser');
+Route::post('historic_balances/of_the_user', 'HistoricBalanceController@ofTheUser');

@@ -11,6 +11,8 @@ return [
       | found in a intuitive way.
       |
      */
+    'if_there_is' => 'Se houver',
+    'operation' => 'Operação',
     'effect_withdraw' => 'Efetuar retirada',
     'lottoyou' => 'Lottoyou',
     'cancel' => 'Cancelar',
@@ -85,10 +87,12 @@ return [
     'refunded' => 'Reembolso',
     'reverse' => 'Reverso',
     'voided' => 'Anulado',
-    'deposit paypal' => 'Depósito Paypal',
-    'deposit pagseguro' => 'Depósito Pagseguro',
-    'devolution pagseguro' => 'Devolução Pagseguro',
-    'devolution paypal' => 'Devolução Paypal',
+    'agent withdrawal' => 'Retirada Ag. Pagamento',
+    'paypal withdrawal' => 'Retirada Paypal',
+    'paypal deposit' => 'Depósito Paypal',
+    'pagseguro deposit' => 'Depósito Pagseguro',
+    'pagseguro devolution' => 'Devolução Pagseguro',
+    'paypal devolution' => 'Devolução Paypal',
     'how_to_play' => 'Como jogar',
     'groups' => 'Grupos',
     'to_undo' => 'Desfazer',

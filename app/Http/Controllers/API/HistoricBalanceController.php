@@ -8,9 +8,9 @@ use App\HistoricBalance;
 
 class HistoricBalanceController extends Controller
 {
-    public function ofTheUser($owner_id, Request $request) 
+    public function ofTheUser(Request $request) 
     {
-        $historicBalances = HistoricBalance::where('owner_id', '=', $owner_id);
+        $historicBalances = HistoricBalance::where('owner_id', '=', $request->owner_id);
         if($request->column && !empty($request->column)) {
             $historicBalances->orderBy($request->column, $request->direction);
         }
@@ -58,6 +58,12 @@ class HistoricBalanceController extends Controller
             'lotteryBet.sweepstake' => function($query) {
 
             },
+            'agentWithdraw' => function($query) {
+
+            },
+            'paypalWithdraw' => function($query) {
+
+            },         
         ]);
         
         return response()->json($historicBalances->paginate(), 200);

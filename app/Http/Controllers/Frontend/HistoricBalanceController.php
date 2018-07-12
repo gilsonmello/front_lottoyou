@@ -61,6 +61,12 @@ class HistoricBalanceController extends Controller
             'devolution' => function($query) {
 
             },
+            'withdrawAgent' => function($query) {
+
+            },
+            'withdrawPaypal' => function($query) {
+
+            },
         ]);
         
         return response()->json($historicBalances->paginate(), 200);

@@ -47,56 +47,76 @@
 <template>
     <vc-load v-if="loading.component"></vc-load>
     <div class="container" v-else>
-		  <h1 class="page-header">{{trans('strings.withdraw')}} {{trans('strings.funds')}}</h1>
-      <div class="row">
-        <div class="col-lg-12 col-12 col-md-12 col-sm-12">
-          <!-- <h4 class="choice-payment-method-msg" v-if="payment_method == ''">
-            Por favor, clique em um dos métodos de pagamento:
-          </h4>
-          <div class="row box-payment-method" style="align-items: center;">
-            <div class="col-lg-2 col-6 col-md-2 col-sm-4">
-              <a @click.prevent="changePaymentMethod('payment_agent', $event)" href="#" class="payment-method active">
-                <img class="img-fluid" src="/img/payment_agent.png">
-                <span class="payment-method-name">Pagseguro</span>
-              </a>
+        <h1 class="page-header">{{trans('strings.withdraw')}} {{trans('strings.funds')}}</h1>
+        <div class="row">
+            <div class="col-lg-12 col-12 col-md-12 col-sm-12">
+                <h4 class="choice-payment-method-msg" v-if="payment_method == ''">
+                    Por favor, clique em um dos métodos de pagamento:
+                </h4>
+                <div class="row box-payment-method" style="align-items: center;">
+                    <div class="col-lg-2 col-6 col-md-2 col-sm-4">
+                        <a @click.prevent="changePaymentMethod('payment_agent', $event)" href="#" class="payment-method active">
+                            <img class="img-fluid" src="/img/payment_agent.png">
+                            <!-- <span class="payment-method-name">Agente de Pagamento</span> -->
+                        </a>
+                    </div>
+                    <!--<div class="col-lg-2 col-6 col-md-2 col-sm-4">
+                        <a @click.prevent="changePaymentMethod('paypal', $event)" href="#" class="payment-method">
+                            <img class="img-fluid" src="/img/paypal.png">
+                            <span class="payment-method-name">Agente de Pagamento</span>
+                        </a>
+                    </div>-->
+                </div>
+                <div class="row box-actions-payment">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <vc-agent v-if=" payment_method == 'payment_agent' "></vc-agent>
+                        <!--<vc-paypal v-if=" payment_method == 'paypal' "></vc-paypal>-->
+                    </div>
+                </div>
             </div>
-          </div> -->
-          <div class="row box-actions-payment">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-              <vc-agent :order_id="order_id" v-if=" payment_method == 'payment_agent' "></vc-agent>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
 </template>
 
 <script>
-  import VcLoad from '../Load'
-  import VcAgent from './WithdrawalMethod/VcAgent'
-  export default {
+import VcLoad from '../Load'
+import VcAgent from './WithdrawalMethod/VcAgent';
+import VcPaypal from './WithdrawalMethod/VcPaypal';
+export default {
+    metaInfo () {
+        return {
+            title: this.trans('strings.withdraw')+ ' ' + this.trans('strings.funds') + ' | '+this.trans('strings.lottoyou'),
+            meta: [
+                {
+                    name: 'description', 
+                    content: this.trans('strings.withdraw') + ' | '+this.trans('strings.lottoyou')
+                }
+            ]
+        }
+    },
     components: {
-      VcLoad,
-      VcAgent
+        VcLoad,
+        VcAgent,
+        VcPaypal
     },
     data: function() {
-			return {
-				payment_method: 'payment_agent',
-				order_id: '',
-				loading: {
-					component: false
-				},
-				counter: 0
-			}
-		},
+        return {
+            payment_method: 'payment_agent',
+            order_id: '',
+            loading: {
+                component: false
+            },
+            counter: 0
+        }
+    },
     methods: {
-      changePaymentMethod: function(payment_method, el) {
-				$('.box-payment-method').find('.active').removeClass('active');
-				var parent = $(el.target).parent();
-				parent.addClass('active');
-				this.payment_method = payment_method
-			},
+        changePaymentMethod: function(payment_method, el) {
+            $('.box-payment-method').find('.active').removeClass('active');
+            var parent = $(el.target).parent();
+            parent.addClass('active');
+            this.payment_method = payment_method
+        },
     }
-  }
+}
 </script>
 

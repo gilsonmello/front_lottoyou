@@ -8,10 +8,11 @@ export const routes = {
 	base: base,
 	quotation_dolar: host+'/quotation_dolar',
 	historic_balances: {
-		of_the_user: host+'/historic_balances/of_the_user/{id}'
+		of_the_user: host+'/historic_balances/of_the_user'
 	},
 	balance: {
-		withdraw: host+'/balances/withdraw',
+		agent_withdraw: host+'/balances/agent_withdraw',
+		paypal_withdraw: host+'/balances/paypal_withdraw',
 	},
 	recaptcha: {
 		check: host+'/recaptcha/check',
