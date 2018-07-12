@@ -34,7 +34,7 @@
 
 				<router-link class="world_cup_now" tag="li" :to="{ name: 'soccer_expert.show', params: {id: 2} }">
 					<a class="nav-link">
-						{{ trans('strings.world_cup_now') }}
+						{{ trans('strings.libertadores_now') }}
 					</a>
 				</router-link>
 	            <!-- <li class="nav-item">
