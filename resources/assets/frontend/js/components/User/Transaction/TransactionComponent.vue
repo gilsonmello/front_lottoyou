@@ -146,6 +146,9 @@
                     <td v-else-if="balance.agent_withdraw || balance.paypal_withdraw">
                         {{ trans('strings.withdrawal') }}
                     </td>
+                    <td v-else-if="balance.balance_insert">
+                        {{ trans('strings.balance') }}
+                    </td>
                     <!-- Descrição -->
                     <td v-if="balance.order_item">
                         <vc-order-item :balance="balance" :order_item="balance.order_item"></vc-order-item>
@@ -167,6 +170,9 @@
                     </td> 
                     <td v-else-if="balance.agent_withdraw">
                         <vc-withdraw-agent :balance="balance" :withdraw="balance.agent_withdraw" />
+                    </td> 
+                    <td v-else-if="balance.balance_insert">
+                        <vc-balance-insert :balance="balance" :insert="balance.balance_insert" />
                     </td> 
                     <td>
                         {{ trans('strings.'+balance.description) }}
@@ -200,6 +206,7 @@
     import VcPaypal from './VcPaypal';
     import VcPagseguro from './VcPagseguro';
     import VcWithdrawAgent from './VcWithdrawAgent';
+    import VcBalanceInsert from './VcBalanceInsert';
     export default {
         metaInfo () {
             return {
@@ -345,6 +352,7 @@
             VcPaypal,
             VcPagseguro,
             VcWithdrawAgent,
+            VcBalanceInsert,
         },
         computed: {
             ...mapGetters([

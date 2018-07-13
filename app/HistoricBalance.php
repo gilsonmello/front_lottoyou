@@ -107,6 +107,11 @@ class HistoricBalance extends Model
         return $this->belongsTo(PaypalWithdraw::class, 'paypal_withdraw_id');
     }
 
+    public function balanceInsert() 
+    {
+        return $this->belongsTo(BalanceInsert::class, 'balance_insert_id');
+    }
+
     public function getCreatedAttribute($date) 
     {
         return format($date, 'd/m/Y H:i');

@@ -63,7 +63,10 @@ class HistoricBalanceController extends Controller
             },
             'paypalWithdraw' => function($query) {
 
-            },         
+            },
+            'balanceInsert' => function($query) {
+
+            },  
         ]);
         
         return response()->json($historicBalances->paginate(), 200);
