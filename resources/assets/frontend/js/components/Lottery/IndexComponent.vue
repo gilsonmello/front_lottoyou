@@ -112,6 +112,12 @@
 	import LoadComponent from '../Load'
 	import CardComponent from './CardComponent'
 	export default {
+		metaInfo () {
+			return {
+				title: this.trans('strings.lotteries'),
+				meta: this.metas
+		    }
+		},
 		data: function() {
 			return {
 				loading: {
@@ -119,7 +125,8 @@
 					modalJackpotTable: false
 				},
 				lotteries: [],
-				indexClicked: null
+				indexClicked: null,
+				metas: []
 			}
 		},
 		methods: {
@@ -156,9 +163,15 @@
 			  	return config;
 			});
 			lotteriesRequest.get(routes.lotteries.index, {}, {}).then(response => {
-				if(response.status === 200){
-					this.lotteries = response.data
-					this.loading.component = false
+				if(response.status === 200) {
+					this.lotteries = response.data;
+					for(var i = 0; i < this.lotteries.length; i++) {
+	            		this.metas.push({
+	            			name: 'description',
+	            			content: this.lotteries[i].nome,
+	            		});
+	            	}
+					this.loading.component = false;
 				}
 			}).catch((error) => {
 				

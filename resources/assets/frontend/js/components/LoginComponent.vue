@@ -63,11 +63,11 @@
 						</div>
 					</form>
                 </div>
-                <div class="modal-footer">
+                <!-- <div class="modal-footer">
 					<a class="btn btn-block btn-social btn-facebook" @click.prevent="loginFacebook">
 						<span class="fa fa-facebook"></span> Cadastre-se com o facebook
 					</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

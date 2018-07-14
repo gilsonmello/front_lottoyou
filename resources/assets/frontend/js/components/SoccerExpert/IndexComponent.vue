@@ -164,9 +164,7 @@
 		metaInfo () {
 			return {
 				title: this.trans('strings.soccer_expert'),
-				meta: [
-		          	{name: 'description', content: this.trans('strings.soccer_expert')}
-		        ]
+				meta: this.metas
 		    }
 		},
 		created: function() {
@@ -196,7 +194,8 @@
 					modalJackpotTable: false,
 				},
 				soccer_experts: [],
-				indexClicked: null
+				indexClicked: null,
+				metas: []
 			}
 		},
 		mounted: function() {
@@ -218,6 +217,12 @@
 	            if(response.status === 200) {
 	            	this.loading.component = false
 	            	this.soccer_experts = response.data
+	            	for(var i = 0; i < this.soccer_experts.length; i++) {
+	            		this.metas.push({
+	            			name: 'description',
+	            			content: this.soccer_experts[i].nome,
+	            		});
+	            	}
 				}
 	        }).catch((error) => {
 	        	if(error.response.data.msg) {

@@ -1,8 +1,8 @@
 let mix = require('laravel-mix');
-
+/*
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const PrerenderSpaPlugin = require('prerender-spa-plugin');
-const path = require('path');
+const path = require('path');*/
 
 
 /*mix.webpackConfig({
