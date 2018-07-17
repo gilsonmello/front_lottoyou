@@ -6,10 +6,10 @@
         <div class="row">
         	<div class="col-lg-12">
         		<div class="sub-navigation">
-        			<router-link :to="{ name: 'lotteries.show', params: { id: lottery.id } }" class="active show" id="play-component">
-	                    {{ trans('strings.play_on_the') }} {{ lottery.nome }}
+        			<router-link :to="{ name: 'lotteries.show', params: { slug: item.lottery.slug } }" class="active show" id="play-component">
+	                    {{ trans('strings.play_on_the') }} {{ item.lottery.nome }}
 	                </router-link>
-	                <router-link :to="{ name: 'lotteries.results', params: { id: lottery.id } }" class="show" id="result-component">
+	                <router-link :to="{ name: 'lotteries.results', params: { slug: item.lottery.slug } }" class="show" id="result-component">
 	                    {{ trans('strings.results') }}
 	               	</router-link>
         		</div>
@@ -17,16 +17,16 @@
         </div>	
 		
 
-		<div class="row" v-if="lottery.sweepstakes.length == 0">
+		<div class="row" v-if="item.lottery.sweepstakes.length == 0">
 			<div class="col-lg-12">
 				<h3>Nenhuma data de sorteio disponível no momento</h3>
 			</div>				
 		</div>
 
-        <form @submit.prevent="addToCart" v-if="lottery.sweepstakes.length > 0">
+        <form @submit.prevent="addToCart" v-if="item.lottery.sweepstakes.length > 0">
         	<div class="row">
 	        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
-	        		<h4 class="page-header" style="margin-top: 0; border: none;">{{ lottery.nome }}</h4>
+	        		<h4 class="page-header" style="margin-top: 0; border: none;">{{ item.lottery.nome }}</h4>
 	        	</div>
 	        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
 	        		<button class="btn btn-md btn-back pull-right btn-primary" @click.prevent="back($event)">
@@ -35,7 +35,7 @@
 	        	</div>
 	        </div>
 			<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
-				<ticket-component v-for="(ticket, index) in item.tickets" :tickets="tickets" :dickers="dickers" :dickersMaxSel="dickersMaxSel" :dickersExtras="dickersExtras" :item="item" :dickersExtrasSelect="dickersExtrasSelect" :ticket="ticket" :index="index" :key="index" v-on:refreshTickes="refreshTickes" v-on:refreshNumbersChecked="refreshNumbersChecked" v-on:deleteTicket="deleteTicket">
+				<ticket-component v-for="(ticket, index) in item.tickets" :tickets="tickets" :dickers="dickers" :dickersMaxSel="dickersMaxSel" :dickersExtras="dickersExtras" :item="item" :dickersExtrasSelect="dickersExtrasSelect" :ticket="ticket" :index="index" :key="index" v-on:refreshTickets="refreshTickets" v-on:refreshNumbersChecked="refreshNumbersChecked" v-on:deleteTicket="deleteTicket">
 					
 				</ticket-component>
 
@@ -55,7 +55,7 @@
 					<div class="form-group">
 						<label for="lot_jogo_id">{{ trans('strings.sweepstake_date') }}</label>
 					    <select v-model="lot_jogo_id" class="form-control" id="lot_jogo_id">
-					      	<option :value="key" :data-key="key" v-for="(sweepstake, key) in lottery.sweepstakes">
+					      	<option :value="key" :data-key="key" v-for="(sweepstake, key) in item.lottery.sweepstakes">
 					      		{{ retireHour(sweepstake.data_fim) }}
 					      	</option>
 					    </select>
@@ -76,6 +76,20 @@
 					</div>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-lg-6 col-12 col-md-6 col-sm-6">
+					
+					<label style="display: block;" for="duration" class="control-label">
+						Teimosinha
+					</label>
+
+					<div class="form-check form-check-inline" :value="key" v-for="(teimosinha, key) in item.teimosinhas">
+					  	<label class="form-check-label">
+					    	<input class="form-check-input" v-model="item.duration" type="radio" name="duration" :value="teimosinha"> {{teimosinha}}
+					  	</label>
+					</div>
+				</div>
+			</div>
 			<hr>
 			<div class="row">
 				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
@@ -89,7 +103,7 @@
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">
-						{{ trans('strings.total_value') }} $<span class="value" v-if="total > 0">
+						{{ trans('strings.total_value') }} $<span class="value" v-if="item.total > 0">
 							{{ totalFormated }}
 						</span>
 						<span class="value" v-else>0.00</span>
@@ -108,6 +122,12 @@
 	import {mapState, mapGetters} from 'vuex'
 	import TicketComponent from './TicketComponent'
 	export default {
+		metaInfo () {
+			return {
+				title: this.item.lottery.nome+ ' | '+ this.trans('strings.lottoyou'),
+				meta: this.metas
+		    }
+		},
 		activated: function() {
 
 		},
@@ -117,6 +137,7 @@
         },
 		data: function() {
 			return {
+				metas: [],
 				rawHtml: '',
 				loading: {
 					component: true,
@@ -124,6 +145,7 @@
 				},
 				lottery: {},
 				id: '',
+				slug: '',
 				next_lottery: {
 					days: '',
 	    			hours: '',
@@ -138,12 +160,17 @@
 				tickets: [0, 1, 2, 3, 4],
 				total: 0.00,
 				lot_jogo_id: '',
+				duration: 1,
 				item: {
 					hash: null,
 					id: null,
+					duration: 1,
 					value: null,
 					name: '',
+					slug: '',
 					date: '',
+					total: 0,
+					teimosinhas: [],
 					lottery: {},
 					tickets: [
 				 		{
@@ -188,7 +215,7 @@
 										this.trans('strings.successful_purchase'),
 										this.trans('strings.buy'),
 									);
-									window.localStorage.setItem('authUser', JSON.stringify(response.data))
+									//window.localStorage.setItem('authUser', JSON.stringify(response.data))
 									this.$store.dispatch('setUserObject', response.data);
 									this.$store.dispatch('clearPurchase');
 									
@@ -215,11 +242,12 @@
 				var item = {
 					hash: this.item.hash,
 					id: this.item.id,
+					slug: this.item.slug,
 					name: this.item.name,
 					value: this.item.value,
 					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
-					total: this.total,
+					total: this.item.total,
 					tickets: tickets,
 					sweepstake: sweepstake,
 					dickers: this.dickers,
@@ -271,11 +299,12 @@
 				var item = {
 					hash: this.item.hash,
 					id: this.item.id,
+					slug: this.item.slug,
 					name: this.item.name,
 					value: this.item.value,
 					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
-					total: this.total,
+					total: this.item.total,
 					tickets: tickets,
 					sweepstake: sweepstake,
 					dickers: this.dickers,
@@ -307,7 +336,7 @@
                                         this.trans('strings.successful_purchase'),
                                         this.trans('strings.buy'),
                                     );
-                                    window.localStorage.setItem('authUser', JSON.stringify(response.data));
+                                    //window.localStorage.setItem('authUser', JSON.stringify(response.data));
                                     this.$store.dispatch('setUserObject', response.data);
                                     this.$store.dispatch('clearPurchase');
 
@@ -327,7 +356,7 @@
 			sweepstakesRequest() {				
 
 				const sweepstakesRequest = axios.create();
-				let url = routes.lotteries.sweepstakes.replace('{id}', this.$route.params.id);
+				let url = routes.lotteries.sweepstakes.replace('{slug}', this.$route.params.slug);
 
 				sweepstakesRequest.interceptors.request.use(config => {		        
 				  	return config;
@@ -352,27 +381,34 @@
 				this.item.tickets.splice(index, 1);
 				//Pegando todas as apostas feitas
 				var tickets = this.getTicketsFinished();
-				this.total = this.item.value * tickets.length;
+				this.item.total = this.item.value * tickets.length;
 			},
 			showRequest() {
 				const showRequest = axios.create();
 
-				this.id = this.$route.params.id;
+				this.slug = this.$route.params.slug;
 				
 				showRequest.interceptors.request.use(config => {
 		        	this.loading.component = true
 				  	return config;
 				});
-				showRequest.get(routes.lotteries.show.replace('{id}', this.id), {}, {}).then(response => {
-					if(response.status === 200){
-						this.lottery = response.data
-						this.lot_jogo_id = this.lottery.sweepstakes[0].id
+				showRequest.get(routes.lotteries.show.replace('{slug}', this.slug), {}, {}).then(response => {
+					if(response.status === 200) {
+						//this.lottery = response.data
+						
+	            		this.metas.push({
+	            			name: 'description',
+	            			content: response.data.nome,
+	            		});		            	
+
+						this.lot_jogo_id = response.data.sweepstakes[0].id
 						this.loading.component = false
 						this.tickets = [0, 1, 2, 3, 4];
 						this.item.hash = this.makeid(); 
-						this.item.id = this.lottery.id;
-						this.item.value = this.lottery.value;
-						this.item.lottery = this.lottery;
+						this.item.id = response.data.id;
+						this.item.value = response.data.value;
+						this.item.lottery = response.data;
+						this.item.slug = response.data.slug;
 
 						this.lot_jogo_id = 0;
 						
@@ -417,20 +453,24 @@
 						this.dickersMaxSel = [];
 						this.dickersExtras = [];
 						this.dickersExtrasSelect = [];
-					 	for (var i = 1; i <= this.lottery.dezena; i++) {
+					 	for (var i = 1; i <= this.item.lottery.dezena; i++) {
 			            	this.dickers.push(i);
 			            }
-			            for (var i = 1; i <= this.lottery.dezena_sel; i++) {
+			            for (var i = 1; i <= this.item.lottery.dezena_sel; i++) {
 			            	this.dickersMaxSel.push(i);
 			            }
-			            for (var i = 1; i <= this.lottery.dezena_extra; i++) {
+			            for (var i = 1; i <= this.item.lottery.dezena_extra; i++) {
 			            	this.dickersExtras.push(i);
 			            }
-			            for (var i = 1; i <= this.lottery.dezena_extra_sel; i++) {
+			            for (var i = 1; i <= this.item.lottery.dezena_extra_sel; i++) {
 			            	this.dickersExtrasSelect.push(i);
 			            }
+
+			            for (var i = 1; i <= this.item.lottery.sweepstakes.length; i++) {
+			            	this.item.teimosinhas.push(i);
+			            }
 						
-						var date = this.formatDate(this.lottery.sweepstakes[0].data_fim);				
+						var date = this.formatDate(this.item.lottery.sweepstakes[0].data_fim);				
 						var timeOut = setInterval(() => {
 		    				this.setCountdown(date, timeOut);
 		    			}, 1000);
@@ -439,7 +479,7 @@
 					}
 				}).catch((error) => {
 					this.loading.component = false;
-					this.lottery.sweepstakes = []
+					this.item.lottery.sweepstakes = []
 				});
 			},
 			verifyNumberSelected(numbers, dicker) {
@@ -466,12 +506,12 @@
 
 						item = item[0]
 
-						this.lottery = item.lottery
+						this.item.lottery = item.lottery
 
 						this.sweepstakesRequest().then(response => {
 							if(response.status === 200) {
-								this.lottery.sweepstakes = response.data
-								var date = this.formatDate(this.lottery.sweepstakes[0].data_fim);				
+								this.item.lottery.sweepstakes = response.data
+								var date = this.formatDate(this.item.lottery.sweepstakes[0].data_fim);				
 								var timeOut = setInterval(() => {
 				    				this.setCountdown(date, timeOut);
 				    			}, 1000);
@@ -479,6 +519,7 @@
 							}
 						});
 
+						console.log(item.lot_jogo_id)
 		    			this.lot_jogo_id = item.lot_jogo_id
 
 						this.loading.component = false
@@ -501,6 +542,9 @@
 						this.item.id = item.id;
 						this.item.value = item.value;
 						this.item.lottery = item.lottery;
+						this.item.duration = item.duration;
+						this.item.teimosinhas = item.teimosinhas;
+						this.item.slug = item.slug;
 						
 						this.item.tickets = item.tickets;
 						this.dickers = item.dickers;
@@ -508,7 +552,7 @@
 						this.dickersExtras = item.dickersExtras;
 						this.dickersExtrasSelect = item.dickersExtrasMaxSelect;
 
-						this.total = this.item.value * item.tickets.length;
+						this.item.total = this.item.value * item.tickets.length;
 
 					} else {
 
@@ -535,7 +579,7 @@
 				} else if(this.$route.params.id != undefined) {
 					this.showRequest();
 				}
-				window.document.title = this.trans('strings.lotteries');
+				//window.document.title = this.trans('strings.lotteries');
 			},
 			setCountdown(date, timeOut) {
 				this.countdown(date, (d, h, m, s, distance) => {
@@ -558,12 +602,10 @@
 				//Remove a última aposta
 				this.item.tickets.pop();
 
-
-
 				//Pegando todas as apostas feitas
 				var tickets = this.getTicketsFinished();
 				
-				this.total = this.item.value * tickets.length;
+				this.item.total = this.item.value * tickets.length;
 
 				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
 
@@ -576,7 +618,7 @@
 					value: this.item.value,
 					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
-					total: this.total,
+					total: this.item.total,
 					tickets: tickets,
 					sweepstake: sweepstake
 				};
@@ -664,7 +706,7 @@
 
 				//Pegando todas as apostas feitas
 				var tickets = this.getTicketsFinished();
-				this.total = this.item.value * tickets.length;
+				this.item.total = this.item.value * tickets.length;
 			},
 			isEnabledDickersExtras: function() {
 				if(this.dickersExtrasSelect.length > 0) {
@@ -729,7 +771,7 @@
 				//Pegando apostas concluídas
 				var tickets = this.getTicketsFinished();
 				//Atualizando o total
-				this.total = this.item.value * tickets.length;
+				this.item.total = this.item.value * tickets.length;
 			},
 			//Função para remover números duplicados em um array
 			removeRepeatedNumbers: function(numbers, value) {
@@ -796,7 +838,7 @@
 				//Pegando todas as apostas feitas
 				var tickets = this.getTicketsFinished();
 				
-				this.total = this.item.value * tickets.length;
+				this.item.total = this.item.value * tickets.length;
 
 
 			},
@@ -824,7 +866,7 @@
 				//Pegando todas as apostas feitas
 				var tickets = this.getTicketsFinished();
 				
-				this.total = this.item.value * tickets.length;
+				this.item.total = this.item.value * tickets.length;
 
 				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
 
@@ -837,7 +879,7 @@
 					value: this.item.value,
 					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
-					total: this.total,
+					total: this.item.total,
 					tickets: tickets,
 					sweepstake: sweepstake
 				};
@@ -862,7 +904,7 @@
 				//Pegando todas as apostas feitas
 				var tickets = this.getTicketsFinished();
 				
-				this.total = this.item.value * tickets.length;
+				this.item.total = this.item.value * tickets.length;
 
 				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.lot_jogo_id]);
 
@@ -875,7 +917,7 @@
 					value: this.item.value,
 					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
-					total: this.total,
+					total: this.item.total,
 					tickets: tickets,
 					sweepstake: sweepstake
 				};
@@ -899,12 +941,15 @@
 
 				var item = {
 					hash: this.item.hash,
+					slug: this.item.slug,
 					id: this.item.id,
 					name: this.item.name,
 					value: this.item.value,
+					duration: this.item.duration,
+					teimosinhas: this.item.teimosinhas,
 					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
-					total: this.total,
+					total: this.item.total,
 					tickets: tickets,
 					sweepstake: sweepstake,
 					dickers: this.dickers,
@@ -916,7 +961,7 @@
 				if(tickets.length == 0) {
 					alert('Faça pelo menos um jogo');
 					//this.$store.dispatch('removeItemLottery', item);
-				}else {
+				} else {
 
 					let addLotteryRequest = axios.create();
 
@@ -975,24 +1020,30 @@
 					value: this.item.value,
 					lottery: this.item.lottery,
 					lot_jogo_id: this.lot_jogo_id,
-					total: this.total,
+					total: this.item.total,
 					tickets: tickets
 				};
 				this.$store.dispatch('removeItemLottery', item);
 			},
-			refreshTickes() {
+			refreshTickets() {
 				//Pegando todas as apostas feitas
-				var tickets = this.getTicketsFinished();
+				let tickets = this.getTicketsFinished();
 				
-				this.total = this.item.value * tickets.length;
+				this.item.total = (this.item.value * tickets.length) * this.item.duration;
 			},
 			init() {
 				if(this.$route.params.hash != undefined) {
-					this.showSoccerExpert();
-				} else if(this.$route.params.id != undefined) {
+					this.showLottery();
+				} else if(this.$route.params.slug != undefined) {
+					this.item.lottery.nome = this.trans('strings.loading');
 					this.showRequest();
 				}
-				window.document.title = this.trans('strings.soccer_expert');
+				//window.document.title = this.trans('strings.soccer_expert');
+			},
+			teimosinhas() {
+				let tickets = this.getTicketsFinished();
+				//let tickets = this.getTicketsFinished().clone();				
+				this.item.total = (this.item.value * tickets.length) * this.item.duration;
 			}
  		},
  		mounted: function() {
@@ -1008,7 +1059,7 @@
             totalFormated: {
             	// getter
             	get: function () {
-            		return this.total.format(2, true);
+            		return this.item.total.format(2, true);
 		    	},
 			    // setter
 			    set: function (newValue) {
@@ -1022,12 +1073,20 @@
 			TicketComponent
 		},
 		watch: {
-			purchase: {
-				handler(newValue, oldValue) {
-			      	
-			    },
-			    deep:true
+			'lot_jogo_id'(newValue, oldValue) {
+				let len = this.item.lottery.sweepstakes.length;
+				this.item.teimosinhas = [];
+				let j = 1;
+				for(var i = newValue; i < this.item.lottery.sweepstakes.length; i++) {
+					this.item.teimosinhas.push(j);
+					j++;
+				}
+				this.item.duration = 1;
 			},
+			'item.duration'(newValue, oldValue) {
+				this.teimosinhas();
+			},
+			purchase: {},
 			'tickets': function(newValue, oldValue) {
 				
 			}

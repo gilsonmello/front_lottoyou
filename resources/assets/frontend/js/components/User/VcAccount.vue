@@ -317,7 +317,7 @@
                             $(this.$el).find('[type="submit"]').removeClass('hide');
                             response_2.data['access_token'] = access_token;
                             response_2.data['refresh_token'] = refresh_token;
-                            window.localStorage.setItem('authUser', JSON.stringify(response_2.data))
+                            //window.localStorage.setItem('authUser', JSON.stringify(response_2.data))
                             this.$store.dispatch('setUserObject', response_2.data);
                             toastr.success(this.trans('alerts.users.update.success'));
                             
@@ -377,7 +377,7 @@
                     'Authorization': 'Bearer ' + access_token
                 }}).then(response => {
                     response.data['access_token'] = access_token;
-                    window.localStorage.setItem('authUser', JSON.stringify(response.data))
+                    //window.localStorage.setItem('authUser', JSON.stringify(response.data))
                     this.$store.dispatch('setUserObject', response.data)
                     this.user = response.data                            
 

@@ -274,7 +274,7 @@
                                             this.trans('strings.successful_purchase'),
                                             this.trans('strings.buy'),
                                         );
-                                        window.localStorage.setItem('authUser', JSON.stringify(response.data));
+                                        //window.localStorage.setItem('authUser', JSON.stringify(response.data));
                                         this.$store.dispatch('setUserObject', response.data);
                                         this.$store.dispatch('clearPurchase');
                                         /*this.$router.push({
@@ -358,7 +358,7 @@
 										this.trans('strings.successful_purchase'),
 										this.trans('strings.buy'),
 									);
-									window.localStorage.setItem('authUser', JSON.stringify(response.data));
+									//window.localStorage.setItem('authUser', JSON.stringify(response.data));
 									this.$store.dispatch('setUserObject', response.data);
 									this.$store.dispatch('clearPurchase');
 									/*this.$router.push({

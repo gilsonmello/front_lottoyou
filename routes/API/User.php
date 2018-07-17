@@ -9,7 +9,7 @@ Route::post('users/exists', 'UserController@exists')
 Route::post('users/forgot_password', 'UserController@forgotPassword')
     ->name('api.users.forgot_password');
 
-Route::get('/#/'.config('app.url_locale').'users/password_recovery/{hash}', 'UserController@passwordRecovery')
+Route::get('/'.config('app.url_locale').'users/password_recovery/{hash}', 'UserController@passwordRecovery')
     ->name('api.users.password_recovery@get');
 
 Route::post('users/password_recovery/{hash}', 'UserController@passwordRecovery')
@@ -43,8 +43,8 @@ Route::get('users/{id}/orders', 'UserController@orders');
 Route::get('users/{id}/soccer_experts', 'UserController@soccerExperts');
 Route::get('users/{id}/scratch_cards', 'UserController@scratchCards');
 Route::get('users/{id}/lotteries', 'UserController@lotteries');
-Route::get('users/{id}/items', 'UserController@items');
-Route::get('/#/'.config('app.url_locale').'users/activate/{hash}', 'UserController@activate')
+Route::post('users/items', 'UserController@items');
+Route::get('/'.config('app.url_locale').'users/activate/{hash}', 'UserController@activate')
     ->name('api.users.activate@get');
 Route::post('users/activate/{hash}', 'UserController@activate')
     ->name('api.users.activate@post');

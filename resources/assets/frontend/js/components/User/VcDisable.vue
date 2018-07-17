@@ -89,8 +89,6 @@
             ])
         },
 		mounted () {
-			let authUser = JSON.parse(window.localStorage.getItem('authUser'));
-            authUser = authUser != null ? authUser : null;
             this.loading.component = false;
 		},
 		methods: {

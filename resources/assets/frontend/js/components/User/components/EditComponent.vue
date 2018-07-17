@@ -219,6 +219,7 @@
 <script>
     import {routes} from '../../../api_routes'
     import LoadComponent from '../../Load'
+    import {mapGetters} from 'vuex'
     export default {
         methods: {
             changePhoto: function(event) {
@@ -285,7 +286,7 @@
                             $(this.$el).find('[type="submit"]').removeClass('hide');
                             response_2.data['access_token'] = access_token;
                             response_2.data['refresh_token'] = refresh_token;
-                            window.localStorage.setItem('authUser', JSON.stringify(response_2.data))
+                            //window.localStorage.setItem('authUser', JSON.stringify(response_2.data))
                             this.$store.dispatch('setUserObject', response_2.data);
                             toastr.success(this.trans('alerts.users.update.success'));
                             
@@ -344,7 +345,7 @@
                     'Authorization': 'Bearer ' + access_token
                 }}).then(response => {
                     response.data['access_token'] = access_token;
-                    window.localStorage.setItem('authUser', JSON.stringify(response.data))
+                    //window.localStorage.setItem('authUser', JSON.stringify(response.data))
                     this.$store.dispatch('setUserObject', response.data)
                     this.user = response.data                            
 
@@ -406,35 +407,16 @@
             }
         },
         mounted: function() {
-            let authUser = JSON.parse(window.localStorage.getItem('authUser'));
-            authUser = authUser != null ? authUser : null;
-            if(authUser.provider != '') {
-                this.loading.component = false;
-                this.gender = authUser.gender ? authUser.gender : '';
-                this.nickname = authUser.nickname;
-                this.name = authUser.name;
-                this.last_name = authUser.last_name;
-                this.address = authUser.address;
-                this.street = authUser.street;
-                this.number = authUser.number;
-                this.cep = authUser.cep;
-                this.photo = authUser.photo;
-                this.city = authUser.city;
-                this.username = authUser.username;
-                this.state = authUser.state;
-                this.date_birth = 31 + '/' +12+ '/' + 1994; 
-                this.id = authUser.id;
-                this.complement = authUser.complement
-                this.country = authUser.country.name
-                this.phone_code = '+'+authUser.country.phonecode
-            } else {
-                this.userRequest();
-            }          
-
+            this.userRequest();
         },
         components: {
             LoadComponent
-        }
+        },        
+        computed: {
+            ...mapGetters([
+                'authUser'
+            ]),
+        },
     }
 </script>
 

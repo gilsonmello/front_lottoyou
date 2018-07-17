@@ -174,16 +174,16 @@ export default {
 			        component: require('../components/Lottery/IndexComponent.vue')
 			    },
 			    {   
-			  		path: 'lotteries/show/:id/:hash?',
-			        name: 'lotteries.show', 
-			        props: true,
-			        component: require('../components/Lottery/ShowComponent.vue')
-			    },
-			    {   
-			  		path: 'lotteries/results/:id',
+			  		path: 'lotteries/results/:slug',
 			        name: 'lotteries.results', 
 			        props: true,
 			        component: require('../components/Lottery/Result/VcIndex.vue')
+			    },
+			    {   
+			  		path: 'lotteries/:slug/:hash?',
+			        name: 'lotteries.show', 
+			        props: true,
+			        component: require('../components/Lottery/ShowComponent.vue')
 			    },
 			    {   
 			  		path: 'cart',

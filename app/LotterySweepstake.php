@@ -26,10 +26,11 @@ class LotterySweepstake extends Model
     public $timestamps = true;
 
     /*
-    Função comentada para ficar de exemplo de como criar atributo personalizado
+        Função comentada para ficar de exemplo de como criar atributo personalizado 
+    */
     protected $appends = [
-        'scratch_card_winning'
-    ];*/
+        //'date_and_time'
+    ];
 
     /**
      * 
@@ -64,11 +65,13 @@ class LotterySweepstake extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function result() {
+    public function result() 
+    {
     	return $this->hasOne(LotteryResult::class, 'lot_jogo_id');
     }
 
-    public function getDataFimAttribute($date) {
+    public function getDataFimAttribute($date) 
+    {
         return format($date.' '.$this->hora_fim, 'd/m/Y H:i');
     }
 

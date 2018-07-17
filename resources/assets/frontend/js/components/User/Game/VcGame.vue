@@ -124,6 +124,17 @@
     import VcScratchCard from './ScratchCard/VcScratchCard'
     import VcLottery from './Lottery/VcLottery'
     export default {
+        metaInfo () {
+            return {
+                title: this.trans('strings.games')+ ' | '+ this.trans('strings.lottoyou'),
+                meta: [
+                    {
+                        name: 'description',
+                        content: this.trans('strings.games'),
+                    }
+                ]
+            }
+        },
         data() {
             return {
                 loading: {
@@ -144,12 +155,13 @@
             itemsRequest() {
                 var itemsRequest = axios.create();
 
-                var url = routes.users.items.replace('{id}', this.auth.id);
+                /*var url = routes.users.items.replace('{id}', this.auth.id);
                 url += "?page="+this.query.page;
                 url += "&column="+this.query.column;
                 url += "&direction="+this.query.direction;
                 url += "&id="+this.query.id;
-                url += "&lottery_bet_id="+this.query.lottery_bet_id;
+                url += "&lottery_bet_id="+this.query.lottery_bet_id;*/
+                var url = routes.users.items;
 
                 this.$router.replace({
                     query: Object.assign(this.query)
@@ -160,7 +172,14 @@
                     return config;
                 });
 
-                itemsRequest.get(url, {}, {}).then(response => {
+                itemsRequest.post(url, {
+                    page: this.query.page,
+                    column: this.query.column,
+                    direction: this.query.direction,
+                    id: this.query.id,
+                    lottery_bet_id:  this.query.lottery_bet_id,
+                    owner_id: this.auth.id
+                }, {}).then(response => {
                     if(response.status === 200) {
                         this.loading.component = false;
                         this.model = response.data;  

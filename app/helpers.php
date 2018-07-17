@@ -180,8 +180,16 @@ if (!function_exists('format_without_mask')) {
 	function format_without_mask($date, $condition) {
 		if ($date == NULL) {
 			return NULL;
-		}else{
-			return implode('-', array_reverse(explode($condition, $date)));
+		} else {
+			$date = explode(' ', $date);
+			$time = '';
+			//$date = explode($condition, $date);
+			if(count($date) >= 2) {
+				$time = ' '.$date[1];
+				$date = $date[0];
+			}
+			$date = explode($condition, $date);			
+			return $date[2].'-'.$date[1].'-'.$date[0].$time;
 		}
 	}
 

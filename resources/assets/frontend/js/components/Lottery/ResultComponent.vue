@@ -5,10 +5,10 @@
         <div class="row">
         	<div class="col-lg-12">
         		<div class="sub-navigation">
-        			<router-link :to="{ name: 'lotteries.show', params: { id: lottery.id } }" class="show" id="play-component">
+        			<router-link :to="{ name: 'lotteries.show', params: { slug: lottery.slug } }" class="show" id="play-component">
 	                    {{ trans('strings.play_on_the') }} {{ lottery.sorteio }} 
 	                </router-link>
-	                <router-link :to="{ name: 'lotteries.results', params: { id: lottery.id } }" class="show active" id="result-component">
+	                <router-link :to="{ name: 'lotteries.results', params: { slug: lottery.slug } }" class="show active" id="result-component">
 	                    {{ trans('strings.results') }}
 	               	</router-link>
         		</div>
@@ -28,17 +28,18 @@
 				},
 				lottery: {},
 				id: '',
-				active_tab: ''
+				active_tab: '',
+				slug: '',
 			}
 		},
 		mounted: function() {
 			const showRequest = axios.create();
-			this.id = this.$route.params.id;
+			this.slug = this.$route.params.slug;
 			showRequest.interceptors.request.use(config => {
 	        	this.loading.component = true
 			  	return config;
 			});
-			showRequest.get(routes.lotteries.show.replace('{id}', this.id), {}, {}).then(response => {
+			showRequest.get(routes.lotteries.show.replace('{slug}', this.slug), {}, {}).then(response => {
 				if(response.status === 200){
 					this.lottery = response.data
 					this.loading.component = false

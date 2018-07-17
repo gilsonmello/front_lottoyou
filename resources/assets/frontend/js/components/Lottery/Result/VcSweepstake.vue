@@ -16,7 +16,7 @@
 	    </div>
 
     	<div :class="'collapse '+sweepstake.id">
-			<vc-result :result="sweepstake.result">
+			<vc-result :result="sweepstake.result" v-if="sweepstake.result">
 			</vc-result>
 			<div class="row no-margin">
 				<div class="col-12">

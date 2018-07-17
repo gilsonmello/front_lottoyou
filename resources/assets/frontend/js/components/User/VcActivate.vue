@@ -45,7 +45,7 @@ export default {
                         response_2.data.access_token = access_token;
                         response_2.data.refresh_token = refresh_token;
                         var authUser = response_2.data;
-                        window.localStorage.setItem('authUser', JSON.stringify(authUser));
+                        //window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
                         this.$store.dispatch('setUserObject', response_2.data);
                         

@@ -29,6 +29,7 @@
 	import LoadComponent from './Load'
 	import AppLoadComponent from './AppLoad'
 	import {routes} from '../api_routes'
+	import {mapGetters} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -43,36 +44,7 @@
 			}
 		},
 		methods: {
-			init() {
-				//Pegando os dados do usuário no localstorage
-				var access_token = JSON.parse(window.localStorage.getItem('access_token'));
-				access_token = access_token != null ? access_token : null;
-
-				//Token para refresh
-				var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
-				refresh_token = refresh_token != null ? refresh_token : '';
-
-				if(access_token && this.$route.name != 'users.account') {
-					this.refreshAuthPromise()
-					.then(response => {
-						if(response.status === 200) {
-							response.data.access_token = access_token;
-				        	response.data.refresh_token = refresh_token;
-							window.localStorage.setItem('authUser', JSON.stringify(response.data));
-							this.$store.dispatch('setUserObject', response.data);
-						}
-				    }).catch((error) => {
-						this.$store.dispatch('clearAuthUser');
-						window.localStorage.removeItem('authUser');
-						window.localStorage.removeItem('access_token');
-						window.localStorage.removeItem('refresh_token');
-				    });
-				}
-
-
-				this.authUser = JSON.parse(window.localStorage.getItem('authUser'));
-				this.$store.dispatch('setUserObject', this.authUser);
-
+			cartRequest() {
 				//Requisição para pegar os itens do carrinho salvo
 				let cartRequest = axios.create();
 
@@ -98,9 +70,49 @@
 				}).catch((error) => {
 					this.loading.component = false
 				});
+			},
+			init() {
+				//Pegando os dados do usuário no localstorage
+				var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+				access_token = access_token != null ? access_token : null;
 
-				this.onReady();
-				this.beforeEach();
+				//Token para refresh
+				var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+				refresh_token = refresh_token != null ? refresh_token : '';
+
+
+				if(access_token && this.$route.name != 'users.account') {
+					this.refreshAuthPromise()
+					.then(response => {
+						if(response.status === 200) {
+							response.data.access_token = access_token;
+				        	response.data.refresh_token = refresh_token;
+							//window.localStorage.setItem('authUser', JSON.stringify(response.data));
+							this.$store.dispatch('setUserObject', response.data);
+							this.cartRequest();
+							this.onReady();
+							this.beforeEach();
+						}
+				    }).catch((error) => {
+				    	this.cartRequest();
+				    	this.onReady();
+						this.beforeEach();
+						this.$store.dispatch('clearAuthUser');
+						window.localStorage.removeItem('authUser');
+						window.localStorage.removeItem('access_token');
+						window.localStorage.removeItem('refresh_token');
+				    });
+				} else {			
+			    	this.cartRequest();		
+			    	this.onReady();
+					this.beforeEach();
+				}
+
+
+				//this.authUser = JSON.parse(window.localStorage.getItem('authUser'));
+				//this.$store.dispatch('setUserObject', this.authUser);				
+
+				
 			},
 			onReady() {
 				router.onReady(() => {
@@ -112,8 +124,10 @@
                     	})
 					}*/
 
+					let access_token = JSON.parse(window.localStorage.getItem('access_token'));
+					access_token = access_token != null ? access_token : null;
 					//Verificando se a página necessita de login,
-					if(this.$router.history.current.meta.requiresAuth && this.authUser == null) {
+					if(this.$router.history.current.meta.requiresAuth && access_token == null) {
 						this.$router.push({
 							name: 'home'
 						})
@@ -127,15 +141,15 @@
 					//Pegando os dados do usuário no localstorage
 					var access_token = JSON.parse(window.localStorage.getItem('access_token'));
 					access_token = access_token != null ? access_token : null;
-					let authUser = JSON.parse(window.localStorage.getItem('authUser'));
-					authUser = authUser != null ? authUser : null;
+					//let authUser = JSON.parse(window.localStorage.getItem('authUser'));
+					//authUser = authUser != null ? authUser : null;
 
-				    if(to.meta.requiresAuth === true && (access_token || authUser)) {
+				    if(to.meta.requiresAuth === true && (access_token)) {
 				    	next();
 				    }
 
 				    //Se a rota depende de login
-					if(to.meta.requiresAuth === true && (access_token == null && authUser == null)) {
+					if(to.meta.requiresAuth === true && (access_token == null)) {
 
 						//Verificando se é diferente da rota para edição de conta do usuário
 						//Pois se não o fizer, a requisição será executada 2 vezes, porque
@@ -252,7 +266,12 @@
 			LoginComponent,
 			AppLoadComponent,
 			VcModal
-		}
+		},
+		computed: {
+            ...mapGetters([
+                'authUser'
+            ]),
+        },
 	}
 </script>
 

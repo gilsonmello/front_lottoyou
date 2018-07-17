@@ -205,8 +205,8 @@
 					$(this.$el).find('.tickets').removeClass('complete');
 					$(this.$el).find('.tickets').removeClass('incomplete');
 				}
-
-				this.$emit('refreshTickes');
+				
+				this.$emit('refreshTickets');
 			},	
 			isEnabledDickersExtras: function() {
 				if(this.dickersExtrasSelect.length > 0) {

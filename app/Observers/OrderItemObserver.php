@@ -9,6 +9,7 @@ use App\ScratchCard;
 use App\LotteryUser;
 use App\LotteryUserNumber;
 use App\LotteryUserNumberExtra;
+use App\LotterySweepstake;
 use App\SoccerExpertRoundGroup;
 use App\HistoricBalance;
 use App\Balance;
@@ -33,33 +34,49 @@ class OrderItemObserver
      */
     private function lottery($item, $data) 
     {
-        //Percorrendo todas as cartelas feitas pelo usuário
-        foreach($data->tickets as $bet) {
-            $lotteryUser = new LotteryUser;
+        $sweepstake = LotterySweepstake::find($data->sweepstake->id);
+        $data_fim = format_without_mask($sweepstake->data_fim, '/');
 
-            //Atribuindo os dados para a aposta e salvando
-            $lotteryUser->lot_jogo_id = $data->sweepstake->id;
-            $lotteryUser->jogador_id = $item->order->user_id;
-            $lotteryUser->order_item_id = $item->id;
-            $lotteryUser->status = 1;
-            $lotteryUser->save();
+        //Pega a quantidade de datas de acordo com a teimosinha que o usuário escolheu
+        $lotterySweepstakes = LotterySweepstake::where('lot_categoria_id', '=', $data->lottery->id)
+            ->where('active', '=', 1)
+            //->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'))
+            ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', $data_fim)
+            ->orderBy('data_fim', 'ASC')
+            ->orderBy('hora_fim', 'ASC')
+            ->limit($data->duration)  
+            ->get();
 
-            //Pegando as dezenas selecionadas
-            foreach($bet->numbers as $key => $number) {
-                $userNumber = new LotteryUserNumber;
-                $userNumber->numero = $number;
-                $userNumber->lot_users_jogo_id = $lotteryUser->id;
-                $userNumber->save();                             
+        //Percorrendo as datas
+        foreach($lotterySweepstakes as $lotterySweepstake) {
+            //Percorrendo todas as cartelas feitas pelo usuário
+            foreach($data->tickets as $bet) {
+                $lotteryUser = new LotteryUser;
+
+                //Atribuindo os dados para a aposta e salvando
+                $lotteryUser->lot_jogo_id = $lotterySweepstake->id;
+                $lotteryUser->jogador_id = $item->order->user_id;
+                $lotteryUser->order_item_id = $item->id;
+                $lotteryUser->duration = $data->duration;
+                $lotteryUser->status = 1;
+                $lotteryUser->save();
+
+                //Pegando as dezenas selecionadas
+                foreach($bet->numbers as $key => $number) {
+                    $userNumber = new LotteryUserNumber;
+                    $userNumber->numero = $number;
+                    $userNumber->lot_users_jogo_id = $lotteryUser->id;
+                    $userNumber->save();                             
+                }
+
+                //Pegando as dezenas extras selecionadas
+                foreach($bet->numbersExtras as $key => $number) {
+                    $userNumber = new LotteryUserNumberExtra;
+                    $userNumber->numero = $number;
+                    $userNumber->lot_users_jogo_id = $lotteryUser->id;
+                    $userNumber->save();
+                }
             }
-
-            //Pegando as dezenas extras selecionadas
-            foreach($bet->numbersExtras as $key => $number) {
-                $userNumber = new LotteryUserNumberExtra;
-                $userNumber->numero = $number;
-                $userNumber->lot_users_jogo_id = $lotteryUser->id;
-                $userNumber->save();
-            }
-
         }
         return true;
     }

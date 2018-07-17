@@ -13,14 +13,14 @@
 				<div class="row">
 					<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 						<span>
-							{{ item.tickets.length }} Jogos
+							{{ item.tickets.length }} {{ trans('strings.game') }}(s)
 						</span>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 						<span>
-							Sorteio: {{ item.sweepstake.data_fim }}
+							Sorteio: {{ trans('strings.as_from') }} {{ retireHour(item.sweepstake.data_fim) }} ({{ item.duration }} {{ item.duration == 1 ? trans('strings.contest') : trans('strings.contests')}})
 						</span>
 					</div>
 				</div>
@@ -33,10 +33,10 @@
 			</div>
 
 			<div class="col-lg-1 col-2 col-md-1 col-sm-2">
-				<a class="btn btn-xs btn-danger" type="trigger" @click.prevent="removeItem(item, $event)" href="#" style="cursor:pointer;">
+				<a class="btn btn-xs btn-danger" v-if="!loading.delete" @click.prevent="removeItem(item, $event)" href="#" style="cursor:pointer;">
 					<i class="fa fa-trash-o" data-toggle="tooltip" data-placement="top" :title="trans('strings.delete')" data-original-title="Deletar"></i>
 				</a>
-				<a @click.prevent="" type="load" class="hide btn btn-xs btn-danger">
+				<a @click.prevent="" v-else class="btn btn-xs btn-danger">
 					<i class="fa fa-refresh fa-spin"></i>
 				</a>
 			</div>
@@ -44,10 +44,22 @@
 
 
 		<div :id="id" class="collapse">
-			<div class="container-tickets" style="display: flex;" @click.prevent="editLottery(item.id, item.hash, $event)">
+			<div class="container-tickets" style="display: flex; overflow-x: auto;" @click.prevent="editLottery(item.slug, item.hash, $event)">
 				<ticket-component v-for="(ticket, index) in item.tickets" :tickets="item.tickets" :dickers="dickers" :dickersMaxSel="dickersMaxSel" :dickersExtras="dickersExtras" :item="item" :dickersExtrasSelect="dickersExtrasSelect" :ticket="ticket" :index="index" :key="index">
 					
 				</ticket-component>
+			</div>
+			<div class="row no-margin" style="margin-bottom: 13px;">
+				<div class="col-lg-4">
+					<div style="background-color: #f2f2f2; padding: 10px">
+						&nbsp;&nbsp;<strong>{{ trans('strings.duration') }}</strong>&nbsp; {{ item.duration }} {{ item.duration == 1 ? trans('strings.contest') : trans('strings.contests')}}
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div style="background-color: #f2f2f2; padding: 10px">
+						&nbsp;&nbsp;{{ retireHour(item.sweepstake.data_fim) }}
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -65,6 +77,9 @@
 		props: ['item', 'id'],
 		data: function() {
 			return {
+				loading: {
+					delete: false
+				},
 				dickers: [],
 				dickersMaxSel: [],
 				dickersExtras: [],
@@ -86,11 +101,11 @@
             }
 		},
 		methods: {
-			editLottery(id, hash, $event) {
+			editLottery(slug, hash, $event) {
 				this.$router.push({
 					name: 'lotteries.show',
 					params: {
-						id: id,
+						slug: slug,
 						hash: hash
 					}
 				})
@@ -99,8 +114,7 @@
 				let removeItemRequest = axios.create();
 
 				removeItemRequest.interceptors.request.use(config => {
-		        	$(this.$el).find('[type="load"]').removeClass('hide');
-		        	$(this.$el).find('[type="trigger"]').addClass('hide');
+					this.loading.delete = true;
 				  	return config;
 				});
 
@@ -110,8 +124,9 @@
 					if(response.status === 200) {
 						this.$store.dispatch('removeItemLottery', item)
 					}
+					this.loading.delete = false;
 				}).catch((error) => {
-
+					this.loading.delete = false;
 				})
 			},
 		},
@@ -135,7 +150,7 @@
 		cursor: pointer;
 	}
 
-	.collapse.show {
+	/*.collapse.show {
 		display: flex !important;
-	}
+	}*/
 </style>

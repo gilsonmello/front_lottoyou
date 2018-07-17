@@ -11,7 +11,7 @@
     			</div>	      		
 	      	</div>
 	      	<div class="col-lg-1 col-2 col-sm-2 col-md-1 text-center no-padding">
-	      		{{ ticket.pontuacao != null ? ticket.pontuacao : '0' }}
+	      		{{ ticket.pontuacao != null ? ticket.pontuacao : '-' }}
 	      	</div>
 	      	<div class="col-lg-1 col-2 col-sm-2 col-md-1 text-center no-padding">
 	      		{{ ticket.pontuacao_bola_ouro != null ? ticket.pontuacao_bola_ouro : '0' }}

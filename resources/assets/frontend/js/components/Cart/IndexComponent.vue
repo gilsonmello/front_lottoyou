@@ -156,10 +156,10 @@
 					
 				</div>
 				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-					<button class="btn btn-primary btn-md btn-complete-purchase" type="submit" @click.prevent="validate($event)">		
+					<button class="btn btn-primary btn-md btn-complete-purchase" v-if="!loading.paying" type="submit" @click.prevent="validate($event)">		
 						{{ trans('strings.complete_purchase') }}
 					</button>
-					<button @click.prevent="" type="load" class="btn-load hide pull-right btn btn-md btn-primary">
+					<button @click.prevent="" v-else class="btn-load pull-right btn btn-md btn-primary">
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 				</div>
@@ -200,6 +200,17 @@
 	import LoadComponent from '../Load'
 	import {routes} from '../../api_routes'
 	export default {
+		metaInfo () {
+			return {
+				title: this.trans('strings.cart')+ ' | '+ this.trans('strings.lottoyou'),
+				meta: [
+					{
+						name: 'description',
+            			content: this.trans('strings.cart'),
+					}
+				]
+		    }
+		},
 		computed: {
 			...mapState({
                 User: state => state.User
@@ -211,7 +222,8 @@
 		data: function() {
 			return {
 				loading: {
-					component: true
+					component: true,
+					paying: false,
 				},
 			}
 		},
@@ -223,8 +235,7 @@
 				var validateRequest = axios.create();
 
 				validateRequest.interceptors.request.use(config => {
-					$(this.$el).find('.btn-load').removeClass('hide');
-		        	$(this.$el).find('.btn-complete-purchase').addClass('hide');
+					this.loading.paying = true;
 		          	return config;
 				});
 
@@ -241,8 +252,7 @@
 						error.response.data.msg,
 						this.trans('strings.error')
 					);
-					$(this.$el).find('.btn-load').addClass('hide');
-		        	$(this.$el).find('.btn-complete-purchase').removeClass('hide');
+					this.loading.paying = false;
 				});			
 			},
 			completePurchase(event) {
@@ -264,7 +274,7 @@
 						this.refreshAuthPromise()
 							.then((response) => {
 								if (response.status === 200) {
-									window.localStorage.setItem('authUser', JSON.stringify(response.data))
+									//window.localStorage.setItem('authUser', JSON.stringify(response.data))
 									this.$store.dispatch('setUserObject', response.data);
 									this.$store.dispatch('clearPurchase');
 									this.$router.push({
@@ -276,14 +286,15 @@
 							});
 						
 					}
+					this.loading.paying = false;
 				}).catch((error) => {
-					
+					this.loading.paying = false;
 				});		
 			}
 		},
 		mounted: function() {
 			//window.document.title = this.trans('strings.cart')+ ' | ' +window.app.title;
-			window.document.title = this.trans('strings.cart');
+			//window.document.title = this.trans('strings.cart');
 			this.loading.component = false;
 		},
 		components: {

@@ -226,7 +226,7 @@
 		},
 		methods: {
 			col() {
-				if(this.user != null) {
+				if(this.auth != null) {
 					return 'col-lg-9 col-md-10 col-sm-9 col-12 no-padding'
 				}
 				return 'col-lg-9 col-md-10 col-sm-9 col-12 no-padding'
@@ -283,7 +283,7 @@
 		    	if(header.length > 0){
 					clearInterval(time);
 				}
-	    	});	    	
+	    	}); 	
 		},
 		components: {
 			NavGameComponent,
@@ -300,7 +300,7 @@
         watch: {
         	'User.authUser': function(newValue, oldValue) {
                 if(newValue) {
-                    this.user = newValue;
+                    //this.auth = newValue;
                 }
             }
         }

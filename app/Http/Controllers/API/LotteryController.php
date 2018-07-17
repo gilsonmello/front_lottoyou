@@ -30,11 +30,14 @@ class LotteryController extends Controller
         return response()->json($sweepstake, 200);
     }
 
-    public function sweepstakes($id) 
+    public function sweepstakes($slug) 
     {
-        $sweepstakes = LotterySweepstake::where('lot_categoria_id', '=', $id)
+        $lottery = Lottery::where('slug', '=', $slug)->get()->first();
+        $sweepstakes = LotterySweepstake::where('lot_categoria_id', '=', $lottery->id)
             ->where('active', '=', 1)
             ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'))
+            ->orderBy('data_fim', 'asc')
+            ->orderBy('hora_fim', 'asc')
             ->get();
 
         if($sweepstakes->isEmpty()) {
@@ -45,15 +48,16 @@ class LotteryController extends Controller
         return response()->json($sweepstakes, 200);
     }
 
-    public function find($id) 
+    public function find($param) 
     {
-        return Lottery::find($id);
+        return Lottery::where('slug', '=', $param)->orWhere('id', '=', $param)->get()->first();
     }
 
-    public function results($id, Request $request) 
+    public function results($slug, Request $request) 
     {
+        $lottery = Lottery::where('slug', '=', $slug)->get()->first();
 
-        $sweepstakes = LotterySweepstake::where('lot_categoria_id', '=', $id)
+        $sweepstakes = LotterySweepstake::where('lot_categoria_id', '=', $lottery->id)
             ->with([
                 'result' => function($query) {
 
@@ -159,13 +163,15 @@ class LotteryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-       $lottery = Lottery::where('id', '=', $id)
+       $lottery = Lottery::where('slug', '=', $slug)
             ->with([
                 'sweepstakes' => function($query) {
                     $query->where('active', '=', 1)
-                        ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'));
+                        ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'))
+                        ->orderBy('data_fim', 'asc')
+                        ->orderBy('hora_fim', 'asc');
                 }
             ])
             /*->whereHas('sweepstakes', function($query) {

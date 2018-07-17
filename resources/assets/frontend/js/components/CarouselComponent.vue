@@ -17,7 +17,7 @@
                                         </router-link>
                                     </div>
                                     <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <router-link :to="{ name: 'lotteries.show', params: {id: 3} }">
+                                        <router-link :to="{ name: 'lotteries.show', params: {id: 1} }">
                                             <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/index_easy_money.png">
                                         </router-link>
                                     </div>

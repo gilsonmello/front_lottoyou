@@ -1,11 +1,11 @@
 <template>
-	<load-component v-if="loading.component == true"></load-component>
+	<load v-if="loading.component == true"></load>
 	<section class="container" v-else>
 		<div class="sub-navigation">
-			<router-link :to="{ name: 'lotteries.show', params: { id: id } }" class="show" id="play-component">
+			<router-link :to="{ name: 'lotteries.show', params: { slug: slug } }" class="show" id="play-component">
                 {{ trans('strings.play_on_the') }} {{ category.nome }} 
             </router-link>
-            <router-link :to="{ name: 'lotteries.results', params: { id: id } }" class="show active" id="result-component">
+            <router-link :to="{ name: 'lotteries.results', params: { slug: slug } }" class="show active" id="result-component">
                 {{ trans('strings.results') }}
            	</router-link>
 		</div>
@@ -71,14 +71,12 @@
 
 		    <div class="row no-margin table-body" v-if="loading.pagination">
 	        	<div class="col-lg-12">
-	        		<load-component></load-component>
+	        		<load />
 	        	</div>
 	        </div>
 
 	        <div class="row no-margin table-body" v-else>
-	        	<vc-sweepstake v-for="(sweepstake, index) in sweepstakes" :key="index" :index="index" :sweepstake="sweepstake">
-	        		
-	        	</vc-sweepstake>
+	        	<vc-sweepstake v-for="(sweepstake, index) in sweepstakes" :key="index" :index="index" :sweepstake="sweepstake" />
 	        </div>
 	    </div>
         
@@ -91,7 +89,7 @@
                 </div>
                 <div class="pull-right">
                 	<br>
-                	<vc-pagination :source="model" @paginate="paginate"></vc-pagination>
+                	<vc-pagination :source="model" @paginate="paginate" />
                 </div>
             </div>
         </div>
@@ -106,10 +104,15 @@
 
 <script>
 	import {routes} from '../../../api_routes'
-	import LoadComponent from '../../Load'
 	import VcPagination from '../../VcPagination'
 	import VcSweepstake from './VcSweepstake'
 	export default {
+		metaInfo () {
+			return {
+				title: this.trans('strings.results')+' '+this.category.nome+ ' | '+ this.trans('strings.lottoyou'),
+				meta: this.metas
+		    }
+		},
 		methods: {
 			filter(event) {				
                 $(event.target).find('[type="load"]').removeClass('hide');
@@ -153,11 +156,21 @@
 					return config;
 				});
 
-				let url = routes.lotteries.find.replace('{id}', this.id);
+				let url = routes.lotteries.find.replace('{slug}', this.slug);
 
 				findRequest.get(url, {}, {}).then(response => {
 					if(response.status === 200) {
+						this.id = response.data.id;
 						this.category = response.data;
+
+						this.metas.push({
+	            			name: 'description',
+	            			content: this.category.nome,
+	            		});
+	            		this.metas.push({
+	            			name: 'description',
+	            			content: this.category.slug,
+	            		});
 					}
 				}).catch((error) => {
 					
@@ -175,7 +188,7 @@
                     query: Object.assign(this.query)
                 })
 
-				let url = routes.lotteries.results.replace('{id}', this.id);
+				let url = routes.lotteries.results.replace('{slug}', this.slug);
 				url += "?page="+this.query.page;
 				url += "&column="+this.query.column;
 				url += "&direction="+this.query.direction;
@@ -211,6 +224,8 @@
 				id: '',
 				results: [],
 				sweepstakes: [],
+				slug: '',
+				metas: [],
 				model: {},
 				query: {
 					page: 1,
@@ -224,8 +239,8 @@
 			}
 		},
 		mounted() {
-			if(this.$route.query.id) {
-                this.query.id = this.$route.query.id
+			if(this.$route.query.slug) {
+                this.query.slug = this.$route.query.slug
             } 
             if(this.$route.query.page) {
                 this.query.page = this.$route.query.page
@@ -245,12 +260,12 @@
             if(this.$route.query.data_fim) {
                 this.query.data_fim = this.$route.query.data_fim
             }
-			this.id = this.$route.params.id;
+			this.slug = this.$route.params.slug;
 			this.findRequest();
 			this.resultRequest();
+			this.category.nome = this.trans('strings.loading');
 		},
-		components: {			
-			LoadComponent,
+		components: {
 			VcPagination,
 			VcSweepstake
 		}

@@ -226,8 +226,8 @@
 							response_2.data.refresh_token = refresh_token;
 
                             let authUser = response_2.data;
-							window.localStorage.setItem('authUser', JSON.stringify(authUser));
-							this.$store.dispatch('setUserObject', response_2.data);
+							//window.localStorage.setItem('authUser', JSON.stringify(authUser));
+							this.$store.dispatch('setUserObject', authUser);
 		                  	
 		                  	//window.location.reload();
 							$('.modal-login').modal('hide');
@@ -250,7 +250,7 @@
 						short_name: response.short_name,
 					})).then((response2) => {
 						if(response2.status === 200) {
-							window.localStorage.setItem('authUser', JSON.stringify(response2.data));
+							//window.localStorage.setItem('authUser', JSON.stringify(response2.data));
 							this.$store.dispatch('setUserObject', response2.data);
 							//$('.modal-login').modal('hide');
 							//window.location.reload();
@@ -352,9 +352,9 @@
 
                             let authUser = response_2.data;
 
-							window.localStorage.setItem('authUser', JSON.stringify(authUser));
+							//window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
-							this.$store.dispatch('setUserObject', response_2.data);
+							this.$store.dispatch('setUserObject', authUser);
 		                  	
 		                  	//window.location.reload();
 

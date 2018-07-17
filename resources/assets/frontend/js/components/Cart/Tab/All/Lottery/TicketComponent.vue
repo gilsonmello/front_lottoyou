@@ -23,12 +23,12 @@
 				<dicker-extra-component v-for="(dicker, index) in dickersExtras" :ticket="ticket" :tickets="tickets" :item="item" :index="index" :key="index" :dicker="dicker" :dickersExtrasSelect="dickersExtrasSelect">					
 				</dicker-extra-component>
 			</div>
-			<div class="tickets-footer">
+			<!-- <div class="tickets-footer">
 				<em class="text-caption" style="display: block">
             		Dezenas restantes - <input v-if="ticket.numbers != undefined && dickersMaxSel.length > 0" v-model="dickersMaxSel.length - ticket.numbers.length" name="data[LotUserJogo][qtdNumeros1]" type="text" disabled>
         			<input v-if="ticket.numbersExtras != undefined && dickersExtrasSelect.length > 0" v-model="dickersExtrasSelect.length - ticket.numbersExtras.length" disabled type="text">
         		</em>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>
@@ -66,6 +66,10 @@
 </script>
 
 <style scoped>
+	.tickets {
+		margin-bottom: 15px;
+	}
+	
 	.text-caption {
 		font-size: 11px;
 	}

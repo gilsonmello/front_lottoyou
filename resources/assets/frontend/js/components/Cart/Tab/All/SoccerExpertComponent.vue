@@ -26,10 +26,10 @@
 			</div>
 
 			<div class="col-lg-1 col-2 col-md-1 col-sm-2">
-				<a class="btn btn-xs btn-danger" type="trigger" @click.prevent="removeItemSoccerExpert(item, $event)" href="#" style="cursor:pointer;">
+				<a class="btn btn-xs btn-danger" v-if="!loading.delete" @click.prevent="removeItemSoccerExpert(item, $event)" href="#" style="cursor:pointer;">
 					<i class="fa fa-trash-o" data-toggle="tooltip" data-placement="top" :title="trans('strings.delete')" data-original-title="Deletar"></i>
 				</a>
-				<a @click.prevent="" type="load" class="hide btn btn-xs btn-danger">
+				<a @click.prevent="" v-else class="btn btn-xs btn-danger">
 					<i class="fa fa-refresh fa-spin"></i>
 				</a>
 			</div>
@@ -59,7 +59,9 @@
 		props: ['item', 'id'],
 		data: function() {
 			return {
-				
+				loading: {
+					delete: false
+				},
 			}
 		},
 		mounted: function() {
@@ -79,8 +81,7 @@
 				let removeItemRequest = axios.create();
 
 				removeItemRequest.interceptors.request.use(config => {
-		        	$(this.$el).find('[type="load"]').removeClass('hide');
-		        	$(this.$el).find('[type="trigger"]').addClass('hide');
+					this.loading.delete = true;
 				  	return config;
 				});
 
@@ -90,8 +91,9 @@
 					if(response.status === 200) {
 						this.$store.dispatch('removeItemSoccerExpert', item)
 					}
+					this.loading.delete = false;
 				}).catch((error) => {
-
+					this.loading.delete = false;
 				})
 			},
 		},

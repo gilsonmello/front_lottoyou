@@ -432,7 +432,7 @@
 
                             var authUser = response_2.data;
 
-                            window.localStorage.setItem('authUser', JSON.stringify(authUser));
+                            //window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
                             this.$store.dispatch('setUserObject', response_2.data);
 

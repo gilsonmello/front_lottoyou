@@ -11,6 +11,8 @@ return [
       | found in a intuitive way.
       |
      */
+    'as_from' => 'A partir de',
+    'in_progress' => 'Em andamento',
     'if_there_is' => 'Se houver',
     'operation' => 'Operação',
     'effect_withdraw' => 'Efetuar retirada',
@@ -105,6 +107,7 @@ return [
     'jackpot' => 'Prêmio',
     'sweepstake' => 'Sorteio',
     'contest' => 'Concurso',
+    'contests' => 'Concursos',
     'do_you_wish_to_continue' => 'Deseja continuar?',
     'to_view' => 'Visualizar',
     'view' => 'Visualizar',

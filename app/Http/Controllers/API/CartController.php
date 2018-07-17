@@ -389,6 +389,7 @@ class CartController extends Controller
 
         $items = $request->get('items');
 
+
         if($order->save()) {
             foreach($items as $key => $value) {
                 $orderItem = new OrderItem;
@@ -573,14 +574,15 @@ class CartController extends Controller
         try {
             $this->saveOrder($request);
             DB::commit();
-            return response()->json(['msg' => 'ok'], 200);
+            return response()->json(['message' => ''], 200);
         } catch (\Illuminate\Database\QueryException $e) {
+            dd($e->getMessage());
             DB::rollBack();
         } catch (\PDOException $e) {
             DB::rollBack();
         }      
 
-        return response()->json(['msg' => 'error'], 422);
+        return response()->json(['message' => 'error'], 422);
     }
 
     /**

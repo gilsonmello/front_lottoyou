@@ -179,11 +179,11 @@ class UserController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function items($id, Request $request)
+    public function items(Request $request)
     {
         $items = OrderItem::with([
-            'order' => function($query) use($id, $request) {
-                $query->where('user_id', '=', $id);
+            'order' => function($query) use($request) {
+                $query->where('user_id', '=', $request->owner_id);
             },
             'soccerExpert',
             'scratchCard',
@@ -219,8 +219,8 @@ class UserController extends Controller
                 
             }
         ])
-        ->whereHas('order', function($query) use($id, $request) {
-            $query->where('user_id', '=', $id);
+        ->whereHas('order', function($query) use($request) {
+            $query->where('user_id', '=', $request->owner_id);
         });
 
         //$user = User::find($request->get('user_id'));

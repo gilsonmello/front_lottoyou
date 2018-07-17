@@ -65,7 +65,7 @@ export const routes = {
 		soccer_experts: host+'/users/{id}/soccer_experts',
 		scratch_cards: host+'/users/{id}/scratch_cards',
 		lotteries: host+'/users/{id}/lotteries',
-		items: host+'/users/{id}/items',
+		items: host+'/users/items',
 		activate: host+'/users/activate/{hash}',
 		check_token_activation: host+'/users/check_token_activation/{token}',
 		create_from_facebook: host+'/users/create_from_facebook',
@@ -107,10 +107,10 @@ export const routes = {
 	},
 	lotteries: {
 		index: host+'/lotteries',
-		show: host+'/lotteries/{id}',
-		results: host+'/lotteries/results/{id}',
-		find: host+'/lotteries/find/{id}',
-		sweepstakes: host+'/lotteries/sweepstakes/{id}',
+		show: host+'/lotteries/{slug}',
+		results: host+'/lotteries/results/{slug}',
+		find: host+'/lotteries/find/{slug}',
+		sweepstakes: host+'/lotteries/sweepstakes/{slug}',
 		sweepstake: host+'/lotteries/sweepstake/{sweepstake_id}',
 
 	},

@@ -93,7 +93,7 @@ Vue.prototype.refreshAuth = function(params) {
 		if(response.status === 200) {
         	response.data.access_token = access_token
         	response.data.refresh_token = refresh_token
-			window.localStorage.setItem('authUser', JSON.stringify(response.data))
+			//window.localStorage.setItem('authUser', JSON.stringify(response.data))
 			this.$store.dispatch('setUserObject', response.data);
 
 			if(params.onSuccess != undefined && typeof params.onSuccess == 'function') {
@@ -247,4 +247,9 @@ Vue.prototype.validateCPF = function(cpf){
     }
     else
         return false;
-}
+};
+
+Vue.prototype.retireHour = function(date) {
+	date = date.split(' ');
+	return date[0];
+};
