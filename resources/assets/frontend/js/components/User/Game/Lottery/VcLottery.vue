@@ -8,7 +8,7 @@
 	      		$ {{ item.amount }}
 	      	</div>
 	      	<div class="col-lg-2">
-	      		{{ item.lottery_game.length }}
+	      		{{ item.lottery_games.length }}
 	      	</div>
 	      	<div class="col-lg-2">
 	      		{{ item.created_at }}
@@ -20,17 +20,17 @@
 			<load-component v-if="loading.sweepstake"></load-component>	
 			<div class="row no-margin" style="display: flex !important;" v-else>
 				
-				<vc-ticket v-for="(ticket, idx) in item.lottery_game" :result="result" :dickers="dickers" :dickersMaxSel="dickersMaxSel" :dickersExtras="dickersExtras" :item="item" :dickersExtrasSelect="dickersExtrasSelect" :ticket="ticket" :index="idx" :key="idx"></vc-ticket>
+				<vc-ticket v-for="(ticket, idx) in item.lottery_games" :result="result" :dickers="dickers" :dickersMaxSel="dickersMaxSel" :dickersExtras="dickersExtras" :item="item" :dickersExtrasSelect="dickersExtrasSelect" :ticket="ticket" :index="idx" :key="idx"></vc-ticket>
 			</div>
 
-			<div class="row no-margin text-left" v-if="item.lottery_game">
+			<div class="row text-left" v-if="item.lottery_games">
 				<div class="col-lg-3 col-12 col-md-4 col-sm-4">
 					<div class="form-group">
 						<label for="date">
-							{{ trans('strings.sweepstake_date') }}
+							{{ trans('strings.sweepstake') }}(s)
 						</label>
 					    <h5>
-				      		{{ item.lottery_game[0].sweepstake.data_fim }}
+				      		{{ item.lottery_games[0].sweepstake.data_fim }}
 				      	</h5>
 				  	</div>
 				</div>

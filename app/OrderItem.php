@@ -73,7 +73,7 @@ class OrderItem extends Model
     /**
      Jogo de Loteria ou seja, as cartelas geradas pelo mesmo item
     */
-    public function lotteryGame() {
+    public function lotteryGames() {
         return $this->hasMany(LotteryUser::class, 'order_item_id');
     }
 

@@ -180,9 +180,9 @@ export default {
 			        component: require('../components/Lottery/Result/VcIndex.vue')
 			    },
 			    {   
-			  		path: 'lotteries/:slug/:hash?',
+			  		path: 'lotteries/:slug',
 			        name: 'lotteries.show', 
-			        props: true,
+					props: true,
 			        component: require('../components/Lottery/ShowComponent.vue')
 			    },
 			    {   

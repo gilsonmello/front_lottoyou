@@ -32,7 +32,7 @@
 				var btn = $(event.target);
 				
 				//Se o botão está selecionado
-				if(btn.hasClass('btn-checked')){
+				if(btn.hasClass('btn-checked')) {
 					//Removo a seleção
 					btn.removeClass('btn-checked');
 					//Removo o número do array

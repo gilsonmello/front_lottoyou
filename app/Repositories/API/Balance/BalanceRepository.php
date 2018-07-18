@@ -130,7 +130,12 @@ class BalanceRepository implements BalanceContract
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->type = 0;
-            $historicBalance->description = 'agent withdrawal';            
+            $historicBalance->description = 'agent withdrawal';  
+
+            //$historicBalance->agent_withdraw_id = $agentWithdraw->id;
+            $historicBalance->amount = $request->value * -1; 
+            $historicBalance->to = $balance->value;
+            $historicBalance->save();          
             
 
             $balanceWithdraw = new BalanceWithdraw;
@@ -154,15 +159,11 @@ class BalanceRepository implements BalanceContract
             $agentWithdraw->finish = 0;
             $agentWithdraw->withdraw_id = $balanceWithdraw->id;
             $agentWithdraw->owner_id = $user->id;
+            $agentWithdraw->historic_balance_id = $historicBalance->id;
             $agentWithdraw->save();
             
             $balance->value -= $request->value;
             $balance->save();
-
-            $historicBalance->agent_withdraw_id = $agentWithdraw->id;
-            $historicBalance->amount = $request->value * -1; 
-            $historicBalance->to = $balance->value;
-            $historicBalance->save();
 
             DB::commit();
             return true;

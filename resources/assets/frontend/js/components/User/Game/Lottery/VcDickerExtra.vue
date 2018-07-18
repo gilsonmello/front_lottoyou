@@ -12,7 +12,6 @@
 			'item',
 			'tickets',
 			'ticket',
-			'dickersExtrasSelect',
 			'result'
 		],
 		mounted() {
@@ -21,12 +20,13 @@
 		methods: {
 			verifyNumberSelected() {
 				//
+				
 				for(var i = 0; i < this.ticket.numbers_extras.length; i++) {
 					if(this.dicker == this.ticket.numbers_extras[i].numero && this.ticket.numbers_extras[i].acerto == 1) {
 						return 'btn btn-xs btn-success';
 						//continue;
 					}
-					if(this.dicker == this.ticket.numbers_extras[i]) {
+					if(this.dicker == this.ticket.numbers_extras[i].numero) {
 						return 'btn btn-xs btn-default-darking btn-checked';
 						//continue;
 					}

@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\DB;
 
 class LotteryController extends Controller
 {
-
+    /**
+     * 
+     */
     public function sweepstake($id) 
     {
         $sweepstake = LotterySweepstake::where('id', '=', $id)
@@ -53,6 +55,9 @@ class LotteryController extends Controller
         return Lottery::where('slug', '=', $param)->orWhere('id', '=', $param)->get()->first();
     }
 
+    /**
+     * 
+     */
     public function results($slug, Request $request) 
     {
         $lottery = Lottery::where('slug', '=', $slug)->get()->first();
@@ -118,21 +123,22 @@ class LotteryController extends Controller
                     ->where('active', '=', 1)
                     ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'))
                     ->orderBy('data_fim', 'ASC')
-                    ->orderBy('hora_fim', 'ASC')
-                    ->limit(1);
+                    ->orderBy('hora_fim', 'ASC');
+                    //->limit(1);
             }
         ])
         ->whereHas('sweepstakes', function($query) {
             $query->where('active', '=', 1)
                 ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'));
         })
+        ->where('active', '=', 1)
         ->get();
 
         if(!is_null($lotteries)) {
             return response()->json($lotteries, 200);
         }
         return response()->json([
-            'msg' => ''
+            'message' => ''
         ], 422);
     }
 
@@ -168,11 +174,20 @@ class LotteryController extends Controller
        $lottery = Lottery::where('slug', '=', $slug)
             ->with([
                 'sweepstakes' => function($query) {
-                    $query->where('active', '=', 1)
+                    $query
+                        ->where('active', '=', 1)
                         ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'))
                         ->orderBy('data_fim', 'asc')
                         ->orderBy('hora_fim', 'asc');
-                }
+                },
+                'awards' => function($query) {
+                    $query
+                        ->orderBy('num_acertos', 'asc')
+                        ->orderBy('num_acertos_extras', 'asc');
+                },
+                'prices' => function($query) {
+                    $query->orderBy('qtd', 'asc');
+                },
             ])
             /*->whereHas('sweepstakes', function($query) {
                 $query->where('active', '=', 1)

@@ -5,9 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Lottery extends Model
+class LotteryPriceQuantity extends Model
 {
-
     const CREATED_AT = 'created';
 
     const UPDATED_AT = 'modified';
@@ -29,7 +28,7 @@ class Lottery extends Model
      * 
      * @var array
      */
-    public $table = 'lot_categorias';
+    public $table = 'lot_preco_qtds';
 
     /**
      * The attributes that are mass assignable.
@@ -49,23 +48,8 @@ class Lottery extends Model
         
     ];
 
-    public function sweepstakes() {
-        return $this->hasMany(LotterySweepstake::class, 'lot_categoria_id');
-    }
-
-    public function awards() 
+    public function lottery() 
     {
-        return $this->hasMany(LotteryAward::class, 'lot_categoria_id');
+        return $this->belongsTo(Lottery::class, 'lot_categoria_id');
     }
-
-    public function prices() 
-    {
-        return $this->hasMany(LotteryPriceQuantity::class, 'lot_categoria_id');
-    }
-
-    public function getImgLoteriaAttribute()
-    {        
-        return env('APP_CDN') . $this->attributes['img_loteria'];
-    }
-
 }

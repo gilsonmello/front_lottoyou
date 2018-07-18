@@ -106,6 +106,8 @@
 					name: 'lotteries.show',
 					params: {
 						slug: slug,
+					},
+					query: {
 						hash: hash
 					}
 				})

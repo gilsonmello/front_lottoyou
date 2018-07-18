@@ -206,16 +206,16 @@ class UserController extends Controller
             'soccerExpertGame.games.game.outClub' => function($query) {
                 
             },
-            'lotteryGame' => function($query) {
+            'lotteryGames' => function($query) {
 
             },
-            'lotteryGame.sweepstake' => function($query) {
+            'lotteryGames.sweepstake' => function($query) {
 
             },
-            'lotteryGame.numbers' => function($query) {
+            'lotteryGames.numbers' => function($query) {
                 
             },
-            'lotteryGame.numbersExtras' => function($query) {
+            'lotteryGames.numbersExtras' => function($query) {
                 
             }
         ])

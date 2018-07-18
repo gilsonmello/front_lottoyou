@@ -66,12 +66,11 @@
 				var btn = $(event.currentTarget);					
 
 				//Se o número de dezenas extras selecionada for igual ao número de dezenas extras possíveis
-				if(this.item.tickets[ticket].numbersExtras.length == this.dickersExtrasSelect.length) {
-					this.item.tickets[ticket].completeExtras = true
+				if(this.ticket.numbersExtras.length == this.dickersExtrasSelect.length) {
+					this.ticket.completeExtras = true
 				} else {
-					this.item.tickets[ticket].completeExtras = false
+					this.ticket.completeExtras = false
 				}
-
 				
 				//Se a aposta foi selecionada
 				if(this.ticket.complete === true && this.ticket.completeExtras === true) {
@@ -86,18 +85,14 @@
 					$(this.$el).find('.ticket'+ticket).removeClass('complete');
 					$(this.$el).find('.ticket'+ticket).removeClass('incomplete');
 				}
-
-				//Pegando todas as apostas feitas
-				var tickets = this.getTicketsFinished();
-				this.total = this.item.value * tickets.length;
 			},
 			//Função para remover números duplicados em um array
-			removeRepeatedNumbers: function(numbers, value) {
+			removeRepeatedNumbers: function(numbers, interval) {
 				for(var i = 0; i < numbers.length; i++) {
 					for(var j = i + 1; j < numbers.length; j++){
 						if(numbers[i] == numbers[j]) {
-							numbers[i] = Math.floor(Math.random()*this.dickers.length) + 1;
-							this.removeRepeatedNumbers(numbers)
+							numbers[i] = Math.floor(Math.random()*interval) + 1;
+							this.removeRepeatedNumbers(numbers, interval)
 						}
 					}
 				}
@@ -111,14 +106,20 @@
 				//Por exemplo: 1 até 60
 				var dickersLength = this.dickers.length;
 
-				for(var i = 1; i <= this.dickersMaxSel.length; i++) {
+				//Adiciono no array somente a quantidade de número mínima
+				for(var i = 1; i <= this.item.lottery.dezena_sel_min; i++) {
 					var rand = Math.floor(Math.random()*dickersLength) + 1;
 					numbersRand.push(rand);
 				}
 
-				this.ticket.numbers = this.removeRepeatedNumbers(numbersRand);
+				//Adicionando os novos números ao array de números
+				this.ticket.numbers = this.removeRepeatedNumbers(
+					numbersRand,
+					dickersLength
+				);
 				this.ticket.complete = true;
 
+				//Deselecionando todos os números
 				$('.ticket'+this.index).find('button').removeClass('btn-checked');
 				
 				//Percorrendo os números e adicionando a classe btn-checked
@@ -129,17 +130,23 @@
 
 				//Números extras randomicos
 				var numbersExtrasRand = []
-				//Dezenas extras
-				var dickersExtrasLength = this.dickersExtras.length;
-
+				
 				//Pegando números aleatórios entre as dezenas extras selecionáveis
 				//Por exemplo: 1 até 20
+				var dickersExtrasLength = this.dickersExtras.length;
+
+				//Adiciono no array somente a quantidade de número mínima
 				for(var i = 1; i <= this.dickersExtrasSelect.length; i++) {
 					var rand = Math.floor(Math.random()*dickersExtrasLength) + 1;
 					numbersExtrasRand.push(rand);
 				}
 				
-				this.ticket.numbersExtras = this.removeRepeatedNumbers(numbersExtrasRand);
+				this.ticket.numbersExtras = this.removeRepeatedNumbers(
+					numbersExtrasRand,
+					this.dickersExtrasSelect.length
+				);
+
+				//Se as dezenas extras estão habilitadas
 				if(this.isEnabledDickersExtras()) {
 					this.ticket.completeExtras = true;
 				}
@@ -151,7 +158,6 @@
 				}
 				$('.ticket'+this.index).removeClass('incomplete');
 				$('.ticket'+this.index).addClass('complete');
-
 			},
 			deleteNumbersChecked: function(event) {
 				$(this.$el).find('.btn-checked').removeClass('btn-checked');
@@ -166,12 +172,21 @@
 			},
 			refreshTicket: function() {
 				
+				//console.log(this.item.lottery.dezena_sel_min)
 				//Se o usuário selecionou todas as dezenas possíveis
-				if(this.ticket.numbers.length == this.dickersMaxSel.length) {
+				if(this.ticket.numbers.length >= this.item.lottery.dezena_sel_min) {
 					this.ticket.complete = true
 				} else {
 					this.ticket.complete = false
 				}
+
+				let numbersLen = this.ticket.numbers.length - 1;
+				numbersLen = numbersLen < 0 ? 0 : numbersLen;
+				//console.log(this.item.prices)
+				this.ticket.value = this.item.prices[numbersLen] 
+					? this.item.prices[numbersLen].valor
+					: this.item.prices[this.item.prices.length - 1].valor
+				//console.log(this.ticket.value)
 
 				//Se o número de dezenas extras selecionada for igual ao número de dezenas extras possíveis
 				if(this.ticket.numbersExtras.length == this.dickersExtrasSelect.length) {

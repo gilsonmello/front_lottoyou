@@ -10,8 +10,8 @@
 			'index',
 			'dicker',
 			'item',
+			'tickets',
 			'ticket',
-			'dickersMaxSel',
 			'result'
 		],
 		mounted() {

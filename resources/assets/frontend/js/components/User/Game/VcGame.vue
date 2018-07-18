@@ -25,7 +25,7 @@
         
 
         <div class="table text-center">
-            <div class="row table-head">
+            <div class="row no-margin table-head">
                 <div class="col-lg-2">
                     <span>
                         {{ trans('strings.game') }}
@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-lg-2" @click="toggle('quantity')">
                     <span>
-                        {{ trans('strings.quantity_tickets') }}
+                        {{ trans('strings.quantity') }}
                     </span>
                     <span v-if="'quantity' === query.column">
                         <span v-if="query.direction === 'desc'">
@@ -80,13 +80,13 @@
                 </div>
             </div>
 
-            <div class="row table-body" v-if="loading.pagination">
+            <div class="row no-margin table-body" v-if="loading.pagination">
                 <div class="col-lg-12">
                     <load-component></load-component>
                 </div>
             </div>
             
-            <div v-for="(item, index) in items" :key="index" class="row table-body">
+            <div v-for="(item, index) in items" :key="index" class="row no-margin table-body">
                 <vc-soccer-expert :key="index" :index="index" :item="item" v-if="item.type == 'soccer_expert'">
                 </vc-soccer-expert>
                 <vc-scratch-card :key="index" :index="index" :item="item" v-if="item.type == 'scratch_card'">
@@ -96,7 +96,7 @@
             </div>           
         </div>
 
-        <div class="row no-margin">
+        <div class="row">
             <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
                 <div class="pull-left">
                     <br>
