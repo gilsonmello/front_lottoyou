@@ -96,7 +96,7 @@
 					<button type="submit" class="btn btn-md btn-primary pull-right" v-if="!loading.paying">
 						{{ trans('strings.add_to_cart') }}
 					</button>
-					<button @click="validate($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value >= total" class="btn-pay-now pull-right btn btn-primary">
+					<button @click="validate($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value >= item.total" class="btn-pay-now pull-right btn btn-primary">
                         {{ trans('strings.pay_now') }}
                     </button>
 					<button v-if="loading.paying" @click.prevent="" type="load" class="pull-right btn btn-md btn-primary">
@@ -242,7 +242,7 @@
 			},
 			validate(event) {
 
-				let tickets = this.getTicketsFinished().clone();
+				let tickets = this.getTicketsFinished();
 
 				let sweepstake = Object.assign(this.item.lottery.sweepstakes[this.item.lot_jogo_id]);
 
@@ -271,7 +271,7 @@
 					//this.$store.dispatch('removeItemLottery', item);
 				} else {
 
-					this.$store.dispatch('setItemLottery', this.item);
+					//this.$store.dispatch('setItemLottery', this.item);
 
 					let validateRequest = axios.create();
 
@@ -289,7 +289,7 @@
 							this.fastBuy();
 						}
 					}).catch((error) => {
-						this.$store.dispatch('removeItemLottery', this.item);
+						//this.$store.dispatch('removeItemLottery', this.item);
 						toastr.error(
 							error.response.data.msg,
 							this.trans('strings.error')
@@ -300,9 +300,11 @@
 			},
 			fastBuy(event) {
 				var vm = this
-				var tickets = this.getTicketsFinished().clone();
+				var tickets = this.getTicketsFinished();
 
-				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.item.lot_jogo_id]);
+				var sweepstake = Object.assign(
+					this.item.lottery.sweepstakes[this.item.lot_jogo_id]
+				);
 
 				this.item.tickets = tickets;
 				this.item.sweepstake = sweepstake;
@@ -340,13 +342,28 @@
                         this.refreshAuthPromise()
                             .then((response) => {
                                 if (response.status === 200) {
-                                    toastr.options.onHidden = function() {
+                                    /* toastr.options.onHidden = function() {
                                         window.location.reload();
-                                    };
-                                    toastr.success(
+                                    }; */
+                                    /* toastr.success(
                                         this.trans('strings.successful_purchase'),
                                         this.trans('strings.buy'),
-                                    );
+									); */
+									swal({
+										showCloseButton: true,
+										type: 'success',
+										//title: this.trans('strings.buy'),
+										title: this.trans('strings.successful_purchase'),
+										text: false,
+										//html: `<p style="text-align: left">${this.trans('strings.successful_purchase')}</p>`,
+										showConfirmButton: true,
+									}).then((result) => {
+										if(result.dismiss) {
+											
+										} else {
+											window.location.reload();
+										}
+									});
                                     //window.localStorage.setItem('authUser', JSON.stringify(response.data));
                                     this.$store.dispatch('setUserObject', response.data);
                                     this.$store.dispatch('clearPurchase');
@@ -361,7 +378,7 @@
 					}
 		        }).catch((error) => {
 		        	this.loading.paying = false;
-		        	toast.error('Erro ao adicionar item', 'Por favor tente novamente');
+		        	toastr.error('Erro ao adicionar item', 'Por favor tente novamente');
 		        });
 			},
 			sweepstakesRequest() {				
@@ -908,7 +925,7 @@
 			//Função para adicionar item no carrinho
 			addToCart: function(event) {
 				var vm = this
-				var tickets = this.getTicketsFinished().clone();				
+				var tickets = this.getTicketsFinished();				
 
 				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.item.lot_jogo_id]);
 
@@ -959,7 +976,7 @@
 						}
 			        }).catch((error) => {
 			        	this.loading.paying = false;
-			        	toast.error('Erro ao adicionar item', 'Por favor tente novamente');
+			        	toastr.error('Erro ao adicionar item', 'Por favor tente novamente');
 			        })	
 					
 					/*const cartRequest = axios.create();
@@ -1020,7 +1037,7 @@
 			},
 			teimosinhas() {
 				let tickets = this.getTicketsFinished();
-				//let tickets = this.getTicketsFinished().clone();				
+				//let tickets = this.getTicketsFinished();				
 				this.item.total = (this.item.value * tickets.length) * this.item.duration;
 			}
  		},
@@ -1064,10 +1081,6 @@
 			'item.duration'(newValue, oldValue) {
 				this.teimosinhas();
 			},
-			purchase: {},
-			'item.tickets': function(newValue, oldValue) {
-				
-			}
 		}
 	}
 </script>
