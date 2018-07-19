@@ -174,8 +174,8 @@ export default {
 			        component: require('../components/Lottery/IndexComponent.vue')
 			    },
 			    {   
-			  		path: 'lotteries/show/:id/:hash?',
-			        name: 'lotteries.show', 
+			  		path: 'lotteries/play/:slug',
+			        name: 'lotteries.play', 
 			        props: true,
 			        component: require('../components/Lottery/ShowComponent.vue')
 			    },

@@ -31,7 +31,7 @@ class ScratchCardObserver
             $historicBalance->owner_id = $balance->owner_id;
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
-            $historicBalance->scratch_card_id = $scratchCard->id;
+            //$historicBalance->scratch_card_id = $scratchCard->id;
             $historicBalance->to = $balance->value + $scratchCard->premio;
             $historicBalance->description = "award";
             $historicBalance->type = 1;
@@ -40,6 +40,10 @@ class ScratchCardObserver
 
             $balance->value += $scratchCard->premio;
             $balance->save();
+
+            \DB::table('raspadinhas')
+            ->where('id', $scratchCard->id)
+			->update(['historic_balance_id' => $historicBalance->id]);
         }
     }
 

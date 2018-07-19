@@ -63,7 +63,7 @@
 			},
 			editLottery(id, hash, $event) {
 				this.$router.push({
-					name: 'lotteries.show',
+					name: 'lotteries.play',
 					params: {
 						id: id,
 						hash: hash

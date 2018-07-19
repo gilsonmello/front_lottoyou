@@ -145,7 +145,17 @@
 			return {
 				title: this.item.soccer_expert.nome,
 				meta: [
-		          	{ name: 'description', content: this.item.soccer_expert.nome }
+					{ name: 'description', content: this.item.soccer_expert.nome },
+					{
+						'property': 'og:title',
+						'content': this.item.soccer_expert.nome,
+						'vmid': 'og:title'
+					},
+					{
+						'property': 'og:description',
+						'content': this.item.soccer_expert.nome,
+						'vmid': 'og:description'
+					}
 		        ]
 		    }
 		},

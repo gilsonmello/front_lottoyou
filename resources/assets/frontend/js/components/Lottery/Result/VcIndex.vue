@@ -2,7 +2,7 @@
 	<load v-if="loading.component == true"></load>
 	<section class="container" v-else>
 		<div class="sub-navigation">
-			<router-link :to="{ name: 'lotteries.show', params: { slug: slug } }" class="show" id="play-component">
+			<router-link :to="{ name: 'lotteries.play', params: { slug: slug } }" class="show" id="play-component">
                 {{ trans('strings.play_on_the') }} {{ category.nome }} 
             </router-link>
             <router-link :to="{ name: 'lotteries.results', params: { slug: slug } }" class="show active" id="result-component">

@@ -85,7 +85,7 @@ class PaypalController extends Controller
         $paypayOrder->transaction_subject = $request->transaction_subject;
         $paypayOrder->payment_gross = $request->payment_gross;
         $paypayOrder->ipn_track_id = $request->ipn_track_id;
-        $paypayOrder->save();
+        
 
 
         if ($order->date_confirmation == null) {
@@ -105,7 +105,7 @@ class PaypalController extends Controller
             $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
 
             $historicBalance = new HistoricBalance;
-            $historicBalance->paypal_order_id = $paypayOrder->id;
+            //$historicBalance->paypal_order_id = $paypayOrder->id;
             $historicBalance->type = 0;
             $historicBalance->devolution = 1;
             $historicBalance->description = 'paypal devolution';
@@ -121,14 +121,14 @@ class PaypalController extends Controller
             $historicBalance->save();
 
             $balance->save();
-
+            $paypayOrder->historic_balance_id = $historicBalance->id;
         }
 
         if($request->payment_status == 'Completed' && $order->status_paypal != 'Completed') {
             $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
 
             $historicBalance = new HistoricBalance;
-            $historicBalance->paypal_order_id = $paypayOrder->id;
+            //$historicBalance->paypal_order_id = $paypayOrder->id;
             $historicBalance->type = 1;
             $historicBalance->devolution = 0;
             $historicBalance->description = 'paypal deposit';
@@ -143,8 +143,10 @@ class PaypalController extends Controller
             $historicBalance->save();
 
             $balance->save();
+            $paypayOrder->historic_balance_id = $historicBalance->id;
         }
 
+        $paypayOrder->save();
         $order->status_paypal = $request->payment_status;
         $order->status = $request->payment_status;
         $order->save();

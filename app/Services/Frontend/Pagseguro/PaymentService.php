@@ -44,7 +44,7 @@ trait PaymentService
         $pagseguroOrder->extraAmount = $dataXml->extraAmount;
         $pagseguroOrder->installmentCount = $dataXml->installmentCount;
         $pagseguroOrder->itemCount = $dataXml->itemCount;
-        $pagseguroOrder->save();         
+        
     
         $order = BalanceOrder::find($dataXml->reference); 
 
@@ -64,7 +64,7 @@ trait PaymentService
             $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
 
             $historicBalance = new HistoricBalance;
-            $historicBalance->pagseguro_order_id = $pagseguroOrder->id;
+            //$historicBalance->pagseguro_order_id = $pagseguroOrder->id;
             $historicBalance->type = 0;
             $historicBalance->devolution = 1;
             $historicBalance->description = 'pagseguro devolution';
@@ -79,6 +79,7 @@ trait PaymentService
             $historicBalance->to = $balance->value;
             $historicBalance->save();
 
+            $pagseguroOrder->historic_balance_id = $historicBalance->id;
             $balance->save();
         }
         //Log::info($order->status_pagseguro, $dataXml->status);
@@ -90,7 +91,7 @@ trait PaymentService
             $balance = Balance::where('owner_id', '=', $order->owner_id)->get()->first();
 
             $historicBalance = new HistoricBalance;
-            $historicBalance->pagseguro_order_id = $pagseguroOrder->id;
+            //$historicBalance->pagseguro_order_id = $pagseguroOrder->id;
             $historicBalance->type = 1;
             $historicBalance->devolution = 0;
             $historicBalance->description = 'pagseguro deposit';
@@ -104,8 +105,11 @@ trait PaymentService
             $historicBalance->to = $balance->value;
             $historicBalance->save();
 
+            $pagseguroOrder->historic_balance_id = $historicBalance->id;
             $balance->save();
         }
+
+        $pagseguroOrder->save();
 
         $order->status_pagseguro = $dataXml->status;
         $order->status = $dataXml->status;

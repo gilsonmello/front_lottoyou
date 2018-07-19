@@ -233,7 +233,7 @@ class OrderItemObserver
         $historicBalance->from = $balance->value;
         $historicBalance->to = $balance->value - $data->total;
         $historicBalance->balance_id = $balance->id;
-        $historicBalance->item_id = $item->id;
+        //$historicBalance->item_id = $item->id;
         $historicBalance->description = $description;
         $historicBalance->type = 0;
         $historicBalance->amount = $data->total * -1;
@@ -246,7 +246,10 @@ class OrderItemObserver
 
         DB::table('order_items')
             ->where('id', $item->id)
-            ->update(['data' => null]);
+            ->update([
+                'data' => null, 
+                'historic_balance_id' => $historicBalance->id
+            ]);
     }
 
     /**

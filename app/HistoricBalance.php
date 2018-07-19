@@ -64,22 +64,22 @@ class HistoricBalance extends Model
 
     public function soccerExpertBet() 
     {
-        return $this->belongsTo(SoccerExpertBet::class, 'soccer_expert_bet_id');
+        return $this->hasOne(SoccerExpertBet::class, 'historic_balance_id');
     }
 
     public function orderItem() 
     {
-        return $this->belongsTo(OrderItem::class, 'item_id');
+        return $this->hasOne(OrderItem::class, 'historic_balance_id');
     }
 
     public function scratchCard() 
     {
-        return $this->belongsTo(ScratchCard::class, 'scratch_card_id');
+        return $this->hasOne(ScratchCard::class, 'historic_balance_id');
     }
 
     public function lotteryBet() 
     {
-        return $this->belongsTo(LotteryUser::class, 'lottery_bet_id');
+        return $this->hasOne(LotteryUser::class, 'historic_balance_id');
     }
 
     public function devolution() 
@@ -89,27 +89,27 @@ class HistoricBalance extends Model
 
     public function pagseguro() 
     {
-        return $this->belongsTo(PagseguroOrder::class, 'pagseguro_order_id');
+        return $this->hasOne(PagseguroOrder::class, 'historic_balance_id');
     }
 
     public function paypal() 
     {
-        return $this->belongsTo(PaypalOrder::class, 'paypal_order_id');
+        return $this->hasOne(PaypalOrder::class, 'historic_balance_id');
     }
 
     public function agentWithdraw() 
     {
-        return $this->belongsTo(AgentWithdraw::class, 'agent_withdraw_id');
+        return $this->hasOne(AgentWithdraw::class, 'historic_balance_id');
     }
 
     public function paypalWithdraw() 
     {
-        return $this->belongsTo(PaypalWithdraw::class, 'paypal_withdraw_id');
+        return $this->hasOne(PaypalWithdraw::class, 'historic_balance_id');
     }
 
     public function balanceInsert() 
     {
-        return $this->belongsTo(BalanceInsert::class, 'balance_insert_id');
+        return $this->hasOne(BalanceInsert::class, 'historic_balance_id');
     }
 
     public function getCreatedAttribute($date) 

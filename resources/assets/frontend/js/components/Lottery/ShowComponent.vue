@@ -6,7 +6,7 @@
         <div class="row">
         	<div class="col-lg-12">
         		<div class="sub-navigation">
-        			<router-link :to="{ name: 'lotteries.show', params: { slug: item.lottery.slug } }" class="active show" id="play-component">
+        			<router-link :to="{ name: 'lotteries.play', params: { slug: item.lottery.slug } }" class="active show" id="play-component">
 	                    {{ trans('strings.play_on_the') }} {{ item.lottery.nome }}
 	                </router-link>
 	                <router-link :to="{ name: 'lotteries.results', params: { slug: item.lottery.slug } }" class="show" id="result-component">
@@ -403,7 +403,7 @@
 		        	this.loading.component = true
 				  	return config;
 				});
-				let url = routes.lotteries.show.replace('{slug}', this.slug);
+				let url = routes.lotteries.play.replace('{slug}', this.slug);
 				showRequest.get(url, {}, {}).then(response => {
 					if(response.status === 200) {
 						//this.lottery = response.data

@@ -29,7 +29,7 @@
 	        	this.loading.component = true
 			  	return config;
 			});
-			playRequest.get(routes.lotteries.show.replace('{id}', this.id), {}, {}).then(response => {
+			playRequest.get(routes.lotteries.play.replace('{id}', this.id), {}, {}).then(response => {
 				if(response.status === 200){
 					this.lottery = response.data
 					this.loading.component = false

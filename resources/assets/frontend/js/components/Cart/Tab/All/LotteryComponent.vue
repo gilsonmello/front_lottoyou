@@ -103,7 +103,7 @@
 		methods: {
 			editLottery(slug, hash, $event) {
 				this.$router.push({
-					name: 'lotteries.show',
+					name: 'lotteries.play',
 					params: {
 						slug: slug,
 					},

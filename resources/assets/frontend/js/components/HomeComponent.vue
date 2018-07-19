@@ -86,7 +86,7 @@
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
 				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
-				<router-link :to="{ name: 'lotteries.show', params: {id: 3} }">
+				<router-link :to="{ name: 'lotteries.play', params: {id: 3} }">
 					<div class="banner-easy-loteria" style="position: relative">
 						<img style="width: 100%; " class="img-fluid" src="/img/new1/easy_loteria_S_TX.jpg">
 						<div class="content-left">

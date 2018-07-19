@@ -203,6 +203,45 @@ class LotteryController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function play($slug)
+    {
+       $lottery = Lottery::where('slug', '=', $slug)
+            ->with([
+                'sweepstakes' => function($query) {
+                    $query
+                        ->where('active', '=', 1)
+                        ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'))
+                        ->orderBy('data_fim', 'asc')
+                        ->orderBy('hora_fim', 'asc');
+                },
+                'awards' => function($query) {
+                    $query
+                        ->orderBy('num_acertos', 'asc')
+                        ->orderBy('num_acertos_extras', 'asc');
+                },
+                'prices' => function($query) {
+                    $query->orderBy('qtd', 'asc');
+                },
+            ])
+            /*->whereHas('sweepstakes', function($query) {
+                $query->where('active', '=', 1)
+                    ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'));
+            })*/
+            ->get()
+            ->first();
+
+        if(!is_null($lottery)) {
+            return response()->json($lottery, 200);
+        }
+        return response()->json(['msg' => ''], 422);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

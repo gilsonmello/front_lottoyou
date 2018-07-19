@@ -44,7 +44,7 @@
 					        		<div class="" style="width: 100%;">
 					        			<div class="row">
 					        				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-						        				<router-link :to="{ name: 'lotteries.show', params: {id: lotteries[indexClicked].id} }" style="display: block" class="btn btn-md btn-primary">
+						        				<router-link :to="{ name: 'lotteries.play', params: {id: lotteries[indexClicked].id} }" style="display: block" class="btn btn-md btn-primary">
 						        					{{ trans('strings.play_now') }}
 						        				</router-link>
 						        			</div>

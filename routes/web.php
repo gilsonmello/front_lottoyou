@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use App\Lottery;
 /*
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	Não alterar a ordem das rotas
@@ -62,13 +62,47 @@ Route::post('/oauth/token', [
 
 //Estas rotas serve para renderizar sempre o arquivo app.blade
 Route::get('/', function () {
+	/* $historics = \App\HistoricBalance::whereNotNull('paypal_order_id')->get();
+
+	foreach($historics as $key => $historic) {
+
+		\DB::table('paypal_orders')
+            ->where('id', $historic->paypal_order_id)
+			->update(['historic_balance_id' => $historic->id]);
+	} */
 	return view('layouts.frontend.app');
 })->name('frontend.home');
 
 //Estas rotas serve para renderizar sempre o arquivo app.blade	
-Route::get('/{param_1}/{param_2?}', function ($param_1) {
-	return view('layouts.frontend.app');
-})->where('param_2', '(.*)');
+Route::get('/{param_1}/{param_2?}', function ($param_1 = null, $param_2 = null, $param_3 = null) {
+
+	
+		/* $query = null;
+		$seo = [
+			'title' => '',
+			'description' => '',
+		];
+		$params = [
+			0 => $param_1
+		];
+		$title = '';
+		$param_2 = !isset($param_2) ? '' : $param_2;
+
+		$param_2 = explode('/', $param_2);
+		
+		if(count($param_2) > 0) {
+			$params[] = $param_2[0];
+			$params[] = isset($param_2[1]) ? $param_2[1] : '';
+		}
+
+		if($params[0] === 'lotteries' && $params[1] === 'play' && $params[2] != '') {
+			$query = Lottery::where('slug', '=', $params[2])->get()->first();
+			$seo['title'] = $query->nome;
+			$seo['description'] = $query->nome;
+		} */
+	return view('layouts.frontend.app', compact('seo'));
+})
+->where('param_2', '(.*)');
 
 //Serve somente para nomear rotas
 Route::group(['namespace' => 'Frontend'], function() {

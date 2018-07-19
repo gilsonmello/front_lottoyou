@@ -108,11 +108,11 @@ export const routes = {
 	lotteries: {
 		index: host+'/lotteries',
 		show: host+'/lotteries/{slug}',
+		play: host+'/lotteries/play/{slug}',
 		results: host+'/lotteries/results/{slug}',
 		find: host+'/lotteries/find/{slug}',
 		sweepstakes: host+'/lotteries/sweepstakes/{slug}',
 		sweepstake: host+'/lotteries/sweepstake/{sweepstake_id}',
-
 	},
 	carts: {
 		store: host + '/carts',
