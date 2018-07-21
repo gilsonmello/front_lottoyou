@@ -254,7 +254,10 @@
 			    $('.modal').modal('hide');
 
                 var navMain = $("#navbarCollapse");
-                navMain.collapse('hide');
+				navMain.collapse('hide');
+				
+				$('.tooltip-item-account')
+					.removeClass('open');
 			});			
 		},
 		components: {

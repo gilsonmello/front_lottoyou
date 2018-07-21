@@ -54,7 +54,7 @@
 						  				<div class="pull-right">
 						  					<div class="row">
 						  						<div class="col-lg-12 no-padding">
-													<router-link :to="{ name: 'users.account' }" class="pull-left" style="width: 100%;">
+													<router-link :to="{ name: 'balances.deposit' }" class="pull-left" style="width: 100%;">
 						  								<span class="balance-amount" style="cursor: initial">$ {{ auth.balance.value }}</span>
 													</router-link>
 						  						</div>
@@ -78,10 +78,10 @@
 					  				</div>
 					  			</li>
 					  			<li class="item-account" data-toggle="tooltip" v-if="auth" @mouseover="openTooltip" @mouseleave="closeTooltip">
-					  				<router-link :to="{ name: 'users.account' }" class="pull-left" style="width: 100%;">
+					  				<!-- <router-link :to="{ name: 'users.account' }" class="pull-left" style="width: 100%;"> -->
 						  				<div class="pull-left vcenter">
 						  					<img class="photo" :src="auth.photo_domain+auth.photo" v-if="auth.photo">
-						  					<i class="fa fa-user-circle" style="font-size: 27px;" v-else></i>
+						  					<i class="fa fa-user-circle" style="font-size: 27px; color: rgb(0, 86, 177);" v-else></i>
 						  				</div>
 						  				<div class="pull-right">
 						  					<div class="row">
@@ -97,7 +97,7 @@
 						  						</div>
 						  					</div>
 						  				</div>
-						  			</router-link>
+						  			<!-- </router-link> -->
 						  			<div class="tooltip-item-account">
 						  				<div class="tooltip-item-account-header">
 						  					<div class="row vcenter">
@@ -119,7 +119,7 @@
 						  						<li class="account-item">
 						  							<div class="row vcenter">
 						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-						  									<i class="fa fa-user-circle" style="font-size: 27px; color: initial;"></i>
+						  									<i class="fa fa-user-circle" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
 						  								</div>
 						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'users.account' }" class="">
@@ -131,7 +131,7 @@
 						  						<li class="account-item">
 						  							<div class="row vcenter">
 						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-						  									<i class="fa fa-gamepad" style="font-size: 27px; color: initial;"></i>
+						  									<i class="fa fa-gamepad" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
 						  								</div>
 						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'users.games', params: {  } }">
@@ -155,11 +155,35 @@
 						  						<li class="account-item">
 						  							<div class="row vcenter">
 						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-						  									<i class="fa fa fa-credit-card-alt" style="font-size: 27px; color: initial;"></i>
+						  									<i class="fa fa-credit-card-alt" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
 						  								</div>
 						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'users.transactions' }" class="">
 							  									{{ trans('strings.transactions') }}
+							  								</router-link>
+						  								</div>
+						  							</div>
+						  						</li>
+												  <li class="account-item">
+						  							<div class="row vcenter">
+						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
+						  									<i class="fa fa fa-money" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
+						  								</div>
+						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
+						  									<router-link :to="{ name: 'balances.deposit' }" class="">
+							  									{{ trans('strings.deposit') }}
+							  								</router-link>
+						  								</div>
+						  							</div>
+						  						</li>
+												<li class="account-item">
+						  							<div class="row vcenter">
+						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
+						  									<i class="fa fa-sign-out" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
+						  								</div>
+						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
+						  									<router-link :to="{ name: 'balances.withdrawal' }" class="">
+							  									{{ trans('strings.withdraw') }}
 							  								</router-link>
 						  								</div>
 						  							</div>
@@ -577,7 +601,7 @@
 
 	.item-account .open {
 	    right: 0;	
-	    bottom: -219px;
+	    bottom: -315px;
     	background: white;
     	width: 363px;
     	display: block !important;
@@ -637,15 +661,28 @@
 	    margin-right: 21px;
 	}
 
+	@media (min-width: 576px) and (max-width: 768px) {
+		.item-account .open {
+			bottom: -318px;
+			right: -129px;
+		}
+		.item-account .open:before {
+			right: 49%;
+		}
+	}
+
 	@media (max-width: 576px) {
 		.header-items li {
 			padding: 0 20px 0 10px;
 		}
 
 		.item-account .open {
-			width: 260px;
-			bottom: -258px;
-			right: -38px;
+			width: 330px;
+			bottom: -355px;
+			right: -132px;
+		}
+		.item-account .open:before {
+			right: 49%;
 		}
 
 		.header-items {
