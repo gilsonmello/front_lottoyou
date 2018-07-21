@@ -181,7 +181,7 @@
                                         {{ birth_date }}
                                     </div>
                                 </div>
-                                <label for="birth_date">{{ trans('strings.birth_date') }}</label>
+                                <label for="birth_date">{{ trans('strings.birth_date') }}*</label>
                                 <datepicker :value="birth_date" name="birth_date" required v-model="birth_date" type="text" class="form-control" id="birth_date" />
                                 <!-- <input disabled readonly v-model="birth_date" type="text" class="form-control" id="birth_date" aria-describedby="birth_date" :placeholder="trans('strings.birth_date')"> -->
                             </div>
