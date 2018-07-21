@@ -71,12 +71,12 @@ return [
         ],
         'account_disable' => 'Conta desabilitada.<br>Entre em contato com contacts@lottoyou.bet para solicitar a habilitação.',
         'update' => [
-            'success' => 'Usuário editado com sucesso',
-            'error' => 'Erro ao editar usuário'
+            'success' => 'Usuário editado com sucesso.',
+            'error' => 'Erro ao editar usuário. Tente novamente.'
         ],
         'delete' => [
-            'success' => 'Usuário deletado com sucesso',
-            'error' => 'Erro ao deletar usuário'
+            'success' => 'Usuário deletado com sucesso.',
+            'error' => 'Erro ao deletar usuário. Tente novamente.'
         ],
         'forgot_password' => [
             'success' => 'Foi encaminhado uma mensagem para seu e-mail.<br>ATENÇÃO: Em alguns casos o e-mail pode cair na caixa lixo eletrônico ou spam.',

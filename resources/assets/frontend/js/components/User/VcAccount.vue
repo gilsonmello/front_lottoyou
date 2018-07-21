@@ -45,6 +45,9 @@
                     <div class="row">
                         <div class="col-lg-2 col-3 col-sm-2 col-md-2" style="padding-right: 0;">
                             <div class="form-group">
+                                <div class="alert alert-danger" v-if="errors.gender">
+                                    <div v-for="(gender, index) in errors.gender" :key="index" >{{ gender }}</div>
+                                </div>
                                 <label for="gender">&nbsp;</label>
                                 <select v-model="gender" name="gender" required class="form-control" id="gender" aria-describedby="gender" :placeholder="trans('strings.gender')">
                                     <option value="M" selected>Sr.</option>
@@ -93,7 +96,7 @@
                         <div class="col-lg-2 col-6 col-sm-2 col-md-2">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.cep">
-                                    <div v-for="zip in errors.cep" >{{ cep }}</div>
+                                    <div v-for="(zip, index) in errors.cep" :key="index">{{ cep }}</div>
                                 </div>
                                 <label for="cep">{{ trans('strings.postal_code') }}</label>
                                 <input v-model="cep" name="cep" type="number" class="form-control" id="cep" aria-describedby="cep" :placeholder="trans('strings.zip')">
@@ -102,7 +105,7 @@
                         <div class="col-lg-4 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.city">
-                                    <div v-for="city in errors.city" >{{ city }}</div>
+                                    <div v-for="(city, index) in errors.city" :key="index">{{ city }}</div>
                                 </div>
                                 <label for="city">{{ trans('strings.city') }}</label>
                                 <input v-model="city" name="city" type="text" class="form-control" id="city" aria-describedby="city" :placeholder="trans('strings.city')">
@@ -113,7 +116,7 @@
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.complement">
-                                    <div v-for="street in errors.complement" >{{ complement }}</div>
+                                    <div v-for="(street, index) in errors.complement" :key="index">{{ complement }}</div>
                                 </div>
                                 <label for="complement">{{ trans('strings.complement') }}</label>
                                 <input v-model="complement" name="complement" type="text" class="form-control" id="complement" aria-describedby="complement" :placeholder="trans('strings.complement')">
@@ -122,7 +125,7 @@
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.country">
-                                    <div v-for="street in errors.country" >{{ country }}</div>
+                                    <div v-for="(street, index) in errors.country" :key="index">{{ country }}</div>
                                 </div>
                                 <label for="country">{{ trans('strings.country') }}</label>
                                 <!-- <input readonly disabled name="country" v-model="country" type="text" class="form-control" id="country" aria-describedby="country" :placeholder="trans('strings.country')"> -->
@@ -134,7 +137,7 @@
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.username">
-                                    <div v-for="username in errors.username" >{{ username }}</div>
+                                    <div v-for="(username, index) in errors.username" :key="index">{{ username }}</div>
                                 </div>
                                 <label for="username">E-mail</label>
                                 <input disabled readonly v-model="username" name="username" required type="text" class="form-control" id="username" aria-describedby="username" :placeholder="trans('strings.email')">
@@ -143,7 +146,7 @@
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.state">
-                                    <div v-for="state in errors.state" >{{ state }}</div>
+                                    <div v-for="(state, index) in errors.state" :key="index" >{{ state }}</div>
                                 </div>
                                 <label for="state">{{ trans('strings.state') }}</label>
                                 <input v-model="state" name="state" type="text" class="form-control" id="state" aria-describedby="state" :placeholder="trans('strings.state')">
@@ -154,7 +157,7 @@
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.phone_code">
-                                    <div v-for="phone_code in errors.phone_code" >{{ phone_code }}</div>
+                                    <div v-for="(phone_code, index) in errors.phone_code" :key="index" >{{ phone_code }}</div>
                                 </div>
                                 <label for="phone_code">{{ trans('strings.code_country') }}</label>
                                 <input readonly disabled v-model="phone_code" name="phone_code" type="text" class="form-control" id="phone_code" aria-describedby="phone_code" :placeholder="trans('strings.code_country')">
@@ -163,7 +166,7 @@
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.tell_phone">
-                                    <div v-for="tell_phone in errors.tell_phone" >{{ tell_phone }}</div>
+                                    <div v-for="(tell_phone, index) in errors.tell_phone" :key="index">{{ tell_phone }}</div>
                                 </div>
                                 <label for="tell_phone">{{ trans('strings.tell_phone') }}</label>
                                 <input v-model="tell_phone" name="tell_phone" type="number" class="form-control" id="tell_phone" aria-describedby="tell_phone" :placeholder="trans('strings.tell_phone')">
@@ -174,10 +177,12 @@
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.birth_date">
-                                    <div v-for="birth_date in errors.birth_date" >{{ birth_date }}</div>
+                                    <div v-for="(birth_date, index) in errors.birth_date" :key="index">
+                                        {{ birth_date }}
+                                    </div>
                                 </div>
                                 <label for="birth_date">{{ trans('strings.birth_date') }}</label>
-                                <datepicker name="birth_date" required v-model="birth_date" type="text" class="form-control" id="birth_date" />
+                                <datepicker :value="birth_date" name="birth_date" required v-model="birth_date" type="text" class="form-control" id="birth_date" />
                                 <!-- <input disabled readonly v-model="birth_date" type="text" class="form-control" id="birth_date" aria-describedby="birth_date" :placeholder="trans('strings.birth_date')"> -->
                             </div>
                         </div>
@@ -225,11 +230,11 @@
                             <router-link :to="{ name: 'users.disable' }" class="pull-left">
                                 {{ trans('strings.to_disable') }} {{ trans('strings.account') }}
                             </router-link>
-                            <button type="submit" class="btn pull-right btn-md btn-primary">
-                                {{ trans('strings.save_button') }}
-                            </button>
-                            <button @click.prevent="" type="load" class="hide pull-right btn btn-md btn-primary">
+                            <button @click.prevent="" v-if="loading.submit" class="pull-right btn btn-md btn-primary">
                                 <i class="fa fa-refresh fa-spin"></i>
+                            </button>
+                            <button type="submit" v-else class="btn pull-right btn-md btn-primary">
+                                {{ trans('strings.save_button') }}
                             </button>
                         </div>
                     </div>
@@ -255,6 +260,7 @@
             }
         },
         watch: {
+            birth_date (newValue, oldValue) {},
             countries (newValue, oldValue) {},
             country (newValue, oldValue) {
                 this.countries.forEach(element => {
@@ -301,8 +307,7 @@
                 let updateRequest = axios.create();
 
                 updateRequest.interceptors.request.use(config => {
-                    $(this.$el).find('[type="load"]').removeClass('hide');
-                    $(this.$el).find('[type="submit"]').addClass('hide');
+                    this.loading.submit = true;
                     return config;
                 });
                 updateRequest.post(
@@ -324,14 +329,19 @@
                             'Accept': 'application/json',
                             'Authorization': 'Bearer ' + access_token
                         }}).then(response_2 => {
-
-                            $(this.$el).find('[type="load"]').addClass('hide');
-                            $(this.$el).find('[type="submit"]').removeClass('hide');
+                            this.loading.submit = false;
                             response_2.data['access_token'] = access_token;
                             response_2.data['refresh_token'] = refresh_token;
                             //window.localStorage.setItem('authUser', JSON.stringify(response_2.data))
                             this.$store.dispatch('setUserObject', response_2.data);
-                            toastr.success(this.trans('alerts.users.update.success'));
+                            
+                            toastr.options = {
+                                closeButton: true,
+                                positionClass: "toast-top-center",
+                            };
+                            toastr.success(
+                                this.trans('alerts.users.update.success')
+                            );
                             
                             this.user = response_2.data                   
                             this.errors = [];
@@ -352,23 +362,27 @@
                             this.id = this.user.id;
                             this.complement = this.user.complement
                             this.country = this.user.country.id
-                            this.phone_code = '+'+this.user.country.phonecode
+                            this.phone_code = '+'+this.user.country.phonecode;
 
                             //window.location.href = "/painel"
                             //this.$router.push({name: 'home'});
                         }).catch((error_2) => {
-                            $(this.$el).find('[type="load"]').addClass('hide');
-                            $(this.$el).find('[type="submit"]').removeClass('hide');
-                            
+                            this.loading.submit = false;
                         });
                         this.errors = [];
                     }
                 }).catch((error) => {
-                    
-                    this.errors = error.response.data.errors
-                    toastr.error(this.trans('alerts.users.update.error'));
-                    $(this.$el).find('[type="load"]').addClass('hide');
-                    $(this.$el).find('[type="submit"]').removeClass('hide');                    
+                    this.loading.submit = false;
+                    swal({
+                        title: this.trans('alerts.users.update.error'),
+                        text: false,
+                        showCloseButton: true,
+                        imageUrl: '/imgs/logo.png',
+                        imageHeight: 50,
+                        imageAlt: 'Logo lottoyou',
+                    });                
+                    this.errors = error.response.data.errors != undefined ? error.response.data.errors : [];
+                    //toastr.error(this.trans('alerts.users.update.error'));                    
                 });
             },
             openImages () {
@@ -388,6 +402,7 @@
                     'Accept': 'application/json',
                     'Authorization': 'Bearer ' + access_token
                 }}).then(response => {
+                    this.loading.component = false;
                     response.data['access_token'] = access_token;
                     //window.localStorage.setItem('authUser', JSON.stringify(response.data))
                     this.$store.dispatch('setUserObject', response.data)
@@ -408,18 +423,31 @@
                     this.city = this.user.city;
                     this.username = this.user.username;
                     this.state = this.user.state;
-                    this.birth_date = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
                     this.id = this.user.id;
                     this.complement = this.user.complement
                     this.country = this.user.country.id;
                     this.phone_code = '+'+this.user.country.phonecode;
 
-                    this.loading.component = false
+                    if(this.user.validated == 0) {
+                        swal({
+                            title: 'Seu cadastro está incompleto.',
+                            text: 'Atenção: Para retirada do dinheiro seu cadastro deverá estar completo.',
+                            showCloseButton: true,
+                            imageUrl: '/imgs/logo.png',
+                            imageHeight: 50,
+                            imageAlt: 'Logo lottoyou',
+                        });  
+                    } 
+
+                    if(this.user.birth_day != null) {
+                        this.birth_date = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
+                    }
+                    //this.birth_date = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
                     
                 }).catch((error) => {
                     this.loading.component = false
                 });
-            }
+            },
         },
         data: function() {
             return {
@@ -448,7 +476,8 @@
                 countries: [],
                 errors: [],
                 loading: {
-                    component: true
+                    component: true,
+                    submit: false,
                 }
             }
         },

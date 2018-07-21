@@ -396,6 +396,7 @@ class UserController extends Controller
         $user->birth_day = $birth_date[2];
         $user->birth_month = $birth_date[1];
         $user->birth_year = $birth_date[0];
+        $user->validated = 1;
 
         if ($request->hasFile('photo')) {
             if($request->file('photo')->isValid()) {

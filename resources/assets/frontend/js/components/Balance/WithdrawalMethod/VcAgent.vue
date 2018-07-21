@@ -45,9 +45,26 @@ export default {
         }
     },
     mounted() {
-        if(this.auth.balance.value >= 10) {
-            this.init();
-        } else {
+        if(this.auth.validated == 0) {
+            swal({
+                title: 'Seu cadastro está incompleto.',
+                text: 'Para retirada do dinheiro seu cadastro deverá estar completo.',
+                imageUrl: '/imgs/logo.png',
+                imageHeight: 50,
+                imageAlt: 'Logo lottoyou',
+                showCloseButton: true,
+                showConfirmButton: false,
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: this.trans('strings.yes'),
+                cancelButtonText: this.trans('strings.cancel')
+            }).then((result) => {
+                this.$router.push({
+                    name: 'users.account'
+                });
+            });
+        } else if(this.auth.balance.value < 10) {
             swal({
                 title: 'Saldo menor do que $10.00',
                 type: 'warning',
@@ -63,6 +80,8 @@ export default {
                     name: 'users.account'
                 });
             });
+        } else {
+            this.init();
         }
     },
     methods: {

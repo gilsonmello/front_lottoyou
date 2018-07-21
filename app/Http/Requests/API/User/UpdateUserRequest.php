@@ -47,6 +47,9 @@ class UpdateUserRequest extends FormRequest
             $rules['confirm_password'] = 'required|min:6|same:password';
         }
 
+        $rules['birth_date'] = 'required';
+        $rules['gender'] = 'required';
+
         return $rules;
     }
 
@@ -70,6 +73,9 @@ class UpdateUserRequest extends FormRequest
             $messages['confirm_password.required'] = 'Informe a senha';
             $messages['confirm_password.min'] = 'No mínimo 6 cáractes';
         }
+
+        $messages['gender.birth_date'] = 'Campo obrigatório';
+        $messages['gender.required'] = 'Campo obrigatório';
 
         return $messages;        
     }
