@@ -216,7 +216,7 @@ class UserRepository implements UserContract
         $user->username = $attributes['email'];
         $user->nickname = $attributes['short_name'];
         $user->group_id = 3;
-        $user->req_fi_cpt = 0;
+        $user->validated = 0;
         $user->gel_empresa_id = 8;
         $user->active = 1;
         $user->provider = 'facebook';
@@ -229,7 +229,8 @@ class UserRepository implements UserContract
         }
         $user->birth_month = isset($attributes['birth_month']) ? $attributes['birth_month'] : null;
         $user->birth_year = isset($attributes['birth_year']) ? $attributes['birth_year'] : null;
-        $user->country_id = isset($attributes['country']) ? $attributes['country'] : 231;
+        //$user->country_id = isset($attributes['country']) ? $attributes['country'] : 231;
+        $user->country_id = null;
         if($user->save()) {
             $user->nickname2 = $user->name . '_' . $user->id;
             $user->save();

@@ -134,7 +134,7 @@ class BalanceRepository implements BalanceContract
 
             //$historicBalance->agent_withdraw_id = $agentWithdraw->id;
             $historicBalance->amount = $request->value * -1; 
-            $historicBalance->to = $balance->value;
+            $historicBalance->to = $balance->value - $request->value;
             $historicBalance->save();          
             
 

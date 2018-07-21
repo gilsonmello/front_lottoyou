@@ -46,7 +46,7 @@
                         <div class="col-lg-2 col-3 col-sm-2 col-md-2" style="padding-right: 0;">
                             <div class="form-group">
                                 <label for="gender">&nbsp;</label>
-                                <select v-model="gender" required class="form-control" id="gender" aria-describedby="gender" :placeholder="trans('strings.gender')">
+                                <select v-model="gender" name="gender" required class="form-control" id="gender" aria-describedby="gender" :placeholder="trans('strings.gender')">
                                     <option value="M" selected>Sr.</option>
                                     <option value="F">Srª</option>
                                 </select>
@@ -125,7 +125,8 @@
                                     <div v-for="street in errors.country" >{{ country }}</div>
                                 </div>
                                 <label for="country">{{ trans('strings.country') }}</label>
-                                <input readonly disabled name="country" v-model="country" type="text" class="form-control" id="country" aria-describedby="country" :placeholder="trans('strings.country')">
+                                <!-- <input readonly disabled name="country" v-model="country" type="text" class="form-control" id="country" aria-describedby="country" :placeholder="trans('strings.country')"> -->
+                                <vc-countries name="country" required v-model="country" :country="country" id="country" class="form-control" :countries="countries"/>
                             </div>
                         </div>
                     </div>
@@ -172,11 +173,12 @@
                     <div class="row">
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <div class="alert alert-danger" v-if="errors.date_birth">
-                                    <div v-for="date_birth in errors.date_birth" >{{ date_birth }}</div>
+                                <div class="alert alert-danger" v-if="errors.birth_date">
+                                    <div v-for="birth_date in errors.birth_date" >{{ birth_date }}</div>
                                 </div>
-                                <label for="date_birth">{{ trans('strings.date_birth') }}</label>
-                                <input disabled readonly v-model="date_birth" type="text" class="form-control" id="date_birth" aria-describedby="date_birth" :placeholder="trans('strings.date_birth')">
+                                <label for="birth_date">{{ trans('strings.birth_date') }}</label>
+                                <datepicker name="birth_date" required v-model="birth_date" type="text" class="form-control" id="birth_date" />
+                                <!-- <input disabled readonly v-model="birth_date" type="text" class="form-control" id="birth_date" aria-describedby="birth_date" :placeholder="trans('strings.birth_date')"> -->
                             </div>
                         </div>
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">
@@ -252,6 +254,16 @@
                 ]
             }
         },
+        watch: {
+            countries (newValue, oldValue) {},
+            country (newValue, oldValue) {
+                this.countries.forEach(element => {
+                    if(element.id == newValue) {
+                        this.phone_code = '+'+element.phonecode;
+                    }
+                });
+            }
+        },
         methods: {
             changePhoto: function(event) {
                 var file = null;
@@ -281,12 +293,12 @@
                 }        
             },
             handleEdit: function(event) {
-                var vm = this;
-                var form = $(event.currentTarget);
-                var formData = new FormData(form[0]);
+                let vm = this;
+                let form = $(event.currentTarget);
+                let formData = new FormData(form[0]);
                 formData.append('_method', 'put');
 
-                var updateRequest = axios.create();
+                let updateRequest = axios.create();
 
                 updateRequest.interceptors.request.use(config => {
                     $(this.$el).find('[type="load"]').removeClass('hide');
@@ -305,8 +317,8 @@
                     if(response.status === 200) {
                         const access_token = JSON.parse(window.localStorage.getItem('access_token'));
                         const refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
-                        const authUser = this.user;
-                        var authRequest = axios.create();
+                        //const authUser = this.user;
+                        let authRequest = axios.create();
                         //Fazendo busca do usuário logado, para setar na estrutura de dados
                         authRequest.get(routes.auth.user, { headers: {
                             'Accept': 'application/json',
@@ -336,10 +348,10 @@
                             this.city = this.user.city;
                             this.username = this.user.username;
                             this.state = this.user.state;
-                            this.date_birth = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
+                            this.birth_date = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
                             this.id = this.user.id;
                             this.complement = this.user.complement
-                            this.country = this.user.country.name
+                            this.country = this.user.country.id
                             this.phone_code = '+'+this.user.country.phonecode
 
                             //window.location.href = "/painel"
@@ -359,10 +371,10 @@
                     $(this.$el).find('[type="submit"]').removeClass('hide');                    
                 });
             },
-            openImages() {
+            openImages () {
                 document.getElementById('photo').click();
             },
-            userRequest() {
+            userRequest () {
                 const access_token = JSON.parse(window.localStorage.getItem('access_token'));            
 
                 var userRequest = axios.create();
@@ -396,11 +408,11 @@
                     this.city = this.user.city;
                     this.username = this.user.username;
                     this.state = this.user.state;
-                    this.date_birth = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
+                    this.birth_date = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
                     this.id = this.user.id;
                     this.complement = this.user.complement
-                    this.country = this.user.country.name
-                    this.phone_code = '+'+this.user.country.phonecode
+                    this.country = this.user.country.id;
+                    this.phone_code = '+'+this.user.country.phonecode;
 
                     this.loading.component = false
                     
@@ -423,7 +435,7 @@
                 city: '',
                 username: '',
                 state: '',
-                date_birth: '',
+                birth_date: '',
                 id: '',
                 old_password: '',
                 password: '',
@@ -457,7 +469,7 @@
                 this.city = authUser.city;
                 this.username = authUser.username;
                 this.state = authUser.state;
-                this.date_birth = 31 + '/' +12+ '/' + 1994; 
+                this.birth_date = 31 + '/' +12+ '/' + 1994; 
                 this.id = authUser.id;
                 this.complement = authUser.complement
                 this.country = authUser.country.name
@@ -466,6 +478,9 @@
                 this.userRequest();
             }          */ 
             this.userRequest();
+            this.getCountries((countries) => {
+                this.countries = countries;
+            });
         },
         components: {
             LoadComponent

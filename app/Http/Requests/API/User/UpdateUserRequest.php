@@ -41,7 +41,7 @@ class UpdateUserRequest extends FormRequest
             'photo' => isset($this->photo) ? 'required|image|mimes:jpg,jpeg,png,gif' : '',
         ];
         
-        if(!empty($this->old_password)) {
+        if(!empty($this->old_password) || !empty($this->password)) {
             $rules['old_password'] = 'required|current_password:'.$this->id;
             $rules['password'] = 'required|min:6';
             $rules['confirm_password'] = 'required|min:6|same:password';

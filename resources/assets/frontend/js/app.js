@@ -84,6 +84,7 @@ import router from './router';
 import store from './store';
 import Select2 from './components/Select2Component';
 import InputMask from './components/InputMaskComponent';
+import VcCountries from './components/VcCountries';
 import Load from './components/Load';
 import {mapState, mapGetters} from 'vuex';
 
@@ -97,6 +98,7 @@ Vue.component('select2', Select2);
 Vue.component('inputmask', InputMask);
 Vue.component('load', Load);
 
+Vue.component('vc-countries', VcCountries);
 Vue.component('app', App);
 
 const app = new Vue({

@@ -31,8 +31,8 @@
 				
 			};
 
+			options['language'] = 'pt-br';
 		    if(this.options != undefined) {
-		    	this.options['language'] = 'pt-br';
 		    	options = this.options;
 		    }
 		    

@@ -11,6 +11,7 @@ use App\Order;
 use App\OrderItem;
 use App\SoccerExpertRound;
 use App\Repositories\API\User\UserContract;
+use Illuminate\Support\Facades\Cookie;
 
 /**
  * Class UserController
@@ -374,6 +375,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, $id)
     {
         $user = User::find($id);
+        
         if($request->get('password') != null && !empty($request->get('password'))) {
             $user->laravel_password = bcrypt($request->get('password'));
         }
@@ -386,6 +388,14 @@ class UserController extends Controller
         $user->tell_phone = $request->get('tell_phone');
         $user->nickname = $request->get('nickname');
         $user->photo_domain = request()->root();
+        $user->country_id = $request->country;
+        $user->gender = $request->gender;
+        $locale = Cookie::get('locale');
+        $birth_date = format($request->birth_date, 'd-m-Y', $locale);
+        $birth_date = explode('-', $birth_date);
+        $user->birth_day = $birth_date[2];
+        $user->birth_month = $birth_date[1];
+        $user->birth_year = $birth_date[0];
 
         if ($request->hasFile('photo')) {
             if($request->file('photo')->isValid()) {

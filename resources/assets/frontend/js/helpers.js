@@ -253,3 +253,20 @@ Vue.prototype.retireHour = function(date) {
 	date = date.split(' ');
 	return date[0];
 };
+
+Vue.prototype.getCountries = (cb) => {
+	let countries = [];
+	const countryRequest = axios.create();
+	countryRequest.interceptors.request.use(config => {
+		return config;
+	});
+	countryRequest.get(routes.countries.index, {}).then(response => {
+		if(response.status === 200) {
+			countries = response.data;
+			cb(countries);
+		}
+	}).catch((error) => {
+		countries = [];
+		cb(countries);
+	});
+}

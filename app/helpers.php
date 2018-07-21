@@ -192,7 +192,6 @@ if (!function_exists('format_without_mask')) {
 			return $date[2].'-'.$date[1].'-'.$date[0].$time;
 		}
 	}
-
 }
 
 if (!function_exists('format_without_mask_pt_br')) {

@@ -211,7 +211,7 @@
             ...mapGetters([
                 'auth'
             ]),
-			leapYear: function() {
+			leapYear () {
 				var date = this.date;
 				if((date.getFullYear() % 4 == 0) && (date.getFullYear() % 100 != 0) || (date.getFullYear() % 400 == 0)){
 					return true;
@@ -219,7 +219,7 @@
 				return false;
 			}
 		},
-		data: function() {
+		data () {
 			return {
 				facebook: '',
 				countries: [],

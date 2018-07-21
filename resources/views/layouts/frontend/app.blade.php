@@ -94,8 +94,8 @@
                 query[1] = 'en_US';
             }
 
-            window.document.cookie = query[1] !== undefined ? 'hash=' + query[1] : 'hash=en_US';
-            window.document.cookie = query[1] !== undefined ? 'locale=' + query[1] : 'locale=en_US';        
+            window.document.cookie = query[1] !== undefined ? setCookie('hash', query[1]) : setCookie('hash', 'en_US');
+            window.document.cookie = query[1] !== undefined ? setCookie('locale', query[1]) : setCookie('locale', 'en_US');        
 
             
 
