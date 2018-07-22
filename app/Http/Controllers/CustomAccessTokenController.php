@@ -50,6 +50,7 @@ class CustomAccessTokenController extends AccessTokenController
                         $user->last_login = date('Y-m-d H:i:s');
                         $user->active = 1;
                         $user->save();
+                        return $this->issueToken($request);
                     } else if($userExclusion->forever == 1) {
                         return response()->json([
                             'message' => trans('alerts.users.account_disable')
@@ -59,7 +60,6 @@ class CustomAccessTokenController extends AccessTokenController
                             'message' => trans('alerts.users.account_disable')
                         ], 422);
                     }
-                    return $this->issueToken($request);
                 }
                 
             }            
