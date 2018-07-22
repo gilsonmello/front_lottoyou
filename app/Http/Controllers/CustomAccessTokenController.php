@@ -47,6 +47,7 @@ class CustomAccessTokenController extends AccessTokenController
                     $now = date('Y-m-d');
 
                     if($expired == $now && $userExclusion->forever == 0) {
+                        $user->last_login = date('Y-m-d H:i:s');
                         $user->active = 1;
                         $user->save();
                     } else if($userExclusion->forever == 1) {
@@ -58,7 +59,9 @@ class CustomAccessTokenController extends AccessTokenController
                             'message' => trans('alerts.users.account_disable')
                         ], 422);
                     }
+                    return $this->issueToken($request);
                 }
+                
             }            
 
 
@@ -76,6 +79,9 @@ class CustomAccessTokenController extends AccessTokenController
                     'message' => trans('alerts.users.not_active')
                 ], 422);
             }
+
+            $user->last_login = date('Y-m-d H:i:s');
+            $user->save();
 
             // If the validation is successfull:
             return $this->issueToken($request);

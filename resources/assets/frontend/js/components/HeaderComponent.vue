@@ -171,7 +171,7 @@
 						  								</div>
 						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'balances.deposit' }" class="">
-							  									{{ trans('strings.deposit') }}
+							  									{{ trans('strings.insert_balance') }}
 							  								</router-link>
 						  								</div>
 						  							</div>
@@ -183,7 +183,7 @@
 						  								</div>
 						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
 						  									<router-link :to="{ name: 'balances.withdrawal' }" class="">
-							  									{{ trans('strings.withdraw') }}
+							  									{{ trans('strings.remove_balance') }}
 							  								</router-link>
 						  								</div>
 						  							</div>
