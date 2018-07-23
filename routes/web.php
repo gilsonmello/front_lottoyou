@@ -76,8 +76,7 @@ Route::get('/', function () {
 if(isset($_SERVER['HTTP_USER_AGENT']) && 
 	strstr(strtolower($_SERVER['HTTP_USER_AGENT']), "googlebot"))
 {
-	dd('sim, sou um robo');
-    Route::group(['namespace' => 'Frontend'], function() {
+	Route::group(['namespace' => 'Frontend'], function() {
 		require __DIR__.'/Frontend/Home.php';
 		require __DIR__.'/Frontend/User.php';
 		require __DIR__.'/Frontend/ScratchCard.php';
