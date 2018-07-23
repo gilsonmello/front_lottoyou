@@ -60,8 +60,7 @@ class CustomAccessTokenController extends AccessTokenController
                             'message' => trans('alerts.users.account_disable')
                         ], 422);
                     }
-                }
-                
+                }                
             }            
 
 

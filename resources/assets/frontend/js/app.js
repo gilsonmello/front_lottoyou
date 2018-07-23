@@ -105,9 +105,12 @@ const app = new Vue({
 	router,
 	store,
     el: '#app',
-    render: h => h(App),
+	render: h => h(App),
+	beforeMount() {
+		$('#prerendered-content').remove();
+	},
     created() {
-    	
+		
     },
     mounted() {
     	//this.$cookies.set("locale", window.locale);

@@ -9,6 +9,9 @@ Route::resource('lotteries', 'LotteryController', [
         'update' => 'frontend.lotteries.update',
         'destroy' => 'frontend.lotteries.destroy',
         'show' => 'frontend.lotteries.show'
+    ],
+    'except' => [
+        'show'
     ]
 ]);
 
@@ -16,4 +19,4 @@ Route::get('lotteries/results/{id}', 'LotteryController@results');
 Route::get('lotteries/find/{id}', 'LotteryController@find');
 Route::get('lotteries/sweepstakes/{id}', 'LotteryController@sweepstakes');
 Route::get('lotteries/sweepstake/{id}', 'LotteryController@sweepstake');
-Route::get('lotteries/play/{slug}', 'LotteryController@play');
+Route::get('lotteries/play/{slug}', 'LotteryController@play')->name('frontend.lotteries.play');

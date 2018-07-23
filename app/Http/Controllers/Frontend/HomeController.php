@@ -15,48 +15,8 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */                     
     public function index(Request $request)         
-    {
-        /* $vet = [
-            0 => 1, 
-            1 => 2, 
-            2 => 3, 
-            3 => 4, 
-            4 => 5,
-            5 => 6,
-            6 => 7,
-            7 => 8,
-            8 => 9, 
-            9 => 10
-        ];
-        
-        $aux = '';
-
-        echo '<pre>';
-        for($i = 0; $i < count($vet); $i++) {
-            if($vet[$i] == 6) {
-                for($j = $i; $j < count($vet); $j++) {
-                    if(($j + 1) < count($vet)) {
-                        $vet[$j] = $vet[$j + 1];
-                    } else if($j == count($vet) - 1) {
-                        $vet[$j] = null;
-                    }
-                    //$vet[$j] = $aux;
-                }
-            }
-        }
-
-        die(var_dump($vet));*/
-
-        $loc = $request->session()->get('locale');
-
-        if(is_null($loc)){
-            \Session::put('locale', 'en');
-        }
-
-        if((isset($_GET['locale']) && !empty($_GET['locale']))){
-            \Session::put('locale', $_GET['locale']);
-        }
-        
+    {        
+        //return view('frontend.home');
         return view('layouts.frontend.app');
     }
 

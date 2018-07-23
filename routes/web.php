@@ -73,38 +73,28 @@ Route::get('/', function () {
 	return view('layouts.frontend.app');
 })->name('frontend.home');
 
+if(isset($_SERVER['HTTP_USER_AGENT']) && 
+	strstr(strtolower($_SERVER['HTTP_USER_AGENT']), "googlebot"))
+{
+    Route::group(['namespace' => 'Frontend'], function() {
+		require __DIR__.'/Frontend/Home.php';
+		require __DIR__.'/Frontend/User.php';
+		require __DIR__.'/Frontend/ScratchCard.php';
+		require __DIR__.'/Frontend/SoccerExpert.php';
+		require __DIR__.'/Frontend/Lottery.php';
+	
+		Route::get('/create_your_league', function() {
+			return view('frontend.create_your_league');
+		})->name('frontend.create_your_league');
+	
+		Route::get('/how_to_play_easy_moneyhow_to_play_easy_money', function() {
+			return view('frontend.how_to_play_easy_money');
+		})->name('frontend.how_to_play_easy_money');
+	});
+}
+
 //Estas rotas serve para renderizar sempre o arquivo app.blade	
 Route::get('/{param_1}/{param_2?}', function ($param_1 = null, $param_2 = null, $param_3 = null) {
-
-	
-		/* $query = null;
-		$seo = [
-			'title' => '',
-			'description' => '',
-		];
-		$params = [
-			0 => $param_1
-		];
-		$title = '';
-		$param_2 = !isset($param_2) ? '' : $param_2;
-
-		$param_2 = explode('/', $param_2);
-		
-		if(count($param_2) > 0) {
-			$params[] = $param_2[0];
-			$params[] = isset($param_2[1]) ? $param_2[1] : '';
-		}
-
-		if($params[0] === 'lotteries' && $params[1] === 'play' && $params[2] != '') {
-			$query = Lottery::where('slug', '=', $params[2])->get()->first();
-			$seo['title'] = $query->nome;
-			$seo['description'] = $query->nome;
-		} */
 	return view('layouts.frontend.app', compact('seo'));
 })
 ->where('param_2', '(.*)');
-
-//Serve somente para nomear rotas
-Route::group(['namespace' => 'Frontend'], function() {
-	require __DIR__.'/Frontend/User.php';
-});

@@ -86,6 +86,11 @@ class LotteryController extends Controller
         
     }
 
+    public function play($slug) 
+    {
+        return view('frontend.lotteries.play');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -93,21 +98,6 @@ class LotteryController extends Controller
      */
     public function index()
     {
-        /*$lotteries = Lottery::whereHas('sweepstakes', function($query) {
-            $query->where('active', '=', 1)
-                ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'));
-        })
-        ->with([
-            'sweepstakes' => function($query) {
-                $query->select('id', 'lot_categoria_id', 'data_fim', 'hora_fim')
-                    ->where('active', '=', 1)
-                    ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'))
-                    ->orderBy('data_fim', 'ASC')
-                    ->orderBy('hora_fim', 'ASC')
-                    ->limit(1);
-            }
-        ])
-        ->get();*/
         $lotteries = Lottery::with([
             'sweepstakes' => function($query) {
                 $query->select('id', 'lot_categoria_id', 'data_fim', 'hora_fim')
@@ -124,12 +114,8 @@ class LotteryController extends Controller
         })
         ->get();
 
-        if(!is_null($lotteries)) {
-            return response()->json($lotteries, 200);
-        }
-        return response()->json([
-            'msg' => ''
-        ], 422);
+        return view('frontend.lotteries.index')
+            ->with('lotteries', $lotteries);
     }
 
     /**
