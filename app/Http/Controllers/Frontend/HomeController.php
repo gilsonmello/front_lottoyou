@@ -16,8 +16,8 @@ class HomeController extends Controller
      */                     
     public function index(Request $request)         
     {        
-        //return view('frontend.home');
-        return view('layouts.frontend.app');
+        return view('frontend.home');
+        //return view('layouts.frontend.app');
     }
 
     public function getTranslations($locale = null) {
