@@ -73,6 +73,8 @@ Route::get('/', function () {
 	return view('layouts.frontend.app');
 })->name('frontend.home');
 
+//$_SERVER['HTTP_USER_AGENT'] = 'googlebot';
+
 if(isset($_SERVER['HTTP_USER_AGENT']) && 
 	strstr(strtolower($_SERVER['HTTP_USER_AGENT']), "googlebot"))
 {

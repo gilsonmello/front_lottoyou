@@ -2,7 +2,7 @@
 
 @endsection
 
-@extends('layouts.frontend.app')
+@extends('layouts.frontend.bot')
 
 @section('content')
     <div class="container-fluid vcenter main-banner no-padding">
