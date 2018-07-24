@@ -3,7 +3,7 @@
 </p>
 <p>{{ $user->name }} {{ $user->last_name }}, bem-vindo(a) a Lottoyou.</p>
 <p>
-    <a href="{{route('frontend.users.activate@get', $user->email_verified)}}">
+    <a href="{{route('frontend.users.activate', $user->email_verified)}}">
         Clique no link para confirmar seu cadastro e desfrute de infinitas possibilidades
     </a>
 </p>

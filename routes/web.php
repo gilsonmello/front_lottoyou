@@ -104,3 +104,9 @@ Route::get('/{param_1}/{param_2?}', function ($param_1 = null, $param_2 = null, 
 	return view('layouts.frontend.app');
 })
 ->where('param_2', '(.*)');
+
+Route::get('/'.config('app.url_locale').'users/password_recovery/{hash}', 'UserController@passwordRecovery')
+	->name('frontend.users.password_recovery');
+	
+Route::get('/'.config('app.url_locale').'users/activate/{hash}', 'UserController@activate')
+    ->name('frontend.users.activate');

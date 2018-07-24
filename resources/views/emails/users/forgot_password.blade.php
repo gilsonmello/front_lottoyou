@@ -9,7 +9,7 @@
 </p>
 
 <p>
-    Você deseja alterar a sua senha na www.lottoyou.bet? Por favor, clique no link abaixo ou copie e cole em seu navegador: <br><a href="{{ route('frontend.users.password_recovery@get', ['hash' => $password_reset->token]) }}">{{ route('frontend.users.password_recovery@get', ['hash' => $password_reset->password_reset]) }}</a>
+    Você deseja alterar a sua senha na www.lottoyou.bet? Por favor, clique no link abaixo ou copie e cole em seu navegador: <br><a href="{{ route('frontend.users.password_recovery', ['hash' => $password_reset->token]) }}">{{ route('frontend.users.password_recovery', ['hash' => $password_reset->password_reset]) }}</a>
 </p>
 
 <p>

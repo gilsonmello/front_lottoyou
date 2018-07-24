@@ -255,7 +255,7 @@
 			let url = routes.soccer_experts.find.replace('{slug}', this.slug);
 
 			showRequest.get(url, {}, {}).then(response => {
-				if(response.status === 200){
+				if(response.status === 200) {
 					this.category = response.data;
 				}
 			}).catch((error) => {
