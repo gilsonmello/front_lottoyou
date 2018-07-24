@@ -38,6 +38,7 @@ export default {
             bank: '',
             agency: '',
             name: '',
+            doc_type: 1,
             account_type: '1',
             identification: '',
             operation: '',
@@ -107,7 +108,8 @@ export default {
                 account_type: this.account_type,
                 identification: this.identification,
                 operation: this.operation,
-                value: this.value
+                value: this.value,
+                doc_type: this.doc_type,
             }).then(response => {
                 if(response.status === 200) {
                     this.refreshAuth();
@@ -308,33 +310,33 @@ export default {
             <!-- <h1 class="page-header">{{trans('strings.withdraw')}} {{trans('strings.funds')}}</h1> -->
             <form v-if="auth.balance.value >= 10">
                 <div class="row">
-                    <div class="col-lg-3 col-12 col-md-3 col-sm-3">
+                    <div class="col-lg-3 col-12 col-md-6 col-sm-6">
                         <div class="form-group">
                             <label for="name">{{ trans('strings.name') }}*</label>
                             <input type="text" name="name" v-model="name" required class="form-control" id="name" :placeholder="'Nome do titular da conta'">
                         </div>
                     </div>
-                    <div class="col-lg-4 col-12 col-md-4 col-sm-4">
+                    <div class="col-lg-4 col-12 col-md-6 col-sm-6">
                         <div class="form-group">
                             <label for="bank">{{ trans('strings.bank') }}*</label>
                             <input type="text" name="bank" v-model="bank" required class="form-control" id="bank" :placeholder="trans('strings.example')+': Banco do Brasil, Bradesco'">
                         </div>
                     </div>
-                    <div class="col-lg-3 col-12 col-md-3 col-sm-3">
+                    <div class="col-lg-3 col-12 col-md-6 col-sm-6">
                         <div class="form-group">
                             <label for="agency">{{ trans('strings.agency') }}*</label>
                             <input type="text" name="agency" v-model="agency" required class="form-control" id="agency" :placeholder="'9999999-9'">
                         </div>
                     </div>
-                    <div class="col-lg-2 col-12 col-md-2 col-sm-2">
+                    <div class="col-lg-2 col-12 col-md-6 col-sm-6">
                         <div class="form-group">
-                            <label for="number">{{ trans('strings.number') }}*</label>
+                            <label for="number">{{ trans('strings.account_number') }}*</label>
                             <input type="text" name="number" v-model="number" required class="form-control" id="number" :placeholder="'9999999-9'">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-12 col-md-3 col-sm-3">
+                    <div class="col-lg-4 col-12 col-md-4 col-sm-4">
                         <div class="form-group">
                             <label for="account_type">{{ trans('strings.account_type') }}</label>
                             <select v-model="account_type" class="form-control" id="account_type">
@@ -347,20 +349,42 @@ export default {
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-12 col-md-3 col-sm-3">
+                    <div class="col-lg-4 col-12 col-md-4 col-sm-4">
                         <div class="form-group">
                             <label for="operation">{{ trans('strings.operation') }}</label>
                             <input type="text" name="operation" v-model="operation" class="form-control" id="operation" :placeholder="'999'">
                             <small>{{ trans('strings.if_there_is') }}</small>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-12 col-md-3 col-sm-3">
+                    <div class="col-lg-4 col-12 col-md-4 col-sm-4">
+                        <div class="form-group">
+                            <label for="doc_type">{{ trans('strings.document_type') }}</label>
+                            <select v-model="doc_type" class="form-control" id="doc_type">
+                                <option value="1">
+                                    {{ trans('strings.cpf') }}
+                                </option>
+                                <option value="2">
+                                    {{ trans('strings.id_card') }}
+                                </option>
+                                <option value="3">
+                                    {{ trans('strings.driver_license') }}
+                                </option>
+                                <option value="4">
+                                    {{ trans('strings.driver_license') }}
+                                </option>
+                                <option value="5">
+                                    {{ trans('strings.passport') }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12 col-md-6 col-sm-6">
                         <div class="form-group">
                             <label for="identification">Doc. de {{ trans('strings.identification') }}*</label>
                             <input type="text" name="identification" v-model="identification" required class="form-control" id="identification" :placeholder="'99999999999'">
                         </div>
                     </div>
-                    <div class="col-lg-3 col-12 col-sm-3 col-md-3">
+                    <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                         <div class="form-group">
                             <label for="country">{{ trans('strings.country') }}</label>
                             <select v-model="country" class="form-control" id="country">
@@ -372,7 +396,7 @@ export default {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 col-12 col-sm-4 col-md-4">
+                    <div class="col-lg-6 col-12 col-sm-12 col-md-10">
                         <strong>
                             <label for="amount">* Quantia a ser retirada &nbsp;
                                 <i class="fa fa-info" title="Mínimo de $1.00"></i>

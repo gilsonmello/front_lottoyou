@@ -17,3 +17,4 @@ Route::get('lotteries/find/{id}', 'LotteryController@find');
 Route::get('lotteries/sweepstakes/{id}', 'LotteryController@sweepstakes');
 Route::get('lotteries/sweepstake/{id}', 'LotteryController@sweepstake');
 Route::get('lotteries/play/{slug}', 'LotteryController@play')->name('api.lotteries.play');
+Route::get('lotteries/awards/{id}', 'LotteryController@awards')->name('api.lotteries.awards');

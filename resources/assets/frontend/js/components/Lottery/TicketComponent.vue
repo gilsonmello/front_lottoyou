@@ -26,8 +26,11 @@
 			</div>
 			<div class="tickets-footer">
 				<em class="text-caption" style="display: block">
-            		Dezenas restantes - <input v-if="ticket.numbers != undefined && dickersMaxSel.length > 0" v-model="dickersMaxSel.length - ticket.numbers.length" name="data[LotUserJogo][qtdNumeros1]" type="text" disabled>
-        			<input v-if="ticket.numbersExtras != undefined && dickersExtrasSelect.length > 0" v-model="dickersExtrasSelect.length - ticket.numbersExtras.length" disabled type="text">
+            		{{trans('strings.dickers_selected')}} - <input v-if="ticket.numbers != undefined && dickersMaxSel.length > 0" v-model="ticket.numbers.length" type="text" disabled>
+        		</em>
+				<em class="text-caption" style="display: block" v-if="dickersExtrasSelect.length > 0">
+            		<!-- D. {{trans('strings.extras_selected').toLowerCase()}}  - <input v-if="ticket.numbersExtras != undefined && dickersExtrasSelect.length > 0" v-model="dickersExtrasSelect.length - ticket.numbersExtras.length" disabled type="text"> -->
+					D. {{trans('strings.extras_selected').toLowerCase()}}  - <input v-if="ticket.numbersExtras != undefined && dickersExtrasSelect.length > 0" v-model="ticket.numbersExtras.length" disabled type="text">
         		</em>
 			</div>
 		</div>
@@ -244,5 +247,6 @@
 <style scoped>
 	.text-caption {
 		font-size: 11px;
+		margin-bottom: 2px;
 	}
 </style>

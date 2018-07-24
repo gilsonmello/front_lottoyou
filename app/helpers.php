@@ -254,11 +254,15 @@ if (!function_exists('format')) {
 		
 		if($locale != null && $locale != '') {
 			switch($locale) {
-				case 'pt_BR': {
+				case 'pt_BR' && strpos($date, '/') : {
 					$date = format_without_mask_pt_br($date, '/');
 					break;
 				}
-				case 'es_ES': {
+				case 'es_ES' && strpos($date, '/'): {
+					$date = format_without_mask_pt_br($date, '/');
+					break;
+				}
+				case 'en_US' && strpos($date, '/'): {
 					$date = format_without_mask_pt_br($date, '/');
 					break;
 				}
@@ -268,7 +272,6 @@ if (!function_exists('format')) {
 					break;
 				}
 			}
-			return $date;
 		}
 		return Carbon\Carbon::parse($date)->format($format);		
 	}

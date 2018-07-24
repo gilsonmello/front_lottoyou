@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Lottery;
 use App\LotterySweepstake;
 use Illuminate\Support\Facades\DB;
+use App\LotteryAward;
 
 class LotteryController extends Controller
 {
@@ -48,6 +49,22 @@ class LotteryController extends Controller
             ], 422);
         }
         return response()->json($sweepstakes, 200);
+    }
+
+    public function awards($id) 
+    {
+        $awards = LotteryAward::where('lot_categoria_id', '=', $id)
+            ->orderBy('num_acertos', 'desc')
+            ->orderBy('num_acertos_extras', 'desc')
+            ->orderBy('value', 'desc')
+            ->get();
+
+        if($awards->isEmpty()) {
+            return response()->json([
+                'message' => ''
+            ], 422);
+        }
+        return response()->json($awards, 200);
     }
 
     public function find($param) 

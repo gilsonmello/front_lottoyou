@@ -44,7 +44,7 @@
 					        		<div class="" style="width: 100%;">
 					        			<div class="row">
 					        				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-						        				<router-link :to="{ name: 'lotteries.play', params: {id: lotteries[indexClicked].id} }" style="display: block" class="btn btn-md btn-primary">
+						        				<router-link :to="{ name: 'lotteries.play', params: {slug: lotteries[indexClicked].slug} }" style="display: block" class="btn btn-md btn-primary">
 						        					{{ trans('strings.play_now') }}
 						        				</router-link>
 						        			</div>
@@ -63,19 +63,24 @@
 
 			      	<!-- Modal body -->
 			      	<div class="modal-body" style="padding-top: 0;">
-		        		<table class="table table-striped text-center">
+						<span v-if="awards.length == 0">
+							{{ trans('strings.loading') }}...
+						</span>
+		        		<table class="table table-striped text-center" v-else>
 		        			<thead>
 		        				<tr>
 		        					<th>{{ trans('strings.hits') }}</th>
+		        					<th>{{ trans('strings.extras') }}</th>
 		        					<th>{{ trans('strings.award_for_ticket') }}</th>
 		        				</tr>
 		        			</thead>
 		        			<tbody>
-		        				<tr>
-		        					<td>5</td>
-		        					<td>$20000</td>
+		        				<tr v-for="(award, index) in awards" :key="index">
+		        					<td>{{award.num_acertos}}</td>
+		        					<td>{{award.num_acertos_extras}}</td>
+		        					<td>${{award.value}}</td>
 		        				</tr>
-		        				<tr>
+		        				<!-- <tr>
 		        					<td>4</td>
 		        					<td>$20</td>
 		        				</tr>
@@ -90,7 +95,7 @@
 		        				<tr>
 		        					<td>1</td>
 		        					<td>$0.5</td>
-		        				</tr>
+		        				</tr> -->
 		        			</tbody>
 		        		</table>
 			      	</div>
@@ -126,10 +131,25 @@
 				},
 				lotteries: [],
 				indexClicked: null,
-				metas: []
+				metas: [],
+				awards: [],
 			}
 		},
 		methods: {
+			awardsRequest(lottery) {
+				let awardsRequest = axios.create();
+				awardsRequest.interceptors.request.use(config => {
+					return config;
+				});
+				let url = routes.lotteries.awards.replace('{id}', lottery.id);
+				awardsRequest.get(url, {}, {}).then(response => {
+					if(response.status === 200) {
+						this.awards = response.data;
+					}
+				}).catch((error) => {
+					
+				});
+			},
 			handleJackpotTable: function(index) {
 				this.indexClicked = index;
 				$('.modal-jackpot-table').off('hidden.bs.modal');
@@ -154,6 +174,7 @@
 			window.document.title = this.trans('strings.lotteries');
 
 			this.$eventBus.$on('handleJackpotTable', (index) => {
+				this.awardsRequest(this.lotteries[index]);
 				this.handleJackpotTable(index);
 			})
 			

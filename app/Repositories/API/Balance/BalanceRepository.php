@@ -159,6 +159,7 @@ class BalanceRepository implements BalanceContract
             $agentWithdraw->finish = 0;
             $agentWithdraw->withdraw_id = $balanceWithdraw->id;
             $agentWithdraw->owner_id = $user->id;
+            $agentWithdraw->doc_type = $request->doc_type;
             $agentWithdraw->historic_balance_id = $historicBalance->id;
             $agentWithdraw->save();
             
@@ -168,7 +169,6 @@ class BalanceRepository implements BalanceContract
             DB::commit();
             return true;
         } catch (\Illuminate\Database\QueryException $e) {
-            dd($e->getMessage());
             DB::rollBack();
             return false;
         } catch (\PDOException $e) {

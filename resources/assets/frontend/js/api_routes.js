@@ -112,6 +112,7 @@ export const routes = {
 		play: host+'/lotteries/play/{slug}',
 		results: host+'/lotteries/results/{slug}',
 		find: host+'/lotteries/find/{slug}',
+		awards: host+'/lotteries/awards/{id}',
 		sweepstakes: host+'/lotteries/sweepstakes/{slug}',
 		sweepstake: host+'/lotteries/sweepstake/{sweepstake_id}',
 	},

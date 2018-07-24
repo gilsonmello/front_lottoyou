@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cookie;
 
 class LotteryAward extends Model
 {
@@ -51,5 +52,10 @@ class LotteryAward extends Model
     public function lottery() 
     {
         return $this->belongsTo(Lottery::class, 'lot_categoria_id');
+    }
+
+    public function getCreatedAttribute($date) 
+    {
+        return format($date, 'd/m/Y H:i', Cookie::get('locale'));
     }
 }
