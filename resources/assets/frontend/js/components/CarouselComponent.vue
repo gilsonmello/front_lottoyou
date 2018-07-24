@@ -31,17 +31,17 @@
                             <div class="carousel-item">
                                 <div class="row">
                                     <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <router-link :to="{ name: 'soccer_expert.show', params: {id: 3} }">
+                                        <router-link :to="{ name: 'soccer_expert.play', params: {slug: 'custom'} }">
                                             <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_4.png">
                                         </router-link>
                                     </div>
                                     <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <router-link :to="{ name: 'soccer_expert.show', params: {id: 1} }">
+                                        <router-link :to="{ name: 'soccer_expert.play', params: {slug: 'world'} }">
                                             <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_3.png">
                                         </router-link>
                                     </div>
                                     <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <router-link :to="{ name: 'soccer_expert.show', params: {id: 2} }">
+                                        <router-link :to="{ name: 'soccer_expert.play', params: {slug: 'special'} }">
                                             <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_5.png">
                                         </router-link>
                                     </div>

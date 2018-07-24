@@ -26,7 +26,7 @@
         <form @submit.prevent="addToCart" v-if="item.lottery.sweepstakes.length > 0">
         	<div class="row">
 	        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
-	        		<h4 class="page-header" style="margin-top: 0; border: none;">{{ item.lottery.nome }}</h4>
+	        		<h1 class="page-header" style="margin-top: 0; border: none;">{{ item.lottery.nome }}</h1>
 	        	</div>
 	        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
 	        		<button class="btn btn-md btn-back pull-right btn-primary" @click.prevent="back($event)">

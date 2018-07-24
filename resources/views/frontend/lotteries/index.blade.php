@@ -1,6 +1,4 @@
-@section('keywords')
-
-@endsection
+@section('title', trans('strings.lotteries'))
 
 @extends('layouts.frontend.bot')
 

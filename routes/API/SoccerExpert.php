@@ -12,6 +12,7 @@ Route::resource('soccer_experts', 'SoccerExpertController', [
     ]
 ]);
 
-Route::get('soccer_experts/results/{id}', 'SoccerExpertController@results');
-Route::get('soccer_experts/ranks/{id}', 'SoccerExpertController@ranks');
-Route::get('soccer_experts/find/{id}', 'SoccerExpertController@find');
+Route::get('soccer_experts/play/{slug}', 'SoccerExpertController@play');
+Route::get('soccer_experts/results/{slug}', 'SoccerExpertController@results');
+Route::get('soccer_experts/ranks/{slug}', 'SoccerExpertController@ranks');
+Route::get('soccer_experts/find/{slug}', 'SoccerExpertController@find');

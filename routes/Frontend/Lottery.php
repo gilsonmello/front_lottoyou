@@ -15,7 +15,8 @@ Route::resource('lotteries', 'LotteryController', [
     ]
 ]);
 
-Route::get('lotteries/results/{id}', 'LotteryController@results');
+Route::get('lotteries/results/{slug}', 'LotteryController@results')
+    ->name('frontend.lotteries.results');
 Route::get('lotteries/find/{id}', 'LotteryController@find');
 Route::get('lotteries/sweepstakes/{id}', 'LotteryController@sweepstakes');
 Route::get('lotteries/sweepstake/{id}', 'LotteryController@sweepstake');

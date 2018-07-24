@@ -103,4 +103,9 @@ class SoccerExpertRound extends Model
             ->where('active', '=', 1)
             ->where('status', '=', 1);
     }
+
+    public function groups() 
+    {
+        return $this->hasOne(SoccerExpertRoundGroup::class, 'soc_rodada_id');
+    }
 }

@@ -11,19 +11,18 @@ use Illuminate\Support\Facades\DB;
 
 class SoccerExpertController extends Controller
 {
-    public function ranks($id, Request $request) 
+    public function ranks($slug, Request $request) 
     {
-        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $id)
+        $soccer = SoccerExpert::findBySlug($slug);
+        
+        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $soccer->id)
             ->where('fechada', '=', 1);
 
-        if($request->get('column')) {
-            $tickets->orderBy($request->get('column'), $request->get('direction'));
-        }
+        $tickets = $tickets->paginate();
 
-        $tickets = $tickets->with('group')
-            ->paginate();
-
-        return response()->json($tickets, 200);
+        return view('frontend.soccer_expert.ranks')
+            ->with('soccer', $soccer)
+            ->with('tickets', $tickets);
         
         /*$bets = SoccerExpertBet::whereHas('round', function($query) use($id) {
             $query->where('soc_categoria_id', '=', $id);
@@ -41,18 +40,42 @@ class SoccerExpertController extends Controller
         return response()->json($bets, 200);   */    
     }
 
-    public function results($id, Request $request) 
+    public function results($slug, Request $request) 
     {
-        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $id);
-
-        if($request->get('column')) {
-            $tickets->orderBy($request->get('column'), $request->get('direction'));
-        }
-
-        $tickets = $tickets->with('group')
+        $soccer = SoccerExpert::where('slug', '=', $slug)->get()->first();
+        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $soccer->id)
             ->paginate();
 
-        return response()->json($tickets, 200);       
+        return view('frontend.soccer_expert.results')
+            ->with('soccer', $soccer)
+            ->with('tickets', $tickets);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function play($slug)
+    {
+        $soccerExpert = SoccerExpert::where('slug', '=', $slug)
+            ->select(
+                'id', 
+                'slug',
+                'nome',
+                'imagem_capa',
+                'active',
+                'ordem',
+                'novo',
+                'created',
+                'modified'
+            )->get()
+            ->first();
+
+        return view('frontend.soccer_expert.play')
+            ->with('soccer', $soccerExpert);
+
     }
 
     /**
@@ -71,15 +94,15 @@ class SoccerExpertController extends Controller
         });*/
         $soccerCategories = SoccerExpert::where('active', '=', 1)
             ->get();
-        if(!is_null($soccerCategories)) {
-            return response()->json($soccerCategories, 200);
-        }
-        return response()->json(['msg' => ''], 422);
+
+        return view('frontend.soccer_expert.index')
+            ->with('soccers', $soccerCategories);
     }
 
-    public function find($id) 
+    public function find($slug) 
     {
-        return SoccerExpert::find($id);
+        dd($slug);
+        return SoccerExpert::findBySlug($slug);
     }
 
     /**

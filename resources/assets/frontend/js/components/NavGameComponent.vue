@@ -32,7 +32,7 @@
 					<a>&nbsp</a>
 				</li>
 
-				<router-link class="world_cup_now" tag="li" :to="{ name: 'soccer_expert.show', params: {id: 2} }">
+				<router-link class="world_cup_now" tag="li" :to="{ name: 'soccer_expert.play', params: {slug: 'special'} }">
 					<a class="nav-link">
 						{{ trans('strings.libertadores_now') }}
 					</a>

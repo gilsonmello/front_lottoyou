@@ -89,14 +89,18 @@ if(isset($_SERVER['HTTP_USER_AGENT']) &&
 			return view('frontend.create_your_league');
 		})->name('frontend.create_your_league');
 	
-		Route::get('/how_to_play_easy_moneyhow_to_play_easy_money', function() {
+		Route::get('/how_to_play_easy_money', function() {
 			return view('frontend.how_to_play_easy_money');
 		})->name('frontend.how_to_play_easy_money');
+
+		Route::get('/how_to_play_soccer_expert', function() {
+			return view('frontend.how_to_play_soccer_expert');
+		})->name('frontend.how_to_play_soccer_expert');
 	});
 }
 
 //Estas rotas serve para renderizar sempre o arquivo app.blade	
 Route::get('/{param_1}/{param_2?}', function ($param_1 = null, $param_2 = null, $param_3 = null) {
-	return view('layouts.frontend.app', compact('seo'));
+	return view('layouts.frontend.app');
 })
 ->where('param_2', '(.*)');

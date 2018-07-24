@@ -13,7 +13,7 @@
 
 		
 		<div class="row">
-			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="(soccer_expert, index) in soccer_experts">
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="(soccer_expert, index) in soccer_experts" :key="index">
 				<div class="soccer-expert">
 					<header class="soccer-expert-header">
 						<div class="extras" v-if="soccer_expert.new == 1">
@@ -51,7 +51,7 @@
 					<footer class="soccer-expert-footer">
 						<div class="row vcenter" style="margin-top: 15px; background: none;">
 							<div class="col-12 col-md-12 col-xs-12 col-sm-12 text-center">
-								<router-link class="btn btn-primary btn-md play" :to="{ name: 'soccer_expert.show', params: { id: soccer_expert.id } }">
+								<router-link class="btn btn-primary btn-md play" :to="{ name: 'soccer_expert.play', params: { slug: soccer_expert.slug } }">
 									{{ trans('strings.to_enter') }}
 								</router-link>
 							</div>
@@ -95,7 +95,7 @@
 					        		<div class="" style="width: 100%;">
 					        			<div class="row">
 					        				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-						        				<router-link :to="{ name: 'soccer_expert.show', params: {id: soccer_experts[indexClicked].id} }" style="display: block" class="btn btn-md btn-primary">
+						        				<router-link :to="{ name: 'soccer_expert.play', params: {slug: soccer_experts[indexClicked].slug} }" style="display: block" class="btn btn-md btn-primary">
 						        					{{ trans('strings.play_now') }}
 						        				</router-link>
 						        			</div>

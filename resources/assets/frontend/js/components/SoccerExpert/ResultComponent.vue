@@ -4,13 +4,13 @@
         <!-- <h3 class="">&nbsp;</h3> -->
         
 		<div class="sub-navigation">
-			<router-link :to="{ name: 'soccer_expert.show', params: { id: category.id } }" class="show" id="play-component">
+			<router-link :to="{ name: 'soccer_expert.play', params: { slug: category.slug } }" class="show" id="play-component">
                 {{ trans('strings.play_on_the') }} {{ category.nome }} 
             </router-link>
-            <router-link :to="{ name: 'soccer_expert.results', params: { id: category.id } }" class="show active" id="result-component">
+            <router-link :to="{ name: 'soccer_expert.results', params: { slug: category.slug } }" class="show active" id="result-component">
                 {{ trans('strings.results') }}
            	</router-link>
-           	<router-link :to="{ name: 'soccer_expert.ranks', params: { id: category.id } }" class="show" id="result-component">
+           	<router-link :to="{ name: 'soccer_expert.ranks', params: { slug: category.slug } }" class="show" id="result-component">
                 {{ trans('strings.rank') }}
            	</router-link>
 		</div>
@@ -180,7 +180,7 @@
                     query: Object.assign(this.query)
                 })
 
-				let url = routes.soccer_experts.results.replace('{id}', this.id);
+				let url = routes.soccer_experts.results.replace('{slug}', this.slug);
 				url += "?page="+this.query.page;
 				url += "&column="+this.query.column;
 				url += "&direction="+this.query.direction;
@@ -213,6 +213,7 @@
 				model: {},
 				query: {
 					id: '',
+					slug: '',
 					page: 1,
 					column: 'nome',
 					direction: 'asc',
@@ -223,8 +224,8 @@
 			}
 		},
 		mounted: function() {
-			if(this.$route.query.id) {
-                this.query.id = this.$route.query.id
+			if(this.$route.query.slug) {
+                this.query.slug = this.$route.query.slug
             } 
             if(this.$route.query.page) {
                 this.query.page = this.$route.query.page
@@ -246,16 +247,16 @@
             }
 
 			const showRequest = axios.create();
-			this.id = this.$route.params.id;
+			this.slug = this.$route.params.slug;
 			showRequest.interceptors.request.use(config => {
 	        	this.loading.component = true
 			  	return config;
 			});
-			let url = routes.soccer_experts.find.replace('{id}', this.id);
+			let url = routes.soccer_experts.find.replace('{slug}', this.slug);
 
 			showRequest.get(url, {}, {}).then(response => {
 				if(response.status === 200){
-					this.category = response.data
+					this.category = response.data;
 				}
 			}).catch((error) => {
 				

@@ -57,9 +57,9 @@
 		methods: {
 			editSoccerExpert(id, hash, $event) {
 				this.$router.push({
-					name: 'soccer_expert.show',
+					name: 'soccer_expert.play',
 					params: {
-						id: id,
+						slug: slug,
 						hash: hash
 					}
 				})

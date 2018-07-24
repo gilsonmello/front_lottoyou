@@ -51,17 +51,17 @@
                         <div class="carousel-item">
                             <div class="row">
                                 <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                    <a href="{{route('frontend.soccer_expert.show', 3)}}">
+                                    <a href="{{route('frontend.soccer_expert.play', 'custom')}}">
                                         <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_4.png">
                                     </a>
                                 </div>
                                 <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                    <a href="{{route('frontend.soccer_expert.show', 1)}}">
+                                    <a href="{{route('frontend.soccer_expert.play', 'world')}}">
                                         <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_3.png">
                                     </a>
                                 </div>
                                 <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                    <a href="{{route('frontend.soccer_expert.show', 2)}}">
+                                    <a href="{{route('frontend.soccer_expert.play', 'special')}}">
                                         <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_5.png">
                                     </a>
                                 </div>

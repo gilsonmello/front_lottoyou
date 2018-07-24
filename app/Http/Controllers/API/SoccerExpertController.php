@@ -77,9 +77,9 @@ class SoccerExpertController extends Controller
         return response()->json(['msg' => ''], 422);
     }
 
-    public function find($id) 
+    public function find($slug) 
     {
-        return SoccerExpert::find($id);
+        return SoccerExpert::findBySlug($slug);
     }
 
     /**
@@ -243,6 +243,120 @@ class SoccerExpertController extends Controller
             return response()->json($soccerExpert, 200);
         }
         return response()->json(['msg' => ''], 422);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function play($slug)
+    {
+        $soccerExpert = SoccerExpert::where('slug', '=', $slug)
+            ->select(
+                'id', 
+                'slug',
+                'nome',
+                'imagem_capa',
+                'active',
+                'ordem',
+                'novo',
+                'created',
+                'modified'
+            )->get()
+            ->first();
+
+        $cycles = SoccerExpertCycle::where('soc_categoria_id', '=', $soccerExpert->id)
+            ->whereHas('rounds', function ($query) {
+                $query->where(
+                    DB::raw("concat(data_termino,' ',hora_termino)"), 
+                    '>=', 
+                    date('Y-m-d H:i:s')
+                )->where('active', '=', 1);
+            })
+            ->with([
+                'rounds' => function($query) {
+                    $query->select([
+                        'id', 
+                        'soc_bolao_id',
+                        'tipo',
+                        'nome',
+                        'imagem_capa',
+                        'valor',
+                        'data_termino',
+                        'hora_termino',
+                        'limite',
+                        'minimo',
+                        'active',
+                        'created',
+                        'modified',
+                        'soc_categoria_id',
+                        'soc_ciclo_id',
+                        'imagem_modal',
+                        DB::raw("concat(data_termino,' ',hora_termino) as date_end")
+                    ])
+                    ->where(
+                        DB::raw("concat(data_termino,' ',hora_termino)"), 
+                        '>=', 
+                        date('Y-m-d H:i:s')
+                    )->where('active', '=', 1)
+                    ->orderBy('date_end', 'asc');
+                },
+                'rounds.games' => function($query) {
+                    $query->select([
+                        'id', 
+                        'user_id',
+                        'soc_rodada_id',
+                        'soc_bolao_id',
+                        'gel_clube_casa_id',
+                        'gel_clube_fora_id',
+                        'resultado_clube_casa',
+                        'resultado_clube_fora',
+                        'local',
+                        'data',
+                        'hora',
+                        'data_termino',
+                        'hora_termino',
+                        'active',
+                        'created',
+                        'modified',
+                        DB::raw("concat(data,' ',hora) as date_end")
+                    ])->where('active', '=', 1)
+                    ->orderBy('date_end', 'asc');
+                },
+                'rounds.sweepstake',
+                'rounds.group',
+                'rounds.games.houseClub',
+                'rounds.games.outClub',
+            ])
+            ->whereHas('rounds.games.houseClub', function($query) {
+                $query->where('active', '=', 1);
+            })
+            ->whereHas('rounds.games.outClub', function($query) {
+                $query->where('active', '=', 1);
+            })
+            ->where(
+                DB::raw("concat(data_inicio,' ',hora_inicio)"), 
+                '<=', 
+                date('Y-m-d H:i:s')
+            )
+            ->where(
+                DB::raw("concat(data_fim,' ',hora_fim)"), 
+                '>=', 
+                date('Y-m-d H:i:s')
+            )
+            ->where('active', '=', 1)
+            ->get();
+
+        $soccerExpert->cycles = $cycles;
+
+        if(!is_null($soccerExpert)) {
+            return response()->json($soccerExpert, 200);
+        }
+
+        return response()->json(['msg' => ''], 422);
+
     }
 
     /**

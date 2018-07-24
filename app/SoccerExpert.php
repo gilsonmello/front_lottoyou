@@ -56,4 +56,8 @@ class SoccerExpert extends Model
     {        
         return env('APP_CDN'). $this->attributes['imagem_capa'];
     }
+
+    public function scopeFindBySlug($query, $string) {
+        return $query->where('slug', $string)->get()->first();
+    }
 }

@@ -1,6 +1,6 @@
 <template>
 	<div :id="id" class="collapse">
-		<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;" @click.prevent="editSoccerExpert(soccer_expert.id, soccer_expert.hash, $event)">
+		<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;" @click.prevent="editSoccerExpert(soccer_expert.slug, soccer_expert.hash, $event)">
         	<div class="col-lg-5 col-10 col-md-5 col-sm-5" v-for="(round, column) in soccer_expert.rounds">
         		<div :class="'ticket'+column+' tickets'">
         			
@@ -55,11 +55,11 @@
 
 		},
 		methods: {
-			editSoccerExpert(id, hash, $event) {
+			editSoccerExpert(slug, hash, $event) {
 				this.$router.push({
-					name: 'soccer_expert.show',
+					name: 'soccer_expert.play',
 					params: {
-						id: id,
+						slug: slug,
 						hash: hash
 					}
 				})

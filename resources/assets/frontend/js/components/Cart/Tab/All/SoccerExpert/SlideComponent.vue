@@ -72,9 +72,9 @@
                     && !el.parent().hasClass('carousel-control-next')
                     ) {
                     this.$router.push({
-                        name: 'soccer_expert.show',
+                        name: 'soccer_expert.play',
                         params: {
-                            id: this.item.soccer_expert.id,
+                            slug: this.item.soccer_expert.slug,
                             hash: this.item.hash
                         }
                     });

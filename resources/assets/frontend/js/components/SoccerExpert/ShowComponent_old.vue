@@ -6,10 +6,10 @@
         <div class="row">
         	<div class="col-lg-12">
         		<div class="sub-navigation">
-        			<router-link :to="{ name: 'soccer_expert.show', params: { id: soccer_expert.id } }" class="active show" id="play-component">
+        			<router-link :to="{ name: 'soccer_expert.play', params: { slug: soccer_expert.slug } }" class="active show" id="play-component">
 	                    {{ trans('strings.play_on_the') }} {{ soccer_expert.nome }}
 	                </router-link>
-	                <router-link :to="{ name: 'soccer_expert.results', params: { id: soccer_expert.id } }" class="show" id="result-component">
+	                <router-link :to="{ name: 'soccer_expert.results', params: { slug: soccer_expert.slug } }" class="show" id="result-component">
 	                    {{ trans('strings.results') }}
 	               	</router-link>
         		</div>
@@ -146,6 +146,7 @@
 					id: null,
 					value: null,
 					name: '',
+					slug: '',
 					rounds: []
 				},
 
@@ -174,17 +175,18 @@
 			},
         	showRequest() {
         		const showRequest = axios.create();
-				this.id = this.$route.params.id;
+				this.slug = this.$route.params.slug;
 				
 				showRequest.interceptors.request.use(config => {
 		        	this.loading.component = true
 				  	return config;
 				});
-				showRequest.get(routes.soccer_expert.show.replace('{id}', this.id), {}, {}).then(response => {
+				showRequest.get(routes.soccer_expert.play.replace('{slug}', this.slug), {}, {}).then(response => {
 					if(response.status === 200){
 						this.soccer_expert = response.data
 						this.loading.component = false
 						this.item.id = this.id;
+						this.item.slug = this.slug;
 						this.item.soccer_expert = this.soccer_expert;
 						this.item.hash = this.makeid();
 						this.item.value = parseFloat(this.soccer_expert.value);

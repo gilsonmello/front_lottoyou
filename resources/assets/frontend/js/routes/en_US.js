@@ -145,25 +145,25 @@ export default {
 			        component: require('../components/SoccerExpert/IndexComponent.vue')
 			    },
 			    {   
-			  		path: 'soccer_expert/show/:id/:hash?',
-			        name: 'soccer_expert.show', 
+			  		path: 'soccer_expert/play/:slug',
+			        name: 'soccer_expert.play', 
 			        props: true,
 			        component: require('../components/SoccerExpert/ShowComponent.vue')
 			    },
 			    {   
-			  		path: 'soccer_expert/ranks/:id',
+			  		path: 'soccer_expert/ranks/:slug',
 			        name: 'soccer_expert.ranks', 
 			        props: true,
 			        component: require('../components/SoccerExpert/VcRank.vue')
 			    },
 			    {   
-			  		path: 'soccer_expert/results/:id',
+			  		path: 'soccer_expert/results/:slug',
 			        name: 'soccer_expert.results', 
 			        props: true,
 			        component: require('../components/SoccerExpert/ResultComponent.vue')
 			    },
 			    {   
-			  		path: 'soccer_groups/ranking/:id',
+			  		path: 'soccer_groups/ranking/:slug',
 			        name: 'soccer_groups.ranking', 
 			        props: true,
 			        component: require('../components/SoccerGroup/VcRanking.vue')

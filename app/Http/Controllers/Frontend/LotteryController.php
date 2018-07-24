@@ -50,45 +50,31 @@ class LotteryController extends Controller
         return Lottery::find($id);
     }
 
-    public function results($id, Request $request) 
+    public function results($slug, Request $request) 
     {
+        $lottery = Lottery::where('slug', '=', $slug)->get()->first();
+        $sweepstakes = LotterySweepstake::where('lot_categoria_id', '=', $lottery->id)
+            ->paginate();
 
-        $sweepstakes = LotterySweepstake::where('lot_categoria_id', '=', $id)
-            ->with([
-                'result' => function($query) {
-
-                },
-                'result.numbers' => function($query) {
-
-                },
-                'result.numbersExtras' => function($query) {
-
-                },
-            ]);
-
-        if($request->column && !empty($request->column)) {
-            $sweepstakes->orderBy($request->column, $request->direction);
-        }
-
-        if($request->sorteio && !empty($request->sorteio)) {
-            $sweepstakes->where('sorteio', 'LIKE', '%'.$request->sorteio.'%');
-        }
-
-        if($request->data_fim && !empty($request->data_fim)) {
-            $request->data_fim = format_without_mask($request->data_fim, '/');
-            $sweepstakes->where('data_fim', '=', $request->data_fim);
-        }
-            
-
-        $sweepstakes = $sweepstakes->paginate();
-
-        return response()->json($sweepstakes, 200);
-        
+        return view('frontend.lotteries.results')
+            ->with('lottery', $lottery)
+            ->with('sweepstakes', $sweepstakes);        
     }
 
-    public function play($slug) 
+    /**
+     * 
+     */
+    public function play($slug, Request $request) 
     {
-        return view('frontend.lotteries.play');
+        $lottery = Lottery::whereHas('sweepstakes', function($query) {
+            $query->where('active', '=', 1)
+                ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'));
+        })->where('slug', '=', $slug)
+            ->get()
+            ->first();
+
+        return view('frontend.lotteries.play')
+            ->with('lottery', $lottery);
     }
 
     /**
@@ -98,17 +84,7 @@ class LotteryController extends Controller
      */
     public function index()
     {
-        $lotteries = Lottery::with([
-            'sweepstakes' => function($query) {
-                $query->select('id', 'lot_categoria_id', 'data_fim', 'hora_fim')
-                    ->where('active', '=', 1)
-                    ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'))
-                    ->orderBy('data_fim', 'ASC')
-                    ->orderBy('hora_fim', 'ASC')
-                    ->limit(1);
-            }
-        ])
-        ->whereHas('sweepstakes', function($query) {
+        $lotteries = Lottery::whereHas('sweepstakes', function($query) {
             $query->where('active', '=', 1)
                 ->where(DB::raw("concat(data_fim,' ',hora_fim)"), '>=', date('Y-m-d H:i:s'));
         })

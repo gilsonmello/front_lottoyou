@@ -70,11 +70,13 @@
 		methods: {
 			editTickets() {
 				this.$router.push({
-                    name: 'soccer_expert.show',
+                    name: 'soccer_expert.play',
                     params: {
-                        id: this.item.soccer_expert.id,
-                        hash: this.item.hash
-                    }
+                        slug: this.item.soccer_expert.slug,
+					},
+					query: {
+						hash: this.item.hash
+					}
                 });
         	},
 			removeItemSoccerExpert(item, event){

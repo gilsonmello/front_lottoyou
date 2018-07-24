@@ -42,19 +42,7 @@
         <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
     </head>
     <body>
-
-        {{-- <main id="prerendered-content">
-            @include('frontend.includes.header')
-
-            <section class="content">
-                <div>
-                    @yield('content')
-                </div>
-            </section>
-
-            @include('frontend.includes.footer')
-        </main> --}}
-        
+       
         {{-- Tag para que ao inicializar o sistema, faça o download do gif load --}}        
         
         <div id="app">

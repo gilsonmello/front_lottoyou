@@ -96,10 +96,11 @@ export const routes = {
 	},
 	soccer_experts: {
 		index: host+'/soccer_experts',
-		show: host+'/soccer_experts/{id}',
-		results: host+'/soccer_experts/results/{id}',
-		ranks: host+'/soccer_experts/ranks/{id}',
-		find: host+'/soccer_experts/find/{id}',
+		show: host+'/soccer_experts/{slug}',
+		play: host+'/soccer_experts/play/{slug}',
+		results: host+'/soccer_experts/results/{slug}',
+		ranks: host+'/soccer_experts/ranks/{slug}',
+		find: host+'/soccer_experts/find/{slug}',
 	},
 	soccer_categories: {
 		index: host+'/soccer_categories',

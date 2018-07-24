@@ -4,13 +4,13 @@
         <!-- <h3 class="">&nbsp;</h3> -->
         
 		<div class="sub-navigation">
-			<router-link :to="{ name: 'soccer_expert.show', params: { id: category.id } }" class="show" id="play-component">
+			<router-link :to="{ name: 'soccer_expert.play', params: { slug: category.slug } }" class="show" id="play-component">
                 {{ trans('strings.play_on_the') }} {{ category.nome }} 
             </router-link>
-            <router-link :to="{ name: 'soccer_expert.results', params: { id: category.id } }" class="show" id="result-component">
+            <router-link :to="{ name: 'soccer_expert.results', params: { slug: category.slug } }" class="show" id="result-component">
                 {{ trans('strings.results') }}
            	</router-link>
-           	<router-link :to="{ name: 'soccer_expert.ranks', params: { id: category.id } }" class="show active" id="result-component">
+           	<router-link :to="{ name: 'soccer_expert.ranks', params: { slug: category.slug } }" class="show active" id="result-component">
                 {{ trans('strings.rank') }}
            	</router-link>
 		</div>
@@ -20,7 +20,7 @@
         		
         	</div>
         	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
-        		<router-link class="btn btn-md btn-back pull-right btn-primary" :to="{name: 'soccer_expert.show', params: { id: category.id }}">
+        		<router-link class="btn btn-md btn-back pull-right btn-primary" :to="{name: 'soccer_expert.play', params: { slug: category.slug }}">
         			<i class="fa fa-arrow-left"></i>
         			{{ trans('strings.back') }}
         		</router-link>
@@ -139,7 +139,7 @@
 	export default {
 		metaInfo () {
 			return {
-				title: this.trans('strings.soccer_expert')+' '+this.category.nome,
+				title: this.trans('strings.rank')+' '+this.category.nome,
 				meta: [
 		          	{ name: 'description', content: 'Rank '+ this.category.nome }
 		        ]
@@ -188,7 +188,7 @@
                     query: Object.assign(this.query)
                 })
                 
-				let url = routes.soccer_experts.ranks.replace('{id}', this.id);
+				let url = routes.soccer_experts.ranks.replace('{slug}', this.slug);
 				url += "?page="+this.query.page;
 				url += "&column="+this.query.column;
 				url += "&direction="+this.query.direction;
@@ -223,6 +223,7 @@
 				users: [],
 				query: {
 					id: '',
+					slug: '',
 					page: 1,
 					column: 'nome',
 					direction: 'asc',
@@ -233,8 +234,8 @@
 			}
 		},
 		mounted: function() {
-			if(this.$route.query.id) {
-                this.query.id = this.$route.query.id
+			if(this.$route.query.slug) {
+                this.query.slug = this.$route.query.slug
             } 
             if(this.$route.query.page) {
                 this.query.page = this.$route.query.page
@@ -256,15 +257,15 @@
             }
 
 			const categoryRequest = axios.create();
-			this.id = this.$route.params.id;
+			this.slug = this.$route.params.slug;
 			categoryRequest.interceptors.request.use(config => {
 	        	this.loading.component = true
 			  	return config;
 			});
-			let url = routes.soccer_experts.find.replace('{id}', this.id);
+			let url = routes.soccer_experts.find.replace('{slug}', this.slug);
 
 			categoryRequest.get(url, {}, {}).then(response => {
-				if(response.status === 200){
+				if(response.status === 200) {
 					this.category = response.data
 				}
 			}).catch((error) => {

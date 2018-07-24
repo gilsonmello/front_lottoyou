@@ -4,13 +4,13 @@
 		<div class="row">
         	<div class="col-lg-12">
         		<div class="sub-navigation">
-        			<router-link :to="{ name: 'soccer_expert.show', params: { id: item.soccer_expert.id } }" class="active show">
+        			<router-link :to="{ name: 'soccer_expert.play', params: { slug: item.soccer_expert.slug } }" class="active show">
 	                    {{ trans('strings.play_on_the') }} {{ item.soccer_expert.nome }}
 	                </router-link>
-	                <router-link :to="{ name: 'soccer_expert.results', params: { id: item.soccer_expert.id } }" class="show">
+	                <router-link :to="{ name: 'soccer_expert.results', params: { slug: item.soccer_expert.slug } }" class="show">
 	                    {{ trans('strings.results') }}
 	               	</router-link>
-	               	<router-link :to="{ name: 'soccer_expert.ranks', params: { id: item.soccer_expert.id } }" class="show">
+	               	<router-link :to="{ name: 'soccer_expert.ranks', params: { slug: item.soccer_expert.slug } }" class="show">
 		                {{ trans('strings.rank') }}
 		           	</router-link>
         		</div>
@@ -143,7 +143,7 @@
 	export default {
 		metaInfo () {
 			return {
-				title: this.item.soccer_expert.nome,
+				title: this.item.soccer_expert.nome +' | '+ this.trans('lottoyou'),
 				meta: [
 					{ name: 'description', content: this.item.soccer_expert.nome },
 					{
@@ -241,13 +241,13 @@
         	},
         	showRequest() {
         		const showRequest = axios.create();
-				let id = this.$route.params.id;
+				let slug = this.$route.params.slug;
 				
 				showRequest.interceptors.request.use(config => {
 		        	this.loading.component = true
 				  	return config;
 				});
-				showRequest.get(routes.soccer_experts.show.replace('{id}', id), {}, {}).then(response => {
+				showRequest.get(routes.soccer_experts.play.replace('{slug}', slug), {}, {}).then(response => {
 					if(response.status === 200) {
 						this.loading.component = false
 						this.item.hash = this.makeid();
@@ -260,7 +260,7 @@
         	showSoccerExpert() {
         		var interval = setInterval(() => {
 					var item = this.purchase.soccer_expert.items.filter((val) => {
-						return this.$route.params.hash == val.hash;
+						return this.$route.query.hash == val.hash;
 					})
 
 					if(item.length > 0) {
@@ -275,9 +275,9 @@
 			},
 			//Função executada ao carregar
 			init: function() {
-				if(this.$route.params.hash != undefined) {
+				if(this.$route.query.hash != undefined) {
 					this.showSoccerExpert();
-				} else if(this.$route.params.id != undefined) {
+				} else if(this.$route.params.slug != undefined) {
 					this.showRequest();
 				}
 				//window.document.title = this.trans('strings.soccer_expert');
