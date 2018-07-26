@@ -65,10 +65,10 @@
 						if(response.data.items.length > 0)
 		            		this.$store.dispatch('setItems', response.data.items)
 
-		            	this.loading.component = false
+		            	this.loading.component = false;
 					}
 				}).catch((error) => {
-					this.loading.component = false
+					this.loading.component = false;
 				});
 			},
 			init() {

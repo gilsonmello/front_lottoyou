@@ -284,7 +284,7 @@
 			this.loading.component = false;
             setTimeout(() => {
                 window.prerenderReady = true;
-            }, 1000);
+            }, 2000);
 		},
 		components: {
 			SliderComponent,
