@@ -13,7 +13,12 @@
 
 <script>
     export default {
-        name: "VcAsk"
+        name: "VcAsk",
+        mounted() {
+            setTimeout(() => {
+                window.prerenderReady = true;
+            }, 1000);
+        }
     }
 </script>
 

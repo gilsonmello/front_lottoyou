@@ -81,14 +81,17 @@
                 </h6>
             </div>
         </div>
-
-
     </div>
 </template>
 
 <script>
     export default {
-        name: "VcPlayerProtection"
+        name: "VcPlayerProtection",
+        mounted () {
+            setTimeout(() => {
+                window.prerenderReady = true;
+            }, 1000);
+        }
     }
 </script>
 

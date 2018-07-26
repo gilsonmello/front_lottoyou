@@ -16,7 +16,12 @@
 
 <script>
     export default {
-        name: "VcTerms"
+        name: "VcTerms",
+        mounted() {
+            setTimeout(() => {
+                window.prerenderReady = true;
+            }, 1000);
+        }
     }
 </script>
 

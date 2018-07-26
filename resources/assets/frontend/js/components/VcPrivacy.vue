@@ -201,7 +201,9 @@
 <script>
 	export default {
 		mounted() {
-			
+            setTimeout(() => {
+                window.prerenderReady = true;
+            }, 1000);
 		}
 	}
 </script>

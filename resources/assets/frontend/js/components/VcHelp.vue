@@ -656,6 +656,9 @@
         },
         mounted() {
             this.loading.component = false;
+            setTimeout(() => {
+                window.prerenderReady = true;
+            }, 1000);
         },
         components: {
             LoadComponent
