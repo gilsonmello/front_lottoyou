@@ -6,19 +6,19 @@
       	<div class="collapse navbar-collapse" id="navbarCollapse">
 	        <ul class="navbar-nav" style="">
 
-	        	<router-link tag="li" :to="{ name: 'home' }">
+	        	<router-link tag="li" :to="{ name: 'home', query: {'_escaped_fragment_' : ''} }">
           			<a class="nav-link">{{ trans('strings.home') }}</a>
 				</router-link>
 
-	            <router-link tag="li" :to="{ name: 'scratch_cards.index' }">
+	            <router-link tag="li" :to="{ name: 'scratch_cards.index', query: {'_escaped_fragment_' : ''} }">
           			<a class="nav-link">{{ trans('strings.scratch_cards') }}</a>
 				</router-link>
 
-          		<router-link tag="li" :to="{ name: 'soccer_expert.index' }">
+          		<router-link tag="li" :to="{ name: 'soccer_expert.index', query: {'_escaped_fragment_' : ''} }">
           			<a class="nav-link">{{ trans('strings.soccer_expert') }}</a>
 				</router-link>
 	            
-	            <router-link tag="li" :to="{ name: 'lotteries.index' }">
+	            <router-link tag="li" :to="{ name: 'lotteries.index', query: {'_escaped_fragment_' : ''} }">
 	            	<a class="nav-link">{{ trans('strings.lotteries') }}</a>
             	</router-link>
 

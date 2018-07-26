@@ -6,7 +6,7 @@
   				<div class="col-lg-3 col-md-2 col-sm-3 col-12 no-padding">
 					<ul class="vcenter header-brand">
   						<li style="padding: 0;">
-  							<router-link :to="{ name: 'home' }">
+  							<router-link :to="{ name: 'home', query: {'_escaped_fragment_' : ''} }">
   								<img class="img-fluid logo" style="height: 54px; width: 127px;" src="/imgs/logo.png">
   							</router-link>
   						</li>

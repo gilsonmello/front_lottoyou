@@ -2,6 +2,9 @@ export default {
 	routes: [
   		{
   			path: '/',
+			query: {
+  				'_escaped_fragment_' : 'asd',
+			},
 	        component: require('../components/MainComponent.vue'),
   			children: [
   				{ 
