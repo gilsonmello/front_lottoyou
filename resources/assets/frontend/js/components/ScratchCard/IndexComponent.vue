@@ -661,11 +661,14 @@
 		            	}
 		            	this.scratch_card_themes = this.scratch_card_themes.filter((val) => {
 		            		//Selecionado a primeira linha
-	            			val.positionSelected = 0
+	            			val.positionSelected = 0;
 	            			val.hash = this.makeid();
 		            		return true;
-		            	})
-						this.loading.component = false
+		            	});
+						this.loading.component = false;
+						setTimeout(() => {
+							window.prerenderReady = true;
+						}, 1000);
 				    }
 		        }).catch((error) => {
 		            

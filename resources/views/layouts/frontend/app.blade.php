@@ -41,6 +41,8 @@
         {{-- <link rel="shortcut icon" type="image/png" href="/favicon.ico"/> --}}
 
         <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+
+        <script> window.prerenderReady = false; </script>
     </head>
     <body>
        

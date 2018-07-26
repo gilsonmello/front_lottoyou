@@ -223,6 +223,9 @@
 	            			content: this.soccer_experts[i].nome,
 	            		});
 	            	}
+                    setTimeout(() => {
+                        window.prerenderReady = true;
+                    }, 1000);
 				}
 	        }).catch((error) => {
 	        	if(error.response.data.msg) {
