@@ -83,11 +83,11 @@
     export default {
         metaInfo () {
             return {
-                title: this.trans('crud.contacts.create') + ' | '+this.trans('strings.lottoyou'),
+                title: this.trans('strings.contact_us') + ' | '+this.trans('strings.lottoyou'),
                 meta: [
                     {
                         name: 'description', 
-                        content: this.trans('crud.contacts.create') + ' | '+this.trans('strings.lottoyou')
+                        content: this.trans('strings.contact_us')
                     }
                 ]
             }

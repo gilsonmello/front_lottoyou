@@ -35,8 +35,8 @@ export default {
                     component: require('../components/VcPrivacy.vue')
                 },
                 {
-                    path: 'play_protection',
-                    name: 'play_protection',
+                    path: '/player_protection',
+                    name: 'player_protection',
                     props: true,
                     component: require('../components/VcPlayerProtection.vue')
                 },

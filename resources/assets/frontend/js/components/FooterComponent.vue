@@ -61,7 +61,7 @@
 		                        </router-link>
 		                    </li>
 		                    <li class="list-group-item">
-								<router-link :to="{name: 'play_protection'}" class="color-blue">
+								<router-link :to="{name: 'player_protection'}" class="color-blue">
 		                            Proteção do Jogador
 								</router-link>
 		                    </li>

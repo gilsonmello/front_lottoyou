@@ -1,6 +1,8 @@
-@section('keywords')
+@section('description', 'Lottoyou, lotto, lottery, loteria, apostas online, loterias online,games, bet, bet365, bet188, lottoland, soccer, soccer expert, bolão, futebol, raspadinha, , loterias mais faceis do mundo, palpites, cartola, apostas esportivas, jogos de azar, prêmios.')
 
-@endsection
+@section('title', trans('strings.lottoyou'))
+
+@section('author', trans('strings.lottoyou'))
 
 @extends('layouts.frontend.bot')
 

@@ -1,7 +1,5 @@
 <?php
 
-Route::get('contacts/categories', 'ContactController@categories');
-
 Route::resource('contacts', 'ContactController', [
     'names' => [
         'index' => 'frontend.contacts.index',
@@ -10,6 +8,8 @@ Route::resource('contacts', 'ContactController', [
         'edit' => 'frontend.contacts.edit',
         'update' => 'frontend.contacts.update',
         'destroy' => 'frontend.contacts.destroy',
-        'show' => 'frontend.contacts.show'
+    ],
+    'except' => [
+        'show'
     ]
 ]);

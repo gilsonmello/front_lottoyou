@@ -7,7 +7,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name') }}</title>
-        
+
+        <meta name="fragment" content="!">
         <meta name="google-site-verification" content="7QPAEavdugQkBD7dCM9zMNHTMvl30D4HCggtbe_2i9Y" />
 
         <meta name="keywords" content="Lottoyou, lotto, lottery, loteria, apostas online, loterias online,games, bet, bet365, bet188, lottoland, soccer, soccer expert, bolão, futebol, raspadinha, , loterias mais faceis do mundo, palpites, cartola, apostas esportivas, jogos de azar, prêmios.">

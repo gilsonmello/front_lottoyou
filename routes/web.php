@@ -73,7 +73,7 @@ Route::get('/', function () {
 	return view('layouts.frontend.app');
 })->name('frontend.home');
 
-//$_SERVER['HTTP_USER_AGENT'] = 'googlebot';
+$_SERVER['HTTP_USER_AGENT'] = 'googlebot';
 
 if(isset($_SERVER['HTTP_USER_AGENT']) && 
 	strstr(strtolower($_SERVER['HTTP_USER_AGENT']), "googlebot"))
@@ -84,6 +84,8 @@ if(isset($_SERVER['HTTP_USER_AGENT']) &&
 		require __DIR__.'/Frontend/ScratchCard.php';
 		require __DIR__.'/Frontend/SoccerExpert.php';
 		require __DIR__.'/Frontend/Lottery.php';
+        require __DIR__.'/Frontend/Contact.php';
+        require __DIR__.'/Frontend/Page.php';
 	
 		Route::get('/create_your_league', function() {
 			return view('frontend.create_your_league');

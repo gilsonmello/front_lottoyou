@@ -2,31 +2,39 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Repositories\Frontend\Contact\ContactContract;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ContactController extends Controller
+class PageController extends Controller
 {
-    /**
-     * @var ContactContract
-     */
-    private $repository;
-
-    /**
-     * @return mixed
-     */
-    public function categories()
+    public function help()
     {
-        return $this->repository->categories();
+        return view('frontend.pages.help');
     }
 
-    /**
-     * ContactController constructor.
-     * @param ContactContract $repository
-     */
-    public function __construct(ContactContract $repository) {
-        $this->repository = $repository;
+    public function register()
+    {
+        return view('frontend.pages.help');
+    }
+
+    public function privacy()
+    {
+        return view('frontend.pages.privacy');
+    }
+
+    public function playerProtection()
+    {
+        return view('frontend.pages.player_protection');
+    }
+
+    public function ask()
+    {
+        return view('frontend.pages.ask');
+    }
+
+    public function terms()
+    {
+        return view('frontend.pages.terms');
     }
 
     /**
@@ -46,8 +54,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('frontend.contacts.create')
-            ->with('categories', $this->repository->categories());
+        //
     }
 
     /**
@@ -58,10 +65,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        if($this->repository->create($request)) {
-            return response()->json(['msg' => 'Contato registrado com sucesso'], 200);
-        }
-        return response()->json(['msg' => 'Erro ao registrar contato. Tente novamente'], 422);
+        //
     }
 
     /**

@@ -38,7 +38,7 @@
                             </a>
                         </li> 
                         <li class="list-group-item">
-                            <a href="/play_protection" class="color-blue">
+                            <a href="/player_protection" class="color-blue">
                                 Proteção do Jogador
                             </a>
                         </li> 
