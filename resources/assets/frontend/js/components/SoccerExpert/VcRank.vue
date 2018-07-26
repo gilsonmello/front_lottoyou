@@ -200,10 +200,16 @@
 						this.loading.component = false
 						this.loading.pagination = false
 						//this.scrollToTop();
+                        setTimeout(() => {
+                            window.prerenderReady = true;
+                        }, 1000);
 					}
 				}).catch((error) => {
-					this.loading.component = false
-					this.loading.pagination = false
+					this.loading.component = false;
+					this.loading.pagination = false;
+                    setTimeout(() => {
+                        window.prerenderReady = true;
+                    }, 1000);
 				});
 			}
 		},

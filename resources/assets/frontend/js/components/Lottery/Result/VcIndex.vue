@@ -204,12 +204,18 @@
 						//this.scrollToTop();
 						$(this.$el).find('.form-filter [type="load"]').addClass('hide');
                         $(this.$el).find('.form-filter [type="submit"]').removeClass('hide');
+                        setTimeout(() => {
+                            window.prerenderReady = true;
+                        }, 1000);
 					}
 				}).catch((error) => {
 					this.loading.component = false
 					this.loading.pagination = false
 					$(this.$el).find('.form-filter [type="load"]').addClass('hide');
                     $(this.$el).find('.form-filter [type="submit"]').removeClass('hide');
+                    setTimeout(() => {
+                        window.prerenderReady = true;
+                    }, 1000);
 				});
 			}
 		},

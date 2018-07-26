@@ -172,13 +172,13 @@
 
 				const resultRequest = axios.create();
 				resultRequest.interceptors.request.use(config => {
-					this.loading.pagination = true
+					this.loading.pagination = true;
 		        	return config;
 				});
 
 				this.$router.replace({
                     query: Object.assign(this.query)
-                })
+                });
 
 				let url = routes.soccer_experts.results.replace('{slug}', this.slug);
 				url += "?page="+this.query.page;
@@ -192,10 +192,16 @@
 						this.loading.component = false
 						this.loading.pagination = false;
 						//this.scrollToTop();
+                        setTimeout(() => {
+                            window.prerenderReady = true;
+                        }, 1000);
 					}
 				}).catch((error) => {
-					this.loading.component = false
-					this.loading.pagination = false
+					this.loading.component = false;
+					this.loading.pagination = false;
+                    setTimeout(() => {
+                        window.prerenderReady = true;
+                    }, 1000);
 				});
 			}
 		},
