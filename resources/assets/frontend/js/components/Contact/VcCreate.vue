@@ -336,8 +336,11 @@
                         }
                     });
                 }
-            })
+            });
 
+            setTimeout(() => {
+                window.prerenderReady = true;
+            }, 1000);
         },
         components: {
             LoadComponent,

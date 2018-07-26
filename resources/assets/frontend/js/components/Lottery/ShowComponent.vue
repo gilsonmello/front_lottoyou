@@ -85,7 +85,7 @@
 
 					<div class="form-check form-check-inline" :value="key" v-for="(teimosinha, key) in item.teimosinhas">
 					  	<label class="form-check-label">
-					    	<input class="form-check-input" v-model="item.duration" type="radio" name="duration" :value="teimosinha"> {{teimosinha}}
+					    	<input class="form-check-input" id="duration" v-model="item.duration" type="radio" name="duration" :value="teimosinha"> {{teimosinha}}
 					  	</label>
 					</div>
 				</div>
@@ -511,11 +511,19 @@
 		    				this.setCountdown(date, timeOut);
 		    			}, 1000);
 		    			this.setCountdown(date, timeOut);
+
+
+                        setTimeout(() => {
+                            window.prerenderReady = true;
+                        }, 1000);
 					
 					}
 				}).catch((error) => {
 					this.loading.component = false;
-					this.item.lottery.sweepstakes = []
+					this.item.lottery.sweepstakes = [];
+                    setTimeout(() => {
+                        window.prerenderReady = true;
+                    }, 1000);
 				});
 			},
 			verifyNumberSelected(numbers, dicker) {
@@ -598,7 +606,7 @@
 					}
 				})
 
-				var loopFindTicket = setInterval(() => {
+				let loopFindTicket = setInterval(() => {
 					if($(".container-tickets").length > 0) {
 						clearInterval(loopFindTicket);
 						//Arrastando o scroll para a esquerda

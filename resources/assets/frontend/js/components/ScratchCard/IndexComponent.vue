@@ -671,7 +671,9 @@
 						}, 1000);
 				    }
 		        }).catch((error) => {
-		            
+                    setTimeout(() => {
+                        window.prerenderReady = true;
+                    }, 1000);
 		        })
 			}
 		},

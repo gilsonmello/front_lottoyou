@@ -296,6 +296,9 @@
 			//window.document.title = this.trans('strings.cart')+ ' | ' +window.app.title;
 			//window.document.title = this.trans('strings.cart');
 			this.loading.component = false;
+            setTimeout(() => {
+                window.prerenderReady = true;
+            }, 1000);
 		},
 		components: {
 			ScratchCardComponent,

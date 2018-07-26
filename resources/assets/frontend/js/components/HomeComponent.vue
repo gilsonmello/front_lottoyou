@@ -282,11 +282,9 @@
 		},
 		mounted () {
 			this.loading.component = false;
-			//window.document.title = window.app.title;
-            if(this.$route.query.toastr_desc != null
-				&& this.$route.query.toastr_title != null) {
-				toastr.success(this.$route.query.toastr_title, this.$route.query.toastr_desc);
-			}
+            setTimeout(() => {
+                window.prerenderReady = true;
+            }, 1000);
 		},
 		components: {
 			SliderComponent,

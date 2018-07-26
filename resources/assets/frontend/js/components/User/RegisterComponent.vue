@@ -312,7 +312,7 @@
 			this.days = this.rangeDay();
 			const countryRequest = axios.create();
 			countryRequest.interceptors.request.use(config => {
-				this.loading.component = true
+				this.loading.component = true;
 				return config;
 			});
 			countryRequest.get(routes.countries.index, {}).then(response => {
@@ -320,10 +320,9 @@
 	            	this.loading.component = false;
 	            	this.countries = response.data;
 	            	this.country = ''+this.countries[0].id;
-	            	setTimeout(() => {
-	            		this.loading.component = false
-	            	}, 5000)
-	            	
+                    setTimeout(() => {
+                        window.prerenderReady = true;
+                    }, 1000);
 			    }
 			}).catch((error) => {
 				this.loading.component = false

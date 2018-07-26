@@ -249,29 +249,37 @@
 				});
 				showRequest.get(routes.soccer_experts.play.replace('{slug}', slug), {}, {}).then(response => {
 					if(response.status === 200) {
-						this.loading.component = false
+						this.loading.component = false;
 						this.item.hash = this.makeid();
 						this.item.soccer_expert = response.data;
+                        setTimeout(() => {
+                            window.prerenderReady = true;
+                        }, 1000);
 					}
 				}).catch((error) => {
-					
+                    setTimeout(() => {
+                        window.prerenderReady = true;
+                    }, 1000);
 				});
         	},
         	showSoccerExpert() {
-        		var interval = setInterval(() => {
-					var item = this.purchase.soccer_expert.items.filter((val) => {
+        		let interval = setInterval(() => {
+					let item = this.purchase.soccer_expert.items.filter((val) => {
 						return this.$route.query.hash == val.hash;
-					})
+					});
 
 					if(item.length > 0) {
 						clearInterval(interval);
-						this.loading.component = false
-						this.item = item[0]
+						this.loading.component = false;
+						this.item = item[0];
 
 					} else {
 
 					}
 				});
+                setTimeout(() => {
+                    window.prerenderReady = true;
+                }, 1000);
 			},
 			//Função executada ao carregar
 			init: function() {
