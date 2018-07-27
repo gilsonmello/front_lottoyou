@@ -50,6 +50,24 @@
 
 <script>
 	export default {
+		metaInfo () {
+			return {
+				title: this.trans('strings.create_your_own_league')+ ' | '+this.trans('strings.lottoyou'),
+				meta: [
+					{ name: 'description', content: this.trans('strings.create_your_own_league') },
+					{
+						'property': 'og:title',
+						'content': this.trans('strings.create_your_own_league'),
+						'vmid': 'og:title'
+					},
+					{
+						'property': 'og:description',
+						'content': this.trans('strings.create_your_own_league'),
+						'vmid': 'og:description'
+					}
+				]
+		    }
+		},
 		mounted() {
 			
 		}

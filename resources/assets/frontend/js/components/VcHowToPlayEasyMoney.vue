@@ -64,6 +64,24 @@
 
 <script>
 	export default {
+        metaInfo () {
+			return {
+				title: 'Como jogar | '+this.trans('strings.lottoyou'),
+				meta: [
+					{ name: 'description', content: this.trans('strings.help') },
+					{
+						'property': 'og:title',
+						'content': 'Como jogar | '+this.trans('strings.lottoyou'),
+						'vmid': 'og:title'
+					},
+					{
+						'property': 'og:description',
+						'content': 'Como jogar',
+						'vmid': 'og:description'
+					}
+				]
+		    }
+		},
 		mounted() {
 			
 		}

@@ -200,6 +200,24 @@
 
 <script>
 	export default {
+        metaInfo () {
+			return {
+				title: this.trans('strings.privacy')+' | '+this.trans('strings.lottoyou'),
+				meta: [
+					{ name: 'description', content: this.trans('strings.privacy') },
+					{
+						'property': 'og:title',
+						'content': this.trans('strings.privacy')+' | '+this.trans('strings.lottoyou'),
+						'vmid': 'og:title'
+					},
+					{
+						'property': 'og:description',
+						'content': this.trans('strings.privacy'),
+						'vmid': 'og:description'
+					}
+				]
+		    }
+		},
 		mounted() {
             setTimeout(() => {
                 window.prerenderReady = true;

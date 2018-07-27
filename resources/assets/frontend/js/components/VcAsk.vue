@@ -13,6 +13,24 @@
 
 <script>
     export default {
+        metaInfo () {
+			return {
+				title: this.trans('strings.ask')+ ' | '+this.trans('strings.lottoyou'),
+				meta: [
+					{ name: 'description', content: this.trans('strings.ask') },
+					{
+						'property': 'og:title',
+						'content': this.trans('strings.ask'),
+						'vmid': 'og:title'
+					},
+					{
+						'property': 'og:description',
+						'content': this.trans('strings.ask'),
+						'vmid': 'og:description'
+					}
+				]
+		    }
+		},
         name: "VcAsk",
         mounted() {
             setTimeout(() => {

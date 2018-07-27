@@ -646,6 +646,24 @@
 <script>
     import LoadComponent from './Load'
     export default {
+        metaInfo () {
+			return {
+				title: this.trans('strings.help')+ ' | '+this.trans('strings.lottoyou'),
+				meta: [
+					{ name: 'description', content: this.trans('strings.help') },
+					{
+						'property': 'og:title',
+						'content': this.trans('strings.help'),
+						'vmid': 'og:title'
+					},
+					{
+						'property': 'og:description',
+						'content': this.trans('strings.help'),
+						'vmid': 'og:description'
+					}
+				]
+		    }
+		},
         name: "VcHelp",
         data: function() {
             return {

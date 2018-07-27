@@ -169,6 +169,24 @@
 
 <script>
 	export default {
+        metaInfo () {
+			return {
+				title: this.trans('strings.how_to_play')+' '+this.trans('strings.soccer_expert')+ ' | '+this.trans('strings.lottoyou'),
+				meta: [
+					{ name: 'description', content: this.trans('strings.help') },
+					{
+						'property': 'og:title',
+						'content': this.trans('strings.how_to_play') +' '+this.trans('strings.soccer_expert')+ ' | '+this.trans('strings.lottoyou'),
+						'vmid': 'og:title'
+					},
+					{
+						'property': 'og:description',
+						'content': this.trans('strings.how_to_play') +' '+this.trans('strings.soccer_expert'),
+						'vmid': 'og:description'
+					}
+				]
+		    }
+		},
 		mounted() {
 			
 		}

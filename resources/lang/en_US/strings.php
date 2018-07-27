@@ -36,6 +36,7 @@ return [
     'gold_ball' => 'Bola de ouro',
     'coin' => 'Moeda',
     'terms_and_conditions' => 'Termos e Condições',
+    'terms_and_privacy' => 'Termos e Privacidade',
     'privacy' => 'Privacidade',
     'help' => 'Ajuda',
     'remaining_game' => 'Jogo restante',

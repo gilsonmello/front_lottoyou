@@ -16,6 +16,24 @@
 
 <script>
     export default {
+        metaInfo () {
+			return {
+				title: this.trans('strings.terms_and_privacy')+' | '+this.trans('strings.lottoyou'),
+				meta: [
+					{ name: 'description', content: this.trans('strings.terms_and_privacy') },
+					{
+						'property': 'og:title',
+						'content': this.trans('strings.terms_and_privacy')+' | '+this.trans('strings.lottoyou'),
+						'vmid': 'og:title'
+					},
+					{
+						'property': 'og:description',
+						'content': this.trans('strings.terms_and_privacy'),
+						'vmid': 'og:description'
+					}
+				]
+		    }
+		},
         name: "VcTerms",
         mounted() {
             setTimeout(() => {

@@ -86,6 +86,24 @@
 
 <script>
     export default {
+        metaInfo () {
+			return {
+				title: 'Proteção do jogador | '+this.trans('strings.lottoyou'),
+				meta: [
+					{ name: 'description', content: 'Proteção do jogador' },
+					{
+						'property': 'og:title',
+						'content': 'Proteção do jogador | '+this.trans('strings.lottoyou'),
+						'vmid': 'og:title'
+					},
+					{
+						'property': 'og:description',
+						'content': 'Proteção do jogador',
+						'vmid': 'og:description'
+					}
+				]
+		    }
+		},
         name: "VcPlayerProtection",
         mounted () {
             setTimeout(() => {
