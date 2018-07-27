@@ -11,14 +11,14 @@
 		</div>
 		<form @submit.prevent="register">
 			<div class="row">
-				<div class="col-lg-9 col-12 col-sm-12 col-md-12" style="padding-right: 30px;">
+				<div class="col-lg-9 col-12 col-sm-12 col-md-12 col-form">
 					<div class="row">
 						<div class="col-lg-4 col-12 col-sm-4 col-md-4">
 							<div class="form-group">
 								<label for="email">{{ trans('strings.email') }}*</label>
 							    <input v-model="email" required type="email" class="form-control" id="email" aria-describedby="email" :placeholder="trans('strings.email')">
 							    <div class="alert alert-danger" v-if="errors.email">
-								  	<div v-for="email in errors.email" >{{ email }}</div>
+								  	<div v-for="(email, index) in errors.email" :key="index" >{{ email }}</div>
 								</div>
 						  	</div>
 						</div>
@@ -175,7 +175,7 @@
 					</div>
 					<hr>
 				</div>
-				<div class="col-lg-3 col-12 col-md-4 col-sm-12 text-center" style="padding-left: 0px; padding-right: 0; margin-left: -15px;">
+				<div class="col-lg-3 col-12 col-md-4 col-sm-12 text-center col-banner">
 					<div class="banner" style="position: relative">
 						<img class="img-fluid propaganda" src="/img/572x700_marca_22.png">
 						<div class="content">
@@ -570,6 +570,16 @@
     	text-transform: uppercase;
 	}
 
+	.col-form {
+		padding-right: 30px;
+	}
+
+	.col-banner {
+		padding-left: 0; 
+		padding-right: 0; 
+		margin-left: -15px;
+	}
+
 	.banner .content {
 	    left: 0;
 	    right: 0;
@@ -580,6 +590,28 @@
 	    color: #000;
 	    font-weight: bold;
 	    font-family: sans-serif;
+	}
+
+	@media (min-width: 576px) and (max-width: 768px) {
+		.col-form {
+			padding-right: 15px;
+		}
+		.col-banner {
+			padding-left: 15px;
+			padding-right: 15px;
+			margin-left: 0;
+		}
+	}
+
+	@media (max-width: 576px) {
+		.col-banner {
+			padding-left: 15px;
+			padding-right: 15px;
+			margin-left: 0;
+		}
+		.col-form {
+			padding-right: 15px;
+		}
 	}
 	
 </style>
