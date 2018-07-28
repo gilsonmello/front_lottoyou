@@ -933,12 +933,8 @@
 			//Função para adicionar item no carrinho
 			addToCart: function(event) {
 				var vm = this
-				var tickets = this.getTicketsFinished();				
+				var tickets = this.getTicketsFinished();
 
-				var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.item.lot_jogo_id]);
-
-				this.item.sweepstake = sweepstake;
-				this.item.tickets = tickets;
 				/* var item = {
 					hash: this.item.hash,
 					slug: this.item.slug,
@@ -962,7 +958,12 @@
 				if(tickets.length == 0) {
 					alert('Faça pelo menos um jogo');
 					//this.$store.dispatch('removeItemLottery', item);
-				} else {
+				} else {				
+
+					var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.item.lot_jogo_id]);
+
+					this.item.sweepstake = sweepstake;
+					this.item.tickets = tickets;
 
 					let addLotteryRequest = axios.create();
 
