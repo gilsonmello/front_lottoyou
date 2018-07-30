@@ -85,7 +85,9 @@
 						if(response.data.message != null && response.data.message != '') {
 							swal({
 								showCloseButton: true,
-								type: 'success',
+								imageUrl: '/imgs/logo.png',
+								imageHeight: 50,
+								imageAlt: 'Logo lottoyou',
 								title: this.trans('strings.success'),
 								html: `<p style="text-align: left">${response.data.message}</p>`,
 								showConfirmButton: true,
@@ -93,7 +95,9 @@
 						} else {
 							swal({
 								showCloseButton: true,
-								type: 'success',
+								imageUrl: '/imgs/logo.png',
+								imageHeight: 50,
+								imageAlt: 'Logo lottoyou',
 								title: this.trans('strings.success'),
 								html: `<p style="text-align: left">${this.trans('alerts.users.change_password.success')}</p>`,
 								showConfirmButton: true,
@@ -111,7 +115,9 @@
 					if(error.response.data.message != null && error.response.data.message != '') {
 						swal({
 							showCloseButton: true,
-							type: 'error',
+							imageUrl: '/imgs/logo.png',
+							imageHeight: 50,
+							imageAlt: 'Logo lottoyou',
 							title: this.trans('strings.success'),
 							html: `<p style="text-align: left">${error.response.data.message}</p>`,
 							showConfirmButton: true,
@@ -119,7 +125,9 @@
 					} else {
 						swal({
 							showCloseButton: true,
-							type: 'error',
+							imageUrl: '/imgs/logo.png',
+							imageHeight: 50,
+							imageAlt: 'Logo lottoyou',
 							title: this.trans('strings.success'),
 							html: `<p style="text-align: left">${this.trans('alerts.users.change_password.error')}</p>`,
 							showConfirmButton: true,

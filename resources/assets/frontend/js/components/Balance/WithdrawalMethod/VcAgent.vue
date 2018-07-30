@@ -68,8 +68,10 @@ export default {
         } else if(this.auth.balance.value < 10) {
             swal({
                 title: 'Saldo menor do que $10.00',
-                type: 'warning',
                 showCloseButton: true,
+                imageUrl: '/imgs/logo.png',
+                imageHeight: 50,
+                imageAlt: 'Logo lottoyou',
                 showConfirmButton: false,
                 showCancelButton: false,
                 confirmButtonColor: '#3085d6',
@@ -131,7 +133,10 @@ export default {
             if(this.value <= this.auth.balance.value && this.value > 0) {
                 swal({
                     title: this.trans('strings.do_you_wish_to_continue'),
-                    type: 'warning',
+                    showCloseButton: true,
+                    imageUrl: '/imgs/logo.png',
+                    imageHeight: 50,
+                    imageAlt: 'Logo lottoyou',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',

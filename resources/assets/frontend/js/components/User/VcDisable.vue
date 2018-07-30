@@ -95,8 +95,11 @@
 			submitFormDisable() {
 				swal({
 				  	title: 'Deseja continuar?',
-				  	text: "",
-				  	type: 'warning',
+					text: "",
+					showCloseButton: true,
+					imageUrl: '/imgs/logo.png',
+					imageHeight: 50,
+					imageAlt: 'Logo lottoyou',
 				  	showCancelButton: true,
 				  	confirmButtonColor: '#3085d6',
 				  	cancelButtonColor: '#d33',

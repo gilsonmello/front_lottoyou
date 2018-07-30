@@ -277,9 +277,11 @@
 
 				} else {
 					swal({
-					  	title: "Informe um valor maior do que R$10.00",
-		                type: "error",
-		                html: true,
+						title: "Informe um valor maior do que R$10.00",
+						showCloseButton: true,
+						imageUrl: '/imgs/logo.png',
+						imageHeight: 50,
+						imageAlt: 'Logo lottoyou',
 		                showCancelButton: false,
 		                confirmButtonColor: "#00a65a",
 		                confirmButtonText: "Confirmar",
