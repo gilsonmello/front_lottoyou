@@ -72,6 +72,7 @@ trait PaymentService
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
             $historicBalance->amount = $amount * -1;
+            $historicBalance->system = 1;
 
             $balance->value -= $amount;
             $balance->value = $balance->value < 0 ? 0 : $balance->value;
@@ -99,6 +100,7 @@ trait PaymentService
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
             $historicBalance->amount = $amount;
+            $historicBalance->system = 1;
 
             $balance->value += $amount;
 

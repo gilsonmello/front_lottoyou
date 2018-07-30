@@ -62,14 +62,20 @@ Route::post('/oauth/token', [
 
 //Estas rotas serve para renderizar sempre o arquivo app.blade
 Route::get('/', function () {
-	/* $historics = \App\HistoricBalance::whereNotNull('paypal_order_id')->get();
+	$historics = \App\HistoricBalance::where('description', '=', 'internal withdrawal')
+		->get();
 
 	foreach($historics as $key => $historic) {
 
-		\DB::table('paypal_orders')
+		$historic->system = 0;
+		$historic->modality = 'withdrawal';
+		$historic->save();
+
+		/* \DB::table('paypal_orders')
             ->where('id', $historic->paypal_order_id)
-			->update(['historic_balance_id' => $historic->id]);
-	} */
+			->update(['historic_balance_id' => $historic->id]); */
+
+	}
 	return view('layouts.frontend.app');
 })->name('frontend.home');
 

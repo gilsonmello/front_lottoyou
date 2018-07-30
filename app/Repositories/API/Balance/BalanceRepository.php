@@ -130,6 +130,7 @@ class BalanceRepository implements BalanceContract
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->type = 0;
+            $historicBalance->system = 0;
             $historicBalance->description = 'agent withdrawal';  
 
             //$historicBalance->agent_withdraw_id = $agentWithdraw->id;

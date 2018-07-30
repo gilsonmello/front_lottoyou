@@ -237,6 +237,7 @@ class OrderItemObserver
         $historicBalance->description = $description;
         $historicBalance->type = 0;
         $historicBalance->amount = $data->total * -1;
+        $historicBalance->system = 1;
         
         $historicBalance->save();
         
