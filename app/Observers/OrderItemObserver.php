@@ -235,6 +235,7 @@ class OrderItemObserver
         $historicBalance->balance_id = $balance->id;
         //$historicBalance->item_id = $item->id;
         $historicBalance->description = $description;
+        $historicBalance->modality = 'buy';
         $historicBalance->type = 0;
         $historicBalance->amount = $data->total * -1;
         $historicBalance->system = 1;

@@ -68,6 +68,7 @@ trait PaymentService
             $historicBalance->type = 0;
             $historicBalance->devolution = 1;
             $historicBalance->description = 'pagseguro devolution';
+            $historicBalance->modality = 'devolution';
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
@@ -96,6 +97,7 @@ trait PaymentService
             $historicBalance->type = 1;
             $historicBalance->devolution = 0;
             $historicBalance->description = 'pagseguro deposit';
+            $historicBalance->modality = 'deposit';
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;

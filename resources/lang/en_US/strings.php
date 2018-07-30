@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'internal deposit' => 'Deposito Interno',
     'as_from' => 'A partir de',
     'in_progress' => 'Em andamento',
     'if_there_is' => 'Se houver',
