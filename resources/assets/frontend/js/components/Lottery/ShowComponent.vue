@@ -351,7 +351,9 @@
 									); */
 									swal({
 										showCloseButton: true,
-										type: 'success',
+										imageUrl: '/imgs/logo.png',
+										imageHeight: 50,
+										imageAlt: 'Logo lottoyou',
 										//title: this.trans('strings.buy'),
 										title: this.trans('strings.successful_purchase'),
 										text: false,

@@ -478,7 +478,9 @@
 					if(response.status === 200) {
 						swal({
 							showCloseButton: true,
-							type: 'success',
+							imageUrl: '/imgs/logo.png',
+							imageHeight: 50,
+							imageAlt: 'Logo lottoyou',
 							title: this.trans('strings.success'),
 							html: `<p style="text-align: left"><strong>${this.name} </strong>,${this.trans('alerts.users.create.success')}</p>`,
 							showConfirmButton: true,

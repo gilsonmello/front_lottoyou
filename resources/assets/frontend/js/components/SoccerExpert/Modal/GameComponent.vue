@@ -115,7 +115,10 @@
 					swal({
 					  	title: 'Deseja continuar?',
 					  	text: "Número maior do que 10!",
-					  	type: 'warning',
+					  	showCloseButton: true,
+						imageUrl: '/imgs/logo.png',
+						imageHeight: 50,
+						imageAlt: 'Logo lottoyou',
 					  	showCancelButton: true,
 					  	confirmButtonColor: '#3085d6',
 					  	cancelButtonColor: '#d33',
@@ -147,7 +150,10 @@
 					swal({
 					  	title: 'Deseja continuar?',
 					  	text: "Número maior do que 10!",
-					  	type: 'warning',
+					  	showCloseButton: true,
+						imageUrl: '/imgs/logo.png',
+						imageHeight: 50,
+						imageAlt: 'Logo lottoyou',
 					  	showCancelButton: true,
 					  	confirmButtonColor: '#3085d6',
 					  	cancelButtonColor: '#d33',

@@ -34,7 +34,9 @@ class ScratchCardObserver
             //$historicBalance->scratch_card_id = $scratchCard->id;
             $historicBalance->to = $balance->value + $scratchCard->premio;
             $historicBalance->description = "award";
+            $historicBalance->modality = "award";
             $historicBalance->type = 1;
+            $historicBalance->system = 0;
             $historicBalance->amount = $scratchCard->premio;
             $historicBalance->save();
 

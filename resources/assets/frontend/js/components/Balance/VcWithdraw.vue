@@ -51,8 +51,10 @@ export default {
         } else {
             swal({
                 title: 'Saldo menor do que $10.00',
-                type: 'warning',
                 showCloseButton: true,
+                imageUrl: '/imgs/logo.png',
+                imageHeight: 50,
+                imageAlt: 'Logo lottoyou',
                 showConfirmButton: false,
                 showCancelButton: false,
                 confirmButtonColor: '#3085d6',

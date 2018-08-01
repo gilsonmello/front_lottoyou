@@ -175,7 +175,20 @@
 			},
 			cardPersonal() {
 				if(!this.validateCPF(this.card_personal_id)) {
-					swal("CPF", "Por favor, informe um CPF válido", "error");
+					swal({
+						title: "CPF",
+						text: 'Por favor, informe um CPF válido',
+		                imageUrl: '/imgs/logo.png',
+						imageHeight: 50,
+						imageAlt: 'Logo lottoyou',
+		                showCancelButton: false,
+		                confirmButtonColor: "#00a65a",
+		                confirmButtonText: "Confirmar",
+		                closeOnConfirm: false,
+		                showLoaderOnConfirm: false
+					}, (inputValue) => {
+					  	
+					});
 					$('#card_personal_id').val('')
 					this.card_personal_id = '';
 				}

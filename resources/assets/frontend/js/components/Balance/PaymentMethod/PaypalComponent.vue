@@ -307,19 +307,22 @@
 				} else {
 					swal({
 					  	title: "Informe um valor maior do que $10.00",
-		                type: "error",
-		                html: true,
+		                //type: "error",
+						showCloseButton: true,
+						imageUrl: '/imgs/logo.png',
+						imageHeight: 50,
+						imageAlt: 'Logo lottoyou',
 		                showCancelButton: false,
 		                confirmButtonColor: "#00a65a",
 		                confirmButtonText: "Confirmar",
 		                closeOnConfirm: false,
 		                showLoaderOnConfirm: false
-					}, function(inputValue){
+					}, (inputValue) => {
 					  	
 					});
 				}
 			},
-			validate: function(amount) {
+			validate (amount) {
 				if(amount >= 10.00) {
 					return true;
 				}
