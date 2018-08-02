@@ -96,4 +96,34 @@ class User extends Authenticatable
     {
         return $this->hasMany(PasswordReset::class, 'user_id');
     }
+
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFindByUsername($query, $username)
+    {
+        return $query->where('username', $username)
+                ->where('active', '=', 1)
+                ->whereNull('deleted')
+                ->get()
+                ->first();
+    }
+
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFindByName($query, $name)
+    {
+        return $query->where('name', $name)
+                ->where('active', '=', 1)
+                ->whereNull('deleted')
+                ->get()
+                ->first();
+    }
 }

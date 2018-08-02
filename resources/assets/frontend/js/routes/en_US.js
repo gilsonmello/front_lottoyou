@@ -11,31 +11,31 @@ export default {
 			        props: true
   				},
   				{   
-			  		path: '/create_your_league',
+			  		path: 'create_your_league',
 			        name: 'create_your_league', 
 			        props: true,
 			        component: require('../components/VcCreateYourLeague.vue')
 			    },
                 {
-                    path: '/help',
+                    path: 'help',
                     name: 'help',
                     props: true,
                     component: require('../components/VcHelp.vue')
                 },
                 {
-                    path: '/contacts/create',
+                    path: 'contacts/create',
                     name: 'contacts.create',
                     props: true,
                     component: require('../components/Contact/VcCreate')
                 },
                 {
-                    path: '/privacy',
+                    path: 'privacy',
                     name: 'privacy',
                     props: true,
                     component: require('../components/VcPrivacy.vue')
                 },
                 {
-                    path: '/player_protection',
+                    path: 'player_protection',
                     name: 'player_protection',
                     props: true,
                     component: require('../components/VcPlayerProtection.vue')
