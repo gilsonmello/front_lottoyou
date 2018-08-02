@@ -1,11 +1,13 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 //use Illuminate\Support\Facades\DB;
 
+/**
+ * Class SoccerExpertRoundGroup
+ * @package App
+ */
 class SoccerExpertRoundGroup extends Model
 {
     const CREATED_AT = 'created';
@@ -43,20 +45,32 @@ class SoccerExpertRoundGroup extends Model
         
     ];
 
+    /**
+     * @var array
+     */
     protected $appends = [
         //'count'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function round() 
     {
     	return $this->belongsTo(SoccerExpertRound::class, 'soc_rodada_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function bets() 
     {
         return $this->hasMany(SoccerExpertBet::class, 'soc_rodada_grupo_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function users() 
     {
         return $this->belongsToMany(User::class, 

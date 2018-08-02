@@ -48,11 +48,13 @@ class LotteryUser extends Model
         
     ];
 
-    public function sweepstake() {
+    public function sweepstake() 
+    {
     	return $this->belongsTo(LotterySweepstake::class, 'lot_jogo_id');
     }
 
-    public function player() {
+    public function player() 
+    {
     	return $this->belongsTo(User::class, 'jogador_id');
     }
 

@@ -42,7 +42,11 @@ class CartItem extends Model
         
     ];
 
-    public function cart() {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function cart() 
+    {
         return $this->belongsTo(Cart::class, 'cart_id');
     }
 }

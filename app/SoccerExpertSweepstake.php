@@ -1,10 +1,12 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class SoccerExpertSweepstake
+ * @package App
+ */
 class SoccerExpertSweepstake extends Model
 {
     const CREATED_AT = 'created';
@@ -42,7 +44,8 @@ class SoccerExpertSweepstake extends Model
 
     ];
     
-    public function rounds() {
+    public function rounds() 
+    {
     	return $this->hasMany(SoccerExpertRound::class, 'soc_bolao_id');
     }    
 }

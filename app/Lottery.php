@@ -49,7 +49,8 @@ class Lottery extends Model
         
     ];
 
-    public function sweepstakes() {
+    public function sweepstakes() 
+    {
         return $this->hasMany(LotterySweepstake::class, 'lot_categoria_id');
     }
 

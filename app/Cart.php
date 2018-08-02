@@ -45,7 +45,11 @@ class Cart extends Model
         
     ];
 
-    public function items() {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function items() 
+    {
         return $this->hasMany(CartItem::class, 'cart_id');
     }
 

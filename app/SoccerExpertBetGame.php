@@ -1,10 +1,12 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class SoccerExpertBetGame
+ * @package App
+ */
 class SoccerExpertBetGame extends Model
 {
     const CREATED_AT = 'created';
@@ -46,15 +48,24 @@ class SoccerExpertBetGame extends Model
         
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function game() {
         return $this->belongsTo(SoccerExpertGame::class, 'soc_jogo_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function bet() 
     {
         return $this->belongsTo(SoccerExpertBet::class, 'soc_aposta_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function owner() {
         return $this->belongsTo(User::class, 'owner_id');
     }

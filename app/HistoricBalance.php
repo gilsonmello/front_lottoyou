@@ -57,36 +57,57 @@ class HistoricBalance extends Model
         
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function balance() 
     {
         return $this->belongsTo(Balance::class, 'balance_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function soccerExpertBet() 
     {
         return $this->hasOne(SoccerExpertBet::class, 'historic_balance_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function orderItem() 
     {
         return $this->hasOne(OrderItem::class, 'historic_balance_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function scratchCard() 
     {
         return $this->hasOne(ScratchCard::class, 'historic_balance_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function lotteryBet() 
     {
         return $this->hasOne(LotteryUser::class, 'historic_balance_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function devolution() 
     {
         return $this->hasOne(HistoricBalanceDevolution::class, 'historic_balance_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function pagseguro() 
     {
         return $this->hasOne(PagseguroOrder::class, 'historic_balance_id');
@@ -97,21 +118,34 @@ class HistoricBalance extends Model
         return $this->hasOne(PaypalOrder::class, 'historic_balance_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function agentWithdraw() 
     {
         return $this->hasOne(AgentWithdraw::class, 'historic_balance_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function paypalWithdraw() 
     {
         return $this->hasOne(PaypalWithdraw::class, 'historic_balance_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function balanceInsert() 
     {
         return $this->hasOne(BalanceInsert::class, 'historic_balance_id');
     }
 
+    /**
+     * @param $date
+     * @return mixed
+     */
     public function getCreatedAttribute($date) 
     {
         return format($date, 'd/m/Y H:i');

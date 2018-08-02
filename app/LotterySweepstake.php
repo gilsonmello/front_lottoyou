@@ -56,12 +56,14 @@ class LotterySweepstake extends Model
         
     ];
 
-    public function category() {
+    public function category() 
+    {
     	return $this->belongsTo(Lottery::class, 'lot_categoria_id')
             ->where('active', '=', 1);
     }
 
-    public function creator() {
+    public function creator() 
+    {
         return $this->belongsTo(User::class, 'user_id');
     }
 

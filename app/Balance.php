@@ -52,11 +52,13 @@ class Balance extends Model
         
     ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'owner_id');
     }
 
-    public function historic() {
+    public function historic() 
+    {
         return $this->hasMany(HistoricBalance::class, 'balance_id');
     }
 

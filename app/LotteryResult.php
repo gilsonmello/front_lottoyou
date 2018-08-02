@@ -48,12 +48,13 @@ class LotteryResult extends Model
         
     ];
 
-    
-    public function creator() {
+    public function creator() 
+    {
     	return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function sweepstake() {
+    public function sweepstake() 
+    {
         return $this->belongsTo(LotterySweepstake::class, 'lot_jogo_id');
     }
 

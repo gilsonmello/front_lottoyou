@@ -48,7 +48,8 @@ class LotteryUserNumberExtra extends Model
         
     ];
 
-    public function bet() {
+    public function bet() 
+    {
     	return $this->belongsTo(LotteryUser::class, 'lot_users_jogo_id');
     }
 }

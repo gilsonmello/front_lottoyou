@@ -1,10 +1,12 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class UserExclusion
+ * @package App
+ */
 class UserExclusion extends Model
 {
     const CREATED_AT = 'created';
@@ -42,7 +44,11 @@ class UserExclusion extends Model
         
     ];
 
-    public function owner() {
-        return $this->belonsTo(User::class, 'owner_id');
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function owner() 
+    {
+        return $this->belongsTo(User::class, 'owner_id');
     }
 }

@@ -1,10 +1,12 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class SoccerExpert
+ * @package App
+ */
 class SoccerExpert extends Model
 {
     const CREATED_AT = 'created';
@@ -42,21 +44,35 @@ class SoccerExpert extends Model
         
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function cycles() 
     {
         return $this->hasMany(SoccerExpertCycle::class, 'soc_categoria_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function rounds() 
     {
     	return $this->hasMany(SoccerExpertRound::class, 'soc_categoria_id');
     }
 
+    /**
+     * @return string
+     */
     public function getImagemCapaAttribute()
     {        
         return env('APP_CDN'). $this->attributes['imagem_capa'];
     }
 
+    /**
+     * @param $query
+     * @param $string
+     * @return mixed
+     */
     public function scopeFindBySlug($query, $string) {
         return $query->where('slug', $string)->get()->first();
     }

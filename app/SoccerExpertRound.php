@@ -1,11 +1,13 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\SoftDeletes;
 //use Illuminate\Support\Facades\DB;
 
+/**
+ * Class SoccerExpertRound
+ * @package App
+ */
 class SoccerExpertRound extends Model
 {
     const CREATED_AT = 'created';

@@ -42,7 +42,8 @@ class AgentWithdraw extends Model
         
     ];
 
-    public function owner() {
+    public function owner() 
+    {
         return $this->belonsTo(User::class, 'owner_id');
     }
 }

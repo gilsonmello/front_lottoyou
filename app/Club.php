@@ -41,18 +41,33 @@ class Club extends Model
         
     ];
 
-    public function house() {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function house() 
+    {
         return $this->hasMany(SoccerExpertGame::class, 'gel_clube_casa_id');
     }
 
-    public function out() {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function out() 
+    {
         return $this->hasMany(SoccerExpertGame::class, 'gel_clube_fora_id');
     }
 
-    public function shields() {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function shields() 
+    {
         return $this->hasMany(ShieldClub::class, 'gel_clube_id');
     }
 
+    /**
+     * @return string
+     */
     public function getEscudoAttribute()
     {        
         return env('APP_CDN') . $this->attributes['escudo'];

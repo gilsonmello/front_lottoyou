@@ -1,6 +1,4 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -11,9 +9,15 @@ use App\Balance;
 use App\Country;
 use App\PasswordReset;
 
-
+/**
+ * Class User
+ * @package App
+ */
 class User extends Authenticatable
 {
+    /**
+     *
+     */
     use HasApiTokens, Notifiable;
 
     const CREATED_AT = 'created';
@@ -55,11 +59,16 @@ class User extends Authenticatable
      * @param $password
      * @return mixed
      */
-    public function validateForPassportPasswordGrant($password){
+    public function validateForPassportPasswordGrant($password)
+    {
         return Hash::check($password, $this->laravel_password);
     }
 
-    public function balance() {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function balance() 
+    {
         return $this->hasOne(Balance::class, 'owner_id');
     }
 
@@ -67,11 +76,16 @@ class User extends Authenticatable
      * @param $username
      * @return mixed
      */
-    public function findForPassport($username) {
+    public function findForPassport($username) 
+    {
         return $this->where('username', $username)->first();
     }
 
-    public function country() {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function country() 
+    {
         return $this->belongsTo(Country::class, 'country_id');
     }
 
