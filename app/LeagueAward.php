@@ -51,4 +51,9 @@ class LeagueAward extends Model
     {
         return $this->belongsTo(League::class, 'league_id');
     }
+
+    public function type() 
+    {
+        return $this->belongsTo(LeagueAwardType::class, 'type_award_id');
+    }
 }

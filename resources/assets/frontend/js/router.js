@@ -7,14 +7,15 @@ import VcDatePickerEnUs from './components/VcDatePickerEnUs.vue';
 import VcDatePickerEsEs from './components/VcDatePickerEsEs.vue';
 import VcDateTimePickerPtBr from './components/VcDateTimePickerPtBr';
 import VcDateTimePickerEnUs from './components/VcDateTimePickerEnUs';
+import routes from './routes/en_US';
+
 Vue.use(Router)
 
-var routes = {};
 var url = '';
 
 switch (window.locale) {
 	case 'pt_BR': {
-		routes = require('./routes/pt_BR.js');
+		//routes = require('./routes/pt_BR.js');
 		url = '/#/pt_BR';
 		//Vue.component('money-component', MoneyBrComponent);
 		Vue.component('money-component', MoneyComponent);
@@ -23,7 +24,7 @@ switch (window.locale) {
 		break;
 	}
 	case 'es_ES': {
-		routes = require('./routes/es_ES.js');
+		//routes = require('./routes/es_ES.js');
 		url = '/#/es_ES';
 		Vue.component('money-component', MoneyComponent);
 		Vue.component('datepicker', VcDatePickerPtBr);
@@ -31,7 +32,7 @@ switch (window.locale) {
 		break;
 	}
 	default: {
-		routes = require('./routes/en_US.js');
+		//routes = require('./routes/en_US.js');
 		url = '/#/';
 		Vue.component('money-component', MoneyComponent);
 		//Vue.component('datepicker', VcDatePickerEnUs);
@@ -42,7 +43,7 @@ switch (window.locale) {
 	}
 } 
 
-export default new Router(routes.default);
+export default new Router(routes);
 
 if(window.QueryString.locale) {
 	window.history.pushState({}, '', url);
