@@ -140,5 +140,12 @@ export const routes = {
 		ranking: host + '/soccer_groups/{id}/ranking',
 		show: host + '/soccer_groups/{id}',
 		find: host + '/soccer_groups/{id}/find',
-	}
+	},
+	leagues: {
+		create: host+'/leagues',
+		index: host+'/leagues',
+		findBySlug: host+'/packages/findBySlug/{slug}',
+		find: host+'/leagues/find/{id}',
+		awards: host+'/leagues/awards/{slug}',
+	},
 };

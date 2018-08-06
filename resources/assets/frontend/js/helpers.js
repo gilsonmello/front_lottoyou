@@ -270,3 +270,44 @@ Vue.prototype.getCountries = (cb) => {
 		cb(countries);
 	});
 }
+
+Vue.prototype.getLeagues = () => {
+	return new Promise(function(resolve, reject) {       
+		let request = axios.create();
+		request.get(routes.leagues.index)
+			.then((response) => {
+				resolve(response);
+			})
+			.catch((error) => {
+				reject(error)
+			});
+	});
+}
+
+Vue.prototype.getLeaguesBySlug = (slug) => {
+	return new Promise(function(resolve, reject) {       
+		let request = axios.create();
+		let url = routes.leagues.findBySlug.replace('{slug}', slug);
+		request.get(url)
+			.then((response) => {
+				resolve(response);
+			})
+			.catch((error) => {
+				reject(error)
+			});
+	});
+}
+
+Vue.prototype.getLeagueAwards = (slug) => {
+	return new Promise(function(resolve, reject) {       
+		let request = axios.create();
+		let url = routes.leagues.awards.replace('{slug}', slug);
+		request.get(url)
+			.then((response) => {
+				resolve(response);
+			})
+			.catch((error) => {
+				reject(error)
+			});
+	});
+}

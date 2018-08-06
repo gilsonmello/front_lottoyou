@@ -22,6 +22,10 @@
 	            	<a class="nav-link">{{ trans('strings.lotteries') }}</a>
             	</router-link>
 
+				<router-link tag="li" :to="{ name: 'cartola.index' }">
+	            	<a class="nav-link">{{ trans('strings.cartola') }}</a>
+            	</router-link>
+
 				<li class="no-mobile">
 					<a>&nbsp</a>
 				</li>

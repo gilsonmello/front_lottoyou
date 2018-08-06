@@ -18,7 +18,7 @@
 		</div>
 
 		<div class="row">
-			<div class="col-lg-4 col-12 col-md-6 col-sm-6" v-for="(lottery, index) in lotteries">				
+			<div class="col-lg-4 col-12 col-md-6 col-sm-6" v-for="(lottery, index) in lotteries" :key="index">				
 				<card-component :index="index" :lottery="lottery"></card-component>
 			</div>
 		</div>

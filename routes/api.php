@@ -72,6 +72,7 @@ Route::group(['namespace' => 'API'], function() {
     require __DIR__.'/API/Contact.php';
     require __DIR__.'/API/Recaptcha.php';
     require __DIR__.'/API/Balance.php';
+    require __DIR__.'/API/League.php';
     Route::get('/quotation_dolar', function() {
 		// Get cURL resource
 		$curl = curl_init();

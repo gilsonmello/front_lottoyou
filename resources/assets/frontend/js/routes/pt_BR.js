@@ -1,5 +1,5 @@
 export default {
-  	routes: [
+	routes: [
   		{
   			path: '/pt_BR',
 	        component: require('../components/MainComponent.vue'),
@@ -83,7 +83,7 @@ export default {
 				  	props: true,
 				  	meta: { },
 				  	component: require('../components/User/VcForgotPassword.vue')
-				  },
+				},
 				{   
 					path: 'users/password_recovery/:hash',
 				  	name: 'users.password_recovery',
@@ -145,7 +145,7 @@ export default {
 			        component: require('../components/SoccerExpert/IndexComponent.vue')
 			    },
 			    {   
-			  		path: 'soccer_expert/play/:slug/',
+			  		path: 'soccer_expert/play/:slug',
 			        name: 'soccer_expert.play', 
 			        props: true,
 			        component: require('../components/SoccerExpert/ShowComponent.vue')
@@ -174,16 +174,16 @@ export default {
 			        component: require('../components/Lottery/IndexComponent.vue')
 			    },
 			    {   
-			  		path: 'lotteries/play/:slug',
-			        name: 'lotteries.play', 
-			        props: true,
-			        component: require('../components/Lottery/ShowComponent.vue')
-			    },
-			    {   
-			  		path: 'lotteries/results/:id',
+			  		path: 'lotteries/results/:slug',
 			        name: 'lotteries.results', 
 			        props: true,
 			        component: require('../components/Lottery/Result/VcIndex.vue')
+			    },
+			    {   
+			  		path: 'lotteries/play/:slug',
+			        name: 'lotteries.play', 
+					props: true,
+			        component: require('../components/Lottery/ShowComponent.vue')
 			    },
 			    {   
 			  		path: 'cart',
@@ -198,7 +198,14 @@ export default {
 			        props: true,
 			        meta: { requiresAuth: true },
 			        component: require('../components/Balance/IndexComponent.vue')
-			    },
+				},
+				{   
+					path: 'balances/withdraw',
+					name: 'balances.withdraw', 
+					props: true,
+					meta: { requiresAuth: true },
+					component: require('../components/Balance/VcWithdraw.vue')
+				},
 			    {   
 			  		path: 'balances/deposit',
 			        name: 'balances.deposit', 
@@ -238,7 +245,18 @@ export default {
 			        props: true,
 			        meta: { requiresAuth: true },
 			        component: require('../components/Order/FinishComponent.vue')
-			    }
+				},
+				{   
+					path: 'cartola',
+					name: 'cartola.index', 
+					component: require('../components/Cartola/VcIndex.vue')
+				},
+				{   
+					path: 'cartola/play/:slug',
+					name: 'cartola.play', 
+					props: true,
+					component: require('../components/Cartola/VcPlay.vue')
+				},
   			]
   		}
   	],

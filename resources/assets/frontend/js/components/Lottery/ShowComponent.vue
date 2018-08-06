@@ -55,7 +55,7 @@
 					<div class="form-group">
 						<label for="lot_jogo_id">{{ trans('strings.sweepstake_date') }}</label>
 					    <select v-model="item.lot_jogo_id" class="form-control" id="lot_jogo_id">
-					      	<option :value="key" :data-key="key" v-for="(sweepstake, key) in item.lottery.sweepstakes">
+					      	<option :value="key" :data-key="key" v-for="(sweepstake, key) in item.lottery.sweepstakes" :key="key">
 					      		{{ retireHour(sweepstake.data_fim) }}
 					      	</option>
 					    </select>
@@ -83,7 +83,7 @@
 						Teimosinha
 					</label>
 
-					<div class="form-check form-check-inline" :value="key" v-for="(teimosinha, key) in item.teimosinhas">
+					<div class="form-check form-check-inline" :value="key" v-for="(teimosinha, key) in item.teimosinhas" :key="key">
 					  	<label class="form-check-label">
 					    	<input class="form-check-input" id="duration" v-model="item.duration" type="radio" name="duration" :value="teimosinha"> {{teimosinha}}
 					  	</label>
@@ -1101,10 +1101,6 @@
 		margin-right: 15px
 	}
 	
-	.countdown {
-
-	}
-
 	.btn-xs {
         margin: 2px;
         width: 28px;

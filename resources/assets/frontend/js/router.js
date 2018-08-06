@@ -40,7 +40,8 @@ switch (window.locale) {
 		//Vue.component('datetimepicker', VcDateTimePickerEnUs);
 		break;
 	}
-}
+} 
+
 export default new Router(routes.default);
 
 if(window.QueryString.locale) {

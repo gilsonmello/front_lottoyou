@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'cartola' => 'Cartola',
     'internal deposit' => 'Deposito Interno',
     'as_from' => 'A partir de',
     'in_progress' => 'Em andamento',
