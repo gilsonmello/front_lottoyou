@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class League extends Model
 {
-    const CREATED_AT = 'created_at';
+    const CREATED_AT = 'created';
 
-    const UPDATED_AT = 'modified_at';
+    const UPDATED_AT = 'modified';
     
     //const DELETED_AT = 'deleted_at';
 
@@ -59,5 +59,10 @@ class League extends Model
      */
     public function scopeFindBySlug($query, $string) {
         return $query->where('slug', $string)->get()->first();
+    }
+
+    public function packages() 
+    {
+        return $this->belongsToMany(LeaguePackage::class, 'lea_packages_has_leagues', 'league_id', 'lea_package_id');
     }
 }

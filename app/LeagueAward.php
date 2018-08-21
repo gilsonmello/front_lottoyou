@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class LeagueAward extends Model
 {
-    const CREATED_AT = 'created_at';
+    const CREATED_AT = 'created';
 
-    const UPDATED_AT = 'modified_at';
+    const UPDATED_AT = 'modified';
     
     //const DELETED_AT = 'deleted_at';
 

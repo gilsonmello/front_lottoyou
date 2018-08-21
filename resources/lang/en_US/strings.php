@@ -12,6 +12,8 @@ return [
       |
      */
     'cartola' => 'Cartola',
+    'team_name' => 'Nome do time',
+    'fantasy_game' => 'Fantasy Game',
     'internal deposit' => 'Deposito Interno',
     'as_from' => 'A partir de',
     'in_progress' => 'Em andamento',

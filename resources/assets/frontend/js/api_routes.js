@@ -148,4 +148,12 @@ export const routes = {
 		find: host+'/leagues/find/{id}',
 		awards: host+'/leagues/awards/{slug}',
 	},
+	fantasy_game: {
+		packages: host+'/',
+	},
+	league_packages: {
+		index: host+'/league_packages',
+		findBySlug: host+'/league_packages/findBySlug/{slug}',
+		find_leagues_by_slug: host+'/league_packages/find_leagues_by_slug/{slug}',
+	}
 };

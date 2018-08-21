@@ -247,15 +247,15 @@ export default {
 			        component: require('../components/Order/FinishComponent.vue')
 				},
 				{   
-					path: 'cartola',
-					name: 'cartola.index', 
-					component: require('../components/Cartola/VcIndex.vue')
+					path: 'fantasy_game',
+					name: 'fantasy_game.index', 
+					component: require('../components/FantasyGame/VcIndex.vue')
 				},
 				{   
-					path: 'cartola/play/:slug',
-					name: 'cartola.play', 
+					path: 'fantasy_game/play/:slug',
+					name: 'fantasy_game.play', 
 					props: true,
-					component: require('../components/Cartola/VcPlay.vue')
+					component: require('../components/FantasyGame/VcPlay.vue')
 				},
   			]
   		}
