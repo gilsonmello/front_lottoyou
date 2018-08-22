@@ -16,7 +16,7 @@
 						</div>
 					</div>
 				</div>
-				<router-link :to="{ name: 'fantasy_game.play', params: { slug: leaguePackage.slug } }" class="btn btn-md btn-primary">
+				<router-link :to="{ name: 'cartoleando.play', params: { slug: leaguePackage.slug } }" class="btn btn-md btn-primary">
 					{{ trans('strings.play_now') }}
 				</router-link>
 			</div>
