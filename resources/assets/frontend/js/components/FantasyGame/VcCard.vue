@@ -1,7 +1,7 @@
 <template>
 	<div class="col-lg-4 col-sm-6 col-md-4 col-12" >
 		<div class="card">
-			<img class="card-img-top" src="" alt="Card image cap">
+			<img class="card-img-top" :src="leaguePackage.bg_image_domain+'/'+leaguePackage.bg_image" :alt="leaguePackage.description">
 			<div class="card-body">
 				<h5 class="card-title">{{ leaguePackage.name }}</h5>
 				<p class="card-text">{{ leaguePackage.description }}</p>

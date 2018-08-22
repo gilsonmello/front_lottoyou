@@ -203,7 +203,6 @@ export default {
     watch: {
         'item.teamName' (newValue, oldValue) {
             this.item.teamSlug = this.convertSlug(newValue);
-            console.log(this.item.teamSlug)
         }
     }
 }

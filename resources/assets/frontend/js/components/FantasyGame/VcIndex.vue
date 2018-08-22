@@ -1,19 +1,7 @@
 <template>
     <load v-if="loading.component == true"></load>
 	<div class="container" v-else>
-        <div class="row">
-        	<div class="col-lg-12">
-        		<div class="sub-navigation">
-        			<!-- <router-link :to="{ name: 'cartola.play', params: { slug: item.lottery.slug } }" class="active show" id="play-component">
-	                    {{ trans('strings.play_on_the') }} {{ item.lottery.nome }}
-	                </router-link> -->
-	                <!-- <router-link :to="{ name: 'cartola.results', params: { slug: item.lottery.slug } }" class="show" id="result-component">
-	                    {{ trans('strings.results') }}
-	               	</router-link> -->
-        		</div>
-        	</div>
-        </div>
-
+        
         <div class="row">
             <vc-card v-for="(leaguePackage, index) in leaguePackages" :key="index" :leaguePackage="leaguePackage" :index="index" />
         </div>
