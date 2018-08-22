@@ -4,9 +4,9 @@
         
         <div class="row page-header">
         	<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-        		<h1 style="display: inline">{{ trans('strings.fantasy_game') }}</h1>
+        		<h1 style="display: inline">{{ trans('strings.cartoleando') }}</h1>
         		<router-link :to="{ name: 'how_to_play_easy_money' }" class="btn btn-md btn-primary pull-right">
-					{{ trans('strings.how_to_play') }} {{ trans('strings.fantasy_game') }}
+					{{ trans('strings.how_to_play') }} {{ trans('strings.cartoleando') }}
 				</router-link>
         	</div>
         </div>
@@ -35,7 +35,7 @@
 					        		<div class="" style="width: 100%;">
 					        			<div class="row">
 					        				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-						        				<router-link :to="{ name: 'fantasy_game.play', params: {slug: leaguePackages[indexClicked].slug} }" style="display: block" class="btn btn-md btn-primary">
+						        				<router-link :to="{ name: 'cartoleando.play', params: {slug: leaguePackages[indexClicked].slug} }" style="display: block" class="btn btn-md btn-primary">
 						        					{{ trans('strings.play_now') }}
 						        				</router-link>
 						        			</div>

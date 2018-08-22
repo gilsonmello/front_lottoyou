@@ -11,6 +11,7 @@ return [
       | found in a intuitive way.
       |
      */
+    'cartoleando' => 'Cartoleando',
     'cartola' => 'Cartola',
     'team_name' => 'Nome do time',
     'fantasy_game' => 'Fantasy Game',

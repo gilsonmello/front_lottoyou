@@ -247,15 +247,15 @@ export default {
 			        component: require('../components/Order/FinishComponent.vue')
 				},
 				{   
-					path: 'fantasy_game',
-					name: 'fantasy_game.index', 
-					component: require('../components/FantasyGame/VcIndex.vue')
+					path: 'cartoleando',
+					name: 'cartoleando.index', 
+					component: require('../components/Cartoleando/VcIndex.vue')
 				},
 				{   
-					path: 'fantasy_game/play/:slug',
-					name: 'fantasy_game.play', 
+					path: 'cartoleando/play/:slug',
+					name: 'cartoleando.play', 
 					props: true,
-					component: require('../components/FantasyGame/VcPlay.vue')
+					component: require('../components/Cartoleando/VcPlay.vue')
 				},
   			]
   		}

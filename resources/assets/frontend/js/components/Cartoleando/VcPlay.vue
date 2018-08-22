@@ -4,7 +4,7 @@
         <div class="row">
         	<div class="col-lg-12">
         		<div class="sub-navigation">
-        			<router-link :to="{ name: 'fantasy_game.play', params: { slug: item.package.slug } }" class="active show">
+        			<router-link :to="{ name: 'cartoleando.play', params: { slug: item.package.slug } }" class="active show">
 	                    {{ trans('strings.play_on_the') }} {{ item.package.name }}
 	                </router-link>
 	                <!-- <router-link :to="{ name: 'cartola.results', params: { slug: item.lottery.slug } }" class="show" id="result-component">
@@ -19,7 +19,7 @@
                 <h1 class="page-header" style="margin-top: 0; border: none;">{{ item.package.name }}</h1>
             </div>
             <div class="col-lg-6 col-6 col-md-6 col-sm-6">
-                <router-link :to="{ name: 'fantasy_game.index' }" class="btn btn-md btn-back pull-right btn-primary">
+                <router-link :to="{ name: 'cartoleando.index' }" class="btn btn-md btn-back pull-right btn-primary">
                     {{ trans('strings.back') }}
                 </router-link>
             </div>
