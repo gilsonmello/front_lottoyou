@@ -2,6 +2,15 @@
     <load v-if="loading.component == true"></load>
 	<div class="container" v-else>
         
+        <div class="row page-header">
+        	<div class="col-lg-12 col-12 col-md-12 col-sm-12">
+        		<h1 style="display: inline">{{ trans('strings.fantasy_game') }}</h1>
+        		<router-link :to="{ name: 'how_to_play_easy_money' }" class="btn btn-md btn-primary pull-right">
+					{{ trans('strings.how_to_play') }} {{ trans('strings.fantasy_game') }}
+				</router-link>
+        	</div>
+        </div>
+
         <div class="row">
             <vc-card v-for="(leaguePackage, index) in leaguePackages" :key="index" :leaguePackage="leaguePackage" :index="index" />
         </div>
