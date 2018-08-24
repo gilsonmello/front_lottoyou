@@ -12,7 +12,31 @@
         </div>
 
         <div class="row">
-            <vc-card v-for="(leaguePackage, index) in leaguePackages" :key="index" :leaguePackage="leaguePackage" :index="index" />
+            <div class="col-lg-4 col-sm-6 col-md-4 col-12" v-for="(leaguePackage, index) in leaguePackages" :key="index" :index="index">
+                <div class="card">
+                    <img class="card-img-top" :src="leaguePackage.bg_image_domain+'/'+leaguePackage.bg_image" :alt="leaguePackage.description">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ leaguePackage.name }}</h5>
+                        <p class="card-text">{{ leaguePackage.description }}</p>
+                        <div class="jackpot-table">
+                            <div class="row vcenter">
+                                <div class="col-lg-8 col-12 col-md-8 col-sm-12">
+                                    <a href="#" @click.prevent="handleJackpotTable(index)" class="btn description">
+                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                        &nbsp;
+                                        Tabela de Premios
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <router-link :to="{ name: 'cartoleando.play', params: { slug: leaguePackage.slug } }" class="btn btn-md btn-primary">
+                            {{ trans('strings.play_now') }}
+                        </router-link>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <!-- <vc-card v-for="(leaguePackage, index) in leaguePackages" :key="index" :leaguePackage="leaguePackage" :index="index" /> -->
         </div>
         
         <div class="modal fade modal-jackpot-table" id="nivel1" data-backdrop="static" tabindex="-1" aria-labelledby="nivel1" aria-hidden="true">
@@ -104,7 +128,7 @@ import VcCard from './VcCard'
 export default {
     metaInfo () {
         return {
-            title: this.trans('strings.lotteries'),
+            title: this.trans('strings.cartoleando'),
             meta: this.metas
         }
     },
@@ -123,6 +147,18 @@ export default {
         } 
     },
     methods: {
+        handleJackpotTable(index) {
+            let slug = this.leaguePackages[index].slug;
+            this.indexClicked = index;
+            this.getLeaguesBySlug(slug)
+                .then((response) => {
+                    this.leagues = response.data.leagues;
+                })
+                .catch((error) => {
+                    
+                })
+            this.modal.modal('toggle'); 
+        },
         setModal () {
             let time = setInterval(() => {
                 let modal = $(this.$el).find('.modal-jackpot-table');
@@ -158,20 +194,6 @@ export default {
              
         //Setando o modal para a variável modal
         this.setModal();
-
-        //Escuta evento de quando o modal foi aberto
-        this.$eventBus.$on('handleJackpotTable', (indexClicked) => {
-            let slug = this.leaguePackages[indexClicked].slug;
-            this.indexClicked = indexClicked;
-            this.getLeaguesBySlug(slug)
-                .then((response) => {
-                    this.leagues = response.data.leagues;
-                })
-                .catch((error) => {
-                    
-                })
-            this.modal.modal('toggle');            
-        });
 
         //Ajax para buscar todos pacotes que contém ligas
         this.getLeaguePackages()
