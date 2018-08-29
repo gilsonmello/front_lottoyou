@@ -11,13 +11,25 @@ use Illuminate\Support\Facades\DB;
 
 class SoccerExpertController extends Controller
 {
-    public function ranks($id, Request $request) 
+    public function ranks($slug, Request $request) 
     {
-        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $id)
+        $soccerExpert = SoccerExpert::where('slug', '=', $slug)
+            ->get()
+            ->first();
+
+        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $soccerExpert->id)
             ->where('fechada', '=', 1);
 
         if($request->get('column')) {
             $tickets->orderBy($request->get('column'), $request->get('direction'));
+        }
+
+        if($request->nome && $request->nome != '') {
+            $tickets->where('nome', 'like', '%'.$request->nome.'%');
+        }
+
+        if($request->valor && $request->valor != '') {
+            $tickets->where('valor', '=', $request->valor);
         }
 
         $tickets = $tickets->with('group')
@@ -41,9 +53,13 @@ class SoccerExpertController extends Controller
         return response()->json($bets, 200);   */    
     }
 
-    public function results($id, Request $request) 
+    public function results($slug, Request $request) 
     {
-        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $id);
+        $soccerExpert = SoccerExpert::where('slug', '=', $slug)
+            ->get()
+            ->first();
+
+        $tickets = SoccerExpertRound::where('soc_categoria_id', '=', $soccerExpert->id);
 
         if($request->get('column')) {
             $tickets->orderBy($request->get('column'), $request->get('direction'));

@@ -163,7 +163,7 @@ export default {
 			        component: require('../components/SoccerExpert/ResultComponent.vue')
 			    },
 			    {   
-			  		path: 'soccer_groups/ranking/:slug',
+			  		path: 'soccer_groups/ranking/:id',
 			        name: 'soccer_groups.ranking', 
 			        props: true,
 			        component: require('../components/SoccerGroup/VcRanking.vue')

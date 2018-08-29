@@ -1,5 +1,5 @@
 <template>
-	<load-component v-if="loading.component == true"></load-component>
+	<load v-if="loading.component == true"></load>
 	<div class="container" v-else>
         <!-- <h3 class="">&nbsp;</h3> -->
         
@@ -38,16 +38,16 @@
 	            <div class="col-lg-4 col-12 col-sm-4 col-md-4">
 	                <div class="form-group">
 	                    <label for="valor">{{ trans('strings.value') }}</label>
-	                    <input v-model="query.valor" type="text" class="form-control" id="valor" aria-describedby="valor" :placeholder="trans('strings.value')">
+	                    <input v-model="query.valor" type="text" class="form-control" id="valor" aria-describedby="valor" :placeholder="trans('strings.example') + ' 0.05'">
 	                </div>
 	            </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <button type="submit" class="btn btn-md btn-primary">
+                    <button type="submit" v-if="!loading.pagination" class="btn btn-md btn-primary">
                         {{ trans('strings.filter') }}
                     </button>
-                    <button @click.prevent="" type="load" class="hide btn btn-md btn-primary">
+                    <button @click.prevent="" v-else class="btn btn-md btn-primary">
                         <i class="fa fa-refresh fa-spin"></i>
                     </button>
                 </div>
@@ -102,7 +102,7 @@
 
 		    <div class="row no-margin table-body" v-if="loading.pagination">
 	        	<div class="col-lg-12">
-	        		<load-component></load-component>
+	        		<load></load>
 	        	</div>
 	        </div>
 
@@ -133,24 +133,26 @@
 
 <script>
 	import {routes} from '../../api_routes'
-	import LoadComponent from '../Load'
 	import VcPagination from '../VcPagination'
 	import VcTicket from './Rank/VcTicket'
 	export default {
 		metaInfo () {
 			return {
-				title: this.trans('strings.rank')+' '+this.category.nome,
+				title: this.trans('strings.rank')+' '+this.category.nome + ' | '+ this.trans('strings.lottoyou'),
 				meta: [
 		          	{ name: 'description', content: 'Rank '+ this.category.nome }
 		        ]
 		    }
 		},
 		methods: {
-			paginate(page) {
+			filter () {
+				this.rankRequest();
+			},
+			paginate (page) {
 				this.query.page = page;
 				this.rankRequest();
 			},
-			toggle(column) {
+			toggle (column) {
 				if(this.query.column === column) {
 					if(this.query.column === 'desc') {
 						this.query.direction = 'asc';
@@ -164,19 +166,19 @@
 
 				this.rankRequest();
 			},
-			prev() {
+			prev () {
 				if(this.model.prev_page_url) {
 					this.query.page--;
 					this.rankRequest();
 				}
 			},
-			next() {
+			next () {
 				if(this.model.next_page_url) {
 					this.query.page++;
 					this.rankRequest();
 				}
 			},
-			rankRequest() {
+			rankRequest () {
 
 				const rankRequest = axios.create();
 				rankRequest.interceptors.request.use(config => {
@@ -191,6 +193,8 @@
 				let url = routes.soccer_experts.ranks.replace('{slug}', this.slug);
 				url += "?page="+this.query.page;
 				url += "&column="+this.query.column;
+				url += "&nome="+this.query.nome;
+				url += "&valor="+this.query.valor;
 				url += "&direction="+this.query.direction;
 
 				rankRequest.get(url, {}, {}).then(response => {
@@ -213,7 +217,7 @@
 				});
 			}
 		},
-		data: function() {
+		data () {
 			return {
 				loading: {
 					component: true,
@@ -239,7 +243,7 @@
 				}
 			}
 		},
-		mounted: function() {
+		mounted () {
 			if(this.$route.query.slug) {
                 this.query.slug = this.$route.query.slug
             } 
@@ -294,11 +298,10 @@
 
 			this.rankRequest();
 		},
-		activated: function() {
+		activated () {
 			
 		},
 		components: {
-			LoadComponent,
 			VcPagination,
 			VcTicket
 		},

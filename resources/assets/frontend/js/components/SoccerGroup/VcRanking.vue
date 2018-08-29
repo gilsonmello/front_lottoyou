@@ -2,20 +2,18 @@
 	<vc-load v-if="loading.component == true"></vc-load>
 	<div class="container" v-else>
 
-
 		<div class="row">
 			<div class="col-lg-12 col-12 col-md-12 col-sm-12">
 				<h3 class="page-header" v-if="group" style="border: none; margin-bottom: 0;">
 					<span style="display: block;">{{ group.round.category.nome }} - {{ group.round.nome }}</span>
 					<span>{{ trans('strings.ranking') }} - Grupo {{ group.identificacao }}</span>
-					<router-link class="btn btn-md btn-back pull-right btn-primary" :to="{name: 'soccer_expert.ranks', params: { id: group.round.category.id }}">
+					<router-link class="btn btn-md btn-back pull-right btn-primary" :to="{name: 'soccer_expert.ranks', params: { slug: group.round.category.slug }}">
 						<i class="fa fa-arrow-left"></i>
 						{{ trans('strings.back') }}
 					</router-link>
 				</h3>
 			</div>
 		</div>
-
 
 		<form @submit.prevent="filter" class="form-filter">
 			<div class="row">
@@ -153,17 +151,23 @@
 	import VcTicket from './VcTicket'
 	export default {
 	 	metaInfo () {
-
+	 		return {
+				title: this.trans('strings.ranking')+' | '+ this.trans('strings.lottoyou'),
+				meta: [
+		          	{ 
+		          		name: 'description', 
+		          		content: this.trans('strings.ranking')+' | '+ this.trans('strings.lottoyou') 
+		          	}
+		        ]
+		    }
 		},
-		beforeRouteUpdate: function(to, from, next) {
-			
+		beforeRouteUpdate (to, from, next) {			
 			next();
 			if(this.id != to.params.id) {
 				this.init();
-			}
-			
+			}			
         },
-		data() {
+		data () {
 			return {
 				loading: {
 					component: true,
@@ -187,7 +191,7 @@
 				}
 			}
 		},
-		mounted() {
+		mounted () {
 			this.init();
 		},
 		components: {
@@ -196,7 +200,7 @@
 			VcTicket
 		},
 		methods: {
-			init() {
+			init () {
 				this.id = this.$route.params.id;
 				if(this.$route.query.id) {
 	                this.query.id = this.$route.query.id
@@ -223,16 +227,16 @@
 				this.groupRequest();
 				this.rankRequest();
 	      	},
-			filter(event) {				
+			filter (event) {				
                 $(event.target).find('[type="load"]').removeClass('hide');
                 $(event.target).find('[type="submit"]').addClass('hide');
 				this.rankRequest();
 			},
-			paginate(page) {
+			paginate (page) {
 				this.query.page = page;
 				this.rankRequest();
 			},
-			toggle(column) {
+			toggle (column) {
 				if(this.query.column == column) {
 					if(this.query.direction == 'desc') {
 						this.query.direction = 'asc';
@@ -245,19 +249,19 @@
 				}
 				this.rankRequest();
 			},
-			prev() {
+			prev () {
 				if(this.model.prev_page_url) {
 					this.query.page--;
 					this.rankRequest();
 				}
 			},
-			next() {
+			next () {
 				if(this.model.next_page_url) {
 					this.query.page++;
 					this.rankRequest();
 				}
 			},
-			groupRequest(category_id) {
+			groupRequest (category_id) {
 				const groupRequest = axios.create();
 				groupRequest.interceptors.request.use(config => {
 		        	return config;
@@ -272,7 +276,7 @@
 					
 				});
 			},
-			rankRequest() {
+			rankRequest () {
 
 				const rankingRequest = axios.create();
 				rankingRequest.interceptors.request.use(config => {
