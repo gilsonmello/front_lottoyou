@@ -103,8 +103,7 @@ class LotteryController extends Controller
         if($request->data_fim && !empty($request->data_fim)) {
             $request->data_fim = format_without_mask($request->data_fim, '/');
             $sweepstakes->where('data_fim', '=', $request->data_fim);
-        }
-            
+        }            
 
         $sweepstakes = $sweepstakes->paginate();
 

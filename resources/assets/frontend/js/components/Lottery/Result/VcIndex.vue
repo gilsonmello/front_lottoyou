@@ -21,18 +21,16 @@
 	            <div class="col-lg-4 col-12 col-sm-4 col-md-4 container_date_end">
 	                <div class="form-group">
 					    <label for="date_end">{{ trans('strings.date_end') }}</label>
-					    <datepicker id="date_end" :options="{container:'.container_date_end'}"  :placeholder="trans('strings.date_end')" v-model="query.data_fim" class="form-control">
-					    	
-					    </datepicker>
+					    <datepicker id="date_end" :placeholder="trans('strings.date_end')" v-model="query.data_fim" class="form-control" />
 				  	</div>
 	            </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <button type="submit" class="btn btn-md btn-primary">
+                    <button type="submit" v-if="!loading.pagination" class="btn btn-md btn-primary">
                         {{ trans('strings.filter') }}
                     </button>
-                    <button @click.prevent="" type="load" class="hide btn btn-md btn-primary">
+                    <button @click.prevent="" v-else class="btn btn-md btn-primary">
                         <i class="fa fa-refresh fa-spin"></i>
                     </button>
                 </div>
@@ -94,7 +92,6 @@
             </div>
         </div>
 
-
 	</section>
 </template>
 
@@ -114,16 +111,14 @@
 		    }
 		},
 		methods: {
-			filter(event) {				
-                $(event.target).find('[type="load"]').removeClass('hide');
-                $(event.target).find('[type="submit"]').addClass('hide');
+			filter (event) {				
 				this.resultRequest();
 			},
-			paginate(page) {
+			paginate (page) {
 				this.query.page = page;
 				this.resultRequest();
 			},
-			toggle(column) {
+			toggle (column) {
 				if(this.query.column === column) {
 					if(this.query.column === 'desc') {
 						this.query.direction = 'asc';
@@ -137,19 +132,19 @@
 
 				this.resultRequest();
 			},
-			prev() {
+			prev () {
 				if(this.model.prev_page_url) {
 					this.query.page--;
 					this.resultRequest();
 				}
 			},
-			next() {
+			next () {
 				if(this.model.next_page_url) {
 					this.query.page++;
 					this.resultRequest();
 				}
 			},
-			findRequest() {
+			findRequest () {
 				const findRequest = axios.create();
 				
 				findRequest.interceptors.request.use(config => {
@@ -176,7 +171,7 @@
 					
 				});
 			},
-			resultRequest() {
+			resultRequest () {
 
 				const resultRequest = axios.create();
 				resultRequest.interceptors.request.use(config => {
@@ -199,27 +194,22 @@
 					if(response.status === 200) {
 						this.model = response.data;
 						this.sweepstakes = response.data.data;
-						this.loading.component = false
-						this.loading.pagination = false
-						//this.scrollToTop();
-						$(this.$el).find('.form-filter [type="load"]').addClass('hide');
-                        $(this.$el).find('.form-filter [type="submit"]').removeClass('hide');
-                        setTimeout(() => {
+						this.loading.component = false;
+						this.loading.pagination = false;
+						setTimeout(() => {
                             window.prerenderReady = true;
                         }, 1000);
 					}
 				}).catch((error) => {
-					this.loading.component = false
-					this.loading.pagination = false
-					$(this.$el).find('.form-filter [type="load"]').addClass('hide');
-                    $(this.$el).find('.form-filter [type="submit"]').removeClass('hide');
+					this.loading.component = false;
+					this.loading.pagination = false;
                     setTimeout(() => {
                         window.prerenderReady = true;
                     }, 1000);
 				});
 			}
 		},
-		data() {
+		data () {
 			return {
 				loading: {
 					component: true,
@@ -244,7 +234,7 @@
 				}
 			}
 		},
-		mounted() {
+		mounted () {
 			if(this.$route.query.slug) {
                 this.query.slug = this.$route.query.slug
             } 

@@ -187,6 +187,8 @@ if (!function_exists('format_without_mask')) {
 			if(count($date) >= 2) {
 				$time = ' '.$date[1];
 				$date = $date[0];
+			} else {
+				$date = $date[0];
 			}
 			$date = explode($condition, $date);			
 			return $date[2].'-'.$date[1].'-'.$date[0].$time;
