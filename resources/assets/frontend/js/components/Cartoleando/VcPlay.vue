@@ -1,66 +1,167 @@
 <template>
     <load v-if="loading.component == true"></load>
 	<div class="container" v-else>
-        <div class="row">
+        <!-- <div class="row">
         	<div class="col-lg-12">
         		<div class="sub-navigation">
         			<router-link :to="{ name: 'cartoleando.play', params: { slug: item.package.slug } }" class="active show">
 	                    {{ trans('strings.play_on_the') }} {{ item.package.name }}
 	                </router-link>
-	                <!-- <router-link :to="{ name: 'cartola.results', params: { slug: item.lottery.slug } }" class="show" id="result-component">
+	                <router-link :to="{ name: 'cartola.results', params: { slug: item.lottery.slug } }" class="show" id="result-component">
 	                    {{ trans('strings.results') }}
-	               	</router-link> -->
+	               	</router-link>
         		</div>
         	</div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-lg-12 col-12 col-md-12 col-sm-12">
+                <h1 class="page-header" style="border: none;">
+                    {{ item.package.name }}<br>
+                    <span style="font-size: 20px;">
+                        Por favor, preencha o formulário para participar do cartoleando
+                    </span>
+                </h1>
+            </div>
+            <!-- <div class="col-lg-6 col-6 col-md-6 col-sm-6">
+                <router-link :to="{ name: 'cartoleando.index' }" class="btn btn-md btn-back btn-primary">
+                    <i class="fa fa-arrow-left"></i>
+                    {{ trans('strings.back') }}
+                </router-link>
+            </div> -->
         </div>
 
         <div class="row">
-            <div class="col-lg-6 col-6 col-md-6 col-sm-6">
-                <h1 class="page-header" style="margin-top: 0; border: none;">{{ item.package.name }}</h1>
-            </div>
-            <div class="col-lg-6 col-6 col-md-6 col-sm-6">
-                <router-link :to="{ name: 'cartoleando.index' }" class="btn btn-md btn-back pull-right btn-primary">
-                    {{ trans('strings.back') }}
-                </router-link>
+            <div class="col-12">
+                <h5></h5>
             </div>
         </div>
-
+        
         <form @submit.prevent="addToCart($el)" id="packages-purchase">
+            <div class="row no-margin">
+                <div class="col-lg-8 no-padding-left">
+                    <div class="row">
+                        <div class="col-lg-12 col-12 col-sm-6 col-md-3">
+                            <div class="form-group">
+                                <label for="packages-purchase-team-name">{{ trans('strings.team_name') }}*</label>
+                                <input name="name" v-model="item.name" type="text" class="form-control" id="packages-purchase-team-name" aria-describedby="name" :placeholder="trans('strings.team_name')">
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="row">
-                <div class="col-lg-3 col-12 col-sm-6 col-md-3">
-                    <div class="form-group">
-                        <label for="packages-purchase-name">{{ trans('strings.team_name') }}*</label>
-                        <input name="teamName" v-model="item.teamName" type="text" class="form-control" id="packages-purchase-name" aria-describedby="name" :placeholder="trans('strings.team_name')">
+                    <div class="row">
+                        <div class="col-lg-12 col-12 col-sm-6 col-md-3">
+                            <div class="form-group">
+                                <label for="packages-purchase-cartoleiro">{{ trans('strings.cartoleiro_name') }}*</label>
+                                <input name="cartoleiro" v-model="item.cartoleiro" type="text" class="form-control" id="packages-purchase-cartoleiro" aria-describedby="cartoleiro" :placeholder="trans('strings.cartoleiro_name')">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-12 col-sm-6 col-md-3">
+                            <div class="form-group">
+                                <label for="packages-purchase-email">{{ trans('strings.email') }} cadastrado no site do cartola*</label>
+                                <input name="email" v-model="item.email" type="email" class="form-control" id="packages-purchase-email" aria-describedby="email" :placeholder="trans('strings.email')">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 no-padding-right">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="price">
+                                {{ trans('strings.total_value') }} R$<span class="value" v-if="item.total > 0">
+                                    {{ totalFormated }}
+                                </span>
+                                <span class="value" v-else>0.00</span>
+                            </span>
+                        </div>
+
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-xl btn-primary">
+                                {{ trans('strings.to_confirm') }}
+                            </button>
+                        </div>
+                    </div>
+                    <!-- <button type="submit" class="btn btn-md btn-primary pull-right" v-if="!loading.paying">
+                        {{ trans('strings.add_to_cart') }}
+                    </button>
+                    <button @click="validate($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value >= item.total" class="btn-pay-now pull-right btn btn-primary">
+                        {{ trans('strings.pay_now') }}
+                    </button>
+                    <button v-if="loading.paying" @click.prevent="" class="pull-right btn btn-md btn-primary">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </button>-->
+                </div>
+            </div>
+        </form>
+         
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <h4>{{ trans('strings.league') }}(s)</h4>
+                <load v-if="loading.leagues" />
+                <div id="accordion" v-else>
+                    <div class="card" v-for="(league, index) in item.package.leagues" :key="index">
+                        <div class="card-header" data-toggle="collapse" :data-target="'#league_'+league.id">
+                            <!-- <h6 data-toggle="collapse" :data-target="'#league_'+league.id" aria-expanded="true" :aria-controls="'league_'+league.id">
+                                {{ league.name }}
+                            </h6> -->
+
+                            <div class="row vcenter">
+                                <div class="col-lg-2">
+                                    <img class="img-fluid" :src="league.bg_image_domain+'/'+league.bg_image" :alt="league.name"> 
+                                </div>
+
+                                <div class="col-lg-10">
+                                    <h3 class="">{{league.name}}</h3>
+                                    <span>
+                                        {{ trans('strings.league') }} {{ league.modality }} 
+                                        <span v-if="league[league.context].max_players > league.quantity_teams">
+                                            - {{ league[league.context].max_players - league.quantity_teams }} Vagas restantes
+                                        </span>
+                                    </span>
+                                    <br>
+                                    <h5>{{ league.small_description }}</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div :id="'league_'+league.id" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <h5>{{ league.small_description }}</h5>
+                                <p>{{ league.description }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            
-            <hr>
-			<div class="row">
-				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-					<button type="submit" class="btn btn-md btn-primary pull-right" v-if="!loading.paying">
-						{{ trans('strings.add_to_cart') }}
-					</button>
-					<button @click="validate($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value >= item.total" class="btn-pay-now pull-right btn btn-primary">
-                        {{ trans('strings.pay_now') }}
-                    </button>
-					<button v-if="loading.paying" @click.prevent="" class="pull-right btn btn-md btn-primary">
-						<i class="fa fa-refresh fa-spin"></i>
-					</button>
-					<span class="pull-right price">
-						{{ trans('strings.total_value') }} $<span class="value" v-if="item.total > 0">
-							{{ totalFormated }}
-						</span>
-						<span class="value" v-else>0.00</span>
-					</span>
-				</div>
-			</div>
+        <div class="modal fade modal-show-team" data-backdrop="static" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header" style="border-bottom: none;">
+                    	<button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
 
-        </form>
+                    <!-- Modal body -->
+                    <div class="modal-body" style="padding-top: 0;">
+                        
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                    	
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	</div>
+
+    </div>
     
 </template>
 
@@ -69,6 +170,31 @@ import {routes} from '../../api_routes'
 import {mapState, mapGetters} from 'vuex'
 export default {
     methods: {
+        showTeamRequest() {
+            let showTeamRequest = axios.create();
+            showTeamRequest.interceptors.request.use(config => {					
+                return config;
+            });
+
+            let url = routes.cartola.find_team_by_slug;
+            showTeamRequest.post(url, {
+                slug: this.item.slug
+            }).then(response => {
+                    console.log(response.data)
+                })
+                .catch(error => {
+
+                });
+        },
+        setModalTeam () {
+            let vm = this;
+            let time = setInterval(function() {
+                vm.modal = $('.modal-show-team');
+                if(vm.modal.length > 0) {
+                    clearInterval(time);
+                }
+            });
+        },
         setForm () {
             let vm = this;
             let time = setInterval(function() {
@@ -77,13 +203,27 @@ export default {
                     clearInterval(time);
                     vm.form.validate({
                         rules: {
-                            teamName: {
+                            name: {
                                 required: true,
+                            },
+                            cartoleiro: {
+                                required: true,
+                            },
+                            email: {
+                                required: true,
+                                email: true,
                             },
                         },
                         messages: {
-                            teamName: {
+                            name: {
                                 required: vm.trans('strings.field_required'),
+                            },
+                            cartoleiro: {
+                                required: vm.trans('strings.field_required'),
+                            },
+                            email: {
+                                required: vm.trans('strings.field_required'),
+                                email: vm.trans('validation.user.create.email.email'),
                             },
                         },
                         highlight: function (input) {
@@ -104,7 +244,15 @@ export default {
                         var isvalid = vm.form.valid();
                         if (isvalid) {
                             e.preventDefault();
-                            //vm.store();
+                            vm.modal.modal('toggle');
+                            vm.modal.off('shown.bs.modal');
+                            //Abrindo o modal
+                            vm.modal.on('shown.bs.modal', (event) => {
+                                vm.showTeamRequest();
+                            }).modal({
+                                show: true,
+                                backdrop: 'static'
+                            });                            
                         }
                     });
                 }
@@ -130,6 +278,7 @@ export default {
                 this.item.package.name = this.trans('strings.loading');
                 this.showRequest();
                 this.setForm();
+                this.setModalTeam();
             }
             //window.document.title = this.trans('strings.soccer_expert');
         },
@@ -149,7 +298,17 @@ export default {
                 })
                 .catch((error) => {
                     this.loading.component = false;
+                });
+
+            this.loading.leagues = true;
+            this.getLeaguesOfPackageBySlug(slug)
+                .then((response) => {
+                    this.$set(this.item.package, 'leagues', response.data);
+                    this.loading.leagues = false;
                 })
+                .catch((error) => {
+                    this.loading.leagues = false;
+                });
         }
     },
     metaInfo () {
@@ -163,18 +322,21 @@ export default {
             form: null,
             loading: {
                 component: true,
-                paying: false
+                paying: false,
+                leagues: false,
             },
             leagues: [],
             indexClicked: null,
             meta: [],
             awards: [],
+            step: 0,
             item: {
                 hash: '',
                 package: {},
                 total: 0.00,
-                teamName: '',
-                teamSlug: '',
+                name: '',
+                slug: '',
+                email: '',
             }
         } 
     },
@@ -201,8 +363,8 @@ export default {
         }
     },
     watch: {
-        'item.teamName' (newValue, oldValue) {
-            this.item.teamSlug = this.convertSlug(newValue);
+        'item.name' (newValue, oldValue) {
+            this.item.slug = this.convertSlug(newValue);
         }
     }
 }
@@ -210,6 +372,8 @@ export default {
 
 
 <style scoped>
-
+    .card {
+        margin-bottom: 10px;
+    }
 </style>
 

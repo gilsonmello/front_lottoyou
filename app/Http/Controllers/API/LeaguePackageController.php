@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\LeaguePackage;
+use App\League;
+use DB;
 
 class LeaguePackageController extends Controller
 { 
@@ -16,17 +18,30 @@ class LeaguePackageController extends Controller
      */
     public function findLeaguesBySlug($slug)
     {
-        $package = LeaguePackage::findLeaguesBySlug($slug);
+        $leagues = League::select('*', DB::raw("
+        (
+            CASE WHEN leagues.context = 'classic' THEN 'Clássica' 
+            WHEN leagues.context = 'cup' THEN 'Mata Mata'
+            ELSE 'Clássica' 
+            END
+        ) AS modality
+        "))
+        ->whereHas('packages', function($query) use ($slug) {
+            $query->where('slug', '=', $slug);
+        })->with([
+            'cup',
+            'classic'
+        ])->get();
 
-        if($package == null) {
+        if($leagues == null) {
             return response()->json([], 402);
         }
 
-        return response()->json($package, 200);
+        return response()->json($leagues, 200);
     }
 
     /**
-     * Busca o pacote 
+     * Busca o pacote e as ligas 
      *
      * @param $slug
      * @return \Illuminate\Http\Response

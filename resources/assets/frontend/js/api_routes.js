@@ -155,5 +155,8 @@ export const routes = {
 		index: host+'/league_packages',
 		findBySlug: host+'/league_packages/findBySlug/{slug}',
 		find_leagues_by_slug: host+'/league_packages/find_leagues_by_slug/{slug}',
+	},
+	cartola: {
+		find_team_by_slug:  host+'/cartola/find_team_by_slug',
 	}
 };

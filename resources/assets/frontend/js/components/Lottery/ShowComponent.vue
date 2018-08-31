@@ -30,6 +30,7 @@
 	        	</div>
 	        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
 	        		<button class="btn btn-md btn-back pull-right btn-primary" @click.prevent="back($event)">
+						<i class="fa fa-arrow-left"></i>
 	        			{{ trans('strings.back') }}
 	        		</button>
 	        	</div>

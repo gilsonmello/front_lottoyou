@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class LeaguePackage extends Model
 {
@@ -58,7 +59,9 @@ class LeaguePackage extends Model
      * @return mixed
      */
     public function scopeFindBySlug($query, $string) {
-        return $query->where('slug', $string)->get()->first();
+        return $query->where('slug', $string)
+            ->get()
+            ->first();
     }    
 
     /**
@@ -67,6 +70,18 @@ class LeaguePackage extends Model
      * @return mixed
      */
     public function scopeFindLeaguesBySlug($query, $string) {
-        return $query->where('slug', '=', $string)->with(['leagues'])->get()->first();
+        return $query->where('slug', '=', $string)->with([
+            'leagues' => function($query) {
+                $query->select('*', DB::raw("
+                (
+                    CASE WHEN leagues.context = 'classic' THEN 'Clássica' 
+                    WHEN leagues.context = 'cup' THEN 'Mata Mata'
+                    ELSE 'Clássica' 
+                    END
+                ) AS context
+                "));
+            },
+        ])->get()
+        ->first();
     }
 }

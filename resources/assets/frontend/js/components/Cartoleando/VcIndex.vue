@@ -150,7 +150,7 @@ export default {
         handleJackpotTable(index) {
             let slug = this.leaguePackages[index].slug;
             this.indexClicked = index;
-            this.getLeaguesBySlug(slug)
+            this.getLeaguesOfPackageBySlug(slug)
                 .then((response) => {
                     this.leagues = response.data.leagues;
                 })
@@ -172,20 +172,6 @@ export default {
             let background = this.leaguePackages[this.indexClicked].bg_image_domain + '/'+ this.leaguePackages[this.indexClicked].bg_image
             return 'background-image: url('+background.replace(' ', '%20')+'); background-size: 100% 100%;';
         },
-        //Ajax para buscar todos pacotes que contém ligas
-        getLeaguesBySlug (slug) {
-            return new Promise(function(resolve, reject) {       
-                let request = axios.create();
-                let url = routes.league_packages.find_leagues_by_slug.replace('{slug}', slug);
-                request.get(url)
-                    .then((response) => {
-                        resolve(response);
-                    })
-                    .catch((error) => {
-                        reject(error)
-                    });
-            });
-        }
     },
     beforeDestroy () {
         this.$eventBus.$off('handleJackpotTable');

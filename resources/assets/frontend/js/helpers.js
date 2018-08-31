@@ -1,5 +1,36 @@
 import Vue from 'vue'
-import {routes} from './api_routes'
+import {routes} from './api_routes';
+
+Number.prototype.format = function(n, x) {
+    var re = '(\\d)(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$1,');
+};
+
+Vue.prototype.makeid = function() {
+	var text = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	for (var i = 0; i < 15; i++){
+	  text += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+  return text;
+};
+
+Vue.prototype.trans = (key) => {
+    return _.get(window.trans, key, key);
+};
+
+Vue.prototype.src = function(src) {
+	return src.replace(' ', '%20');
+};
+
+Vue.prototype.$eventBus = new Vue();
+
+Vue.prototype.app = window.app;
+
+Vue.prototype.app.reload = function() {
+	window.location.reload();
+}
 
 /*Vue.prototype.removeRepeatedNumbers = function(numbers, value) {
 	for(var i = 0; i < numbers.length; i++) {
@@ -356,4 +387,19 @@ Vue.prototype.convertSlug = function (str) {
 		.replace(/-+/g, '-'); // collapse dashes
 
 	return str;
+};
+
+//Ajax para buscar todos pacotes que contém ligas
+Vue.prototype.getLeaguesOfPackageBySlug = function(slug) {
+	return new Promise(function(resolve, reject) {       
+		let request = axios.create();
+		let url = routes.league_packages.find_leagues_by_slug.replace('{slug}', slug);
+		request.get(url)
+			.then((response) => {
+				resolve(response);
+			})
+			.catch((error) => {
+				reject(error)
+			});
+	});
 };

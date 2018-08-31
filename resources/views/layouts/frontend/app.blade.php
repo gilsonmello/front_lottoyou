@@ -45,8 +45,6 @@
         <script> window.prerenderReady = false; </script>
     </head>
     <body>
-       
-        {{-- Tag para que ao inicializar o sistema, faça o download do gif load --}}        
         
         <div id="app">
         </div>

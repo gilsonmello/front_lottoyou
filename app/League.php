@@ -65,4 +65,14 @@ class League extends Model
     {
         return $this->belongsToMany(LeaguePackage::class, 'lea_packages_has_leagues', 'league_id', 'lea_package_id');
     }
+
+    public function cup() 
+    {
+        return $this->hasOne(LeaCup::class, 'league_id');
+    }
+
+    public function classic() 
+    {
+        return $this->hasOne(LeaClassic::class, 'league_id');
+    }
 }

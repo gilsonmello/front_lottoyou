@@ -19,58 +19,7 @@ Array.prototype.clone = function(){
 
 window.Vue = require('vue');
 
-Number.prototype.format = function(n, x) {
-    var re = '(\\d)(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
-    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$1,');
-};
-
-Vue.prototype.makeid = function() {
-  	var text = "";
-  	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  	for (var i = 0; i < 15; i++){
-    	text += possible.charAt(Math.floor(Math.random() * possible.length));
-  	}
-	return text;
-};
-
-Vue.prototype.$eventBus = new Vue();
-
-Vue.prototype.src = function(src) {
-	return src.replace(' ', '%20');
-};
-
-Vue.prototype.trans = (key) => {
-    return _.get(window.trans, key, key);
-};
-
-Vue.prototype.app = window.app;
-
-Vue.prototype.app.reload = function() {
-	window.location.reload();
-}
-
-
 require('./helpers');
-
-
-export function getTrans(key) {
-	var keys = key.split('.');
-	var value = '';
-	var obj = window.trans;
-	var keyAux = '';
-
-	if(keys.length > 0){
-		for(var i = 0; i < keys.length; i++){
-			keyAux = keys[i];
-			obj = obj[keyAux];
-			if(typeof obj === 'string'){
-				value = obj
-			}
-		}
-	}	
-	return value;
-};
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

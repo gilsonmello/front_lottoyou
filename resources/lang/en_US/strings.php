@@ -11,7 +11,12 @@ return [
       | found in a intuitive way.
       |
      */
+    'leagues' => 'Ligas',
+    'league' => 'Liga',
+    'enter' => 'Entre',
+    'to_enter' => 'Entrar',
     'cartoleando' => 'Cartoleando',
+    'cartoleiro_name' => 'Nome do cartoleiro',
     'cartola' => 'Cartola',
     'team_name' => 'Nome do time',
     'fantasy_game' => 'Fantasy Game',
@@ -383,6 +388,7 @@ return [
         'permission' => 'Baseado na Permissão do Usuário - ',
         'role' => 'Baseado no Papel do Usuário - ',
     ],
+    'to_confirm' => 'Confirmar',
     'invalid_token' => 'Token inválido',
     'total_responses' => 'Total de execuções',
     'count_not_answred' => 'Quantidade de não respondida',
