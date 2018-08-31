@@ -403,3 +403,7 @@ Vue.prototype.getLeaguesOfPackageBySlug = function(slug) {
 			});
 	});
 };
+
+Vue.prototype.showModalLogin = () => {
+	$('.modal-login').modal('toggle');
+};

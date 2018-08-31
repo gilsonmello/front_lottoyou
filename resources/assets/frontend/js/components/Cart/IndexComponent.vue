@@ -41,7 +41,7 @@
 		<div class="tab-content">
 			<div class="tab-pane active tab-all" id="all" v-if="purchase.items.length > 0">
 	  			
-            	<div class="container no-padding" v-for="(item, index) in purchase.items">
+            	<div class="container no-padding" v-for="(item, index) in purchase.items" :key="index">
 					<soccer-expert-component v-if="item.type == 'soccer_expert'" :id="'soccer_expert_'+index" :item="item.soccer_expert"></soccer-expert-component>
 					<lottery-component v-else-if="item.type == 'lottery'" :id="'lottery_'+index" :item="item.lottery"></lottery-component> 
 					<scratch-card-component v-else-if="item.type == 'scratch_card'" :item="item.scratch_card"></scratch-card-component>
@@ -105,15 +105,15 @@
 			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
 				<div class="col-lg-5 col-12 col-md-5 col-sm-6" v-if="auth != undefined">
 					<span v-if="(auth.balance.value - purchase.total) >= 0">
-						Saldo disponível: $ {{ auth.balance.value }} (Saldo restante: $ {{ (auth.balance.value - purchase.total).format(2, true) }})
+						Saldo disponível: R${{ auth.balance.value }} (Saldo restante: $ {{ (auth.balance.value - purchase.total).format(2, true) }})
 					</span>
 					<span v-else>
-						Saldo disponível: $ {{ auth.balance.value }}(Saldo restante: $ 0.00)
+						Saldo disponível: R${{ auth.balance.value }}(Saldo restante: $ 0.00)
 					</span>
 				</div>
 				<div class="col-lg-5 col-12 col-md-5 col-sm-6" v-else>
 					<span>
-						Saldo disponível: $ 0.00(Saldo restante: $ 0.00)
+						Saldo disponível: R$0.00(Saldo restante: $ 0.00)
 					</span>
 				</div>
 				<div class="col-lg-5 col-6 col-md-5 col-sm-4">

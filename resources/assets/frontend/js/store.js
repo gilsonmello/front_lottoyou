@@ -4,14 +4,16 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const debug = process.env.NODE_ENV ==! 'production'
 
-import User from './modules/User/main'
-import Cart from './modules/Cart/main'
+import User from './modules/User/main';
+import Cart from './modules/Cart/main';
+import Login from './modules/Login/main';
 
 
 export default new Vuex.Store({
 	modules: {
 		User,
-		Cart
+		Cart,
+		Login
 	},
 	strict: debug
 })

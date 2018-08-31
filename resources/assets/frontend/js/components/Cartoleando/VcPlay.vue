@@ -142,19 +142,51 @@
 
         <div class="modal fade modal-show-team" data-backdrop="static" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-xl">
-                <div class="modal-content">
+                <div class="modal-content" v-if="item.team">
                     <!-- Modal Header -->
-                    <div class="modal-header" style="border-bottom: none;">
+                    <div class="modal-header">
+                        <h2>Por favor, confirme seu time</h2>
                     	<button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
                     <!-- Modal body -->
-                    <div class="modal-body" style="padding-top: 0;">
-                        
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 vcenter-end">
+                                <div class="cartoleando-show-team-header">
+                                    <img style="width: 200px; height: 200px;" :src="item.team.time.url_camisa_png" />
+                                    <img :src="item.team.time.url_escudo_png" class="shield" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 vcenter-end">
+                                <h4>
+                                    {{ item.team.time.nome }}
+                                    <br>
+                                    <small>
+                                        {{ item.team.time.nome_cartola }}
+                                    </small>
+                                </h4>
+                            </div>
+                        </div>
                     </div>
                     <!-- Modal footer -->
-                    <div class="modal-footer">
-                    	
+                    <div class="modal-footer" style="justify-content: center">
+                    	<button class="btn btn-xl btn-primary" style="width: 40%;">
+                            {{ trans('strings.to_confirm') }}
+                        </button>
+                        <button v-if="!auth" class="btn btn-primary btn-md" type="button" @click.prevent="showModalLogin($event)">		
+                            {{ trans('strings.login') }}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="modal-content" v-else>
+                    <!-- Modal Header -->
+                    <div class="modal-header" style="border-bottom: none;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <load />
                     </div>
                 </div>
             </div>
@@ -180,11 +212,10 @@ export default {
             showTeamRequest.post(url, {
                 slug: this.item.slug
             }).then(response => {
-                    console.log(response.data)
-                })
-                .catch(error => {
+                this.item.team = response.data;
+            }).catch(error => {
 
-                });
+            });
         },
         setModalTeam () {
             let vm = this;
@@ -275,6 +306,7 @@ export default {
             if(this.$route.query.hash != undefined) {
                 this.showLottery();
             } else if(this.$route.params.slug != undefined) {
+                this.$store.dispatch('setLoginOptions', {redirectOnHome: false});
                 this.item.package.name = this.trans('strings.loading');
                 this.showRequest();
                 this.setForm();
@@ -337,6 +369,7 @@ export default {
                 name: '',
                 slug: '',
                 email: '',
+                team: null
             }
         } 
     },
@@ -349,7 +382,9 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'auth', 'purchase'
+            'auth', 
+            'purchase',
+            'loginOptions'
         ]),
         totalFormated: {
             // getter
@@ -374,6 +409,18 @@ export default {
 <style scoped>
     .card {
         margin-bottom: 10px;
+    }
+
+    .cartoleando-show-team-header {
+        position: relative;
+    }
+
+    .cartoleando-show-team-header .shield {
+        position: absolute;
+        right: 5%;
+        width: 70px;
+        height: 70px;
+        top: 60%;
     }
 </style>
 

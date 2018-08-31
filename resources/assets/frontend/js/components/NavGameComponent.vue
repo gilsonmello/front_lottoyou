@@ -77,7 +77,7 @@
             },
             handleSetInterval() {
 
-                var time = setInterval(this.interval, 800);
+                let time = setInterval(this.interval, 800);
 
                 $('.world_cup_now').mouseover(() => {
                     clearInterval(time);

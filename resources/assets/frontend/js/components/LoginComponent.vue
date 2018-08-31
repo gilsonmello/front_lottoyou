@@ -117,7 +117,7 @@
 	import {routes} from '../api_routes'
 	import LoadComponent from './Load'
 	export default {
-		data: function() {
+		data () {
 			return {
 				email: '',
 				password: '',
@@ -134,11 +134,12 @@
 		},
 		computed: {
             ...mapGetters([
-                'auth'
+				'auth',
+				'loginOptions'
             ])
 		},
 		watch: {
-			facebook(newValue, oldValue) {
+			facebook (newValue, oldValue) {
 				if(newValue.status === 'connected') {
 					window.FB.api('/me', {
 						fields: 'id,email,first_name,last_name,middle_name,name,name_format,picture,short_name',
@@ -176,7 +177,9 @@
 				}
 			}
 		},
-		mounted: function() {
+		mounted () {
+
+			console.log(this.loginOptions);
 			this.loading.component = false;
 			
 			/* FB.getLoginStatus((response) => {
@@ -199,7 +202,7 @@
 			})
 		},
 		methods: {
-			userExistsRequest(responseF) {
+			userExistsRequest (responseF) {
 				let userExistsRequest = axios.create();
 				userExistsRequest.interceptors.request.use(config => {
 					return config;
@@ -261,17 +264,17 @@
 					});
 				});
 			},
-			logoutFacebook() {
+			logoutFacebook () {
 				window.FB.logout((response) => {
 					
 				});
 			},
-			loginFacebook() {
+			loginFacebook () {
 				window.FB.login((response) => {
 					this.facebook = response;
 				}, {scope: 'public_profile,email,user_birthday'});
 			},
-			viewPassword(event) {
+			viewPassword (event) {
 				var target = $(event.target);
 				
 				target.removeClass('animate-zoom');
@@ -296,7 +299,7 @@
 				})
 				
 			},
-			login: function() {
+			login () {
 				const data = {
 		            grant_type: 'password',
 		            client_id: 2,
@@ -358,7 +361,9 @@
 		                  	
 		                  	//window.location.reload();
 
-		                  	this.$router.push({name: 'home'});
+							if(this.loginOptions.redirectOnHome || this.loginOptions.redirectOnHome === true) {
+								this.$router.push({name: 'home'});
+							}
 
 		                  	$('.modal-login').modal('hide');
 		                
@@ -386,7 +391,7 @@
 				});
 			}
 		},
-		activated: function() {
+		activated () {
 
 		},
 		components: {
