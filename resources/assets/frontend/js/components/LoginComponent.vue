@@ -361,7 +361,7 @@
 		                  	
 		                  	//window.location.reload();
 
-							if(this.loginOptions.redirectOnHome || this.loginOptions.redirectOnHome === true) {
+							if(this.loginOptions.redirectToHome === true) {
 								this.$router.push({name: 'home'});
 							}
 

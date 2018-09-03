@@ -12,12 +12,14 @@ function refreshState (state) {
 	//Total em dinheiro das raspadinhas
 	var amount_scratch_card = 0;
 
+	//Total em dinheiro dos cartoleandos
+	let amount_cartoleandos = 0;
+
 	//Filtrando e somando todos os totais das loterias
 	state.lotteries.items.filter(function(val) {
 		if(typeof val.total == 'string') {
 			amountLotteries += parseFloat(val.total);	
-		}
-		else if(typeof val.total == 'float' || typeof val.total == 'double' || typeof val.total == 'number') {
+		} else if(typeof val.total == 'float' || typeof val.total == 'double' || typeof val.total == 'number') {
 			amountLotteries += val.total;	
 		}
 	});
@@ -26,8 +28,7 @@ function refreshState (state) {
 	state.soccer_expert.items.filter(function(val) {
 		if(typeof val.total == 'string') {
 			amount_soccer_expert += parseFloat(val.total);	
-		}
-		else if(typeof val.total == 'float' || typeof val.total == 'double' || typeof val.total == 'number') {
+		} else if(typeof val.total == 'float' || typeof val.total == 'double' || typeof val.total == 'number') {
 			amount_soccer_expert += val.total;	
 		}
 	});
@@ -36,9 +37,17 @@ function refreshState (state) {
 	state.scratch_cards.items.filter(function(val) {
 		if(typeof val.total == 'string') {
 			amount_scratch_card += parseFloat(val.total);	
-		}
-		else if(typeof val.total == 'float' || typeof val.total == 'double' || typeof val.total == 'number') {
+		} else if(typeof val.total == 'float' || typeof val.total == 'double' || typeof val.total == 'number') {
 			amount_scratch_card += val.total;	
+		}
+	});
+
+	//Filtrando e somando todos os totais dos cartoleandos
+	state.cartoleandos.items.filter(function(val) {
+		if(typeof val.total == 'string') {
+			amount_cartoleandos += parseFloat(val.total);	
+		} else if(typeof val.total == 'float' || typeof val.total == 'double' || typeof val.total == 'number') {
+			amount_cartoleandos += val.total;	
 		}
 	});
 
@@ -51,27 +60,34 @@ function refreshState (state) {
 	//Total da raspadinha
 	state.scratch_cards.total = amount_scratch_card;
 
-	//Total de todos os itens
-	state.total = state.lotteries.total + state.scratch_cards.total + state.soccer_expert.total;
+	//Total do cartoleandos
+	state.cartoleandos.total = amount_cartoleandos;
 
 	//Total de todos os itens
-	state.sub_total = state.lotteries.total + state.scratch_cards.total + state.soccer_expert.total;
+	state.total = state.lotteries.total + 
+		state.scratch_cards.total + 
+		state.soccer_expert.total +
+		state.cartoleandos.total;
+
+	//Total de todos os itens
+	state.sub_total = state.lotteries.total + 
+		state.scratch_cards.total + 
+		state.soccer_expert.total +
+		state.cartoleandos.total;
 
 	//Novo estado
 	return state;
 }
 
 export default {
-	SET_ITEM_LOTTERY(state, items){
+	SET_ITEM_LOTTERY (state, items) {
 
 		//Caso o usuário faça 1 aposta e adicione no carrinho e depois faça outra cartela, preciso atualizar o item
 		//Removendo o item com base no hash
 
-		var arr = []
+		let arr = [];
 
-		let idx = null
-
-		
+		let idx = null;		
 
 		if(state.purchase.lotteries.items.length == 0) {
 			state.purchase.lotteries.items.unshift(items);
@@ -86,14 +102,14 @@ export default {
 
 			if(idx == null) {
 				state.purchase.lotteries.items.unshift(items);
-			}else {
+			} else {
 				state.purchase.lotteries.items[idx] = items	
 			}
 
 		}
-
-
-		idx = null
+		
+		idx = null;
+		
 		if(state.purchase.items.length == 0) {
 			state.purchase.items.unshift({
 				type: 'lottery',
@@ -127,7 +143,7 @@ export default {
 		state.purchase = refreshState(state.purchase);
 		
 	},
-	REMOVE_ITEM_LOTTERY(state, items){
+	REMOVE_ITEM_LOTTERY (state, items) {
 
 		state.purchase.lotteries.items = state.purchase.lotteries.items.filter((val) => {
 			return val.hash != items.hash
@@ -147,10 +163,10 @@ export default {
 
 		state.purchase = refreshState(state.purchase);
 	},
-	CLEAR_LOTTERIES(state){
+	CLEAR_LOTTERIES (state){
 		state.purchase.lotteries = [];
 	},
-	CLEAR_ITEM_LOTTERY(state, name){
+	CLEAR_ITEM_LOTTERY (state, name){
 		state.purchase.lotteries = [];
 
 		state.purchase.items = state.purchase.items.filter((val) => {
@@ -162,9 +178,9 @@ export default {
 
 		state.purchase = refreshState(state.purchase);
 	},
-	SET_ITEM_SOCCER_EXPERT(state, items) {
+	SET_ITEM_SOCCER_EXPERT (state, items) {
 		
-		let idx = null
+		let idx = null;
 
 		if(state.purchase.soccer_expert.items.length == 0) {
 			state.purchase.soccer_expert.items.unshift(items);
@@ -184,7 +200,7 @@ export default {
 
 		}
 
-		idx = null
+		idx = null;
 		if(state.purchase.items.length == 0) {
 			state.purchase.items.unshift({
 				type: 'soccer_expert',
@@ -195,7 +211,7 @@ export default {
 			state.purchase.items.map(function( elem, index, array ) {
 				if(elem.soccer_expert != undefined) {
 					if(elem.soccer_expert.hash == items.hash) {
-						idx = index
+						idx = index;
 					}
 				}
 			});
@@ -205,7 +221,7 @@ export default {
 					type: 'soccer_expert',
 					soccer_expert: items
 				});
-			}else {
+			} else {
 				state.purchase.items[idx] = {
 					type: 'soccer_expert',
 					soccer_expert: items
@@ -218,7 +234,7 @@ export default {
 
 		//console.log(state.purchase.items)
 	},
-	REMOVE_ITEM_SOCCER_EXPERT(state, items){
+	REMOVE_ITEM_SOCCER_EXPERT (state, items) {
 		
 		//Removendo o item com base no hash
 		state.purchase.soccer_expert.items = state.purchase.soccer_expert.items.filter((val) => {
@@ -240,18 +256,18 @@ export default {
 		//Atualizando os dados como totais, quantidades
 		state.purchase = refreshState(state.purchase);
 	},
-	CLEAR_SOCCER_EXPERT(state, name){
+	CLEAR_SOCCER_EXPERT (state, name) {
 		state.purchase.soccer_expert = [];
 
 		state.purchase = refreshState(state.purchase);
 	},
-	SET_ITEM_SCRATCH_CARD(state, items) {
+	SET_ITEM_SCRATCH_CARD (state, items) {
 		
 		let idx = null
 
 		if(state.purchase.scratch_cards.items.length == 0) {
 			state.purchase.scratch_cards.items.unshift(items);
-		}else {
+		} else {
 
 			state.purchase.scratch_cards.items.map(function( elem, index, array ) {
 				if(elem.hash == items.hash) {
@@ -261,7 +277,7 @@ export default {
 
 			if(idx == null) {
 				state.purchase.scratch_cards.items.unshift(items);
-			}else {
+			} else {
 				state.purchase.scratch_cards.items[idx] = items	
 			}
 
@@ -276,7 +292,7 @@ export default {
 				type: 'scratch_card',
 				scratch_card: items
 			});
-		}else {
+		} else {
 
 			//Se não é porque já possui item
 			//Verifico se o item passado no array existe
@@ -308,7 +324,7 @@ export default {
 		//Atualizando os dados como totais, quantidades
 		state.purchase = refreshState(state.purchase);
 	},
-	REMOVE_ITEM_SCRATCH_CARD(state, items){
+	REMOVE_ITEM_SCRATCH_CARD (state, items) {
 		
 		//Removendo o item com base no hash
 		state.purchase.scratch_cards.items = state.purchase.scratch_cards.items.filter((val) => {
@@ -319,7 +335,7 @@ export default {
 			if(val.type == 'scratch_card') {
 				if(val.scratch_card.hash != items.hash) {
 					return true
-				}else{
+				} else{
 					return false
 				}
 			}
@@ -329,12 +345,11 @@ export default {
 		//Atualizando os dados como totais, quantidades
 		state.purchase = refreshState(state.purchase);
 	},
-	CLEAR_SCRATCH_CARD(){
+	CLEAR_SCRATCH_CARD () {
 		state.purchase.soccer_expert = [];
-
 		state.purchase = refreshState(state.purchase);
 	},
-	CLEAR_PURCHASE(state) {
+	CLEAR_PURCHASE (state) {
 		state.purchase = {
 			quantity: 0,
 			total: 0.00,
@@ -356,27 +371,122 @@ export default {
 			items: []
 		};
 	},
+	SET_ITEM_CARTOLEANDO (state, items) {
+		
+		let idx = null;
+
+		if(state.purchase.cartoleandos.items.length === 0) {
+			state.purchase.cartoleandos.items.unshift(items);
+		} else {
+			state.purchase.cartoleandos.items.map(function( elem, index, array ) {
+				if(elem.hash == items.hash) {
+					idx = index;
+				}
+			});
+
+			//Se não houver nenhum item com mesmo hash
+			if(idx == null) {
+				state.purchase.cartoleandos.items.unshift(items);
+			} else {
+				//Se for igual, atualiza o indice dos items
+				state.purchase.cartoleandos.items[idx] = items;
+			}
+
+		}
+
+		idx = null;
+
+		//Verificando se existe algum item
+		if(state.purchase.items.length == 0) {
+			//Caso não tenha, faço inserção do item do tipo raspadinha
+			state.purchase.items.unshift({
+				type: 'cartoleando',
+				cartoleandos: items
+			});
+		} else {
+
+			//Se não é porque já possui item
+			//Verifico se o item passado no array existe
+			state.purchase.items.map(function( elem, index, array ) {
+				//
+				if(elem.cartoleandos != undefined) {
+					if(elem.cartoleandos.hash == items.hash) {
+						idx = index
+					}
+				}
+			});
+
+			//Se não encontrou nenhum item com o mesmo hash, é porque não existe e então insiro 
+			//O novo item de raspadinha
+			if(idx == null) {
+				state.purchase.items.unshift({
+					type: 'cartoleando',
+					cartoleandos: items
+				});
+			} else {
+				//Se não faço alteração do item com base no indice que encontrei na verificação dos hash's
+				state.purchase.items[idx] = {
+					type: 'cartoleando',
+					cartoleandos: items
+				};	
+			}
+		}
+
+		//Atualizando os dados como totais, quantidades
+		state.purchase = refreshState(state.purchase);
+	},
+	CLEAR_CARTOLEANDO (state) {
+		state.purchase.cartoleandos = [];
+	},
+	REMOVE_ITEM_CARTOLEANDO (state, items) {
+		
+		//Removendo o item com base no hash
+		state.purchase.cartoleandos.items = state.purchase.cartoleandos.items.filter((val) => {
+			return val.hash != items.hash
+		});
+
+		state.purchase.items = state.purchase.items.filter((val) => {
+			if(val.type == 'cartoleando') {
+				if(val.cartoleandos.hash != items.hash) {
+					return true
+				} else{
+					return false
+				}
+			}
+			return true;
+		});
+		
+		//Atualizando os dados como totais, quantidades
+		state.purchase = refreshState(state.purchase);
+	},
 	SET_ITEMS(state, items) {
 		
 		items.map((elem, index, array) => {
+			
 			if(elem.type == 'soccer_expert') {
 				state.purchase.items.push({
 					type: elem.type,
 					soccer_expert: JSON.parse(elem.data)
 				})
 				state.purchase.soccer_expert.items.push(JSON.parse(elem.data))
-			}else if(elem.type == 'lottery') {
+			} else if(elem.type == 'lottery') {
 				state.purchase.items.push({
 					type: elem.type,
 					lottery: JSON.parse(elem.data)
 				})
 				state.purchase.lotteries.items.push(JSON.parse(elem.data))
-			}else {
+			} else if(elem.type == 'scratch_card') {
 				state.purchase.items.push({
 					type: elem.type,
 					scratch_card: JSON.parse(elem.data)
 				})
 				state.purchase.scratch_cards.items.push(JSON.parse(elem.data))
+			} else if(elem.type == 'cartoleando') {
+				state.purchase.items.push({
+					type: elem.type,
+					scratch_card: JSON.parse(elem.data)
+				})
+				state.purchase.cartoleandos.items.push(JSON.parse(elem.data))
 			}
 		})
 

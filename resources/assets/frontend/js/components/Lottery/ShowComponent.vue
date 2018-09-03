@@ -935,7 +935,7 @@
 			},
 			//Função para adicionar item no carrinho
 			addToCart: function(event) {
-				var vm = this
+				var vm = this;
 				var tickets = this.getTicketsFinished();
 
 				/* var item = {
@@ -961,7 +961,7 @@
 				if(tickets.length == 0) {
 					alert('Faça pelo menos um jogo');
 					//this.$store.dispatch('removeItemLottery', item);
-				} else {				
+				} else {			
 
 					var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.item.lot_jogo_id]);
 
@@ -989,7 +989,7 @@
 			        }).catch((error) => {
 			        	this.loading.paying = false;
 			        	toastr.error('Erro ao adicionar item', 'Por favor tente novamente');
-			        })	
+			        });
 					
 					/*const cartRequest = axios.create();
 					cartRequest.interceptors.request.use(config => {

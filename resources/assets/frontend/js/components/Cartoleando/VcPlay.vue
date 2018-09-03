@@ -37,7 +37,52 @@
             </div>
         </div>
         
-        <form @submit.prevent="addToCart($el)" id="packages-purchase">
+        <!-- Se o usuário possui time -->
+        <form @submit.prevent="" id="packages-purchase" v-if="auth && auth.cartoleando_team">
+            <div class="row no-margin">
+                <div class="col-lg-8 no-padding-left">
+                    <div class="row">
+                        <div class="col-lg-12 vcenter-end">
+                            <div class="cartoleando-show-team-header">
+                                <img style="width: 200px; height: 200px;" :src="auth.cartoleando_team.time.url_camisa_png" />
+                                <img :src="auth.cartoleando_team.time.url_escudo_png" class="shield" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 vcenter-end">
+                            <h4>
+                                {{ auth.cartoleando_team.time.nome }}
+                                <br>
+                                <small>
+                                    {{ auth.cartoleando_team.time.nome_cartola }}
+                                </small>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 no-padding-right">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="price">
+                                {{ trans('strings.total_value') }} R$<span class="value" v-if="item.total > 0">{{ totalFormated }}</span>
+                                <span class="value" v-else>0.00</span>
+                            </span>
+                        </div>
+
+                        <div class="card-body">
+                            <button @click="addToCart($el)" class="btn btn-xl btn-primary" type="button" style="width: 40%;">
+                                {{ trans('strings.to_confirm') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- Se não aparece o formulário normal -->
+        <form @submit.prevent="" id="packages-purchase" v-else>
             <div class="row no-margin">
                 <div class="col-lg-8 no-padding-left">
                     <div class="row">
@@ -72,9 +117,7 @@
                     <div class="card">
                         <div class="card-header">
                             <span class="price">
-                                {{ trans('strings.total_value') }} R$<span class="value" v-if="item.total > 0">
-                                    {{ totalFormated }}
-                                </span>
+                                {{ trans('strings.total_value') }} R$<span class="value" v-if="item.total > 0">{{ totalFormated }}</span>
                                 <span class="value" v-else>0.00</span>
                             </span>
                         </div>
@@ -173,10 +216,10 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer" style="justify-content: center">
-                    	<button class="btn btn-xl btn-primary" style="width: 40%;">
+                    	<button v-if="auth" @click="addToCart($el)" class="btn btn-xl btn-primary" type="button" style="width: 40%;">
                             {{ trans('strings.to_confirm') }}
                         </button>
-                        <button v-if="!auth" class="btn btn-primary btn-md" type="button" @click.prevent="showModalLogin($event)">		
+                        <button v-else class="btn btn-primary btn-md" style="width: 40%;" type="button" @click.prevent="showModalLogin($event)">		
                             {{ trans('strings.login') }}
                         </button>
                     </div>
@@ -202,7 +245,7 @@ import {routes} from '../../api_routes'
 import {mapState, mapGetters} from 'vuex'
 export default {
     methods: {
-        showTeamRequest() {
+        showTeamRequest () {
             let showTeamRequest = axios.create();
             showTeamRequest.interceptors.request.use(config => {					
                 return config;
@@ -213,6 +256,29 @@ export default {
                 slug: this.item.slug
             }).then(response => {
                 this.item.team = response.data;
+                /* if(response.data.time.nome_cartola !== this.item.cartoleiro) {
+                    
+                    this.modal.modal('hide');
+
+                    swal({
+                        title: 'Nome do cartoleiro inválido',
+                        showCloseButton: true,
+                        imageUrl: '/imgs/logo.png',
+                        imageHeight: 50,
+                        imageAlt: 'Logo lottoyou',
+                        showConfirmButton: false,
+                        showCancelButton: false,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: this.trans('strings.yes'),
+                        cancelButtonText: this.trans('strings.cancel')
+                    }).then((result) => {
+                       
+                    });
+
+                } else {
+                    this.item.team = response.data;
+                } */
             }).catch(error => {
 
             });
@@ -275,7 +341,6 @@ export default {
                         var isvalid = vm.form.valid();
                         if (isvalid) {
                             e.preventDefault();
-                            vm.modal.modal('toggle');
                             vm.modal.off('shown.bs.modal');
                             //Abrindo o modal
                             vm.modal.on('shown.bs.modal', (event) => {
@@ -283,7 +348,8 @@ export default {
                             }).modal({
                                 show: true,
                                 backdrop: 'static'
-                            });                            
+                            });  
+                            vm.modal.modal('toggle');                          
                         }
                     });
                 }
@@ -299,14 +365,72 @@ export default {
         validate () {
 
         },
-        addToCart (el) {
+        addTeamRequest () {
+            let addTeamRequest = axios.create();
+            addTeamRequest.interceptors.request.use(config => {
+                return config;
+            });
 
+            addTeamRequest.post(routes.users.add_team, {
+                name: this.item.name,
+                email: this.item.email,
+                cartoleiro: this.item.cartoleiro,
+                slug: this.item.slug,
+            }, {
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Accept' : 'application/json',
+                    'Authorization': 'Bearer ' + this.auth.access_token
+                }
+            }).then(response => {
+                if(response.status === 200) {
+                    this.$store.dispatch('setTeamUser', response.data);
+                }
+            }).catch((error) => {
+                
+            });
+        },
+        addToCart (el) {
+            let addCartoleandoRequest = axios.create();
+            addCartoleandoRequest.interceptors.request.use(config => {
+                this.loading.paying = true;
+                return config;
+            });
+
+            addCartoleandoRequest.post(routes.carts.add_cartoleandos, {
+                purchase: this.item,
+                hash: this.item.hash,						
+            }, {
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Accept' : 'application/json',
+                    'Authorization': 'Bearer ' + this.auth.access_token
+                }
+            }).then(response => {
+                if(response.status === 200) {
+                    
+                    this.$store.dispatch('setItemCartoleando', this.item);
+                    this.$router.push({
+                        name: 'cart.index'
+                    })
+
+                    if(!this.auth.cartoleando_team) {
+                        this.addTeamRequest();
+                    }
+                }
+            }).catch((error) => {
+                this.loading.paying = false;
+                toastr.error('Erro ao adicionar item', 'Por favor tente novamente');
+            });
         },
         init () {
             if(this.$route.query.hash != undefined) {
                 this.showLottery();
             } else if(this.$route.params.slug != undefined) {
-                this.$store.dispatch('setLoginOptions', {redirectOnHome: false});
+                this.$store.dispatch('setLoginOptions', {
+                    redirectToHome: false, 
+                    redirectToHomeOnLogout: false
+                });
                 this.item.package.name = this.trans('strings.loading');
                 this.showRequest();
                 this.setForm();
@@ -376,7 +500,7 @@ export default {
     mounted () {
         this.init();
     },
-    beforeRouteUpdate: function(to, from, next) {
+    beforeRouteUpdate (to, from, next) {
         next();
         this.init();
     },

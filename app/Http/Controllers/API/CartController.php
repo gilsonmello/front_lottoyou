@@ -258,21 +258,36 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function addCartoleando(Request $request)
+    { 
+        $this->insertOrRefreshCart($request, 'cartoleando');
+        return response()->json(['msg' => 'ok'], 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function addSoccerExpert(Request $request)
     { 
         $this->insertOrRefreshCart($request, 'soccer_expert');
         return response()->json(['msg' => 'ok'], 200);
     }
 
-    private function insertOrRefreshCart($request, $type) {
+    private function insertOrRefreshCart($request, $type) 
+    {
         $data = $request->get('purchase');
         $auth = $request->get('auth');
         $hash = $request->get('hash');
 
-        $user = $auth;
+        $user = $request->user() == null ? $auth : $request->user();
+
+        $user_id = gettype($user) === 'array' ? $user_id : $user->id;
 
         if($user != null) {
-            $cart = Cart::where('user_id', '=', $user['id'])
+            $cart = Cart::where('user_id', '=', $user_id)
                 ->where('finished', '=', 0)
                 ->get()
                 ->first();
@@ -280,7 +295,7 @@ class CartController extends Controller
 
             if(is_null($cart)) {
                 $cart = new Cart;
-                $cart->user_id = $user['id'] != null ? $user['id'] : null;
+                $cart->user_id = $user_id != null ? $user_id : null;
                 $cart->finished = 0;
                 $cart->visitor = $request->ip();
 
@@ -294,7 +309,7 @@ class CartController extends Controller
                 $cartItem->data = $data != null ? json_encode($data) : null;
 
                 $cartItem->save();
-            }else {
+            } else {
                 
                 $cartItem = CartItem::where('cart_id', '=', $cart->id)
                     ->where('hash', '=', $hash)
@@ -314,7 +329,7 @@ class CartController extends Controller
                     $cartItem->save();
                 }
             }
-        }else {
+        } else {
 
             $cart = Cart::where('visitor', '=', $request->ip())
                 ->where('finished', '=', 0)
@@ -340,7 +355,7 @@ class CartController extends Controller
                 $cartItem->data = $data != null ? json_encode($data) : null;
 
                 $cartItem->save();
-            }else {
+            } else {
                 $cartItem = CartItem::where('cart_id', '=', $cart->id)
                     ->where('hash', '=', $hash)
                     ->get()

@@ -74,6 +74,8 @@ const app = new Vue({
 	},
 });
 
+window.system = app;
+
 window.addEventListener('storage', function(event) {
     
     //Se foi tudo deletado

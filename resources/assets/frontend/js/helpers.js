@@ -407,3 +407,24 @@ Vue.prototype.getLeaguesOfPackageBySlug = function(slug) {
 Vue.prototype.showModalLogin = () => {
 	$('.modal-login').modal('toggle');
 };
+
+Vue.prototype.teamRequest = () => {
+	//Requisição para pegar os itens do carrinho salvo
+	let teamRequest = axios.create();
+
+	teamRequest.interceptors.request.use(config => {
+		return config;
+	});
+
+	let url = routes.cartola.find_team_by_slug;
+	//Executando a requisição
+	teamRequest.post(url, {
+		slug: system.auth.cartoleando_team.slug
+	}).then((response) => {
+		if(response.status === 200) {
+			system.$store.dispatch('setTeamUser', response.data);
+		}
+	}).catch((error) => {
+
+	});
+};

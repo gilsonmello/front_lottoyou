@@ -20,6 +20,15 @@ export default {
 	setItemScratchCard: ({state, commit}, items) => {
 		commit('SET_ITEM_SCRATCH_CARD', items)
 	},
+	setItemCartoleando: ({state, commit}, items) => {
+		commit('SET_ITEM_CARTOLEANDO', items)
+	},
+	removeItemCartoleando: ({commit}, items) => {
+		commit('REMOVE_ITEM_CARTOLEANDO', items)
+	},
+	clearCartoleando: ({commit}) => {
+		commit('CLEAR_CARTOLEANDO')
+	},
 	removeItemScratchCard: ({commit}, items) => {
 		commit('REMOVE_ITEM_SCRATCH_CARD', items)
 	},

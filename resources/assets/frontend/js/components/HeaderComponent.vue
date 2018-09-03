@@ -270,9 +270,11 @@
 					
 					});
 
-					this.$router.push({
-						name: 'home'
-					});
+					if(this.loginOptions.redirectToHomeOnLogout === true) {
+						this.$router.push({
+							name: 'home'
+						});
+					}
 
 					let time = setInterval(() => {
 						if(this.auth == null) {
@@ -318,7 +320,7 @@
                 User: state => state.User
             }),
             ...mapGetters([
-                'auth', 'purchase'
+                'auth', 'purchase', 'loginOptions'
             ])
         },
         watch: {

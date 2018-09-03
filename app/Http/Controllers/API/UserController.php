@@ -12,6 +12,7 @@ use App\OrderItem;
 use App\SoccerExpertRound;
 use App\Repositories\API\User\UserContract;
 use Illuminate\Support\Facades\Cookie;
+use GuzzleHttp\Client;
 
 /**
  * Class UserController
@@ -30,6 +31,25 @@ class UserController extends Controller
      */
     public function __construct(UserContract $repository) {
         $this->repository = $repository;
+    }
+
+    public function addTeam(Request $request) 
+    {
+        if($this->repository->addTeam($request)) {
+            $client = new Client(['base_uri' => 'http://api.cartolafc.globo.com/']);
+            $response = $client->request('GET', 'time/slug/'.$request->slug,  [
+                'headers' => [
+                    'x-glb-token' => env('X_GLB_TOKEN')
+                ]
+            ]);
+            return response()->json(
+                json_decode($response->getBody()), 
+                $response->getStatusCode()
+            );
+        }
+        return response()->json([
+            'message' => ''
+        ], 422);
     }
 
     public function exists(Request $request) 

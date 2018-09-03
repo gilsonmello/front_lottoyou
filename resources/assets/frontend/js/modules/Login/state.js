@@ -1,5 +1,6 @@
 export default{
 	options: {
-		redirectOnHome: true,
+		redirectToHome: true,
+		redirectToHomeOnLogout: true,
 	}
 }

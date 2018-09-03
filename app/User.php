@@ -90,6 +90,14 @@ class User extends Authenticatable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function cartoleandoTeam() 
+    {
+        return $this->hasOne(CartoleandoTeam::class, 'owner_id');
+    }
+
+    /**
      * 
      */
     public function passwordResets() 

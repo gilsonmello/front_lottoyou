@@ -40,7 +40,6 @@
 					param: null,
 					type: ''					
 				},
-				auth: ''
 			}
 		},
 		methods: {
@@ -89,6 +88,9 @@
 				        	response.data.refresh_token = refresh_token;
 							//window.localStorage.setItem('authUser', JSON.stringify(response.data));
 							this.$store.dispatch('setUserObject', response.data);
+							if(this.auth.cartoleando_team) {
+								this.teamRequest();
+							}
 							this.cartRequest();
 							this.onReady();
 							this.beforeEach();
@@ -272,7 +274,8 @@
 		},
 		computed: {
             ...mapGetters([
-                'authUser'
+				'authUser',
+				'auth'
             ]),
         },
 	}

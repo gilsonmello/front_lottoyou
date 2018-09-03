@@ -19,6 +19,10 @@ export default{
 			total: 0.00,
 			items: []
 		},
+		cartoleandos: {
+			total: 0.00,
+			items: []
+		},
 		items: []
 	}
 }

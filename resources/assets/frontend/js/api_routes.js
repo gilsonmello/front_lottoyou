@@ -70,6 +70,7 @@ export const routes = {
 		check_token_activation: host+'/users/check_token_activation/{token}',
 		create_from_facebook: host+'/users/create_from_facebook',
 		disable: host+'/users/disable',
+		add_team: host+'/users/add_team',
 	},
 	packages: {
 		create: host+'/packages',
@@ -121,6 +122,7 @@ export const routes = {
 		index: host + '/carts',
 		add_scratch_cards: host + '/carts/add_scratch_cards',
 		add_soccer_experts: host + '/carts/add_soccer_experts',
+		add_cartoleandos: host + '/carts/add_cartoleandos',
 		add_lotteries: host + '/carts/add_lotteries',
 		destroy: host + '/carts/{hash}',
 		complete_purchase: host + '/carts/complete_purchase',
@@ -129,6 +131,7 @@ export const routes = {
         complete_fast_payment_soccer_expert: host + '/carts/complete_fast_payment_soccer_expert',
         validate_lottery_fast_payment: host + '/carts/validate_lottery_fast_payment',
         complete_fast_payment_lottery: host + '/carts/complete_fast_payment_lottery',
+        complete_fast_payment_cartoleando: host + '/carts/complete_fast_payment_cartoleando',
 	},
 	soccer_tickets: {
 		games: host + '/soccer_tickets/{ticket_id}/games',
