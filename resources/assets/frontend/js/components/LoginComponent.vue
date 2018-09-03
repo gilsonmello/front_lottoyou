@@ -365,7 +365,9 @@
 								this.$router.push({name: 'home'});
 							}
 
-		                  	$('.modal-login').modal('hide');
+							$('.modal-login').modal('hide');
+							  
+							this.teamRequest();
 		                
 		                }).catch((error_2) => {
 		                	this.loading.login = false;
