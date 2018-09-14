@@ -178,8 +178,6 @@
 			}
 		},
 		mounted () {
-
-			console.log(this.loginOptions);
 			this.loading.component = false;
 			
 			/* FB.getLoginStatus((response) => {

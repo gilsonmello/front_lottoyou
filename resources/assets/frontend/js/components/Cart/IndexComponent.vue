@@ -1,5 +1,5 @@
 <template>
-	<load-component v-if="loading.component == true"></load-component>
+	<load v-if="loading.component == true" />
 	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.cart') }}</h1>
 		<!-- <div class="row">
@@ -42,9 +42,10 @@
 			<div class="tab-pane active tab-all" id="all" v-if="purchase.items.length > 0">
 	  			
             	<div class="container no-padding" v-for="(item, index) in purchase.items" :key="index">
-					<soccer-expert-component v-if="item.type == 'soccer_expert'" :id="'soccer_expert_'+index" :item="item.soccer_expert"></soccer-expert-component>
-					<lottery-component v-else-if="item.type == 'lottery'" :id="'lottery_'+index" :item="item.lottery"></lottery-component> 
-					<scratch-card-component v-else-if="item.type == 'scratch_card'" :item="item.scratch_card"></scratch-card-component>
+					<soccer-expert-component v-if="item.type === 'soccer_expert'" :id="'soccer_expert_'+index" :item="item.soccer_expert" />
+					<lottery-component v-else-if="item.type === 'lottery'" :id="'lottery_'+index" :item="item.lottery"/>
+					<scratch-card-component v-else-if="item.type === 'scratch_card'" :item="item.scratch_card" />
+					<vc-cartoleando v-else-if="item.type === 'cartoleando'" :item="item.cartoleando" />
 				</div>		
 		  	</div>
 		  	
@@ -105,15 +106,15 @@
 			<div class="row vcenter border-dotted" style="margin: 10px -15px 10px -15px">
 				<div class="col-lg-5 col-12 col-md-5 col-sm-6" v-if="auth != undefined">
 					<span v-if="(auth.balance.value - purchase.total) >= 0">
-						Saldo disponível: R${{ auth.balance.value }} (Saldo restante: $ {{ (auth.balance.value - purchase.total).format(2, true) }})
+						Saldo disponível: {{getSystemCurrency.data.symbol}}{{ auth.balance.value }} (Saldo restante: {{getSystemCurrency.data.symbol}}{{ (auth.balance.value - purchase.total).format(2, true) }})
 					</span>
 					<span v-else>
-						Saldo disponível: R${{ auth.balance.value }}(Saldo restante: $ 0.00)
+						Saldo disponível: {{getSystemCurrency.data.symbol}}{{ auth.balance.value }}(Saldo restante: {{getSystemCurrency.data.symbol}}0.00)
 					</span>
 				</div>
 				<div class="col-lg-5 col-12 col-md-5 col-sm-6" v-else>
 					<span>
-						Saldo disponível: R$0.00(Saldo restante: $ 0.00)
+						Saldo disponível: {{getSystemCurrency.data.symbol}}0.00(Saldo restante: {{getSystemCurrency.data.symbol}}0.00)
 					</span>
 				</div>
 				<div class="col-lg-5 col-6 col-md-5 col-sm-4">
@@ -123,12 +124,12 @@
 				</div>
 				<div class="col-lg-2 col-6 col-md-2 col-sm-2" v-if="auth">
 					<span>
-						$ {{ auth.balance.value }}
+						{{getSystemCurrency.data.symbol}}{{ auth.balance.value }}
 					</span>
 				</div>
 				<div class="col-lg-2 col-6 col-md-2 col-sm-2" v-else>
 					<span>
-						$ 0.00
+						{{getSystemCurrency.data.symbol}}0.00
 					</span>
 				</div>
 			</div>
@@ -144,7 +145,7 @@
 				</div>
 				<div class="col-lg-2 col-4 col-md-2 col-sm-2">
 					<span>
-						$ {{ (purchase.total).format(2, true) }}
+						{{getSystemCurrency.data.symbol}}{{ (purchase.total).format(2, true) }}
 					</span>
 				</div>
 			</div>
@@ -191,13 +192,12 @@
 </template>
 
 <script>
-	import {mapState, mapGetters} from 'vuex'
-	import ScratchCardComponent from './Tab/All/ScratchCardComponent'
-	import LotteryComponent from './Tab/All/LotteryComponent'
-	//import SoccerExpertComponent from './Tab/SoccerExpertComponent'
-	import AllComponent from './Tab/AllComponent'
-	import SoccerExpertComponent from './Tab/All/SoccerExpertComponent'
-	import LoadComponent from '../Load'
+	import {mapState, mapGetters} from 'vuex';
+	import ScratchCardComponent from './ScratchCardComponent'
+	import LotteryComponent from './LotteryComponent'
+	//import SoccerExpertComponent from './SoccerExpertComponent'
+	import SoccerExpertComponent from './SoccerExpertComponent';
+	import VcCartoleando from './VcCartoleando';
 	import {routes} from '../../api_routes'
 	export default {
 		metaInfo () {
@@ -212,11 +212,10 @@
 		    }
 		},
 		computed: {
-			...mapState({
-                User: state => state.User
-            }),
             ...mapGetters([
-                'auth', 'purchase'
+				'auth', 
+				'purchase',
+				'getSystemCurrency'
             ])
 		},
 		data: function() {
@@ -263,28 +262,44 @@
 		          	return config;
 				});
 
-				this.purchase['user_id'] = this.auth.id;
+				//this.purchase['user_id'] = this.auth.id;
 
 				completePurchaseRequest.post(
 					routes.carts.complete_purchase, 
 					this.purchase, 
-					{}
-				).then(response => {
+				{
+					headers: {
+						'Content-Type' : 'application/json',
+						'Accept' : 'application/json',
+						'Authorization': 'Bearer ' + this.auth.access_token
+					}
+				}).then(response => {
 					if(response.status === 200) {
 						this.refreshAuthPromise()
 							.then((response) => {
 								if (response.status === 200) {
 									//window.localStorage.setItem('authUser', JSON.stringify(response.data))
+									//Pegando os dados do usuário no localstorage
+									let access_token = JSON.parse(window.localStorage.getItem('access_token'));
+									access_token = access_token != null ? access_token : null;
+
+									//Token para refresh
+									let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+									refresh_token = refresh_token != null ? refresh_token : '';
+
+									response.data.access_token = access_token;
+									response.data.refresh_token = refresh_token;
+
 									this.$store.dispatch('setUserObject', response.data);
 									this.$store.dispatch('clearPurchase');
 									this.$router.push({
 										name: 'users.transactions'
 									});	
+									this.teamRequest();	
 								}								
 							}).catch((error) => {
 
-							});
-						
+							});						
 					}
 					this.loading.paying = false;
 				}).catch((error) => {
@@ -292,9 +307,13 @@
 				});		
 			}
 		},
-		mounted: function() {
+		mounted () {
 			//window.document.title = this.trans('strings.cart')+ ' | ' +window.app.title;
 			//window.document.title = this.trans('strings.cart');
+			this.$store.dispatch('setLoginOptions', {
+				redirectToHome: false, 
+				redirectToHomeOnLogout: false
+			});
 			this.loading.component = false;
             setTimeout(() => {
                 window.prerenderReady = true;
@@ -304,8 +323,7 @@
 			ScratchCardComponent,
 			LotteryComponent,
 			SoccerExpertComponent,
-			AllComponent,
-			LoadComponent
+			VcCartoleando
 		}
 	}
 </script>

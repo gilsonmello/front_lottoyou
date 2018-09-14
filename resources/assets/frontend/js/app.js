@@ -28,7 +28,9 @@ require('./helpers');
  */
 import VueResource from 'vue-resource';
 import VueCookies from 'vue-cookies';
-import Meta from 'vue-meta'
+import Meta from 'vue-meta';
+import VueModal from 'vue-js-modal';
+    
 import router from './router';
 import store from './store';
 import Select2 from './components/Select2Component';
@@ -42,39 +44,37 @@ import App from './components/App';
 Vue.use(VueCookies);
 Vue.use(VueResource);
 Vue.use(Meta);
+Vue.use(VueModal);
 
 Vue.component('select2', Select2);
 Vue.component('inputmask', InputMask);
 Vue.component('load', Load);
 
 Vue.component('vc-countries', VcCountries);
-Vue.component('app', App);
 
-const app = new Vue({
+const app = window.VueInstance =  new Vue({
 	router,
 	store,
     el: '#app',
 	render: h => h(App),
-	beforeMount() {
-		$('#prerendered-content').remove();
-	},
-    created() {
+	beforeMount () {
 		
+	},
+    created () {
+		$('#prerendered-content').remove();
     },
-    mounted() {
+    mounted () {
     	//this.$cookies.set("locale", window.locale);
     },
     computed: {
-		...mapState({
-            User: state => state.User
-        }),
-        ...mapGetters([
-            'auth', 'purchase'
+		...mapGetters([
+			'auth', 
+			'purchase'
         ])
 	},
 });
 
-window.system = app;
+window.VueInstance = app;
 
 window.addEventListener('storage', function(event) {
     

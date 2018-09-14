@@ -46,4 +46,9 @@ class Setting extends Model
     protected $hidden = [
         
     ];
+
+    public function scopeCurrency($query)
+    {
+        return $query->where('name', '=', 'currency')->get()->first();
+    }
 }

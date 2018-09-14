@@ -12,6 +12,7 @@ use App\SoccerExpertRound;
 use App\LotterySweepstake;
 use App\ScratchCard;
 use Illuminate\Support\Facades\DB;
+use App\User;
 
 class CartController extends Controller
 {
@@ -128,6 +129,15 @@ class CartController extends Controller
         return $valid;        
     }
 
+    private function cartoleandoValidate($data) 
+    {
+        $valid = [
+            'valid' => true, 
+            'msg' => 'ok'
+        ];
+        return $valid;
+    }
+
     private function lotteryValidate($data) 
     {
         $valid = [
@@ -192,6 +202,13 @@ class CartController extends Controller
                 if(!$valid['valid']) {
                     return response()->json($valid, 422);
                 }
+            } else if($value['type'] == 'cartoleando') {
+                $cartoleando = $value['cartoleando'];
+                $valid = $this->cartoleandoValidate($cartoleando);
+
+                if(!$valid['valid']) {
+                    return response()->json($valid, 422);
+                }
             }
         }
 
@@ -210,14 +227,22 @@ class CartController extends Controller
         if($request->get('id')) {
             $cart = Cart::where('user_id', '=', $request->get('id'))
                 ->where('finished', '=', 0)
-                ->with('items')
+                ->with([
+                    'items' => function($query) {
+                        $query->orderBy('created_at', 'DESC');
+                    }
+                ])
                 ->orderBy('created_at', 'DESC')
                 ->get()
                 ->first();
         } else {
             $cart = Cart::where('visitor', '=', $request->ip())
                 ->where('finished', '=', 0)
-                ->with('items')
+                ->with([
+                    'items' => function($query) {
+                        $query->orderBy('created_at', 'DESC');
+                    }
+                ])
                 ->orderBy('created_at', 'DESC')
                 ->get()
                 ->first();
@@ -260,6 +285,24 @@ class CartController extends Controller
      */
     public function addCartoleando(Request $request)
     { 
+        $auth = $request->get('auth');
+        $user = $request->user() == null ? $auth : $request->user();
+        $user_id = gettype($user) === 'array' ? $user['id'] : $user->id;
+        $user = User::find($user_id);
+        $team = $user->cartoleandoTeam;
+        $purchase = $request->purchase;
+        $purchase['team'] = $team->toArray();
+        $purchase['name'] = $team->name;
+        $purchase['slug'] = $team->slug;
+        $purchase['email'] = $team->email;
+        $purchase['cartoleiro'] = $team->cartoleiro;
+        $request->merge([
+            'purchase' => $purchase
+        ]);
+        //$request->get('purchase')['name'] = 'sdfdsf';
+        /* $request->purchase['name'] = $team->name;
+        $request->purchase['slug'] = $team->slug;
+        $request->purchase['email'] = $team->email; */
         $this->insertOrRefreshCart($request, 'cartoleando');
         return response()->json(['msg' => 'ok'], 200);
     }
@@ -284,14 +327,13 @@ class CartController extends Controller
 
         $user = $request->user() == null ? $auth : $request->user();
 
-        $user_id = gettype($user) === 'array' ? $user_id : $user->id;
+        $user_id = gettype($user) === 'array' ? $user['id'] : $user->id;
 
         if($user != null) {
             $cart = Cart::where('user_id', '=', $user_id)
                 ->where('finished', '=', 0)
                 ->get()
                 ->first();
-
 
             if(is_null($cart)) {
                 $cart = new Cart;
@@ -315,7 +357,6 @@ class CartController extends Controller
                     ->where('hash', '=', $hash)
                     ->get()
                     ->first();
-
                 
                 if(!is_null($cartItem)) {
                     $cartItem->data = $data != null ? json_encode($data) : null;
@@ -392,7 +433,7 @@ class CartController extends Controller
     {
         $order = new Order;
 
-        $order->user_id = $request->get('user_id');
+        $order->user_id = $request->user()->id;
         $order->total = $request->get('total');
         $order->sub_total = $request->get('sub_total');
         $order->number_items = $request->get('quantity');
@@ -403,7 +444,6 @@ class CartController extends Controller
         $order->coupon_id = $coupon != null ? $coupon['id'] : null;
 
         $items = $request->get('items');
-
 
         if($order->save()) {
             foreach($items as $key => $value) {
@@ -441,10 +481,25 @@ class CartController extends Controller
                     /*$order->scratchCards()->attach($value['scratch_card']['scratch_card']['id'], [
                         'data' => $data
                     ]);*/
+                } else if($value['type'] == 'cartoleando') {
+                    $data = json_encode($value['cartoleando']);
+                    foreach($value['cartoleando']['package']['leagues'] as $leagues) {
+                        $orderItem = new \App\OrderItem;
+                        $orderItem->order_id = $order->id;
+                        $orderItem->type = $value['type'];
+                        $orderItem->user_id = $request->user()->id;
+                        $orderItem->data = $data;
+                        $orderItem->quantity = 1;
+                        $orderItem->league_id = $leagues['id'];
+                        $orderItem->amount = $value['cartoleando']['package']['value'];
+                        $orderItem->hash = $value['cartoleando']['hash'];
+                        $orderItem->lea_package_id = $value['cartoleando']['package']['id'];
+                        $orderItem->save();
+                    }
+                    continue;                    
                 }
 
-
-                $orderItem->user_id = $request->get('user_id');
+                $orderItem->user_id = $request->user()->id;
                 $orderItem->save();
             }
 
@@ -473,7 +528,7 @@ class CartController extends Controller
     private function saveOrderFastPaymentLottery($request)
     {
         $order = new Order;
-        $order->user_id = $request['auth']['id'];
+        $order->user_id = $request->user()->id;
         $order->total = $request['purchase']['total'];
         $order->sub_total = $request['purchase']['total'];
         $order->number_items = 1;
@@ -499,7 +554,7 @@ class CartController extends Controller
     private function saveOrderFastPaymentSoccerExpert($request)
     {
         $order = new Order;
-        $order->user_id = $request['auth']['id'];
+        $order->user_id = $request->user()->id;
         $order->total = $request['purchase']['total'];
         $order->sub_total = $request['purchase']['total'];
         $order->number_items = 1;
@@ -591,12 +646,10 @@ class CartController extends Controller
             DB::commit();
             return response()->json(['message' => ''], 200);
         } catch (\Illuminate\Database\QueryException $e) {
-            dd($e->getMessage());
             DB::rollBack();
         } catch (\PDOException $e) {
             DB::rollBack();
         }      
-
         return response()->json(['message' => 'error'], 422);
     }
 

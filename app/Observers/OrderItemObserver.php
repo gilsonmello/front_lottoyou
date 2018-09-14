@@ -6,13 +6,12 @@ use App\OrderItem;
 use App\SoccerExpertBet;
 use App\SoccerExpertBetGame;
 use App\ScratchCard;
-use App\LotteryUser;
-use App\LotteryUserNumber;
-use App\LotteryUserNumberExtra;
 use App\LotterySweepstake;
 use App\SoccerExpertRoundGroup;
 use App\HistoricBalance;
 use App\Balance;
+use App\LeaClassic;
+use App\CartoleandoTeam;
 use Illuminate\Support\Facades\DB;
 
 class OrderItemObserver
@@ -51,7 +50,7 @@ class OrderItemObserver
         foreach($lotterySweepstakes as $lotterySweepstake) {
             //Percorrendo todas as cartelas feitas pelo usuário
             foreach($data->tickets as $bet) {
-                $lotteryUser = new LotteryUser;
+                $lotteryUser = new \App\LotteryUser;
 
                 //Atribuindo os dados para a aposta e salvando
                 $lotteryUser->lot_jogo_id = $lotterySweepstake->id;
@@ -63,7 +62,7 @@ class OrderItemObserver
 
                 //Pegando as dezenas selecionadas
                 foreach($bet->numbers as $key => $number) {
-                    $userNumber = new LotteryUserNumber;
+                    $userNumber = new \App\LotteryUserNumber;
                     $userNumber->numero = $number;
                     $userNumber->lot_users_jogo_id = $lotteryUser->id;
                     $userNumber->save();                             
@@ -71,7 +70,7 @@ class OrderItemObserver
 
                 //Pegando as dezenas extras selecionadas
                 foreach($bet->numbersExtras as $key => $number) {
-                    $userNumber = new LotteryUserNumberExtra;
+                    $userNumber = new \App\LotteryUserNumberExtra;
                     $userNumber->numero = $number;
                     $userNumber->lot_users_jogo_id = $lotteryUser->id;
                     $userNumber->save();
@@ -79,6 +78,58 @@ class OrderItemObserver
             }
         }
         return true;
+    }
+
+    /**
+     * 
+     */
+    private function saveClassicLeague($item, $user_id, $league_id, $team)
+    {
+        $leaClassicTeam = new \App\LeaClassicTeam;
+        $leaClassicTeam->league_id = $league_id;
+        $leaClassicTeam->owner_id = $user_id;
+        $leaClassicTeam->item_id = $item->id;
+        $leaClassicTeam->team_id = $team->id;
+        $leaClassicTeam->position = null;
+        $leaClassicTeam->points = 0;
+        $leaClassicTeam->save();
+    }
+
+    /**
+     * 
+     */
+    private function saveCupLeague($item, $user_id, $league_id, $team)
+    {
+        $leaCupTeam = new \App\LeaCupTeam;
+        $leaCupTeam->league_id = $league_id;
+        $leaCupTeam->owner_id = $user_id;
+        $leaCupTeam->item_id = $item->id;
+        $leaCupTeam->team_id = $team->id;
+        $leaCupTeam->save();
+    }
+
+    /**
+     * @param $item
+     * @param $data
+     * @return bool
+     */
+    private function cartoleando($item, $data) 
+    {
+        $order = $item->order;
+        $user_id = $order->user_id;
+        $team = CartoleandoTeam::where('owner_id', '=', $user_id)
+            ->get()
+            ->first();
+        
+        $league = \App\League::find($item->league_id); 
+        $league->quantity_teams++;
+        $league->save();       
+        if($league->classic != null) {
+            $this->saveClassicLeague($item, $user_id, $item->league_id, $team);
+        } else if($league->cup != null) {
+            $this->saveCupLeague($item, $user_id, $item->league_id, $team);
+        }
+        
     }
 
     /**
@@ -223,6 +274,8 @@ class OrderItemObserver
             $this->soccerExpert($item, $data);
         } else if($item->type == 'scratch_card') {
             $this->scratchCard($item, $data);
+        } else if($item->type == 'cartoleando') {
+            $this->cartoleando($item, $data);
         }
 
         $order = $item->order;

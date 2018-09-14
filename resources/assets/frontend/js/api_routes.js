@@ -3,7 +3,6 @@ export const enviroment = "production";
 export const host = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '')+'/api';
 const base = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '');
 
-
 export const routes = {
 	base: base,
 	quotation_dolar: host+'/quotation_dolar',
@@ -159,7 +158,16 @@ export const routes = {
 		findBySlug: host+'/league_packages/findBySlug/{slug}',
 		find_leagues_by_slug: host+'/league_packages/find_leagues_by_slug/{slug}',
 	},
+	leagues: {
+		index: host+'/leagues',
+		show: host+'/leagues/{slug}',
+	},
 	cartola: {
 		find_team_by_slug:  host+'/cartola/find_team_by_slug',
+	},
+	system: {
+		settings: {
+			index: host+'/system/settings',
+		}
 	}
 };

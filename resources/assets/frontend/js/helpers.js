@@ -140,14 +140,14 @@ Vue.prototype.refreshAuth = function(params) {
 
 Vue.prototype.refreshAuthPromise = function() {
 	//Token de acesso
-	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+	let access_token = JSON.parse(window.localStorage.getItem('access_token'));
 	access_token = access_token != null ? access_token : null;
 
 	//Token para refresh
-	var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+	let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
 	refresh_token = refresh_token != null ? refresh_token : '';
 
-	var authRequest = axios.create();
+	let authRequest = axios.create();
 
 	authRequest.interceptors.request.use(config => {
 		return config;
@@ -160,17 +160,15 @@ Vue.prototype.refreshAuthPromise = function() {
 };
 
 Vue.prototype.divideInTwo = function(arr) {
-	var length = arr.length;
+	let length = arr.length;
 
-	var arrLeft = [];
-	var arrRight = [];
-
-
+	let arrLeft = [];
+	let arrRight = [];
 
 	//Se não tiver itens retorna vazio
 	if(length == 0) {
 		return [[], []]
-	}else if(length == 1) {
+	} else if(length == 1) {
 		//Se só possui 1 item, retorna a posição 0
 		return [
 			[
@@ -419,12 +417,30 @@ Vue.prototype.teamRequest = () => {
 	let url = routes.cartola.find_team_by_slug;
 	//Executando a requisição
 	teamRequest.post(url, {
-		slug: system.auth.cartoleando_team.slug
+		slug: window.VueInstance.auth.cartoleando_team.slug
 	}).then((response) => {
 		if(response.status === 200) {
-			system.$store.dispatch('setTeamUser', response.data);
+			window.VueInstance.$store.dispatch('setTeamUser', response.data);
 		}
 	}).catch((error) => {
 
 	});
 };
+
+
+//Ajax para buscar todas as configurações do sistema
+Vue.prototype.getSystemSettings = function(slug) {
+	return new Promise(function(resolve, reject) {       
+		let request = axios.create();
+		let url = routes.system.settings.index;
+		request.get(url)
+			.then((response) => {
+				resolve(response);
+			})
+			.catch((error) => {
+				reject(error)
+			});
+	});
+	
+};
+

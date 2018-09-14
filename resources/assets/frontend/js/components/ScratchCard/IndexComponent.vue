@@ -616,11 +616,10 @@
 				  	return config;
 				});
 
-
 				addScratchCardRequest.post(routes.carts.add_scratch_cards, {
-					purchase: this.item, 
+					purchase: this.item,
+					hash: this.item.hash,
 					auth: this.auth,
-					hash: this.item.hash
 				}).then(response => {
 		            if(response.status === 200) {
 	            		//Atualizando os dados do carrinho

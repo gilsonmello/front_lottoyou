@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name') }}</title>
+        <title>
+            {{ config('app.name') }}
+        </title>
 
         <meta name="fragment" content="!">
         <meta name="google-site-verification" content="7QPAEavdugQkBD7dCM9zMNHTMvl30D4HCggtbe_2i9Y" />
@@ -38,6 +40,12 @@
             }
         </style>
         <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet" type="text/css">
+        <style>
+            .fa-spin {
+                font-size: 100px;
+                color: #003874;
+            }
+        </style>
         {{-- <link rel="shortcut icon" type="image/png" href="/favicon.ico"/> --}}
 
         <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
@@ -45,6 +53,9 @@
         <script> window.prerenderReady = false; </script>
     </head>
     <body>
+        <div class="app-loading" id="prerendered-content">
+            <i class="fa fa-refresh fa-spin"></i>
+        </div>
         
         <div id="app">
         </div>

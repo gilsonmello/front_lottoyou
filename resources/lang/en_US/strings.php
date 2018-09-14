@@ -13,6 +13,8 @@ return [
      */
     'leagues' => 'Ligas',
     'league' => 'Liga',
+    'team' => 'Time',
+    'teams' => 'Times',
     'enter' => 'Entre',
     'to_enter' => 'Entrar',
     'cartoleando' => 'Cartoleando',
@@ -89,6 +91,9 @@ return [
     'awaiting payment' => 'Aguardando Pagamento',
     'in analysis' => 'Em análise',
     'pay' => 'Paga',
+    'punctuation' => 'Pontuação',
+    'participant' => 'Participante',
+    'participants' => 'Participantes',
     'completed' => 'Completado',
     'created' => 'Criado',
     'denied' => 'Negado',

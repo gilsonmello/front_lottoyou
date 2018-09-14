@@ -1,5 +1,5 @@
 <template>
-    <load-component v-if="loading.component == true"></load-component>
+    <load v-if="loading.component == true"></load>
     <div class="container" v-else>
         <div class="row">
             <div class="col-lg-12">
@@ -26,7 +26,7 @@
 
         <div class="table text-center">
             <div class="row no-margin table-head">
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-3 col-md-3 col-sm-3">
                     <span>
                         {{ trans('strings.game') }}
                     </span>                     
@@ -39,7 +39,7 @@
                         </span>
                     </span>
                 </div>
-                <div class="col-lg-2" @click="toggle('total')">
+                <div class="col-lg-2 col-3 col-md-3 col-sm-3" @click="toggle('total')">
                     <span>
                         {{ trans('strings.total') }}
                     </span>                     
@@ -52,9 +52,9 @@
                         </span>
                     </span>
                 </div>
-                <div class="col-lg-2" @click="toggle('quantity')">
+                <div class="col-lg-2 col-2 col-md-3 col-sm-2" @click="toggle('quantity')">
                     <span>
-                        {{ trans('strings.quantity') }}
+                        Qtd.
                     </span>
                     <span v-if="'quantity' === query.column">
                         <span v-if="query.direction === 'desc'">
@@ -65,7 +65,7 @@
                         </span>
                     </span>
                 </div>
-                <div class="col-lg-2" @click="toggle('created_at')">
+                <div class="col-lg-2 col-4 col-md-3 col-sm-4" @click="toggle('created_at')">
                     <span>
                         {{ trans('strings.date') }}
                     </span>
@@ -82,17 +82,15 @@
 
             <div class="row no-margin table-body" v-if="loading.pagination">
                 <div class="col-lg-12">
-                    <load-component></load-component>
+                    <load></load>
                 </div>
             </div>
             
             <div v-for="(item, index) in items" :key="index" class="row no-margin table-body">
-                <vc-soccer-expert :key="index" :index="index" :item="item" v-if="item.type == 'soccer_expert'">
-                </vc-soccer-expert>
-                <vc-scratch-card :key="index" :index="index" :item="item" v-if="item.type == 'scratch_card'">
-                </vc-scratch-card>
-                <vc-lottery :key="index" :index="index" :item="item" v-if="item.type == 'lottery'">
-                </vc-lottery>
+                <vc-soccer-expert :key="index" :index="index" :item="item" v-if="item.type == 'soccer_expert'" />
+                <vc-scratch-card :key="index" :index="index" :item="item" v-if="item.type == 'scratch_card'" />
+                <vc-lottery :key="index" :index="index" :item="item" v-if="item.type == 'lottery'" />
+                <vc-cartoleando :key="index" :index="index" :item="item" v-if="item.type == 'cartoleando'" />
             </div>           
         </div>
 
@@ -116,13 +114,13 @@
 </template>
 
 <script>
-    import {routes} from '../../../api_routes'
-    import {mapGetters} from 'vuex'
-    import LoadComponent from '../../Load'
-    import VcPagination from '../../VcPagination'
-    import VcSoccerExpert from './SoccerExpert/VcSoccerExpert'
-    import VcScratchCard from './ScratchCard/VcScratchCard'
-    import VcLottery from './Lottery/VcLottery'
+    import {routes} from '../../../api_routes';
+    import {mapGetters} from 'vuex';
+    import VcPagination from '../../VcPagination';
+    import VcSoccerExpert from './SoccerExpert/VcSoccerExpert';
+    import VcScratchCard from './ScratchCard/VcScratchCard';
+    import VcLottery from './Lottery/VcLottery';
+    import VcCartoleando from './Cartoleando/VcCartoleando';
     export default {
         metaInfo () {
             return {
@@ -135,7 +133,7 @@
                 ]
             }
         },
-        data() {
+        data () {
             return {
                 loading: {
                     component: true
@@ -152,7 +150,7 @@
             }
         },
         methods: {
-            itemsRequest() {
+            itemsRequest () {
                 var itemsRequest = axios.create();
 
                 /*var url = routes.users.items.replace('{id}', this.auth.id);
@@ -196,11 +194,11 @@
                     //this.$router.push({name: 'users.account'});                  
                 });
             },
-            paginate(page) {
+            paginate (page) {
                 this.query.page = page;
                 this.itemsRequest();
             },
-            toggle(column) {
+            toggle (column) {
                 if(this.query.column == column) {
                     if(this.query.direction == 'desc') {
                         this.query.direction = 'asc';
@@ -214,13 +212,13 @@
 
                 this.itemsRequest();
             },
-            prev() {
+            prev () {
                 if(this.model.prev_page_url) {
                     this.query.page--;
                     this.itemsRequest();
                 }
             },
-            next() {
+            next () {
                 if(this.model.next_page_url) {
                     this.query.page++;
                     this.itemsRequest();
@@ -252,11 +250,11 @@
             this.itemsRequest(); 
         },
         components: {
-            LoadComponent,
             VcPagination,
             VcSoccerExpert,
             VcScratchCard,
-            VcLottery
+            VcLottery,
+            VcCartoleando
         }
     }
 </script>

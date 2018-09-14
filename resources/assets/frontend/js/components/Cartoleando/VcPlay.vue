@@ -1,24 +1,24 @@
 <template>
     <load v-if="loading.component == true"></load>
 	<div class="container" v-else>
-        <!-- <div class="row">
+        <div class="row">
         	<div class="col-lg-12">
         		<div class="sub-navigation">
         			<router-link :to="{ name: 'cartoleando.play', params: { slug: item.package.slug } }" class="active show">
 	                    {{ trans('strings.play_on_the') }} {{ item.package.name }}
 	                </router-link>
-	                <router-link :to="{ name: 'cartola.results', params: { slug: item.lottery.slug } }" class="show" id="result-component">
-	                    {{ trans('strings.results') }}
+	                <router-link :to="{ name: 'cartoleando.leagues', params: { slug: item.package.slug } }" class="show" id="result-component">
+	                    {{ trans('strings.leagues') }}
 	               	</router-link>
         		</div>
         	</div>
-        </div> -->
+        </div>
 
         <div class="row">
             <div class="col-lg-12 col-12 col-md-12 col-sm-12">
-                <h1 class="page-header" style="border: none;">
+                <h1 class="page-header" style="border: none; margin: 0">
                     {{ item.package.name }}<br>
-                    <span style="font-size: 20px;">
+                    <span style="font-size: 20px;" v-if="auth == null || auth.cartoleando_team == null">
                         Por favor, preencha o formulário para participar do cartoleando
                     </span>
                 </h1>
@@ -38,7 +38,7 @@
         </div>
         
         <!-- Se o usuário possui time -->
-        <form @submit.prevent="" id="packages-purchase" v-if="auth && auth.cartoleando_team">
+        <form @submit.prevent="" id="packages-purchase" v-if="auth && auth.cartoleando_team && auth.cartoleando_team.time">
             <div class="row no-margin">
                 <div class="col-lg-8 no-padding-left">
                     <div class="row">
@@ -66,14 +66,17 @@
                     <div class="card">
                         <div class="card-header">
                             <span class="price">
-                                {{ trans('strings.total_value') }} R$<span class="value" v-if="item.total > 0">{{ totalFormated }}</span>
-                                <span class="value" v-else>0.00</span>
+                                {{ trans('strings.total_value') }} {{getSystemCurrency.data.symbol}}<span class="value" v-if="item.total > 0">{{ totalFormated }}</span>
+                                <span class="value" v-else>{{getSystemCurrency.data.symbol}}0.00</span>
                             </span>
                         </div>
 
                         <div class="card-body">
-                            <button @click="addToCart($el)" class="btn btn-xl btn-primary" type="button" style="width: 40%;">
+                            <button @click="addToCart($el)" v-if="!loading.adding" class="btn btn-xl btn-primary" type="button" style="width: 40%;">
                                 {{ trans('strings.to_confirm') }}
+                            </button>
+                            <button @click.prevent="" v-else class="btn-load btn btn-md btn-primary">
+                                <i class="fa fa-refresh fa-spin"></i>
                             </button>
                         </div>
                     </div>
@@ -82,7 +85,7 @@
         </form>
 
         <!-- Se não aparece o formulário normal -->
-        <form @submit.prevent="" id="packages-purchase" v-else>
+        <form id="packages-purchase" v-else>
             <div class="row no-margin">
                 <div class="col-lg-8 no-padding-left">
                     <div class="row">
@@ -117,14 +120,21 @@
                     <div class="card">
                         <div class="card-header">
                             <span class="price">
-                                {{ trans('strings.total_value') }} R$<span class="value" v-if="item.total > 0">{{ totalFormated }}</span>
-                                <span class="value" v-else>0.00</span>
+                                {{ trans('strings.total_value') }} {{getSystemCurrency.data.symbol}}<span class="value" v-if="item.total > 0">{{ totalFormated }}</span>
+                                <span class="value" v-else>{{getSystemCurrency.data.symbol}}0.00</span>
                             </span>
                         </div>
 
                         <div class="card-body">
-                            <button type="submit" class="btn btn-xl btn-primary">
+                            <button type="submit" @click="submitForm($event)" class="btn btn-xl btn-primary">
                                 {{ trans('strings.to_confirm') }}
+                            </button>
+
+                            <button @click="validatePurchase($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value >= item.total" class="btn-pay-now pull-right btn btn-primary">
+                                {{ trans('strings.pay_now') }}
+                            </button>
+                            <button v-if="loading.paying" @click.prevent="" class="pull-right btn btn-md btn-primary">
+                                <i class="fa fa-refresh fa-spin"></i>
                             </button>
                         </div>
                     </div>
@@ -216,7 +226,7 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer" style="justify-content: center">
-                    	<button v-if="auth" @click="addToCart($el)" class="btn btn-xl btn-primary" type="button" style="width: 40%;">
+                    	<button v-if="auth && !loading.adding" @click="addToCart($el)" class="btn btn-xl btn-primary" type="button" style="width: 40%;">
                             {{ trans('strings.to_confirm') }}
                         </button>
                         <button v-else class="btn btn-primary btn-md" style="width: 40%;" type="button" @click.prevent="showModalLogin($event)">		
@@ -245,9 +255,32 @@ import {routes} from '../../api_routes'
 import {mapState, mapGetters} from 'vuex'
 export default {
     methods: {
+        submitForm () {
+            let vm = this;
+            let isvalid = vm.form.valid();
+            if (isvalid) {
+                vm.modal.off('shown.bs.modal');
+                //Abrindo o modal
+                vm.modal.on('shown.bs.modal', (event) => {
+                    vm.showTeamRequest();
+                }).modal({
+                    show: true,
+                    backdrop: 'static'
+                });  
+                vm.modal.modal('toggle');
+            }
+        },
+        validatePurchase () {
+            let vm = this;
+            let isvalid = vm.form.valid();
+            if (isvalid) {
+                console.log('ljakl')
+            }
+        },
         showTeamRequest () {
             let showTeamRequest = axios.create();
-            showTeamRequest.interceptors.request.use(config => {					
+            showTeamRequest.interceptors.request.use(config => {	
+                this.item.team = null;				
                 return config;
             });
 
@@ -280,7 +313,7 @@ export default {
                     this.item.team = response.data;
                 } */
             }).catch(error => {
-
+                this.modal.modal('hide');                
             });
         },
         setModalTeam () {
@@ -337,20 +370,7 @@ export default {
                         }
                     });
                     vm.form.on('submit', function(e) {
-                        vm.submited = true;
-                        var isvalid = vm.form.valid();
-                        if (isvalid) {
-                            e.preventDefault();
-                            vm.modal.off('shown.bs.modal');
-                            //Abrindo o modal
-                            vm.modal.on('shown.bs.modal', (event) => {
-                                vm.showTeamRequest();
-                            }).modal({
-                                show: true,
-                                backdrop: 'static'
-                            });  
-                            vm.modal.modal('toggle');                          
-                        }
+                        e.preventDefault();
                     });
                 }
             });
@@ -391,42 +411,42 @@ export default {
             });
         },
         addToCart (el) {
-            let addCartoleandoRequest = axios.create();
-            addCartoleandoRequest.interceptors.request.use(config => {
-                this.loading.paying = true;
-                return config;
-            });
+            let vm = this;
+            let isvalid = vm.form.valid();
+            if (isvalid) {
+                let addCartoleandoRequest = axios.create();
+                addCartoleandoRequest.interceptors.request.use(config => {
+                    this.loading.adding = true;
+                    return config;
+                });
 
-            addCartoleandoRequest.post(routes.carts.add_cartoleandos, {
-                purchase: this.item,
-                hash: this.item.hash,						
-            }, {
-                headers: {
-                    'Content-Type' : 'application/json',
-                    'Accept' : 'application/json',
-                    'Authorization': 'Bearer ' + this.auth.access_token
-                }
-            }).then(response => {
-                if(response.status === 200) {
-                    
-                    this.$store.dispatch('setItemCartoleando', this.item);
-                    this.$router.push({
-                        name: 'cart.index'
-                    })
+                addCartoleandoRequest.post(routes.carts.add_cartoleandos, {
+                    purchase: this.item,
+                    hash: this.item.hash,
+                    auth: this.auth,
+                }).then(response => {
+                    if(response.status === 200) {
+                        
+                        this.$store.dispatch('setItemCartoleando', this.item);
+                        this.$router.push({
+                            name: 'cart.index'
+                        });
 
-                    if(!this.auth.cartoleando_team) {
-                        this.addTeamRequest();
+                        if(this.auth != null && !this.auth.cartoleando_team == null) {
+                            this.addTeamRequest();
+                        }
                     }
-                }
-            }).catch((error) => {
-                this.loading.paying = false;
-                toastr.error('Erro ao adicionar item', 'Por favor tente novamente');
-            });
+                }).catch((error) => {
+                    this.loading.adding = false;
+                    toastr.error('Erro ao adicionar item', 'Por favor tente novamente');
+                });                 
+            }            
         },
         init () {
             if(this.$route.query.hash != undefined) {
                 this.showLottery();
             } else if(this.$route.params.slug != undefined) {
+                //Setando novas configurações para o modal de login
                 this.$store.dispatch('setLoginOptions', {
                     redirectToHome: false, 
                     redirectToHomeOnLogout: false
@@ -435,6 +455,14 @@ export default {
                 this.showRequest();
                 this.setForm();
                 this.setModalTeam();
+                if(this.auth != null 
+                    && this.auth.cartoleando_team != null
+                    && this.auth.cartoleando_team.time != null
+                ) {
+                    this.item.cartoleiro = this.auth.cartoleando_team.time.nome_cartola;
+                    this.item.name = this.auth.cartoleando_team.time.nome;
+                    this.item.slug = this.auth.cartoleando_team.time.slug;
+                }
             }
             //window.document.title = this.trans('strings.soccer_expert');
         },
@@ -473,13 +501,14 @@ export default {
             meta: this.meta
         }
     },
-    data() {
+    data () {
         return {
             form: null,
             loading: {
                 component: true,
                 paying: false,
                 leagues: false,
+                adding: false,
             },
             leagues: [],
             indexClicked: null,
@@ -493,7 +522,8 @@ export default {
                 name: '',
                 slug: '',
                 email: '',
-                team: null
+                cartoleiro: '',
+                team: null,
             }
         } 
     },
@@ -508,7 +538,8 @@ export default {
         ...mapGetters([
             'auth', 
             'purchase',
-            'loginOptions'
+            'loginOptions',
+            'getSystemCurrency'
         ]),
         totalFormated: {
             // getter
@@ -520,6 +551,12 @@ export default {
                 
             }
         }
+    },
+    beforeDestroy () {
+        this.$store.dispatch('setLoginOptions', {
+            redirectToHome: true, 
+            redirectToHomeOnLogout: true
+        });
     },
     watch: {
         'item.name' (newValue, oldValue) {

@@ -300,12 +300,11 @@
 
 		},
 		mounted: function() {
-			var time = setInterval(() => {
-				var header = $('.header');
+			let time = setInterval(() => {
+				let header = $('.header');
 		    	$('body').css({
 		    		'padding-top': header[0].clientHeight - 1
-		    	});
-		    	
+		    	});		    	
 		    	if(header.length > 0){
 					clearInterval(time);
 				}
@@ -316,15 +315,12 @@
 			SliderComponent
 		},
 		computed: {
-            ...mapState({
-                User: state => state.User
-            }),
             ...mapGetters([
                 'auth', 'purchase', 'loginOptions'
             ])
         },
         watch: {
-        	'User.authUser': function(newValue, oldValue) {
+        	'auth': (newValue, oldValue) => {
                 if(newValue) {
                     //this.auth = newValue;
                 }

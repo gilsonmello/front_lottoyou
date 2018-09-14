@@ -5,7 +5,7 @@
 	            {{ item.scratch_card.nome }}
 	        </div>
 	        <div class="col-lg-2">
-	            $ {{ item.amount }}
+	            {{getSystemCurrency.data.symbol}}{{ item.amount }}
 	        </div>
 	        <div class="col-lg-2">
 	            {{ item.scratch_card_game.length }}
@@ -18,16 +18,21 @@
 </template>
 
 <script>
-	
+	import {mapGetters} from 'vuex';
 	export default {
 		props: ['item', 'index'],
-		mounted: function() {
+		mounted () {
 			
 		},
 		methods: {
-			getValue(total) {
+			getValue (total) {
 				return parseFloat(total).format(2, true);
 			}
+		},
+		computed: {
+			...mapGetters([
+				'getSystemCurrency'
+            ])
 		}
 	}
 </script>

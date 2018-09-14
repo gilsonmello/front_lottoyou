@@ -6,9 +6,65 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\League;
 use App\LeagueAward;
-
+use GuzzleHttp\Client;
 class LeagueController extends Controller
 {
+
+    private function findTeamBySlug($slug) 
+    {
+        
+    }
+
+    public function classicTeams($slug)
+    {
+        $league = League::findBySlug($slug);
+        $teams = $league->classicTeams;
+
+        foreach($teams as $key => $team) {
+            $client = new Client(['base_uri' => 'http://api.cartolafc.globo.com/']);
+            $response = $client->request('GET', 'time/slug/'.$team->cartoleandoTeam->slug,  [
+                'headers' => [
+                    'x-glb-token' => env('X_GLB_TOKEN')
+                ]
+            ]);
+            $body = json_decode($response->getBody());
+            $team->team = $body;
+        }
+
+        if(!is_null($teams)) {
+            return response()->json($teams, 200);
+        }
+        
+
+        return response()->json([
+            'message' => ''
+        ], 422);
+    }
+
+    public function cupTeams($slug)
+    {
+        $league = League::findBySlug($slug);
+        $teams = $league->cupTeams;
+        foreach($teams as $key => $team) {
+            $client = new Client(['base_uri' => 'http://api.cartolafc.globo.com/']);
+            $response = $client->request('GET', 'time/slug/'.$team->cartoleandoTeam->slug,  [
+                'headers' => [
+                    'x-glb-token' => env('X_GLB_TOKEN')
+                ]
+            ]);
+            $body = json_decode($response->getBody());
+            $team->team = $body;
+        }
+
+        if(!is_null($teams)) {
+            return response()->json($teams, 200);
+        }        
+
+        return response()->json([
+            'message' => ''
+        ], 422);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -61,9 +117,15 @@ class LeagueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $league = \App\League::findBySlug($slug);
+
+        if(!is_null($league)) return response()->json($league, 200);
+
+        return response()->json([
+            'message' => ''
+        ], 422);
     }
 
     /**

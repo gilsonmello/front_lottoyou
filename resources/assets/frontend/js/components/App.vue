@@ -14,7 +14,9 @@
 
 		<login-component></login-component>
 
-		<vc-modal></vc-modal>
+		<vc-modal ref="modal">
+			
+		</vc-modal>		
 	</main>
 </template>
 
@@ -29,7 +31,7 @@
 	import LoadComponent from './Load'
 	import AppLoadComponent from './AppLoad'
 	import {routes} from '../api_routes'
-	import {mapGetters} from 'vuex'
+	import {mapGetters} from 'vuex';
 	export default {
 		data() {
 			return {
@@ -48,7 +50,7 @@
 				let cartRequest = axios.create();
 
 				cartRequest.interceptors.request.use(config => {
-					this.loading.component = true;
+					//this.loading.component = true;
 				  	return config;
 				});
 
@@ -80,7 +82,7 @@
 				refresh_token = refresh_token != null ? refresh_token : '';
 
 
-				if(access_token && this.$route.name != 'users.account') {
+				if(access_token) {
 					this.refreshAuthPromise()
 					.then(response => {
 						if(response.status === 200) {
@@ -91,7 +93,15 @@
 							if(this.auth.cartoleando_team) {
 								this.teamRequest();
 							}
+							this.loading.component = false;
 							this.cartRequest();
+							this.getSystemSettings()
+								.then((response) => {
+									this.$store.dispatch('setSystemSettings', response.data);
+								})
+								.catch((error) => {
+
+								});
 							this.onReady();
 							this.beforeEach();
 						}
@@ -235,8 +245,8 @@
 			
 		},
 		mounted() {		
-			this.init();		
-
+			this.$root.$refs.App = this; 
+			this.init();
 			router.afterEach((to, from) => {
 				ga('set', 'page', to.path);
   				ga('send', 'pageview');
@@ -275,7 +285,8 @@
 		computed: {
             ...mapGetters([
 				'authUser',
-				'auth'
+				'auth',
+				'systemSettings'
             ]),
         },
 	}

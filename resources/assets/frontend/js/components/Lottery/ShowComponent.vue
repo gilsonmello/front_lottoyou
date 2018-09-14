@@ -334,9 +334,14 @@
 				});
 
 				addLotteryRequest.post(routes.carts.complete_fast_payment_lottery, {
-					purchase: this.item, 
-					auth: this.auth,
-					hash: this.item.hash
+					purchase: this.item,
+					hash: this.item.hash,
+				}, {
+					headers: {
+						'Content-Type' : 'application/json',
+						'Accept' : 'application/json',
+						'Authorization': 'Bearer ' + this.auth.access_token
+					}
 				}).then(response => {
 		            if(response.status === 200) {
 						//this.completePurchase();

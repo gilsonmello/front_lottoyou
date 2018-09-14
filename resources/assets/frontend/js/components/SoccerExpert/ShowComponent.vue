@@ -222,9 +222,8 @@
 
 					addSoccerExpertRequest.post(routes.carts.add_soccer_experts, {
 						purchase: item, 
-						auth: this.auth,
-						hash: item.hash
-						
+						hash: item.hash,
+						auth: this.auth,					
 					}).then(response => {
 						if(response.status === 200) {
 							this.loading.paying = false;

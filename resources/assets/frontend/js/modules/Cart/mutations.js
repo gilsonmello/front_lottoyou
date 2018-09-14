@@ -1,7 +1,10 @@
 
 function refreshState (state) {
 	//Total de items
-	state.quantity = state.lotteries.items.length + state.scratch_cards.items.length + state.soccer_expert.items.length
+	state.quantity = state.lotteries.items.length 
+	+ state.scratch_cards.items.length 
+	+ state.soccer_expert.items.length
+	+ state.cartoleandos.items.length;
 	
 	//Total em dinheiro das loterias
 	var amountLotteries = 0;
@@ -401,7 +404,7 @@ export default {
 			//Caso não tenha, faço inserção do item do tipo raspadinha
 			state.purchase.items.unshift({
 				type: 'cartoleando',
-				cartoleandos: items
+				cartoleando: items
 			});
 		} else {
 
@@ -409,8 +412,8 @@ export default {
 			//Verifico se o item passado no array existe
 			state.purchase.items.map(function( elem, index, array ) {
 				//
-				if(elem.cartoleandos != undefined) {
-					if(elem.cartoleandos.hash == items.hash) {
+				if(elem.cartoleando != undefined) {
+					if(elem.cartoleando.hash == items.hash) {
 						idx = index
 					}
 				}
@@ -421,13 +424,13 @@ export default {
 			if(idx == null) {
 				state.purchase.items.unshift({
 					type: 'cartoleando',
-					cartoleandos: items
+					cartoleando: items
 				});
 			} else {
 				//Se não faço alteração do item com base no indice que encontrei na verificação dos hash's
 				state.purchase.items[idx] = {
 					type: 'cartoleando',
-					cartoleandos: items
+					cartoleando: items
 				};	
 			}
 		}
@@ -447,7 +450,7 @@ export default {
 
 		state.purchase.items = state.purchase.items.filter((val) => {
 			if(val.type == 'cartoleando') {
-				if(val.cartoleandos.hash != items.hash) {
+				if(val.cartoleando.hash != items.hash) {
 					return true
 				} else{
 					return false
@@ -460,7 +463,6 @@ export default {
 		state.purchase = refreshState(state.purchase);
 	},
 	SET_ITEMS(state, items) {
-		
 		items.map((elem, index, array) => {
 			
 			if(elem.type == 'soccer_expert') {
@@ -484,7 +486,7 @@ export default {
 			} else if(elem.type == 'cartoleando') {
 				state.purchase.items.push({
 					type: elem.type,
-					scratch_card: JSON.parse(elem.data)
+					cartoleando: JSON.parse(elem.data)
 				})
 				state.purchase.cartoleandos.items.push(JSON.parse(elem.data))
 			}

@@ -78,7 +78,7 @@
                         <div class="col-lg-4 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.street">
-                                    <div v-for="street in errors.street" >{{ street }}</div>
+                                    <div v-for="(street, index) in errors.street" :key="index">{{ street }}</div>
                                 </div>
                                 <label for="street">{{ trans('strings.street') }}</label>
                                 <input v-model="street" type="text" class="form-control" id="street" aria-describedby="street" name="street" :placeholder="trans('strings.street')">
@@ -87,7 +87,7 @@
                         <div class="col-lg-2 col-6 col-sm-2 col-md-2">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.number">
-                                    <div v-for="number in errors.number" >{{ number }}</div>
+                                    <div v-for="(number, index) in errors.number" :key="index">{{ number }}</div>
                                 </div>
                                 <label for="number">{{ trans('strings.number') }}</label>
                                 <input v-model="number" type="number" class="form-control" id="number" aria-describedby="number" name="number" :placeholder="trans('strings.number')">
@@ -189,7 +189,7 @@
                         <div class="col-lg-6 col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.id">
-                                    <div v-for="id in errors.id" >{{ id }}</div>
+                                    <div v-for="(id, index) in errors.id" :key="index">{{ id }}</div>
                                 </div>
                                 <label for="id">{{ trans('strings.player_number') }}</label>
                                 <input disabled readonly v-model="id" name="id" type="text" class="form-control" id="id" aria-describedby="id" :placeholder="trans('strings.player_number')">
@@ -200,7 +200,7 @@
                         <div class="col-lg-4 col-12 col-sm-4 col-md-4">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.old_password">
-                                    <div v-for="old_password in errors.old_password" >{{ old_password }}</div>
+                                    <div v-for="(old_password, index) in errors.old_password" :key="index">{{ old_password }}</div>
                                 </div>
                                 <label for="old_password">{{ trans('strings.old_password') }}</label>
                                 <input v-model="old_password" name="old_password" type="password" class="form-control" id="old_password" aria-describedby="old_password" :placeholder="trans('strings.old_password')">
@@ -209,7 +209,7 @@
                         <div class="col-lg-4 col-12 col-sm-4 col-md-4">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.password">
-                                    <div v-for="password in errors.password" >{{ password }}</div>
+                                    <div v-for="(password, index) in errors.password" :key="index">{{ password }}</div>
                                 </div>
                                 <label for="password">{{ trans('strings.password') }}</label>
                                 <input v-model="password" name="password" type="password" class="form-control" id="password" aria-describedby="password" :placeholder="trans('strings.password')">
@@ -218,7 +218,7 @@
                         <div class="col-lg-4 col-12 col-sm-4 col-md-4">
                             <div class="form-group">
                                 <div class="alert alert-danger" v-if="errors.confirm_password">
-                                    <div v-for="confirm_password in errors.confirm_password" >{{ confirm_password }}</div>
+                                    <div v-for="(confirm_password, index) in errors.confirm_password" :key="index">{{ confirm_password }}</div>
                                 </div>
                                 <label for="confirm_password">{{ trans('strings.confirm_password') }}</label>
                                 <input v-model="confirm_password" name="confirm_password" type="password" class="form-control" id="confirm_password" aria-describedby="confirm_password" :placeholder="trans('strings.confirm_password')">
@@ -246,7 +246,8 @@
 
 <script>
     import {routes} from '../../api_routes'
-    import LoadComponent from '../Load'
+    import LoadComponent from '../Load';
+    import {mapGetters} from 'vuex';
     export default {
         metaInfo () {
             return {
@@ -364,6 +365,8 @@
                             this.country = this.user.country.id
                             this.phone_code = '+'+this.user.country.phonecode;
 
+                            this.teamRequest();
+
                             //window.location.href = "/painel"
                             //this.$router.push({name: 'home'});
                         }).catch((error_2) => {
@@ -390,22 +393,57 @@
             },
             userRequest () {
                 const access_token = JSON.parse(window.localStorage.getItem('access_token'));            
+                //let userRequest = axios.create();
+                this.loading.component = false;        
+                this.user = Object.assign(this.auth);  
+                this.errors = [];
+                this.gender = this.user.gender ? this.user.gender : '';
+                this.nickname = this.user.nickname;
+                this.name = this.user.name;
+                this.last_name = this.user.last_name;
+                this.address = this.user.address;
+                this.street = this.user.street;
+                this.number = this.user.number;
+                this.cep = this.user.cep;
+                this.photo = this.user.photo;
+                this.photo_domain = this.user.photo_domain;
+                this.city = this.user.city;
+                this.username = this.user.username;
+                this.state = this.user.state;
+                this.id = this.user.id;
+                this.complement = this.user.complement
+                this.country = this.user.country.id;
+                this.phone_code = '+'+this.user.country.phonecode;
 
-                var userRequest = axios.create();
-                userRequest.interceptors.request.use(config => {
-                    this.loading.component = true
+                if(this.user.validated === 0) {
+                    swal({
+                        title: 'Seu cadastro está incompleto.',
+                        text: 'Atenção: Para retirada do dinheiro seu cadastro deverá estar completo.',
+                        showCloseButton: true,
+                        imageUrl: '/imgs/logo.png',
+                        imageHeight: 50,
+                        imageAlt: 'Logo lottoyou',
+                    });  
+                } 
+
+                if(this.user.birth_day != null) {
+                    this.birth_date = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
+                }
+
+                /* userRequest.interceptors.request.use(config => {
+                    this.loading.component = true;
                     return config;
-                });
+                }); */
 
                 //Fazendo busca do usuário logado, para setar na estrutura de dados
-                userRequest.get(routes.auth.user, { headers: {
+                /* userRequest.get(routes.auth.user, { headers: {
                     'Accept': 'application/json',
                     'Authorization': 'Bearer ' + access_token
                 }}).then(response => {
                     this.loading.component = false;
                     response.data['access_token'] = access_token;
                     //window.localStorage.setItem('authUser', JSON.stringify(response.data))
-                    this.$store.dispatch('setUserObject', response.data)
+                    this.$store.dispatch('setUserObject', response.data);
                     this.user = response.data                            
 
                     this.errors = [];
@@ -428,7 +466,7 @@
                     this.country = this.user.country.id;
                     this.phone_code = '+'+this.user.country.phonecode;
 
-                    if(this.user.validated == 0) {
+                    if(this.user.validated === 0) {
                         swal({
                             title: 'Seu cadastro está incompleto.',
                             text: 'Atenção: Para retirada do dinheiro seu cadastro deverá estar completo.',
@@ -443,10 +481,13 @@
                         this.birth_date = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
                     }
                     //this.birth_date = this.user.birth_day + '/' +this.user.birth_month + '/' + this.user.birth_year; 
+
+
+                    //this.teamRequest();
                     
                 }).catch((error) => {
                     this.loading.component = false
-                });
+                }); */
             },
         },
         data: function() {
@@ -513,6 +554,11 @@
         },
         components: {
             LoadComponent
+        },
+        computed: {
+            ...mapGetters([
+				'auth',
+            ]),
         }
     }
 </script>

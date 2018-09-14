@@ -1,16 +1,16 @@
 <template>
 	<section class="col-lg-12 ticket line">
 		<div class="row columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+item.id" :style="index % 2 == 0 ? 'background-color: rgba(0, 0, 0, 0.05);': ''"> 	
-    		<div class="col-lg-2">
+    		<div class="col-lg-2 col-3 col-md-3 col-sm-3">
 	      		{{ item.lottery.nome }}
 	      	</div>
-	      	<div class="col-lg-2">
-	      		$ {{ item.amount }}
+	      	<div class="col-lg-2 col-3 col-md-3 col-sm-3">
+	      		{{getSystemCurrency.data.symbol}}{{ item.amount }}
 	      	</div>
-	      	<div class="col-lg-2">
+	      	<div class="col-lg-2 col-2 col-md-3 col-sm-2">
 	      		{{ item.lottery_games.length }}
 	      	</div>
-	      	<div class="col-lg-2">
+	      	<div class="col-lg-2 col-4 col-md-3 col-sm-4">
 	      		{{ item.created_at }}
 	      	</div>
         </div>
@@ -46,12 +46,13 @@
 </template>
 
 <script>
-	import {routes} from '../../../../api_routes'
-	import VcTicket from './VcTicket'
-	import LoadComponent from '../../../Load'
+	import {routes} from '../../../../api_routes';
+	import VcTicket from './VcTicket';
+	import LoadComponent from '../../../Load';
+	import {mapGetters} from 'vuex';
 	export default {
 		props: ['item', 'id', 'index'],
-		data: function() {
+		data () {
 			return {
 				dickers: [],
 				dickersMaxSel: [],
@@ -75,8 +76,8 @@
 				},
 			}
 		},
-		mounted() { 
-			var interval = setInterval(() => {
+		mounted () { 
+			let interval = setInterval(() => {
 				if($(this.$el).find('.'+this.item.id).length > 0) {
 					clearInterval(interval);
 					$(this.$el).find('.'+this.item.id).on('show.bs.collapse', (event) => {
@@ -125,10 +126,10 @@
 			this.setCountdown(date, timeOut);*/
 		},
 		methods: {
-			getGameTotal(item) {
+			getGameTotal (item) {
                 return parseFloat(item.data.total).format(2, true);
             },
-            setCountdown(date, timeOut) {
+            setCountdown (date, timeOut) {
 				this.countdown(date, (d, h, m, s, distance) => {
 	            	this.next_lottery.days = d;
 					this.next_lottery.hours = h;
@@ -143,6 +144,11 @@
 		components: {
 			VcTicket,
 			LoadComponent
+		},
+		computed: {
+			...mapGetters([
+				'getSystemCurrency'
+            ])
 		}
 	}
 </script>
@@ -164,12 +170,13 @@
 
 	.line .columns:after {
 		font-family: 'FontAwesome';
-		content: "\f068";
-		float: right;
+		content: "\f077";
+		position: absolute;
+    	right: 0;
 	}
 
 	.line .collapsed:after {
-		content: "\f067";
+		content: "\f078";
 	}	
 
 </style>

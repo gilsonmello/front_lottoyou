@@ -247,6 +247,12 @@ export default {
 			        component: require('../components/Order/FinishComponent.vue')
 				},
 				{   
+					path: 'leagues/:slug',
+					name: 'leagues.show', 
+					props: true,
+					component: require('../components/League/VcShow.vue')
+				},
+				{   
 					path: 'cartoleando',
 					name: 'cartoleando.index', 
 					component: require('../components/Cartoleando/VcIndex.vue')
@@ -256,6 +262,12 @@ export default {
 					name: 'cartoleando.play', 
 					props: true,
 					component: require('../components/Cartoleando/VcPlay.vue')
+				},
+				{   
+					path: 'cartoleando/:slug/leagues',
+					name: 'cartoleando.leagues', 
+					props: true,
+					component: require('../components/Cartoleando/VcLeague.vue')
 				},
   			]
   		}

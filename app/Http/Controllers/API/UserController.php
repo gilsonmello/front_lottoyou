@@ -207,6 +207,9 @@ class UserController extends Controller
                 $query->where('user_id', '=', $request->owner_id);
             },
             'soccerExpert',
+            'cartoleando' => function($query) {
+
+            },
             'scratchCard',
             'lottery',
             'scratchCardGame' => function($query) {
@@ -407,7 +410,6 @@ class UserController extends Controller
         $user->state = $request->get('state');
         $user->tell_phone = $request->get('tell_phone');
         $user->nickname = $request->get('nickname');
-        $user->photo_domain = request()->root();
         $user->country_id = $request->country;
         $user->gender = $request->gender;
         $locale = Cookie::get('locale');
@@ -424,13 +426,13 @@ class UserController extends Controller
                     $file = $request->file('photo');
                     $name = $user->id. '.' .$file->getClientOriginalExtension();
                     $request->file('photo')->move(public_path('files/profile'), $name);
+                    $user->photo_domain = request()->root();
                     $user->photo = '/files/profile/' . $name;
                 } catch (\Illuminate\Filesystem\FileNotFoundException $e) {
 
                 }
             } 
         }
-
 
         if($user->save()){
             return response()->json(['message' => trans('alerts.users.update.success')], 200);
