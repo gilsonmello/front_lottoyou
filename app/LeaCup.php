@@ -51,4 +51,14 @@ class LeaCup extends Model
     {
         return $this->belongsTo(League::class, 'league_id');
     }
+
+    public function teams()
+    {
+        return $this->hasMany(LeaCupTeam::class, 'lea_cup_id');
+    }
+
+    public function steps()
+    {
+        return $this->hasMany(LeaCupStep::class, 'lea_cup_id');
+    }
 }

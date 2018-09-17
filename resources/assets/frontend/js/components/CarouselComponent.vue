@@ -1,54 +1,53 @@
 <template>
     <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
-                        <ol class="carousel-indicators" style="bottom: -46px;">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        </ol>
-                        <div class="carousel-inner" role="listbox">
-
-                             <div class="carousel-item active">
-                                <div class="row">
-                                    <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <router-link :to="{ name: 'scratch_cards.index' }">
-                                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/index_2.jpeg">
-                                        </router-link>
-                                    </div>
-                                    <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <router-link :to="{ name: 'lotteries.play', params: {slug: 'easy-money'} }">
-                                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/index_easy_money.png">
-                                        </router-link>
-                                    </div>
-                                    <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <router-link :to="{ name: 'scratch_cards.index' }">
-                                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/index_golden_goal.png">
-                                        </router-link>
-                                    </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+                    <ol class="carousel-indicators" style="bottom: -46px;">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <router-link :to="{ name: 'scratch_cards.index' }">
+                                        <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/index_2.jpeg">
+                                    </router-link>
+                                </div>
+                                <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <router-link :to="{ name: 'lotteries.play', params: {slug: 'easy-money'} }">
+                                        <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/index_easy_money.png">
+                                    </router-link>
+                                </div>
+                                <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <router-link :to="{ name: 'scratch_cards.index' }">
+                                        <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/index_golden_goal.png">
+                                    </router-link>
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <router-link :to="{ name: 'soccer_expert.play', params: {slug: 'custom'} }">
-                                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_4.png">
-                                        </router-link>
-                                    </div>
-                                    <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <router-link :to="{ name: 'soccer_expert.play', params: {slug: 'world'} }">
-                                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_3.png">
-                                        </router-link>
-                                    </div>
-                                    <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <router-link :to="{ name: 'soccer_expert.play', params: {slug: 'special'} }">
-                                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_5.png">
-                                        </router-link>
-                                    </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <router-link :to="{ name: 'soccer_expert.play', params: {slug: 'custom'} }">
+                                        <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_4.png">
+                                    </router-link>
+                                </div>
+                                <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <router-link :to="{ name: 'soccer_expert.play', params: {slug: 'world'} }">
+                                        <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_3.png">
+                                    </router-link>
+                                </div>
+                                <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <router-link :to="{ name: 'soccer_expert.play', params: {slug: 'special'} }">
+                                        <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/new/slide_5.png">
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 <a class="carousel-control-prev" id="prev-slide-content" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="fa fa-angle-left" style="color: black"></span>
                     <span class="sr-only">Previous</span>

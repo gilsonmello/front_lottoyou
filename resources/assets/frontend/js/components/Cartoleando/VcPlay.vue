@@ -130,7 +130,7 @@
                                 {{ trans('strings.to_confirm') }}
                             </button>
 
-                            <button @click="validatePurchase($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value >= item.total" class="btn-pay-now pull-right btn btn-primary">
+                            <button @click="validatePurchase($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value >= item.total && auth.cartoleando_team" class="btn-pay-now pull-right btn btn-primary">
                                 {{ trans('strings.pay_now') }}
                             </button>
                             <button v-if="loading.paying" @click.prevent="" class="pull-right btn btn-md btn-primary">
@@ -411,6 +411,9 @@ export default {
             });
         },
         addToCart (el) {
+            if(this.auth != null && this.auth.cartoleando_team == null) {
+                this.addTeamRequest();
+            }
             let vm = this;
             let isvalid = vm.form.valid();
             if (isvalid) {
@@ -431,10 +434,6 @@ export default {
                         this.$router.push({
                             name: 'cart.index'
                         });
-
-                        if(this.auth != null && !this.auth.cartoleando_team == null) {
-                            this.addTeamRequest();
-                        }
                     }
                 }).catch((error) => {
                     this.loading.adding = false;
@@ -477,20 +476,21 @@ export default {
                     this.meta.push({
                         name: 'description',
                         content: this.item.package.name,
-                    });
-                    this.loading.component = false;
+                    });                    
                 })
                 .catch((error) => {
-                    this.loading.component = false;
+                    
                 });
 
             this.loading.leagues = true;
             this.getLeaguesOfPackageBySlug(slug)
                 .then((response) => {
                     this.$set(this.item.package, 'leagues', response.data);
+                    this.loading.component = false;
                     this.loading.leagues = false;
                 })
                 .catch((error) => {
+                    this.loading.component = false;
                     this.loading.leagues = false;
                 });
         }

@@ -83,25 +83,23 @@ class OrderItemObserver
     /**
      * 
      */
-    private function saveClassicLeague($item, $user_id, $league_id, $team)
+    private function saveClassicLeague($item, $user_id, $league_id, $team, $leaClassic)
     {
         $leaClassicTeam = new \App\LeaClassicTeam;
-        $leaClassicTeam->league_id = $league_id;
+        $leaClassicTeam->lea_classic_id = $leaClassic->id;
         $leaClassicTeam->owner_id = $user_id;
         $leaClassicTeam->item_id = $item->id;
         $leaClassicTeam->team_id = $team->id;
-        $leaClassicTeam->position = null;
-        $leaClassicTeam->points = 0;
         $leaClassicTeam->save();
     }
 
     /**
      * 
      */
-    private function saveCupLeague($item, $user_id, $league_id, $team)
+    private function saveCupLeague($item, $user_id, $league_id, $team, $leaCup)
     {
         $leaCupTeam = new \App\LeaCupTeam;
-        $leaCupTeam->league_id = $league_id;
+        $leaCupTeam->lea_cup_id = $leaCup->id;
         $leaCupTeam->owner_id = $user_id;
         $leaCupTeam->item_id = $item->id;
         $leaCupTeam->team_id = $team->id;
@@ -120,16 +118,15 @@ class OrderItemObserver
         $team = CartoleandoTeam::where('owner_id', '=', $user_id)
             ->get()
             ->first();
-        
         $league = \App\League::find($item->league_id); 
         $league->quantity_teams++;
+        $league->collected += $data->package->value;
         $league->save();       
-        if($league->classic != null) {
-            $this->saveClassicLeague($item, $user_id, $item->league_id, $team);
-        } else if($league->cup != null) {
-            $this->saveCupLeague($item, $user_id, $item->league_id, $team);
-        }
-        
+        if($league->classic != null && $league->context == 'classic') {
+            $this->saveClassicLeague($item, $user_id, $league->id, $team, $league->classic);
+        } else if($league->cup != null && $league->context == 'cup') {
+            $this->saveCupLeague($item, $user_id, $league->id, $team, $league->cup);
+        }        
     }
 
     /**

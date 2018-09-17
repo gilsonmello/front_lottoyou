@@ -49,7 +49,7 @@ class LeaCupTeam extends Model
 
     public function leaCup() 
     {
-        return $this->belongsTo(League::class, 'league_id');
+        return $this->belongsTo(LeaCup::class, 'lea_cup_id');
     }
 
     public function cartoleandoTeam() 

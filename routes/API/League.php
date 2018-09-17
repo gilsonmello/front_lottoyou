@@ -9,6 +9,9 @@ Route::get('/leagues/{slug}/classic/teams', 'LeagueController@classicTeams')
 Route::get('/leagues/{slug}/cup/teams', 'LeagueController@cupTeams')
     ->name('api.leagues.cup.teams');
 
+Route::get('/leagues/{slug}/cup/steps', 'LeagueController@cupSteps')
+    ->name('api.leagues.cup.steps');
+
 Route::resource('leagues', 'LeagueController', [
     'names' => [
         'index' => 'api.leagues.index',

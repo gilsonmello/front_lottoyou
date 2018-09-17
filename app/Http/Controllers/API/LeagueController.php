@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use App\League;
 use App\LeagueAward;
 use GuzzleHttp\Client;
+use App\Traits\Cartoleando;
 class LeagueController extends Controller
 {
+    use Cartoleando;
 
     private function findTeamBySlug($slug) 
     {
@@ -18,23 +20,63 @@ class LeagueController extends Controller
     public function classicTeams($slug)
     {
         $league = League::findBySlug($slug);
-        $teams = $league->classicTeams;
+        $leaClassic = $league->classic;
+        $teams = $leaClassic->teams;
 
         foreach($teams as $key => $team) {
-            $client = new Client(['base_uri' => 'http://api.cartolafc.globo.com/']);
-            $response = $client->request('GET', 'time/slug/'.$team->cartoleandoTeam->slug,  [
-                'headers' => [
-                    'x-glb-token' => env('X_GLB_TOKEN')
-                ]
-            ]);
-            $body = json_decode($response->getBody());
+            $body = $this->getTeamFromCartola($team->cartoleandoTeam->slug);
             $team->team = $body;
         }
 
         if(!is_null($teams)) {
             return response()->json($teams, 200);
-        }
+        }        
+
+        return response()->json([
+            'message' => ''
+        ], 422);
+    }
+
+    public function cupSteps($slug)
+    {
+        $league = League::findBySlug($slug);
+        $leaCup = $league->cup;
+        $steps = $leaCup->steps()
+            ->where('active', '=', 1)
+            ->orWhere('updated', '=', 1)
+            ->orderBy('id', 'desc')
+            ->orderBy('current_step', 'desc')
+            ->get();
         
+        foreach($steps as $step) {
+            $keys = \App\LeaCupKey::where('lea_cup_step_id', '=', $step->id)
+                ->where('finished', '=', 1)
+                ->get();
+                
+            foreach($keys as $key) {
+                $homeTeam = $key->homeTeam;                
+                if(!$homeTeam) {
+                    continue;
+                }
+
+                $key->homeTeam = $this->getTeamFromCartola($homeTeam->slug);
+
+                $outTeam = $key->outTeam;
+                $key->outTeam = $this->getTeamFromCartola($outTeam->slug);
+
+                if($key->finished == 1) {
+                    $winner = $key->winner;
+                    $key->winner = $this->getTeamFromCartola($winner->slug);
+                    $loser = $key->loser;
+                    $key->loser = $this->getTeamFromCartola($loser->slug);
+                }
+            }
+            $step->keys = $keys;
+        }
+
+        if(!is_null($steps)) {
+            return response()->json($steps, 200);
+        }
 
         return response()->json([
             'message' => ''
@@ -44,15 +86,10 @@ class LeagueController extends Controller
     public function cupTeams($slug)
     {
         $league = League::findBySlug($slug);
-        $teams = $league->cupTeams;
+        $leaCup = $league->cup;
+        $teams = $leaCup->teams;
         foreach($teams as $key => $team) {
-            $client = new Client(['base_uri' => 'http://api.cartolafc.globo.com/']);
-            $response = $client->request('GET', 'time/slug/'.$team->cartoleandoTeam->slug,  [
-                'headers' => [
-                    'x-glb-token' => env('X_GLB_TOKEN')
-                ]
-            ]);
-            $body = json_decode($response->getBody());
+            $body = $this->getTeamFromCartola($team->cartoleandoTeam->slug);
             $team->team = $body;
         }
 

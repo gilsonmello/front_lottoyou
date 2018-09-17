@@ -94,14 +94,4 @@ class League extends Model
     {
         return $this->hasOne(LeaClassic::class, 'league_id');
     }
-
-    public function classicTeams()
-    {
-        return $this->hasMany(LeaClassicTeam::class, 'league_id');
-    }
-
-    public function cupTeams()
-    {
-        return $this->hasMany(LeaCupTeam::class, 'league_id');
-    }
 }

@@ -3,6 +3,57 @@
         <br>
         <div class="row">
             <div class="col-12">
+                <h1>Como funciona</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header" style="padding: 0">
+                        <div class="help-image" style="background-image: url(https://cartolafc.globo.com/dist/3.18.13/img/tempo.svg)">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4><strong>Duração</strong></h4>
+                        <p>
+                            O mata-mata é uma liga rápida que pode durar de 2 a 5 rodadas. Todo mundo pode participar, mas só quem é Cartoleiro PRO pode criá-lo!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header" style="padding: 0">
+                        <div class="help-image" style="background-image: url(https://cartolafc.globo.com/dist/3.18.14/img/disputa.svg)">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4><strong>Disputa</strong></h4>
+                        <p>
+                            A cada rodada os times disputam dois a dois para ver qual faz mais pontos - quem perde sai, quem ganha garante seu lugar nas disputas da rodada seguinte.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header" style="padding: 0">
+                        <div class="help-image" style="background-image: url(https://cartolafc.globo.com/dist/3.18.14/img/trofeu.svg)">
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4><strong>Vencedor</strong></h4>
+                        <p>
+                            Ao final, dois times disputam a Taça do Campeão! O terceiro lugar é disputado entre os dois times que perderam na semifinal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
                 <h1 style="display: inline-block">
                     {{ trans('strings.participants') }}
                 </h1>
@@ -34,11 +85,33 @@
 </template>
 
 <script>
+import {host} from '../../../api_routes.js';
 export default {
-    props: ['teams'],
+    methods: {
+        getTeams () {
+            let req = axios.create();
+            let url = host+'/leagues/'+this.league.slug+'/cup/teams';
+            this.loading.teams = true;
+            req.get(url)
+                .then(response => {
+                    this.loading.teams = false;
+                    this.teams = response.data
+                })
+                .catch(error => {
+                    this.loading.teams = false;
+                });
+        },
+    },
+    mounted () {
+        this.getTeams();
+    },
+    props: ['league'],
     data () {
         return {
-
+            teams: [],
+            loading: {
+                teams: false,
+            }
         }
     }
 }

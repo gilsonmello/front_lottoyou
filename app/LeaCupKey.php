@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LeaClassic extends Model
+class LeaCupKey extends Model
 {
     const CREATED_AT = 'created';
 
@@ -27,7 +27,7 @@ class LeaClassic extends Model
      * 
      * @var array
      */
-    public $table = 'lea_classics';
+    public $table = 'lea_cup_keys';
 
     /**
      * The attributes that are mass assignable.
@@ -47,13 +47,28 @@ class LeaClassic extends Model
         
     ];
 
-    public function league() 
+    public function step() 
     {
-        return $this->belongsTo(League::class, 'league_id');
+        return $this->belongsTo(LeaCupStep::class, 'lea_cup_step_id');
     }
 
-    public function teams()
+    public function homeTeam()
     {
-        return $this->hasMany(LeaClassicTeam::class, 'lea_classic_id');
+        return $this->belongsTo(CartoleandoTeam::class, 'home_team_id');
+    }
+
+    public function outTeam()
+    {
+        return $this->belongsTo(CartoleandoTeam::class, 'out_team_id');
+    }
+
+    public function winner()
+    {
+        return $this->belongsTo(CartoleandoTeam::class, 'winner_id');
+    }
+
+    public function loser()
+    {
+        return $this->belongsTo(CartoleandoTeam::class, 'loser_id');
     }
 }
