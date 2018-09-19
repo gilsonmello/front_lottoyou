@@ -1,7 +1,7 @@
 <template>
 	<div class="tickets">
 		<header class="tickets-header">			
-            <span class="text-center tickets-name">{{ ticket.nome }} - ${{ value }}</span>
+            <span class="text-center tickets-name">{{ ticket.nome }} - {{getSystemCurrency.data.symbol}}{{ value }}</span>
             <span class="countdown">
 				<span v-if="days > 1">
 					{{ days }} {{ trans('strings.days') }} e
@@ -49,9 +49,9 @@
 </template>
 
 <script>
-	import {routes} from '../../../api_routes'
-	import {mapState, mapGetters} from 'vuex'
-	import GameComponent from './GameComponent'
+	import {routes} from '../../../api_routes';
+	import {mapState, mapGetters} from 'vuex';
+	import GameComponent from './GameComponent';
 	export default {
 		props: ['ticket', 'index', 'type', 'category', 'item'],
 		data: function() {
@@ -443,7 +443,9 @@
 		},
 		computed: {
 			...mapGetters([
-                'purchase', 'auth'
+				'purchase', 
+				'auth',
+				'getSystemCurrency'
             ]),
 		},
 		watch: {

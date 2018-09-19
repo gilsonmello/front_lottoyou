@@ -14,6 +14,13 @@
 
 		<login-component></login-component>
 
+        <portal-target name="destination">
+			<!--
+			This component can be located anwhere in your App.
+			The slot content of the above portal component will be rendered here.
+			-->
+       	</portal-target>
+
 		<vc-modal ref="modal">
 			
 		</vc-modal>		
@@ -29,7 +36,7 @@
 	import VcModal from './VcModal'
 	import router from '../router'
 	import LoadComponent from './Load'
-	import AppLoadComponent from './AppLoad'
+	import AppLoadComponent from './AppLoad';
 	import {routes} from '../api_routes'
 	import {mapGetters} from 'vuex';
 	export default {

@@ -78,7 +78,7 @@
 		        				<tr v-for="(award, index) in awards" :key="index">
 		        					<td>{{award.num_acertos}}</td>
 		        					<td>{{award.num_acertos_extras}}</td>
-		        					<td>${{award.value}}</td>
+		        					<td>{{getSystemCurrency.data.symbol}}{{award.value}}</td>
 		        				</tr>
 		        				<!-- <tr>
 		        					<td>4</td>
@@ -113,9 +113,10 @@
 </template>
 
 <script>
-	import {routes} from '../../api_routes'
-	import LoadComponent from '../Load'
-	import CardComponent from './CardComponent'
+	import {routes} from '../../api_routes';
+	import LoadComponent from '../Load';
+	import CardComponent from './CardComponent';
+	import {mapGetters} from 'vuex';
 	export default {
 		metaInfo () {
 			return {
@@ -204,6 +205,11 @@
 		},
 		watch: {
 
+		},
+		computed: {
+			...mapGetters([
+				'getSystemCurrency'
+            ]),
 		}
 	}
 </script>

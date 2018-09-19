@@ -115,12 +115,12 @@
             <tbody v-if="loading.pagination == true">
                 <tr>
                     <td colspan="5">
-                        <load-component></load-component>
+                        <load />
                     </td>
                 </tr>
             </tbody>
             <tbody v-else>
-                  <tr v-for="(balance, index) in balances">
+                  <tr v-for="(balance, index) in balances" :key="index">
                     <td>
                         {{ balance.created }}
                     </td>
@@ -179,14 +179,14 @@
                     </td>
                     <td>
                         <span class="btn btn-xs btn-danger" v-if="balance.amount < 0">
-                            ${{ balance.amount }}
+                            {{getSystemCurrency.data.symbol}}{{ balance.amount }}
                         </span>
                         <span class="btn btn-xs btn-success" v-else>
-                            $+{{ balance.amount }}
+                            {{getSystemCurrency.data.symbol}}+{{ balance.amount }}
                         </span>
                     </td>
                     <td>
-                        ${{ balance.to }}
+                        {{getSystemCurrency.data.symbol}}{{ balance.to }}
                     </td>
                 </tr>
             </tbody>
@@ -207,6 +207,9 @@
     import VcPagseguro from './VcPagseguro';
     import VcWithdrawAgent from './VcWithdrawAgent';
     import VcBalanceInsert from './VcBalanceInsert';
+    import VcCartoleando from './VcCartoleando';
+    import VcLeaClassicTeam from './VcLeaClassicTeam';
+    import VcLeaCupTeam from './VcLeaCupTeam';
     export default {
         metaInfo () {
             return {
@@ -220,24 +223,24 @@
             }
         },
         methods: {
-            confirmation(balance) {
+            confirmation (balance) {
                 if(balance.order) {
                     this.order(balance.order);
                 }
             },
-            order(order) {
+            order (order) {
 
             },
-            filter(event) {             
+            filter (event) {             
                 $(event.target).find('[type="load"]').removeClass('hide');
                 $(event.target).find('[type="submit"]').addClass('hide');
                 this.historicRequest();
             },
-            paginate(page) {
+            paginate (page) {
                 this.query.page = page;
                 this.historicRequest();
             },
-            toggle(column) {
+            toggle (column) {
                 if(this.query.column == column) {
                     if(this.query.direction == 'desc') {
                         this.query.direction = 'asc';
@@ -251,19 +254,19 @@
 
                 this.historicRequest();
             },
-            prev() {
+            prev () {
                 if(this.model.prev_page_url) {
                     this.query.page--;
                     this.historicRequest();
                 }
             },
-            next() {
+            next () {
                 if(this.model.next_page_url) {
                     this.query.page++;
                     this.historicRequest();
                 }
             },
-            historicRequest() {
+            historicRequest () {
                 var historicRequest = axios.create();
 
                 /*var url = routes.historic_balances.of_the_user.replace('{id}', this.auth.id);
@@ -303,7 +306,7 @@
                 });
             }
         },
-        data() {
+        data () {
     		return {
     			loading: {
                     component: true,
@@ -321,7 +324,7 @@
                 }
     		}
     	},
-        mounted() {
+        mounted () {
             if(this.$route.query.id) {
                 this.query.id = this.$route.query.id
             } 
@@ -353,10 +356,13 @@
             VcPagseguro,
             VcWithdrawAgent,
             VcBalanceInsert,
+            VcLeaClassicTeam,
+            VcLeaCupTeam
         },
         computed: {
             ...mapGetters([
-                'auth'
+                'auth',
+                'getSystemCurrency'
             ])
         }
     }

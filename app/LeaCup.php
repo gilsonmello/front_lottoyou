@@ -61,4 +61,24 @@ class LeaCup extends Model
     {
         return $this->hasMany(LeaCupStep::class, 'lea_cup_id');
     }
+
+    public function winner()
+    {
+        return $this->belongsTo(CartoleandoTeam::class, 'winner_id');
+    }
+
+    public function loser()
+    {
+        return $this->belongsTo(CartoleandoTeam::class, 'loser_id');
+    }
+
+    public function third()
+    {
+        return $this->belongsTo(CartoleandoTeam::class, 'third_id');
+    }
+
+    public function fourth()
+    {
+        return $this->belongsTo(CartoleandoTeam::class, 'fourth_id');
+    }
 }

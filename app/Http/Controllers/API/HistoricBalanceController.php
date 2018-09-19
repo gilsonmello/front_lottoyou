@@ -34,6 +34,12 @@ class HistoricBalanceController extends Controller
             'orderItem.lottery' => function($query) {
 
             },
+            'orderItem.leaPackage' => function($query) {
+
+            },
+            'orderItem.league' => function($query) {
+
+            },
             'scratchCard' => function($query) {
 
             },
@@ -66,7 +72,7 @@ class HistoricBalanceController extends Controller
             },
             'balanceInsert' => function($query) {
 
-            },  
+            },
         ]);
         
         return response()->json($historicBalances->paginate(), 200);

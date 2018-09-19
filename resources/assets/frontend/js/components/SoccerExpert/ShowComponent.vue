@@ -71,7 +71,7 @@
 						{{ trans('strings.add_to_cart') }}
 					</button>
 					<span class="pull-right price">
-						$ <span class="value" v-if="item.total > 0">
+						{{getSystemCurrency.data.symbol}}<span class="value" v-if="item.total > 0">
 							{{ totalFormated }}
 						</span>
 						<span class="value" v-else>0.00</span>
@@ -339,7 +339,9 @@
 		},
 		computed: {
 			...mapGetters([
-                'purchase', 'auth'
+				'purchase', 
+				'auth',
+				'getSystemCurrency'
             ]),
 			totalFormated: {
             	// getter

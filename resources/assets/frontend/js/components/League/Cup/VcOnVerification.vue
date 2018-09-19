@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <load v-if="loading.teams"/>
+    <div v-else>
         <br>
         <div class="row">
             <div class="col-12">
@@ -102,15 +103,18 @@ export default {
                 });
         },
     },
-    mounted () {
+    created () {
         this.getTeams();
+    },
+    mounted () {
+        
     },
     props: ['league'],
     data () {
         return {
             teams: [],
             loading: {
-                teams: false,
+                teams: true,
             }
         }
     }

@@ -1,5 +1,10 @@
 <template>
-    <div class="row key">
+    <div class="row key" :style="index == 0 ? 'margin-top: 10px;' : ''">
+        <div class="identificator">
+            <strong>
+                {{ getStepName(stepKey.type_step) }} {{ index + 1 }}
+            </strong>
+        </div>
         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
             <div class="row no-margin">
                 <div class="col-lg-7 vcenter-end" style="flex-direction: column; align-items: flex-end;">
@@ -8,16 +13,8 @@
                             {{ stepKey.homeTeam.time.nome }}
                         </strong>
                     </h5>
-                    <h5 style="line-height: 1;" v-else>
-                        <strong>
-                            lakdadsk
-                        </strong>
-                    </h5>
                     <h6 style="line-height: 1;" v-if="stepKey.homeTeam">
                         {{ stepKey.homeTeam.time.nome_cartola }}
-                    </h6>
-                    <h6 style="line-height: 1;" v-else>
-                        isdvslvh
                     </h6>
                 </div>
                 <div class="col-lg-3 vcenter-end">
@@ -70,16 +67,16 @@ export default {
         getStepName (typeStep) {
             let types = {
                 F: 'Final',
-                S: 'Semifinal',
-                Q: 'Quartas de Finais',
-                O: 'Oitavas de Finais',
+                S: 'Semi',
+                Q: 'Quartas',
+                O: 'Oitavas',
                 I: 'Fase Inicial',
                 T: '3º Lugar'
             }
             return types[typeStep];
         },
     },
-    props: ['step', 'stepKey'],
+    props: ['step', 'stepKey', 'index'],
     data () {
         return {
 
@@ -92,7 +89,25 @@ export default {
 </script>
 
 <style scoped>
+    .identificator {
+        position: absolute; 
+        top: 0; 
+        left: 50%; 
+        transform: translate(-50%, -50%);
+        padding: 8px 30px;
+        font-size: 14px;
+        border-radius: 25px;
+        text-transform: uppercase;
+        background-color: #fff;
+        border: 1px solid #e1e1de;
+    }
+
+    .row {
+        position: relative;
+    }
+    
     .key {
+        margin-top: 30px;
         margin-bottom: 15px;
         padding-bottom: 20px;
         padding-top: 20px;

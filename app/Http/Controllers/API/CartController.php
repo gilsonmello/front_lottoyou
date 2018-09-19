@@ -16,6 +16,13 @@ use App\User;
 
 class CartController extends Controller
 {
+    public function __construct() 
+    {
+        if(isset(request()->header()['authorization'])) {
+            $this->middleware('auth:api');
+        }
+    }
+
     private function scratchCardValidate($theme_id, $quantity)
     {
         $scratchCard = ScratchCard::select([
@@ -59,7 +66,7 @@ class CartController extends Controller
         if(is_null($sweepstake)) {
             $valid = [
                 'valid' => false,
-                'msg' => 'O sorteio '.$request['sweepstake']['sorteio'].' encontra-se indisponível.'
+                'msg' => 'O sorteio '.$request['sweepstake']['sorteio'].' encontra-se indisponível.<br>Remova-o do carrinho para continuar'
             ];
             return response()->json($valid, 422);
         }
@@ -92,7 +99,7 @@ class CartController extends Controller
         if(is_null($round)) {
             $valid = [
                 'valid' => false,
-                'msg' => 'O ticket '.$request['tickets'][0]['nome'].' encontra-se indisponível.'
+                'msg' => 'O ticket '.$request['tickets'][0]['nome'].' encontra-se indisponível.<br>Remova-o do carrinho para continuar'
             ];
             return response()->json($valid, 422);
         }
@@ -120,7 +127,7 @@ class CartController extends Controller
             if($round->isEmpty()) {
                 $valid = [
                     'valid' => false, 
-                    'msg' => 'O ticket '.$ticket['nome'].' encontra-se indisponível.'
+                    'msg' => 'O ticket '.$ticket['nome'].' encontra-se indisponível.<br>Remova-o do carrinho para continuar'
                 ];
                 break;
             }
@@ -129,13 +136,32 @@ class CartController extends Controller
         return $valid;        
     }
 
-    private function cartoleandoValidate($data) 
+    private function cartoleandoValidate($data, $request) 
     {
-        $valid = [
+        $user = $request->user();  
+
+        $package = \App\LeaguePackage::find($data['package']['id']);
+
+        //Se o usuário estiver logado, evitar que o pacote apareça para ele novamente            
+        $itemsIDS = \App\OrderItem::where('user_id', '=', $user->id)
+            ->select([
+                'lea_package_id'
+            ])
+            ->where('lea_package_id', '=', $package->id)
+            ->where('type', '=', 'cartoleando')
+            ->get();
+            
+        if(!$itemsIDS->isEmpty()) {
+            return [
+                'valid' => false, 
+                'msg' => 'Você já possui o pacote '.$package->name.'.<br>Remova-o do carrinho para continuar'
+            ];
+        }
+         
+        return [
             'valid' => true, 
             'msg' => 'ok'
         ];
-        return $valid;
     }
 
     private function lotteryValidate($data) 
@@ -157,7 +183,7 @@ class CartController extends Controller
         if($sweepstake->isEmpty()) {
             $valid = [
                 'valid' => false, 
-                'msg' => 'O sorteio '.$data['sorteio'].' encontra-se indisponível.'
+                'msg' => 'O sorteio '.$data['sorteio'].' encontra-se indisponível.<br>Remova-o do carrinho para continuar'
             ];
         }
 
@@ -204,7 +230,7 @@ class CartController extends Controller
                 }
             } else if($value['type'] == 'cartoleando') {
                 $cartoleando = $value['cartoleando'];
-                $valid = $this->cartoleandoValidate($cartoleando);
+                $valid = $this->cartoleandoValidate($cartoleando, $request);
 
                 if(!$valid['valid']) {
                     return response()->json($valid, 422);

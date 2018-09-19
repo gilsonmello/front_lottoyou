@@ -55,7 +55,7 @@
 						  					<div class="row">
 						  						<div class="col-lg-12 no-padding">
 													<router-link :to="{ name: 'balances.deposit' }" class="pull-left" style="width: 100%;">
-						  								<span class="balance-amount" style="cursor: initial">$ {{ auth.balance.value }}</span>
+						  								<span class="balance-amount" style="cursor: initial">{{getSystemCurrency.data.symbol}}{{ auth.balance.value }}</span>
 													</router-link>
 						  						</div>
 						  					</div>
@@ -106,10 +106,10 @@
 						  						</div>
 						  						<div class="col-lg-6 col-8 col-md-6 col-sm-6">
 						  							<span class="balance" v-if="auth && auth.balance">
-							  							Crédito: $ {{ auth.balance.value }}
+							  							Crédito: {{getSystemCurrency.data.symbol}}{{ auth.balance.value }}
 							  						</span>
 							  						<span class="balance" v-else>
-							  							Crédito: $ 0.00
+							  							Crédito: {{getSystemCurrency.data.symbol}}0.00
 							  						</span>
 						  						</div>
 						  					</div>
@@ -217,7 +217,7 @@
 						  					</div>
 						  					<div class="cart-right pull-right">
 						  						<span class="cart-value">
-						  							$ {{ purchase.total.format(2, true) }}
+						  							{{getSystemCurrency.data.symbol}}{{ purchase.total.format(2, true) }}
 						  						</span>
 						  						<span class="cart-checkout-now">
 						  							{{ trans('strings.pay_now') }}
@@ -241,7 +241,7 @@
 <script>
 	import NavGameComponent from './NavGameComponent'
 	import SliderComponent from './SliderComponent'
-	import {mapState, mapGetters} from 'vuex'
+	import {mapState, mapGetters} from 'vuex';
 	export default {
 		data: function() {
 			return {
@@ -316,7 +316,10 @@
 		},
 		computed: {
             ...mapGetters([
-                'auth', 'purchase', 'loginOptions'
+				'auth', 
+				'purchase', 
+				'loginOptions',
+				'getSystemCurrency'
             ])
         },
         watch: {

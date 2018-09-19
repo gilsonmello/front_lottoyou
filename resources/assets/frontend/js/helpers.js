@@ -342,10 +342,20 @@ Vue.prototype.getLeagueAwards = (slug) => {
 };
 
 Vue.prototype.getLeaguePackages = () => {
+	let auth = window.VueInstance.auth;
+	let headers = {	};
+
+	if(auth) {
+		headers.headers = {
+			'Content-Type' : 'application/json',
+			'Accept' : 'application/json',
+			'Authorization': 'Bearer ' + auth.access_token
+		};
+	} 
 	return new Promise(function(resolve, reject) {       
 		let request = axios.create();
 		let url = routes.league_packages.index;
-		request.get(url)
+		request.get(url, headers)
 			.then((response) => {
 				resolve(response);
 			})

@@ -104,7 +104,7 @@
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">
-						{{ trans('strings.total_value') }} $<span class="value" v-if="item.total > 0">
+						{{ trans('strings.total_value') }} {{getSystemCurrency.data.symbol}}<span class="value" v-if="item.total > 0">
 							{{ totalFormated }}
 						</span>
 						<span class="value" v-else>0.00</span>
@@ -1066,7 +1066,9 @@
                 User: state => state.User
             }),
             ...mapGetters([
-                'auth', 'purchase'
+				'auth', 
+				'purchase',
+				'getSystemCurrency'
             ]),
             totalFormated: {
             	// getter

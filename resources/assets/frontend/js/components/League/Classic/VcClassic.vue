@@ -1,6 +1,8 @@
 <template>
     <load v-if="loading.teams"/>
     <div v-else>
+        <br>
+        <vc-podium v-if="league.classic.show_podium" :league="league"/>
         <div class="row">
             <div class="col-12">
                 <h1 style="display: inline-block">Ranking</h1>
@@ -15,7 +17,7 @@
         </div>
 
         <br>
-        <div class="row row-team" style="padding-left: 30px; padding-right: 30px;">
+        <div class="row row-team no-margin" style="padding-left: 30px; padding-right: 30px;">
             <div class="col-4 col-lg-8">
                 <strong>{{ trans('strings.team') }}</strong>
             </div>
@@ -27,7 +29,7 @@
             </div>
         </div>
         
-        <div class="row vcenter row-team" v-for="(team, index) of teams" :key="index">
+        <div class="row vcenter row-team no-margin" v-for="(team, index) of teams" :key="index">
             <div class="col-4 col-lg-8 vcenter">
                 <div class="cartola-shield">
                     <img class="shield" :src="team.team.time.url_escudo_svg" :alt="team.team.time.nome">
@@ -50,6 +52,7 @@
 
 <script>
 import {host} from '../../../api_routes.js';
+import VcPodium from './VcPodium';
 export default {
     methods: {
         getTeams () {
@@ -67,8 +70,11 @@ export default {
         }
     },
     name: 'VcClassic',
-    mounted () {
+    created () {
         this.getTeams();
+    },
+    mounted () {
+        
     },
     data () {
         return {
@@ -95,7 +101,10 @@ export default {
             }
         }
     },
-    props: ['slug']
+    props: ['league', 'slug'],
+    components: {
+        VcPodium
+    }
 }
 </script>
 

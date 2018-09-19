@@ -78,7 +78,7 @@
 								<div class="col-lg-3 col-3 col-md-3 col-sm-3">
 									<span>
 
-										$ {{ calculatePercentage(scratch_card_theme.lot.value, discount_table.percentage, discount_table.quantity ) }}
+										{{getSystemCurrency.data.symbol}}{{ calculatePercentage(scratch_card_theme.lot.value, discount_table.percentage, discount_table.quantity ) }}
 									</span>
 								</div>
 							</div>
@@ -184,7 +184,7 @@
 		        				<tr v-if="scratch_card_jackpot_available != null" v-for="(jackpot, key) in scratch_card_jackpot_available.jackpot_tables">
 		        					<td>{{ key + 1 }}</td>
 		        					<td>{{ jackpot.disponivel }}</td>
-		        					<td>$ {{ jackpot.quantia }}</td>
+		        					<td>{{getSystemCurrency.data.symbol}}{{ jackpot.quantia }}</td>
 		        				</tr>
 		        			</tbody>
 		        		</table>
@@ -346,7 +346,7 @@
 	import ModalFormComponent from '../ModalFormComponent'
 	import ModalComponent from './ModalComponent'
 	import LoadComponent from '../Load'
-	import {mapState, mapGetters} from 'vuex'
+	import {mapState, mapGetters} from 'vuex';
 	export default {
 		metaInfo () {
 			return {
@@ -428,7 +428,7 @@
 				var time = setTimeout(() => {
 					$('.scratchpad').wScratchPad('clear');
 					if(this.scratch_card_demo.premio > 0) {
-						$('.btn-result').text('Parabéns, você ganhou: $ '+this.scratch_card_demo.premio);
+						$('.btn-result').text('Parabéns, você ganhou: '+this.getSystemCurrency.data.symbol+''+this.scratch_card_demo.premio);
 					}else {
 						$('.btn-result').text(vm.trans('strings.good_luck_to_the_next'));
 					}
@@ -475,7 +475,7 @@
 		                            	vm.demoAttempts -= 1;
 		                            	if(dataScratchCard.premio > 0) {
 		                            		$('.btn-result').removeClass('invisible');
-											$('.btn-result').text('Parabéns, você ganhou: $ '+dataScratchCard.premio);
+											$('.btn-result').text('Parabéns, você ganhou: '+this.getSystemCurrency.data.symbol+''+dataScratchCard.premio);
 		                            	}else{
 		                            		$('.btn-result').removeClass('invisible');
 											$('.btn-result').text(vm.trans('strings.good_luck_to_the_next'));
@@ -712,7 +712,8 @@
 		},
 		computed: {
 			...mapGetters([
-                'auth'
+				'auth',
+				'getSystemCurrency'
             ]),
             total: {
             	// getter

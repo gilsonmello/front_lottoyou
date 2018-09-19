@@ -30,6 +30,9 @@ class UserController extends Controller
      * @param UserContract $repository
      */
     public function __construct(UserContract $repository) {
+        if(isset(request()->header()['authorization'])) {
+            $this->middleware('auth:api');
+        }
         $this->repository = $repository;
     }
 
@@ -202,14 +205,15 @@ class UserController extends Controller
      */
     public function items(Request $request)
     {
+        $user = $request->user();
+        
         $items = OrderItem::with([
-            'order' => function($query) use($request) {
-                $query->where('user_id', '=', $request->owner_id);
+            'order' => function($query) use($user) {
+                $query->where('user_id', '=', $user->id);
             },
+            'leaPackage',
+            'league',
             'soccerExpert',
-            'cartoleando' => function($query) {
-
-            },
             'scratchCard',
             'lottery',
             'scratchCardGame' => function($query) {
@@ -243,8 +247,8 @@ class UserController extends Controller
                 
             }
         ])
-        ->whereHas('order', function($query) use($request) {
-            $query->where('user_id', '=', $request->owner_id);
+        ->whereHas('order', function($query) use($user) {
+            $query->where('user_id', '=', $user->id);
         });
 
         //$user = User::find($request->get('user_id'));

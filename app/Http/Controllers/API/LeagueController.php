@@ -21,7 +21,19 @@ class LeagueController extends Controller
     {
         $league = League::findBySlug($slug);
         $leaClassic = $league->classic;
-        $teams = $leaClassic->teams;
+        //Tipos de ordenamentos
+        $typeOrders = [
+            0 => '',
+            1 => 'p_c',
+            2 => 'p_m',
+            3 => 'p_m',
+            4 => 'p_p',
+            5 => 'p_r',
+        ];
+        $typeOrder = $typeOrders[$leaClassic->type_award_id];
+        $teams = $leaClassic->teams()
+            ->orderBy($typeOrder, 'DESC')
+            ->get();
 
         foreach($teams as $key => $team) {
             $body = $this->getTeamFromCartola($team->cartoleandoTeam->slug);

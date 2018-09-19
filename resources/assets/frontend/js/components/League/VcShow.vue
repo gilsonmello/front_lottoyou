@@ -13,15 +13,32 @@
                 <div class="row">
 
                     <div class="col-lg-12 col-12 col-md-12 col-sm-12">
-                        <small>
-                            {{ league.modality }}
+                        <small class="league modality">
+                            <strong>{{ league.modality }}</strong>
                         </small>
                     </div>            
                         
                     <div class="col-lg-12 col-12 col-md-12 col-sm-12">
-                        <h1 style="margin: 0;">
+                        <h1 class="league name">
                             {{ league.name }}
                         </h1>
+                    </div>
+
+                    <div class="col-lg-12 col-12 col-md-12 col-sm-12">
+                        <h4 class="league small-description">
+                            {{ league.small_description }}
+                        </h4>
+                    </div>
+
+                    <div class="col-lg-3 col-12 col-md-12 col-sm-12 no-padding">
+                        <div class="text-center">
+                            <p class="league quantity-teams">
+                                <strong>{{ league.quantity_teams }}</strong>
+                            </p>
+                            <h5 class="league participants">
+                                {{ trans('strings.participants') }}
+                            </h5>
+                        </div>
                     </div>
 
                 </div>
@@ -38,7 +55,7 @@
 
         <br>
         <vc-cup v-if="league.context === 'cup'" :league="league" />
-        <vc-classic v-else-if="league.context === 'classic'" :slug="league.slug" />
+        <vc-classic v-else-if="league.context === 'classic'" :league="league" :slug="league.slug" />
 
     </div>
     <div class="container" v-else>
@@ -142,6 +159,30 @@ export default {
 </script>
 
 <style scoped>
+
+    .league.quantity-teams {
+        margin: 0; 
+        line-height: 1;
+    }
+    
+    .league.modality {
+        text-transform: uppercase;
+    }
+
+    .league.participants {
+        margin: 0; 
+        line-height: 1;
+    }
+
+    .league.name {
+        margin: 0; 
+        text-transform: uppercase;
+    }
+
+    .league.small-description {
+        margin: 60px 0;
+    }
+
     .card .help-image {
         height: 167px;
         overflow: hidden;

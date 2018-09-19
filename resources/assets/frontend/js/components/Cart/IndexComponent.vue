@@ -238,10 +238,19 @@
 		          	return config;
 				});
 
+				let headers = {};
+				if(this.auth) {
+					headers.headers = {
+						'Content-Type' : 'application/json',
+						'Accept' : 'application/json',
+						'Authorization': 'Bearer ' + this.auth.access_token
+					};
+				} 
+
 				validateRequest.post(
 					routes.carts.validate, 
 					this.purchase, 
-					{}
+					headers
 				).then(response => {
 					if(response.status === 200) {
 						this.completePurchase();

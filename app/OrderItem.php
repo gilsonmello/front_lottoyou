@@ -77,9 +77,17 @@ class OrderItem extends Model
     /**
      * Categoria da loteria do item
      */
-    public function cartoleando() 
+    public function leaPackage() 
     {
         return $this->belongsTo(LeaguePackage::class, 'lea_package_id');
+    }
+
+     /**
+     * Categoria da loteria do item
+     */
+    public function league() 
+    {
+        return $this->belongsTo(League::class, 'league_id');
     }
 
     /**

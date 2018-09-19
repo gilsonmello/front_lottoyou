@@ -9,7 +9,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body" style="padding: 0;" v-if="theme">
-                	<load-component v-if="loading.component == true"></load-component>
+                	<load v-if="loading.component == true" />
 
                 	<div class="col-lg-12 col-12 col-md-12 col-sm-12 no-padding" v-else :style="backgroundDemo(theme.img_background_url)">			      			
 	      				<div class="row" style="padding: 20px 20px 0 20px;">
@@ -41,14 +41,14 @@
       								</div>
 	      						</div>
 	      						<div class="row h" v-if="loading.scratchpad" >
-	      							<div class="col-lg-4 col-4 col-md-4 col-sm-4" v-for="(val, index) in (0, 9)">
+	      							<div class="col-lg-4 col-4 col-md-4 col-sm-4" v-for="(val, index) in (0, 9)" :key="index">
 	      								<div class="scratchpad">
 	      									
 	      								</div>
 	      							</div>
 	      						</div>
 	      						<div class="row h" v-else>
-	      							<div class="col-lg-4 col-4 col-md-4 col-sm-4" v-for="(val, index) in (0, 9)">
+	      							<div class="col-lg-4 col-4 col-md-4 col-sm-4" v-for="(val, index) in (0, 9)" :key="index">
 	      								<div class="scratchpad empty" :style="backgroundScratchpad()">
 		      							</div>
 	      							</div>
@@ -87,14 +87,14 @@
 </template>
 
 <script>
-	import LoadComponent from '../Load'
 	import {routes} from '../../api_routes'
 	import {mapState, mapGetters} from 'vuex'
 	export default {
 		props: [],
 		computed: {
 			...mapGetters([
-                'auth'
+				'auth',
+				'getSystemCurrency'
             ]),
 		},
 		beforeDestroy() {
@@ -200,7 +200,7 @@
 
 			            	if(this.scratch_card.premio > 0) {
 			            		this.refreshAuth();
-								$(this.$el).find('.btn-result').text('Parabéns, você ganhou: $ '+this.scratch_card.premio);
+								$(this.$el).find('.btn-result').text('Parabéns, você ganhou: '+this.getSystemCurrency.data.symbol+''+this.scratch_card.premio);
 							} else {
 								$(this.$el).find('.btn-result').text(this.trans('strings.good_luck_to_the_next'));
 							}
@@ -258,7 +258,7 @@
 						            		vm.refreshAuth();
 											$(vm.$el)
 												.find('.btn-result')
-												.text('Parabéns, você ganhou: $ '+vm.scratch_card.premio);
+												.text('Parabéns, você ganhou: '+vm.getSystemCurrency.data.symbol+''+vm.scratch_card.premio);
 										} else {
 											$(vm.$el)
 												.find('.btn-result')
@@ -329,7 +329,7 @@
 			},
 		},
 		components: {
-			LoadComponent
+			
 		},
 		watch: {
 			'loading.scratchpad': {

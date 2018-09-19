@@ -90,7 +90,9 @@
                 <vc-soccer-expert :key="index" :index="index" :item="item" v-if="item.type == 'soccer_expert'" />
                 <vc-scratch-card :key="index" :index="index" :item="item" v-if="item.type == 'scratch_card'" />
                 <vc-lottery :key="index" :index="index" :item="item" v-if="item.type == 'lottery'" />
-                <vc-cartoleando :key="index" :index="index" :item="item" v-if="item.type == 'cartoleando'" />
+                <vc-league-cup :key="index" :index="index" :item="item" v-if="item.type == 'cartoleando' && item.league && item.league.context == 'cup'" />
+                <vc-league-classic :key="index" :index="index" :item="item" v-if="item.type == 'cartoleando' && item.league && item.league.context == 'classic'" />
+                <!-- <vc-cartoleando :key="index" :index="index" :item="item" v-if="item.type == 'cartoleando'" /> -->
             </div>           
         </div>
 
@@ -120,6 +122,8 @@
     import VcSoccerExpert from './SoccerExpert/VcSoccerExpert';
     import VcScratchCard from './ScratchCard/VcScratchCard';
     import VcLottery from './Lottery/VcLottery';
+    import VcLeagueClassic from './LeagueClassic/VcClassic';
+    import VcLeagueCup from './LeagueCup/VcCup';
     import VcCartoleando from './Cartoleando/VcCartoleando';
     export default {
         metaInfo () {
@@ -165,6 +169,15 @@
                     query: Object.assign(this.query)
                 })
 
+                let headers = {};
+				if(this.auth) {
+					headers.headers = {
+						'Content-Type' : 'application/json',
+						'Accept' : 'application/json',
+						'Authorization': 'Bearer ' + this.auth.access_token
+					};
+				} 
+
                 itemsRequest.interceptors.request.use(config => {
                     this.loading.component = true
                     return config;
@@ -175,9 +188,8 @@
                     column: this.query.column,
                     direction: this.query.direction,
                     id: this.query.id,
-                    lottery_bet_id:  this.query.lottery_bet_id,
-                    owner_id: this.auth.id
-                }, {}).then(response => {
+                    lottery_bet_id:  this.query.lottery_bet_id
+                }, headers).then(response => {
                     if(response.status === 200) {
                         this.loading.component = false;
                         this.model = response.data;  
@@ -254,6 +266,8 @@
             VcSoccerExpert,
             VcScratchCard,
             VcLottery,
+            VcLeagueClassic,
+            VcLeagueCup,
             VcCartoleando
         }
     }

@@ -40,15 +40,19 @@ import Load from './components/Load';
 import {mapState, mapGetters} from 'vuex';
 
 import App from './components/App';
+//import Teste from './components/Teste';
+import PortalVue from 'portal-vue';
 
 Vue.use(VueCookies);
 Vue.use(VueResource);
 Vue.use(Meta);
 Vue.use(VueModal);
+Vue.use(PortalVue);
 
 Vue.component('select2', Select2);
 Vue.component('inputmask', InputMask);
 Vue.component('load', Load);
+//Vue.component('teste', Teste);
 
 Vue.component('vc-countries', VcCountries);
 

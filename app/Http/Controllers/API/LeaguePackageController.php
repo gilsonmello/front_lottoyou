@@ -10,13 +10,20 @@ use DB;
 
 class LeaguePackageController extends Controller
 { 
+    public function __construct()
+    {
+        if(isset(request()->header()['authorization'])) {
+            $this->middleware('auth:api');
+        }
+    }
+
     /**
      * Busca as ligas que estão dentro do pacote 
      *
      * @param $slug
      * @return \Illuminate\Http\Response
      */
-    public function findLeaguesBySlug($slug)
+    public function findLeaguesBySlug($slug, Request $request)
     {
         $leagues = League::select('*', DB::raw("
         (
@@ -46,7 +53,7 @@ class LeaguePackageController extends Controller
      * @param $slug
      * @return \Illuminate\Http\Response
      */
-    public function findBySlug($slug)
+    public function findBySlug($slug, Request $request)
     {
         $package = LeaguePackage::findBySlug($slug);
 
@@ -62,9 +69,28 @@ class LeaguePackageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $packages = LeaguePackage::where('active', '=', 1)->get();
+        $user = $request->user();
+        $packages = LeaguePackage::where('active', '=', 1);
+
+        //Se o usuário estiver logado, evitar que o pacote apareça para ele novamente
+        if($user) {
+            /* $itemsIDS = \App\OrderItem::where('user_id', '=', $user->id)
+                ->select([
+                    'lea_package_id'
+                ])
+                ->where('type', '=', 'cartoleando')
+                ->groupBy([
+                    'lea_package_id'
+                ])
+                ->get()
+                ->pluck('lea_package_id')
+                ->all();
+            $packages->whereNotIn('id', $itemsIDS); */
+        }
+
+        $packages = $packages->get();
 
         if($packages->isEmpty()) {
             return response()->json([], 402);

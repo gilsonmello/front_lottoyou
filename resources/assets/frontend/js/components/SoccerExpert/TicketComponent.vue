@@ -2,7 +2,7 @@
 	<div class="tickets">
 		<header class="tickets-header">	
             <span class="text-center tickets-name">
-            	{{ ticket.nome }} - ${{ value }}
+            	{{ ticket.nome }} - {{getSystemCurrency.data.symbol}}{{ value }}
             </span>   
 			<span class="countdown">
 				<span v-if="days > 1">
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-	
+	import {mapGetters} from 'vuex';
 	import GameComponent from './GameComponent'
 	export default {
 		props: ['ticket', 'index', 'type', 'category'],
@@ -202,6 +202,9 @@
 			GameComponent
 		},
 		computed: {
+			...mapGetters([
+				'getSystemCurrency'
+            ]),
 		},
 		watch: {
 			'ticket.choseGoldBall': function(newValue, oldValue) {
