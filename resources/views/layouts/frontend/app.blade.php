@@ -41,7 +41,7 @@
         </style>
         <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet" type="text/css">
         <style>
-            .fa-spin {
+            .first-load {
                 font-size: 100px;
                 color: #003874;
             }
@@ -54,7 +54,7 @@
     </head>
     <body>
         <div class="app-loading" id="prerendered-content">
-            <i class="fa fa-refresh fa-spin"></i>
+            <i class="fa fa-refresh fa-spin first-load"></i>
         </div>
         
         <div id="app">

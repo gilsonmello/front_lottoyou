@@ -365,7 +365,14 @@
 
 							$('.modal-login').modal('hide');
 							  
-							this.teamRequest();
+							this.teamRequest()
+								.then((teamRequestResponse) => {
+									if(response.status === 200) {
+										this.$store.dispatch('setTeamUser', teamRequestResponse.data);
+									}
+								}).catch((error) => {
+
+								});
 		                
 		                }).catch((error_2) => {
 		                	this.loading.login = false;

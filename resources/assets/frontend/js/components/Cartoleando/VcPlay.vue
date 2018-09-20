@@ -226,7 +226,10 @@
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer" style="justify-content: center">
-                    	<button v-if="auth && !loading.adding" @click="addToCart($el)" class="btn btn-xl btn-primary" type="button" style="width: 40%;">
+                        <button v-if="loading.adding" @click.prevent="" class="pull-right btn btn-md btn-primary">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </button>
+                    	<button v-else-if="auth" @click="addToCart($el)" class="btn btn-xl btn-primary" type="button" style="width: 40%;">
                             {{ trans('strings.to_confirm') }}
                         </button>
                         <button v-else class="btn btn-primary btn-md" style="width: 40%;" type="button" @click.prevent="showModalLogin($event)">		
@@ -289,7 +292,7 @@ export default {
                 slug: this.item.slug
             }).then(response => {
                 this.item.team = response.data;
-                /* if(response.data.time.nome_cartola !== this.item.cartoleiro) {
+                if(response.data.time.nome_cartola !== this.item.cartoleiro) {
                     
                     this.modal.modal('hide');
 
@@ -311,8 +314,15 @@ export default {
 
                 } else {
                     this.item.team = response.data;
-                } */
+                }
             }).catch(error => {
+                toastr.options = {
+                    closeButton: true,
+                    positionClass: "toast-top-center",
+                };
+                toastr.warning(
+                    error.response.data.message
+                );                
                 this.modal.modal('hide');                
             });
         },
@@ -429,7 +439,7 @@ export default {
                     auth: this.auth,
                 }).then(response => {
                     if(response.status === 200) {
-                        
+                        this.loading.adding = false;    
                         this.$store.dispatch('setItemCartoleando', this.item);
                         this.$router.push({
                             name: 'cart.index'

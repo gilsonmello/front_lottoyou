@@ -417,6 +417,17 @@ Vue.prototype.showModalLogin = () => {
 };
 
 Vue.prototype.teamRequest = () => {
+	let auth = window.VueInstance.auth;
+	let headers = {	};
+
+	if(auth) {
+		headers.headers = {
+			'Content-Type' : 'application/json',
+			'Accept' : 'application/json',
+			'Authorization': 'Bearer ' + auth.access_token
+		};
+	} 
+
 	//Requisição para pegar os itens do carrinho salvo
 	let teamRequest = axios.create();
 
@@ -426,15 +437,9 @@ Vue.prototype.teamRequest = () => {
 
 	let url = routes.cartola.find_team_by_slug;
 	//Executando a requisição
-	teamRequest.post(url, {
+	return teamRequest.post(url, {
 		slug: window.VueInstance.auth.cartoleando_team.slug
-	}).then((response) => {
-		if(response.status === 200) {
-			window.VueInstance.$store.dispatch('setTeamUser', response.data);
-		}
-	}).catch((error) => {
-
-	});
+	}, headers);
 };
 
 
