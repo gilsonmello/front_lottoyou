@@ -90,10 +90,10 @@
             <!-- Se está fazendo login -->
             <load v-if="loading.signingIn" />
             <!-- Se não aparece o formulário -->
-            <div class="row no-margin" v-else>
-                <div class="col-lg-8 no-padding-left">
+            <div class="row" v-else>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                     <div class="row">
-                        <div class="col-lg-12 col-12 col-sm-6 col-md-3">
+                        <div class="col-lg-12 col-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="packages-purchase-team-name">{{ trans('strings.team_name') }}*</label>
                                 <input name="name" v-model="item.name" type="text" class="form-control" id="packages-purchase-team-name" aria-describedby="name" :placeholder="trans('strings.team_name')">
@@ -102,7 +102,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-12 col-12 col-sm-6 col-md-3">
+                        <div class="col-lg-12 col-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="packages-purchase-cartoleiro">{{ trans('strings.cartoleiro_name') }}*</label>
                                 <input name="cartoleiro" v-model="item.cartoleiro" type="text" class="form-control" id="packages-purchase-cartoleiro" aria-describedby="cartoleiro" :placeholder="trans('strings.cartoleiro_name')">
@@ -111,7 +111,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-12 col-12 col-sm-6 col-md-3">
+                        <div class="col-lg-12 col-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="packages-purchase-email">{{ trans('strings.email') }} cadastrado no site do cartola*</label>
                                 <input name="email" v-model="item.email" type="email" class="form-control" id="packages-purchase-email" aria-describedby="email" :placeholder="trans('strings.email')">
@@ -120,7 +120,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 no-padding-right">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                     <div class="card">
                         <div class="card-header">
                             <span class="price">
@@ -168,11 +168,11 @@
                             </h6> -->
 
                             <div class="row vcenter">
-                                <div class="col-lg-2">
+                                <div class="col-lg-2 col-4 col-sm-2 col-md-2">
                                     <img class="img-fluid" :src="league.bg_image_domain+'/'+league.bg_image" :alt="league.name"> 
                                 </div>
 
-                                <div class="col-lg-10">
+                                <div class="col-lg-10 col-8 col-sm-10 col-md-10">
                                     <h3 class="">{{league.name}}</h3>
                                     <span>
                                         {{ trans('strings.league') }} {{ league.modality }} 
@@ -258,8 +258,8 @@
 </template>
 
 <script>
-import {routes} from '../../api_routes'
-import {mapState, mapGetters} from 'vuex'
+import {routes} from '../../api_routes';
+import {mapState, mapGetters} from 'vuex';
 export default {
     methods: {
         submitForm () {

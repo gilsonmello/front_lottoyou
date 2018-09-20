@@ -1,18 +1,14 @@
 <template>
     <load v-if="loading.component == true"></load>
 	<div class="container" v-else>
-
-        <div class="row">
-        	<div class="col-lg-12">
-        		<div class="sub-navigation">
-        			<router-link :to="{ name: 'cartoleando.play', params: { slug: leaPackage.slug } }" class="show">
-	                    {{ trans('strings.play_on_the') }} {{ leaPackage.name }}
-	                </router-link>
-	                <router-link :to="{ name: 'cartoleando.leagues', params: { slug: leaPackage.slug } }" class="show active" id="result-component">
-	                    {{ trans('strings.leagues') }} {{ leaPackage.name }}
-	               	</router-link>
-        		</div>
-        	</div>
+        
+        <div class="sub-navigation">
+            <router-link :to="{ name: 'cartoleando.play', params: { slug: leaPackage.slug } }" class="show">
+                {{ trans('strings.play_on_the') }} {{ leaPackage.name }}
+            </router-link>
+            <router-link :to="{ name: 'cartoleando.leagues', params: { slug: leaPackage.slug } }" class="show active" id="result-component">
+                {{ trans('strings.leagues') }} {{ leaPackage.name }}
+            </router-link>
         </div>
 
         <div class="row">
@@ -36,11 +32,11 @@
                     {{ league.name }}
                 </h6> -->
                 <div class="row vcenter">
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 col-4 col-sm-2 col-md-2">
                         <img class="img-fluid" :src="league.bg_image_domain+'/'+league.bg_image" :alt="league.name"> 
                     </div>
 
-                    <div class="col-lg-10">
+                    <div class="col-lg-10 col-8 col-sm-10 col-md-10">
                         <h3 class="">{{league.name}}</h3>
                         <span>
                             {{ trans('strings.league') }} {{ league.modality }} 

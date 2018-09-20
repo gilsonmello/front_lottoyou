@@ -26,7 +26,7 @@ class LeagueController extends Controller
             0 => '',
             1 => 'p_c',
             2 => 'p_m',
-            3 => 'p_m',
+            3 => 'p_t',
             4 => 'p_p',
             5 => 'p_r',
         ];

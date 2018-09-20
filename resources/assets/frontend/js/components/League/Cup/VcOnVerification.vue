@@ -8,10 +8,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                 <div class="card">
-                    <div class="card-header" style="padding: 0">
-                        <div class="help-image" style="background-image: url(https://cartolafc.globo.com/dist/3.18.13/img/tempo.svg)">
+                    <div class="card-header" style="padding: 0;">
+                        <div class="help-image" style="background-image: url(https://cartolafc.globo.com/dist/3.18.14/img/tempo.svg)">
                         </div>
                     </div>
                     <div class="card-body">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-header" style="padding: 0">
                         <div class="help-image" style="background-image: url(https://cartolafc.globo.com/dist/3.18.14/img/disputa.svg)">
@@ -36,8 +36,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                <div class="card" style="min-height: 350px;">
                     <div class="card-header" style="padding: 0">
                         <div class="help-image" style="background-image: url(https://cartolafc.globo.com/dist/3.18.14/img/trofeu.svg)">
 
@@ -52,8 +52,9 @@
                 </div>
             </div>
         </div>
+
         <br>
-        <div class="row">
+        <div class="row" v-if="teams.length > 0">
             <div class="col-12">
                 <h1 style="display: inline-block">
                     {{ trans('strings.participants') }}
@@ -61,7 +62,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" v-if="teams.length > 0">
             <div class="col-12 col-lg-6 col-sm-6 col-md-6" v-for="(team, index) of teams" :key="index">
                 <div class="row no-margin row-team">
                     <div class="col-lg-1">
@@ -80,6 +81,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row vcenter" v-if="teams.length == 0">
+            <div class="col-12">
+                <h1>Ainda não há nenhum time cadastrado nesta liga</h1>
             </div>
         </div>
     </div>
@@ -160,4 +167,29 @@ export default {
         margin: 0;
         line-height: 1;
     }
+    
+    .help-image {
+        height: 167px;
+        overflow: hidden;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    @media (max-width: 992px) {
+		
+	}
+
+	@media (max-width: 767px) {
+		
+    }
+    @media (min-width: 576px) and (max-width: 768px) {
+		
+	}
+
+	@media (max-width: 576px) {
+		
+	}
 </style>

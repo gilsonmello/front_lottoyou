@@ -94,6 +94,7 @@ return [
     'punctuation' => 'Pontuação',
     'participant' => 'Participante',
     'participants' => 'Participantes',
+    'method_awards' => 'Método de Premiação',
     'completed' => 'Completado',
     'created' => 'Criado',
     'denied' => 'Negado',

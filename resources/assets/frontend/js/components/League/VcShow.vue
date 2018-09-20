@@ -3,12 +3,12 @@
     <div class="container" v-else-if="!loading.component && league.name">
         <br>
         <div class="row">
-            <div class="col-lg-5 vcenter" style="justify-content: flex-end">
-                <div :style="getStyleImage()">
+            <div class="col-lg-5 col-12 col-sm-6 vcenter col-trophy" style="">
+                <div class="img-fluid" :style="getStyleImage()">
 
                 </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-5 col-12 col-sm-6">
 
                 <div class="row">
 
@@ -30,8 +30,8 @@
                         </h4>
                     </div>
 
-                    <div class="col-lg-3 col-12 col-md-12 col-sm-12 no-padding">
-                        <div class="text-center">
+                    <div class="col-lg-3 col-12 col-md-12 col-sm-12">
+                        <div>
                             <p class="league quantity-teams">
                                 <strong>{{ league.quantity_teams }}</strong>
                             </p>
@@ -159,9 +159,14 @@ export default {
 </script>
 
 <style scoped>
+    
+    .col-trophy {
+        justify-content: flex-end;
+    }
 
     .league.quantity-teams {
         margin: 0; 
+        text-align: center;
         line-height: 1;
     }
     
@@ -171,6 +176,7 @@ export default {
 
     .league.participants {
         margin: 0; 
+        text-align: center;
         line-height: 1;
     }
 
@@ -196,5 +202,34 @@ export default {
 
     .card .card-header {
         padding: 0;
+    }
+
+    @media (max-width: 992px) {
+		
+	}
+
+	@media (max-width: 767px) {
+		
+    }
+    @media (min-width: 576px) and (max-width: 768px) {
+		
+    }
+
+	@media (max-width: 576px) {
+		.col-trophy {
+            justify-content: center;
+        }
+
+        .league.quantity-teams {
+            text-align: left;
+        }
+
+        .league.participants {
+            text-align: left;
+        }
+
+        .league.small-description {
+            margin: 10px 0;
+        }
     }
 </style>

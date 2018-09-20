@@ -36,7 +36,9 @@ class LeaguePackageController extends Controller
         ->whereHas('packages', function($query) use ($slug) {
             $query->where('slug', '=', $slug);
         })->with([
-            'awards',
+            'awards' => function($query) {
+                $query->orderBy('position', 'asc');
+            },
             'cup',
             'classic'
         ])->get();

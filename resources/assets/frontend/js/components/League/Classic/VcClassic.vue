@@ -3,7 +3,8 @@
     <div v-else>
         <br>
         <vc-podium v-if="league.classic.show_podium" :league="league"/>
-        <div class="row">
+        
+        <div v-if="teams.length > 0" class="row">
             <div class="col-12">
                 <h1 style="display: inline-block">Ranking</h1>
                 <select v-model="rankingOrder" class="form-control" style="display: inline-block; width: initial;">
@@ -17,20 +18,20 @@
         </div>
 
         <br>
-        <div class="row row-team no-margin" style="padding-left: 30px; padding-right: 30px;">
-            <div class="col-4 col-lg-8">
+        <div v-if="teams.length > 0" class="row row-team no-margin" style="padding-left: 30px; padding-right: 30px;">
+            <div class="col-4 col-sm-4 col-md-4 col-lg-8 col-4">
                 <strong>{{ trans('strings.team') }}</strong>
             </div>
-            <div class="col-lg-2 vcenter-end">
+            <div class="col-lg-2 col-4 col-sm-4 col-md-4 vcenter-end">
                 <strong>{{ trans('strings.punctuation') }}</strong>
             </div>
-            <div class="col-lg-2 vcenter-end">
+            <div class="col-lg-2 col-4 col-sm-4 col-md-4 vcenter-end">
                 <strong>{{ trans('strings.position') }}</strong>
             </div>
         </div>
         
-        <div class="row vcenter row-team no-margin" v-for="(team, index) of teams" :key="index">
-            <div class="col-4 col-lg-8 vcenter">
+        <div v-if="teams.length > 0" class="row vcenter row-team no-margin" v-for="(team, index) of teams" :key="index">
+            <div class="col-4 col-sm-4 col-md-4 col-lg-8 vcenter">
                 <div class="cartola-shield">
                     <img class="shield" :src="team.team.time.url_escudo_svg" :alt="team.team.time.nome">
                     <img class="photo" :src="team.team.time.foto_perfil" :alt="team.team.time.nome"/>
@@ -40,11 +41,17 @@
                     <h4>{{ team.team.time.nome_cartola }}</h4>
                 </div>
             </div>
-            <div class="col-lg-2 vcenter-end">
+            <div class="col-4 col-sm-4 col-md-4 col-lg-2 vcenter-end">
                 {{ team[rankingOrder] == null ? '-' : team[rankingOrder] }}
             </div>
-            <div class="col-lg-2 vcenter-end">
+            <div class="col-4 col-sm-4 col-md-4 col-lg-2 vcenter-end">
                 {{ team.position == null ? '-' : team.position }}
+            </div>
+        </div>
+
+        <div class="row vcenter" v-if="teams.length == 0">
+            <div class="col-12">
+                <h1>Ainda não há nenhum time cadastrado nesta liga</h1>
             </div>
         </div>
     </div>

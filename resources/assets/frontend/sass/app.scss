@@ -202,6 +202,10 @@ main {
     display: inline-block;
 }
 
+.direction-column {
+    flex-direction: column;
+}
+
 .app-loading {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
 }
