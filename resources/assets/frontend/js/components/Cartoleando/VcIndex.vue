@@ -38,8 +38,61 @@
             </div>
             <!-- <vc-card v-for="(leaguePackage, index) in leaguePackages" :key="index" :leaguePackage="leaguePackage" :index="index" /> -->
         </div>
+
+        <portal to="cartoleando-index-modal">
+            <div class="modal fade modal-jackpot-table" id="nivel1" data-backdrop="static" tabindex="-1" aria-labelledby="nivel1" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" v-if="loading.modalJackpotTable == true">
+                        <div class="modal-body">
+                            <load></load>
+                        </div>
+                    </div>
+                    <div class="modal-content" v-else>
+                        
+                        
+                        <div class="modal-header" style="border-bottom: none;" v-if="leaguePackages[indexClicked]">
+                            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 col-12" :style="bgImage()+' padding-right: 0; padding-left: 0; min-height: 106px;'">
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-12 col-12 items-center display-flex container-actions">
+                                        <router-link :to="{ name: 'cartoleando.play', params: {slug: leaguePackages[indexClicked].slug} }" style="display: block" class="btn btn-lg btn-primary">
+                                            {{ trans('strings.play_now') }}
+                                        </router-link>
+                                    </div>
+                                </div>
+                            </div>		        	
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body" style="padding-top: 0;">
+                            <span v-if="leagues.length == 0">
+                                {{ trans('strings.loading') }}...
+                            </span>
+                            <div id="accordion" v-else>
+                                <div class="card" v-for="(league, index) in leagues" :key="index">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" :data-target="'#league_'+league.id" aria-expanded="true" :aria-controls="'league_'+league.id">
+                                                {{ league.name }}
+                                            </button>
+                                        </h5>
+                                    </div>
+
+                                    <div :id="'league_'+league.id" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            {{ league.description }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </portal>
         
-        <div class="modal fade modal-jackpot-table" id="nivel1" data-backdrop="static" tabindex="-1" aria-labelledby="nivel1" aria-hidden="true">
+        <!-- <div class="modal fade modal-jackpot-table" id="nivel1" data-backdrop="static" tabindex="-1" aria-labelledby="nivel1" aria-hidden="true">
 		  	<div class="modal-dialog modal-lg">
 		  		<div class="modal-content" v-if="loading.modalJackpotTable == true">
 		  			<div class="modal-body">
@@ -48,10 +101,9 @@
 		  		</div>
 		  		<div class="modal-content" v-else>
 		  			
-					<!-- Modal Header -->
+					
 			      	<div class="modal-header" style="border-bottom: none;" v-if="leaguePackages[indexClicked]">
-			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
-						<div class="col-lg-12 col-md-12 col-12 col-sm-12">
+			        	<div class="col-lg-12 col-md-12 col-12 col-sm-12">
 		        			<div class="row">
 		        				<div class="col-lg-4 col-md-4 col-sm-12 col-12" :style="bgImage()+' padding-right: 0; padding-left: 0; min-height: 106px;'">
 					        	</div>
@@ -76,7 +128,6 @@
 			        	<button type="button" class="close" data-dismiss="modal">&times;</button>
 			      	</div>
 
-			      	<!-- Modal body -->
 			      	<div class="modal-body" style="padding-top: 0;">
 						<span v-if="leagues.length == 0">
 							{{ trans('strings.loading') }}...
@@ -97,27 +148,11 @@
                                     </div>
                                 </div>
                             </div>
-  
-
-		        		<!-- <table class="table table-striped text-center" v-else>
-		        			<thead>
-		        				<tr>
-		        					<th>{{ trans('strings.position') }}</th>
-		        					<th>{{ trans('strings.value') }}</th>
-		        				</tr>
-		        			</thead>
-		        			<tbody>
-		        				<tr v-for="(award, index) in awards" :key="index">
-		        					<td>{{award.position}}</td>
-		        					<td>${{award.value}}</td>
-		        				</tr>
-		        			</tbody>
-		        		</table> -->
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 	</div>
 </template>
 
@@ -152,16 +187,16 @@ export default {
             this.indexClicked = index;
             this.getLeaguesOfPackageBySlug(slug)
                 .then((response) => {
-                    this.leagues = response.data.leagues;
+                    this.leagues = response.data;
                 })
                 .catch((error) => {
                     
-                })
-            this.modal.modal('toggle'); 
+                }) 
+            this.modal.modal('toggle');
         },
         setModal () {
             let time = setInterval(() => {
-                let modal = $(this.$el).find('.modal-jackpot-table');
+                let modal = $('.modal-jackpot-table');                    
                 if(modal.length > 0) {
                     this.modal = modal;
                     clearInterval(time);
@@ -205,6 +240,9 @@ export default {
 
 
 <style scoped>
-
+    .card-img-top {
+        width: initial;
+        max-width: 100%;
+    }
 </style>
 

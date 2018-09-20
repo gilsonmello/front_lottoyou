@@ -31,6 +31,7 @@
             </div> -->
         </div>
 
+        <!-- Carregamento -->
         <div class="row">
             <div class="col-12">
                 <h5></h5>
@@ -86,7 +87,10 @@
 
         <!-- Se não aparece o formulário normal -->
         <form id="packages-purchase" v-else>
-            <div class="row no-margin">
+            <!-- Se está fazendo login -->
+            <load v-if="loading.signingIn" />
+            <!-- Se não aparece o formulário -->
+            <div class="row no-margin" v-else>
                 <div class="col-lg-8 no-padding-left">
                     <div class="row">
                         <div class="col-lg-12 col-12 col-sm-6 col-md-3">
@@ -515,6 +519,7 @@ export default {
         return {
             form: null,
             loading: {
+                signingIn: false,
                 component: true,
                 paying: false,
                 leagues: false,
@@ -539,6 +544,9 @@ export default {
     },
     mounted () {
         this.init();
+        this.$eventBus.$on('signingIn', (value) => {
+            this.loading.signingIn = value;
+        });
     },
     beforeRouteUpdate (to, from, next) {
         next();
@@ -563,6 +571,7 @@ export default {
         }
     },
     beforeDestroy () {
+        this.$eventBus.$off('signingIn');
         this.$store.dispatch('setLoginOptions', {
             redirectToHome: true, 
             redirectToHomeOnLogout: true

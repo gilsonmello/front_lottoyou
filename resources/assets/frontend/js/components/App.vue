@@ -21,9 +21,12 @@
 			-->
        	</portal-target>
 
-		<vc-modal ref="modal">
-			
-		</vc-modal>		
+		<portal-target name="cartoleando-index-modal">
+			<!--
+			This component can be located anwhere in your App.
+			The slot content of the above portal component will be rendered here.
+			-->
+       	</portal-target>
 	</main>
 </template>
 
@@ -69,7 +72,7 @@
 				}).then((response) => {
 					if(response.status === 200) {
 						//Caso encontrou algum item
-						//Seto os items na estruta
+						//Seto os items na estrura
 						if(response.data.items.length > 0)
 		            		this.$store.dispatch('setItems', response.data.items)
 
@@ -98,7 +101,14 @@
 							//window.localStorage.setItem('authUser', JSON.stringify(response.data));
 							this.$store.dispatch('setUserObject', response.data);
 							if(this.auth.cartoleando_team) {
-								this.teamRequest();
+								this.teamRequest()
+									.then((teamRequestResponse) => {
+										if(response.status === 200) {
+											this.$store.dispatch('setTeamUser', teamRequestResponse.data);
+										}
+									}).catch((error) => {
+
+									});
 							}
 							this.loading.component = false;
 							this.cartRequest();

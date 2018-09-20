@@ -304,7 +304,14 @@
 									this.$router.push({
 										name: 'users.transactions'
 									});	
-									this.teamRequest();	
+									this.teamRequest()
+										.then((teamRequestResponse) => {
+											if(response.status === 200) {
+												this.$store.dispatch('setTeamUser', teamRequestResponse.data);
+											}
+										}).catch((error) => {
+
+										});	
 								}								
 							}).catch((error) => {
 

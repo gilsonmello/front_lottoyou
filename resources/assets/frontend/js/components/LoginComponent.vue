@@ -179,7 +179,6 @@
 		},
 		mounted () {
 			this.loading.component = false;
-			
 			/* FB.getLoginStatus((response) => {
 			    this.facebook = response;
 			}); */
@@ -363,15 +362,19 @@
 								this.$router.push({name: 'home'});
 							}
 
+							//Emitindo um evento 'Fazendo login'
+							this.$eventBus.$emit('signingIn', true);
+
 							$('.modal-login').modal('hide');
-							  
+							
 							this.teamRequest()
 								.then((teamRequestResponse) => {
 									if(response.status === 200) {
+										this.$eventBus.$emit('signingIn', false);
 										this.$store.dispatch('setTeamUser', teamRequestResponse.data);
 									}
-								}).catch((error) => {
-
+								}).catch((teamRequestError) => {
+									this.$eventBus.$emit('signingIn', false);
 								});
 		                
 		                }).catch((error_2) => {

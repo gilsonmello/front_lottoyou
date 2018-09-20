@@ -365,7 +365,14 @@
                             this.country = this.user.country.id
                             this.phone_code = '+'+this.user.country.phonecode;
 
-                            this.teamRequest();
+                            this.teamRequest()
+                                .then((teamRequestResponse) => {
+                                    if(response.status === 200) {
+                                        this.$store.dispatch('setTeamUser', teamRequestResponse.data);
+                                    }
+                                }).catch((error) => {
+
+                                });
 
                             //window.location.href = "/painel"
                             //this.$router.push({name: 'home'});
