@@ -47,6 +47,19 @@ class LeaguePackageController extends Controller
             return response()->json([], 402);
         }
 
+        /* $leagues = $leagues->filter(function ($league, $key) {
+            if($league->context == 'cup') {
+                if($league->quantity_teams == $league->number_team) {
+                    return false;
+                }
+            } else if($league->context == 'classic') {
+                if($league->quantity_teams == $league->classic->max_players) {
+                    return false;
+                }
+            }
+            return true;
+        }); */
+
         return response()->json($leagues, 200);
     }
 

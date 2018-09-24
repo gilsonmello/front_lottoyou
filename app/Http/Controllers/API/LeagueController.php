@@ -55,14 +55,14 @@ class LeagueController extends Controller
         $leaCup = $league->cup;
         $steps = $leaCup->steps()
             ->where('active', '=', 1)
-            ->orWhere('updated', '=', 1)
+            ->orWhere('upd', '=', 1)
             ->orderBy('id', 'desc')
             ->orderBy('current_step', 'desc')
             ->get();
         
         foreach($steps as $step) {
             $keys = \App\LeaCupKey::where('lea_cup_step_id', '=', $step->id)
-                ->where('finished', '=', 1)
+                
                 ->get();
                 
             foreach($keys as $key) {

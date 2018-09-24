@@ -159,6 +159,7 @@ Vue.prototype.refreshAuthPromise = function() {
 	}})
 };
 
+//Função para dividir o array em 2 partes
 Vue.prototype.divideInTwo = function(arr) {
 	let length = arr.length;
 
@@ -365,7 +366,7 @@ Vue.prototype.getLeaguePackages = () => {
 	});
 };
 
-Vue.prototype.getLeaguePackagesBySlug = (slug) => {
+Vue.prototype.getLeaguePackagesBySlug = function (slug) {
 	return new Promise(function(resolve, reject) {       
 		let request = axios.create();
 		let url = routes.league_packages.findBySlug.replace('{slug}', slug);
@@ -384,12 +385,12 @@ Vue.prototype.convertSlug = function (str) {
 	str = str.toLowerCase();
 
 	// remove accents, swap ñ for n, etc
-	var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;";
-	var to = "aaaaaeeeeeiiiiooooouuuunc------";
+	var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;.";
+	var to = "aaaaaeeeeeiiiiooooouuuunc-------";
 	for (var i = 0, l = from.length; i < l; i++) {
-		str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+		str = str.replace(from.charAt(i), to.charAt(i));
 	}
-
+	
 	str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
 		.replace(/\s+/g, '-') // collapse whitespace and replace by -
 		.replace(/-+/g, '-'); // collapse dashes
@@ -458,4 +459,3 @@ Vue.prototype.getSystemSettings = function(slug) {
 	});
 	
 };
-

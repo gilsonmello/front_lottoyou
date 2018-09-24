@@ -24,11 +24,11 @@
 </template>
 
 <script>
-	import {routes} from '../../../api_routes'
+	import {routes} from '../../../api_routes';
 	export default {
 		props: ['order_item'],
 		mounted() {
-			
+			console.log(this.order_item)
 		}
 	}
 </script>

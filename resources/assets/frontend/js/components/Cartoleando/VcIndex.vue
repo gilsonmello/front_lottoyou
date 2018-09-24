@@ -216,6 +216,7 @@ export default {
         },
         handleJackpotTable(index) {
             let slug = this.leaguePackages[index].slug;
+            let name = this.leaguePackages[index].name;
             this.indexClicked = index;
             this.loading.leagues = true;
             this.getLeaguesOfPackageBySlug(slug)
@@ -224,6 +225,9 @@ export default {
                     this.leagues = response.data;
                 })
                 .catch((error) => {
+                    toastr.error(
+                        'Ocorreu um algum erro ao carregar as ligas do pacote `{$name}`, por favor tente novamente.'
+                    );
                     this.loading.leagues = false;
                 }) 
             this.modal.modal('toggle');

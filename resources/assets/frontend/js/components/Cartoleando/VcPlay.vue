@@ -296,10 +296,9 @@ export default {
                 slug: this.item.slug
             }).then(response => {
                 this.item.team = response.data;
-                if(response.data.time.nome_cartola !== this.item.cartoleiro) {
+                /* if(response.data.time.nome_cartola !== this.item.cartoleiro) {
                     
                     this.modal.modal('hide');
-
                     swal({
                         title: 'Nome do cartoleiro inválido',
                         showCloseButton: true,
@@ -318,7 +317,7 @@ export default {
 
                 } else {
                     this.item.team = response.data;
-                }
+                } */
             }).catch(error => {
                 toastr.options = {
                     closeButton: true,
@@ -430,7 +429,19 @@ export default {
             }
             let vm = this;
             let isvalid = vm.form.valid();
-            if (isvalid) {
+            let hasPackage = false;
+            
+            //Verificando se o pacote já está no carrinho
+            this.purchase.items.forEach((element, i) => {
+                if(element.type == 'cartoleando') {
+                    if(element.cartoleando.package.id == this.item.package.id) {
+                        hasPackage = true;
+                    }
+                }
+            });
+
+            //Se está válido e o usuário não possui o pacote no carrinho
+            if (isvalid && !hasPackage) {
                 let addCartoleandoRequest = axios.create();
                 addCartoleandoRequest.interceptors.request.use(config => {
                     this.loading.adding = true;
@@ -453,7 +464,23 @@ export default {
                     this.loading.adding = false;
                     toastr.error('Erro ao adicionar item', 'Por favor tente novamente');
                 });                 
-            }            
+            } else {
+                swal({
+                    title: 'O pacote '+ this.item.package.name +' já encontra-se no seu carrinho!',
+                    showCloseButton: true,
+                    imageUrl: '/imgs/logo.png',
+                    imageHeight: 50,
+                    imageAlt: 'Logo lottoyou',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: this.trans('strings.yes'),
+                    cancelButtonText: this.trans('strings.cancel')
+                }).then((result) => {
+                
+                });
+            }        
         },
         init () {
             if(this.$route.query.hash != undefined) {

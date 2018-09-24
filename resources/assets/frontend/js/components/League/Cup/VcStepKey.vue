@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-lg-2 vcenter-end" style="align-items: center;">
                     <h3 v-if="stepKey.homeTeam">
-                        {{ stepKey.home_team_score }}
+                        {{ stepKey.home_team_score == null ? '-' : stepKey.home_team_score }}
                     </h3>
                 </div>
             </div>
@@ -37,8 +37,8 @@
         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
             <div class="row no-margin">
                 <div class="col-lg-2 vcenter-end" style="align-items: center;">
-                    <h3 v-if="stepKey.out_team_score">
-                        {{ stepKey.out_team_score }}
+                    <h3 v-if="stepKey.outTeam">
+                        {{ stepKey.out_team_score == null ? '-' : stepKey.out_team_score }}
                     </h3>
                 </div>
                 <div class="col-lg-3 vcenter-end">
