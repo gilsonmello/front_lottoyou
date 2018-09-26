@@ -226,7 +226,7 @@ export default {
                 })
                 .catch((error) => {
                     toastr.error(
-                        'Ocorreu um algum erro ao carregar as ligas do pacote `{$name}`, por favor tente novamente.'
+                        'Ocorreu um algum erro ao carregar as ligas do Pacote `{$name}`, por favor tente novamente.'
                     );
                     this.loading.leagues = false;
                 }) 

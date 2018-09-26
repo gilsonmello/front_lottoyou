@@ -54,15 +54,17 @@ class LeagueController extends Controller
         $league = League::findBySlug($slug);
         $leaCup = $league->cup;
         $steps = $leaCup->steps()
-            ->where('active', '=', 1)
-            ->orWhere('upd', '=', 1)
+            ->where('lea_cup_id', '=', $leaCup->id)
+            ->where(function($query) {
+                $query->where('active', '=', 1)
+                    ->orWhere('upd', '=', 1);
+            })
             ->orderBy('id', 'desc')
             ->orderBy('current_step', 'desc')
             ->get();
         
         foreach($steps as $step) {
             $keys = \App\LeaCupKey::where('lea_cup_step_id', '=', $step->id)
-                
                 ->get();
                 
             foreach($keys as $key) {
