@@ -5,7 +5,7 @@
 				{{ ticket.nome }}
 			</div>
 			<div class="col-lg-3 col-3 col-sm-3 col-md-3">
-				$ {{ ticket.valor }}
+				{{getSystemCurrency.data.symbol}}{{ ticket.valor }}
 			</div>
 			<div class="col-lg-4 col-4 col-sm-4 col-md-4">
 				{{ ticket.data_termino }}
@@ -13,9 +13,9 @@
 	    </div>
 
     	<div :class="'collapse '+ticket.id">
-			<load-component v-if="loading.game"></load-component>	 
+			<load v-if="loading.game" />
 			<div class="row no-margin" v-else>
-				<div class="col-lg-4 col-sm-6 col-md-6 col-12" v-for="(group, index) in groups">
+				<div class="col-lg-4 col-sm-6 col-md-6 col-12" v-for="(group, index) in groups" :key="index">
 					<vc-group :group="group" :category="category" :index="index"></vc-group>
 				</div>
 			</div>
@@ -26,15 +26,15 @@
 </template>
 
 <script>
-	import {routes} from '../../../api_routes'
-	import LoadComponent from '../../Load'
-	import VcGroup from './VcGroup'
+	import {mapGetters} from 'vuex';
+	import {routes} from '../../../api_routes';
+	import VcGroup from './VcGroup';
 	export default {
 		props: ['index', 'ticket', 'category'],
 		methods: {
-			init() {
-    			var date = this.formatDate(this.ticket.data_termino);
-    			var timeOut = setInterval(() => {
+			init () {
+    			let date = this.formatDate(this.ticket.data_termino);
+    			let timeOut = setInterval(() => {
     				this.countdown(date, (d, h, m, s, distance) => {
 		            	this.days = d;
 						this.hours = h;
@@ -47,8 +47,8 @@
     			}, 1000);
         	}
 		},
-		mounted() {			
-			var interval = setInterval(() => {
+		mounted () {			
+			let interval = setInterval(() => {
 				if($(this.$el).find('.'+this.ticket.id).length > 0) {
 					clearInterval(interval);
 
@@ -80,7 +80,7 @@
 			//this.init();	
 			this.ticket.valor = parseFloat(this.ticket.valor).format(2, true);	
 		},
-		data() {
+		data () {
 			return {
 				loading: {
 					game: false
@@ -94,8 +94,12 @@
 			}
 		},
 		components: {
-			VcGroup,
-			LoadComponent
+			VcGroup
+		},
+		computed: {
+			...mapGetters([
+				'getSystemCurrency'
+			])
 		}
 	}
 </script>

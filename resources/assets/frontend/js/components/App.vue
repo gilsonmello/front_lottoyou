@@ -246,7 +246,7 @@
 		created () {
 			
 		},
-		mounted () {		
+		mounted () {	
 			this.init();
 			router.afterEach((to, from) => {
 				ga('set', 'page', to.path);

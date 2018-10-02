@@ -13,7 +13,7 @@
 	    </div>
 
     	<div :class="'collapse '+ticket.id">
-			<load-component v-if="loading.game"></load-component>	  	
+			<load v-if="loading.game" /> 	
 	    	<div class="tickets" v-else>
 				<header class="tickets-header"> 
 		            <span class="text-center tickets-limit" v-if="ticket.limite == null">
@@ -51,7 +51,6 @@
 
 <script>
 	import {routes} from '../../../api_routes'
-	import LoadComponent from '../../Load'
 	export default {
 		props: ['index', 'bet', 'category'],
 		methods: {
@@ -86,7 +85,7 @@
 			}
 		},
 		components: {
-			LoadComponent
+			
 		}
 	}
 </script>

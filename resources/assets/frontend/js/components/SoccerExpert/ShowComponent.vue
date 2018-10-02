@@ -134,12 +134,12 @@
 </template>
 
 <script>
-	import {routes} from '../../api_routes'
-	import LoadComponent from '../Load'
-	import {mapState, mapGetters} from 'vuex'
-	import CycleComponent from './CycleComponent'
-	import TicketComponent from './TicketComponent'
-	import ModalTicketComponent from './Modal/TicketComponent'
+	import {routes} from '../../api_routes';
+	import LoadComponent from '../Load';
+	import {mapState, mapGetters} from 'vuex';
+	import CycleComponent from './CycleComponent';
+	import TicketComponent from './TicketComponent';
+	import ModalTicketComponent from './Modal/TicketComponent';
 	export default {
 		metaInfo () {
 			return {

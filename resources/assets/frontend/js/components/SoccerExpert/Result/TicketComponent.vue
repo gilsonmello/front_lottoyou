@@ -5,7 +5,7 @@
 	    		{{ ticket.nome }}
 	    	</div>
 	    	<div class="col-lg-3 col-3 col-sm-3 col-md-3">
-	    		$ {{ ticket.valor }}
+	    		{{getSystemCurrency.data.symbol}}{{ ticket.valor }}
 	    	</div>
 	    	<div class="col-lg-4 col-4 col-sm-4 col-md-4">
 	    		{{ ticket.data_termino }}
@@ -21,7 +21,7 @@
 						</header> -->
 						<div class="tickets-content" :style="backgroundTicket(ticket.imagem_capa)">
 							<div class="row no-margin">
-								<div class="col-lg-12 col-sm-6 col-md-6 col-12" v-for="(game, index) in games">
+								<div class="col-lg-12 col-sm-6 col-md-6 col-12" v-for="(game, index) in games" :key="index">
 									<game-component :game="game" :ticket="ticket" :index="index"></game-component>
 								</div>
 							</div>
@@ -76,9 +76,10 @@
 </template>
 
 <script>
-	import {routes} from '../../../api_routes'
-	import LoadComponent from '../../Load'
-	import GameComponent from './GameComponent'
+	import {mapGetters} from 'vuex';
+	import {routes} from '../../../api_routes';
+	import LoadComponent from '../../Load';
+	import GameComponent from './GameComponent';
 	export default {
 		props: ['index', 'ticket', 'category'],
 		methods: {
@@ -147,6 +148,11 @@
 		components: {
 			GameComponent,
 			LoadComponent
+		},
+		computed: {
+			...mapGetters([
+				'getSystemCurrency'
+			])
 		}
 	}
 </script>
