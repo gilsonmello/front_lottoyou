@@ -13,11 +13,13 @@ use App\LotterySweepstake;
 use App\ScratchCard;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Repositories\API\Cart\CartRepository;
 
 class CartController extends Controller
 {
-    public function __construct() 
+    public function __construct(CartRepository $repository) 
     {
+        $this->repository = $repository;
         if(isset(request()->header()['authorization'])) {
             $this->middleware('auth:api');
         }
@@ -103,6 +105,41 @@ class CartController extends Controller
             ];
             return response()->json($valid, 422);
         }
+        return response()->json($valid, 200);
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    public function validateCartoleandoFastPayment(Request $request)
+    {
+        $user = $request->user();
+        $data = $request->all();
+
+        $package = \App\LeaguePackage::find($data['package']['id']);
+        
+        //Se o usuário estiver logado, evitar que o pacote apareça para ele novamente            
+        $itemsIDS = \App\OrderItem::where('user_id', '=', $user->id)
+            ->select([
+                'lea_package_id'
+            ])
+            ->where('lea_package_id', '=', $package->id)
+            ->where('type', '=', 'cartoleando')
+            ->get();
+            
+        if(!$itemsIDS->isEmpty()) {
+            $valid =  [
+                'valid' => false, 
+                'msg' => 'Você já possui o pacote '.$package->name.'.<br>Só é permitido uma compra.'
+            ];
+            return response()->json($valid, 422);
+        }
+         
+        $valid =  [
+            'valid' => true, 
+            'msg' => 'ok'
+        ];
         return response()->json($valid, 200);
     }
 
@@ -315,7 +352,7 @@ class CartController extends Controller
         $user = $request->user() == null ? $auth : $request->user();
         $user_id = gettype($user) === 'array' ? $user['id'] : $user->id;
         $user = User::find($user_id);
-        $team = $user->cartoleandoTeam;
+        $team = $user->team;
         $purchase = $request->purchase;
         $purchase['team'] = $team->toArray();
         $purchase['name'] = $team->name;
@@ -455,157 +492,6 @@ class CartController extends Controller
         return response()->json(['msg' => 'ok'], 200);
     }
 
-    private function saveOrder($request) 
-    {
-        $order = new Order;
-
-        $order->user_id = $request->user()->id;
-        $order->total = $request->get('total');
-        $order->sub_total = $request->get('sub_total');
-        $order->number_items = $request->get('quantity');
-        $order->status = 1;
-        
-        $coupon = $request->get('coupon') != null ? $request->get('coupon') : null;
-        
-        $order->coupon_id = $coupon != null ? $coupon['id'] : null;
-
-        $items = $request->get('items');
-
-        if($order->save()) {
-            foreach($items as $key => $value) {
-                $orderItem = new OrderItem;
-                $orderItem->order_id = $order->id;
-                $orderItem->type = $value['type'];
-                $data = null;
-                if($value['type'] == 'lottery') {
-                    $data = json_encode($value['lottery']);
-                    $orderItem->data = $data;
-                    $orderItem->amount = $value['lottery']['value'];
-                    $orderItem->lottery_id = $value['lottery']['id'];
-                    $orderItem->hash = $value['lottery']['hash'];
-                    $orderItem->quantity = count($value['lottery']['tickets']);
-                    /*$order->lotteries()->attach($value['lottery']['id'], [
-                        'data' => $data
-                    ]);*/
-                } else if($value['type'] == 'soccer_expert') {
-                    $data = json_encode($value['soccer_expert']);
-                    $orderItem->amount = $value['soccer_expert']['total'];
-                    $orderItem->data = $data;
-                    $orderItem->hash = $value['soccer_expert']['hash'];
-                    $orderItem->quantity = count($value['soccer_expert']['tickets']);
-                    $orderItem->soccer_expert_id = $value['soccer_expert']['soccer_expert']['id'];
-                    /*$order->soccerExperts()->attach($value['soccer_expert']['soccer_expert']['id'], [
-                        'data' => $data
-                    ]);*/
-                } else if($value['type'] == 'scratch_card') {
-                    $data = json_encode($value['scratch_card']);
-                    $orderItem->data = $data;
-                    $orderItem->quantity = $value['scratch_card']['scratch_card']['discount_tables']['quantity'];
-                    $orderItem->amount = $value['scratch_card']['total'];
-                    $orderItem->hash = $value['scratch_card']['hash'];
-                    $orderItem->scratch_card_id = $value['scratch_card']['scratch_card']['id'];
-                    /*$order->scratchCards()->attach($value['scratch_card']['scratch_card']['id'], [
-                        'data' => $data
-                    ]);*/
-                } else if($value['type'] == 'cartoleando') {
-                    $data = json_encode($value['cartoleando']);
-                    foreach($value['cartoleando']['package']['leagues'] as $leagues) {
-                        $orderItem = new \App\OrderItem;
-                        $orderItem->order_id = $order->id;
-                        $orderItem->type = $value['type'];
-                        $orderItem->user_id = $request->user()->id;
-                        $orderItem->data = $data;
-                        $orderItem->quantity = 1;
-                        $orderItem->league_id = $leagues['id'];
-                        $orderItem->amount = $value['cartoleando']['package']['value'];
-                        $orderItem->hash = $value['cartoleando']['hash'];
-                        $orderItem->lea_package_id = $value['cartoleando']['package']['id'];
-                        $orderItem->save();
-                    }
-                    continue;                    
-                }
-
-                $orderItem->user_id = $request->user()->id;
-                $orderItem->save();
-            }
-
-            $cart = Cart::where('user_id', '=', $request->get('user_id'))
-                ->where('finished', '=', 0)
-                ->get()
-                ->first();
-                
-            if($cart) {
-                $cart->finished = 1;
-                $cart->save();   
-            }
-
-            $cart = Cart::where('visitor', '=', $request->ip())
-                ->where('finished', '=', 0)
-                ->get()
-                ->first();
-
-            if($cart) {
-                $cart->finished = 1;
-                $cart->save();   
-            }            
-        }   
-    }
-
-    private function saveOrderFastPaymentLottery($request)
-    {
-        $order = new Order;
-        $order->user_id = $request->user()->id;
-        $order->total = $request['purchase']['total'];
-        $order->sub_total = $request['purchase']['total'];
-        $order->number_items = 1;
-        $order->status = 1;
-
-        $coupon = $request->get('coupon') != null ? $request->get('coupon') : null;
-
-        $order->coupon_id = $coupon != null ? $coupon['id'] : null;
-
-        if($order->save()) {
-            $orderItem = new OrderItem;
-            $orderItem->order_id = $order->id;
-            $orderItem->type = 'lottery';
-            $data = json_encode($request['purchase']);
-            $orderItem->data = $data;
-            $orderItem->hash = $request['purchase']['hash'];
-            $orderItem->lottery_id = $request['purchase']['lottery']['id'];
-            $orderItem->amount = $request['purchase']['total'];
-            $orderItem->quantity = count($request['purchase']['tickets']);
-            $orderItem->save();
-        }
-    }
-    private function saveOrderFastPaymentSoccerExpert($request)
-    {
-        $order = new Order;
-        $order->user_id = $request->user()->id;
-        $order->total = $request['purchase']['total'];
-        $order->sub_total = $request['purchase']['total'];
-        $order->number_items = 1;
-        $order->status = 1;
-
-        $coupon = $request->get('coupon') != null ? $request->get('coupon') : null;
-
-        $order->coupon_id = $coupon != null ? $coupon['id'] : null;
-
-        if($order->save()) {
-            $orderItem = new OrderItem;
-            $orderItem->order_id = $order->id;
-            $orderItem->type = 'soccer_expert';
-            $data = json_encode($request['purchase']);
-            $orderItem->data = $data;
-            $orderItem->soccer_expert_id = $request['purchase']['soccer_expert']['id'];
-            $orderItem->hash = $request['purchase']['hash'];
-            $orderItem->user_id = $order->user_id;
-            $orderItem->amount = $request['purchase']['total'];
-            $orderItem->quantity = count($request['purchase']['tickets']);
-            $orderItem->save();
-        }
-    }
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -619,15 +505,18 @@ class CartController extends Controller
 
         //Caso ocorra algum erro de SQL, é feito o rollback
         try {
-            $this->saveOrderFastPaymentLottery($request);
-            DB::commit();
-            return response()->json(['msg' => 'ok'], 200);
+            if($this->repository->saveOrderFastPaymentLottery($request)) {
+                DB::commit();
+                return response()->json(['message' => 'ok'], 200);
+            }
+            DB::rollBack();
+            return response()->json(['message' => 'error'], 422);
         } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
         } catch (\PDOException $e) {
             DB::rollBack();
         }
-        return response()->json(['msg' => 'error'], 422);
+        return response()->json(['message' => 'error'], 422);
     }
 
     /**
@@ -643,17 +532,48 @@ class CartController extends Controller
 
         //Caso ocorra algum erro de SQL, é feito o rollback
         try {
-            $this->saveOrderFastPaymentSoccerExpert($request);
-            DB::commit();
-            return response()->json(['msg' => 'ok'], 200);
+            if($this->repository->saveOrderFastPaymentSoccerExpert($request)) {
+                DB::commit();
+                return response()->json(['message' => 'ok'], 200);
+            }
+            DB::rollBack();
+            return response()->json(['message' => 'error'], 422);
         } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
         } catch (\PDOException $e) {
             DB::rollBack();
         }
 
-        return response()->json(['msg' => 'error'], 422);
+        return response()->json(['message' => 'error'], 422);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function completeFastPaymentCartoleando(Request $request)
+    {
+        //Iniciando a transação
+        DB::beginTransaction();
+        //Caso ocorra algum erro de SQL, é feito o rollback
+        try {
+            if($this->repository->saveOrderFastPaymentCartoleando($request)) {
+                DB::commit();
+                return response()->json(['message' => 'ok'], 200);
+            }
+            DB::rollBack();
+            return response()->json(['message' => 'error'], 422);
+        } catch (\Illuminate\Database\QueryException $e) {
+            DB::rollBack();
+        } catch (\PDOException $e) {
+            DB::rollBack();
+        }
+
+        return response()->json(['message' => 'error'], 422);
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -668,9 +588,12 @@ class CartController extends Controller
 
         //Caso ocorra algum erro de SQL, é feito o rollback
         try {
-            $this->saveOrder($request);
-            DB::commit();
-            return response()->json(['message' => ''], 200);
+            if($this->repository->saveOrder($request)) {
+                DB::commit();
+                return response()->json(['message' => 'ok'], 200);
+            }
+            DB::rollBack();
+            return response()->json(['message' => 'error'], 422);
         } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
         } catch (\PDOException $e) {

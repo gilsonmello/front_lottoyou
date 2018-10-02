@@ -399,9 +399,9 @@ class UserController extends Controller
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(UpdateUserRequest $request, $id)
+    public function update(UpdateUserRequest $request)
     {
-        $user = User::find($id);
+        $user = User::find($request->user()->id);
         
         if($request->get('password') != null && !empty($request->get('password'))) {
             $user->laravel_password = bcrypt($request->get('password'));

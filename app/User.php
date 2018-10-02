@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Balance;
 use App\Country;
 use App\PasswordReset;
+use App\Traits\Cartoleando;
 
 /**
  * Class User
@@ -18,7 +19,7 @@ class User extends Authenticatable
     /**
      *
      */
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, Cartoleando;
 
     const CREATED_AT = 'created';
 
@@ -53,6 +54,10 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token', 'laravel_password'
+    ];
+
+    protected $appends = [
+        'cartoleando_team'
     ];
 
     /**
@@ -92,9 +97,19 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function cartoleandoTeam() 
+    public function team() 
     {
         return $this->hasOne(CartoleandoTeam::class, 'owner_id');
+    }
+
+    /**
+     * @param $date
+     * @return mixed
+     */
+    public function getCartoleandoTeamAttribute($date) 
+    {        
+        $team = CartoleandoTeam::where('owner_id', '=', $this->id)->get()->first();
+        return $this->getTeamFromCartola($team->slug);
     }
 
     /**

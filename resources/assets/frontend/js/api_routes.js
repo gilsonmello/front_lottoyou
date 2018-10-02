@@ -3,6 +3,26 @@ export const enviroment = "production";
 export const host = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '')+'/api';
 const base = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '');
 
+export const getHeaders = () => {
+	//Se o usuário tá logado
+	if(VueInstance.auth) {
+		return {
+			headers: {
+				'Content-Type' : 'application/json',
+				'Accept' : 'application/json',
+				'Authorization': 'Bearer ' + VueInstance.auth.access_token
+			}
+		};
+	}
+
+	//Se não está logado
+	return {
+		headers: {
+			'Content-Type' : 'application/json',
+		}
+	};
+};
+
 export const routes = {
 	base: base,
 	quotation_dolar: host+'/quotation_dolar',
@@ -57,7 +77,7 @@ export const routes = {
 		logged: host+'/users/logged',
 		logout: host+'/users/logout',
 		exists: host+'/users/exists',
-		update: host+'/users/{id}',
+		update: host+'/users/',
 		orders: host+'/users/{id}/orders',
 		transactions: host+'/users/{id}/transactions',
 		games: host+'/users/{id}/games',
@@ -128,7 +148,8 @@ export const routes = {
 		validate: host + '/carts/validate',
         validate_soccer_expert_fast_payment: host + '/carts/validate_soccer_expert_fast_payment',
         complete_fast_payment_soccer_expert: host + '/carts/complete_fast_payment_soccer_expert',
-        validate_lottery_fast_payment: host + '/carts/validate_lottery_fast_payment',
+		validate_lottery_fast_payment: host + '/carts/validate_lottery_fast_payment',
+		validate_cartoleando_fast_payment: host + '/carts/validate_cartoleando_fast_payment',
         complete_fast_payment_lottery: host + '/carts/complete_fast_payment_lottery',
         complete_fast_payment_cartoleando: host + '/carts/complete_fast_payment_cartoleando',
 	},

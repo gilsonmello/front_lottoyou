@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+use App\Traits\Cartoleando;
 
 class CartolaController extends Controller
 {
+    use Cartoleando;
+
+    /**
+     * 
+     */
     public function __construct() 
     {
         if(isset(request()->header()['authorization'])) {
@@ -16,6 +22,9 @@ class CartolaController extends Controller
         }
     }
 
+    /**
+     * 
+     */
     public function findTeamBySlug(Request $request) 
     {
         $user = $request->user();
@@ -46,13 +55,7 @@ class CartolaController extends Controller
             ], 422);
         }
 
-        $client = new Client(['base_uri' => 'http://api.cartolafc.globo.com/']);
-        $response = $client->request('GET', 'time/slug/'.$request->slug,  [
-            'headers' => [
-                'x-glb-token' => env('X_GLB_TOKEN')
-            ]
-        ]);
-        $body = json_decode($response->getBody());
+        $body = $this->getTeamFromCartola($request->slug);
         if($user != null) {
             $body->time->email = $user->username;
         }

@@ -245,7 +245,7 @@
 </template>
 
 <script>
-    import {routes} from '../../api_routes'
+    import {routes, getHeaders} from '../../api_routes'
     import LoadComponent from '../Load';
     import {mapGetters} from 'vuex';
     export default {
@@ -272,7 +272,7 @@
             }
         },
         methods: {
-            changePhoto: function(event) {
+            changePhoto (event) {
                 var file = null;
                 var form = $('.user-edit');
                 file = event.currentTarget.files[0];
@@ -299,7 +299,7 @@
                     }    
                 }        
             },
-            handleEdit: function(event) {
+            handleEdit (event) {
                 let vm = this;
                 let form = $(event.currentTarget);
                 let formData = new FormData(form[0]);
@@ -311,14 +311,12 @@
                     this.loading.submit = true;
                     return config;
                 });
+                let headers = getHeaders();
+                headers.headers['Content-Type'] = 'multipart/form-data';
                 updateRequest.post(
-                    routes.users.update.replace('{id}', this.id), 
+                    routes.users.update, 
                     formData, 
-                    {
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        }
-                    }
+                    headers
                 ).then(response => {
                     if(response.status === 200) {
                         const access_token = JSON.parse(window.localStorage.getItem('access_token'));
@@ -364,15 +362,6 @@
                             this.complement = this.user.complement
                             this.country = this.user.country.id
                             this.phone_code = '+'+this.user.country.phonecode;
-
-                            this.teamRequest()
-                                .then((teamRequestResponse) => {
-                                    if(response.status === 200) {
-                                        this.$store.dispatch('setTeamUser', teamRequestResponse.data);
-                                    }
-                                }).catch((error) => {
-
-                                });
 
                             //window.location.href = "/painel"
                             //this.$router.push({name: 'home'});

@@ -92,12 +92,13 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'API'], function() {
     		->where('active', '=', 1)
     		->with([
 				'country', 
-				'balance',
-				'cartoleandoTeam'
+				'balance'
 			])
     		->get()
     		->first();
 	});
+
+	Route::put('/users', 'UserController@update');
 			
 	Route::post('/users/add_team', 'UserController@addTeam')
 		->name('api.users.add_team');

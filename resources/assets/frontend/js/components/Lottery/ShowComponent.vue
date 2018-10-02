@@ -241,7 +241,7 @@
 					this.loading.paying = false;
 				});		
 			},
-			validate(event) {
+			validate (event) {
 
 				let tickets = this.getTicketsFinished();
 
@@ -348,14 +348,7 @@
                         this.refreshAuthPromise()
                             .then((response) => {
                                 if (response.status === 200) {
-                                    /* toastr.options.onHidden = function() {
-                                        window.location.reload();
-                                    }; */
-                                    /* toastr.success(
-                                        this.trans('strings.successful_purchase'),
-                                        this.trans('strings.buy'),
-									); */
-									swal({
+                                    swal({
 										showCloseButton: true,
 										imageUrl: '/imgs/logo.png',
 										imageHeight: 50,
@@ -374,7 +367,7 @@
 									});
                                     //window.localStorage.setItem('authUser', JSON.stringify(response.data));
                                     this.$store.dispatch('setUserObject', response.data);
-                                    this.$store.dispatch('clearPurchase');
+                                    //this.$store.dispatch('clearPurchase');
 
                                     /*this.$router.push({
                                         name: 'users.transactions'
@@ -382,7 +375,7 @@
                                 }
                             }).catch((error) => {
 
-                        });
+                        	});
 					}
 		        }).catch((error) => {
 		        	this.loading.paying = false;

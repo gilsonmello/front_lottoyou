@@ -31,19 +31,18 @@
 </template>
 
 <script>
-	import HeaderComponent from './HeaderComponent'
-	import SliderComponent from './SliderComponent'
-	import CarouselComponent from './CarouselComponent'
-	import FooterComponent from './FooterComponent'
-	import LoginComponent from './LoginComponent'
-	import VcModal from './VcModal'
-	import router from '../router'
-	import LoadComponent from './Load'
+	import HeaderComponent from './HeaderComponent';
+	import SliderComponent from './SliderComponent';
+	import CarouselComponent from './CarouselComponent';
+	import FooterComponent from './FooterComponent';
+	import LoginComponent from './LoginComponent';
+	import VcModal from './VcModal';
+	import router from '../router';
 	import AppLoadComponent from './AppLoad';
 	import {routes} from '../api_routes'
 	import {mapGetters} from 'vuex';
 	export default {
-		data() {
+		data () {
 			return {
 				loading: {
 					component: true
@@ -55,7 +54,7 @@
 			}
 		},
 		methods: {
-			cartRequest() {
+			cartRequest () {
 				//Requisição para pegar os itens do carrinho salvo
 				let cartRequest = axios.create();
 
@@ -82,7 +81,7 @@
 					this.loading.component = false;
 				});
 			},
-			init() {
+			init () {
 				//Pegando os dados do usuário no localstorage
 				var access_token = JSON.parse(window.localStorage.getItem('access_token'));
 				access_token = access_token != null ? access_token : null;
@@ -91,59 +90,45 @@
 				var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
 				refresh_token = refresh_token != null ? refresh_token : '';
 
-
+				//Se usuário está logado
 				if(access_token) {
 					this.refreshAuthPromise()
-					.then(response => {
-						if(response.status === 200) {
-							response.data.access_token = access_token;
-				        	response.data.refresh_token = refresh_token;
-							//window.localStorage.setItem('authUser', JSON.stringify(response.data));
-							this.$store.dispatch('setUserObject', response.data);
-							if(this.auth.cartoleando_team) {
-								this.teamRequest()
-									.then((teamRequestResponse) => {
-										if(response.status === 200) {
-											this.$store.dispatch('setTeamUser', teamRequestResponse.data);
-										}
-									}).catch((error) => {
+						.then(response => {
+							if(response.status === 200) {
+								response.data.access_token = access_token;
+								response.data.refresh_token = refresh_token;
+								//window.localStorage.setItem('authUser', JSON.stringify(response.data));
+								this.$store.dispatch('setUserObject', response.data);
+								this.cartRequest();
+								this.getSystemSettings()
+									.then((response) => {
+										this.$store.dispatch('setSystemSettings', response.data);
+									})
+									.catch((error) => {
 
 									});
+								this.loading.component = false;
 							}
-							this.loading.component = false;
+						}).catch((error) => {
 							this.cartRequest();
-							this.getSystemSettings()
-								.then((response) => {
-									this.$store.dispatch('setSystemSettings', response.data);
-								})
-								.catch((error) => {
-
-								});
-							this.onReady();
-							this.beforeEach();
-						}
-				    }).catch((error) => {
-				    	this.cartRequest();
-				    	this.onReady();
-						this.beforeEach();
-						this.$store.dispatch('clearAuthUser');
-						window.localStorage.removeItem('authUser');
-						window.localStorage.removeItem('access_token');
-						window.localStorage.removeItem('refresh_token');
-				    });
+							this.$store.dispatch('clearAuthUser');
+							window.localStorage.removeItem('authUser');
+							window.localStorage.removeItem('access_token');
+							window.localStorage.removeItem('refresh_token');
+						});
 				} else {			
-			    	this.cartRequest();		
-			    	this.onReady();
-					this.beforeEach();
+			    	this.cartRequest();	
 				}
-
+	
+				this.onReady();
+				this.beforeEach();
 
 				//this.authUser = JSON.parse(window.localStorage.getItem('authUser'));
 				//this.$store.dispatch('setUserObject', this.authUser);				
 
 				
 			},
-			onReady() {
+			onReady () {
 				router.onReady(() => {
 
 					/*if(this.$router.history.current.query.route_name != null
@@ -155,7 +140,7 @@
 
 					let access_token = JSON.parse(window.localStorage.getItem('access_token'));
 					access_token = access_token != null ? access_token : null;
-					//Verificando se a página necessita de login,
+					//Verificando se a página necessita de login e o usuário não está logado
 					if(this.$router.history.current.meta.requiresAuth && access_token == null) {
 						this.$router.push({
 							name: 'home'
@@ -164,7 +149,7 @@
 					
 				});
 			},
-			beforeEach() {
+			beforeEach () {
 				router.beforeEach((to, from, next) => {
 					this.loading.component = true;
 					//Pegando os dados do usuário no localstorage
@@ -252,17 +237,16 @@
 		watch: {
 
 		},
-		beforeCreate() {
+		beforeCreate () {
 			
 		},
-		beforeMount() {
+		beforeMount () {
 			
 		},
-		created() {
+		created () {
 			
 		},
-		mounted() {		
-			this.$root.$refs.App = this; 
+		mounted () {		
 			this.init();
 			router.afterEach((to, from) => {
 				ga('set', 'page', to.path);
@@ -294,7 +278,6 @@
 			SliderComponent,
 			CarouselComponent,
 			FooterComponent,
-			LoadComponent,
 			LoginComponent,
 			AppLoadComponent,
 			VcModal

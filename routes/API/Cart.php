@@ -3,14 +3,20 @@
 /* Route::post('/carts/complete_fast_payment_lottery', 'CartController@completeFastPaymentLottery')
     ->name('api.carts.complete_fast_payment_lottery'); */
 
+//Rota para validar compra rápida das loterias
 Route::post('/carts/validate_lottery_fast_payment', 'CartController@validateLotteryFastPayment')
     ->name('api.carts.validate_lottery_fast_payment');
 
 /* Route::post('/carts/complete_fast_payment_soccer_expert', 'CartController@completeFastPaymentSoccerExpert')
     ->name('api.carts.complete_fast_payment_soccer_expert'); */
 
+//Rota para validar compra rápida dos soccer experts
 Route::post('/carts/validate_soccer_expert_fast_payment', 'CartController@validateSoccerExpertFastPayment')
     ->name('api.carts.validate_soccer_expert_fast_payment');
+
+//Rota para validar compra rápida dos cartoleandos
+Route::post('/carts/validate_cartoleando_fast_payment', 'CartController@validateCartoleandoFastPayment')
+    ->name('api.carts.validate_cartoleando_fast_payment');
 
 Route::post('/carts/add_scratch_cards', 'CartController@addScratchCard')
 	->name('api.carts.add_scratch_cards');

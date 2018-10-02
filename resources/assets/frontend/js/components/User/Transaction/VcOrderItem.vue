@@ -28,7 +28,7 @@
 	export default {
 		props: ['order_item'],
 		mounted() {
-			console.log(this.order_item)
+			
 		}
 	}
 </script>

@@ -76,6 +76,9 @@
                             <button @click="addToCart($el)" v-if="!loading.adding" class="btn btn-xl btn-primary" type="button" style="width: 40%;">
                                 {{ trans('strings.to_confirm') }}
                             </button>
+                            <button @click="validateFastBuy($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value >= item.total" class="btn-pay-now pull-right btn btn-primary">
+                                {{ trans('strings.pay_now') }}
+                            </button>
                             <button @click.prevent="" v-else class="btn-load btn btn-md btn-primary">
                                 <i class="fa fa-refresh fa-spin"></i>
                             </button>
@@ -258,7 +261,7 @@
 </template>
 
 <script>
-import {routes} from '../../api_routes';
+import {routes, getHeaders} from '../../api_routes';
 import {mapState, mapGetters} from 'vuex';
 export default {
     methods: {
@@ -275,6 +278,82 @@ export default {
                     backdrop: 'static'
                 });  
                 vm.modal.modal('toggle');
+            }
+        },
+        fastBuy () {
+            let rq = axios.create();
+            rq.post(
+                routes.carts.complete_fast_payment_cartoleando,
+                {
+                    purchase: this.item,
+					hash: this.item.hash,
+                },
+                getHeaders()
+            ).then(response => {
+                if(response.status === 200) {
+                    this.refreshAuthPromise()
+                        .then((response) => {
+                            if (response.status === 200) {
+                                swal({
+                                    showCloseButton: true,
+                                    imageUrl: '/imgs/logo.png',
+                                    imageHeight: 50,
+                                    imageAlt: 'Logo lottoyou',
+                                    //title: this.trans('strings.buy'),
+                                    title: this.trans('strings.successful_purchase'),
+                                    text: false,
+                                    //html: `<p style="text-align: left">${this.trans('strings.successful_purchase')}</p>`,
+                                    showConfirmButton: true,
+                                }).then((result) => {
+                                    if(result.dismiss) {
+                                        
+                                    } else {
+                                        window.location.reload();
+                                    }
+                                });
+                                this.$store.dispatch('setUserObject', response.data);
+                            }
+                        }).catch((error) => {
+
+                        });
+                }
+            }).catch((error) => {
+                //this.$store.dispatch('removeItemLottery', this.item);
+                toastr.error(
+                    error.response.data.msg,
+                    this.trans('strings.error')
+                );
+                this.loading.paying = false;
+            });
+        },
+        validateFastBuy () {
+            let _self = this;
+            let isvalid = this.form.valid();
+            if (isvalid) {
+                //Request
+                let rq = axios.create();
+
+                rq.interceptors.request.use(config => {
+                    this.loading.paying = true;
+                    return config;
+                });
+
+                rq.post(
+                    routes.carts.validate_cartoleando_fast_payment,
+                    this.item,
+                    getHeaders()
+                ).then(response => {
+                    if(response.status === 200) {
+                        this.fastBuy();  
+                    }
+                }).catch((error) => {
+                    //this.$store.dispatch('removeItemLottery', this.item);
+                    toastr.error(
+                        error.response.data.msg,
+                        this.trans('strings.error')
+                    );
+                    this.loading.paying = false;
+                });	
             }
         },
         validatePurchase () {
