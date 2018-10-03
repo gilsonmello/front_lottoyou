@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Cartoleando;
 
 class LeaClassicTeam extends Model
 {
+    use Cartoleando;
+
     const CREATED_AT = 'created';
 
     const UPDATED_AT = 'modified';
@@ -47,13 +50,22 @@ class LeaClassicTeam extends Model
         
     ];
 
+    protected $appends = [
+        'cartoleando_team'
+    ];
+
     public function leaClassic() 
     {
         return $this->belongsTo(League::class, 'league_id');
     }
 
-    public function cartoleandoTeam() 
-    {
-        return $this->belongsTo(CartoleandoTeam::class, 'team_id');
+    /**
+     * @param $date
+     * @return mixed
+     */
+    public function getCartoleandoTeamAttribute($date) 
+    {        
+        $team = CartoleandoTeam::where('owner_id', '=', $this->owner_id)->get()->first();
+        return $this->getTeamFromCartola($team->slug);
     }
 }

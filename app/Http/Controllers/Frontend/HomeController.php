@@ -40,8 +40,7 @@ class HomeController extends Controller
             $filename = pathinfo($f)['filename'];
             $trans[$filename] = trans($filename);
         }
-
-
+    
         $loc = request()->session()->get('locale');
 
         if(is_null($loc)){

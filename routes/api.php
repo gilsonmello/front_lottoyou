@@ -88,7 +88,7 @@ Route::group(['namespace' => 'API'], function() {
 Route::group(['middleware' => 'auth:api', 'namespace' => 'API'], function() {
 	
 	Route::get('user', function(Request $request) {
-    	return User::where('id', '=', $request->user()->id)
+		return User::where('id', '=', $request->user()->id)
     		->where('active', '=', 1)
     		->with([
 				'country', 
@@ -97,6 +97,8 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'API'], function() {
     		->get()
     		->first();
 	});
+
+	Route::post('historic_balances/of_the_user', 'HistoricBalanceController@ofTheUser');
 
 	Route::put('/users', 'UserController@update');
 			

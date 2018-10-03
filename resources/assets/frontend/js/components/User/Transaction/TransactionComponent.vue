@@ -149,9 +149,12 @@
                     <td v-else-if="balance.balance_insert">
                         {{ trans('strings.balance') }}
                     </td>
+                    <td v-else-if="balance.lea_classic_team || balance.lea_cup_team">
+                        {{ trans('strings.cartoleando') }}
+                    </td>
                     <!-- Descrição -->
                     <td v-if="balance.order_item">
-                        <vc-order-item :balance="balance" :order_item="balance.order_item"></vc-order-item>
+                        <vc-order-item :balance="balance" :order_item="balance.order_item" />
                     </td>
                     <td v-else-if="balance.scratch_card">
                         <vc-scratchcard :balance="balance" :scratch_card="balance.scratch_card"></vc-scratchcard>
@@ -174,8 +177,14 @@
                     <td v-else-if="balance.balance_insert">
                         <vc-balance-insert :balance="balance" :insert="balance.balance_insert" />
                     </td> 
+                    <td v-else-if="balance.lea_classic_team">
+                        <vc-lea-classic-team :balance="balance" :team="balance.lea_classic_team" />
+                    </td> 
+                    <td v-else-if="balance.lea_cup_team">
+                        <vc-lea-cup-team :balance="balance" :team="balance.lea_cup_team" />
+                    </td> 
                     <td>
-                        {{ trans('strings.'+balance.description) }}
+                        {{ trans('strings.'+balance.description) }}                        
                     </td>
                     <td>
                         <span class="btn btn-xs btn-danger" v-if="balance.amount < 0">
@@ -195,7 +204,7 @@
 </template>
 
 <script>
-    import {routes} from '../../../api_routes';	
+    import {routes, getHeaders} from '../../../api_routes';	
     import {mapState, mapGetters} from 'vuex';
     import LoadComponent from '../../Load';
     import VcPagination from '../../VcPagination';
@@ -223,6 +232,13 @@
             }
         },
         methods: {
+            getComponentName (context) {
+                let names = {
+                    'order_item': 'vc-order-item'
+                };
+
+                return names[context];
+            },
             confirmation (balance) {
                 if(balance.order) {
                     this.order(balance.order);
@@ -287,14 +303,17 @@
                     query: Object.assign(this.query)
                 });
 
-                historicRequest.post(url, {
-                    owner_id: this.auth.id,
-                    page: this.query.page,
-                    column: this.query.column,
-                    direction: this.query.direction,
-                    amount: this.query.amount,
-                    from: this.query.from
-                }, {}).then(response => {
+                historicRequest.post(
+                    url, 
+                    {
+                        page: this.query.page,
+                        column: this.query.column,
+                        direction: this.query.direction,
+                        amount: this.query.amount,
+                        from: this.query.from
+                    }, 
+                    getHeaders()
+                ).then(response => {
                     if(response.status === 200) {
                         this.loading.component = false;
                         this.model = response.data;

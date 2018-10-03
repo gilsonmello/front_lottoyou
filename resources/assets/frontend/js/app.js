@@ -27,7 +27,7 @@ require('./helpers');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 import VueResource from 'vue-resource';
-import VueCookies from 'vue-cookies';
+import VueCookie from 'vue-cookie';
 import Meta from 'vue-meta';
 import VueModal from 'vue-js-modal';
     
@@ -37,13 +37,13 @@ import Select2 from './components/Select2Component';
 import InputMask from './components/InputMaskComponent';
 import VcCountries from './components/VcCountries';
 import Load from './components/Load';
-import {mapState, mapGetters} from 'vuex';
+import {mapGetters} from 'vuex';
 
 import App from './components/App';
 //import Teste from './components/Teste';
 import PortalVue from 'portal-vue';
 
-Vue.use(VueCookies);
+Vue.use(VueCookie);
 Vue.use(VueResource);
 Vue.use(Meta);
 Vue.use(VueModal);
@@ -68,7 +68,8 @@ const app = window.VueInstance =  new Vue({
 		$('#prerendered-content').remove();
     },
     mounted () {
-    	//this.$cookies.set("locale", window.locale);
+		//this.$cookies.set("locale", window.locale);
+		this.$cookie.set('test', 'Random value', {domain: 'localhost'});
     },
     computed: {
 		...mapGetters([

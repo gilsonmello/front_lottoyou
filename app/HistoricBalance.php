@@ -153,7 +153,7 @@ class HistoricBalance extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function leaClassicCup() 
+    public function leaCupTeam() 
     {
         return $this->hasOne(LeaCupTeam::class, 'historic_balance_id');
     }

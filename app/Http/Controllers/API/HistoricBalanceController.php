@@ -10,7 +10,7 @@ class HistoricBalanceController extends Controller
 {
     public function ofTheUser(Request $request) 
     {
-        $historicBalances = HistoricBalance::where('owner_id', '=', $request->owner_id);
+        $historicBalances = HistoricBalance::where('owner_id', '=', $request->user()->id);
         if($request->column && !empty($request->column)) {
             $historicBalances->orderBy($request->column, $request->direction);
         }
@@ -73,6 +73,8 @@ class HistoricBalanceController extends Controller
             'balanceInsert' => function($query) {
 
             },
+            'leaClassicTeam',
+            'leaCupTeam'
         ]);
         
         return response()->json($historicBalances->paginate(), 200);
