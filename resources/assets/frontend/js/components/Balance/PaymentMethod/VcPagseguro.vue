@@ -10,20 +10,20 @@
                     <div class="col-lg-12 col-12 col-sm-12 col-md-12">
                         <strong>
                             <label for="amount">* Quantia a ser depositada &nbsp;
-                                <i class="fa fa-info" title="Mínimo de $10.00"></i>
+                                <i class="fa fa-info" :title="'Mínimo de '+getSystemCurrency.data.symbol+'10.00'"></i>
                             </label>
                         </strong>
                     </div>
                 </div>
                 <div class="row">
 					<div class="col-lg-4 col-12 col-sm-4 col-md-4">
-					    <input type="text" v-model="amount" required class="form-control" id="amount" :placeholder="'Por favor, indique o valor em USD'">
+					    <input type="text" required class="form-control" id="amount" placeholder="Por favor, indique o valor">
 					</div>
-					<div class="col-lg-8 col-sm-8 col-md-8 col-12">
+					<!-- <div class="col-lg-8 col-sm-8 col-md-8 col-12">
 						<h6 v-if="quotation.results">Você será direcionado a uma página no Brasil para realizar o pagamento em reais.<br>
 							Dólar comercial: {{ parseFloat(quotation.results.currencies.USD.buy).format(2, true) }}
 						</h6>
-					</div>
+					</div> -->
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
@@ -45,9 +45,15 @@
 </template>
 
 <script>
-	import {routes} from '../../../api_routes'
-	import VcLoad from '../../Load'
+	import {routes} from '../../../api_routes';
+	import VcLoad from '../../Load';
+	import {mapState, mapGetters} from 'vuex';
 	export default {
+		computed: {
+			...mapGetters([
+            	'getSystemCurrency'
+        	]),
+		},
 		components: {
 			VcLoad
 		},
@@ -57,9 +63,9 @@
 
 			}
 		},
-		data() {
+		data () {
 			return {
-				amount: '$ 10.00',
+				amount: '',
 				loading: {
 					paying: false,
 					quotation: false,
@@ -69,22 +75,51 @@
 				quotation: {},
 			}
 		},
-		mounted() {
-			this.getQuotationDolar();
+		mounted () {
+			this.setMask();
 		},
 		methods: {
-            setMask() {
-                VMasker(document.querySelector("#amount")).maskMoney({
-                    // Decimal precision -> "90"
-                    precision: 2,
-                    // Decimal separator -> ",90"
-                    separator: '.',
-                    // Number delimiter -> "12.345.678"
-                    delimiter: ',',
-                    unit: '$',
-                });
+            setMask () {
+				let _self = this;
+				var time = setInterval(() => {
+					if($("#amount").length > 0) {
+						clearInterval(time);
+						VMasker(document.querySelector("#amount")).maskMoney({
+                            // Decimal precision -> "90"
+                            precision: 2,
+                            // Decimal separator -> ",90"
+                            separator: ',',
+                            // Number delimiter -> "12.345.678"
+                            delimiter: '.',
+                            unit: this.getSystemCurrency.data.symbol,
+                        });
+						
+						$("#amount").on("blur", function(event) {
+							let value = $(this).val();
+							value = value.replace('R$', '');
+							value = value.replace(' ', '');
+							value = value.replace('.', '');
+							value = value.replace(',', '.');
+							value = parseFloat(value);
+							if(value < 10) {
+								//formatBr = (10 * _self.quotation.results.currencies.USD.buy).format(2, true) + '';
+								//formatBr = formatBr.replace('.', ',');
+								$(this).val(VMasker.toMoney('10.00', {
+									// Decimal precision -> "90"
+									precision: 2,
+									// Decimal separator -> ",90"
+									separator: ',',
+									// Number delimiter -> "12.345.678"
+									delimiter: '.',
+									unit: _self.getSystemCurrency.data.symbol,
+								}));
+							}
+						});
+					}
+				});
             },
-			getQuotationDolar() {
+			getQuotationDolar () {
+				let _self = this;
 				const quotationDolarRequest = axios.create();
 				
 				quotationDolarRequest.interceptors.request.use(config => {
@@ -98,7 +133,6 @@
 
 				})
 				.then((response) => {
-
 					if(response.status === 200) { 
 						this.loading.quotation = false;
 						this.quotation = response.data;
@@ -106,109 +140,37 @@
 						//var formatBr = (10 * this.quotation.results.currencies.USD.buy).format(2, true) + '';
 						//formatBr = formatBr.replace('.', ',');
 						//this.amount = formatBr;
-						
-						var vm = this;
-
-						var time = setInterval(() => {
-							if($("#amount").length > 0) {
-								clearInterval(time);
-
-                                this.setMask();
-                                vm.amount = VMasker.toMoney('10.00', {
-                                    // Decimal precision -> "90"
-                                    precision: 2,
-                                    // Decimal separator -> ",90"
-                                    separator: '.',
-                                    // Number delimiter -> "12.345.678"
-                                    delimiter: ',',
-                                    unit: '$',
-                                });
-
-                                $("#amount").on("blur", function(event) {
-                                    let value = $(this).val();
-                                    vm.amount = value;
-                                    value = value.replace(/\$\ /g, '');
-                                    value = value.replace(/ /g, '');
-                                    value = value.replace(/,/g, '');
-                                    value = parseFloat(value);
-                                    if(value < 10) {
-                                        //formatBr = (10 * vm.quotation.results.currencies.USD.buy).format(2, true) + '';
-                                        //formatBr = formatBr.replace('.', ',');
-                                        $(this).val(VMasker.toMoney('10.00', {
-                                            // Decimal precision -> "90"
-                                            precision: 2,
-                                            // Decimal separator -> ",90"
-                                            separator: '.',
-                                            // Number delimiter -> "12.345.678"
-                                            delimiter: ',',
-                                            unit: '$',
-                                        }));
-                                        vm.amount = VMasker.toMoney('10.00', {
-                                            // Decimal precision -> "90"
-                                            precision: 2,
-                                            // Decimal separator -> ",90"
-                                            separator: '.',
-                                            // Number delimiter -> "12.345.678"
-                                            delimiter: ',',
-                                            unit: '$',
-                                        });
-                                    }
-                                });
-
-								/*$("#amount").maskMoney({
-									prefix:'R$ ', 
-									allowNegative: false, 
-									thousands: '.', 
-									decimal: ',', 
-									affixesStay: false
-								}).on("blur", function(event) {
-									let value = $(this).val();
-									vm.amount = value;
-									value = value.replace(/\R\$\ /g, '');
-									value = value.replace(/\./g, '');
-									value = value.replace(/,/g, '.');
-									value = parseFloat(value);				
-									
-									if(value < 10) {
-										formatBr = (10 * vm.quotation.valores.USD.valor).format(2, true) + '';
-										formatBr = formatBr.replace('.', ',')
-										$(this).val(formatBr);
-										vm.amount = formatBr;
-									}
-							    });*/
-							}
-						})
-						
+											
 						
 					}
 				}).catch((error) => {
 					
 				});
 			},
-			handleTerms() {
+			handleTerms () {
                 console.log('sad')
 			},
-			getAmount() {
+			getAmount () {
 				let value = $("#amount").val();
-                value = value.replace(/\$\ /g, '');
-                value = value.replace(/ /g, '');
-                value = value.replace(/,/g, '');
+				value = value.replace('R$', '');
+				value = value.replace(' ', '');
+				value = value.replace('.', '');
+				value = value.replace(',', '.');
 				return parseFloat(value).format(2, true);
 			},
-			sendPagseguro: function(event) {
+			sendPagseguro (event) {
 				var form = $(event.currentTarget);
 				if(this.validate(this.getAmount())) {
 					this.loading.paying = true;
 					var form = $('#sendPagseguro');
 
-
-					var receiverEmail = document.createElement('input');
+					let receiverEmail = document.createElement('input');
                     receiverEmail.setAttribute('name', "receiverEmail");
                     receiverEmail.setAttribute('type', "hidden");
                     receiverEmail.setAttribute('value', 'lottoyou.adm@gmail.com');
                     form.append(receiverEmail);
 
-                    var currency = document.createElement('input');
+                    let currency = document.createElement('input');
                     currency.setAttribute('name', "currency");
                     currency.setAttribute('type', "hidden");
                     currency.setAttribute('value', 'BRL');
@@ -226,10 +188,13 @@
                     itemDescription1.setAttribute('value', 'Deposit '+this.order_id);
                     form.append(itemDescription1);
 
+					console.log(this.getAmount())
                     var itemAmount1 = document.createElement('input');
                     itemAmount1.setAttribute('name', "itemAmount1");
                     itemAmount1.setAttribute('type', "hidden");
-                    itemAmount1.setAttribute('value', (this.getAmount() * this.quotation.results.currencies.USD.buy).format(2, true));
+					itemAmount1.setAttribute('value', this.getAmount());
+					//Linha comentada para remover a multiplicação do valor pela cotação do dolar
+					//itemAmount1.setAttribute('value', (this.getAmount() * this.quotation.results.currencies.USD.buy).format(2, true));
                     form.append(itemAmount1);
 
                     var itemQuantity1 = document.createElement('input');
@@ -277,7 +242,7 @@
 
 				} else {
 					swal({
-						title: "Informe um valor maior do que R$10.00",
+						title: 'Informe um valor maior do que '+this.getSystemCurrency.data.symbol+'10.00',
 						showCloseButton: true,
 						imageUrl: '/imgs/logo.png',
 						imageHeight: 50,
