@@ -13,12 +13,13 @@
 </style>
 
 <script>
-import {mapGetters} from 'vuex';
-import {routes} from '../../../api_routes'
+import { mapGetters } from 'vuex';
+import { routes } from '../../../api_routes';
 export default {
     computed: {
         ...mapGetters([
-            'auth'
+            'auth',
+            'getSystemCurrency'
         ])
     },
     components: {
@@ -45,7 +46,7 @@ export default {
             value: 10.00
         }
     },
-    mounted() {
+    mounted () {
         if(this.auth.validated == 0) {
             swal({
                 title: 'Seu cadastro está incompleto.',
@@ -67,7 +68,7 @@ export default {
             });
         } else if(this.auth.balance.value < 10) {
             swal({
-                title: 'Saldo menor do que $10.00',
+                title: 'Saldo menor do que '+this.getSystemCurrency.data.symbol+'10.00',
                 showCloseButton: true,
                 imageUrl: '/imgs/logo.png',
                 imageHeight: 50,
@@ -88,10 +89,10 @@ export default {
         }
     },
     methods: {
-        init() {
+        init () {
             this.getCountries();
         },
-        requestAgent() {
+        requestAgent () {
             let request = axios.create();
             request.interceptors.request.use(config => {
                 this.loading.submit = true;
@@ -129,7 +130,7 @@ export default {
                 this.loading.submit = false;
             })
         },
-        submitAgent(el) {
+        submitAgent (el) {
             if(this.value <= this.auth.balance.value && this.value > 0) {
                 swal({
                     title: this.trans('strings.do_you_wish_to_continue'),
@@ -156,24 +157,25 @@ export default {
                 );
             }
         },
-        getAmount() {
+        getAmount () {
             let value = $("#amount").val();
             this.amount = value;
-            value = value.replace(/\$\ /g, '');
-            value = value.replace(/ /g, '');
-            value = value.replace(/,/g, '');
+            value = value.replace('R$', '');
+            value = value.replace(' ', '');
+            value = value.replace('.', '');
+            value = value.replace(',', '.');
             return value;
         },
-        setMask() {
+        setMask () {
             let vm = this;
             VMasker(document.querySelector("#amount")).maskMoney({
                 // Decimal precision -> "90"
                 precision: 2,
                 // Decimal separator -> ",90"
-                separator: '.',
+                separator: ',',
                 // Number delimiter -> "12.345.678"
-                delimiter: ',',
-                unit: '$',
+                delimiter: '.',
+                unit: this.getSystemCurrency.data.symbol,
             });
             $("#amount").on("blur", function(event) {
                 let value = $(this).val();
@@ -185,106 +187,101 @@ export default {
                         // Decimal precision -> "90"
                         precision: 2,
                         // Decimal separator -> ",90"
-                        separator: '.',
+                        separator: ',',
                         // Number delimiter -> "12.345.678"
-                        delimiter: ',',
-                        unit: '$',
+                        delimiter: '.',
+                        unit: this.getSystemCurrency.data.symbol,
                     }));
                     vm.amount = VMasker.toMoney('10.00', {
                         // Decimal precision -> "90"
                         precision: 2,
                         // Decimal separator -> ",90"
-                        separator: '.',
+                        separator: ',',
                         // Number delimiter -> "12.345.678"
-                        delimiter: ',',
-                        unit: '$',
+                        delimiter: '.',
+                        unit: this.getSystemCurrency.data.symbol,
                     });
                     vm.value = 10.00;
                 }
             });
         },
-        validateFormAgent() {
-            let vm = this;
-            let time = setInterval(() => {
-                var form = $(this.$el).find('form');
-                if(form.length > 0) {
-                    this.amount = VMasker.toMoney('10.00', {
-                        // Decimal precision -> "90"
-                        precision: 2,
-                        // Decimal separator -> ",90"
-                        separator: '.',
-                        // Number delimiter -> "12.345.678"
-                        delimiter: ',',
-                        unit: '$',
-                    });
-                    this.setMask();
-                    clearInterval(time);
-                    form.validate({
-                        rules: {
-                            name: {
-                                required: true,
-                            },
-                            terms: {
-                                required: true,
-                            },
-                            bank: {
-                                required: true,
-                            },
-                            agency: {
-                                required: true,
-                            },
-                            number: {
-                                required: true,
-                            },
-                            identification: {
-                                required: true,
-                            }
-                        },
-                        messages: {
-                            name: {
-                                required: vm.trans('strings.field_required'),
-                            },
-                            terms: {
-                                required: vm.trans('strings.field_required'),
-                            },
-                            bank: {
-                                required: vm.trans('strings.field_required'),
-                            },
-                            agency: {
-                                required: vm.trans('strings.field_required'),
-                            },
-                            number: {
-                                required: vm.trans('strings.field_required'),
-                            },
-                            identification: {
-                                required: vm.trans('strings.field_required'),
-                            }
-                        },
-                        highlight: function (input) {
-                            $(input).addClass('error');
-                            $(input).parents('.form-control').addClass('error');
-                        },
-                        unhighlight: function (input) {
-                            $(input).removeClass('error');
-                            $(input).parents('.form-control').removeClass('error');
-                        },
-                        errorPlacement: function (error, element) {
-                            $(element).parents('.input-group').append(error);
-                            $(element).parents('.form-group').append(error);
-                        }
-                    });
-                    form.on('submit', function(e) {
-                        vm.submit = true;
-                        var isvalid = form.valid();
-                        if (isvalid) {
-                            e.preventDefault();
-                            vm.submitAgent();
-                        }
-                    });
+        validateFormAgent () {
+            let vm = this;            
+            let form = $(this.$refs.form);
+            this.amount = VMasker.toMoney('10.00', {
+               // Decimal precision -> "90"
+                precision: 2,
+                // Decimal separator -> ",90"
+                separator: ',',
+                // Number delimiter -> "12.345.678"
+                delimiter: '.',
+                unit: this.getSystemCurrency.data.symbol,
+            });
+            this.setMask();
+            form.validate({
+                rules: {
+                    name: {
+                        required: true,
+                    },
+                    terms: {
+                        required: true,
+                    },
+                    bank: {
+                        required: true,
+                    },
+                    agency: {
+                        required: true,
+                    },
+                    number: {
+                        required: true,
+                    },
+                    identification: {
+                        required: true,
+                    }
+                },
+                messages: {
+                    name: {
+                        required: vm.trans('strings.field_required'),
+                    },
+                    terms: {
+                        required: vm.trans('strings.field_required'),
+                    },
+                    bank: {
+                        required: vm.trans('strings.field_required'),
+                    },
+                    agency: {
+                        required: vm.trans('strings.field_required'),
+                    },
+                    number: {
+                        required: vm.trans('strings.field_required'),
+                    },
+                    identification: {
+                        required: vm.trans('strings.field_required'),
+                    }
+                },
+                highlight: function (input) {
+                    $(input).addClass('error');
+                    $(input).parents('.form-control').addClass('error');
+                },
+                unhighlight: function (input) {
+                    $(input).removeClass('error');
+                    $(input).parents('.form-control').removeClass('error');
+                },
+                errorPlacement: function (error, element) {
+                    $(element).parents('.input-group').append(error);
+                    $(element).parents('.form-group').append(error);
                 }
             });
+            form.on('submit', function(e) {
+                vm.submit = true;
+                var isvalid = form.valid();
+                if (isvalid) {
+                    e.preventDefault();
+                    vm.submitAgent();
+                }
+            });            
         },
-        getCountries() {
+        getCountries () {
             let countryRequest = axios.create();
 			countryRequest.interceptors.request.use(config => {
 				this.loading.component = true
@@ -295,7 +292,9 @@ export default {
 	            	this.countries = response.data;
                     this.country = ''+this.countries[0].id;
                     this.loading.component = false
-                    this.validateFormAgent();
+                    setTimeout(() => {
+                        this.validateFormAgent();
+                    }, 500);
 	            }
 			}).catch((error) => {
 				this.loading.component = false
@@ -313,7 +312,7 @@ export default {
             <h5>
             </h5>
             <!-- <h1 class="page-header">{{trans('strings.withdraw')}} {{trans('strings.funds')}}</h1> -->
-            <form v-if="auth.balance.value >= 10">
+            <form v-if="auth.balance.value >= 10" ref="form">
                 <div class="row">
                     <div class="col-lg-3 col-12 col-md-6 col-sm-6">
                         <div class="form-group">
@@ -404,8 +403,8 @@ export default {
                     <div class="col-lg-6 col-12 col-sm-12 col-md-10">
                         <strong>
                             <label for="amount">* Quantia a ser retirada &nbsp;
-                                <i class="fa fa-info" title="Mínimo de $1.00"></i>
-                                &nbsp;&nbsp;{{ trans('strings.left_balance') }}: ${{ parseFloat(auth.balance.value - value).format(2, true) }}
+                                <i class="fa fa-info" :title="'Mínimo de '+getSystemCurrency.data.symbol+'1.00'"></i>
+                                &nbsp;&nbsp;{{ trans('strings.left_balance') }}: {{getSystemCurrency.data.symbol}}{{ parseFloat(auth.balance.value - value).format(2, true) }}
                             </label>
                         </strong>
                         <input type="text" v-model="amount" required class="form-control" id="amount" :placeholder="'Por favor, indique o valor em USD'">
