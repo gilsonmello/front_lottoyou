@@ -1,5 +1,5 @@
 <template>
-    <load v-if="loading.component == true"></load>
+    <load v-if="loading.component == true" />
     <div class="container" v-else>
         <div class="row">
             <div class="col-lg-12">
@@ -17,9 +17,9 @@
                         {{ trans('strings.orders') }}
                     </router-link> -->
                 </div>
-                <h3 class="page-header">
+                <!-- <h3 class="page-header">
                     {{ trans('strings.games') }}
-                </h3>
+                </h3> -->
             </div>
         </div>
         

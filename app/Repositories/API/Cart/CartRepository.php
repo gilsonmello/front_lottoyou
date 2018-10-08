@@ -6,6 +6,7 @@ use App\PasswordReset;
 use Illuminate\Http\Request;
 use App\Order;
 use App\OrderItem;
+use App\Cart;
 
 class CartRepository implements CartContract
 {
@@ -35,12 +36,13 @@ class CartRepository implements CartContract
                 $orderItem = new OrderItem;
                 $orderItem->order_id = $order->id;
                 $orderItem->type = $value['type'];
+                $orderItem->context_message = 'buy';
                 $data = null;
                 if($value['type'] == 'lottery') {
                     $data = json_encode($value['lottery']);
                     $orderItem->data = $data;
                     $orderItem->amount = $value['lottery']['value'];
-                    $orderItem->lottery_id = $value['lottery']['id'];
+                    $orderItem->context_id = $value['lottery']['id'];
                     $orderItem->hash = $value['lottery']['hash'];
                     $orderItem->quantity = count($value['lottery']['tickets']);
                     /*$order->lotteries()->attach($value['lottery']['id'], [
@@ -52,7 +54,7 @@ class CartRepository implements CartContract
                     $orderItem->data = $data;
                     $orderItem->hash = $value['soccer_expert']['hash'];
                     $orderItem->quantity = count($value['soccer_expert']['tickets']);
-                    $orderItem->soccer_expert_id = $value['soccer_expert']['soccer_expert']['id'];
+                    $orderItem->context_id = $value['soccer_expert']['soccer_expert']['id'];
                     /*$order->soccerExperts()->attach($value['soccer_expert']['soccer_expert']['id'], [
                         'data' => $data
                     ]);*/
@@ -62,23 +64,22 @@ class CartRepository implements CartContract
                     $orderItem->quantity = $value['scratch_card']['scratch_card']['discount_tables']['quantity'];
                     $orderItem->amount = $value['scratch_card']['total'];
                     $orderItem->hash = $value['scratch_card']['hash'];
-                    $orderItem->scratch_card_id = $value['scratch_card']['scratch_card']['id'];
+                    $orderItem->context_id = $value['scratch_card']['scratch_card']['id'];
                     /*$order->scratchCards()->attach($value['scratch_card']['scratch_card']['id'], [
                         'data' => $data
                     ]);*/
                 } else if($value['type'] == 'cartoleando') {
                     $data = json_encode($value['cartoleando']);
-                    foreach($value['cartoleando']['package']['leagues'] as $leagues) {
+                    foreach($value['cartoleando']['package']['leagues'] as $league) {
                         $orderItem = new \App\OrderItem;
                         $orderItem->order_id = $order->id;
                         $orderItem->type = $value['type'];
                         $orderItem->user_id = $request->user()->id;
                         $orderItem->data = $data;
                         $orderItem->quantity = 1;
-                        $orderItem->league_id = $leagues['id'];
+                        $orderItem->context_id = $league['id'];
                         $orderItem->amount = $value['cartoleando']['package']['value'];
                         $orderItem->hash = $value['cartoleando']['hash'];
-                        $orderItem->lea_package_id = $value['cartoleando']['package']['id'];
                         $orderItem->save();
                     }
                     continue;                    
@@ -133,7 +134,7 @@ class CartRepository implements CartContract
             $data = json_encode($request['purchase']);
             $orderItem->data = $data;
             $orderItem->hash = $request['purchase']['hash'];
-            $orderItem->lottery_id = $request['purchase']['lottery']['id'];
+            $orderItem->context_id = $request['purchase']['lottery']['id'];
             $orderItem->amount = $request['purchase']['total'];
             $orderItem->quantity = count($request['purchase']['tickets']);
             $orderItem->save();
@@ -161,7 +162,7 @@ class CartRepository implements CartContract
             $orderItem->type = 'soccer_expert';
             $data = json_encode($request['purchase']);
             $orderItem->data = $data;
-            $orderItem->soccer_expert_id = $request['purchase']['soccer_expert']['id'];
+            $orderItem->context_id = $request['purchase']['soccer_expert']['id'];
             $orderItem->hash = $request['purchase']['hash'];
             $orderItem->user_id = $order->user_id;
             $orderItem->amount = $request['purchase']['total'];
@@ -197,10 +198,9 @@ class CartRepository implements CartContract
                 $orderItem->user_id = $request->user()->id;
                 $orderItem->data = $data;
                 $orderItem->quantity = 1;
-                $orderItem->league_id = $league['id'];
+                $orderItem->context_id = $league['id'];
                 $orderItem->amount = $package['value'];
                 $orderItem->hash = $hash;
-                $orderItem->lea_package_id = $package['id'];
                 $orderItem->save();
             }
             return true;

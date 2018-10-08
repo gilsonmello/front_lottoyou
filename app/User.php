@@ -109,7 +109,7 @@ class User extends Authenticatable
     public function getCartoleandoTeamAttribute($date) 
     {        
         $team = CartoleandoTeam::where('owner_id', '=', $this->id)->get()->first();
-        return $this->getTeamFromCartola($team->slug);
+        return $team != null ? $this->getTeamFromCartola($team->slug) : null;
     }
 
     /**

@@ -79,7 +79,7 @@
                             <button @click="validateFastBuy($event)" type="button" v-if="loading.paying == false && auth && auth.balance.value >= item.total" class="btn-pay-now pull-right btn btn-primary">
                                 {{ trans('strings.pay_now') }}
                             </button>
-                            <button @click.prevent="" v-else class="btn-load btn btn-md btn-primary">
+                            <button @click.prevent="" v-if="loading.paying" class="btn-load btn btn-md btn-primary">
                                 <i class="fa fa-refresh fa-spin"></i>
                             </button>
                         </div>

@@ -1,17 +1,16 @@
 <template>
-    <load-component v-if="loading.component"></load-component>
+    <load v-if="loading.component" />
     <div class="container" v-else>
         
     </div>
 </template>
 
 <script>
-import LoadComponent from '../Load'
-import {routes} from '../../api_routes'
+import { routes } from '../../api_routes';
 export default {
     name: "VcActivate",
     methods: {
-        activateRequest() {
+        activateRequest () {
             var activateRequest = axios.create();
             activateRequest.interceptors.request.use(config => {
                 this.loading.component = true;
@@ -73,7 +72,7 @@ export default {
     mounted() {
         this.activateRequest();
     },
-    data() {
+    data () {
         return {
             loading: {
                 component: true
@@ -81,7 +80,7 @@ export default {
         }
     },
     components: {
-        LoadComponent
+        
     }
 }
 </script>

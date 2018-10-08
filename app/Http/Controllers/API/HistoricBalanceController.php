@@ -25,21 +25,6 @@ class HistoricBalanceController extends Controller
             'orderItem' => function($query) {
 
             },
-            'orderItem.soccerExpert' => function($query) {
-
-            },
-            'orderItem.scratchCard' => function($query) {
-
-            },
-            'orderItem.lottery' => function($query) {
-
-            },
-            'orderItem.leaPackage' => function($query) {
-
-            },
-            'orderItem.league' => function($query) {
-
-            },
             'scratchCard' => function($query) {
 
             },

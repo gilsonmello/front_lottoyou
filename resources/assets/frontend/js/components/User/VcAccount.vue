@@ -1,5 +1,5 @@
 <template>
-    <load-component v-if="loading.component == true"></load-component>
+    <load v-if="loading.component == true" />
     <div class="container no-padding" v-else>
         <div class="row">
             <div class="col-lg-12">
@@ -19,15 +19,15 @@
                 </div>
             </div>
         </div>
+        <!-- <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header" style="margin-bottom: 22px; margin-top: 10px">
+                    {{ trans('strings.account') }}
+                </h3>
+            </div>
+        </div> -->
         <form class="user-edit" @submit.prevent="handleEdit" enctype="multipart/form-data">
             <input type="hidden" name="id" v-model="id">
-            <div class="row">
-                 <div class="col-lg-12">
-                    <h3 class="page-header" style="margin-bottom: 22px; margin-top: 10px">
-                        {{ trans('strings.account') }}
-                    </h3>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-lg-3">
                     <img v-if="photo" :src="photo_domain+photo" alt="" onclick="" style="" class="img-fluid" id="user-edit-photo">
@@ -245,9 +245,8 @@
 </template>
 
 <script>
-    import {routes, getHeaders} from '../../api_routes'
-    import LoadComponent from '../Load';
-    import {mapGetters} from 'vuex';
+    import { routes, getHeaders } from '../../api_routes';
+    import { mapGetters } from 'vuex';
     export default {
         metaInfo () {
             return {
@@ -549,11 +548,11 @@
             });
         },
         components: {
-            LoadComponent
+            
         },
         computed: {
             ...mapGetters([
-				'auth',
+				'auth'
             ]),
         }
     }

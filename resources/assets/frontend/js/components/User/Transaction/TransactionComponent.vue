@@ -1,5 +1,5 @@
 <template>
-	<load-component v-if="loading.component == true"></load-component>
+	<load v-if="loading.component == true" />
    	<div class="container" v-else>
         <div class="sub-navigation">
             <router-link class="nav-link" :to="{ name: 'users.account', params: {  } }">
@@ -17,9 +17,9 @@
         </div>
 
 
-        <h3 class="page-header">
+        <!-- <h3 class="page-header">
             {{ trans('strings.transactions') }}
-        </h3>
+        </h3> -->
 
 
         <table class="table text-center table-hover table-striped table-responsive">
@@ -184,7 +184,7 @@
                         <vc-lea-cup-team :balance="balance" :team="balance.lea_cup_team" />
                     </td> 
                     <td>
-                        {{ trans('strings.'+balance.description) }}                        
+                        {{ trans('strings.'+balance.modality) }}                        
                     </td>
                     <td>
                         <span class="btn btn-xs btn-danger" v-if="balance.amount < 0">
@@ -204,9 +204,8 @@
 </template>
 
 <script>
-    import {routes, getHeaders} from '../../../api_routes';	
-    import {mapState, mapGetters} from 'vuex';
-    import LoadComponent from '../../Load';
+    import { routes, getHeaders } from '../../../api_routes';	
+    import { mapState, mapGetters } from 'vuex';
     import VcPagination from '../../VcPagination';
     import VcOrderItem from './VcOrderItem';
     import VcScratchcard from './VcScratchcard';
@@ -283,7 +282,7 @@
                 }
             },
             historicRequest () {
-                var historicRequest = axios.create();
+                const historicRequest = axios.create();
 
                 /*var url = routes.historic_balances.of_the_user.replace('{id}', this.auth.id);
                 url += "?page="+this.query.page;
@@ -292,7 +291,7 @@
                 url += "&amount="+this.query.amount;
                 url += "&from="+this.query.from;*/
 
-                var url = routes.historic_balances.of_the_user;
+                const url = routes.historic_balances.of_the_user;
 
                 historicRequest.interceptors.request.use(config => {
                     this.loading.component = true
@@ -365,7 +364,6 @@
             this.historicRequest();
         },
         components: {
-        	LoadComponent,
             VcPagination,
             VcOrderItem,
             VcScratchcard,

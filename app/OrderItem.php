@@ -15,7 +15,10 @@ class OrderItem extends Model
     public $timestamps = true;
 
     protected $appends = [
-        
+        'lottery',
+        'scratch_card',
+        'soccer_expert',
+        'league'
     ];
 
     /**
@@ -53,25 +56,34 @@ class OrderItem extends Model
     /**
      * Categoria do soccer expert do item
      */
-    public function soccerExpert() 
+    public function getSoccerExpertAttribute() 
     {
-        return $this->belongsTo(SoccerExpert::class, 'soccer_expert_id');
+        if($this->type == 'soccer_expert') {
+            return SoccerExpert::where('id', '=', $this->context_id)->get()->first();
+        }
+        return null;
     }
 
     /**
      * Tema da raspadinha do item
      */
-    public function scratchCard() 
+    public function getScratchCardAttribute() 
     {
-        return $this->belongsTo(ScratchCardTheme::class, 'scratch_card_id');
+        if($this->type == 'scratch_card') {
+            return ScratchCardTheme::where('id', '=', $this->context_id)->get()->first();
+        }
+        return null;
     }
 
     /**
      * Categoria da loteria do item
      */
-    public function lottery() 
+    public function getLotteryAttribute() 
     {
-        return $this->belongsTo(Lottery::class, 'lottery_id');
+        if($this->type == 'lottery') {
+            return Lottery::where('id', '=', $this->context_id)->get()->first();    
+        }
+        return null;
     }
 
     /**
@@ -85,9 +97,12 @@ class OrderItem extends Model
      /**
      * Categoria da loteria do item
      */
-    public function league() 
+    public function getLeagueAttribute() 
     {
-        return $this->belongsTo(League::class, 'league_id');
+        if($this->type == 'cartoleando') {
+            return League::where('id', '=', $this->context_id)->get()->first();    
+        }
+        return null;
     }
 
     /**

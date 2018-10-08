@@ -1,5 +1,5 @@
 <template>
-	<vc-load v-if="loading.quotation"></vc-load>
+	<load v-if="loading.quotation" />
 	<div class="row" v-else>
 		<div class="col-lg-12">
 			<h6 class="choice-payment-method-msg"><strong>Você escolheu o Pagseguro como forma de pagamento (Válido só no Brasil)</strong></h6>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="row">
 					<div class="col-lg-4 col-12 col-sm-4 col-md-4">
-					    <input type="text" required class="form-control" id="amount" placeholder="Por favor, indique o valor">
+					    <input type="text" ref="fieldAmount" @blur="fieldAmountBlur($event)" required class="form-control" id="amount" placeholder="Por favor, indique o valor">
 					</div>
 					<!-- <div class="col-lg-8 col-sm-8 col-md-8 col-12">
 						<h6 v-if="quotation.results">Você será direcionado a uma página no Brasil para realizar o pagamento em reais.<br>
@@ -45,9 +45,8 @@
 </template>
 
 <script>
-	import {routes} from '../../../api_routes';
-	import VcLoad from '../../Load';
-	import {mapState, mapGetters} from 'vuex';
+	import { routes } from '../../../api_routes';
+	import { mapGetters } from 'vuex';
 	export default {
 		computed: {
 			...mapGetters([
@@ -55,13 +54,10 @@
         	]),
 		},
 		components: {
-			VcLoad
+			
 		},
 		props: ['order_id'],
 		watch: {
-			amount: function(newValue, oldValue) {
-
-			}
 		},
 		data () {
 			return {
@@ -76,47 +72,32 @@
 			}
 		},
 		mounted () {
-			this.setMask();
+			this.setMaskFieldAmount();
 		},
 		methods: {
-            setMask () {
-				let _self = this;
-				var time = setInterval(() => {
-					if($("#amount").length > 0) {
-						clearInterval(time);
-						VMasker(document.querySelector("#amount")).maskMoney({
-                            // Decimal precision -> "90"
-                            precision: 2,
-                            // Decimal separator -> ",90"
-                            separator: ',',
-                            // Number delimiter -> "12.345.678"
-                            delimiter: '.',
-                            unit: this.getSystemCurrency.data.symbol,
-                        });
-						
-						$("#amount").on("blur", function(event) {
-							let value = $(this).val();
-							value = value.replace('R$', '');
-							value = value.replace(' ', '');
-							value = value.replace('.', '');
-							value = value.replace(',', '.');
-							value = parseFloat(value);
-							if(value < 10) {
-								//formatBr = (10 * _self.quotation.results.currencies.USD.buy).format(2, true) + '';
-								//formatBr = formatBr.replace('.', ',');
-								$(this).val(VMasker.toMoney('10.00', {
-									// Decimal precision -> "90"
-									precision: 2,
-									// Decimal separator -> ",90"
-									separator: ',',
-									// Number delimiter -> "12.345.678"
-									delimiter: '.',
-									unit: _self.getSystemCurrency.data.symbol,
-								}));
-							}
-						});
-					}
-				});
+			fieldAmountBlur (event) {
+				if(this.getAmount() < 10) {
+					this.$refs.fieldAmount.value = VMasker.toMoney('10.00', {
+                        // Decimal precision -> "90"
+						precision: 2,
+						// Decimal separator -> ",90"
+						separator: ',',
+						// Number delimiter -> "12.345.678"
+						delimiter: '.',
+						unit: this.getSystemCurrency.data.symbol,
+                    });
+                }
+			},
+            setMaskFieldAmount () {
+				VMasker(this.$refs.fieldAmount).maskMoney({
+                    // Decimal precision -> "90"
+					precision: 2,
+					// Decimal separator -> ",90"
+					separator: ',',
+					// Number delimiter -> "12.345.678"
+					delimiter: '.',
+                    unit: this.getSystemCurrency.data.symbol,
+                });
             },
 			getQuotationDolar () {
 				let _self = this;
@@ -159,10 +140,9 @@
 				return parseFloat(value).format(2, true);
 			},
 			sendPagseguro (event) {
-				var form = $(event.currentTarget);
 				if(this.validate(this.getAmount())) {
 					this.loading.paying = true;
-					var form = $('#sendPagseguro');
+					let form = $(event.currentTarget);
 
 					let receiverEmail = document.createElement('input');
                     receiverEmail.setAttribute('name', "receiverEmail");
@@ -257,7 +237,7 @@
 					});
 				}
 			},
-			validate: function(amount) {
+			validate (amount) {
 				if(amount >= 10.00) {
 					return true;
 				}

@@ -9,10 +9,10 @@
 					<div class="col-lg-12 col-12 col-sm-12 col-md-12">
 					    <strong>
 					    	<label for="amount">* Quantia a ser depositada &nbsp;
-					    	<i class="fa fa-info" title="Mínimo de $10.00"></i>
+					    	<i class="fa fa-info" :title="'Mínimo de '+getSystemCurrency.data.symbol+'10.00'"></i>
 					    </label>
 					    </strong>
-					    <input type="text" v-model="amount" required class="form-control" id="amount" :placeholder="'Por favor, indique o valor em USD'">
+					    <input type="text" ref="fieldAmount" @blur="fieldAmountBlur($event)" required class="form-control" placeholder="Por favor, indique o valor">
 					</div>
 				</div>
 				<div class="row">
@@ -35,10 +35,16 @@
 </template>
 
 <script>
-	import {routes} from '../../../api_routes'
+	import { routes } from '../../../api_routes';
+	import { mapGetters } from 'vuex';
 	export default {
+		computed: {
+			...mapGetters([
+            	'getSystemCurrency'
+        	]),
+		},
 		props: ['order_id'],
-		data: function() {
+		data () {
 			return {
 				amount: '10.00',
 				loading: {
@@ -64,174 +70,139 @@
 				errors: []
 			}
 		},
-		mounted() {
-			var vm = this;
-
-            this.setMask();
-            $("#amount").on("blur", function(event) {
-				let value = $(this).val();
-				vm.amount = value;
-                value = value.replace(/\$\ /g, '');
-                value = value.replace(/ /g, '');
-				value = value.replace(/,/g, '');
-				value = parseFloat(value);
-				if(value < 10) {
-					$(this).val(VMasker.toMoney('10.00', {
-                        // Decimal precision -> "90"
-                        precision: 2,
-                        // Decimal separator -> ",90"
-                        separator: '.',
-                        // Number delimiter -> "12.345.678"
-                        delimiter: ',',
-                        unit: '$',
-                    }));
-					vm.amount = VMasker.toMoney('10.00', {
-                        // Decimal precision -> "90"
-                        precision: 2,
-                        // Decimal separator -> ",90"
-                        separator: '.',
-                        // Number delimiter -> "12.345.678"
-                        delimiter: ',',
-                        unit: '$',
-                    });
-                }
-		    });
-
-			/*$("#amount").maskMoney({
-				prefix: '$ ',
-				allowNegative: false,
-				thousands: ',',
-				decimal: '.',
-				affixesStay: false
-			}).on("blur", function(event) {
-				let value = $(this).val();
-				vm.amount = value;
-				value = value.replace(/,/g, '');
-				value = parseFloat(value);
-				if(value < 10) {
-					$(this).val('10.00');
-					vm.amount = '10.00';
-				}
-		    });*/
+		mounted () {
+			this.setMaskFieldAmount();
 		},
 		methods: {
-		    setMask() {
-                VMasker(document.querySelector("#amount")).maskMoney({
+			fieldAmountBlur (event) {
+				if(this.getAmount() < 10) {
+					this.$refs.fieldAmount.value = VMasker.toMoney('10.00', {
+                        // Decimal precision -> "90"
+						precision: 2,
+						// Decimal separator -> ",90"
+						separator: ',',
+						// Number delimiter -> "12.345.678"
+						delimiter: '.',
+						unit: this.getSystemCurrency.data.symbol,
+                    });
+                }
+			},
+		    setMaskFieldAmount () {
+                VMasker(this.$refs.fieldAmount).maskMoney({
                     // Decimal precision -> "90"
-                    precision: 2,
-                    // Decimal separator -> ",90"
-                    separator: '.',
-                    // Number delimiter -> "12.345.678"
-                    delimiter: ',',
-                    unit: '$',
+					precision: 2,
+					// Decimal separator -> ",90"
+					separator: ',',
+					// Number delimiter -> "12.345.678"
+					delimiter: '.',
+                    unit: this.getSystemCurrency.data.symbol,
                 });
             },
-			getAmount() {
-				let value = $("#amount").val();
-				this.amount = value;
-				value = value.replace(/\$\ /g, '');
-                value = value.replace(/ /g, '');
-				value = value.replace(/,/g, '');
+			getAmount () {
+				let value = this.$refs.fieldAmount.value;
+				value = value.replace('R$', '');
+				value = value.replace(' ', '');
+				value = value.replace('.', '');
+				value = value.replace(',', '.');
 				return parseFloat(value).format(2, true);
 			},
-			sendPaypal(event) {
-				var form = $(event.currentTarget);
+			sendPaypal (event) {
 				if(this.validate(this.getAmount())) {
 					this.loading.paying = true;
+					
+					let form = $(event.currentTarget);
 
-					var form = $('#sendPaypal');
-
-					var rm = document.createElement('input');
+					let rm = document.createElement('input');
                     rm.setAttribute('name', "rm");
                     rm.setAttribute('type', "hidden");
                     rm.setAttribute('value', 2);
                     form.append(rm);
 
-					var cmd = document.createElement('input');
+					let cmd = document.createElement('input');
                     cmd.setAttribute('name', "cmd");
                     cmd.setAttribute('type', "hidden");
                     cmd.setAttribute('value', '_xclick');
                     form.append(cmd);
 
-                    var invoice = document.createElement('input');
+                    let invoice = document.createElement('input');
                     invoice.setAttribute('name', "invoice");
                     invoice.setAttribute('type', "hidden");
                     invoice.setAttribute('value', this.order_id);
                     form.append(invoice);
 
-                    var upload = document.createElement('input');
+                    let upload = document.createElement('input');
                     upload.setAttribute('name', "upload");
                     upload.setAttribute('type', "hidden");
                     upload.setAttribute('value', '1');
                     form.append(upload);
 
-                    var business = document.createElement('input');
+                    let business = document.createElement('input');
                     business.setAttribute('name', "business");
                     business.setAttribute('type', "hidden");
                     business.setAttribute('value', 'lottoyou.adm@gmail.com');
                     form.append(business);
 
-                    var return1 = document.createElement('input');
+                    let return1 = document.createElement('input');
                     return1.setAttribute('name', "return");
                     return1.setAttribute('type', "hidden");
                     return1.setAttribute('value', routes.base);
                     form.append(return1);
 
-                    var cancel = document.createElement('input');
+                    let cancel = document.createElement('input');
                     cancel.setAttribute('name', "cancel");
                     cancel.setAttribute('type', "hidden");
                     cancel.setAttribute('value', routes.base);
                     form.append(cancel);
 
-                    var notify_url = document.createElement('input');
+                    let notify_url = document.createElement('input');
                     notify_url.setAttribute('name', "notify_url");
                     notify_url.setAttribute('type', "hidden");
                     notify_url.setAttribute('value', routes.paypal.feedback);
                     form.append(notify_url);
 
-                    var charset = document.createElement('input');
+                    let charset = document.createElement('input');
                     charset.setAttribute('name', "charset");
                     charset.setAttribute('type', "hidden");
                     charset.setAttribute('value', 'utf-8');
                     form.append(charset);
 
-                    var lc = document.createElement('input');
+                    let lc = document.createElement('input');
                     lc.setAttribute('name', "lc");
                     lc.setAttribute('type', "hidden");
-                    lc.setAttribute('value', 'en_US');
+                    lc.setAttribute('value', 'pt_BR');
                     form.append(lc);
 
-                    var country_code = document.createElement('input');
+                    let country_code = document.createElement('input');
                     country_code.setAttribute('name', "country_code");
                     country_code.setAttribute('type', "hidden");
-                    country_code.setAttribute('value', 'US');
+                    country_code.setAttribute('value', 'BR');
                     form.append(country_code);
 
-                    var currency_code = document.createElement('input');
+                    let currency_code = document.createElement('input');
                     currency_code.setAttribute('name', "currency_code");
                     currency_code.setAttribute('type', "hidden");
-                    currency_code.setAttribute('value', 'USD');
+                    currency_code.setAttribute('value', 'BRL');
                     form.append(currency_code);
 
-                    var amount = document.createElement('input');
+                    let amount = document.createElement('input');
                     amount.setAttribute('name', "amount");
                     amount.setAttribute('type', "hidden");
                     amount.setAttribute('value', this.getAmount());
                     form.append(amount);
 
-                    var item_name = document.createElement('input');
+                    let item_name = document.createElement('input');
                     item_name.setAttribute('name', "item_name");
                     item_name.setAttribute('type', "hidden");
                     item_name.setAttribute('value', 'Deposit '+this.order_id);
                     form.append(item_name);
 
-                    var quantity = document.createElement('input');
+                    let quantity = document.createElement('input');
                     quantity.setAttribute('name', "quantity");
                     quantity.setAttribute('type', "hidden");
                     quantity.setAttribute('value', 1);
                     form.append(quantity);
 
-                    var paymentRequest = axios.create();
+                    let paymentRequest = axios.create();
 			        
 			        paymentRequest.interceptors.request.use(config => {
 			        	return config;
@@ -306,7 +277,7 @@
 
 				} else {
 					swal({
-					  	title: "Informe um valor maior do que $10.00",
+					  	title: 'Informe um valor maior do que '+this.getSystemCurrency.data.symbol+'10.00',
 		                //type: "error",
 						showCloseButton: true,
 						imageUrl: '/imgs/logo.png',

@@ -13,11 +13,11 @@ use App\LotterySweepstake;
 use App\ScratchCard;
 use Illuminate\Support\Facades\DB;
 use App\User;
-use App\Repositories\API\Cart\CartRepository;
+use App\Repositories\API\Cart\CartContract;
 
 class CartController extends Controller
 {
-    public function __construct(CartRepository $repository) 
+    public function __construct(CartContract $repository) 
     {
         $this->repository = $repository;
         if(isset(request()->header()['authorization'])) {

@@ -59,6 +59,6 @@ class CartolaController extends Controller
         if($user != null) {
             $body->time->email = $user->username;
         }
-        return response()->json($body, $response->getStatusCode());
+        return response()->json($body, 200);
     }
 }

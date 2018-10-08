@@ -94,7 +94,8 @@
 		font-family: 'FontAwesome';
 		content: "\f077";
 		position: absolute;
-    	right: 0
+    	right: 0;
+    	margin-right: 10px;
 	}
 
 	.line .collapsed:after {

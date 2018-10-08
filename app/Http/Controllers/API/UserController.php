@@ -211,11 +211,6 @@ class UserController extends Controller
             'order' => function($query) use($user) {
                 $query->where('user_id', '=', $user->id);
             },
-            'leaPackage',
-            'league',
-            'soccerExpert',
-            'scratchCard',
-            'lottery',
             'scratchCardGame' => function($query) {
 
             },

@@ -31,7 +31,7 @@ class OrderItemObserver
      * @param $data
      * @return bool
      */
-    private function lottery($item, $data) 
+    private function lottery($item, $data, &$description) 
     {
         $sweepstake = LotterySweepstake::find($data->sweepstake->id);
         $data_fim = format_without_mask($sweepstake->data_fim, '/');
@@ -45,6 +45,12 @@ class OrderItemObserver
             ->orderBy('hora_fim', 'ASC')
             ->limit($data->duration)  
             ->get();
+
+        $total = number_format($data->total, 2, '.', '');
+        $description .= 'Compra no valor total de R$'. $total.'; ';
+        $description .= count($lotterySweepstakes). ' teimosinha(s); ';
+        $description .= count($data->tickets).' cartela(s); ';
+        $description .= 'Tema '.$data->lottery->nome;
 
         //Percorrendo as datas
         foreach($lotterySweepstakes as $lotterySweepstake) {
@@ -111,17 +117,21 @@ class OrderItemObserver
      * @param $data
      * @return bool
      */
-    private function cartoleando($item, $data) 
+    private function cartoleando($item, $data, &$description) 
     {
         $order = $item->order;
         $user_id = $order->user_id;
         $team = CartoleandoTeam::where('owner_id', '=', $user_id)
             ->get()
             ->first();
-        $league = \App\League::find($item->league_id); 
+        $league = \App\League::find($item->context_id);
         $league->quantity_teams++;
         $league->collected += $data->package->value;
         $league->save();       
+        $total = number_format($data->package->value, 2, '.', '');
+        $description .= 'Compra no valor total de R$'. $total.'; ';
+        $description .= 'Liga '.$league->name.'; ';
+        $description .= 'Pacote '.$data->package->name;
         if($league->classic != null && $league->context == 'classic') {
             $this->saveClassicLeague($item, $user_id, $league->id, $team, $league->classic);
         } else if($league->cup != null && $league->context == 'cup') {
@@ -134,10 +144,14 @@ class OrderItemObserver
      * @param $data
      * @return bool
      */
-    private function soccerExpert($item, $data) 
+    private function soccerExpert($item, $data, &$description) 
     {
         $order = $item->order;
         $user_id = $order->user_id;
+        $total = number_format($data->total, 2, '.', '');
+        $description .= 'Compra no valor total de R$'. $total.'; ';
+        $description .= count($data->tickets). ' cartela(s); ';
+        $description .= 'Soccer Expert '.$data->soccer_expert->nome;
         //Percorrendo as cartelas feitas pelo o usuário
         foreach($data->tickets as $key => $ticket) {
             //Pegando o grupo atual da rodada
@@ -155,7 +169,6 @@ class OrderItemObserver
                 $ticket_group->identificacao += 1;
                 $ticket_group->save();
             }
-
 
             //Se a rodada for limitada
             if($ticket->limite != null) {
@@ -238,7 +251,7 @@ class OrderItemObserver
      * @param $data
      * @return bool
      */
-    private function scratchCard($item, $data) 
+    private function scratchCard($item, $data, &$description) 
     {
         //Pegando raspadinhas com base na quantidade selecionado pelo o usuário
         //E pega aleatório
@@ -247,6 +260,12 @@ class OrderItemObserver
             ->orderByRaw('RAND()')
             ->limit($data->scratch_card->discount_tables->quantity)
             ->get();
+
+        $total = number_format($data->total, 2, '.', '');
+
+        $description .= 'Compra no valor total de R$'. $total.'; ';
+        $description .= $data->scratch_card->discount_tables->quantity .' raspadinha(s);';
+        $description .= ' Tema '.$data->scratch_card->nome;
 
         //Atribuindo a raspadinha para o dono
         foreach($scratchCards as $scratchCard) {
@@ -264,15 +283,16 @@ class OrderItemObserver
     {
         $data = json_decode($item->data);
 
-        $description = 'buy';
+        $description = '';
+        $message = '';
         if($item->type == 'lottery') {
-            $this->lottery($item, $data);
+            $this->lottery($item, $data, $description);
         } else if($item->type == 'soccer_expert') {
-            $this->soccerExpert($item, $data);
+            $this->soccerExpert($item, $data, $description);
         } else if($item->type == 'scratch_card') {
-            $this->scratchCard($item, $data);
+            $this->scratchCard($item, $data, $description);
         } else if($item->type == 'cartoleando') {
-            $this->cartoleando($item, $data);
+            $this->cartoleando($item, $data, $description);
         }
 
         $order = $item->order;
@@ -285,6 +305,8 @@ class OrderItemObserver
         $historicBalance->balance_id = $balance->id;
         //$historicBalance->item_id = $item->id;
         $historicBalance->description = $description;
+        $historicBalance->context = 'order_items';
+        $historicBalance->context_message = 'buy';
         $historicBalance->modality = 'buy';
         $historicBalance->type = 0;
         $historicBalance->amount = $data->total * -1;
