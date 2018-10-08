@@ -39,7 +39,7 @@
                 src: url(/fonts/vendor/font-impact/Impact.ttf) format("truetype");
             }
         </style>
-        <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ mix('frontend/css/app.css') }}" rel="stylesheet" type="text/css">
         <style>
             .first-load {
                 font-size: 100px;
@@ -197,7 +197,7 @@
         </script>
         
         {{-- <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}?q={{time()}}"></script> --}}
-        <script type="text/javascript" src="{{ asset('frontend/js/app.js') }} "></script>
+        <script type="text/javascript" src="{{ mix('frontend/js/app.js') }} "></script>
         
        {{--
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121313526-1"></script>

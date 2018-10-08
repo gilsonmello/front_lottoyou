@@ -37,3 +37,5 @@ const path = require('path');*/
 
 mix.js('resources/assets/frontend/js/app.js', 'public/frontend/js')
    .sass('resources/assets/frontend/sass/app.scss', 'public/frontend/css');
+
+mix.version();
