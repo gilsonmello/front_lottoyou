@@ -63,7 +63,7 @@ Route::post('/oauth/token', [
 //Estas rotas serve para renderizar sempre o arquivo app.blade
 Route::get('/', function () {
 
-	$items = \App\OrderItem::where('type', '=', 'soccer_expert')->get();
+	/*$items = \App\OrderItem::where('type', '=', 'soccer_expert')->get();
 	foreach($items as $key => $item) {
 		DB::table('order_items')
             ->where('id', $item->id)
@@ -248,7 +248,7 @@ Route::get('/', function () {
 		$historic->context_message = 'internal withdrawal';
 		$historic->description = 'O sistema interno removeu R$'. $historic->amount * -1 .' do seu saldo';
 		$historic->save();
-	}
+	}*/
 
 	return view('layouts.frontend.app');
 })->name('frontend.home');
