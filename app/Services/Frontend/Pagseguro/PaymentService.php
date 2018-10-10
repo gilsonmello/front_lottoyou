@@ -70,7 +70,7 @@ trait PaymentService
             $historicBalance->description = 'Devolução no valor de R$'. $amount .' via Pagseguro';
             $historicBalance->modality = 'devolution';
             $historicBalance->context = 'pagseguro_orders';
-            $historicBalance->context_message = 'pagseguro devolution';
+            $historicBalance->context_message = 'pagseguro.devolution';
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
@@ -101,7 +101,7 @@ trait PaymentService
             $historicBalance->description = 'Depósito no valor de R$'. $amount .' com o método Pagseguro';
             $historicBalance->modality = 'deposit';
             $historicBalance->context = 'pagseguro_orders';
-            $historicBalance->context_message = 'pagseguro deposit';
+            $historicBalance->context_message = 'pagseguro.deposit';
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;

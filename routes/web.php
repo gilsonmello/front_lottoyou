@@ -63,7 +63,7 @@ Route::post('/oauth/token', [
 //Estas rotas serve para renderizar sempre o arquivo app.blade
 Route::get('/', function () {
 
-	$items = \App\OrderItem::where('type', '=', 'soccer_expert')->get();
+	/*$items = \App\OrderItem::where('type', '=', 'soccer_expert')->get();
 	foreach($items as $key => $item) {
 		$order = $item->order;
 		$description = 'Compra no valor total de R$'. $order->total.'; ';
@@ -77,7 +77,10 @@ Route::get('/', function () {
         DB::table('historic_balances')
             ->where('id', $item->historic_balance_id)
             ->update([
-            	'description' => $description
+            	'modality' => 'buy',
+            	'description' => $description,
+            	'context' => 'order_items',
+            	'context_message' => 'buy.soccer_expert',
             ]);
 	}
 
@@ -96,7 +99,10 @@ Route::get('/', function () {
         DB::table('historic_balances')
             ->where('id', $item->historic_balance_id)
             ->update([
-            	'description' => $description
+            	'modality' => 'buy',
+            	'description' => $description,
+            	'context' => 'order_items',
+            	'context_message' => 'buy.lottery',
             ]);
 	}
 
@@ -114,7 +120,10 @@ Route::get('/', function () {
         DB::table('historic_balances')
             ->where('id', $item->historic_balance_id)
             ->update([
-            	'description' => $description
+            	'modality' => 'buy',
+            	'description' => $description,
+            	'context' => 'order_items',
+            	'context_message' => 'buy.scratch_card',
             ]);
 	}
 	
@@ -128,7 +137,7 @@ Route::get('/', function () {
 		$historic->system = 1;
 		$historic->modality = 'buy';
 		$historic->context = 'order_items';
-		$historic->context_message = 'buy';
+		//$historic->context_message = 'buy';
 		$historic->save();
 	}
 
@@ -149,7 +158,7 @@ Route::get('/', function () {
 		$historic->system = 1;
 		$historic->modality = 'award';
 		$historic->context = 'soc_apostas';
-		$historic->context_message = 'award';
+		$historic->context_message = 'award.soccer_expert';
 		$historic->description = 'Prêmio no valor de R$'. $historic->amount .'; Grupo = #'.$group->id;
 		$historic->description .= '; Rodada = '.$round->nome;
 		$historic->description .= '; Bolão = '.$sweepstake->nome;
@@ -174,7 +183,7 @@ Route::get('/', function () {
 		$historic->system = 1;
 		$historic->modality = 'award';
 		$historic->context = 'lot_users_jogos';
-		$historic->context_message = 'award';
+		$historic->context_message = 'award.lottery';
 		$historic->description = 'Prêmio no valor de R$'. $historic->amount;
 		$historic->description .= '; Sorteio = '.$sweepstake->sorteio;
 		$historic->description .= '; Loteria = '.$category->nome;
@@ -196,7 +205,7 @@ Route::get('/', function () {
 		$historic->system = 1;
 		$historic->modality = 'award';
 		$historic->context = 'raspadinhas';
-		$historic->context_message = 'award';
+		$historic->context_message = 'award.scratch_card';
 		$historic->description = 'Prêmio no valor de R$'. $historic->amount;
 		$historic->description .= '; Lote = '.$lot->nome;
 		$historic->description .= '; Tema = '.$theme->nome;
@@ -213,7 +222,7 @@ Route::get('/', function () {
 		$historic->system = 1;
 		$historic->modality = 'deposit';
 		$historic->context = 'pagseguro_orders';
-		$historic->context_message = 'pagseguro deposit';
+		$historic->context_message = 'pagseguro.deposit';
 		$historic->description = 'Depósito no valor de R$'. $historic->amount .' com o método Pagseguro';
 		$historic->save();
 	}
@@ -228,7 +237,7 @@ Route::get('/', function () {
 		$historic->system = 1;
 		$historic->modality = 'deposit';
 		$historic->context = 'paypal_orders';
-		$historic->context_message = 'paypal deposit';
+		$historic->context_message = 'paypal.deposit';
 		$historic->description = 'Depósito no valor de R$'. $historic->amount .' com o método Paypal';
 		$historic->save();
 	}
@@ -243,7 +252,7 @@ Route::get('/', function () {
 		$historic->system = 1;
 		$historic->modality = 'deposit';
 		$historic->context = 'balance_inserts';
-		$historic->context_message = 'internal deposit';
+		$historic->context_message = 'internal.deposit';
 		$historic->description = 'O sistema interno inseriu R$'. $historic->amount .' no seu saldo';
 		$historic->save();
 	}
@@ -258,7 +267,7 @@ Route::get('/', function () {
 		$historic->system = 0;
 		$historic->modality = 'withdrawal';
 		$historic->context = 'agent_withdraw';
-		$historic->context_message = 'agent withdrawal';
+		$historic->context_message = 'agent.withdrawal';
 		$historic->description = 'Saque no valor de R$'. $historic->amount * -1 .' do seu saldo com o método Agente de Pagamento';
 		$historic->save();
 	}
@@ -273,10 +282,10 @@ Route::get('/', function () {
 		$historic->system = 0;
 		$historic->modality = 'withdrawal';
 		$historic->context = 'balance_withdraw';
-		$historic->context_message = 'internal withdrawal';
+		$historic->context_message = 'internal.withdrawal';
 		$historic->description = 'O sistema interno removeu R$'. $historic->amount * -1 .' do seu saldo';
 		$historic->save();
-	}
+	}*/
 
 	return view('layouts.frontend.app');
 })->name('frontend.home');

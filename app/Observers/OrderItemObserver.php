@@ -117,7 +117,7 @@ class OrderItemObserver
      * @param $data
      * @return bool
      */
-    private function cartoleando($item, $data, &$description) 
+    private function cartoleando($item, $data, &$description, &$context_message) 
     {
         $order = $item->order;
         $user_id = $order->user_id;
@@ -133,9 +133,11 @@ class OrderItemObserver
         $description .= 'Liga '.$league->name.'; ';
         $description .= 'Pacote '.$data->package->name;
         if($league->classic != null && $league->context == 'classic') {
+            $context_message .= '.lea_classic';
             $this->saveClassicLeague($item, $user_id, $league->id, $team, $league->classic);
         } else if($league->cup != null && $league->context == 'cup') {
             $this->saveCupLeague($item, $user_id, $league->id, $team, $league->cup);
+            $context_message .= '.lea_cup';
         }        
     }
 
@@ -285,6 +287,7 @@ class OrderItemObserver
 
         $description = '';
         $message = '';
+        $context_message = 'buy.' . $item->type;
         if($item->type == 'lottery') {
             $this->lottery($item, $data, $description);
         } else if($item->type == 'soccer_expert') {
@@ -292,7 +295,7 @@ class OrderItemObserver
         } else if($item->type == 'scratch_card') {
             $this->scratchCard($item, $data, $description);
         } else if($item->type == 'cartoleando') {
-            $this->cartoleando($item, $data, $description);
+            $this->cartoleando($item, $data, $description, $context_message);
         }
 
         $order = $item->order;
@@ -306,7 +309,7 @@ class OrderItemObserver
         //$historicBalance->item_id = $item->id;
         $historicBalance->description = $description;
         $historicBalance->context = 'order_items';
-        $historicBalance->context_message = 'buy';
+        $historicBalance->context_message = $context_message;
         $historicBalance->modality = 'buy';
         $historicBalance->type = 0;
         $historicBalance->amount = $data->total * -1;

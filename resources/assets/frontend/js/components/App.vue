@@ -69,10 +69,10 @@
 						id: this.authUser != null ? this.authUser.id : null
 					}
 				}).then((response) => {
-					if(response.status === 200) {
+					if (response.status === 200) {
 						//Caso encontrou algum item
 						//Seto os items na estrura
-						if(response.data.items.length > 0)
+						if (response.data.items.length > 0)
 		            		this.$store.dispatch('setItems', response.data.items)
 
 		            	this.loading.component = false;
@@ -91,10 +91,10 @@
 				refresh_token = refresh_token != null ? refresh_token : '';
 
 				//Se usuário está logado
-				if(access_token) {
+				if (access_token) {
 					this.refreshAuthPromise()
 						.then(response => {
-							if(response.status === 200) {
+							if (response.status === 200) {
 								response.data.access_token = access_token;
 								response.data.refresh_token = refresh_token;
 								//window.localStorage.setItem('authUser', JSON.stringify(response.data));

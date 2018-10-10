@@ -198,7 +198,7 @@
 	//import SoccerExpertComponent from './SoccerExpertComponent'
 	import SoccerExpertComponent from './SoccerExpertComponent';
 	import VcCartoleando from './VcCartoleando';
-	import { routes } from '../../api_routes';
+	import { routes, getHeaders } from '../../api_routes';
 	export default {
 		metaInfo () {
 			return {
@@ -227,10 +227,10 @@
 			}
 		},
 		methods: {
-			login() {
+			login () {
 				$('.modal-login').modal('toggle');
 			},
-			validate(event) {
+			validate (event) {
 				var validateRequest = axios.create();
 
 				validateRequest.interceptors.request.use(config => {
@@ -238,21 +238,12 @@
 		          	return config;
 				});
 
-				let headers = {};
-				if(this.auth) {
-					headers.headers = {
-						'Content-Type' : 'application/json',
-						'Accept' : 'application/json',
-						'Authorization': 'Bearer ' + this.auth.access_token
-					};
-				} 
-
 				validateRequest.post(
 					routes.carts.validate, 
 					this.purchase, 
-					headers
+					getHeaders()
 				).then(response => {
-					if(response.status === 200) {
+					if (response.status === 200) {
 						this.completePurchase();
 					}
 				}).catch((error) => {
@@ -263,7 +254,7 @@
 					this.loading.paying = false;
 				});			
 			},
-			completePurchase(event) {
+			completePurchase (event) {
 
 				var completePurchaseRequest = axios.create();
 
@@ -283,7 +274,7 @@
 						'Authorization': 'Bearer ' + this.auth.access_token
 					}
 				}).then(response => {
-					if(response.status === 200) {
+					if (response.status === 200) {
 						this.refreshAuthPromise()
 							.then((response) => {
 								if (response.status === 200) {
@@ -303,15 +294,7 @@
 									this.$store.dispatch('clearPurchase');
 									this.$router.push({
 										name: 'users.transactions'
-									});	
-									this.teamRequest()
-										.then((teamRequestResponse) => {
-											if(response.status === 200) {
-												this.$store.dispatch('setTeamUser', teamRequestResponse.data);
-											}
-										}).catch((error) => {
-
-										});	
+									});
 								}								
 							}).catch((error) => {
 
