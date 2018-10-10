@@ -1,5 +1,5 @@
 <template>
-	<vc-load v-if="loading.component"></vc-load>
+	<load v-if="loading.component" />
 	<div class="container" v-else>
 		<h1 class="page-header">Depositar fundos</h1>
 		<div class="row">
@@ -63,24 +63,34 @@
 </template>
 
 <script>
-	import VcLoad from '../Load'
-	import {routes} from '../../api_routes'
-	import {mapState, mapGetters} from 'vuex'
-	import VcPagseguro from './PaymentMethod/VcPagseguro'
-	import PaypalComponent from './PaymentMethod/PaypalComponent'
-    import VcAgent from './PaymentMethod/VcAgent'
+	import { routes, getHeaders } from '../../api_routes';
+	import { mapState, mapGetters } from 'vuex';
+	import VcPagseguro from './PaymentMethod/VcPagseguro';
+	import PaypalComponent from './PaymentMethod/PaypalComponent';
+    import VcAgent from './PaymentMethod/VcAgent';
 	export default {
+		metaInfo () {
+            return {
+                title: this.trans('strings.deposit') + ' | '+this.trans('strings.lottoyou'),
+                meta: [
+                    {
+                        name: 'description', 
+                        content: this.trans('strings.deposit')
+                    }
+                ]
+            }
+        },
 		methods: {
-			changePaymentMethod: function(payment_method, el) {
+			changePaymentMethod (payment_method, el) {
 				this.$router.replace({
                     query: Object.assign({})
                 })
 				$('.box-payment-method').find('.active').removeClass('active');
 				var parent = $(el.target).parent();
 				parent.addClass('active');
-				this.payment_method = payment_method
+				this.payment_method = payment_method;
 			},
-			orderRequest() {
+			orderRequest () {
 				const orderRequest = axios.create();
 				orderRequest.interceptors.request.use(config => {
 					this.counter++;
@@ -89,36 +99,29 @@
 				});
 				let url = routes.orders.generate_order;
 
-				orderRequest.post(
-					url, 
-					{
-						owner_id: this.auth.id
-					}, 
-					{
-
-					}
-				).then(response => {
-					if(response.status === 200) {
-						this.loading.component = false;
-						this.order_id = response.data;
-						this.counter = 0;
-					}
-				}).catch((error) => {
-					if(this.counter == 5) {
-						this.counter = 0;
-						toastr.error(this.trans('strings.connection_not_found'));
-					} else {
-						this.orderRequest();
-					}
-				});
+				orderRequest.post(url, {}, getHeaders())
+					.then(response => {
+						if (response.status === 200) {
+							this.loading.component = false;
+							this.order_id = response.data;
+							this.counter = 0;
+						}
+					}).catch((error) => {
+						if (this.counter == 5) {
+							this.counter = 0;
+							toastr.error(this.trans('strings.connection_not_found'));
+						} else {
+							this.orderRequest();
+						}
+					});
 			}
 		},
 		computed: {
             ...mapGetters([
-                'auth', 'purchase'
+				'auth'
             ])
 		},
-		data: function() {
+		data: () => {
 			return {
 				payment_method: '',
 				order_id: '',
@@ -128,8 +131,8 @@
 				counter: 0
 			}
 		},
-		mounted() {
-			if(this.$route.query.payment_method && this.$route.query.payment_method != '') {
+		mounted () {
+			if( this.$route.query.payment_method && this.$route.query.payment_method != '') {
 				this.payment_method = this.$route.query.payment_method
 			} 
 			this.orderRequest();
@@ -137,7 +140,6 @@
 		components: {
 			PaypalComponent,
 			VcPagseguro,
-			VcLoad,
             VcAgent
 		}
 	}

@@ -63,33 +63,61 @@ Route::post('/oauth/token', [
 //Estas rotas serve para renderizar sempre o arquivo app.blade
 Route::get('/', function () {
 
-	/*$items = \App\OrderItem::where('type', '=', 'soccer_expert')->get();
+	$items = \App\OrderItem::where('type', '=', 'soccer_expert')->get();
 	foreach($items as $key => $item) {
+		$order = $item->order;
+		$description = 'Compra no valor total de R$'. $order->total.'; ';
+		$description .= $order->quantity . ' cartela(s); ';
+		$description .= 'Soccer Expert '.$item->soccer_expert->nome;
 		DB::table('order_items')
             ->where('id', $item->id)
             ->update([
                 'context_id' => $item->soccer_expert_id
             ]);
+        DB::table('historic_balances')
+            ->where('id', $item->historic_balance_id)
+            ->update([
+            	'description' => $description
+            ]);
 	}
 
 	$items = \App\OrderItem::where('type', '=', 'lottery')->get();
 	foreach($items as $key => $item) {
-		DB::table('order_items')
+		$order = $item->order;
+		$description = 'Compra no valor total de R$'. $order->total.'; ';
+        $description .= $item->lotteryGames()->first()->duration. ' teimosinha(s); ';
+        $description .= $order->quantity.' cartela(s); ';
+        $description .= 'Tema '.$item->lottery->nome;
+        DB::table('order_items')
             ->where('id', $item->id)
             ->update([
                 'context_id' => $item->lottery_id
+            ]);
+        DB::table('historic_balances')
+            ->where('id', $item->historic_balance_id)
+            ->update([
+            	'description' => $description
             ]);
 	}
 
 	$items = \App\OrderItem::where('type', '=', 'scratch_card')->get();
 	foreach($items as $key => $item) {
-		DB::table('order_items')
+		$order = $item->order;
+		$description = 'Compra no valor total de R$'. $order->total.'; ';
+        $description .= $item->quantity .' raspadinha(s);';
+        $description .= ' Tema '.$item->scratch_card->nome;
+        DB::table('order_items')
             ->where('id', $item->id)
             ->update([
                 'context_id' => $item->scratch_card_id
             ]);
+        DB::table('historic_balances')
+            ->where('id', $item->historic_balance_id)
+            ->update([
+            	'description' => $description
+            ]);
 	}
-
+	
 	//Ajustando os registros para order_items
 	$historics = \App\HistoricBalance::select([
 		'historic_balances.*'
@@ -248,7 +276,7 @@ Route::get('/', function () {
 		$historic->context_message = 'internal withdrawal';
 		$historic->description = 'O sistema interno removeu R$'. $historic->amount * -1 .' do seu saldo';
 		$historic->save();
-	}*/
+	}
 
 	return view('layouts.frontend.app');
 })->name('frontend.home');

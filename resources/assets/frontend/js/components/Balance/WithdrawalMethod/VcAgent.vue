@@ -47,7 +47,7 @@ export default {
         }
     },
     mounted () {
-        if(this.auth.validated == 0) {
+        if (this.auth.validated == 0) {
             swal({
                 title: 'Seu cadastro está incompleto.',
                 text: 'Para retirada do dinheiro seu cadastro deverá estar completo.',
@@ -66,7 +66,7 @@ export default {
                     name: 'users.account'
                 });
             });
-        } else if(this.auth.balance.value < 10) {
+        } else if (this.auth.balance.value < 10) {
             swal({
                 title: 'Saldo menor do que '+this.getSystemCurrency.data.symbol+'10.00',
                 showCloseButton: true,
@@ -114,9 +114,9 @@ export default {
                 value: this.value,
                 doc_type: this.doc_type,
             }).then(response => {
-                if(response.status === 200) {
+                if (response.status === 200) {
                     this.refreshAuth();
-                    if(response.data.message) {
+                    if (response.data.message) {
                         toastr.success(response.data.message);
                     }
                     this.$router.push({
@@ -124,14 +124,14 @@ export default {
                     });
                 }
             }).catch((error) => {
-                if(error.response.data.message) {
+                if (error.response.data.message) {
                     toastr.error(error.response.data.message);
                 }
                 this.loading.submit = false;
             })
         },
         submitAgent (el) {
-            if(this.value <= this.auth.balance.value && this.value > 0) {
+            if (this.value <= this.auth.balance.value && this.value > 0) {
                 swal({
                     title: this.trans('strings.do_you_wish_to_continue'),
                     showCloseButton: true,
@@ -144,7 +144,7 @@ export default {
                     confirmButtonText: this.trans('strings.yes'),
                     cancelButtonText: this.trans('strings.cancel')
                 }).then((result) => {
-                    if(result.dismiss) {
+                    if (result.dismiss) {
                         
                     } else {
                         this.requestAgent();
@@ -182,7 +182,7 @@ export default {
                 vm.amount = value;
                 value = parseFloat(vm.getAmount());
                 vm.value = parseFloat(value).format(2, true);
-                if(value > vm.auth.balance.value || value < 10) {
+                if (value > vm.auth.balance.value || value < 10) {
                     $(this).val(VMasker.toMoney('10.00', {
                         // Decimal precision -> "90"
                         precision: 2,
@@ -288,7 +288,7 @@ export default {
 				return config;
 			});
 			countryRequest.get(routes.countries.index, {}).then(response => {
-				if(response.status === 200) {
+				if (response.status === 200) {
 	            	this.countries = response.data;
                     this.country = ''+this.countries[0].id;
                     this.loading.component = false

@@ -15,8 +15,7 @@ use Carbon\Carbon;
 class PaypalController extends Controller
 {
     use PaymentService;
-
-   
+       
     public function payment(Request $request) 
     {
         $order = BalanceOrder::find($request->order_id);

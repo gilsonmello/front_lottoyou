@@ -153,7 +153,10 @@
                         {{ trans('strings.cartoleando') }}
                     </td>
                     <!-- Descrição -->
-                    <td v-if="balance.order_item">
+                    <td>
+                        {{ balance.description }}
+                    </td>
+                    <!-- <td v-if="balance.order_item">
                         <vc-order-item :balance="balance" :order_item="balance.order_item" />
                     </td>
                     <td v-else-if="balance.scratch_card">
@@ -182,7 +185,7 @@
                     </td> 
                     <td v-else-if="balance.lea_cup_team">
                         <vc-lea-cup-team :balance="balance" :team="balance.lea_cup_team" />
-                    </td> 
+                    </td> --> 
                     <td>
                         {{ trans('strings.'+balance.modality) }}                        
                     </td>

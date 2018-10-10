@@ -192,17 +192,17 @@
 </template>
 
 <script>
-	import {mapState, mapGetters} from 'vuex';
-	import ScratchCardComponent from './ScratchCardComponent'
-	import LotteryComponent from './LotteryComponent'
+	import { mapState, mapGetters } from 'vuex';
+	import ScratchCardComponent from './ScratchCardComponent';
+	import LotteryComponent from './LotteryComponent';
 	//import SoccerExpertComponent from './SoccerExpertComponent'
 	import SoccerExpertComponent from './SoccerExpertComponent';
 	import VcCartoleando from './VcCartoleando';
-	import {routes} from '../../api_routes'
+	import { routes } from '../../api_routes';
 	export default {
 		metaInfo () {
 			return {
-				title: this.trans('strings.cart')+ ' | '+ this.trans('strings.lottoyou'),
+				title: this.trans('strings.cart') + ' | ' + this.trans('strings.lottoyou'),
 				meta: [
 					{
 						name: 'description',
