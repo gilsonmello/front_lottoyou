@@ -131,7 +131,7 @@ class BalanceRepository implements BalanceContract
             $historicBalance->from = $balance->value;
             $historicBalance->type = 0;
             $historicBalance->system = 0;
-            $historicBalance->description = 'Saque no valor de R$'. $request->value .' com o método Agente de Pagamento'; 
+            $historicBalance->description = 'Método Ag. de Pagamento'; 
             $historicBalance->modality = 'withdrawal';
             $historicBalance->context = 'agent_withdraw';
             $historicBalance->context_message = 'agent.withdrawal';

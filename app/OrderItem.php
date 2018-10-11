@@ -66,7 +66,7 @@ class OrderItem extends Model
      */
     public function getSoccerExpertAttribute() 
     {
-        if ($this->type == 'soccer_expert') {
+        if ($this->type === 'soccer_expert') {
             return SoccerExpert::where('id', '=', $this->context_id)->get()->first();
         }
         return null;
@@ -77,7 +77,7 @@ class OrderItem extends Model
      */
     public function getScratchCardAttribute() 
     {
-        if ($this->type == 'scratch_card') {
+        if ($this->type === 'scratch_card') {
             return ScratchCardTheme::where('id', '=', $this->context_id)->get()->first();
         }
         return null;
@@ -88,7 +88,7 @@ class OrderItem extends Model
      */
     public function getLotteryAttribute() 
     {
-        if ($this->type == 'lottery') {
+        if ($this->type === 'lottery') {
             return Lottery::where('id', '=', $this->context_id)->get()->first();    
         }
         return null;
@@ -107,7 +107,7 @@ class OrderItem extends Model
      */
     public function getLeagueAttribute() 
     {
-        if($this->type == 'cartoleando') {
+        if($this->type === 'cartoleando') {
             return League::where('id', '=', $this->context_id)->get()->first();    
         }
         return null;
@@ -132,9 +132,9 @@ class OrderItem extends Model
     /**
      * Jogo de Soccer Expert ou seja, as cartelas geradas pelo mesmo item
      */
-    public function soccerExpertGames() 
+    public function soccerExpertGame() 
     {
-        return $this->hasMany(SoccerExpertBet::class, 'order_item_id');
+        return $this->hasOne(SoccerExpertBet::class, 'order_item_id');
     }
 
     public function getCreatedAtAttribute($date) 

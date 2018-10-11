@@ -63,12 +63,14 @@ Route::post('/oauth/token', [
 //Estas rotas serve para renderizar sempre o arquivo app.blade
 Route::get('/', function () {
 
-	/*$items = \App\OrderItem::where('type', '=', 'soccer_expert')->get();
+	$items = \App\OrderItem::where('type', '=', 'soccer_expert')->get();
 	foreach($items as $key => $item) {
 		$order = $item->order;
-		$description = 'Compra no valor total de R$'. $order->total.'; ';
-		$description .= $order->quantity . ' cartela(s); ';
-		$description .= 'Soccer Expert '.$item->soccer_expert->nome;
+		$description = '';
+		//$description .= 'Compra no valor total de R$'. $order->total.'; ';
+		$description .= $item->quantity . ' cartela(s); ';
+		$description .= 'Rodada '. $item->soccerExpertGame->round->nome .'; ';
+		$description .= 'Soccer Expert '.(($item->soccer_expert) ? $item->soccer_expert->nome : '');
 		DB::table('order_items')
             ->where('id', $item->id)
             ->update([
@@ -87,10 +89,11 @@ Route::get('/', function () {
 	$items = \App\OrderItem::where('type', '=', 'lottery')->get();
 	foreach($items as $key => $item) {
 		$order = $item->order;
-		$description = 'Compra no valor total de R$'. $order->total.'; ';
+		$description = '';
+		//$description .= 'Compra no valor total de R$'. $order->total.'; ';
         $description .= $item->lotteryGames()->first()->duration. ' teimosinha(s); ';
-        $description .= $order->quantity.' cartela(s); ';
-        $description .= 'Tema '.$item->lottery->nome;
+        $description .= $item->quantity.' cartela(s); ';
+        $description .= 'Tema '.(($item->lottery) ? $item->lottery->nome : '');
         DB::table('order_items')
             ->where('id', $item->id)
             ->update([
@@ -109,9 +112,10 @@ Route::get('/', function () {
 	$items = \App\OrderItem::where('type', '=', 'scratch_card')->get();
 	foreach($items as $key => $item) {
 		$order = $item->order;
-		$description = 'Compra no valor total de R$'. $order->total.'; ';
+		$description = '';
+		//$description .= 'Compra no valor total de R$'. $order->total.'; ';
         $description .= $item->quantity .' raspadinha(s);';
-        $description .= ' Tema '.$item->scratch_card->nome;
+        $description .= ' Tema '.(($item->scratch_card) ? $item->scratch_card->nome : '');
         DB::table('order_items')
             ->where('id', $item->id)
             ->update([
@@ -155,15 +159,16 @@ Route::get('/', function () {
 		$group = $historic->soccerExpertBet->group;
 		$sweepstake = $historic->soccerExpertBet->round->sweepstake;
 		$category = $historic->soccerExpertBet->round->category;
-		$historic->system = 1;
+		$historic->system = 0;
 		$historic->modality = 'award';
 		$historic->context = 'soc_apostas';
 		$historic->context_message = 'award.soccer_expert';
-		$historic->description = 'Prêmio no valor de R$'. $historic->amount .'; Grupo = #'.$group->id;
-		$historic->description .= '; Rodada = '.$round->nome;
-		$historic->description .= '; Bolão = '.$sweepstake->nome;
-		$historic->description .= '; Bolão = '.$round->nome;
-		$historic->description .= '; Soccer Expert = '.$category->nome;
+		$description = '';
+		//$historic->description .= 'Prêmio no valor de R$'. $historic->amount;
+		$historic->description = 'Grupo #'.$group->id;
+		$historic->description .= '; Rodada '.$round->nome;
+		$historic->description .= '; Bolão '.$sweepstake->nome;
+		$historic->description .= '; Soccer Expert '.$category->nome;
 		$historic->save();
 	}
 
@@ -180,13 +185,14 @@ Route::get('/', function () {
 		$lotteryBet = $historic->lotteryBet;
 		$sweepstake = $historic->lotteryBet->sweepstake;
 		$category = $historic->lotteryBet->sweepstake->category;
-		$historic->system = 1;
+		$historic->system = 0;
 		$historic->modality = 'award';
 		$historic->context = 'lot_users_jogos';
 		$historic->context_message = 'award.lottery';
-		$historic->description = 'Prêmio no valor de R$'. $historic->amount;
-		$historic->description .= '; Sorteio = '.$sweepstake->sorteio;
-		$historic->description .= '; Loteria = '.$category->nome;
+		$description = '';
+		//$historic->description .= 'Prêmio no valor de R$'. $historic->amount;
+		$historic->description = 'Sorteio '.$sweepstake->sorteio;
+		$historic->description .= '; Loteria '.$category->nome;
 		$historic->save();
 	}
 
@@ -202,13 +208,13 @@ Route::get('/', function () {
 		$scratchCard = $historic->scratchCard;
 		$lot = $historic->scratchCard->lot;
 		$theme = $historic->scratchCard->theme;
-		$historic->system = 1;
+		$historic->system = 0;
 		$historic->modality = 'award';
 		$historic->context = 'raspadinhas';
 		$historic->context_message = 'award.scratch_card';
-		$historic->description = 'Prêmio no valor de R$'. $historic->amount;
-		$historic->description .= '; Lote = '.$lot->nome;
-		$historic->description .= '; Tema = '.$theme->nome;
+		//$historic->description = 'Prêmio no valor de R$'. $historic->amount;
+		$historic->description = 'Lote '.$lot->nome;
+		$historic->description .= '; Tema '.$theme->nome;
 		$historic->save();
 	}
 
@@ -223,7 +229,8 @@ Route::get('/', function () {
 		$historic->modality = 'deposit';
 		$historic->context = 'pagseguro_orders';
 		$historic->context_message = 'pagseguro.deposit';
-		$historic->description = 'Depósito no valor de R$'. $historic->amount .' com o método Pagseguro';
+		$description = '';
+		$historic->description = 'Método Pagseguro';
 		$historic->save();
 	}
 
@@ -238,7 +245,8 @@ Route::get('/', function () {
 		$historic->modality = 'deposit';
 		$historic->context = 'paypal_orders';
 		$historic->context_message = 'paypal.deposit';
-		$historic->description = 'Depósito no valor de R$'. $historic->amount .' com o método Paypal';
+		$description = '';
+		$historic->description = 'Método Paypal';
 		$historic->save();
 	}
 
@@ -268,7 +276,8 @@ Route::get('/', function () {
 		$historic->modality = 'withdrawal';
 		$historic->context = 'agent_withdraw';
 		$historic->context_message = 'agent.withdrawal';
-		$historic->description = 'Saque no valor de R$'. $historic->amount * -1 .' do seu saldo com o método Agente de Pagamento';
+		$description = '';
+		$historic->description = 'Método Ag. de Pagamento';
 		$historic->save();
 	}
 
@@ -285,7 +294,7 @@ Route::get('/', function () {
 		$historic->context_message = 'internal.withdrawal';
 		$historic->description = 'O sistema interno removeu R$'. $historic->amount * -1 .' do seu saldo';
 		$historic->save();
-	}*/
+	}
 
 	return view('layouts.frontend.app');
 })->name('frontend.home');

@@ -67,7 +67,7 @@ trait PaymentService
             //$historicBalance->pagseguro_order_id = $pagseguroOrder->id;
             $historicBalance->type = 0;
             $historicBalance->devolution = 1;
-            $historicBalance->description = 'Devolução no valor de R$'. $amount .' via Pagseguro';
+            $historicBalance->description = 'Método Pagseguro';
             $historicBalance->modality = 'devolution';
             $historicBalance->context = 'pagseguro_orders';
             $historicBalance->context_message = 'pagseguro.devolution';

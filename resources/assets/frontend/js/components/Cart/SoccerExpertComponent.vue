@@ -21,7 +21,7 @@
 
 			<div class="col-lg-1 col-3 col-md-2 col-sm-2">
 				<span>
-					{{getSystemCurrency.data.symbol}}{{ (item.total).format(2, true) }}
+					{{ getSystemCurrency.data.symbol }}{{ (item.total).format(2, true) }}
 				</span>
 			</div>
 
@@ -36,7 +36,7 @@
 		</div>
 
 		<div class="collapse row" :id="id" @click.prevent="editTickets">		
-			<div class="col-lg-4 col-12 col-md-4 col-sm-4 item" v-for="(ticket, index) in item.tickets">
+			<div class="col-lg-4 col-12 col-md-4 col-sm-4 item" v-for="(ticket, index) in item.tickets" :key="index">
                 <ticket-component :category="item.soccer_expert" :ticket="ticket" :index="index">
                     
                 </ticket-component>
@@ -52,24 +52,24 @@
 </template>
 
 <script>
-	import {mapGetters} from 'vuex';
+	import { mapGetters } from 'vuex';
 	import TicketComponent from './SoccerExpert/TicketComponent';
 	import SlideComponent from './SoccerExpert/SlideComponent';
-	import {routes} from '../../api_routes';
+	import { routes } from '../../api_routes';
 	export default {
 		props: ['item', 'id'],
-		data: function() {
+		data () {
 			return {
 				loading: {
 					delete: false
 				},
 			}
 		},
-		mounted: function() {
+		mounted () {
 			
 		},
 		methods: {
-			editTickets() {
+			editTickets () {
 				this.$router.push({
                     name: 'soccer_expert.play',
                     params: {
@@ -80,7 +80,7 @@
 					}
                 });
         	},
-			removeItemSoccerExpert(item, event){
+			removeItemSoccerExpert (item, event){
 				let removeItemRequest = axios.create();
 
 				removeItemRequest.interceptors.request.use(config => {
@@ -91,7 +91,7 @@
 				removeItemRequest.delete(routes.carts.destroy.replace('{hash}', item.hash), {
 					
 				}).then((response) => {
-					if(response.status === 200) {
+					if (response.status === 200) {
 						this.$store.dispatch('removeItemSoccerExpert', item)
 					}
 					this.loading.delete = false;

@@ -12,7 +12,7 @@
 			</div>
 		</div> -->
 		<div class="tickets-content">
-			<span class="fields" v-for="dicker in lottery.dickers">
+			<span class="fields" v-for="(dicker, index) in lottery.dickers" :key="index">
 				
 				<button v-if="verifyNumberSelected(bet.numbers, dicker)" class="btn btn-xs btn-default-color btn-checked">
 					{{ dicker }}
@@ -25,7 +25,7 @@
 			</span>
 		</div>
 		<div class="tickets-extras">
-			<span class="fields" v-for="dicker in lottery.dickersExtras">
+			<span class="fields" v-for="(dicker, index) in lottery.dickersExtras" :key="index">
 				<button v-if="verifyNumberSelected(bet.numbersExtras, dicker)" class="btn btn-xs btn-default-darking btn-checked">
 					{{ dicker }}
 				</button>
@@ -47,7 +47,7 @@
 <script>
 	export default {
 		props: ['id', 'lottery', 'bet', 'column'],
-		mounted: function() {
+		mounted () {
 			
 		},
 		methods: {
@@ -62,7 +62,7 @@
 				}
 			}
 		},
-		data: function() {
+		data () {
 			return {
 
 			}

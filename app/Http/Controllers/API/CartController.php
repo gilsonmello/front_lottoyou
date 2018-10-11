@@ -390,9 +390,8 @@ class CartController extends Controller
 
         $user = $request->user() == null ? $auth : $request->user();
 
-        $user_id = gettype($user) === 'array' ? $user['id'] : $user->id;
-
         if($user != null) {
+            $user_id = gettype($user) === 'array' ? $user['id'] : $user->id;
             $cart = Cart::where('user_id', '=', $user_id)
                 ->where('finished', '=', 0)
                 ->get()

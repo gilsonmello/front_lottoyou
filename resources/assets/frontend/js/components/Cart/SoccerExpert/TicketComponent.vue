@@ -1,7 +1,7 @@
 <template>		
 	<div class="tickets">
 		<header class="tickets-header">			
-            <span class="text-center tickets-name">{{ ticket.nome }} - ${{ value }}</span> 
+            <span class="text-center tickets-name">{{ ticket.nome }} - {{ getSystemCurrency.data.symbol }}{{ value }}</span> 
             <span class="countdown">
 				<span v-if="days > 1">
 					{{ days }} {{ trans('strings.days') }} e
@@ -26,7 +26,7 @@
 		</header>
 		<div class="tickets-content" :style="backgroundTicket(ticket.imagem_capa)">
 			<div class="row">
-				<div class="col-lg-12 col-sm-6 col-md-6 col-12" v-for="(game, index) in ticket.games">
+				<div class="col-lg-12 col-sm-6 col-md-6 col-12" v-for="(game, index) in ticket.games" :key="index">
 					<game-component :game="game" :ticket="ticket" :index="index"></game-component>
 				</div>
 			</div>
@@ -41,12 +41,12 @@
 	</div>		
 </template>
 
-<script>
-	
-	import GameComponent from './GameComponent'
+<script>	
+	import { mapGetters } from 'vuex';
+	import GameComponent from './GameComponent';
 	export default {
 		props: ['ticket', 'index', 'type', 'category'],
-		data: function() {
+		data () {
         	return {
     			value: 0.00,
     			days: '',
@@ -54,12 +54,17 @@
     			minutes: '',
     			seconds: ''
         	}
-        },
+		},
+		computed: {
+			...mapGetters([
+				'getSystemCurrency'
+            ])
+		},
         methods: {
-        	backgroundTicket(background) {
+        	backgroundTicket (background) {
         		return 'background-image: url('+background+'); background-size: 100% 100%; background-repeat: no-repeat;';
         	},
-        	init() {
+        	init () {
     			var date = this.formatDate(this.ticket.data_termino);
     			var timeOut = setInterval(() => {
     				this.countdown(date, (d, h, m, s, distance) => {
@@ -74,16 +79,13 @@
     			}, 1000);
         	}
         },
-        mounted: function() {
+        mounted () {
 			let value = parseFloat(this.ticket.valor);
             this.value = value.format(2, true);     	
             this.init();
 		},
 		components: {
 			GameComponent
-		},
-		computed: {
-			
 		}
 	}
 </script>

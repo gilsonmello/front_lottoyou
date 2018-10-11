@@ -47,7 +47,7 @@ class OrderItemObserver
             ->get();
 
         $total = number_format($data->total, 2, '.', '');
-        $description .= 'Compra no valor total de R$'. $total.'; ';
+        //$description .= 'Compra no valor total de R$'. $total.'; ';
         $description .= count($lotterySweepstakes). ' teimosinha(s); ';
         $description .= count($data->tickets).' cartela(s); ';
         $description .= 'Tema '.$data->lottery->nome;
@@ -129,7 +129,7 @@ class OrderItemObserver
         $league->collected += $data->package->value;
         $league->save();       
         $total = number_format($data->package->value, 2, '.', '');
-        $description .= 'Compra no valor total de R$'. $total.'; ';
+        //$description .= 'Compra no valor total de R$'. $total.'; ';
         $description .= 'Liga '.$league->name.'; ';
         $description .= 'Pacote '.$data->package->name;
         if($league->classic != null && $league->context == 'classic') {
@@ -151,9 +151,11 @@ class OrderItemObserver
         $order = $item->order;
         $user_id = $order->user_id;
         $total = number_format($data->total, 2, '.', '');
-        $description .= 'Compra no valor total de R$'. $total.'; ';
+        //$description .= 'Compra no valor total de R$'. $total.'; ';
         $description .= count($data->tickets). ' cartela(s); ';
+        $description .= 'Rodada '. $data->tickets[0]->nome .'; ';
         $description .= 'Soccer Expert '.$data->soccer_expert->nome;
+        //dd($description);
         //Percorrendo as cartelas feitas pelo o usuário
         foreach($data->tickets as $key => $ticket) {
             //Pegando o grupo atual da rodada
@@ -218,7 +220,7 @@ class OrderItemObserver
             
             $num_compras = 1;
                     
-            if(!is_null($soccerExpertBet)) {
+            if( !is_null($soccerExpertBet)) {
                 $num_compras += $soccerExpertBet->num_compras;
             }
 
@@ -265,7 +267,7 @@ class OrderItemObserver
 
         $total = number_format($data->total, 2, '.', '');
 
-        $description .= 'Compra no valor total de R$'. $total.'; ';
+        //$description .= 'Compra no valor total de R$'. $total.'; ';
         $description .= $data->scratch_card->discount_tables->quantity .' raspadinha(s);';
         $description .= ' Tema '.$data->scratch_card->nome;
 

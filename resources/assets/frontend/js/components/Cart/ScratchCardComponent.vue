@@ -26,7 +26,7 @@
 
 			<div class="col-lg-1 col-3 col-md-2 col-sm-2">
 				<span>
-					$ {{ (item.total).format(2, true) }}
+					{{ getSystemCurrency.data.symbol }}{{ (item.total).format(2, true) }}
 				</span>
 			</div>
 
@@ -75,13 +75,19 @@
 </template>
 
 <script>
-	import {routes} from '../../api_routes'
+	import { mapGetters } from 'vuex';
+	import {routes} from '../../api_routes';
 	export default {
 		props: ['item'],
-		mounted: function() {
+		computed: {
+			...mapGetters([
+				'getSystemCurrency'
+            ])
+		},
+		mounted () {
 			
 		},
-		data() {
+		data () {
 			return {
 				loading: {
 					delete: false
@@ -89,7 +95,7 @@
 			}
 		},
 		methods: {
-			removeItem(item){
+			removeItem (item){
 				let removeItemRequest = axios.create();
 
 				removeItemRequest.interceptors.request.use(config => {
@@ -100,7 +106,7 @@
 				removeItemRequest.delete(routes.carts.destroy.replace('{hash}', item.hash), {
 					
 				}).then((response) => {
-					if(response.status === 200) {
+					if (response.status === 200) {
 						this.$store.dispatch('removeItemScratchCard', item)
 					}
 					this.loading.delete = false;
@@ -108,7 +114,7 @@
 					this.loading.delete = false;
 				})
 			},
-		}
+		},
 	}
 </script>
 

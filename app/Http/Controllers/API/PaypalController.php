@@ -107,7 +107,7 @@ class PaypalController extends Controller
             //$historicBalance->paypal_order_id = $paypayOrder->id;
             $historicBalance->type = 0;
             $historicBalance->devolution = 1;
-            $historicBalance->description = 'Devolução no valor de R$'. $request->payment_gross .' via Paypal';
+            $historicBalance->description = 'Método Paypal';
             $historicBalance->modality = 'devolution';
             $historicBalance->context = 'paypal_orders';
             $historicBalance->context_message = 'paypal.devolution';
@@ -134,7 +134,7 @@ class PaypalController extends Controller
             //$historicBalance->paypal_order_id = $paypayOrder->id;
             $historicBalance->type = 1;
             $historicBalance->devolution = 0;
-            $historicBalance->description = 'Depósito no valor de R$'. $request->payment_gross .' com o método Paypal';
+            $historicBalance->description = 'Método Paypal';
             $historicBalance->modality = 'deposit';
             $historicBalance->context = 'paypal_orders';
             $historicBalance->context_message = 'paypal.deposit';

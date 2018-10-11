@@ -36,7 +36,6 @@ class CartRepository implements CartContract
                 $orderItem = new OrderItem;
                 $orderItem->order_id = $order->id;
                 $orderItem->type = $value['type'];
-                $orderItem->context_message = 'buy';
                 $data = null;
                 if($value['type'] == 'lottery') {
                     $data = json_encode($value['lottery']);

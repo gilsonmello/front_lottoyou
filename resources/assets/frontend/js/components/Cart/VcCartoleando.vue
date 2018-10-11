@@ -74,8 +74,8 @@
 </template>
 
 <script>
-	import {mapGetters} from 'vuex';
-	import {routes} from '../../api_routes';
+	import { mapGetters } from 'vuex';
+	import { routes } from '../../api_routes';
 	export default {
 		name: 'VcCartoleando',
 		props: ['item'],
@@ -100,7 +100,7 @@
 				const url = routes.carts.destroy.replace('{hash}', item.hash);
 				removeItemRequest.delete(url, {})
 					.then((response) => {
-						if(response.status === 200) {
+						if (response.status === 200) {
 							this.$store.dispatch('removeItemCartoleando', item)
 						}
 						this.loading.delete = false;
