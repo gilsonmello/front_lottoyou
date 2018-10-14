@@ -44,7 +44,7 @@ class LeaguePackageController extends Controller
         ])->get();
 
         if($leagues == null) {
-            return response()->json([], 402);
+            return response()->json([], 422);
         }
 
         /* $leagues = $leagues->filter(function ($league, $key) {
@@ -74,7 +74,7 @@ class LeaguePackageController extends Controller
         $package = LeaguePackage::findBySlug($slug);
 
         if($package == null) {
-            return response()->json([], 402);
+            return response()->json([], 422);
         }
 
         return response()->json($package, 200);
@@ -109,7 +109,7 @@ class LeaguePackageController extends Controller
         $packages = $packages->get();
 
         if($packages->isEmpty()) {
-            return response()->json([], 402);
+            return response()->json([], 422);
         }
 
         return response()->json($packages, 200);

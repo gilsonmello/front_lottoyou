@@ -11,6 +11,12 @@
         	</div>
         </div>
 
+        <div class="row" v-if="leaguePackages.length == 0">
+			<div class="col-lg-12">
+				<h3>Nenhum pacote disponível no momento</h3>
+			</div>				
+		</div>
+
         <div class="row">
             <div class="col-lg-4 col-sm-6 col-md-4 col-12" v-for="(leaguePackage, index) in leaguePackages" :key="index" :index="index">
                 <div class="card">

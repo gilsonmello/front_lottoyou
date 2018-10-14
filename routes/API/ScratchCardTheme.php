@@ -14,5 +14,5 @@ Route::resource('scratch_card_themes', 'ScratchCardThemeController', [
 Route::get('scratch_card_themes/{theme_id}/jackpot_available', 'ScratchCardThemeController@jackpotAvailable');
 Route::get('scratch_card_themes/{theme_id}/demo', 'ScratchCardThemeController@demo');
 Route::get('scratch_card_themes/{theme_id}/scratch_card', 'ScratchCardThemeController@scratchCard');
-Route::post('scratch_card_themes/{scratch_card_id}/{theme_id}/{user_id}/change_scratch_card', 'ScratchCardThemeController@changeScratchCard');
-Route::get('scratch_card_themes/{theme_id}/{user_id}', 'ScratchCardThemeController@play');
+Route::post('scratch_card_themes/{scratch_card_id}/{theme_id}/change_scratch_card', 'ScratchCardThemeController@changeScratchCard');
+Route::get('scratch_card_themes/{theme_id}/play', 'ScratchCardThemeController@play');

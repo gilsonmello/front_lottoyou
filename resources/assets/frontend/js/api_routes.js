@@ -4,13 +4,15 @@ export const host = window.location.protocol + '//'+ window.location.hostname + 
 const base = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '');
 
 export const getHeaders = () => {
+	let token = document.head.querySelector('meta[name="csrf-token"]');
 	//Se o usuário tá logado
-	if(VueInstance.auth) {
+	if (VueInstance.auth) {
 		return {
 			headers: {
 				'Content-Type' : 'application/json',
 				'Accept' : 'application/json',
-				'Authorization': 'Bearer ' + VueInstance.auth.access_token
+				'Authorization': 'Bearer ' + VueInstance.auth.access_token,
+				'X-CSRF-TOKEN': token.content
 			}
 		};
 	}
@@ -19,6 +21,7 @@ export const getHeaders = () => {
 	return {
 		headers: {
 			'Content-Type' : 'application/json',
+			'X-CSRF-TOKEN': token.content
 		}
 	};
 };
@@ -107,8 +110,8 @@ export const routes = {
 		demo: host+'/scratch_card_themes/{theme_id}/demo',
 		scratch_card: host + '/scratch_card_themes/{theme_id}/scratch_card',
 		show: host + '/scratch_card_themes/{theme_id}',
-		play: host + '/scratch_card_themes/{theme_id}/{user_id}',
-		change_scratch_card: host + '/scratch_card_themes/{scratch_card_id}/{theme_id}/{user_id}/change_scratch_card',
+		play: host + '/scratch_card_themes/{theme_id}/play',
+		change_scratch_card: host + '/scratch_card_themes/{scratch_card_id}/{theme_id}/change_scratch_card',
 	},
 	scratch_card_demo: {
 		index: host+'/scratch_card_demo',

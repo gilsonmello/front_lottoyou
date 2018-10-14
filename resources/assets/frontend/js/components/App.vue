@@ -39,7 +39,7 @@
 	import VcModal from './VcModal';
 	import router from '../router';
 	import AppLoadComponent from './AppLoad';
-	import {routes} from '../api_routes'
+	import { routes, getHeaders } from '../api_routes'
 	import {mapGetters} from 'vuex';
 	export default {
 		data () {
@@ -108,6 +108,7 @@
 
 									});
 								this.loading.component = false;
+								window.axios.defaults.headers.common = getHeaders().headers;
 							}
 						}).catch((error) => {
 							this.cartRequest();

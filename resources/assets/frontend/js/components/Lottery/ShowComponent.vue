@@ -36,18 +36,13 @@
 	        	</div>
 	        </div>
 			<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
-				<ticket-component v-for="(ticket, index) in item.tickets" :tickets="tickets" :dickers="item.dickers" :dickersMaxSel="item.dickersMaxSel" :dickersExtras="item.dickersExtras" :item="item" :dickersExtrasSelect="item.dickersExtrasSelect" :ticket="ticket" :index="index" :key="index" v-on:refreshTickets="refreshTickets" v-on:refreshNumbersChecked="refreshNumbersChecked" v-on:deleteTicket="deleteTicket">
-					
-				</ticket-component>
+				<ticket-component v-for="(ticket, index) in item.tickets" :tickets="tickets" :dickers="item.dickers" :dickersMaxSel="item.dickersMaxSel" :dickersExtras="item.dickersExtras" :item="item" :dickersExtrasSelect="item.dickersExtrasSelect" :ticket="ticket" :index="index" :key="index" v-on:refreshTickets="refreshTickets" v-on:refreshNumbersChecked="refreshNumbersChecked" v-on:deleteTicket="deleteTicket" /> 
 
-				 <div class="col-lg-1 col-4 col-md-2 col-sm-2 vcenter" style="justify-content: center;" id="btn-add-ticket">
-					<div>
-
-						<a href="#" @click.prevent="addBet($event)" class="btn btn-primary fa fa-angle-right" style="font-size: 60px;"></a>
-						<!--
-						<br>
-						<a v-if="tickets.length > 5" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>-->
-					</div>
+				<div class="col-lg-1 col-4 col-md-2 col-sm-2 vcenter" style="justify-content: center;" id="btn-add-ticket">
+					<button @click.prevent="addBet($event)" class="btn btn-primary fa fa-angle-right" style="font-size: 60px;"></button>
+					<!--
+					<br>
+					<a v-if="tickets.length > 5" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>-->
 				</div> 
 			</div>
 
@@ -104,9 +99,7 @@
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">
-						{{ trans('strings.total_value') }} {{getSystemCurrency.data.symbol}}<span class="value" v-if="item.total > 0">
-							{{ totalFormated }}
-						</span>
+						{{ trans('strings.total_value') }} {{getSystemCurrency.data.symbol}}<span class="value" v-if="item.total > 0">{{ totalFormated }}</span>
 						<span class="value" v-else>0.00</span>
 					</span>
 				</div>

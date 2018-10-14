@@ -6,6 +6,27 @@ Number.prototype.format = function(n, x) {
     return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$1,');
 };
 
+Vue.prototype.getHeaders = (token_type, access_token) => {
+	// Se existe o token
+	if (access_token && access_token !== '') {
+		const authorization = token_type + ' ' + access_token;
+		return {
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json',
+				'Authorization': authorization
+			}
+		};
+	}
+
+	// Se não existe token
+	return {
+		headers: {
+			'Content-Type': 'application/json',
+		}
+	};
+};
+
 Vue.prototype.makeid = function() {
 	var text = "";
 	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -421,7 +442,7 @@ Vue.prototype.teamRequest = () => {
 	let auth = window.VueInstance.auth;
 	let headers = {	};
 
-	if(auth) {
+	if (auth) {
 		headers.headers = {
 			'Content-Type' : 'application/json',
 			'Accept' : 'application/json',

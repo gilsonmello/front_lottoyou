@@ -1,5 +1,5 @@
 <template>
-	<load-component v-if="loading.component == true"></load-component>
+	<load v-if="loading.component == true" />
 	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.scratch_cards') }}</h1>
 
@@ -201,7 +201,7 @@
 		  	<div class="modal-dialog modal-xl">
 		  		<div class="modal-content" v-if="loading.modalDemo == true">
 		  			<div class="modal-body">
-		  				<load-component></load-component>
+		  				<load />
 		  			</div>
 		  		</div>
 			    <div class="modal-content" v-else>
@@ -342,40 +342,39 @@
 </template>
 
 <script>
-	import {routes} from '../../api_routes'
-	import ModalFormComponent from '../ModalFormComponent'
-	import ModalComponent from './ModalComponent'
-	import LoadComponent from '../Load'
-	import {mapState, mapGetters} from 'vuex';
+	import { routes } from '../../api_routes';
+	import ModalFormComponent from '../ModalFormComponent';
+	import ModalComponent from './ModalComponent';
+	import { mapState, mapGetters } from 'vuex';
 	export default {
 		metaInfo () {
 			return {
-				title: this.trans('strings.scratch_cards'),
+				title: this.trans('strings.scratch_cards') + ' | ' + this.trans('strings.lottoyou'),
 				meta: this.metas
 		    }
 		},
 		props: [],
-		created: function() {
+		created () {
 			
 		},
-		activated: function() {
+		activated () {
 			
 		},
 		methods: {
-			handleScratchCard(index, $event) {
+			handleScratchCard (index, $event) {
 				let theme = this.scratch_card_themes[index];
 				this.$eventBus.$emit('openModal', theme, () => {
 					this.init();
 				});
 			},
 			//Função para remover o espaço de uma url
-			src(src) {
+			src (src) {
 				return src.replace(' ', '%20');
 			},
-			backgroundDemo(background) {
+			backgroundDemo (background) {
 				return 'background-image: url('+background.replace(' ', '%20')+'); background-size: 100% 100%;';
 			},
-			handleBuyNow(el) {
+			handleBuyNow (el) {
 				$('.no-tickets-container').removeClass('hide');
 				$('.h').css({
 					opacity: 0.5
@@ -386,7 +385,7 @@
 				//Removendo evento click do botão
 				this.$off(el);
 			},
-			handlePlayAgain: function (el) {
+			handlePlayAgain (el) {
 				$('.modal-demo').off('hidden.bs.modal');
 				
 				if(this.demoAttempts == 0) {
@@ -418,12 +417,12 @@
 			        });
 		        }		
 			},
-			handlePlay: function (el){
+			handlePlay (el){
 				$(el.target).addClass('hide');
 				$('.btn-reveal-all').removeClass('hide');
 				$('.scratchpad').wScratchPad('enable', true);
 			},
-			handleReveal: function(el) {
+			handleReveal (el) {
 				const vm = this;
 				var time = setTimeout(() => {
 					$('.scratchpad').wScratchPad('clear');
@@ -438,7 +437,7 @@
                 	this.demoAttempts -= 1;
 				}, 200);
 			},
-			handleScratchPad: function() {
+			handleScratchPad () {
 				let vm = this;
 				var dataScratchCard = this.scratch_card_demo;
 				var count = 1;
@@ -475,7 +474,7 @@
 		                            	vm.demoAttempts -= 1;
 		                            	if(dataScratchCard.premio > 0) {
 		                            		$('.btn-result').removeClass('invisible');
-											$('.btn-result').text('Parabéns, você ganhou: '+this.getSystemCurrency.data.symbol+''+dataScratchCard.premio);
+											$('.btn-result').text('Parabéns, você ganhou: '+vm.getSystemCurrency.data.symbol+''+dataScratchCard.premio);
 		                            	}else{
 		                            		$('.btn-result').removeClass('invisible');
 											$('.btn-result').text(vm.trans('strings.good_luck_to_the_next'));
@@ -493,7 +492,7 @@
 					}						
 				});
 			},
-			handleDemo: function(el) {
+			handleDemo (el) {
 				this.id = el.target.getAttribute('data-id');
 				
 				$('.modal-demo').modal('toggle');
@@ -522,10 +521,10 @@
 	        		
 		        });				
 			},
-			submit: function (){
+			submit (){
 
 			},
-			handleJackpotTable: function(el) {
+			handleJackpotTable (el) {
 				this.id = el.target.getAttribute('data-id');
 				$('.modal-jackpot-table').off('hidden.bs.modal');
 				$('.modal-jackpot-table').modal('toggle');
@@ -550,7 +549,7 @@
 		        	}, 500)
 		        })
 			},
-			addToCart: function(index, event) {
+			addToCart (index, event) {
 
 
 				//A posição 0 foi reservada para o valor sem desconto
@@ -571,11 +570,11 @@
 					this.item.scratch_card = new_scratch_card_theme
 				}
 				else*/ 
-				if(this.scratch_card_themes[index].discount_tables != undefined) {
+				if (this.scratch_card_themes[index].discount_tables != undefined) {
 					
 					//Caso o usuário tenha selecionado a opção com desconto, 
 					//Preciso decrementar a posição selecionada, pois o array da tabela de descontos começa em 0
-					const positionSelected = this.scratch_card_themes[index].positionSelected
+					const positionSelected = this.scratch_card_themes[index].positionSelected;
 
 					//Pegando o item da tabela de desconto selecionada
 					var discount_tables = Object.assign(
@@ -602,12 +601,12 @@
 					var total = (value - (value * percentage / 100)) * quantity
 
 					//Passando para a estrutura os dados preenchidos pelo o usuário
-					this.item.total = total
+					this.item.total = total;
 
-					this.item.scratch_card = scratch_card_theme
+					this.item.scratch_card = scratch_card_theme;
 				}
 
-				var addScratchCardRequest = axios.create();
+				const addScratchCardRequest = axios.create();
 
 				addScratchCardRequest.interceptors.request.use(config => {
 		        	$(event.target).find('[type="load"]').removeClass('hide');
@@ -621,7 +620,7 @@
 					hash: this.item.hash,
 					auth: this.auth,
 				}).then(response => {
-		            if(response.status === 200) {
+		            if (response.status === 200) {
 	            		//Atualizando os dados do carrinho
 						this.$store.dispatch('setItemScratchCard', this.item)
 						//Redirecionando para o carrinho
@@ -631,22 +630,19 @@
 		        	
 		        })			
 			},
-			calculatePercentage(value, percentage, quantity) {
+			calculatePercentage (value, percentage, quantity) {
 				let total = value * quantity;
 				return (total - ((total * percentage) / 100)).format(2, true);
 			},
-			init() {
+			init () {
 
-				var request = axios.create();
+				const request = axios.create();
 				request.interceptors.request.use(config => {
 					this.loading.component = true;
 					return config;
 				});
 				
-				var url = routes.scratch_card_themes.index;
-				
-				if(this.auth)
-					url = url+'?user_id='+this.auth.id;
+				let url = routes.scratch_card_themes.index;
 
 				request.get(url, {}).then(response => {
 		            if(response.status === 200){
@@ -701,7 +697,7 @@
 		beforeDestroy() {
             this.$eventBus.$off('openModal');
         },
-		beforeMount: function() {
+		beforeMount () {
 			
 		},
 		mounted() {
@@ -734,7 +730,6 @@
 		},
 		components: {
 			ModalFormComponent,
-			LoadComponent,
 			ModalComponent
 		}
 	}

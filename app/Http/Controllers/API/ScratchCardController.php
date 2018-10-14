@@ -8,8 +8,7 @@ use App\ScratchCard;
 
 class ScratchCardController extends Controller
 {
-
-    public function jackpotAvailable($theme_id = null){
+    public function jackpotAvailable($theme_id = null) {
         return ScratchCard::selectRaw('count(*) as quantity, premio as jackpot, lote')
             ->where('temas_raspadinha_id', '=', $theme_id)
             ->where('ativo', '=', 3)

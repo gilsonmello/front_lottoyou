@@ -45,7 +45,7 @@
 			DickerComponent,
 			DickerExtraComponent
 		},
-		mounted() {
+		mounted () {
 			this.refreshTicket();
 		},
 		props: [
@@ -59,13 +59,13 @@
 			'dickersExtrasSelect'
 		],
 		methods: {
-			wow(bet) {
+			wow (bet) {
 				return bet.complete && bet.completeExtras ? 'complete' : ''
 			},
-			deleteTicket($event) {
+			deleteTicket ($event) {
 				this.$emit('deleteTicket', this.index)
 			},
-			clickNumberExtra: function(event) {
+			clickNumberExtra (event) {
 				var btn = $(event.currentTarget);					
 
 				//Se o número de dezenas extras selecionada for igual ao número de dezenas extras possíveis
@@ -101,7 +101,7 @@
 				}
 				return numbers;
 			},
-			selectRandom: function(event) {
+			selectRandom (event) {
 				//Números randomicos
 				var numbersRand = [];
 
@@ -110,7 +110,7 @@
 				var dickersLength = this.dickers.length;
 
 				//Adiciono no array somente a quantidade de número mínima
-				for(var i = 1; i <= this.item.lottery.dezena_sel_min; i++) {
+				for (var i = 1; i <= this.item.lottery.dezena_sel_min; i++) {
 					var rand = Math.floor(Math.random()*dickersLength) + 1;
 					numbersRand.push(rand);
 				}
@@ -126,7 +126,7 @@
 				$('.ticket'+this.index).find('button').removeClass('btn-checked');
 				
 				//Percorrendo os números e adicionando a classe btn-checked
-				for(var i = 0; i < numbersRand.length; i++) {
+				for (var i = 0; i < numbersRand.length; i++) {
 					var btn = $('.ticket'+this.index+' .tickets-content').find('button')[numbersRand[i] - 1];
 					$(btn).addClass('btn-checked');
 				}
@@ -139,7 +139,7 @@
 				var dickersExtrasLength = this.dickersExtras.length;
 
 				//Adiciono no array somente a quantidade de número mínima
-				for(var i = 1; i <= this.dickersExtrasSelect.length; i++) {
+				for (var i = 1; i <= this.dickersExtrasSelect.length; i++) {
 					var rand = Math.floor(Math.random()*dickersExtrasLength) + 1;
 					numbersExtrasRand.push(rand);
 				}
@@ -150,19 +150,19 @@
 				);
 
 				//Se as dezenas extras estão habilitadas
-				if(this.isEnabledDickersExtras()) {
+				if (this.isEnabledDickersExtras()) {
 					this.ticket.completeExtras = true;
 				}
 
 				//Percorrendo os números extras e adicionando a classe btn-checked
-				for(var i = 0; i < numbersExtrasRand.length; i++) {
+				for (var i = 0; i < numbersExtrasRand.length; i++) {
 					var btn = $('.ticket'+this.index+' .tickets-extras').find('button')[numbersExtrasRand[i] - 1];
 					$(btn).addClass('btn-checked');
 				}
 				$('.ticket'+this.index).removeClass('incomplete');
 				$('.ticket'+this.index).addClass('complete');
 			},
-			deleteNumbersChecked: function(event) {
+			deleteNumbersChecked (event) {
 				$(this.$el).find('.btn-checked').removeClass('btn-checked');
 				$(this.$el).find('.tickets').removeClass('incomplete');
 				$(this.$el).find('.tickets').removeClass('complete');
@@ -173,7 +173,7 @@
 
 				this.$emit('refreshNumbersChecked');
 			},
-			refreshTicket: function() {
+			refreshTicket () {
 				
 				//console.log(this.item.lottery.dezena_sel_min)
 				//Se o usuário selecionou todas as dezenas possíveis
@@ -226,7 +226,7 @@
 				
 				this.$emit('refreshTickets');
 			},	
-			isEnabledDickersExtras: function() {
+			isEnabledDickersExtras () {
 				if(this.dickersExtrasSelect.length > 0) {
 					return true
 				}

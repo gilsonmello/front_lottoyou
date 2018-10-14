@@ -104,7 +104,7 @@
 		                    Idioma
 		                </h3>
 		                <ul class="list-group">
-		                	<li class="list-group-item">
+		                	<!-- <li class="list-group-item">
 		                        <a @click.prevent="redirect" href="/" lang="en_US" class="color-blue">
 		                            English
 		                        </a>
@@ -118,7 +118,7 @@
 		                        <a @click.prevent="redirect" href="/pt_BR" lang="pt_BR" class="color-blue">
 		                            Português (Brasil)
 		                        </a>
-		                    </li>
+		                    </li> -->
 		                    <!-- <li class="list-group-item">
 		                        <a href="#" class="color-blue">
 		                            Deutsch
@@ -223,13 +223,13 @@
                 'auth'
             ])
         },
-		data: function() {
+		data () {
 			return {
 
 			}
 		},
 		methods: {
-			redirect: function(el) {
+			redirect (el) {
 				this.$cookies.set("locale", el.target.getAttribute('lang'));
 				//setTimeout(() => {
 					window.location.href = el.target.getAttribute('href');
@@ -237,15 +237,15 @@
 				//}, 500);
 			}
 		},
-		updated() {
+		updated () {
 
 		},
-		created: function() {
+		created () {
 
 		},
-		activated() {
+		activated () {
 		},
-		mounted: function() {
+		mounted () {
 			
 			$.ajaxSetup({
 			  	cache: true
