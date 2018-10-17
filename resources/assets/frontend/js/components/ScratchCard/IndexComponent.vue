@@ -10,19 +10,9 @@
 		</div>
 
 		<div class="row">
-			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="(scratch_card_theme, index) in scratch_card_themes">
-				<div class="scratch-card">
-					<header class="scratch-card-header">
-						<div class="extras" v-if="scratch_card_theme.lot.new == 1">
-							<img :src="app.basePath+'img/new.png'" alt="new" class="game-badge">
-						</div>
-						<img class="header-image img-fluid" :alt="scratch_card_theme.nome" :src="src(scratch_card_theme.img_card_url)">
-						<div class="descript">
-                            <h2 class="ng-binding">{{ scratch_card_theme.nome }}</h2>
-                            <p class="ng-binding">{{ scratch_card_theme.texto_raspadinha }}</p>
-                        </div>
-					</header>
-					<div class="scratch-card-body">
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="(scratch_card_theme, index) in scratch_card_themes" :key="index">
+				<vc-product-card :bg_image="src(scratch_card_theme.img_card_url)" :is_new="scratch_card_theme.lot.new" :name="scratch_card_theme.nome" :title="scratch_card_theme.texto_index" :description="scratch_card_theme.texto_raspadinha">
+					<template slot="card-body">
 						<div class="amount">
 							{{ scratch_card_theme.texto_index }}
 						</div>
@@ -42,26 +32,11 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</template>
 
-					<footer class="scratch-card-footer">
+					<template slot="card-footer">							
 						<form @submit.prevent="addToCart(index, $event)">
-							<div class="row vcenter">
-								<!-- <div class="col-lg-9 col-9 col-md-9 col-sm-9">
-									<label class="">
-										<input type="radio" v-bind:value="0" v-model="scratch_card_theme.positionSelected" :name="'game_'+index+'_option'">
-										<span>
-											1 {{ trans('strings.game') }}
-										</span>
-									</label>
-								</div> 
-								<div class="col-lg-3 col-3 col-md-3 col-sm-3">
-									<span>
-										$ {{ ((scratch_card_theme.value * 1)).format(2, true) }}
-									</span>
-								</div>-->
-							</div>
-							<div class="row vcenter" v-for="(discount_table, ind) in scratch_card_theme.discount_tables">
+							<div class="row vcenter" v-for="(discount_table, ind) in scratch_card_theme.discount_tables" :key="ind">
 								<div class="col-lg-9 col-9 col-md-9 col-sm-9">
 									<label class="">
 										<input type="radio" v-bind:value="ind" v-model="scratch_card_theme.positionSelected" :name="'game_'+index+'_option'">
@@ -77,7 +52,6 @@
 								
 								<div class="col-lg-3 col-3 col-md-3 col-sm-3">
 									<span>
-
 										{{getSystemCurrency.data.symbol}}{{ calculatePercentage(scratch_card_theme.lot.value, discount_table.percentage, discount_table.quantity ) }}
 									</span>
 								</div>
@@ -99,16 +73,15 @@
 								</div>
 							</div>
 						</form>
-					</footer>
-				</div>
+					</template>
+				</vc-product-card>
 			</div>
-			
 		</div>
 		<div class="modal fade modal-jackpot-table" id="nivel1" data-backdrop="static" tabindex="-1" aria-labelledby="nivel1" aria-hidden="true">
 		  	<div class="modal-dialog modal-lg">
 		  		<div class="modal-content" v-if="loading.modalJackpotTable == true">
 		  			<div class="modal-body">
-		  				<load-component></load-component>
+		  				<load />
 		  			</div>
 		  		</div>
 			    <div class="modal-content" v-else>
@@ -181,7 +154,7 @@
 		        				</tr>
 		        			</thead>
 		        			<tbody>
-		        				<tr v-if="scratch_card_jackpot_available != null" v-for="(jackpot, key) in scratch_card_jackpot_available.jackpot_tables">
+		        				<tr v-if="scratch_card_jackpot_available != null" v-for="(jackpot, key) in scratch_card_jackpot_available.jackpot_tables" :key="key">
 		        					<td>{{ key + 1 }}</td>
 		        					<td>{{ jackpot.disponivel }}</td>
 		        					<td>{{getSystemCurrency.data.symbol}}{{ jackpot.quantia }}</td>
@@ -752,113 +725,12 @@
 	    line-height: 22px;
 	    text-shadow: 0 2px 3px rgba(0,0,0,.8);
 	}
-
-	.scratch-card {
-		background: #efefef;
-	    border-radius: 5px;
-	    padding: 15px;
-	    margin-bottom: 30px;
-	    position: relative;
-	}
-	
+		
 	.extras img {
 		position: absolute;
 		top: -15px;
 	    left: -5px;
 	    z-index: 4;
-	}
-
-	input[type=radio] {
-		margin: 0;
-    	margin-right: 10px;
-	}
-
-	.scratch-card-footer label {
-		padding: 3px 10px;
-	    margin: 0;
-	    width: 100%;
-	    cursor: pointer;
-	}
-
-	.scratch-card-footer form .row {
-		color: #666;
-	    background: rgba(255,255,255,.3);
-	    border-bottom: 1px solid #eee;
-	    font-size: 15px;
-	    cursor: pointer;
-	}
-
-	.scratch-card-body .amount {
-		background: linear-gradient(87.71deg, #1DB2E0 0%, #6AD1ED 50.77%, #1DB2E0 100%);
-	    height: 46px;
-	    color: #FFFFFF;
-	    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	    font-size: 15px;
-	    font-weight: bold;
-	    line-height: 46px;
-	    text-align: center;
-	    box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);
-	    position: relative;
-	}
-
-	.scratch-card-body .jackpot-table {
-		background: #0f546d;
-	    color: #fff;
-	    padding: 10px;
-	    font-size: 13px;
-	    font-weight: 700;
-	}
-	.scratch-card-body .jackpot-table a.demo {
-		display: block;
-	    border: 2px solid rgba(255,255,255,.2);
-	    border-radius: 5px;
-	    color: #fff;
-	    font-weight: 700;
-	    -webkit-transition: border .3s ease-in-out;
-	    transition: border .3s ease-in-out;
-	    font-size: 13px;
-    	margin: 10px 0 10px 0;
-	}
-
-	.scratch-card-body .jackpot-table a.description {
-		cursor: pointer;
-    	color: #fff;
-    	margin: 10px 0 10px 0;
-	}
-	.scratch-card-body .jackpot-table a.demo:hover {
-		border: 2px solid #fff;
-	}
-
-	.scratch-card-body .btn {
-		padding: 0
-	}
-
-	.scratch-card-header {
-		position: relative;
-	}
-
-	.scratch-card-header .header-image { 
-		width: 100%;
-	}
-
-	.scratch-card-header:hover .descript {
-	    opacity: 1;
-	}
-
-	.scratch-card-header .descript {
-	    position: absolute;
-	    left: 0;
-	    top: 0;
-	    width: 100%;
-	    height: 100%;
-	    background-color: rgba(239,239,239,.95);
-	    z-index: 2;
-	    opacity: 0;
-	    -webkit-transition: opacity .3s ease-in-out;
-	    transition: opacity .3s ease-in-out;
-	    padding: 20px;
-	    text-align: center;
-	    color: #666;
 	}
 
 	.modal-jackpot-table .container-actions {

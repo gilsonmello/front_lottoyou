@@ -37,7 +37,8 @@ import Select2 from './components/Select2Component';
 import InputMask from './components/InputMaskComponent';
 import VcCountries from './components/VcCountries';
 import Load from './components/Load';
-import {mapGetters} from 'vuex';
+import VcProductCard from './components/VcProductCard';
+import { mapGetters } from 'vuex';
 
 import App from './components/App';
 //import Teste from './components/Teste';
@@ -52,6 +53,7 @@ Vue.use(PortalVue);
 Vue.component('select2', Select2);
 Vue.component('inputmask', InputMask);
 Vue.component('load', Load);
+Vue.component('vc-product-card', VcProductCard);
 //Vue.component('teste', Teste);
 
 Vue.component('vc-countries', VcCountries);

@@ -20,12 +20,11 @@
 </template>
 
 <script>
-	import {routes} from '../../../../api_routes'
-	import LoadComponent from '../../../Load'
+	import { routes } from '../../../../api_routes';
 	export default {
 		props: ['index', 'bet'],
 		methods: {
-			init() {
+			init () {
     			var date = this.formatDate(this.ticket.data_termino);
     			var timeOut = setInterval(() => {
     				this.countdown(date, (d, h, m, s, distance) => {
@@ -40,11 +39,11 @@
     			}, 1000);
         	}
 		},
-		mounted() {	
+		mounted () {	
 			//this.init();	
 			this.bet.valor = parseFloat(this.bet.valor).format(2, true);	
 		},
-		data() {
+		data () {
 			return {
 				loading: {
 					game: false
@@ -58,7 +57,7 @@
 			}
 		},
 		components: {
-			LoadComponent
+			
 		}
 	}
 </script>
