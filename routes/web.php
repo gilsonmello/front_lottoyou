@@ -63,7 +63,7 @@ Route::post('/oauth/token', [
 //Estas rotas serve para renderizar sempre o arquivo app.blade
 Route::get('/', function () {
 
-	$items = \App\OrderItem::where('type', '=', 'soccer_expert')->get();
+	/*$items = \App\OrderItem::where('type', '=', 'soccer_expert')->get();
 	foreach($items as $key => $item) {
 		$order = $item->order;
 		$description = '';
@@ -83,6 +83,7 @@ Route::get('/', function () {
             	'description' => $description,
             	'context' => 'order_items',
             	'context_message' => 'buy.soccer_expert',
+            	'context_id' => (($item->soccer_expert) ? $item->soccer_expert->id : null),
             ]);
 	}
 
@@ -106,6 +107,7 @@ Route::get('/', function () {
             	'description' => $description,
             	'context' => 'order_items',
             	'context_message' => 'buy.lottery',
+            	'context_id' => (($item->lottery) ? $item->lottery->id : null),
             ]);
 	}
 
@@ -128,21 +130,8 @@ Route::get('/', function () {
             	'description' => $description,
             	'context' => 'order_items',
             	'context_message' => 'buy.scratch_card',
+            	'context_id' => (($item->scratch_card) ? $item->scratch_card->id : null),
             ]);
-	}
-	
-	//Ajustando os registros para order_items
-	$historics = \App\HistoricBalance::select([
-		'historic_balances.*'
-	])
-	->join('order_items', 'historic_balances.id', '=', 'order_items.historic_balance_id')
-	->get();
-	foreach($historics as $key => $historic) {
-		$historic->system = 1;
-		$historic->modality = 'buy';
-		$historic->context = 'order_items';
-		//$historic->context_message = 'buy';
-		$historic->save();
 	}
 
 	//Ajustando os registros para soc_apostas
@@ -163,6 +152,7 @@ Route::get('/', function () {
 		$historic->modality = 'award';
 		$historic->context = 'soc_apostas';
 		$historic->context_message = 'award.soccer_expert';
+		$historic->context_id = $soccerExpertBet->id;
 		$description = '';
 		//$historic->description .= 'Prêmio no valor de R$'. $historic->amount;
 		$historic->description = 'Grupo #'.$group->id;
@@ -189,6 +179,7 @@ Route::get('/', function () {
 		$historic->modality = 'award';
 		$historic->context = 'lot_users_jogos';
 		$historic->context_message = 'award.lottery';
+		$historic->context_id = $lotteryBet->id;
 		$description = '';
 		//$historic->description .= 'Prêmio no valor de R$'. $historic->amount;
 		$historic->description = 'Sorteio '.$sweepstake->sorteio;
@@ -212,6 +203,7 @@ Route::get('/', function () {
 		$historic->modality = 'award';
 		$historic->context = 'raspadinhas';
 		$historic->context_message = 'award.scratch_card';
+		$historic->context_id = $scratchCard->id;
 		//$historic->description = 'Prêmio no valor de R$'. $historic->amount;
 		$historic->description = 'Lote '.$lot->nome;
 		$historic->description .= '; Tema '.$theme->nome;
@@ -229,6 +221,7 @@ Route::get('/', function () {
 		$historic->modality = 'deposit';
 		$historic->context = 'pagseguro_orders';
 		$historic->context_message = 'pagseguro.deposit';
+		$historic->context_id = null;
 		$description = '';
 		$historic->description = 'Método Pagseguro';
 		$historic->save();
@@ -245,6 +238,7 @@ Route::get('/', function () {
 		$historic->modality = 'deposit';
 		$historic->context = 'paypal_orders';
 		$historic->context_message = 'paypal.deposit';
+		$historic->context_id = null;
 		$description = '';
 		$historic->description = 'Método Paypal';
 		$historic->save();
@@ -261,6 +255,7 @@ Route::get('/', function () {
 		$historic->modality = 'deposit';
 		$historic->context = 'balance_inserts';
 		$historic->context_message = 'internal.deposit';
+		$historic->context_id = null;
 		$historic->description = 'O sistema interno inseriu R$'. $historic->amount .' no seu saldo';
 		$historic->save();
 	}
@@ -276,6 +271,7 @@ Route::get('/', function () {
 		$historic->modality = 'withdrawal';
 		$historic->context = 'agent_withdraw';
 		$historic->context_message = 'agent.withdrawal';
+		$historic->context_id = null;
 		$description = '';
 		$historic->description = 'Método Ag. de Pagamento';
 		$historic->save();
@@ -292,9 +288,10 @@ Route::get('/', function () {
 		$historic->modality = 'withdrawal';
 		$historic->context = 'balance_withdraw';
 		$historic->context_message = 'internal.withdrawal';
+		$historic->context_id = null;
 		$historic->description = 'O sistema interno removeu R$'. $historic->amount * -1 .' do seu saldo';
 		$historic->save();
-	}
+	}*/
 
 	return view('layouts.frontend.app');
 })->name('frontend.home');

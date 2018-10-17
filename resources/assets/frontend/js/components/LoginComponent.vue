@@ -209,7 +209,7 @@
 				userExistsRequest.post(url, {
 					email: responseF.email
 				}).then((response) => {
-					if(response.status === 200) {
+					if (response.status === 200) {
 						window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
 						window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
 						let access_token = response.data.access_token;
@@ -306,6 +306,8 @@
 		            scope: '*',
 		        };
 
+				//Emitindo um evento 'Fazendo login'
+				this.$eventBus.$emit('signingIn', true);
 		        var loginRequest = axios.create();
 		        loginRequest.interceptors.request.use(config => {
 		        	this.loading.login = true;
@@ -314,7 +316,7 @@
 
 				loginRequest.post(routes.auth.login, qs.stringify(data)).then(response => {
 					
-					if(response.status === 200) {
+					if (response.status === 200) {
 
 						window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
 						window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
@@ -330,7 +332,6 @@
 						    	clearInterval(time);
 					    	}
 						});
-
 			        	
 			        	let access_token = response.data.access_token;
                         let refresh_token = response.data.refresh_token;
@@ -362,20 +363,10 @@
 								this.$router.push({name: 'home'});
 							}
 
-							//Emitindo um evento 'Fazendo login'
-							this.$eventBus.$emit('signingIn', true);
-
 							$('.modal-login').modal('hide');
-							
-							this.teamRequest()
-								.then((teamRequestResponse) => {
-									if(response.status === 200) {
-										this.$eventBus.$emit('signingIn', false);
-										this.$store.dispatch('setTeamUser', teamRequestResponse.data);
-									}
-								}).catch((teamRequestError) => {
-									this.$eventBus.$emit('signingIn', false);
-								});
+
+							this.$eventBus.$emit('signingIn', false);
+							this.$store.dispatch('setTeamUser', teamRequestResponse.data);									
 		                
 		                }).catch((error_2) => {
 		                	this.loading.login = false;

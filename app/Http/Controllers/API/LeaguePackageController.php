@@ -71,9 +71,9 @@ class LeaguePackageController extends Controller
      */
     public function findBySlug($slug, Request $request)
     {
-        $package = LeaguePackage::findBySlug($slug);
+        $package = LeaguePackage::findBySlugWithLeagues($slug);
 
-        if($package == null) {
+        if ($package == null) {
             return response()->json([], 422);
         }
 

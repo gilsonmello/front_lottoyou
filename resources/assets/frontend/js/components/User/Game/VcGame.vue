@@ -116,8 +116,8 @@
 </template>
 
 <script>
-    import {routes} from '../../../api_routes';
-    import {mapGetters} from 'vuex';
+    import { routes } from '../../../api_routes';
+    import { mapGetters } from 'vuex';
     import VcPagination from '../../VcPagination';
     import VcSoccerExpert from './SoccerExpert/VcSoccerExpert';
     import VcScratchCard from './ScratchCard/VcScratchCard';
@@ -128,7 +128,7 @@
     export default {
         metaInfo () {
             return {
-                title: this.trans('strings.games')+ ' | '+ this.trans('strings.lottoyou'),
+                title: this.trans('strings.my_games')+ ' | '+ this.trans('strings.lottoyou'),
                 meta: [
                     {
                         name: 'description',
@@ -149,7 +149,6 @@
                     page: 1,
                     column: 'created_at',
                     direction: 'desc',
-                    lottery_bet_id: '',
                 }
             }
         },
@@ -169,15 +168,6 @@
                     query: Object.assign(this.query)
                 })
 
-                let headers = {};
-				if(this.auth) {
-					headers.headers = {
-						'Content-Type' : 'application/json',
-						'Accept' : 'application/json',
-						'Authorization': 'Bearer ' + this.auth.access_token
-					};
-				} 
-
                 itemsRequest.interceptors.request.use(config => {
                     this.loading.component = true
                     return config;
@@ -187,9 +177,8 @@
                     page: this.query.page,
                     column: this.query.column,
                     direction: this.query.direction,
-                    id: this.query.id,
-                    lottery_bet_id:  this.query.lottery_bet_id
-                }, headers).then(response => {
+                    id: this.query.id                    
+                }).then(response => {
                     if(response.status === 200) {
                         this.loading.component = false;
                         this.model = response.data;  
@@ -242,22 +231,19 @@
                 'auth'
             ])
         },
-        mounted() {
-            if(this.$route.query.id) {
-                this.query.id = this.$route.query.id
-            } 
-            if(this.$route.query.page) {
-                this.query.page = this.$route.query.page
-            }           
-            if(this.$route.query.column) {
-                this.query.column = this.$route.query.column
-            }
-            if(this.$route.query.direction) {
-                this.query.direction = this.$route.query.direction
-            }
-            if(this.$route.query.lottery_bet_id) {
-                this.query.lottery_bet_id = this.$route.query.lottery_bet_id
-            }
+        mounted () {
+            
+            this.query.id = this.$route.query.id
+        
+        
+            this.query.page = this.$route.query.page
+        
+        
+            this.query.column = this.$route.query.column
+        
+        
+            this.query.direction = this.$route.query.direction
+            
 
             this.itemsRequest(); 
         },

@@ -162,8 +162,7 @@
         <div class="row">
             <div class="col-12">
                 <h4>{{ trans('strings.league') }}(s)</h4>
-                <load v-if="loading.leagues" />
-                <div id="accordion" v-else>
+                <div id="accordion">
                     <div class="card" v-for="(league, index) in item.package.leagues" :key="index">
                         <div class="card-header" data-toggle="collapse" :data-target="'#league_'+league.id">
                             <!-- <h6 data-toggle="collapse" :data-target="'#league_'+league.id" aria-expanded="true" :aria-controls="'league_'+league.id">
@@ -179,7 +178,7 @@
                                     <h3 class="">{{league.name}}</h3>
                                     <span>
                                         {{ trans('strings.league') }} {{ league.modality }} 
-                                        <span v-if="league[league.context].max_players > league.quantity_teams">
+                                        <span v-if="league[league.context] && league[league.context].max_players > league.quantity_teams">
                                             - {{ league[league.context].max_players - league.quantity_teams }} Vagas restantes
                                         </span>
                                     </span>
@@ -261,8 +260,8 @@
 </template>
 
 <script>
-import {routes, getHeaders} from '../../api_routes';
-import {mapState, mapGetters} from 'vuex';
+import { routes, getHeaders } from '../../api_routes';
+import { mapState, mapGetters } from 'vuex';
 export default {
     methods: {
         submitForm () {
@@ -290,7 +289,7 @@ export default {
                 },
                 getHeaders()
             ).then(response => {
-                if(response.status === 200) {
+                if (response.status === 200) {
                     this.refreshAuthPromise()
                         .then((response) => {
                             if (response.status === 200) {
@@ -343,7 +342,7 @@ export default {
                     this.item,
                     getHeaders()
                 ).then(response => {
-                    if(response.status === 200) {
+                    if (response.status === 200) {
                         this.fastBuy();  
                     }
                 }).catch((error) => {
@@ -488,12 +487,6 @@ export default {
                 email: this.item.email,
                 cartoleiro: this.item.cartoleiro,
                 slug: this.item.slug,
-            }, {
-                headers: {
-                    'Content-Type' : 'application/json',
-                    'Accept' : 'application/json',
-                    'Authorization': 'Bearer ' + this.auth.access_token
-                }
             }).then(response => {
                 if(response.status === 200) {
                     this.$store.dispatch('setTeamUser', response.data);
@@ -503,7 +496,7 @@ export default {
             });
         },
         addToCart (el) {
-            if(this.auth != null && this.auth.cartoleando_team == null) {
+            if (this.auth != null && this.auth.cartoleando_team == null) {
                 this.addTeamRequest();
             }
             let vm = this;
@@ -512,8 +505,8 @@ export default {
             
             //Verificando se o pacote já está no carrinho
             this.purchase.items.forEach((element, i) => {
-                if(element.type == 'cartoleando') {
-                    if(element.cartoleando.package.id == this.item.package.id) {
+                if (element.type == 'cartoleando') {
+                    if (element.cartoleando.package.id == this.item.package.id) {
                         hasPackage = true;
                     }
                 }
@@ -596,14 +589,15 @@ export default {
                     this.meta.push({
                         name: 'description',
                         content: this.item.package.name,
-                    });                    
+                    });      
+                    this.loading.component = false;              
                 })
                 .catch((error) => {
-                    
+                    this.loading.component = false;
                 });
 
-            this.loading.leagues = true;
-            this.getLeaguesOfPackageBySlug(slug)
+            /* this.loading.leagues = true;
+                this.getLeaguesOfPackageBySlug(slug)
                 .then((response) => {
                     this.$set(this.item.package, 'leagues', response.data);
                     this.loading.component = false;
@@ -612,12 +606,12 @@ export default {
                 .catch((error) => {
                     this.loading.component = false;
                     this.loading.leagues = false;
-                });
+                }); */
         }
     },
     metaInfo () {
         return {
-            title: this.item.package.name + ' | '+this.trans('strings.lottoyou'),
+            title: this.item.package.name + ' | ' + this.trans('strings.lottoyou'),
             meta: this.meta
         }
     },

@@ -124,21 +124,25 @@ class OrderItemObserver
         $team = CartoleandoTeam::where('owner_id', '=', $user_id)
             ->get()
             ->first();
-        $league = \App\League::find($item->context_id);
-        $league->quantity_teams++;
-        $league->collected += $data->package->value;
-        $league->save();       
-        $total = number_format($data->package->value, 2, '.', '');
-        //$description .= 'Compra no valor total de R$'. $total.'; ';
-        $description .= 'Liga '.$league->name.'; ';
-        $description .= 'Pacote '.$data->package->name;
-        if($league->classic != null && $league->context == 'classic') {
-            $context_message .= '.lea_classic';
-            $this->saveClassicLeague($item, $user_id, $league->id, $team, $league->classic);
-        } else if($league->cup != null && $league->context == 'cup') {
-            $this->saveCupLeague($item, $user_id, $league->id, $team, $league->cup);
-            $context_message .= '.lea_cup';
-        }        
+        
+        $context_message .= '.lea_package';
+        $description .= 'Pacote '.$data->package->name;        
+        
+        foreach($data->package->leagues as $league) {
+            $league = \App\League::find($league->id);
+            $league->quantity_teams++;
+            $league->collected += $league->value;
+            $league->save();       
+            $total = number_format($league->value, 2, '.', '');
+            //$description .= 'Compra no valor total de R$'. $total.'; ';
+            //$description .= 'Liga '.$league->name.'; ';            
+            if($league->classic != null && $league->context == 'classic') {                
+                $this->saveClassicLeague($item, $user_id, $league->id, $team, $league->classic);
+            } else if($league->cup != null && $league->context == 'cup') {
+                $this->saveCupLeague($item, $user_id, $league->id, $team, $league->cup);
+            }   
+        }
+             
     }
 
     /**
@@ -312,6 +316,7 @@ class OrderItemObserver
         $historicBalance->description = $description;
         $historicBalance->context = 'order_items';
         $historicBalance->context_message = $context_message;
+        $historicBalance->context_id = $item->id;
         $historicBalance->modality = 'buy';
         $historicBalance->type = 0;
         $historicBalance->amount = $data->total * -1;

@@ -2,7 +2,7 @@
 	<section class="col-lg-12 line">
 		<div class="row columns collapsed no-margin" data-toggle="collapse" :data-target="'.'+item.id" :style="index % 2 == 0 ? 'background-color: rgba(0, 0, 0, 0.05);': ''"> 	
     		<div class="col-lg-2 col-3 col-md-3 col-sm-3">
-	      		{{ item.soccer_expert.nome }}
+				{{ item.soccer_expert.nome }}
 	      	</div>
 	      	<div class="col-lg-2 col-3 col-md-3 col-sm-3">
 	      		{{getSystemCurrency.data.symbol}}{{ item.amount }}
@@ -16,7 +16,7 @@
         </div>
 
         <div :class="'collapse '+item.id">
-        	<load-component v-if="loading.game"></load-component>
+        	<load v-if="loading.game" />
 			<div class="row no-margin" v-else>
 				<div class="col-lg-6 col-sm-6 col-md-6 col-12 no-padding">
 					<vc-ticket :ticket="item.soccer_expert_game" :category="item.soccer_expert"></vc-ticket>
@@ -29,7 +29,7 @@
 
 <script>
 	import VcTicket from './VcTicket';
-	import {mapGetters} from 'vuex';
+	import { mapGetters } from 'vuex';
 	export default {
 		props: ['item', 'index'],
 		data () {

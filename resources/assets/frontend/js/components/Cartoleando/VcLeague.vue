@@ -53,12 +53,12 @@
 </template>
 
 <script>
-import {routes} from '../../api_routes';
-import {mapState, mapGetters} from 'vuex';
+import { routes } from '../../api_routes';
+import { mapState, mapGetters } from 'vuex';
 export default {
     methods: {
         init () {
-            if(this.$route.params.slug != undefined) {
+            if (this.$route.params.slug != undefined) {
                 this.leaPackage.name = this.trans('strings.loading');
                 let slug = this.$route.params.slug;
                 this.getLeaguePackagesBySlug(slug)
@@ -74,7 +74,7 @@ export default {
                         this.loading.component = false;
                     });
 
-                this.loading.leagues = true;
+                /* this.loading.leagues = true;
                 this.getLeaguesOfPackageBySlug(slug)
                     .then((response) => {
                         this.$set(this.leaPackage, 'leagues', response.data);
@@ -82,7 +82,7 @@ export default {
                     })
                     .catch((error) => {
                         this.loading.leagues = false;
-                    });
+                    }); */
                 
             }
         }

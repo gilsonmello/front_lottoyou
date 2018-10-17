@@ -48,9 +48,14 @@ class LeaguePackage extends Model
         
     ];
 
-    public function leagues() 
+    /* public function leagues() 
     {
         return $this->belongsToMany(League::class, 'lea_packages_has_leagues', 'lea_package_id', 'league_id');
+    } */
+
+    public function leagues() 
+    {
+        return $this->hasMany(League::class, 'lea_package_id');
     }
 
     /**
@@ -63,6 +68,18 @@ class LeaguePackage extends Model
             ->get()
             ->first();
     }    
+
+    /**
+     * @param $query
+     * @param $string
+     * @return mixed
+     */
+    public function scopeFindBySlugWithLeagues($query, $string) {
+        return $query->where('slug', $string)
+            ->with(['leagues'])
+            ->get()
+            ->first();
+    }   
 
     /**
      * @param $query

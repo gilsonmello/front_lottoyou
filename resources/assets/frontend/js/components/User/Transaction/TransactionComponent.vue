@@ -1,6 +1,7 @@
 <template>
 	<load v-if="loading.component == true" />
    	<div class="container" v-else>
+        
         <div class="sub-navigation">
             <router-link class="nav-link" :to="{ name: 'users.account', params: {  } }">
                 {{ trans('strings.profile') }}
@@ -20,7 +21,6 @@
         <!-- <h3 class="page-header">
             {{ trans('strings.transactions') }}
         </h3> -->
-
 
         <table class="table text-center table-hover table-striped table-responsive">
             <caption>
@@ -154,7 +154,10 @@
                     </td>
                     <!-- Descrição -->
                     <td>
-                        {{ balance.description }}
+                        <router-link v-if="balance.modality === 'buy'" :to="{name: 'users.games', query: {id: balance.order_item.id, page: 1, column: 'created_at', direction: 'asc'}}" class="btn-link">
+                            {{ balance.description }}    
+                        </router-link>
+                        <span v-else>{{ balance.description }}</span>
                     </td>
                     <!-- <td v-if="balance.order_item">
                         <vc-order-item :balance="balance" :order_item="balance.order_item" />
@@ -224,11 +227,11 @@
     export default {
         metaInfo () {
             return {
-                title: this.trans('strings.transactions') + ' | '+this.trans('strings.lottoyou'),
+                title: this.trans('strings.transactions') + ' | ' + this.trans('strings.lottoyou'),
                 meta: [
                     {
                         name: 'description', 
-                        content: this.trans('strings.transactions') + ' | '+this.trans('strings.lottoyou')
+                        content: this.trans('strings.transactions') + ' | ' + this.trans('strings.lottoyou')
                     }
                 ]
             }
@@ -259,8 +262,8 @@
                 this.historicRequest();
             },
             toggle (column) {
-                if(this.query.column == column) {
-                    if(this.query.direction == 'desc') {
+                if (this.query.column == column) {
+                    if (this.query.direction == 'desc') {
                         this.query.direction = 'asc';
                     } else {
                         this.query.direction = 'desc';
@@ -273,13 +276,13 @@
                 this.historicRequest();
             },
             prev () {
-                if(this.model.prev_page_url) {
+                if (this.model.prev_page_url) {
                     this.query.page--;
                     this.historicRequest();
                 }
             },
             next () {
-                if(this.model.next_page_url) {
+                if (this.model.next_page_url) {
                     this.query.page++;
                     this.historicRequest();
                 }
@@ -305,17 +308,13 @@
                     query: Object.assign(this.query)
                 });
 
-                historicRequest.post(
-                    url, 
-                    {
-                        page: this.query.page,
-                        column: this.query.column,
-                        direction: this.query.direction,
-                        amount: this.query.amount,
-                        from: this.query.from
-                    }, 
-                    getHeaders()
-                ).then(response => {
+                historicRequest.post(url, {
+                    page: this.query.page,
+                    column: this.query.column,
+                    direction: this.query.direction,
+                    amount: this.query.amount,
+                    from: this.query.from
+                }).then(response => {
                     if(response.status === 200) {
                         this.loading.component = false;
                         this.model = response.data;

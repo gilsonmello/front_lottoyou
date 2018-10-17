@@ -127,16 +127,13 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
 </template>
 
 <script>
-	import {routes} from '../../api_routes';
+	import { routes } from '../../api_routes';
 	import LoadComponent from '../Load';
-	import {mapState, mapGetters} from 'vuex';
+	import { mapState, mapGetters } from 'vuex';
 	import CycleComponent from './CycleComponent';
 	import TicketComponent from './TicketComponent';
 	import ModalTicketComponent from './Modal/TicketComponent';

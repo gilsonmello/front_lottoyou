@@ -113,7 +113,6 @@
 			}
 		},
 		mounted () {
-			console.log(this);
 			//Escuta o evento open Modal
 			this.$eventBus.$on('openModal',  (theme, onHidden) => {
                 this.theme = theme;

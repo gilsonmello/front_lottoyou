@@ -69,19 +69,18 @@ class CartRepository implements CartContract
                     ]);*/
                 } else if($value['type'] == 'cartoleando') {
                     $data = json_encode($value['cartoleando']);
-                    foreach($value['cartoleando']['package']['leagues'] as $league) {
-                        $orderItem = new \App\OrderItem;
-                        $orderItem->order_id = $order->id;
-                        $orderItem->type = $value['type'];
-                        $orderItem->user_id = $request->user()->id;
-                        $orderItem->data = $data;
-                        $orderItem->quantity = 1;
-                        $orderItem->context_id = $league['id'];
-                        $orderItem->amount = $value['cartoleando']['package']['value'];
-                        $orderItem->hash = $value['cartoleando']['hash'];
-                        $orderItem->save();
-                    }
-                    continue;                    
+                    //foreach($value['cartoleando']['package']['leagues'] as $league) {
+                    $orderItem = new \App\OrderItem;
+                    $orderItem->order_id = $order->id;
+                    $orderItem->type = $value['type'];
+                    $orderItem->user_id = $request->user()->id;
+                    $orderItem->data = $data;
+                    $orderItem->quantity = 1;
+                    $orderItem->context_id = $value['cartoleando']['package']['id'];
+                    $orderItem->amount = $value['cartoleando']['package']['value'];
+                    $orderItem->hash = $value['cartoleando']['hash'];
+                    //}
+                    //continue;                    
                 }
 
                 $orderItem->user_id = $request->user()->id;
@@ -185,23 +184,23 @@ class CartRepository implements CartContract
 
         $order->coupon_id = $coupon != null ? $coupon['id'] : null;
 
-        if($order->save()) {
-            $data = json_encode($request['purchase']);
+        if ($order->save()) {
+            $data = json_encode($value['cartoleando']);
             $package = $request['purchase']['package'];
             $hash = $request['hash'];
-            $leagues = $request['purchase']['package']['leagues'];
-            foreach($leagues as $league) {
-                $orderItem = new \App\OrderItem;
-                $orderItem->order_id = $order->id;
-                $orderItem->type = 'cartoleando';
-                $orderItem->user_id = $request->user()->id;
-                $orderItem->data = $data;
-                $orderItem->quantity = 1;
-                $orderItem->context_id = $league['id'];
-                $orderItem->amount = $package['value'];
-                $orderItem->hash = $hash;
-                $orderItem->save();
-            }
+            //foreach($value['cartoleando']['package']['leagues'] as $league) {
+            $orderItem = new \App\OrderItem;
+            $orderItem->order_id = $order->id;
+            $orderItem->type = 'cartoleando';
+            $orderItem->user_id = $request->user()->id;
+            $orderItem->data = $data;
+            $orderItem->quantity = 1;
+            $orderItem->context_id = $value['cartoleando']['package']['id'];
+            $orderItem->amount = $package['value'];
+            $orderItem->hash = $hash;
+            $orderItem->save();
+            //}
+            //continue;    
             return true;
         }
         return false;
