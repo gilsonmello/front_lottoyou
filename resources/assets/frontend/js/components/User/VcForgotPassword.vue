@@ -6,7 +6,7 @@
 			<div class="row">
                 <div class="col-lg-4 col-12 col-sm-6 col-md-3">
                     <div class="form-group">
-                         <label for="forgot-password-email">{{ trans('strings.email') }}*</label>
+						<label for="forgot-password-email">{{ trans('strings.email') }}*</label>
                         <input name="email" v-model="email" type="email" class="form-control" id="forgot-password-email" aria-describedby="email" :placeholder="trans('strings.email')">
                     </div>
                 </div>
@@ -30,7 +30,6 @@
 		</form>
 	</div>
 </template>
-
 <script>
 	import { routes } from '../../api_routes';
     export default {

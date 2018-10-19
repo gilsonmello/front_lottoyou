@@ -147,7 +147,6 @@ Vue.prototype.refreshAuth = function(params) {
         	response.data.refresh_token = refresh_token
 			//window.localStorage.setItem('authUser', JSON.stringify(response.data))
 			this.$store.dispatch('setUserObject', response.data);
-
 			if(params.onSuccess != undefined && typeof params.onSuccess == 'function') {
 				params.onSuccess();
 			}

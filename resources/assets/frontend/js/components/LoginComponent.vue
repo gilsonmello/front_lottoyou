@@ -113,9 +113,8 @@
 		</form>  -->
 </template>
 <script>
-	import {mapGetters} from 'vuex'
-	import {routes} from '../api_routes'
-	import LoadComponent from './Load'
+	import { mapGetters } from 'vuex';
+	import { routes, getHeaders } from '../api_routes';
 	export default {
 		data () {
 			return {
@@ -338,11 +337,7 @@
 
                         let loginRequest = axios.create();
 						//Fazendo busca do usuário logado, para setar na estrutura de dados
-						loginRequest.get(routes.auth.user, { headers: {
-							'Content-Type' : 'application/json',
-							'Accept' : 'application/json',
-	    					'Authorization': 'Bearer ' + access_token
-						}}).then(response_2 => {
+						loginRequest.get(routes.auth.user, getHeaders()).then(response_2 => {
 							this.email = '';
 							this.password = '';
 							this.errors = {};
@@ -366,7 +361,8 @@
 							$('.modal-login').modal('hide');
 
 							this.$eventBus.$emit('signingIn', false);
-							this.$store.dispatch('setTeamUser', teamRequestResponse.data);									
+							this.$store.dispatch('setTeamUser', teamRequestResponse.data);
+							window.axios.defaults.headers.common = getHeaders().headers;								
 		                
 		                }).catch((error_2) => {
 		                	this.loading.login = false;
@@ -396,7 +392,7 @@
 
 		},
 		components: {
-			LoadComponent
+			
 		}
 	}
 </script>
