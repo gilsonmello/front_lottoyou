@@ -108,7 +108,9 @@
 
 									});
 								this.loading.component = false;
-								window.axios.defaults.headers.common = getHeaders().headers;
+								setTimeout(() => {
+									window.axios.defaults.headers.common = getHeaders().headers;
+								}, 700);
 							}
 						}).catch((error) => {
 							this.cartRequest();
