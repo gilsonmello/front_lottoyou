@@ -362,7 +362,7 @@
 
 							this.$eventBus.$emit('signingIn', false);
 							this.$store.dispatch('setTeamUser', teamRequestResponse.data);
-							window.axios.defaults.headers.common = getHeaders().headers;								
+							window.axios.defaults.headers.common = getHeaders().headers;
 		                
 		                }).catch((error_2) => {
 		                	this.loading.login = false;

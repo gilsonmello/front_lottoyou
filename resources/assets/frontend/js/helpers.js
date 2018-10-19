@@ -1,30 +1,9 @@
 import Vue from 'vue'
-import {routes} from './api_routes';
+import { routes, getHeaders } from './api_routes';
 
 Number.prototype.format = function(n, x) {
     var re = '(\\d)(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
     return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$1,');
-};
-
-Vue.prototype.getHeaders = (token_type, access_token) => {
-	// Se existe o token
-	if (access_token && access_token !== '') {
-		const authorization = token_type + ' ' + access_token;
-		return {
-			headers: {
-				'Content-Type': 'application/json',
-				'Accept': 'application/json',
-				'Authorization': authorization
-			}
-		};
-	}
-
-	// Se não existe token
-	return {
-		headers: {
-			'Content-Type': 'application/json',
-		}
-	};
 };
 
 Vue.prototype.makeid = function() {
@@ -138,10 +117,7 @@ Vue.prototype.refreshAuth = function(params) {
 		return config;
 	});
 	//Fazendo busca do usuário logado, para setar na estrutura de dados
-	authRequest.get(routes.auth.user, { headers: {
-		'Accept': 'application/json',
-		'Authorization': 'Bearer ' + access_token
-	}}).then(response => {
+	authRequest.get(routes.auth.user, getHeaders()).then(response => {
 		if(response.status === 200) {
         	response.data.access_token = access_token
         	response.data.refresh_token = refresh_token
@@ -173,10 +149,7 @@ Vue.prototype.refreshAuthPromise = function() {
 		return config;
 	});
 	//Fazendo busca do usuário logado, para setar na estrutura de dados
-	return authRequest.get(routes.auth.user, { headers: {
-		'Accept': 'application/json',
-		'Authorization': 'Bearer ' + access_token
-	}})
+	return authRequest.get(routes.auth.user, getHeaders());
 };
 
 //Função para dividir o array em 2 partes

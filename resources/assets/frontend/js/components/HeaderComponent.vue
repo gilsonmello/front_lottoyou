@@ -239,9 +239,10 @@
 </template>
 
 <script>
-	import NavGameComponent from './NavGameComponent'
-	import SliderComponent from './SliderComponent'
-	import {mapState, mapGetters} from 'vuex';
+	import NavGameComponent from './NavGameComponent';
+	import SliderComponent from './SliderComponent';
+	import { mapState, mapGetters } from 'vuex';
+	import { routes, getHeaders } from '../api_routes';
 	export default {
 		data: function() {
 			return {
@@ -261,7 +262,7 @@
 			},
 			logout() {
 				
-				if(confirm('Deseja realmente deslogar?')) { 
+				if (confirm('Deseja realmente deslogar?')) { 
 					this.$store.dispatch('clearAuthUser');
 					window.localStorage.removeItem('authUser');
 					window.localStorage.removeItem('access_token');
@@ -285,7 +286,8 @@
 					    	clearInterval(time);
 				    	}
 					});
-					
+
+					window.axios.defaults.headers.common = getHeaders().headers;
 				}
 			},
 			login() {
