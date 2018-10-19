@@ -335,47 +335,43 @@
 			        	let access_token = response.data.access_token;
                         let refresh_token = response.data.refresh_token;
 
-                        let loginRequest = axios.create();
+						let userRequest = axios.create();
 						//Fazendo busca do usuário logado, para setar na estrutura de dados
-						loginRequest.get(routes.auth.user, { headers: {
-							'Content-Type' : 'application/json',
-							'Accept' : 'application/json',
-	    					'Authorization': 'Bearer ' + access_token
-						}}).then(response_2 => {
-							this.email = '';
-							this.password = '';
-							this.errors = {};
-							this.loading.login = false;
-				        	response_2.data.access_token = access_token;
+						userRequest.get(routes.auth.user, getHeaders())
+							.then(response_2 => {
+								this.email = '';
+								this.password = '';
+								this.errors = {};
+								this.loading.login = false;
+								response_2.data.access_token = access_token;
+								response_2.data.refresh_token = refresh_token;
 
-		        			response_2.data.refresh_token = refresh_token;
+								let authUser = response_2.data;
+								
+								window.axios.defaults.headers.common = getHeaders().headers;
+								
+								//window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
-                            let authUser = response_2.data;
+								this.$store.dispatch('setUserObject', authUser);
+								
+								//window.location.reload();
 
-							//window.localStorage.setItem('authUser', JSON.stringify(authUser));
+								$('.modal-login').modal('hide');
 
-							this.$store.dispatch('setUserObject', authUser);
-		                  	
-		                  	//window.location.reload();
+								this.$eventBus.$emit('signingIn', false);
+								this.$store.dispatch('setTeamUser', teamRequestResponse.data);
 
-							if(this.loginOptions.redirectToHome === true) {
-								this.$router.push({name: 'home'});
-							}
-
-							$('.modal-login').modal('hide');
-
-							this.$eventBus.$emit('signingIn', false);
-							this.$store.dispatch('setTeamUser', teamRequestResponse.data);
-							window.axios.defaults.headers.common = getHeaders().headers;
-		                
-		                }).catch((error_2) => {
-		                	this.loading.login = false;
-							this.password = '';
-							this.errors = {
-								credentials: 'Usuário ou Senha inválidos'
-							};
-		                });
-		              
+								if(this.loginOptions.redirectToHome === true) {
+									this.$router.push({name: 'home'});
+								}
+							
+							}).catch((error_2) => {
+								this.loading.login = false;
+								this.password = '';
+								this.errors = {
+									credentials: 'Usuário ou Senha inválidos'
+								};
+							});
 					}
 				}).catch((error) => {
 					this.loading.login = false;

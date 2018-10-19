@@ -58,7 +58,7 @@ Vue.component('vc-product-card', VcProductCard);
 
 Vue.component('vc-countries', VcCountries);
 
-const app = window.VueInstance =  new Vue({
+const app = new Vue({
 	router,
 	store,
     el: '#app',
@@ -80,8 +80,6 @@ const app = window.VueInstance =  new Vue({
         ])
 	},
 });
-
-window.VueInstance = app;
 
 window.addEventListener('storage', function(event) {
     

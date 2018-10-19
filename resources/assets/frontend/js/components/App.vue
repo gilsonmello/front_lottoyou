@@ -39,8 +39,8 @@
 	import VcModal from './VcModal';
 	import router from '../router';
 	import AppLoadComponent from './AppLoad';
-	import { routes, getHeaders } from '../api_routes'
-	import {mapGetters} from 'vuex';
+	import { routes, getHeaders } from '../api_routes';
+	import { mapGetters } from 'vuex';
 	export default {
 		data () {
 			return {
@@ -108,9 +108,8 @@
 
 									});
 								this.loading.component = false;
-								setTimeout(() => {
-									window.axios.defaults.headers.common = getHeaders().headers;
-								}, 700);
+								
+								window.axios.defaults.headers.common = getHeaders().headers;
 							}
 						}).catch((error) => {
 							this.cartRequest();

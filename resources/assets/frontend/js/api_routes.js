@@ -4,14 +4,22 @@ export const host = window.location.protocol + '//'+ window.location.hostname + 
 const base = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '');
 
 export const getHeaders = () => {
+	
 	let token = document.head.querySelector('meta[name="csrf-token"]');
+	
+	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+	access_token = access_token != null ? access_token : null;
+
+	//Token para refresh
+	var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+	refresh_token = refresh_token != null ? refresh_token : '';
 	//Se o usuário tá logado
-	if (VueInstance.auth) {
+	if (access_token) {
 		return {
 			headers: {
 				'Content-Type' : 'application/json',
 				'Accept' : 'application/json',
-				'Authorization': 'Bearer ' + VueInstance.auth.access_token,
+				'Authorization': 'Bearer ' + access_token,
 				'X-CSRF-TOKEN': token.content
 			}
 		};
