@@ -161,11 +161,13 @@ class UserController extends Controller
     {
         if($this->repository->forgotPassword($request->all())) {
             return response()->json([
+                'status' => 'success',
                 'message' => trans('alerts.users.forgot_password.success')
             ], 200);
         }
 
         return response()->json([
+            'status' => 'error',
             'message' => trans('alerts.users.forgot_password.error')
         ], 422);
     }

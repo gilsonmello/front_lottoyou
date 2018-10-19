@@ -102,7 +102,7 @@ class UserRepository implements UserContract
     public function forgotPassword(array $attributes) 
     {
         $locale = Cookie::get('locale');
-        $birth_date = format($attributes['birth_date'], 'd-m-Y', $locale);        
+        $birth_date = format($attributes['birth_date'], 'Y-m-d', $locale);   
         
         $user = User::where('username', '=', $attributes['email'])
             ->where(DB::raw("concat(birth_year, '-', birth_month, '-', birth_day)"), '=', $birth_date)
