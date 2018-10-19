@@ -1,8 +1,8 @@
-import state from './state'
-import mutations from './mutations'
-import actions from './actions'
+import state from './state';
+import mutations from './mutations';
+import actions from './actions';
 
-export default{
+export default {
 	state,
 	mutations,
 	actions,
@@ -11,7 +11,7 @@ export default{
 	      	return state.settings;
 		},
 		getSystemCurrency (state) {
-			if(state.settings.length != 0) {
+			if (state.settings.length != 0) {
 				let index = undefined;
 				let currency = state.settings.filter((element, i) => {					
 					if(element.name === 'currency') {
@@ -32,4 +32,4 @@ export default{
 			};
 		}
   	}
-}
+};
