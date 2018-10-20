@@ -104,6 +104,9 @@
                                                             <span v-else-if="award.type == 2">
                                                                 {{ award.value }}%
                                                             </span>
+                                                            <span v-else-if="award.type == 3">
+                                                                {{ award.type_description }}
+                                                            </span>
                                                         </td>
                                                     </tr>
                                                 </tbody>

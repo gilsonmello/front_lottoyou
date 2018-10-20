@@ -104,9 +104,9 @@ class League extends Model
         return $league;
     }
 
-    public function packages() 
+    public function package() 
     {
-        return $this->belongsToMany(LeaguePackage::class, 'lea_packages_has_leagues', 'league_id', 'lea_package_id');
+        return $this->belongsTo(LeaguePackage::class, 'lea_package_id');
     }
 
     public function cup() 

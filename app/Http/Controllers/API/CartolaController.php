@@ -51,7 +51,7 @@ class CartolaController extends Controller
         //Se o time já existe e não encontrei o usuário
         if(!is_null($team) && $userHasTeam == false) {
             return response()->json([
-                'message' => 'O time informado já encontra-se cadastrado no sistema.'
+                'message' => 'A inserção do seu time do cartola possui algumas limitações, favor entrar em contato conosco: ' . config('app.email')
             ], 422);
         }
 

@@ -2,6 +2,8 @@
 
 return [
 
+    'email' => 'contacts@lottoyou-adm.com',
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

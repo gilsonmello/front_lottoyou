@@ -62,7 +62,6 @@ Route::post('/oauth/token', [
 
 //Estas rotas serve para renderizar sempre o arquivo app.blade
 Route::get('/', function () {
-
 	/*$items = \App\OrderItem::where('type', '=', 'soccer_expert')->get();
 	foreach($items as $key => $item) {
 		$order = $item->order;

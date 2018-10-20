@@ -33,7 +33,7 @@ class LeaguePackageController extends Controller
             END
         ) AS modality
         "))
-        ->whereHas('packages', function($query) use ($slug) {
+        ->whereHas('package', function($query) use ($slug) {
             $query->where('slug', '=', $slug);
         })->with([
             'awards' => function($query) {
@@ -91,7 +91,7 @@ class LeaguePackageController extends Controller
         $packages = LeaguePackage::where('active', '=', 1);
 
         //Se o usuário estiver logado, evitar que o pacote apareça para ele novamente
-        if($user) {
+        if ($user) {
             /* $itemsIDS = \App\OrderItem::where('user_id', '=', $user->id)
                 ->select([
                     'lea_package_id'
@@ -108,10 +108,9 @@ class LeaguePackageController extends Controller
 
         $packages = $packages->get();
 
-        if($packages->isEmpty()) {
+        if ($packages->isEmpty()) {
             return response()->json([], 422);
         }
-
         return response()->json($packages, 200);
     }
 
