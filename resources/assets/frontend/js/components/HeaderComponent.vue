@@ -626,8 +626,8 @@
 	.tooltip-item-account-header .title {
 		font-weight: 900;
 	    font-size: 17px;
-	    color: #012406;
-	    text-align: left;
+	    color: #000000;
+		cursor: initial;
 	}
 
 	.tooltip-item-account-header .balance {
@@ -694,9 +694,6 @@
 
 	}
 
-	.tooltip-item-account-header .title {
-		display: initial !important;
-	}
 	.tooltip-item-account-header .balance {
 		display: initial !important;
 	}

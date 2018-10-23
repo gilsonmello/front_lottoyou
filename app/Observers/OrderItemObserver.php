@@ -13,9 +13,12 @@ use App\Balance;
 use App\LeaClassic;
 use App\CartoleandoTeam;
 use Illuminate\Support\Facades\DB;
+use App\Traits\LottoyouAdmin;
 
 class OrderItemObserver
 {
+    use LottoyouAdmin;
+
     /**
      * Listen to the OrderItem created event.
      *
@@ -109,7 +112,10 @@ class OrderItemObserver
         $leaCupTeam->owner_id = $user_id;
         $leaCupTeam->item_id = $item->id;
         $leaCupTeam->team_id = $team->id;
-        $leaCupTeam->save();
+        if($leaCupTeam->save()) {
+            return $leaCupTeam->id;
+        }
+        return null;
     }
 
     /**
@@ -140,6 +146,9 @@ class OrderItemObserver
                 $this->saveClassicLeague($item, $user_id, $league->id, $team, $league->classic);
             } else if($league->cup != null && $league->context == 'cup') {
                 $this->saveCupLeague($item, $user_id, $league->id, $team, $league->cup);
+                if ($league->quantity_teams == $league->number_team) {
+                    $this->LeaCupsSortearTimes($league->cup->id);
+                }
             }   
         }
              

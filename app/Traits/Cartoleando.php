@@ -22,4 +22,15 @@ trait Cartoleando
         $body = json_decode($response->getBody());
         return $body;
     }
+
+    public function getRodada()
+    {
+        $client = new Client(['base_uri' => 'https://api.cartolafc.globo.com/']);
+        $response = $client->request('GET', 'mercado/status/',  [
+            'headers' => [
+                'x-glb-token' => env('X_GLB_TOKEN')
+            ]
+        ]);
+        return json_decode($response->getBody());
+    }
 }
