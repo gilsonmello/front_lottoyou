@@ -197,6 +197,8 @@
         </script>
         
         {{-- <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}?q={{time()}}"></script> --}}
+        <script type="text/javascript" src="{{ mix('frontend/js/manifest.js') }} "></script>
+        <script type="text/javascript" src="{{ mix('frontend/js/vendor.js') }} "></script>
         <script type="text/javascript" src="{{ mix('frontend/js/app.js') }} "></script>
         
        {{--
