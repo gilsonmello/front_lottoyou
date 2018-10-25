@@ -216,7 +216,7 @@
 </template>
 
 <script>
-	import {mapState, mapGetters} from 'vuex'
+	import { mapState, mapGetters } from 'vuex';
 	export default {
 		computed: {
             ...mapGetters([
@@ -230,7 +230,7 @@
 		},
 		methods: {
 			redirect (el) {
-				this.$cookies.set("locale", el.target.getAttribute('lang'));
+				Cookies.set("locale", el.target.getAttribute('lang'));
 				//setTimeout(() => {
 					window.location.href = el.target.getAttribute('href');
 					//window.location.reload();

@@ -217,12 +217,12 @@
 </template>
 
 <script>
-    import {routes} from '../../../api_routes'
-    import LoadComponent from '../../Load'
-    import {mapGetters} from 'vuex'
+    import { routes, domain } from '../../../api_routes';
+    import LoadComponent from '../../Load';
+    import { mapGetters } from 'vuex';
     export default {
         methods: {
-            changePhoto: function(event) {
+            changePhoto (event) {
                 var file = null;
                 var form = $('.user-edit');
                 file = event.currentTarget.files[0];
@@ -249,7 +249,7 @@
                     }    
                 }        
             },
-            handleEdit: function(event) {
+            handleEdit (event) {
                 var vm = this;
                 var form = $(event.currentTarget);
                 var formData = new FormData(form[0]);
@@ -272,8 +272,8 @@
                     }
                 ).then(response => {
                     if(response.status === 200) {
-                        const access_token = JSON.parse(window.localStorage.getItem('access_token'));
-                        const refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+                        const access_token = JSON.parse(Cookies.get('access_token', { domain }) || null);
+                        const refresh_token = JSON.parse(Cookies.get('refresh_token', { domain }) || null);
                         const authUser = this.user;
                         var authRequest = axios.create();
                         //Fazendo busca do usuário logado, para setar na estrutura de dados
@@ -331,7 +331,7 @@
                 document.getElementById('photo').click();
             },
             userRequest() {
-                const access_token = JSON.parse(window.localStorage.getItem('access_token'));            
+                const access_token = JSON.parse(Cookies.get('access_token', { domain }) || null);            
 
                 var userRequest = axios.create();
                 userRequest.interceptors.request.use(config => {

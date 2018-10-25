@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { routes, getHeaders } from './api_routes';
+import { routes, getHeaders, domain } from './api_routes';
 
 Number.prototype.format = function(n, x) {
     var re = '(\\d)(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
@@ -101,11 +101,11 @@ Vue.prototype.formatDate = function(dateBR) {
 Vue.prototype.refreshAuth = function(params) {
 	params = params != undefined ? params : {}
 	//Token de acesso
-	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+	var access_token = JSON.parse(Cookies.get('access_token', { domain }) || null);
 	access_token = access_token != null ? access_token : null;
 
 	//Token para refresh
-	var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+	var refresh_token = JSON.parse(Cookies.get('refresh_token', { domain }) || null);
 	refresh_token = refresh_token != null ? refresh_token : '';
 
 	var authRequest = axios.create();
@@ -121,7 +121,7 @@ Vue.prototype.refreshAuth = function(params) {
 		if(response.status === 200) {
         	response.data.access_token = access_token
         	response.data.refresh_token = refresh_token
-			//window.localStorage.setItem('authUser', JSON.stringify(response.data))
+			// Cookies.set('authUser', JSON.stringify(response.data), { domain });
 			this.$store.dispatch('setUserObject', response.data);
 			if(params.onSuccess != undefined && typeof params.onSuccess == 'function') {
 				params.onSuccess();
@@ -136,11 +136,11 @@ Vue.prototype.refreshAuth = function(params) {
 
 Vue.prototype.refreshAuthPromise = function() {
 	//Token de acesso
-	let access_token = JSON.parse(window.localStorage.getItem('access_token'));
+	let access_token = JSON.parse(Cookies.get('access_token', { domain }));
 	access_token = access_token != null ? access_token : null;
 
 	//Token para refresh
-	let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+	let refresh_token = JSON.parse(Cookies.get('refresh_token', { domain }));
 	refresh_token = refresh_token != null ? refresh_token : '';
 
 	let authRequest = axios.create();

@@ -197,6 +197,7 @@
         </script>
         
         {{-- <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}?q={{time()}}"></script> --}}
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
         <script type="text/javascript" src="{{ mix('frontend/js/manifest.js') }} "></script>
         <script type="text/javascript" src="{{ mix('frontend/js/vendor.js') }} "></script>
         <script type="text/javascript" src="{{ mix('frontend/js/app.js') }} "></script>

@@ -280,11 +280,11 @@
 								if (response.status === 200) {
 									//window.localStorage.setItem('authUser', JSON.stringify(response.data))
 									//Pegando os dados do usuário no localstorage
-									let access_token = JSON.parse(window.localStorage.getItem('access_token'));
+									let access_token = JSON.parse(Cookies.get('access_token', { domain }) || null);
 									access_token = access_token != null ? access_token : null;
 
 									//Token para refresh
-									let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+									let refresh_token = JSON.parse(Cookies.get('refresh_token', { domain }) || null);
 									refresh_token = refresh_token != null ? refresh_token : '';
 
 									response.data.access_token = access_token;

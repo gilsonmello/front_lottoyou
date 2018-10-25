@@ -242,7 +242,7 @@
 	import NavGameComponent from './NavGameComponent';
 	import SliderComponent from './SliderComponent';
 	import { mapState, mapGetters } from 'vuex';
-	import { routes, getHeaders } from '../api_routes';
+	import { routes, getHeaders, domain } from '../api_routes';
 	export default {
 		data: function() {
 			return {
@@ -264,9 +264,9 @@
 				
 				if (confirm('Deseja realmente deslogar?')) { 
 					this.$store.dispatch('clearAuthUser');
-					window.localStorage.removeItem('authUser');
-					window.localStorage.removeItem('access_token');
-					window.localStorage.removeItem('refresh_token');
+					Cookies.remove('authUser', { domain });
+					Cookies.remove('access_token', { domain });
+					Cookies.remove('refresh_token', { domain });
 					window.FB.logout((response) => {
 					
 					});

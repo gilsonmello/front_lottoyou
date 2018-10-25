@@ -114,7 +114,7 @@
 </template>
 <script>
 	import { mapGetters } from 'vuex';
-	import { routes, getHeaders } from '../api_routes';
+	import { routes, getHeaders, domain } from '../api_routes';
 	export default {
 		data () {
 			return {
@@ -157,8 +157,8 @@
 							short_name: responseF.short_name,
 						})).then((response) => {
 							if(response.status === 200) {
-								window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-								window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+								Cookies.set('access_token', JSON.stringify(response.data.refresh_token), { domain: domain });
+								Cookies.set('refresh_token', JSON.stringify(response.data.refresh_token), { domain: domain });
 								this.refreshAuth();
 								$('.modal-login').modal('hide');
 								//window.location.reload();
@@ -170,9 +170,9 @@
 					});
 				} else {
 					this.$store.dispatch('clearAuthUser');
-					window.localStorage.removeItem('authUser');
-					window.localStorage.removeItem('access_token');
-					window.localStorage.removeItem('refresh_token');
+					Cookies.remove('authUser', { domain });
+					Cookies.remove('access_token', { domain });
+					Cookies.remove('refresh_token', { domain });
 				}
 			}
 		},
@@ -209,8 +209,8 @@
 					email: responseF.email
 				}).then((response) => {
 					if (response.status === 200) {
-						window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-						window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+						Cookies.set('access_token', JSON.stringify(response.data.access_token), { domain });
+						Cookies.set('refresh_token', JSON.stringify(response.data.refresh_token), { domain });
 						let access_token = response.data.access_token;
 						let refresh_token = response.data.refresh_token;
 						
@@ -316,9 +316,9 @@
 				loginRequest.post(routes.auth.login, qs.stringify(data)).then(response => {
 					
 					if (response.status === 200) {
-
-						window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-						window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+						
+						Cookies.set('access_token', JSON.stringify(response.data.access_token), { domain });
+						Cookies.set('refresh_token', JSON.stringify(response.data.refresh_token), { domain } );
 
 						//this.$router.push({name: 'users.account'});
 
@@ -375,7 +375,7 @@
 					}
 				}).catch((error) => {
 					this.loading.login = false;
-					if(error.response.data.message != null && error.response.data.message != '') {
+					if(error.response != null && error.response.data.message != '') {
 						toastr.error(
 							error.response.data.message,
 							this.trans('strings.error')

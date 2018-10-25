@@ -44,11 +44,15 @@ import App from './components/App';
 //import Teste from './components/Teste';
 import PortalVue from 'portal-vue';
 
+import { domain } from './api_routes';
+
 Vue.use(VueCookie);
 Vue.use(VueResource);
 Vue.use(Meta);
 Vue.use(VueModal);
 Vue.use(PortalVue);
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies);
 
 Vue.component('select2', Select2);
 Vue.component('inputmask', InputMask);
@@ -58,7 +62,7 @@ Vue.component('vc-product-card', VcProductCard);
 
 Vue.component('vc-countries', VcCountries);
 
-const app = new Vue({
+const app = window.VueInstance = new Vue({
 	router,
 	store,
     el: '#app',
@@ -71,7 +75,7 @@ const app = new Vue({
     },
     mounted () {
 		//this.$cookies.set("locale", window.locale);
-		this.$cookie.set('test', 'Random value', {domain: 'localhost'});
+		Cookies.set('test', 'Random value', { domain });
     },
     computed: {
 		...mapGetters([

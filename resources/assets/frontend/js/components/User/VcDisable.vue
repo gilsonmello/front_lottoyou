@@ -70,8 +70,8 @@
 </template>
 
 <script>
-	import {routes} from '../../api_routes';
-	import {mapGetters} from 'vuex';
+	import { routes, domain } from '../../api_routes';
+	import { mapGetters } from 'vuex';
 	export default {
 		name: 'VcDisable',
 		data () {
@@ -129,9 +129,9 @@
 							toastr.success(response.data.message);
 			        	}
 
-			        	window.localStorage.removeItem('authUser');
-						window.localStorage.removeItem('access_token');
-						window.localStorage.removeItem('refresh_token');
+						Cookies.remove('authUser', { domain });
+						Cookies.remove('access_token', { domain });
+						Cookies.remove('refresh_token', { domain });
 						this.$store.dispatch('clearAuthUser');
 						this.$router.push({
 							name: 'home'
