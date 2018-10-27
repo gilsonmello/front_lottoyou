@@ -211,8 +211,8 @@
                                 <div class="alert alert-danger" v-if="errors.password">
                                     <div v-for="(password, index) in errors.password" :key="index">{{ password }}</div>
                                 </div>
-                                <label for="password">{{ trans('strings.password') }}</label>
-                                <input v-model="password" name="password" type="password" class="form-control" id="password" aria-describedby="password" :placeholder="trans('strings.password')">
+                                <label for="input-password">{{ trans('strings.password') }}</label>
+                                <input v-model="password" name="password" type="password" class="form-control" id="input-password" aria-describedby="input-password" :placeholder="trans('strings.password')">
                             </div>
                         </div>
                         <div class="col-lg-4 col-12 col-sm-4 col-md-4">
@@ -245,7 +245,7 @@
 </template>
 
 <script>
-    import { routes, getHeaders } from '../../api_routes';
+    import { routes, getHeaders, domain } from '../../api_routes';
     import { mapGetters } from 'vuex';
     export default {
         metaInfo () {
@@ -318,8 +318,8 @@
                     headers
                 ).then(response => {
                     if(response.status === 200) {
-                        const access_token = JSON.parse(window.localStorage.getItem('access_token'));
-                        const refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+                        const access_token = JSON.parse(Cookies.get('access_token', { domain }) || null);
+                        const refresh_token = JSON.parse(Cookies.get('refresh_token', { domain }) || null);
                         //const authUser = this.user;
                         let authRequest = axios.create();
                         //Fazendo busca do usuário logado, para setar na estrutura de dados
@@ -387,7 +387,7 @@
                 document.getElementById('photo').click();
             },
             userRequest () {
-                const access_token = JSON.parse(window.localStorage.getItem('access_token'));            
+                const access_token = JSON.parse(Cookies.get('access_token', { domain }) || null);            
                 //let userRequest = axios.create();
                 this.loading.component = false;        
                 this.user = Object.assign(this.auth);  
@@ -485,7 +485,7 @@
                 }); */
             },
         },
-        data: function() {
+        data () {
             return {
                 gender: '',
                 name: '',

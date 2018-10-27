@@ -39,7 +39,7 @@
 	import VcModal from './VcModal';
 	import router from '../router';
 	import AppLoadComponent from './AppLoad';
-	import { routes, getHeaders } from '../api_routes';
+	import { routes, getHeaders, domain } from '../api_routes';
 	import { mapGetters } from 'vuex';
 	export default {
 		data () {
@@ -83,11 +83,11 @@
 			},
 			init () {
 				//Pegando os dados do usuário no localstorage
-				var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+				let access_token = JSON.parse(Cookies.get('access_token', { domain }) || null);
 				access_token = access_token != null ? access_token : null;
 
 				//Token para refresh
-				var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+				let refresh_token = JSON.parse(Cookies.get('refresh_token', { domain }) || null);
 				refresh_token = refresh_token != null ? refresh_token : '';
 
 				//Se usuário está logado
@@ -97,7 +97,7 @@
 							if (response.status === 200) {
 								response.data.access_token = access_token;
 								response.data.refresh_token = refresh_token;
-								//window.localStorage.setItem('authUser', JSON.stringify(response.data));
+								// this.$cookie.set('authUser', JSON.stringify(response.data), { domain: host });
 								this.$store.dispatch('setUserObject', response.data);
 								this.cartRequest();
 								this.getSystemSettings()
@@ -114,9 +114,9 @@
 						}).catch((error) => {
 							this.cartRequest();
 							this.$store.dispatch('clearAuthUser');
-							window.localStorage.removeItem('authUser');
-							window.localStorage.removeItem('access_token');
-							window.localStorage.removeItem('refresh_token');
+							this.$cookie.delete('authUser', { domain: host });
+							this.$cookie.delete('access_token', { domain: host });
+							this.$cookie.delete('refresh_token', { domain: host });
 						});
 				} else {			
 			    	this.cartRequest();	
@@ -125,7 +125,7 @@
 				this.onReady();
 				this.beforeEach();
 
-				//this.authUser = JSON.parse(window.localStorage.getItem('authUser'));
+				//this.authUser = JSON.parse(this.$cookie.get('authUser'));
 				//this.$store.dispatch('setUserObject', this.authUser);				
 
 				
@@ -140,7 +140,7 @@
                     	})
 					}*/
 
-					let access_token = JSON.parse(window.localStorage.getItem('access_token'));
+					let access_token = JSON.parse(this.$cookie.get('access_token'));
 					access_token = access_token != null ? access_token : null;
 					//Verificando se a página necessita de login e o usuário não está logado
 					if(this.$router.history.current.meta.requiresAuth && access_token == null) {
@@ -155,9 +155,9 @@
 				router.beforeEach((to, from, next) => {
 					this.loading.component = true;
 					//Pegando os dados do usuário no localstorage
-					var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+					var access_token = JSON.parse(this.$cookie.get('access_token'));
 					access_token = access_token != null ? access_token : null;
-					//let authUser = JSON.parse(window.localStorage.getItem('authUser'));
+					//let authUser = JSON.parse(this.$cookie.get('authUser'));
 					//authUser = authUser != null ? authUser : null;
 
 				    if(to.meta.requiresAuth === true && (access_token)) {
@@ -173,7 +173,7 @@
 						//Do usuário atualizado
 						/*if(to.name != 'users.account') {					
 
-							let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+							let refresh_token = JSON.parse(this.$cookie.get('refresh_token'));
 							refresh_token = refresh_token != null ? refresh_token : '';
 
 							var loginRequest = axios.create();
@@ -193,7 +193,7 @@
 						        	
 						        	response.data.refresh_token = refresh_token
 
-									window.localStorage.setItem('authUser', JSON.stringify(response.data))
+									this.$cookie.set('authUser', JSON.stringify(response.data), { domain: host });
 
 									this.$store.dispatch('setUserObject', response.data);
 
