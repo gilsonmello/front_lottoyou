@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -8,7 +7,7 @@
 require('./bootstrap');
 
 $(document).on('hidden.bs.modal', '.modal', function (e) {
-	if($('.modal').is(':visible')) {
+	if ($('.modal').is(':visible')) {
 		$('body').addClass('modal-open');
 	}
 });
@@ -26,8 +25,6 @@ require('./helpers');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-import VueResource from 'vue-resource';
-import VueCookie from 'vue-cookie';
 import Meta from 'vue-meta';
 import VueModal from 'vue-js-modal';
     
@@ -45,14 +42,9 @@ import App from './components/App';
 import PortalVue from 'portal-vue';
 
 import { domain } from './api_routes';
-
-Vue.use(VueCookie);
-Vue.use(VueResource);
 Vue.use(Meta);
 Vue.use(VueModal);
 Vue.use(PortalVue);
-import VueCookies from 'vue-cookies'
-Vue.use(VueCookies);
 
 Vue.component('select2', Select2);
 Vue.component('inputmask', InputMask);
