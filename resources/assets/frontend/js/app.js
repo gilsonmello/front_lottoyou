@@ -45,8 +45,6 @@ import { domain } from './api_routes';
 Vue.use(Meta);
 Vue.use(VueModal);
 Vue.use(PortalVue);
-import VueCookies from 'vue-cookies'
-Vue.use(VueCookies);
 
 Vue.component('select2', Select2);
 Vue.component('inputmask', InputMask);
@@ -68,7 +66,6 @@ const app = window.VueInstance = new Vue({
 		$('#prerendered-content').remove();
     },
     mounted () {
-		//this.$cookies.set("locale", window.locale);
 		Cookies.set('test', 'Random value', { domain });
     },
     computed: {
