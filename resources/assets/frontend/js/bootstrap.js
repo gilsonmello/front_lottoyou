@@ -82,7 +82,7 @@ $('<img/>').attr('src', '/img/load.gif').on('load', function() {
     if((event.key == "authUser") || (e.storageArea.length == 0 || e.newValue == null)) {
         tokenData = "";
         access_token = "";
-        this.$cookie.delete('authUser');
+        Cookies.remove('authUser');
         window.location.href = '/';
     }
 });*/

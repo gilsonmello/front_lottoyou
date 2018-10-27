@@ -74,7 +74,6 @@ const app = window.VueInstance = new Vue({
 		$('#prerendered-content').remove();
     },
     mounted () {
-		//this.$cookies.set("locale", window.locale);
 		Cookies.set('test', 'Random value', { domain });
     },
     computed: {
