@@ -64,6 +64,7 @@
             /*$email = "<script>document.write(window.localStorage.getItem('access_token'));</script>";
             echo "Olá $email";*/
         ?>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
         <script>
             
             
@@ -106,9 +107,17 @@
                 query[1] = 'en_US';
             }
 
-            window.document.cookie = query[1] !== undefined ? setCookie('hash', query[1]) : setCookie('hash', 'en_US');
-            window.document.cookie = query[1] !== undefined ? setCookie('locale', query[1]) : setCookie('locale', 'en_US');        
-
+            if (query[1] !== undefined) {
+                Cookies.set('hash', query[1], { domain: '{!! config("session.domain") !!}' }) 
+            } else { 
+                Cookies.set('hash', 'en_US', { domain: '{!! config("session.domain") !!}' });
+            }
+            
+            if (query[1] !== undefined) { 
+                Cookies.set('locale', query[1], { domain: '{!! config("session.domain") !!}' }) 
+            } else {
+                Cookies.set('locale', 'en_US', { domain: '{!! config("session.domain") !!}' });
+            }         
             
 
             var xhttp = new XMLHttpRequest();
@@ -197,7 +206,6 @@
         </script>
         
         {{-- <script type="text/javascript" src="{{ asset('frontend/js/app.js') }}?q={{time()}}"></script> --}}
-        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
         <script type="text/javascript" src="{{ mix('frontend/js/manifest.js') }} "></script>
         <script type="text/javascript" src="{{ mix('frontend/js/vendor.js') }} "></script>
         <script type="text/javascript" src="{{ mix('frontend/js/app.js') }} "></script>
