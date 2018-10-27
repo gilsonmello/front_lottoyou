@@ -37,6 +37,6 @@ const path = require('path');*/
 
 mix.setPublicPath('public/frontend')
     .js('resources/assets/frontend/js/app.js', 'public/frontend/js')
-    .extract(['vue', 'vuex'])
+    .extract(['jquery', 'bootstrap', 'moment', 'sweetalert2', 'vue', 'vuex', 'axios'])
     .sass('resources/assets/frontend/sass/app.scss', 'public/frontend/css')
     .version();
