@@ -113,9 +113,9 @@
 						}).catch((error) => {
 							this.cartRequest();
 							this.$store.dispatch('clearAuthUser');
-							Cookies.remove('authUser', { domain: host });
-							Cookies.remove('access_token', { domain: host });
-							Cookies.remove('refresh_token', { domain: host });
+							Cookies.remove('authUser', { domain: domain });
+							Cookies.remove('access_token', { domain: domain });
+							Cookies.remove('refresh_token', { domain: domain });
 						});
 				} else {			
 			    	this.cartRequest();	
@@ -188,7 +188,7 @@
 						        	
 						        	response.data.refresh_token = refresh_token
 
-									Cookies.set('authUser', JSON.stringify(response.data), { domain })	
+									Cookies.set('authUser', JSON.stringify(response.data), { domain: domain })	
 
 									this.$store.dispatch('setUserObject', response.data);
 
