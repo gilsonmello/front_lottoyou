@@ -2,7 +2,7 @@ export const protocol = "http://"
 export const enviroment = "production";
 export const domain = window.location.hostname;
 export const domainCookies = '.' + window.location.hostname;
-export const host = window.location.hostname + (location.port ? ':'+location.port: '');
+export const host = process.env.NODE_ENV === 'dev' ? window.location.hostname + (location.port ? ':'+location.port: '') : '.' + window.location.hostname + (location.port ? ':'+location.port: '');
 export const hostAPI = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '')+'/api';
 const base = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '');
 
