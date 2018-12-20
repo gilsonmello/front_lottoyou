@@ -1,8 +1,8 @@
 let mix = require('laravel-mix');
 /*
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-const PrerenderSpaPlugin = require('prerender-spa-plugin');
-const path = require('path');*/
+const PrerenderSpaPlugin = require('prerender-spa-plugin'); */
+const path = require('path');
 
 
 /*mix.webpackConfig({
@@ -34,6 +34,19 @@ const path = require('path');*/
  | file for the application as well as bundling up all the JS files.
  |
  */
+
+mix.webpackConfig({
+    /* entry: {
+      vendor: ['jquery', 'bootstrap', 'moment', 'sweetalert2', 'vue', 'vuex', 'axios']
+    }, */
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            '@': path.resolve(__dirname, 'resources/assets/frontend/js'),
+            '@c': path.resolve(__dirname, 'resources/assets/frontend/js/components')
+        },
+    },
+});
 
 mix.setPublicPath('public/frontend')
     .js('resources/assets/frontend/js/app.js', 'public/frontend/js')

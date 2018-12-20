@@ -41,7 +41,7 @@ import App from './components/App';
 //import Teste from './components/Teste';
 import PortalVue from 'portal-vue';
 
-import { domain } from './api_routes';
+import { domain, getHeaders, routes } from './api_routes';
 Vue.use(Meta);
 Vue.use(VueModal);
 Vue.use(PortalVue);
@@ -54,27 +54,69 @@ Vue.component('vc-product-card', VcProductCard);
 
 Vue.component('vc-countries', VcCountries);
 
-const app = window.VueInstance = new Vue({
-	router,
-	store,
-    el: '#app',
-	render: h => h(App),
-	beforeMount () {
-		
-	},
-    created () {
-		$('#prerendered-content').remove();
-    },
-    mounted () {
-		Cookies.set('test', 'Random value', { domain });
-    },
-    computed: {
-		...mapGetters([
+let rsp;
+
+// Busca usuário logado
+const autheticationRequest = async () => {
+
+	//Token de acesso
+	let access_token = Cookies.get('access_token', { domain }) || null;
+	access_token = access_token != null ? access_token : null;
+
+	//Token para refresh
+	let refresh_token = Cookies.get('refresh_token', { domain }) || null;
+	refresh_token = refresh_token != null ? refresh_token : '';
+
+	// Se existe token de acesso
+	if (access_token) {
+	  const rq = window.axios.create();
+	  try {
+		// Tenta buscar o usuário logado
+		rsp = await rq.get(routes.auth.user, getHeaders());
+	  } catch (error) {
+		rsp = error;
+	  }
+	}
+  
+	return new Promise(function (resolve, reject) {
+	  if (rsp && rsp.status === 200) {
+		resolve(rsp);
+	  } else {
+		resolve(null);
+	  }
+	});
+  };
+
+let app;
+
+autheticationRequest()
+  .then((response) => {
+    // Seta o usuário no repositório
+	response && store.dispatch('setUserObject', response.data);
+
+    // Cria instância vue
+    app = window.VueInstance = new Vue({
+	  el: '#app',
+	  render: h => h(App),
+      router,
+      store,
+      computed: {
+        ...mapGetters([
 			'auth', 
 			'purchase'
         ])
-	},
-});
+      },
+      created () {
+		$('#prerendered-content').remove();
+        if (this.auth) {
+          window.axios.defaults.headers.common = getHeaders().headers;
+        }
+	  },
+	  mounted () {
+		Cookies.set('test', 'Random value', { domain });
+	  },
+    });
+  });
 
 window.addEventListener('storage', function(event) {
     
