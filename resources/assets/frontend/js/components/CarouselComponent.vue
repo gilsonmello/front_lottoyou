@@ -1,7 +1,26 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-12">
+                <div class="row">
+                    <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <router-link :to="{ name: 'cartoleando.index' }">
+                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/card_1.jpg">
+                        </router-link>
+                    </div>
+                    <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <router-link :to="{ name: 'lotteries.play', params: {slug: 'easy-money'} }">
+                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/card_2.jpg">
+                        </router-link>
+                    </div>
+                    <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <router-link :to="{ name: 'soccer_expert.index' }">
+                            <img style="width: 100%; margin-bottom: 10px" class="img-fluid" src="/img/card_3.jpg">
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-12">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
                     <ol class="carousel-indicators" style="bottom: -46px;">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -56,7 +75,7 @@
                     <span class="fa fa-angle-right" style="color: black"></span>
                     <span class="sr-only">Next</span>
                 </a>
-            </div>
+            </div> -->
         </div>
         <div class="row" id="conteudo" style="">
             <div class="col-lg-12" style="min-height: 50px; background-color: #fff;">

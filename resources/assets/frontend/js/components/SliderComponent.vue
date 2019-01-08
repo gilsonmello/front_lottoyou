@@ -6,13 +6,13 @@
 				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
 
 				<div class="banner-main" style="position: relative">
-					<img style="width: 100%; " class="img-fluid" src="/img/new1/BAN-princi_S_TX.png">
+					<img style="width: 100%; " class="img-fluid" src="/img/banner_principal.png">
 
-					<div class="content-left">
+					<!-- <div class="content-left">
 						<h1 class="" style="">
 							Aqui é mais fácil
 						</h1>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -57,14 +57,14 @@
 	</div>
 </template>
 <script>
-	export default {
-		mounted: function() {
-			
-		},
-		activated: function() {
-			
-		}
+export default {
+	mounted: function() {
+		
+	},
+	activated: function() {
+		
 	}
+};
 </script>
 
 <style scoped>
@@ -154,13 +154,13 @@
 	}
 
 	.jackpot-currency {
-	    margin-left: 0;
-	    margin-right: 0;
-	    font-weight: 900;
-	    font-size: 40px;
-	    line-height: 60px;
-	    height: 60px;
-	    color: #fff;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 60px;
+    height: 60px;
+    color: #fff;
 	}
 
 	.jackpot-million {

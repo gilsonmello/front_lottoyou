@@ -8,6 +8,49 @@
 		<div class="container">
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
+			 	<router-link :to="{ name: 'cartoleando.index' }">
+					<div class="banner-custom" style="position: relative">
+						<img style="width: 100%; " class="img-fluid" src="/img/banner_cartoleando.png">	
+
+						<div class="content-left">
+							<!-- <h2 class="text-center">
+								CRIE AGORA MESMO<br>
+								A SUA PRÓPRIA LIGA!
+							</h2>
+							<h2 class="text-center" style="margin-bottom: 6px;">
+								VOCÊ JÁ COMEÇA
+							</h2>
+							<h1 class="text-center">
+								<strong>GANHANDO 5%</strong>
+							</h1>
+							<h2 class="text-center">
+								DE TODAS AS APOSTAS
+							</h2> -->
+						</div>
+
+						<div class="content-right">
+							<!-- <h1>
+								No <strong>Soccer Expert</strong> da <strong>Lottoyou</strong><br>
+								você pode criar a sua própria liga<br>
+								com <strong>qualquer time do mundo.</strong><br>
+								Convide seus amigos e descubra<br>
+								quem é o "expert" do futebol.
+							</h1>
+							<br>
+							<h4>
+								<em>É momento de começar a desfrutar deste<br>
+								mundo de infinitas possibilidades com Lottoyou!</em>
+							</h4> -->
+						</div>
+					</div>
+				</router-link>
+			</div>			
+		</div>
+
+		<br>
+		<div class="container">
+			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
 			 	<router-link :to="{ name: 'create_your_league' }">
 					<div class="banner-custom" style="position: relative">
 						<img style="width: 100%; " class="img-fluid" src="/img/banner_custom.png">	
@@ -51,14 +94,14 @@
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
 				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
-				<router-link :to="{ name: 'scratch_cards.index' }">
-					<div class="banner-golden-goal" style="position: relative">
-						<img style="width: 100%; " class="img-fluid" src="/img/new1/RASPADINHAS.jpg">	
-						<div class="content-left">
-							<h2 style="font-weight: bold; text-shadow: 0 1px #808d9300, -1px 0 #cdd2d5, -1px 2px #808d9300, -2px 1px #cdd2d500, -2px 3px #808d93;">
-								RASPE E GANHE !!!
-							</h2>
-						</div>
+				<router-link :to="{ name: 'lotteries.play', params: {slug: 'easy-money'} }">
+					<div class="banner-easy-loteria" style="position: relative">
+						<img style="width: 100%; " class="img-fluid" src="/img/easy_money.jpeg">
+						<!-- <div class="content-left">
+							<h5 class="text-center">
+								<em><strong>NUNCA FOI TÃO FÁCIL GANHAR</strong></em>
+							</h5>
+						</div> -->
 					</div>
 				</router-link>
 			</div>
@@ -70,13 +113,13 @@
 				<!-- <h1 class="text-center">Banner 02<br>960 x 200px</h1> -->
 				<router-link :to="{ name: 'soccer_expert.index' }">
 					<div class="banner-soccer-expert" style="position: relative">
-						<img style="width: 100%; " class="img-fluid" src="/img/new1/Soccer_Exp_S_TX.jpg">	
-						<div class="content-left">
+						<img style="width: 100%; " class="img-fluid" src="/img/banner-soccer-exper.png">	
+						<!-- <div class="content-left">
 							<h2>
 								AQUI SEU PALPITE<br>
 								VALE MAIS QUE UM GOL
 							</h2>
-						</div>
+						</div> -->
 					</div>
 				</router-link>
 			</div>
@@ -86,14 +129,14 @@
 		<div class="container">
 			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 vcenter no-padding">
 				<!-- <h1 class="text-center">Banner 03<br>960 x 200px</h1> -->
-				<router-link :to="{ name: 'lotteries.play', params: {slug: 'easy-money'} }">
-					<div class="banner-easy-loteria" style="position: relative">
-						<img style="width: 100%; " class="img-fluid" src="/img/new1/easy_loteria_S_TX.jpg">
-						<div class="content-left">
-							<h5 class="text-center">
-								<em><strong>NUNCA FOI TÃO FÁCIL GANHAR</strong></em>
-							</h5>
-						</div>
+				<router-link :to="{ name: 'scratch_cards.index' }">
+					<div class="banner-golden-goal" style="position: relative">
+						<img style="width: 100%; " class="img-fluid" src="/img/banner_raspadinha.png">	
+						<!-- <div class="content-left">
+							<h2 style="font-weight: bold; text-shadow: 0 1px #808d9300, -1px 0 #cdd2d5, -1px 2px #808d9300, -2px 1px #cdd2d500, -2px 3px #808d93;">
+								RASPE E GANHE !!!
+							</h2>
+						</div> -->
 					</div>
 				</router-link>
 			</div>
@@ -183,6 +226,13 @@
 				</div>
 			</div> -->
 
+			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
+				<div class="banner-explic-soccer" style="position: relative">
+					<img class="img-fluid" style="width: 100%; " src="/img/banner_explicativo_cartoleando.png">
+				</div>			
+			</div>
+			<br>
+
 
 			<div class="vcenter col-lg-12 col-md-12 col-xs-12 col-sm-12 no-padding">
 
@@ -237,7 +287,7 @@
 						</h3>
 						
 						<h4 style="text-align: justify; line-height: 1.2;">
-							<p>Quem nunca sonhou em transformar 1 dólar em $20,000 dólares?<br>
+							<p>Quem nunca sonhou em transformar 1 real em R$80,00 reais?<br>
 							Provavelmente você já tem os seus planos e aqui na Easy Money todos os dias você pode concretizá-los. Para ganhar o prêmio máximo basta acertar apenas 5 números em um universo de 35 números!!!
 							Na Easy Money vôcê também ganha acertando 4, 3, 2 ou até mesmo 1 número.</p>
 							<!-- <p>Easy Money, <em><strong>nunca foi tão fácil ganhar</strong></em></p> -->

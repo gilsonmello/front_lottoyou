@@ -48,8 +48,7 @@ mix.webpackConfig({
     },
 });
 
-mix.setPublicPath('public/frontend')
-    .js('resources/assets/frontend/js/app.js', 'public/frontend/js')
+mix.js('resources/assets/frontend/js/app.js', 'public/frontend/js')
     .extract(['jquery', 'bootstrap', 'moment', 'sweetalert2', 'vue', 'vuex', 'axios'])
     .sass('resources/assets/frontend/sass/app.scss', 'public/frontend/css')
     .version();

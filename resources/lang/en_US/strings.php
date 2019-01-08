@@ -246,6 +246,7 @@ return [
     'play_now' => 'Jogue Agora',
     'scratch_card' => 'Raspadinha',
     'scratch_cards' => 'Raspadinhas',
+    'register_yourself' => 'Registre-se',
     'register' => 'Cadastro',
     'registers' => 'Cadastros',
     'cart' => 'Carrinho',

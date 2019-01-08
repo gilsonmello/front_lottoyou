@@ -2,234 +2,235 @@
 	<div class="header fixed-top bg-white">
 		<div class="container container-fluid-header">
 			<nav class="navbar navbar-toggleable-md navbar-light bg-inverse" style="padding: 0;">
-				
-  				<div class="col-lg-3 col-md-2 col-sm-3 col-12 no-padding">
+				<div class="col-lg-3 col-md-2 col-sm-3 col-12 no-padding">
 					<ul class="vcenter header-brand">
-  						<li style="padding: 0;">
-  							<router-link :to="{ name: 'home' }">
-  								<img class="img-fluid logo" style="height: 54px; width: 127px;" src="/imgs/logo.png">
-  							</router-link>
-  						</li>
-  						<!-- <li>
-  							<img class="img-fluid" width="60" src="//www.lottoland.com/cms/5a8d7f7a0eb3587e04426c35/multi_60px.png">
-  						</li>
-  						<li>
-  							<span>Novidade: Loteria Multi Keno</span>
-							<span>Ganhe até R$ 24 milhões</span>
-							<span>Tente aqui a sua sorte!</span>
-  						</li> -->
-  					</ul>
-  				</div>
-				
-			  	<div :class="col()">
-			  		<div class="row">
-			  			<div class="col-lg-12 vcenter-end header-container" style="justify-content: right">
-			  				<ul class="header-items" style="width: 100%">
-					  			<!-- <li class="item-register-login" v-if="!auth">
-					  				<router-link :to="{ name: 'login' }" class="pull-left" style="width: 100%;">
-					  					<div class="pull-left">
-											<span style="font-size: 14px">{{ trans('strings.login') }}</span>
-										</div>
-									</router-link>
-					  			</li> -->
-					  			<li class="item-register-login" v-if="!auth">
-					  				<a href="#" @click.prevent="login" class="pull-left" style="width: 100%;">
-					  					<div class="pull-left">
+						<li style="padding: 0;">
+							<router-link :to="{ name: 'home' }">
+								<img class="img-fluid logo" style="height: 54px; width: 127px;" src="/imgs/logo.png">
+							</router-link>
+						</li>
+						<!-- <li>
+							<img class="img-fluid" width="60" src="//www.lottoland.com/cms/5a8d7f7a0eb3587e04426c35/multi_60px.png">
+						</li>
+						<li>
+							<span>Novidade: Loteria Multi Keno</span>
+						<span>Ganhe até R$ 24 milhões</span>
+						<span>Tente aqui a sua sorte!</span>
+						</li> -->
+					</ul>
+				</div>
+			
+		  	<div :class="col()">
+		  		<div class="row">
+		  			<div class="col-lg-12 vcenter-end header-container" style="justify-content: right">
+		  				<ul class="header-items" style="width: 100%">
+				  			<!-- <li class="item-register-login" v-if="!auth">
+				  				<router-link :to="{ name: 'login' }" class="pull-left" style="width: 100%;">
+				  					<div class="pull-left">
+										<span style="font-size: 14px">{{ trans('strings.login') }}</span>
+									</div>
+								</router-link>
+				  			</li> -->
+				  			<li class="item-register-login" v-if="!auth">
+				  				<a href="#" @click.prevent="login" class="pull-left" style="width: 100%;">
+				  					<div class="pull-left">
 											<span style="font-size: 14px">{{ trans('strings.login') }}</span>
 										</div>
 									</a>
-					  			</li>
-					  			<li class="item-register-login" v-if="!auth">
-					  				<router-link :to="{ name: 'users.register' }" class="pull-left" style="width: 100%;">
-					  					<div class="pull-right">
-											<span style="font-size: 14px">{{ trans('strings.register') }}</span>
+				  			</li>
+				  			<li class="item-register-login" v-if="!auth">
+				  				<router-link :to="{ name: 'users.register' }" class="pull-left" style="width: 100%;">
+				  					<div class="pull-right">
+											<span style="font-size: 14px">
+												{{ trans('strings.register_yourself') }}
+											</span>
 										</div>
 									</router-link>
-					  			</li>
-					  			<li class="item-balance" v-if="auth && auth.balance">
-					  				<div class="pull-left" style="width: 100%;">
-						  				<div class="pull-left">
-						  					<i class="fa fa-credit-card-alt" style="font-size: 27px; color: #0056b1"></i>
-						  				</div>
-						  				<div class="pull-right">
-						  					<div class="row">
-						  						<div class="col-lg-12 no-padding">
-													<router-link :to="{ name: 'balances.deposit' }" class="pull-left" style="width: 100%;">
-						  								<span class="balance-amount" style="cursor: initial">{{getSystemCurrency.data.symbol}}{{ auth.balance.value }}</span>
-													</router-link>
-						  						</div>
-						  					</div>
-						  					<div class="row">
-						  						<div class="col-lg-12 no-padding">
-						  							<router-link :to="{ name: 'balances.deposit' }">
+				  			</li>
+				  			<li class="item-balance" v-if="auth && auth.balance">
+				  				<div class="pull-left" style="width: 100%;">
+					  				<div class="pull-left">
+					  					<i class="fa fa-credit-card-alt" style="font-size: 27px; color: #0056b1"></i>
+					  				</div>
+					  				<div class="pull-right">
+					  					<div class="row">
+					  						<div class="col-lg-12 no-padding">
+												<router-link :to="{ name: 'balances.deposit' }" class="pull-left" style="width: 100%;">
+					  								<span class="balance-amount" style="cursor: initial">{{getSystemCurrency.data.symbol}}{{ auth.balance.value }}</span>
+												</router-link>
+					  						</div>
+					  					</div>
+					  					<div class="row">
+					  						<div class="col-lg-12 no-padding">
+					  							<router-link :to="{ name: 'balances.deposit' }">
 														<span class="balance-deposit" style="display: initial">
 															{{trans('strings.to_deposit')}}
 														</span>
-						  							</router-link>
+					  							</router-link>
 													<span class="no-mobile" style="display: initial">&nbsp;/&nbsp;</span>
 													<router-link :to="{ name: 'balances.withdrawal' }">
 														<span class="balance-deposit" style="display: initial">
 															{{trans('strings.withdraw')}}
 														</span>
-						  							</router-link>
-						  						</div>
-						  					</div>
-						  				</div>
+					  							</router-link>
+					  						</div>
+					  					</div>
 					  				</div>
-					  			</li>
-					  			<li class="item-account" data-toggle="tooltip" v-if="auth" @mouseover="openTooltip" @mouseleave="closeTooltip">
-					  				<!-- <router-link :to="{ name: 'users.account' }" class="pull-left" style="width: 100%;"> -->
-						  				<div class="pull-left vcenter">
-						  					<img class="photo" :src="auth.photo_domain+auth.photo+'?'+new Date().getTime()" v-if="auth.photo">
-						  					<i class="fa fa-user-circle" style="font-size: 27px; color: rgb(0, 86, 177);" v-else></i>
-						  				</div>
-						  				<div class="pull-right">
-						  					<div class="row">
-						  						<div class="col-lg-12 no-padding">
-						  							<span class="user-name">
-						  								{{ auth.name }} {{ auth.last_name }}
-						  							</span>
-						  						</div>
-						  					</div>
-						  					<div class="row">
-						  						<div class="col-lg-12 no-padding">
-						  							<span class="account">{{ trans('strings.my_account') }}</span>
-						  						</div>
-						  					</div>
-						  				</div>
-						  			<!-- </router-link> -->
-						  			<div class="tooltip-item-account">
-						  				<div class="tooltip-item-account-header">
-						  					<div class="row vcenter">
-						  						<div class="col-lg-6 col-md-6 col-4 col-sm-6">
-						  							<span class="title">Minha Lottoyou</span>
-						  						</div>
-						  						<div class="col-lg-6 col-8 col-md-6 col-sm-6">
-						  							<span class="balance" v-if="auth && auth.balance">
-							  							Crédito: {{getSystemCurrency.data.symbol}}{{ auth.balance.value }}
-							  						</span>
-							  						<span class="balance" v-else>
-							  							Crédito: {{getSystemCurrency.data.symbol}}0.00
-							  						</span>
-						  						</div>
-						  					</div>
-						  				</div>
-						  				<div class="tooltip-item-account-content">
-						  					<ul class="account">
-						  						<li class="account-item">
-						  							<div class="row vcenter">
-						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-						  									<i class="fa fa-user-circle" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
-						  								</div>
-						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
-						  									<router-link :to="{ name: 'users.account' }" class="">
-							  									{{ trans('strings.my_account') }}
-							  								</router-link>
-						  								</div>
-						  							</div>
-						  						</li>
-						  						<li class="account-item">
-						  							<div class="row vcenter">
-						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-						  									<i class="fa fa-gamepad" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
-						  								</div>
-						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
-						  									<router-link :to="{ name: 'users.games', params: {  } }">
-						  										{{ trans('strings.my_games') }}
-										                    </router-link>
-						  								</div>
-						  							</div>
-						  						</li>
-						  						<!-- <li class="account-item">
-						  							<div class="row vcenter">
-						  								<div class="col-lg-2 col-md-2 col-sm-2">
-						  									<i class="fa fa-shopping-cart" style="font-size: 27px; color: initial;"></i>
-						  								</div>
-						  								<div class="col-lg-10 col-md-10 col-sm-10">
-						  									<router-link :to="{ name: 'users.orders', params: {  } }">
-						  										{{ trans('strings.orders') }}
-										                    </router-link>
-						  								</div>
-						  							</div>
-						  						</li> -->
-						  						<li class="account-item">
-						  							<div class="row vcenter">
-						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-						  									<i class="fa fa-credit-card-alt" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
-						  								</div>
-						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
-						  									<router-link :to="{ name: 'users.transactions' }" class="">
-							  									{{ trans('strings.transactions') }}
-							  								</router-link>
-						  								</div>
-						  							</div>
-						  						</li>
-												  <li class="account-item">
-						  							<div class="row vcenter">
-						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-						  									<i class="fa fa fa-money" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
-						  								</div>
-						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
-						  									<router-link :to="{ name: 'balances.deposit' }" class="">
-							  									{{ trans('strings.deposit_balance') }}
-							  								</router-link>
-						  								</div>
-						  							</div>
-						  						</li>
-												<li class="account-item">
-						  							<div class="row vcenter">
-						  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
-						  									<i class="fa fa-sign-out" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
-						  								</div>
-						  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
-						  									<router-link :to="{ name: 'balances.withdrawal' }" class="">
-							  									{{ trans('strings.withdraw_credit') }}
-							  								</router-link>
-						  								</div>
-						  							</div>
-						  						</li>
-						  						<li class="account-item">
-						  							<div class="row vcenter">
-						  								<div class="col-lg-12">
-						  									<span class="answer">Não é {{ auth.name }} ?</span>
-						  									<a href="#" @click.prevent="logout" class="">
-						  										{{ trans('strings.logout') }}
-						  									</a>
-						  								</div>
-						  							</div>
-						  						</li>
-						  					</ul>
-						  				</div>
-						  				<div class="tooltip-item-account-footer">
-						  					
-						  				</div>
-						  			</div>
-						  		</li>
-					  			<li class="item-cart">
-					  				<router-link :to="{ name: 'cart.index' }" class="cart pull-left" style="width: 100%;">
-				  						<div class="vcenter">
-					  						<div class="cart-left pull-left" style="justify-content: center">
-						  						<i class="fa fa-shopping-cart" style="font-size: 27px;">
-						  							<span class="cart-count">
-						  								{{ purchase.quantity }}
-						  							</span>
-						  						</i>
-						  					</div>
-						  					<div class="cart-right pull-right">
-						  						<span class="cart-value">
-						  							{{getSystemCurrency.data.symbol}}{{ purchase.total.format(2, true) }}
+				  				</div>
+				  			</li>
+				  			<li class="item-account" data-toggle="tooltip" v-if="auth" @mouseover="openTooltip" @mouseleave="closeTooltip">
+				  				<!-- <router-link :to="{ name: 'users.account' }" class="pull-left" style="width: 100%;"> -->
+					  				<div class="pull-left vcenter">
+					  					<img class="photo" :src="auth.photo_domain+auth.photo+'?'+new Date().getTime()" v-if="auth.photo">
+					  					<i class="fa fa-user-circle" style="font-size: 27px; color: rgb(0, 86, 177);" v-else></i>
+					  				</div>
+					  				<div class="pull-right">
+					  					<div class="row">
+					  						<div class="col-lg-12 no-padding">
+					  							<span class="user-name">
+					  								{{ auth.name }} {{ auth.last_name }}
+					  							</span>
+					  						</div>
+					  					</div>
+					  					<div class="row">
+					  						<div class="col-lg-12 no-padding">
+					  							<span class="account">{{ trans('strings.my_account') }}</span>
+					  						</div>
+					  					</div>
+					  				</div>
+					  			<!-- </router-link> -->
+					  			<div class="tooltip-item-account">
+					  				<div class="tooltip-item-account-header">
+					  					<div class="row vcenter">
+					  						<div class="col-lg-6 col-md-6 col-4 col-sm-6">
+					  							<span class="title">Minha Lottoyou</span>
+					  						</div>
+					  						<div class="col-lg-6 col-8 col-md-6 col-sm-6">
+					  							<span class="balance" v-if="auth && auth.balance">
+						  							Crédito: {{getSystemCurrency.data.symbol}}{{ auth.balance.value }}
 						  						</span>
-						  						<span class="cart-checkout-now">
-						  							{{ trans('strings.pay_now') }}
+						  						<span class="balance" v-else>
+						  							Crédito: {{getSystemCurrency.data.symbol}}0.00
 						  						</span>
-						  					</div>	
-					  					</div>				  					
-						  			</router-link>
-					  			</li>
-					  		</ul>
-			  			</div>
-			  		</div>
-			  	</div>
+					  						</div>
+					  					</div>
+					  				</div>
+					  				<div class="tooltip-item-account-content">
+					  					<ul class="account">
+					  						<li class="account-item">
+					  							<div class="row vcenter">
+					  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
+					  									<i class="fa fa-user-circle" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
+					  								</div>
+					  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
+					  									<router-link :to="{ name: 'users.account' }" class="">
+						  									{{ trans('strings.my_account') }}
+						  								</router-link>
+					  								</div>
+					  							</div>
+					  						</li>
+					  						<li class="account-item">
+					  							<div class="row vcenter">
+					  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
+					  									<i class="fa fa-gamepad" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
+					  								</div>
+					  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
+					  									<router-link :to="{ name: 'users.games', params: {  } }">
+					  										{{ trans('strings.my_games') }}
+					                    </router-link>
+					  								</div>
+					  							</div>
+					  						</li>
+					  						<!-- <li class="account-item">
+					  							<div class="row vcenter">
+					  								<div class="col-lg-2 col-md-2 col-sm-2">
+					  									<i class="fa fa-shopping-cart" style="font-size: 27px; color: initial;"></i>
+					  								</div>
+					  								<div class="col-lg-10 col-md-10 col-sm-10">
+					  									<router-link :to="{ name: 'users.orders', params: {  } }">
+					  										{{ trans('strings.orders') }}
+									                    </router-link>
+					  								</div>
+					  							</div>
+					  						</li> -->
+					  						<li class="account-item">
+					  							<div class="row vcenter">
+					  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
+					  									<i class="fa fa-credit-card-alt" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
+					  								</div>
+					  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
+					  									<router-link :to="{ name: 'users.transactions' }" class="">
+						  									{{ trans('strings.transactions') }}
+						  								</router-link>
+					  								</div>
+					  							</div>
+					  						</li>
+											  <li class="account-item">
+					  							<div class="row vcenter">
+					  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
+					  									<i class="fa fa fa-money" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
+					  								</div>
+					  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
+					  									<router-link :to="{ name: 'balances.deposit' }" class="">
+						  									{{ trans('strings.deposit_balance') }}
+						  								</router-link>
+					  								</div>
+					  							</div>
+					  						</li>
+											<li class="account-item">
+					  							<div class="row vcenter">
+					  								<div class="col-lg-2 col-4 col-md-2 col-sm-2">
+					  									<i class="fa fa-sign-out" style="font-size: 27px; color: rgb(0, 86, 177);"></i>
+					  								</div>
+					  								<div class="col-lg-10 col-8 col-md-10 col-sm-10">
+					  									<router-link :to="{ name: 'balances.withdrawal' }" class="">
+						  									{{ trans('strings.withdraw_credit') }}
+						  								</router-link>
+					  								</div>
+					  							</div>
+					  						</li>
+					  						<li class="account-item">
+					  							<div class="row vcenter">
+					  								<div class="col-lg-12">
+					  									<span class="answer">Não é {{ auth.name }} ?</span>
+					  									<a href="#" @click.prevent="logout" class="">
+					  										{{ trans('strings.logout') }}
+					  									</a>
+					  								</div>
+					  							</div>
+					  						</li>
+					  					</ul>
+					  				</div>
+					  				<div class="tooltip-item-account-footer">
+					  					
+					  				</div>
+					  			</div>
+					  		</li>
+				  			<li class="item-cart">
+				  				<router-link :to="{ name: 'cart.index' }" class="cart pull-left" style="width: 100%;">
+			  						<div class="vcenter">
+				  						<div class="cart-left pull-left" style="justify-content: center">
+					  						<i class="fa fa-shopping-cart" style="font-size: 27px;">
+					  							<span class="cart-count">
+					  								{{ purchase.quantity }}
+					  							</span>
+					  						</i>
+					  					</div>
+					  					<div class="cart-right pull-right">
+					  						<span class="cart-value">
+					  							{{getSystemCurrency.data.symbol}}{{ purchase.total.format(2, true) }}
+					  						</span>
+					  						<span class="cart-checkout-now">
+					  							{{ trans('strings.pay_now') }}
+					  						</span>
+					  					</div>	
+				  					</div>				  					
+					  			</router-link>
+				  			</li>
+				  		</ul>
+		  			</div>
+		  		</div>
+		  	</div>
 			</nav>
 		</div>	
 		<div class="container-fluid bg-lottoyou" style="padding: 0;">
@@ -239,99 +240,99 @@
 </template>
 
 <script>
-	import NavGameComponent from './NavGameComponent';
-	import SliderComponent from './SliderComponent';
-	import { mapState, mapGetters } from 'vuex';
-	import { routes, getHeaders, domain } from '../api_routes';
-	export default {
-		data: function() {
-			return {
-				user: JSON.parse(window.localStorage.getItem('authUser'))
-			}
-		},
-		methods: {
-			col() {
-				if(this.auth != null) {
-					return 'col-lg-9 col-md-10 col-sm-9 col-12 no-padding'
-				}
+import NavGameComponent from './NavGameComponent';
+import SliderComponent from './SliderComponent';
+import { mapState, mapGetters } from 'vuex';
+import { routes, getHeaders, domain } from '../api_routes';
+export default {
+	data: function() {
+		return {
+			user: JSON.parse(window.localStorage.getItem('authUser'))
+		}
+	},
+	methods: {
+		col () {
+			if (this.auth != null) {
 				return 'col-lg-9 col-md-10 col-sm-9 col-12 no-padding'
-			},
-			openTooltip() {
-				$('.tooltip-item-account')
-					.addClass('open');
-			},
-			logout() {
+			}
+			return 'col-lg-9 col-md-10 col-sm-9 col-12 no-padding'
+		},
+		openTooltip () {
+			$('.tooltip-item-account')
+				.addClass('open');
+		},
+		logout () {
+			
+			if (confirm('Deseja realmente deslogar?')) { 
+				this.$store.dispatch('clearAuthUser');
+				Cookies.remove('authUser', { domain });
+				Cookies.remove('access_token', { domain });
+				Cookies.remove('refresh_token', { domain });
+				window.FB.logout((response) => {
 				
-				if (confirm('Deseja realmente deslogar?')) { 
-					this.$store.dispatch('clearAuthUser');
-					Cookies.remove('authUser', { domain });
-					Cookies.remove('access_token', { domain });
-					Cookies.remove('refresh_token', { domain });
-					window.FB.logout((response) => {
-					
+				});
+
+				if (this.loginOptions.redirectToHomeOnLogout === true) {
+					this.$router.push({
+						name: 'home'
 					});
-
-					if(this.loginOptions.redirectToHomeOnLogout === true) {
-						this.$router.push({
-							name: 'home'
-						});
-					}
-
-					let time = setInterval(() => {
-						if(this.auth == null) {
-							var header = $('.header');
-							$('body').css({
-				    			'padding-top': header[0].clientHeight - 1
-					    	});
-					    	clearInterval(time);
-				    	}
-					});
-
-					window.axios.defaults.headers.common = getHeaders().headers;
 				}
-			},
-			login() {
-				$('.modal-login').modal('toggle');
-			},
-			closeTooltip() {
-				$('.tooltip-item-account')
-					.removeClass('open');
+
+				let time = setInterval(() => {
+					if (this.auth == null) {
+						var header = $('.header');
+						$('body').css({
+			    			'padding-top': header[0].clientHeight
+				    	});
+				    	clearInterval(time);
+			    	}
+				});
+
+				window.axios.defaults.headers.common = getHeaders().headers;
 			}
 		},
-		created: function() {
-
+		login () {
+			$('.modal-login').modal('toggle');
 		},
-		mounted: function() {
-			let time = setInterval(() => {
-				let header = $('.header');
-		    	$('body').css({
-		    		'padding-top': header[0].clientHeight - 1
-		    	});		    	
-		    	if(header.length > 0){
-					clearInterval(time);
-				}
-	    	}); 	
-		},
-		components: {
-			NavGameComponent,
-			SliderComponent
-		},
-		computed: {
-            ...mapGetters([
-				'auth', 
-				'purchase', 
-				'loginOptions',
-				'getSystemCurrency'
-            ])
-        },
-        watch: {
-        	'auth': (newValue, oldValue) => {
-                if(newValue) {
-                    //this.auth = newValue;
-                }
+		closeTooltip () {
+			$('.tooltip-item-account')
+				.removeClass('open');
+		}
+	},
+	created: function() {
+		// 
+	},
+	mounted: function() {
+		let time = setInterval(() => {
+			let header = $('.header');
+	    	$('body').css({
+	    		'padding-top': header[0].clientHeight
+	    	});		    	
+	    	if(header.length > 0){
+				clearInterval(time);
+			}
+    	}); 	
+	},
+	components: {
+		NavGameComponent,
+		SliderComponent
+	},
+	computed: {
+        ...mapGetters([
+			'auth', 
+			'purchase', 
+			'loginOptions',
+			'getSystemCurrency'
+        ])
+    },
+    watch: {
+    	'auth': (newValue, oldValue) => {
+            if(newValue) {
+                //this.auth = newValue;
             }
         }
-	}
+    }
+};
 </script>
 
 <style scoped>
