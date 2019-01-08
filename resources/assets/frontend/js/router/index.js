@@ -11,6 +11,8 @@ import VcDateTimePickerEnUs from '@c/VcDateTimePickerEnUs';
 
 Vue.use(Router);
 
+import { domain } from '@/api_routes';
+
 var url = '';
 let routes = null;
 
@@ -47,19 +49,19 @@ switch (window.locale) {
 export const waitApplicationLoad = async () => {
 	return new Promise(function (resolve, reject) {
 	  let time = setInterval(() => {
-		if (window.VueInstance) {
-		  clearInterval(time);
-		  resolve();
-		}
+			if (window.VueInstance) {
+		  	clearInterval(time);
+		  	resolve();
+			}
 	  });
 	});
-  };
+};
 
 let router = new Router(routes);
 
 router.onReady((to) => {
 	//Verificando se a página necessita de login e o usuário não está logado
-	if(to.meta.requiresAuth && !window.VueInstance.auth) {
+	if (to.meta.requiresAuth && !window.VueInstance.auth) {
 		window.VueInstance.$router.push({
 			name: 'home'
 		});
@@ -68,28 +70,32 @@ router.onReady((to) => {
 
 router.beforeEach(async (to, from, next) => {
 	await waitApplicationLoad();
-
-	if(!to.meta.requiresAuth) {
+	let access_token = Cookies.get('access_token', { domain }) || null;
+	if (!to.meta.requiresAuth) {
 		next();
+	}
+	else if (to.meta.requiresAuth && (!window.VueInstance.auth || !access_token)) {
+		toastr.info('Para acessar ' + to.path + ' é obrigatório estar logado.');
+		next({ name: 'home' });
 	}
 	else if (to.meta.requiresAuth && window.VueInstance.auth) {
 		next();
-	} else if (to.meta.requiresAuth && !window.VueInstance.auth) {
-		toastr.info('Você precisa está logado.');
-		next({ name: 'home' });
-	}
+	} 
 });
 
 router.afterEach((to, from) => {
+
 	ga('set', 'page', to.path);
 	ga('send', 'pageview');
 	
-	var height = $('main').prop('scrollHeight');
+	let height = $('main').prop('scrollHeight');
+	
 	$('html, body').animate({
 		scrollTop: 0
 	},  300);
+
 	setTimeout(() => {
-		if(to.matched.length == 0) {
+		if (to.matched.length === 0) {
 			window.VueInstance.$router.push({name: 'home'});
 		}
 	}, 200);
@@ -100,8 +106,7 @@ router.afterEach((to, from) => {
 	var navMain = $("#navbarCollapse");
 	navMain.collapse('hide');
 	
-	$('.tooltip-item-account')
-		.removeClass('open');
+	$('.tooltip-item-account').removeClass('open');
 });		
 
 if(window.QueryString.locale) {
