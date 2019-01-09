@@ -10,7 +10,7 @@
           </div>
           <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
             <router-link :to="{ name: 'lotteries.play', params: {slug: 'easy-money'} }">
-              <img style="width: 100%;" class="img-fluid" src="/img/card_2.png">
+              <img style="width: 100%;" class="img-fluid" src="/img/card_2.jpg">
             </router-link>
           </div>
           <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
