@@ -71,96 +71,95 @@ const autheticationRequest = async () => {
 	if (access_token) {
 	  const rq = window.axios.create();
 	  try {
-		// Tenta buscar o usuário logado
-		rsp = await rq.get(routes.auth.user, getHeaders());
+			// Tenta buscar o usuário logado
+			rsp = await rq.get(routes.auth.user, getHeaders());
 	  } catch (error) {
-		rsp = error;
+			rsp = error;
 	  }
 	}
   
 	return new Promise(function (resolve, reject) {
 	  if (rsp && rsp.status === 200) {
-		resolve(rsp);
+			resolve(rsp);
 	  } else {
-		resolve(null);
+			resolve(null);
 	  }
 	});
-  };
+};
 
 let app;
 
 autheticationRequest()
   .then((response) => {
     // Seta o usuário no repositório
-	response && store.dispatch('setUserObject', response.data);
+		response && store.dispatch('setUserObject', response.data);
 
     // Cria instância vue
     app = window.VueInstance = new Vue({
-	  el: '#app',
-	  render: h => h(App),
+	  	el: '#app',
+	  	render: h => h(App),
       router,
       store,
       computed: {
         ...mapGetters([
-			'auth', 
-			'purchase'
+					'auth', 
+					'purchase'
         ])
       },
       created () {
-		$('#prerendered-content').remove();
+				$('#prerendered-content').remove();
         if (this.auth) {
           window.axios.defaults.headers.common = getHeaders().headers;
         }
-	  },
-	  mounted () {
-		Cookies.set('test', 'Random value', { domain });
-	  },
+	  	},
+	  	mounted () {
+				Cookies.set('test', 'Random value', { domain });
+	  	},
     });
   });
 
+
 window.addEventListener('storage', function(event) {
-    
-    //Se foi tudo deletado
-    if(event.storageArea.length == 0) {
-    	window.location.reload();
-    } else {
-    	
-    	if(app.auth && app.auth.access_token != event.newValue && event.key == 'access_token' && event.oldValue != '') {
-	    	window.localStorage.removeItem('access_token');
+  //Se foi tudo deletado
+  if(event.storageArea.length == 0) {
+  	window.location.reload();
+  } else {
+  	
+  	if (app.auth && app.auth.access_token != event.newValue && event.key == 'access_token' && event.oldValue != '') {
+    	window.localStorage.removeItem('access_token');
 			window.localStorage.removeItem('refresh_token');
 			window.localStorage.removeItem('authUser');
 			window.location.reload();
-		} else if(app.auth && app.auth.refresh_token != event.newValue && event.key == 'refresh_token' && event.oldValue != '') {
-	    	window.localStorage.removeItem('access_token');
+		} else if (app.auth && app.auth.refresh_token != event.newValue && event.key == 'refresh_token' && event.oldValue != '') {
+    	window.localStorage.removeItem('access_token');
 			window.localStorage.removeItem('refresh_token');
 			window.localStorage.removeItem('authUser');
 			window.location.reload();
-		} else if(app.auth && JSON.stringify(app.auth) != event.newValue && event.key == 'authUser' && event.oldValue != '') {
-	    	window.localStorage.removeItem('access_token');
+		} else if (app.auth && JSON.stringify(app.auth) != event.newValue && event.key == 'authUser' && event.oldValue != '') {
+    	window.localStorage.removeItem('access_token');
 			window.localStorage.removeItem('refresh_token');
 			window.localStorage.removeItem('authUser');
 			window.location.reload();
 		}
 
-		
-    	//Se deletou o token, removo o usuário logado
-	    if((event.key == 'access_token' && event.newValue == null)) {
-	    	window.localStorage.removeItem('refresh_token');
-	    	window.localStorage.removeItem('authUser');
-	        window.location.reload();
-	    } else {
+	
+  	//Se deletou o token, removo o usuário logado
+    if ((event.key == 'access_token' && event.newValue == null)) {
+    	window.localStorage.removeItem('refresh_token');
+    	window.localStorage.removeItem('authUser');
+      window.location.reload();
+    } else {
 
-	    	//Se removeu o usuário
-			if((event.key == "authUser") && (event.newValue == null)) {
-		        window.location.reload();
-		    }
-
-		    //Se houve alguma alteração no usuário mas não está logado
-		    if((event.key == "authUser") && event.newValue != null && app.auth == null) {
-		    	window.location.reload();
-		    }
+    	//Se removeu o usuário
+			if ((event.key == "authUser") && (event.newValue == null)) {
+        window.location.reload();
 	    }
 
+	    //Se houve alguma alteração no usuário mas não está logado
+	    if ((event.key == "authUser") && event.newValue != null && app.auth == null) {
+	    	window.location.reload();
+	    }
+    }
 	}
 });
 
