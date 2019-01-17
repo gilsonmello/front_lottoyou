@@ -1,387 +1,389 @@
 <template>
-    <load-component v-if="loading.component == true"></load-component>
-    <div class="container" v-else>
-        <h1 class="page-header">{{ trans('strings.help') }}</h1>
-        <div class="row">
-            <div class="col-12">
-                <h3 class="font-weight-bold">
-                    A Lottoyou
-                </h3>
-                <ul>
-                    <li>
-                        Quais os jogos a LottoYou Oferece
-                    </li>
-                    <li>
-                        Quem pode Jogar na LottoYou
-                    </li>
-                    <li>
-                        Quanto Custa cada Jogo
-                    </li>
-                    <li>
-                        Quanto tempo demora o pagamento dos prêmios
-                    </li>
-                    <li>
-                        Como recebo meu pagamento
-                    </li>
-                    <li>
-                        O pagamento é garantido? Como posso confiar ter certeza
-                    </li>
-                    <li>
-                        Preciso estar registrado para jogar
-                    </li>
-                    <li>
-                        A lottoYou é de confiança
-                    </li>
-                </ul>
-            </div>
+  <load-component v-if="loading.component == true"></load-component>
+  <div class="container" v-else>
+    <h1 class="page-header">{{ trans('strings.help') }}</h1>
+    <div class="row">
+      <div class="col-12">
+        <h3 class="font-weight-bold">
+            A Lottoyou
+        </h3>
+        <ul>
+          <li>
+            Quais os jogos a LottoYou Oferece
+          </li>
+          <li>
+            Quem pode Jogar na LottoYou
+          </li>
+          <li>
+            Quanto Custa cada Jogo
+          </li>
+          <li>
+            Quanto tempo demora o pagamento dos prêmios
+          </li>
+          <li>
+            Como recebo meu pagamento
+          </li>
+          <li>
+            O pagamento é garantido? Como posso confiar ter certeza
+          </li>
+          <li>
+            Preciso estar registrado para jogar
+          </li>
+          <li>
+            A lottoYou é de confiança
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">
+          Quais os jogos a LottoYou oferece:
+        </h4>
+        <h6>
+          Quatro modalidades de jogos são disponibilizadas pela LottoYou: Apostas Esportivas, Cartoleando, Loterias e Raspadinhas.
+        </h6>
+        <h6>
+          Dentre as apostas esportivas, a Lottoyou oferece o Soccer Expert (SE), o qual se sub-divide em três categorias: SE World, SE Especial e a SE Custom.
+        </h6>
+        <h6>
+          A Raspadinha apresenta 2 produtos: Golden Goal e PiratesTreasure
+        </h6>
+        <h6>
+          Uma loteria chamada Easy Money
+        </h6>
+        <h6>
+          O Cartoleando que possui ligas apostadas do Fantasy Game Cartola
+        </h6>
+        <h6>
+          Estamos sempre buscando formas de expandir a nossa oferta jogos e caso exista alguma ideia que você queira inserir em nosso site, não hesite em nos enviar um email com a sua sugestão para o contato@lottoyou.bet
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">
+          Quem pode Jogar na LottoYou
+        </h4>
+        <h6>
+          Qualquer pessoa física, maior de 18 anos. Pode não ser o caso, porém somos obrigados a informar sobre a ilegalidade da facilitação de jogos de azar a menores de idade. Por esse motivo, para jogar em nossa plataforma, o usuário deverá ter 18 anos completos, no momento da abertura da conta.
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">Quanto Custa cada Jogo</h4>
+        <h6>O Soccer Expert pode custar 2; 5 ou 10 reais.</h6>
+        <h6>A Easy Money custa um 01 real.</h6>
+        <h6>O Golden Goal custa 0,05 reais</h6>
+        <h6>A PiratesTreasure custa 0,10 reais</h6>
+        <h6>O Cartoleando pode variar entre 10 a 500 reais a liga</h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">Como recebo e quanto tempo demora o pagamento dos prêmios</h4>
+        <h6>
+          Após o sorteio, o valor do prêmio será creditado diretamente em sua conta LottoYou e ficará a sua disposição para ser sacado parcial ou integralmente. Após solicitado o saque, o valor estará disponível na conta PaylPal ou Conta Corrente informada previamente, em até 05 dias úteis, a partir da solicitação. Cabe salientar que os saques estão sujeitos a taxas administrativas.
+        </h6>
+        <h6>
+          Para pagamentos de alto valor (acima de R$ 5.000), um profissional do setor financeiro da LottoYou irá entrar em contato com você, a fim de verificar a melhor maneira de realizar esse pagamento. Geralmente o processo de pagamento demora 10 dias úteis para ser concluído.
+        </h6>
+        <h6>
+          Uma informação importante: A LottoYou sempre realiza o pagamento integral de todos os prêmios, ficando sob a responsabilidade do ganhador o recolhimento dos devidos impostos de acordo com o domicílio fiscal.
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">Preciso estar registrado para jogar</h4>
+        <h6>
+          Visando a maior proteção de nossos clientes, solicitamos gentilmente que todos os interessados em jogar com a LottoYou registrem-se antes de realizar qualquer jogo. Isso é necessário não só para motivos de verificação, porém também para podermos ter contato com o cliente na eventualidade de um prêmio. Além disso, ao se registrar, todas as informações das transações realizadas são guardadas em um só lugar, permitindo que possamos oferecer uma experiência de jogo personalizada a todos os nossos clientes.
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">A LottoYou é de confiança?</h4>
+        <h6>
+          Sim, a LottoYou é um site totalmente seguro!
+        </h6>
+        <h6>
+          Apesar de recentemente inserida no mercado de entretenimento, a LottoYou está presente em países dos diferentes continentes. A sede da LottoYou fica em Lima, onde nossa empresa é regulamentada e licenciada para operar e trabalhar com jogos de entretenimento e apostas internacionalmente.
+        </h6>
+        <h6>
+          Todas as operações da LottoYou são auditadas por L&L Advogacia sediada no Brasil, o que garante a segurança e tranqüilidade de todos os nossos usuários.
+        </h6>
+        <h6>
+          LottoYou, aqui é mais fácil!
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12">
+        <h3 class="font-weight-bold">
+            Como Jogar
+        </h3>
+        <ul>
+          <li>
+            Como fico apto para participar dos jogos?
+          </li>
+          <li>
+            Como posso participar de um novo jogo com os meus ganhos?
+          </li>
+          <li>
+            Como eliminar um pedido do carrinho de compras?
+          </li>
+          <li>
+            Quando optar por pagamento via boleto. Quando o pagamento for feito estou automaticamente participando dos jogos que fiz?
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">Como fico apto para participar dos jogos</h4>
+        <h6>
+          Para qualquer um dos nossos jogos você deve seguir o seguinte procedimento:
+        </h6>
+        <h6>
+          1. Faça login na sua conta LottoYou
+        </h6>
+        <h6>
+          2. No caso de não ter ainda saldo para a realização dos jogos, clique em depósito e selecione a forma de pagamento.
+        </h6>
+        <h6>
+          3. Escolha o jogo no qual deseja investir na nossa página principal.
+        </h6>
+        <h6>
+          4. Selecione qual a modalidade (quando houver mais de uma opção);
+        </h6>
+        <h6>
+          5. Após seleção dos jogos, clique em 'Confirmar' e você será encaminhado ao 'Carrinho de Compras' para efetivar seu jogo.
+        </h6>
+        <h6>
+          6. Clique em confirmar e você estará apto a ser contemplado!
+        </h6>
+        <h6>
+          Você poderá receber por email uma confirmação de sua compra em jogos não instantâneos.
+        </h6>
+        <h6>
+          Cabe salientar que você poderá consultar a qualquer momento, toda a informação sobre bilhetes, sorteios e ganhos na nossa plataforma.
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">Como posso participar de um novo jogo com os meus ganhos</h4>
+        <h6>
+          Os valores resultantes de premiação, ficarão disponíveis em seu saldo de conta LottoYou, podendo ser resgatados ou utilizados para a realização de novos jogos. Caso você invista em um novo jogo, deduziremos automaticamente o custo do mesmo, do saldo disponível em sua conta. Caso o custo da compra supere o valor do seu saldo disponível, você será direcionado a página de depósito.
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">Como eliminar um pedido do carrinho de compras</h4>
+        <h6>
+          Para eliminar um volante, clique no ícone do Carrinho de Compras, encontrado no canto superior direito da nossa página principal. Para cada jogo à espera de confirmação, você encontrará à direita um símbolo de uma lixeira, por meio da qual poderá eliminar um ou mais jogos.
+        </h6>
+        <h6>
+          Se encontrar alguma dificuldade, por favor, não hesite em contatar-nos através do emailcontato@lottoyou.bet e teremos todo o prazer em ajudar.
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">
+          Quando optar por pagamento via boleto bancário e o pagamento for feito, estou automaticamente com saldo na minha conta de usuário para poder jogar?
+        </h4>
+        <h6>
+          Não. Quando você seleciona como método de pagamento Boleto Bancário, seu saldo será salvo e estará à espera de confirmação. No momento em que você realizar o pagamento junto a seu banco, a Lottoyou confirmará seu crédito na sua conta de usuário em um prazo máximo de 48 horas.
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12">
+        <h3 class="font-weight-bold">
+            Minha Conta
+        </h3>
+        <ul>
+          <li>
+            Devo conectar a minha conta ao Facebook? Quais as vantagens?
+          </li>
+          <li>
+            Como faço para corrigir as minhas informações pessoais (nome ou data de nascimento)?
+          </li>
+          <li>
+            Qual o nível de notificação mais adequado à minha conta?
+          </li>
+          <li>
+            Por que devo enviar a minha identificação?
+          </li>
+          <li>
+            O que significa 'Estado da Conta'?
+          </li>
+          <li>
+            O que é a autoexclusão?
+          </li>
+          <li>
+            Como cancelar a newsletter Lottoland?
+          </li>
+          <li>
+            Onde posso cancelar a minha conta?
+          </li>
+          <li>
+            Como faço para corrigir o meu endereço residencial, número de telefone, email ou senha?
+          </li>
+          <li>
+            Posso ter mais de uma conta Lottoland?
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">
+          Devo conectar a minha conta ao Facebook? Quais as vantagens?
+        </h4>
+        <h6>
+          Realizar o seu cadastro LottoYou, usando a sua conta Facebook, é um processo fácil, cômodo e 100% seguro! Ao optar pelo FacebookLogin, o usuário poderá utilizar os mesmos dados de acesso deste, em sua conta Lottoyou. Evitando assim, que você tenha que memorizar mais uma senha e permitindo o acesso a promoções especiais, exclusivas aos usuários do Facebook.
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">
+          Posso  corrigir nome ou data de nascimento no meu cadastro?
+        </h4>
+        <h6>
+          Não. Nesse caso deverá ser feito um novo usuário
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">
+          Qual o nível de notificação mais adequado à minha conta?
+        </h4>
+        <h6>
+          Qual o nível de notificação mais adequado à minha conta?
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">
+          Por que devo enviar a minha identificação?
+        </h4>
+        <h6>
+          A LottoYou é licenciada pelo Governo do Peru e regulada pela Gibraltar GamblingComission. Para cumprirmos com o acordo da nossa licença de jogos, somos obrigados a pedir prova de maioridade e identidade a todos os jogadores antes de enviarmos pagamentos. Por esta razão, pedimos aos nossos jogadores para enviarem a cópia de um dos seguintes documentos identificativos como forma de verificação:
+        </h6>
+        <h6>
+          - RG (frente e verso).
+        </h6>
+        <h6>
+          - Carteira de Motorista (frente e verso).
+        </h6>
+        <h6>
+          - Passaporte (página das informações pessoais mais a capa).
+        </h6>
+        <h6>
+          Apenas necessitará completar este processo uma vez, antes de processarmos o seu primeiro saque e a verificação ficará válida para futuros pagamentos.
+        </h6>
+        <h6>
+          Ressaltamos que apenas recolhemos os dados requeridos por lei e usamos uma encriptação avançada para proteger toda informação em sua conta LottoYou
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12 text-justify">
+            <h4 class="font-weight-bold">
+              O que significa 'Estado da Conta'?
+            </h4>
+            <h6>
+              A seção Estado de Conta, informa a sua atual situação na LottoYou.  Você poderá optar por estar ativo para a realização de novos jogos, suspenso temporariamente ou eliminar voluntariamente a sua conta para que não possa realizar novos jogos através da nossa plataforma de jogos LottoYou. Porém note que, se bloquear sua conta (auto-exclusão), esta permanecerá bloqueada por um período mínimo de seis meses.
+            </h6>
         </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">
-                    Quais os jogos a LottoYou oferece:
-                </h4>
-                <h6>
-                    Três modalidades de jogos são disponibilizadas pela LottoYou: Apostas Esportivas, Loterias e Raspadinhas.
-                </h6>
-                <h6>
-                    Dentre as apostas esportivas, a Lottoyou oferece o Soocer Expert (SE), o qual se sub-divide em três categorias: SE World, SE Especial e a SE Custom.
-                </h6>
-                <h6>
-                    A Raspadinha apresenta 2 produtos: Golden Goal e Pirates Treasure
-                </h6>
-                <h6>
-                    Uma loteria chamada Easy Money
-                </h6>
-                <h6>
-                    Estamos sempre buscando formas de expandir a nossa oferta jogos e caso exista alguma ideia que você queira inserir em nosso site, não hesite em nos enviar um email com a sua sugestão para o contato@lottoyou.bet
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">
-                    Quem pode Jogar na LottoYou
-                </h4>
-                <h6>
-                    Qualquer pessoa física, maior de 18 anos. Pode não ser o caso, porém somos obrigados a informar sobre a ilegalidade da facilitação de jogos de azar a menores de idade. Por esse motivo, para jogar em nossa plataforma, o usuário deverá ter 18 anos completos, no momento da abertura da conta.
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">Quanto Custa cada Jogo</h4>
-                <h6>O Soccer Expert pode custar 2; 5 ou 10 dólares americanos.</h6>
-                <h6>A Easy Money custa um (01) dólar americano.</h6>
-                <h6>O Golden Goal custa 0,05 dólares americanos</h6>
-                <h6>A Pirates Treasure custa 0,10 dólares americanos</h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">Como recebo  e quanto tempo demora o pagamento dos prêmios</h4>
-                <h6>
-                    Após o sorteio, o valor do prêmio será creditado diretamente em sua conta LottoYou e ficará a sua disposição para ser sacado parcial ou integralmente. Após solicitado o saque, o valor estará disponível na conta PaylPal ou Conta Corrente informada previamente, em até 05 dias úteis, a partir da solicitação. Cabe salientar que os saques estão sujeitas a taxas administrativas.
-                </h6>
-                <h6>
-                    Para pagamentos de alto valor (acima de USD 1000), um profissional do setor financeiro da LottoYou irá entrar em contato com você, a fim de verificar a melhor maneira de realizar esse pagamento. Geralmente o processo de pagamento demora 10 dias úteis para ser concluído.
-                </h6>
-                <h6>
-                    Uma informação importante: A LottoYou sempre realiza o pagamento integral de todos os prêmios, ficando sob a responsabilidade do ganhador o recolhimento dos devidos impostos de acordo com o domicílio fiscal.
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">Preciso estar registrado para jogar</h4>
-                <h6>
-                    Visando a maior proteção de nossos clientes, solicitamos gentilmente que todos os interessados em jogar com a LottoYou registrem-se antes de realizar qualquer jogo. Isso é necessário não só para motivos de verificação, porém também para podermos ter contato com o cliente na eventualidade de um prêmio. Além disso, ao se registrar, todas as informações das transações realizadas são guardadas em um só lugar, permitindo que possamos oferecer uma experiência de jogo personalizada a todos os nossos clientes.
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">A LottoYou é de confiança?</h4>
-                <h6>
-                    Sim, a LottoYou é um site totalmente seguro! 
-                </h6>
-                <h6>
-                    Apesar de recentemente inserida no mercado de entretenimento, a LottoYou está presente em países dos diferentes continentes. A sede da LottoYou fica em Lima, onde nossa empresa é regulamentada e licenciada para operar e trabalhar com jogos de entretenimento e apostas internacionalmente.  
-                </h6>
-                <h6>
-                    Todas as operações da LottoYou são auditadas por L&L Advogacia sediada no Brasil, o que garante a segurança e tranqüilidade de todos os nossos usuários.
-                </h6>
-                <h6>
-                    LottoYou, aqui é mais fácil!
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12">
-                <h3 class="font-weight-bold">
-                    Como Jogar
-                </h3>
-                <ul>
-                    <li>
-                        Como fico apto para participar dos jogos?
-                    </li>
-                    <li>
-                        Como posso participar de um novo jogo com os meus ganhos?
-                    </li>
-                    <li>
-                        Como eliminar um pedido do carrinho de compras?
-                    </li>
-                    <li>
-                        Quando optar por pagamento via boleto. Quando o pagamento for feito estou automaticamente participando dos jogos que fiz?
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">Como fico apto para participar dos jogos</h4>
-                <h6>
-                    Para qualquer um dos nossos jogos você deve seguir o seguinte procedimento:
-                </h6>
-                <h6>
-                    1. Faça login na sua conta LottoYou
-                </h6>
-                <h6>
-                    2. No caso de não ter ainda saldo para a realização dos jogos, clique em depósito e selecione a forma de pagamento.
-                </h6>
-                <h6>
-                    3. Escolha o jogo no qual deseja investir na nossa página principal.
-                </h6>
-                <h6>
-                    4. Selecione qual a modalidade (quando houver mais de uma opção);
-                </h6>
-                <h6>
-                    5. Após seleção dos jogos, clique em 'Confirmar' e você será encaminhado ao 'Carrinho de Compras' para efetivar seu jogo.
-                </h6>
-                <h6>
-                    6. Clique em confirmar e você estará apto a ser contemplado!
-                </h6>
-                <h6>
-                    Você poderá receber por email uma confirmação de sua compra em jogos não instantâneos.
-                </h6>
-                <h6>
-                    Cabe salientar que você poderá consultar a qualquer momento, toda a informação sobre bilhetes, sorteios e ganhos na nossa plataforma.
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">Como posso participar de um novo jogo com os meus ganhos</h4>
-                <h6>
-                    Os valores resultantes de premiação, ficarão disponíveis em seu saldo de conta LottoYou, podendo ser resgatados ou utilizados para a realização de novos jogos. Caso você invista em um novo jogo, deduziremos automaticamente o custo do mesmo, do saldo disponível em sua conta. Caso o custo da compra supere o valor do seu saldo disponível, você será direcionado a página de depósito.
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">Como eliminar um pedido do carrinho de compras</h4>
-                <h6>
-                    Para eliminar um volante, clique no ícone do Carrinho de Compras, encontrado no canto superior direito da nossa página principal. Para cada jogo à espera de confirmação, você encontrará à direita um símbolo de uma lixeira, por meio da qual poderá eliminar um ou mais jogos.
-                </h6>
-                <h6>
-                    Se encontrar alguma dificuldade, por favor, não hesite em contatar-nos através do email contato@lottoyou.bet e teremos todo o prazer em ajudar.
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">
-                    Quando optar por pagamento via boleto bancário e o pagamento for feito, estou automaticamente com saldo na minha conta de usuário para poder jogar?
-                </h4>
-                <h6>
-                    Não. Quando você seleciona como método de pagamento Boleto Bancário, seu saldo será salvo e estará à espera de confirmação. No momento em que você realizar o pagamento junto a seu banco, a Lottoyou confirmará seu crédito na sua conta de usuário em um prazo máximo de 48 horas.
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12">
-                <h3 class="font-weight-bold">
-                    Minha Conta
-                </h3>
-                <ul>
-                    <li>
-                        Devo conectar a minha conta ao Facebook? Quais as vantagens?
-                    </li>
-                    <li>
-                        Como faço para corrigir as minhas informações pessoais (nome ou data de nascimento)?
-                    </li>
-                    <li>
-                        Qual o nível de notificação mais adequado à minha conta?
-                    </li>
-                    <li>
-                        Por que devo enviar a minha identificação?
-                    </li>
-                    <li>
-                        O que significa 'Estado da Conta'?
-                    </li>
-                    <li>
-                        O que é a autoexclusão?
-                    </li>
-                    <li>
-                        Como cancelar a newsletter Lottoland?
-                    </li>
-                    <li>
-                        Onde posso cancelar a minha conta?
-                    </li>
-                    <li>
-                        Como faço para corrigir o meu endereço residencial, número de telefone, email ou senha?
-                    </li>
-                    <li>
-                        Posso ter mais de uma conta Lottoland?
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">
-                    Devo conectar a minha conta ao Facebook? Quais as vantagens?
-                </h4>
-                <h6>
-                    Realizar o seu cadastro LottoYou, usando a sua conta Facebook, é um processo fácil, cômodo e 100% seguro! Ao optar pelo FacebookLogin, o usuário poderá utilizar os mesmos dados de acesso deste, em sua conta Lottoyou. Evitando assim, que você tenha que memorizar mais uma senha e permitindo o acesso a promoções especiais, exclusivas aos usuários do Facebook.
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">
-                    Posso  corrigir nome ou data de nascimento no meu cadastro?
-                </h4>
-                <h6>
-                    Não. Nesse caso deverá ser feito um novo usuário
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">
-                    Qual o nível de notificação mais adequado à minha conta?
-                </h4>
-                <h6>
-                    Qual o nível de notificação mais adequado à minha conta?
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">
-                    Por que devo enviar a minha identificação?
-                </h4>
-                <h6>
-                    A LottoYou é licenciada pelo Governo do Peru e regulada pela Gibraltar GamblingComission. Para cumprirmos com o acordo da nossa licença de jogos, somos obrigados a pedir prova de maioridade e identidade a todos os jogadores antes de enviarmos pagamentos. Por esta razão, pedimos aos nossos jogadores para enviarem a cópia de um dos seguintes documentos identificativos como forma de verificação:
-                </h6>
-                <h6>
-                    - RG (frente e verso).
-                </h6>
-                <h6>
-                    - Carteira de Motorista (frente e verso).
-                </h6>
-                <h6>
-                    - Passaporte (página das informações pessoais mais a capa).
-                </h6>
-                <h6>
-                    Apenas necessitará completar este processo uma vez, antes de processarmos o seu primeiro saque e a verificação ficará válida para futuros pagamentos.
-                </h6>
-                <h6>
-                    Ressaltamos que apenas recolhemos os dados requeridos por lei e usamos uma encriptação avançada para proteger toda informação em sua conta LottoYou
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">
-                    O que significa 'Estado da Conta'?
-                </h4>
-                <h6>
-                    A seção Estado de Conta, informa a sua atual situação na LottoYou. 
-                    Você poderá optar por estar ativo para a realização de novos jogos, suspenso temporariamente ou eliminar voluntariamente a sua conta para que não possa realizar novos jogos através da nossa plataforma de jogos LottoYou. Porém note que, se bloquear sua conta (auto-exclusão), esta permanecerá bloqueada por um período mínimo de seis meses.
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">
-                    O que é a autoexclusão?
-                </h4>
-                <h6>
-                    Informamos que nossa plataforma de jogos online deverá ser utilizada como forma de entretenimento e, seguindo nossa política de jogo responsável, faremos todos os esforços possíveis para evitar que o seu jogo se torne um problema para você, colocando-nos a disposição para qualquer assunto sobre esse tema que venha a surgir. 
-                    Sugerimos que, para que possa controlar os seus gastos de forma efetiva, selecione através da área "Minha Conta", um limite mensal de gastos com jogos online, para facilmente gerir seus riscos e oportunidades e, caso não esteja satisfeito conosco, poderá ainda excluir ou bloquear sua conta por um período minimo de seis meses, de forma simples e rápida.
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">
-                    Como cancelar a newsletter Lottoyou?
-                </h4>
-                <h6>
-                    Para cancelar o envio da newsletter para o seu endereço de email, você precisa entrar no menu ‘Meu usuário’ e alterar suas definições em ‘Notificações’, para a opção “apenas informações da conta”. Com esta mudança, você apenas receberá as informações importantes da conta e resultados dos seus volantes de jogo. 
-                </h6>
-                <h6>
-                    Futuramente, se desejar, você poderá sempre modificar esta alteração para receber novamente a newsletter LottoYou, com as últimas ofertas, notícias e dicas para jogar em sua modalidade favorita e ganhar.
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">
-                    Onde posso cancelar a minha conta?
-                </h4>
-                <h6>
-                    Para cancelar seu registro LottoYou por favor siga os seguintes passos:
-                </h6>
-                <h6>
-                    1. Faça o login na sua conta;
-                </h6>
-                <h6>
-                    2. Em 'Meu usuário', localizada no topo da nossa página principal, selecione a opção 'Conta';
-                </h6>
-                <h6>
-                    3. Em 'Estado de Conta', selecione 'Editar' e opte por 'Eliminar Conta'. Sua atividade na LottoYou estará encerrada
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-12 text-justify">
-                <h4 class="font-weight-bold">
-                    Como faço para corrigir o meu endereço residencial, número de telefone, email ou senha?
-                </h4>
-                <h6>
-                    Para corrigir o seu endereço, telefone, email ou senha, registrados em sua conta LottoYou, selecione o menu ‘Conta’, localizado no topo da nossa página principal.
-                </h6>
-                <h6>
-                    Dentro da área de "Dados da Conta" clique em 'Editar’. Modifique a informação desejada e clique em 'Confirmar' para salvar as novas informações.
-                </h6>
-                <h6>
-                    Para atualizar o país de residência, deverá enviar um email informando as necessárias alterações, em conjunto com comprovante de residência (uma cópia de uma conta de água, luz ou extrato bancário), para o contato@lottoyou.bet, para que possamos finalmente prosseguir com a modificação do seu registro LottoYou.
-                </h6>
-            </div>
-        </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">
+          O que é a autoexclusão?
+        </h4>
+        <h6>
+          Informamos que nossa plataforma de jogos online deverá ser utilizada como forma de entretenimento e, seguindo nossa política de jogo responsável, faremos todos os esforços possíveis para evitar que o seu jogo se torne um problema para você, colocando-nos a disposição para qualquer assunto sobre esse tema que venha a surgir.  Sugerimos que, para que possa controlar os seus gastos de forma efetiva, selecione através da área "Minha Conta", um limite mensal de gastos com jogos online, para facilmente gerir seus riscos e oportunidades e, caso não esteja satisfeito conosco, poderá ainda excluir ou bloquear sua conta por um período minimo de seis meses, de forma simples e rápida.
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">
+          Como cancelar a newsletter Lottoyou?
+        </h4>
+        <h6>
+          Para cancelar o envio da newsletter para o seu endereço de email, você precisa entrar no menu ‘Meu usuário’ e alterar suas definições em ‘Notificações’, para a opção “apenas informações da conta”. Com esta mudança, você apenas receberá as informações importantes da conta e resultados dos seus volantes de jogo. 
+        </h6>
+        <h6>
+          Futuramente, se desejar, você poderá sempre modificar esta alteração para receber novamente a newsletter LottoYou, com as últimas ofertas, notícias e dicas para jogar em sua modalidade favorita e ganhar.
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">
+          Onde posso cancelar a minha conta?
+        </h4>
+        <h6>
+          Para cancelar seu registro LottoYou por favor siga os seguintes passos:
+        </h6>
+        <h6>
+          1. Faça o login na sua conta;
+        </h6>
+        <h6>
+          2. Em 'Meu usuário', localizada no topo da nossa página principal, selecione a opção 'Conta';
+        </h6>
+        <h6>
+          3. Em 'Estado de Conta', selecione 'Editar' e opte por 'Eliminar Conta'. Sua atividade na LottoYou estará encerrada
+        </h6>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 text-justify">
+        <h4 class="font-weight-bold">
+            Como faço para corrigir o meu endereço residencial, número de telefone, email ou senha?
+        </h4>
+        <h6>
+            Para corrigir o seu endereço, telefone, email ou senha, registrados em sua conta LottoYou, selecione o menu ‘Conta’, localizado no topo da nossa página principal.
+        </h6>
+        <h6>
+            Dentro da área de "Dados da Conta" clique em 'Editar’. Modifique a informação desejada e clique em 'Confirmar' para salvar as novas informações.
+        </h6>
+        <h6>
+            Para atualizar o país de residência, deverá enviar um email informando as necessárias alterações, em conjunto com comprovante de residência (uma cópia de uma conta de água, luz ou extrato bancário), para o contato@lottoyou.bet, para que possamos finalmente prosseguir com a modificação do seu registro LottoYou.
+        </h6>
+      </div>
+    </div>
         <br>
         <div class="row">
             <div class="col-12 text-justify">
