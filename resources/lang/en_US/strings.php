@@ -79,7 +79,7 @@ return [
     'size_larger_than_allowed' => 'Tamanho maior do que o permitido',
     'invalid_file' => 'Arquivo inválido',
     'postal_code' => 'Código Postal',
-    'create_your_own_league' => 'Crie sua própia liga',
+    'create_your_own_league' => 'Crie sua própria liga',
     'buy_scratchcard_to_play' => 'Compre raspadinha para jogar',
     'buy_scratchcards_to_play' => 'Compre raspadinhas para jogar',
     'buy_tickets' => 'Comprar bilhetes',
