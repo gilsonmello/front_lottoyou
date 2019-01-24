@@ -1,7 +1,7 @@
 <template>
 	<div class="tickets">
 		<header class="tickets-header">			
-            <span class="text-center tickets-name">{{ ticket.nome }} - ${{ value }}</span>
+            <span class="text-center tickets-name">{{ ticket.nome }} - {{getSystemCurrency.data.symbol}}{{ value }}</span>
             <span class="countdown">
 				<span v-if="days > 1">
 					{{ days }} {{ trans('strings.days') }} e
@@ -49,9 +49,9 @@
 </template>
 
 <script>
-	import {routes} from '../../../api_routes'
-	import {mapState, mapGetters} from 'vuex'
-	import GameComponent from './GameComponent'
+	import {routes} from '../../../api_routes';
+	import {mapState, mapGetters} from 'vuex';
+	import GameComponent from './GameComponent';
 	export default {
 		props: ['ticket', 'index', 'type', 'category', 'item'],
 		data: function() {
@@ -212,7 +212,6 @@
 					alert('Faça pelo menos um jogo');
 				} else {
 
-
 					let addSoccerExpertRequest = axios.create();
 
 					addSoccerExpertRequest.interceptors.request.use(config => {
@@ -221,9 +220,8 @@
 
 					addSoccerExpertRequest.post(routes.carts.add_soccer_experts, {
 						purchase: item, 
+						hash: item.hash,
 						auth: this.auth,
-						hash: item.hash
-
 					}).then(response => {
 						if(response.status === 200) {
 							this.$store.dispatch('setItemSoccerExpert', item);
@@ -259,9 +257,14 @@
 					});
 
 					addSoccerExpertRequest.post(routes.carts.complete_fast_payment_soccer_expert, {
-						purchase: item, 
-						auth: this.auth,
-						hash: item.hash
+						purchase: item,
+						hash: item.hash,
+					}, {
+						headers: {
+							'Content-Type' : 'application/json',
+							'Accept' : 'application/json',
+							'Authorization': 'Bearer ' + this.auth.access_token
+						}
 					}).then(response => {
 						if(response.status === 200) {
                             this.refreshAuthPromise()
@@ -276,7 +279,7 @@
                                         );
                                         //window.localStorage.setItem('authUser', JSON.stringify(response.data));
                                         this.$store.dispatch('setUserObject', response.data);
-                                        this.$store.dispatch('clearPurchase');
+                                        //this.$store.dispatch('clearPurchase');
                                         /*this.$router.push({
                                             name: 'users.transactions'
                                         });	*/
@@ -378,7 +381,7 @@
 				let error = false;
 				if(this.ticket.complete == false && this.ticket.choseGoldBall && this.empty == true) {
         			toastr.error('Por favor, informe todos os jogos.', 'Cartela incompleta');
-        			 error = true;
+					error = true;
         		} else if(this.ticket.choseGoldBall == false && this.allSelected == false) {
         			toastr.error('Por favor, Está faltando algum jogo e a Bola Lottoyou.', 'Cartela incompleta');
         			error = true;
@@ -440,7 +443,9 @@
 		},
 		computed: {
 			...mapGetters([
-                'purchase', 'auth'
+				'purchase', 
+				'auth',
+				'getSystemCurrency'
             ]),
 		},
 		watch: {

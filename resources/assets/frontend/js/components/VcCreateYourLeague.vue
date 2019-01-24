@@ -17,13 +17,13 @@
 					1. Encaminhar as propostas com no mínimo 10 dias antes da realização da rodada com o objetivo de para elaborar e publicar a cartela;
 				</h6>
 				<h6>
-					2. O número de participantes será ilimitado ou a solicitação manifesta do organizador limitado com um valor mínimo de arrecadação de 200 USD;
+					2. O número de participantes será ilimitado ou a solicitação manifesta do organizador limitado com um valor mínimo de arrecadação de 200 reais;
 				</h6>
 				<h6>
 					3. A distribuição dos prêmios desta liga seguirá os critérios estabelecidos por Lottoyou.bet;
 				</h6>
 				<h6>
-					4. O valor da aposta será estipulada pelo organizador, sendo o mínimo o valor de 2 USD. O custo normal da elaboração da cartela será de 10 dólares americanos;
+					4. O valor da aposta será estipulada pelo organizador, sendo o mínimo o valor de 2 reais. O custo normal da elaboração da cartela será de 10 reais;
 				</h6>
 			</div>
 		</div>
@@ -49,27 +49,33 @@
 </style>
 
 <script>
-	export default {
-		metaInfo () {
-			return {
-				title: this.trans('strings.create_your_own_league')+ ' | '+this.trans('strings.lottoyou'),
-				meta: [
-					{ name: 'description', content: this.trans('strings.create_your_own_league') },
-					{
-						'property': 'og:title',
-						'content': this.trans('strings.create_your_own_league'),
-						'vmid': 'og:title'
-					},
-					{
-						'property': 'og:description',
-						'content': this.trans('strings.create_your_own_league'),
-						'vmid': 'og:description'
-					}
-				]
-		    }
-		},
-		mounted() {
-			
-		}
-	}
+import { mapGetters } from 'vuex';
+export default {
+  metaInfo () {
+    return {
+      title: this.trans('strings.create_your_own_league')+ ' | '+this.trans('strings.lottoyou'),
+      meta: [
+        { name: 'description', content: this.trans('strings.create_your_own_league') },
+        {
+          'property': 'og:title',
+          'content': this.trans('strings.create_your_own_league'),
+          'vmid': 'og:title'
+        },
+        {
+          'property': 'og:description',
+          'content': this.trans('strings.create_your_own_league'),
+          'vmid': 'og:description'
+        }
+      ]
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getSystemCurrency'
+    ]),
+  },
+  mounted() {
+    
+  }
+};
 </script>

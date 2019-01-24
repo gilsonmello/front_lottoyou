@@ -2,28 +2,28 @@
 	<footer>
 		<br>
 		<div class="container-fluid" style="background: linear-gradient(90deg,#fafafa,#f2f4f2); border-bottom: 1px solid #d9deda">  
-		    <div class="container">
+	    <div class="container">
 				<div class="row" style="align-items: center; justify-content: center;">
-		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
-		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d41ce4b0d02cb5922535/boletol_logo@2x.png">
-		            </div>
-		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
-		                <img class="img-responsive img-fluid" src="/img/pagseguro.png">
-		            </div>
-		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
-		                <img class="img-responsive img-fluid" src="/img/paypal.png">
-		            </div>
-		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
-		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/596c86890eb35860f76742c5/visa_logo@2x.png">
-		            </div>
-		            <div class="col-lg-2 col-3 col-md-3 col-sm-3">
-		                <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/596c86940eb35860f76742c7/mastercard_logo@2x.png">
-		            </div>
-		            <div class="col-lg-1 col-3 col-md-2 col-sm-2">
-		                <img class="img-responsive img-fluid" src="/img/american-express.png">
-		            </div>
-		        </div>
-	        </div>
+          <div class="col-lg-2 col-3 col-md-3 col-sm-3">
+            <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/5846d41ce4b0d02cb5922535/boletol_logo@2x.png">
+          </div>
+          <div class="col-lg-2 col-3 col-md-3 col-sm-3">
+            <img class="img-responsive img-fluid" src="/img/pagseguro.png">
+          </div>
+          <div class="col-lg-2 col-3 col-md-3 col-sm-3">
+            <img class="img-responsive img-fluid" src="/img/paypal.png">
+          </div>
+          <div class="col-lg-2 col-3 col-md-3 col-sm-3">
+            <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/596c86890eb35860f76742c5/visa_logo@2x.png">
+          </div>
+          <div class="col-lg-2 col-3 col-md-3 col-sm-3">
+            <img class="img-responsive img-fluid" src="//www.lottoland.com/cms/596c86940eb35860f76742c7/mastercard_logo@2x.png">
+          </div>
+          <div class="col-lg-1 col-3 col-md-2 col-sm-2">
+            <img class="img-responsive img-fluid" src="/img/american-express.png">
+          </div>
+        </div>
+      </div>
 		</div>
 		<!-- <div class="container-fluid" style="background: linear-gradient(90deg,#fafafa,#f2f4f2); border-bottom: 1px solid #d9deda">  
 		    <div class="container" style="position: initial;">
@@ -50,7 +50,7 @@
 		<div class="container-fluid footer-plataform-container" style="border-bottom: 1px solid #d9deda">
 			<div class="container">
 			    <div class="row">
-		            <div class="col-lg-4 col-md-4 col-12 col-sm-4">
+		            <div class="col-lg-6 col-md-4 col-12 col-sm-4">
 		                <h3 class="page-header">
 		                    Informações
 		                </h3>
@@ -72,7 +72,7 @@
 		                    </li>
 		                </ul>               
 		            </div>
-		            <div class="col-lg-4 col-md-4 col-12 col-sm-4">
+		            <div class="col-lg-6 col-md-4 col-12 col-sm-4">
 		                <h3 class="page-header">
 		                    &nbsp;
 		                </h3>
@@ -99,12 +99,12 @@
 							</li>
 		                </ul>               
 		            </div>
-		            <div class="col-lg-4 col-md-4 col-12 col-sm-4">
+		            <!-- <<div class="col-lg-4 col-md-4 col-12 col-sm-4">
 		                <h3 class="page-header">
 		                    Idioma
 		                </h3>
 		                <ul class="list-group">
-		                	<li class="list-group-item">
+		                	li class="list-group-item">
 		                        <a @click.prevent="redirect" href="/" lang="en_US" class="color-blue">
 		                            English
 		                        </a>
@@ -118,7 +118,7 @@
 		                        <a @click.prevent="redirect" href="/pt_BR" lang="pt_BR" class="color-blue">
 		                            Português (Brasil)
 		                        </a>
-		                    </li>
+		                    </li> -->
 		                    <!-- <li class="list-group-item">
 		                        <a href="#" class="color-blue">
 		                            Deutsch
@@ -134,12 +134,12 @@
 		                        <a href="#" class="color-blue">
 		                            Polski
 		                        </a>
-		                    </li> -->
+		                    </li>
 		                    <li class="list-group-item">
 		                        <div id="google_translate_element"></div>
 		                    </li>
 		                </ul>               
-		            </div>
+		            </div> -->
 		            <!-- <div class="col-lg-4 col-md-6 col-12 col-sm-6">
 		                <h3 class="page-header">
 		                    &nbsp;
@@ -216,125 +216,112 @@
 </template>
 
 <script>
-	import {mapState, mapGetters} from 'vuex'
-	export default {
-		computed: {
-            ...mapGetters([
-                'auth'
-            ])
-        },
-		data: function() {
-			return {
+import { mapState, mapGetters } from 'vuex';
+export default {
+	computed: {
+    ...mapGetters([
+      'auth'
+    ])
+  },
+	data () {
+		return {
 
-			}
-		},
-		methods: {
-			redirect: function(el) {
-				this.$cookies.set("locale", el.target.getAttribute('lang'));
-				//setTimeout(() => {
-					window.location.href = el.target.getAttribute('href');
-					//window.location.reload();
-				//}, 500);
-			}
-		},
-		updated() {
-
-		},
-		created: function() {
-
-		},
-		activated() {
-		},
-		mounted: function() {
-			
-			$.ajaxSetup({
-			  	cache: true
-			});
-
-			window.googleTranslateElementInit = function() {
-			  	new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-
-              	setInterval(() => {
-					let header = $('.header');
-              		if($('.skiptranslate iframe').length > 0 && $('.skiptranslate iframe').parent().is(':visible')) {
-              			$('body').css({
-              				'padding-top': 0
-              			});
-
-              			header.css({
-              				position: 'relative'
-              			});
-              		} else {
-              			header.css({
-              				position: 'fixed'
-              			});
-
-						if(header.length > 0) {
-							$('body').css({
-								'padding-top': $('.header')[0].clientHeight - 1
-							});
-						}
-              		}
-              	}, 2000);
-
-              	/*var mutationObserver = new MutationObserver(function(mutations) {
-				  	mutations.forEach(function(mutation) {
-				  		if($(mutation.target).find('div.skiptranslate').length > 0) {
-					    	console.log($(mutation.target).find('div.skiptranslate'));
-					    }
-				  	});
-				});
-
-              	console.log(document.querySelector('body'))
-				mutationObserver.observe(document.querySelector('body'), {
-				  	attributes: true,
-				  	characterData: true,
-				  	childList: true,
-				  	subtree: true,
-				  	attributeOldValue: true,
-				  	characterDataOldValue: true
-				});*/
-			}
-
-            $.getScript("//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit", function( data, textStatus, jqxhr ) {
-			});
 		}
+	},
+	methods: {
+		redirect (el) {
+			Cookies.set("locale", el.target.getAttribute('lang'));
+			//setTimeout(() => {
+				window.location.href = el.target.getAttribute('href');
+				//window.location.reload();
+			//}, 500);
+		}
+	},
+	updated () {
+		// 
+	},
+	created () {
+		// 
+	},
+	activated () {
+		// 
+	},
+	mounted () {
+		
+		/* Autor: Gilson Oliveira
+			 Data: 07/01/2019 23:00
+			 Descrição: Código comentado, pois não mais a ncessidade de utilizar o google tradutor				
+		*/
+
+		/*$.ajaxSetup({
+	  	cache: true
+		});
+
+		window.googleTranslateElementInit = function() {
+	  	new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+			setInterval(() => {
+				let header = $('.header');
+    		if($('.skiptranslate iframe').length > 0 && $('.skiptranslate iframe').parent().is(':visible')) {
+    			$('body').css({
+    				'padding-top': 0
+    			});
+
+    			header.css({
+    				position: 'relative'
+    			});
+    		} else {
+    			header.css({
+    				position: 'fixed'
+    			});
+
+					if(header.length > 0) {
+						$('body').css({
+							'padding-top': $('.header')[0].clientHeight - 1
+						});
+					}
+    		}
+  		}, 2000);
+		}*/
+
+    /*$.getScript("//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit", function( data, textStatus, jqxhr ) {
+		});*/
 	}
+};
 </script>
 
 <style scoped>
 	.color-blue{
-        color: #0056b1
-    }
+    color: #0056b1
+  }
 
-    .color-blue:hover{
-        color: #003874
-    }
+  .color-blue:hover{
+      color: #003874
+  }
 
-    .footer-signs {
-    	width: 100%;
-    	list-style: none;
-    	text-align: center;
-    	padding-left: 0;
-    }
+  .footer-signs {
+  	width: 100%;
+  	list-style: none;
+  	text-align: center;
+  	padding-left: 0;
+  }
 
-    .footer-signs .footer-signs-item {
-    	margin: 0 7px;
-    	display: inline-block;
-    	max-width: 112px;
-    }
+  .footer-signs .footer-signs-item {
+  	margin: 0 7px;
+  	display: inline-block;
+  	max-width: 112px;
+  }
 
-    svg {
-    	fill: #9aa89c;
-	    stroke: #9aa89c;
-	    vertical-align: text-bottom;
-	    height: 32px;
-    }
+  svg {
+  	fill: #9aa89c;
+    stroke: #9aa89c;
+    vertical-align: text-bottom;
+    height: 32px;
+  }
 
-    .footer-plataform-container p{
-    	margin-bottom: 36px;
-	    font-size: 12px;
-	    color: #9aa89c;
-	    margin: 0 0 10px;
-    }
+  .footer-plataform-container p{
+  	margin-bottom: 36px;
+    font-size: 12px;
+    color: #9aa89c;
+    margin: 0 0 10px;
+  }
 </style>

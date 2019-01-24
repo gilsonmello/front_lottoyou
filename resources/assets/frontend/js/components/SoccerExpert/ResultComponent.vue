@@ -138,6 +138,9 @@
 		    }
 		},
 		methods: {
+			filter () {
+				this.resultRequest();
+			},
 			paginate(page) {
 				this.query.page = page;
 				this.resultRequest();
@@ -176,17 +179,14 @@
 		        	return config;
 				});
 
-				this.$router.replace({
-                    query: Object.assign(this.query)
-                });
-
 				let url = routes.soccer_experts.results.replace('{slug}', this.slug);
-				url += "?page="+this.query.page;
-				url += "&column="+this.query.column;
-				url += "&direction="+this.query.direction;
 
-				resultRequest.get(url, {}, {}).then(response => {
-					if(response.status === 200) {
+				resultRequest.get(url, { params: { ...this.query }}, {}).then(response => {
+					if (response.status === 200) {
+
+						this.$router.replace({
+							query: Object.assign(this.query)
+						});
 						this.model = response.data;
 						this.tickets = response.data.data;
 						this.loading.component = false
@@ -229,29 +229,8 @@
 				}
 			}
 		},
-		mounted: function() {
-			if(this.$route.query.slug) {
-                this.query.slug = this.$route.query.slug
-            } 
-            if(this.$route.query.page) {
-                this.query.page = this.$route.query.page
-            }           
-            if(this.$route.query.column) {
-                this.query.column = this.$route.query.column
-            }
-            if(this.$route.query.direction) {
-                this.query.direction = this.$route.query.direction
-            }
-            if(this.$route.query.nome) {
-                this.query.nome = this.$route.query.nome
-            }
-            if(this.$route.query.valor) {
-                this.query.valor = this.$route.query.valor
-            }
-            if(this.$route.query.data_termino) {
-                this.query.data_termino = this.$route.query.data_termino
-            }
-
+		mounted () {
+			if (this.$route.query) this.query = { ...this.query, ...this.$router.query };
 			const showRequest = axios.create();
 			this.slug = this.$route.params.slug;
 			showRequest.interceptors.request.use(config => {

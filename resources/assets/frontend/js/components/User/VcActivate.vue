@@ -1,17 +1,16 @@
 <template>
-    <load-component v-if="loading.component"></load-component>
+    <load v-if="loading.component" />
     <div class="container" v-else>
         
     </div>
 </template>
 
 <script>
-import LoadComponent from '../Load'
-import {routes} from '../../api_routes'
+import { routes, domain } from '../../api_routes';
 export default {
     name: "VcActivate",
     methods: {
-        activateRequest() {
+        activateRequest () {
             var activateRequest = axios.create();
             activateRequest.interceptors.request.use(config => {
                 this.loading.component = true;
@@ -29,8 +28,8 @@ export default {
                     
                     var access_token = response.data.access_token;
                     var refresh_token = response.data.refresh_token;
-                    window.localStorage.setItem('access_token', JSON.stringify(access_token));
-                    window.localStorage.setItem('refresh_token', JSON.stringify(refresh_token));
+                    Cookies.set('access_token', JSON.stringify(access_token), { domain });
+                    Cookies.set('refresh_token', JSON.stringify(refresh_token), { domain });
                     
                     var loginRequest = axios.create();
                     //Fazendo busca do usuário logado, para setar na estrutura de dados
@@ -59,9 +58,9 @@ export default {
                 })
                 .catch((response) => {
 					this.$store.dispatch('clearAuthUser');
-					window.localStorage.removeItem('authUser');
-					window.localStorage.removeItem('access_token');
-					window.localStorage.removeItem('refresh_token');
+					Cookies.remove('authUser', { domain });
+					Cookies.remove('access_token', { domain });
+					Cookies.remove('refresh_token', { domain });
                     this.$router.push({name: 'home'});
                     toastr.warning(
 						this.trans('alerts.users.activated'),
@@ -73,7 +72,7 @@ export default {
     mounted() {
         this.activateRequest();
     },
-    data() {
+    data () {
         return {
             loading: {
                 component: true
@@ -81,7 +80,7 @@ export default {
         }
     },
     components: {
-        LoadComponent
+        
     }
 }
 </script>

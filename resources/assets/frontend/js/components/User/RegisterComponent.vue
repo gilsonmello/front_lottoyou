@@ -192,9 +192,9 @@
 </template>
 
 <script>
-	import {routes} from '../../api_routes'
-	import LoadComponent from '../Load'
-    import {mapGetters} from 'vuex'
+	import { routes, domain } from '../../api_routes';
+	import LoadComponent from '../Load';
+    import { mapGetters } from 'vuex';
 	export default {
 		metaInfo () {
 			return {
@@ -388,8 +388,8 @@
 
                     if(response.status === 200) {
 
-                        window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-                        window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+                        Cookies.set('access_token', JSON.stringify(response.data.access_token), { domain });
+                        Cookies.set('refresh_token', JSON.stringify(response.data.refresh_token), { domain });
 
                         //this.$router.push({name: 'users.account'});
 
@@ -530,8 +530,8 @@
 							short_name: responseF.short_name,
 						})).then((response) => {
 							if(response.status === 200) {
-								window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-								window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+								Cookies.set('access_token', JSON.stringify(response.data.access_token), { domain });
+								Cookies.set('refresh_token', JSON.stringify(response.data.refresh_token), { domain });
 								this.refreshAuth();
 								$('.modal-login').modal('hide');
 								//window.location.reload();
@@ -543,9 +543,9 @@
 					});
 				} else {
 					this.$store.dispatch('clearAuthUser');
-					window.localStorage.removeItem('authUser');
-					window.localStorage.removeItem('access_token');
-					window.localStorage.removeItem('refresh_token');
+					Cookies.remove('authUser', { domain });
+					Cookies.remove('access_token', { domain });
+					Cookies.remove('refresh_token', { domain });
 				}
 			}
 		},

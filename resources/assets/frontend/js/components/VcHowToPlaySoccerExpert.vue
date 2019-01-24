@@ -14,10 +14,10 @@
                 </h6>
                 <ul>
                     <li>
-                        <strong>O SE Word</strong>: Cartela de 12 jogos de futebol dos principais campeonatos do mundo, o qual acontecerá duas vezes na semana: Terça a quinta e Sexta a Segunda. Valores das apostas: USD 2; USD 5 e USD 10
+                        <strong>O SE Word</strong>: Cartela de 12 jogos de futebol dos principais campeonatos do mundo, o qual acontecerá duas vezes na semana: Terça a quinta e Sexta a Segunda. Valores das apostas: {{ getSystemCurrency.data.symbol }}2; {{ getSystemCurrency.data.symbol }}5 e {{ getSystemCurrency.data.symbol }}10
                     </li>
                     <li>
-                        <strong>O SE Special</strong>: Cartela de 12 a 20 jogos que acontecem em um campeonato continental. Valores das apostas: USD 5; USD 10 e USD 20
+                        <strong>O SE Special</strong>: Cartela de 12 a 20 jogos que acontecem em um campeonato continental. Valores das apostas: {{ getSystemCurrency.data.symbol }}5; {{ getSystemCurrency.data.symbol }}10 e {{ getSystemCurrency.data.symbol }}20
                     </li>
                     <li>
                         <strong> O SE Custom</strong> é a modalidade deste produto onde o usuário cadastrado no nosso site poderá contatar a equipe do Lottoyou.bet com o objetivo de formar uma liga apostada personalizada.
@@ -47,7 +47,7 @@
                     2. O usuário deverá marcar um palpite com a "bola lottoyou". A pontuação nesse jogo será acrescida 25% da pontuação obtida.
                 </h6>
                 <h6>
-                    3. O preenchimento dos palpites será realizado enquanto o "mercado" estiver aberto (até 15:00 UTC nas terças-feiras e/ou quartas e 08:00 UTC nos sábados).
+                    3. O preenchimento dos palpites será realizado enquanto o "mercado" estiver aberto (até 15:00 nas terças-feiras e/ou quartas e 08:00 nos sábados).
                 </h6>
                 <h6>
                     4. Os palpites serão publicados após o fechamento do "mercado".
@@ -168,27 +168,33 @@
 </style>
 
 <script>
-	export default {
-        metaInfo () {
-			return {
-				title: this.trans('strings.how_to_play')+' '+this.trans('strings.soccer_expert')+ ' | '+this.trans('strings.lottoyou'),
-				meta: [
-					{ name: 'description', content: this.trans('strings.help') },
-					{
-						'property': 'og:title',
-						'content': this.trans('strings.how_to_play') +' '+this.trans('strings.soccer_expert')+ ' | '+this.trans('strings.lottoyou'),
-						'vmid': 'og:title'
-					},
-					{
-						'property': 'og:description',
-						'content': this.trans('strings.how_to_play') +' '+this.trans('strings.soccer_expert'),
-						'vmid': 'og:description'
-					}
-				]
-		    }
-		},
-		mounted() {
-			
-		}
-	}
+import { mapGetters } from 'vuex';
+export default {
+  metaInfo () {
+    return {
+      title: this.trans('strings.how_to_play')+' '+this.trans('strings.soccer_expert')+ ' | '+this.trans('strings.lottoyou'),
+      meta: [
+        { name: 'description', content: this.trans('strings.help') },
+        {
+          'property': 'og:title',
+          'content': this.trans('strings.how_to_play') +' '+this.trans('strings.soccer_expert')+ ' | '+this.trans('strings.lottoyou'),
+          'vmid': 'og:title'
+        },
+        {
+          'property': 'og:description',
+          'content': this.trans('strings.how_to_play') +' '+this.trans('strings.soccer_expert'),
+          'vmid': 'og:description'
+        }
+      ]
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getSystemCurrency'
+    ]),
+  },
+  mounted() {
+    
+  }
+};
 </script>

@@ -1,6 +1,7 @@
 <template>
-	<load-component v-if="loading.component == true"></load-component>
+	<load v-if="loading.component == true" />
    	<div class="container" v-else>
+        
         <div class="sub-navigation">
             <router-link class="nav-link" :to="{ name: 'users.account', params: {  } }">
                 {{ trans('strings.profile') }}
@@ -17,10 +18,9 @@
         </div>
 
 
-        <h3 class="page-header">
+        <!-- <h3 class="page-header">
             {{ trans('strings.transactions') }}
-        </h3>
-
+        </h3> -->
 
         <table class="table text-center table-hover table-striped table-responsive">
             <caption>
@@ -115,12 +115,12 @@
             <tbody v-if="loading.pagination == true">
                 <tr>
                     <td colspan="5">
-                        <load-component></load-component>
+                        <load />
                     </td>
                 </tr>
             </tbody>
             <tbody v-else>
-                  <tr v-for="(balance, index) in balances">
+                  <tr v-for="(balance, index) in balances" :key="index">
                     <td>
                         {{ balance.created }}
                     </td>
@@ -149,9 +149,18 @@
                     <td v-else-if="balance.balance_insert">
                         {{ trans('strings.balance') }}
                     </td>
+                    <td v-else-if="balance.lea_classic_team || balance.lea_cup_team">
+                        {{ trans('strings.cartoleando') }}
+                    </td>
                     <!-- Descrição -->
-                    <td v-if="balance.order_item">
-                        <vc-order-item :balance="balance" :order_item="balance.order_item"></vc-order-item>
+                    <td>
+                        <router-link v-if="balance.modality === 'buy'" :to="{name: 'users.games', query: {id: balance.order_item.id, page: 1, column: 'created_at', direction: 'asc'}}" class="btn-link">
+                            {{ balance.description }}    
+                        </router-link>
+                        <span v-else>{{ balance.description }}</span>
+                    </td>
+                    <!-- <td v-if="balance.order_item">
+                        <vc-order-item :balance="balance" :order_item="balance.order_item" />
                     </td>
                     <td v-else-if="balance.scratch_card">
                         <vc-scratchcard :balance="balance" :scratch_card="balance.scratch_card"></vc-scratchcard>
@@ -174,19 +183,25 @@
                     <td v-else-if="balance.balance_insert">
                         <vc-balance-insert :balance="balance" :insert="balance.balance_insert" />
                     </td> 
+                    <td v-else-if="balance.lea_classic_team">
+                        <vc-lea-classic-team :balance="balance" :team="balance.lea_classic_team" />
+                    </td> 
+                    <td v-else-if="balance.lea_cup_team">
+                        <vc-lea-cup-team :balance="balance" :team="balance.lea_cup_team" />
+                    </td> --> 
                     <td>
-                        {{ trans('strings.'+balance.description) }}
+                        {{ trans('strings.'+balance.modality) }}                        
                     </td>
                     <td>
                         <span class="btn btn-xs btn-danger" v-if="balance.amount < 0">
-                            ${{ balance.amount }}
+                            {{getSystemCurrency.data.symbol}}{{ balance.amount }}
                         </span>
                         <span class="btn btn-xs btn-success" v-else>
-                            $+{{ balance.amount }}
+                            {{getSystemCurrency.data.symbol}}+{{ balance.amount }}
                         </span>
                     </td>
                     <td>
-                        ${{ balance.to }}
+                        {{getSystemCurrency.data.symbol}}{{ balance.to }}
                     </td>
                 </tr>
             </tbody>
@@ -195,9 +210,8 @@
 </template>
 
 <script>
-    import {routes} from '../../../api_routes';	
-    import {mapState, mapGetters} from 'vuex';
-    import LoadComponent from '../../Load';
+    import { routes, getHeaders } from '../../../api_routes';	
+    import { mapState, mapGetters } from 'vuex';
     import VcPagination from '../../VcPagination';
     import VcOrderItem from './VcOrderItem';
     import VcScratchcard from './VcScratchcard';
@@ -207,39 +221,49 @@
     import VcPagseguro from './VcPagseguro';
     import VcWithdrawAgent from './VcWithdrawAgent';
     import VcBalanceInsert from './VcBalanceInsert';
+    import VcCartoleando from './VcCartoleando';
+    import VcLeaClassicTeam from './VcLeaClassicTeam';
+    import VcLeaCupTeam from './VcLeaCupTeam';
     export default {
         metaInfo () {
             return {
-                title: this.trans('strings.transactions') + ' | '+this.trans('strings.lottoyou'),
+                title: this.trans('strings.transactions') + ' | ' + this.trans('strings.lottoyou'),
                 meta: [
                     {
                         name: 'description', 
-                        content: this.trans('strings.transactions') + ' | '+this.trans('strings.lottoyou')
+                        content: this.trans('strings.transactions') + ' | ' + this.trans('strings.lottoyou')
                     }
                 ]
             }
         },
         methods: {
-            confirmation(balance) {
+            getComponentName (context) {
+                let names = {
+                    'order_item': 'vc-order-item'
+                };
+
+                return names[context];
+            },
+            confirmation (balance) {
                 if(balance.order) {
                     this.order(balance.order);
                 }
             },
-            order(order) {
+            order (order) {
 
             },
-            filter(event) {             
+            filter (event) {             
                 $(event.target).find('[type="load"]').removeClass('hide');
                 $(event.target).find('[type="submit"]').addClass('hide');
                 this.historicRequest();
             },
-            paginate(page) {
+            paginate (page) {
                 this.query.page = page;
                 this.historicRequest();
             },
-            toggle(column) {
-                if(this.query.column == column) {
-                    if(this.query.direction == 'desc') {
+            toggle (column) {
+                if (this.query.column == column) {
+                    if (this.query.direction == 'desc') {
                         this.query.direction = 'asc';
                     } else {
                         this.query.direction = 'desc';
@@ -251,20 +275,20 @@
 
                 this.historicRequest();
             },
-            prev() {
-                if(this.model.prev_page_url) {
+            prev () {
+                if (this.model.prev_page_url) {
                     this.query.page--;
                     this.historicRequest();
                 }
             },
-            next() {
-                if(this.model.next_page_url) {
+            next () {
+                if (this.model.next_page_url) {
                     this.query.page++;
                     this.historicRequest();
                 }
             },
-            historicRequest() {
-                var historicRequest = axios.create();
+            historicRequest () {
+                const historicRequest = axios.create();
 
                 /*var url = routes.historic_balances.of_the_user.replace('{id}', this.auth.id);
                 url += "?page="+this.query.page;
@@ -273,7 +297,7 @@
                 url += "&amount="+this.query.amount;
                 url += "&from="+this.query.from;*/
 
-                var url = routes.historic_balances.of_the_user;
+                const url = routes.historic_balances.of_the_user;
 
                 historicRequest.interceptors.request.use(config => {
                     this.loading.component = true
@@ -285,13 +309,12 @@
                 });
 
                 historicRequest.post(url, {
-                    owner_id: this.auth.id,
                     page: this.query.page,
                     column: this.query.column,
                     direction: this.query.direction,
                     amount: this.query.amount,
                     from: this.query.from
-                }, {}).then(response => {
+                }).then(response => {
                     if(response.status === 200) {
                         this.loading.component = false;
                         this.model = response.data;
@@ -303,7 +326,7 @@
                 });
             }
         },
-        data() {
+        data () {
     		return {
     			loading: {
                     component: true,
@@ -321,7 +344,7 @@
                 }
     		}
     	},
-        mounted() {
+        mounted () {
             if(this.$route.query.id) {
                 this.query.id = this.$route.query.id
             } 
@@ -343,7 +366,6 @@
             this.historicRequest();
         },
         components: {
-        	LoadComponent,
             VcPagination,
             VcOrderItem,
             VcScratchcard,
@@ -353,10 +375,13 @@
             VcPagseguro,
             VcWithdrawAgent,
             VcBalanceInsert,
+            VcLeaClassicTeam,
+            VcLeaCupTeam
         },
         computed: {
             ...mapGetters([
-                'auth'
+                'auth',
+                'getSystemCurrency'
             ])
         }
     }

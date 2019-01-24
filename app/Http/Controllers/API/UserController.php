@@ -12,6 +12,7 @@ use App\OrderItem;
 use App\SoccerExpertRound;
 use App\Repositories\API\User\UserContract;
 use Illuminate\Support\Facades\Cookie;
+use GuzzleHttp\Client;
 
 /**
  * Class UserController
@@ -29,7 +30,29 @@ class UserController extends Controller
      * @param UserContract $repository
      */
     public function __construct(UserContract $repository) {
+        if(isset(request()->header()['authorization'])) {
+            $this->middleware('auth:api');
+        }
         $this->repository = $repository;
+    }
+
+    public function addTeam(Request $request) 
+    {
+        if($this->repository->addTeam($request)) {
+            $client = new Client(['base_uri' => 'http://api.cartolafc.globo.com/']);
+            $response = $client->request('GET', 'time/slug/'.$request->slug,  [
+                'headers' => [
+                    'x-glb-token' => env('X_GLB_TOKEN')
+                ]
+            ]);
+            return response()->json(
+                json_decode($response->getBody()), 
+                $response->getStatusCode()
+            );
+        }
+        return response()->json([
+            'message' => ''
+        ], 422);
     }
 
     public function exists(Request $request) 
@@ -138,11 +161,13 @@ class UserController extends Controller
     {
         if($this->repository->forgotPassword($request->all())) {
             return response()->json([
+                'status' => 'success',
                 'message' => trans('alerts.users.forgot_password.success')
             ], 200);
         }
 
         return response()->json([
+            'status' => 'error',
             'message' => trans('alerts.users.forgot_password.error')
         ], 422);
     }
@@ -182,13 +207,12 @@ class UserController extends Controller
      */
     public function items(Request $request)
     {
+        $user = $request->user();
+        
         $items = OrderItem::with([
-            'order' => function($query) use($request) {
-                $query->where('user_id', '=', $request->owner_id);
+            'order' => function($query) use($user) {
+                $query->where('user_id', '=', $user->id);
             },
-            'soccerExpert',
-            'scratchCard',
-            'lottery',
             'scratchCardGame' => function($query) {
 
             },
@@ -220,8 +244,8 @@ class UserController extends Controller
                 
             }
         ])
-        ->whereHas('order', function($query) use($request) {
-            $query->where('user_id', '=', $request->owner_id);
+        ->whereHas('order', function($query) use($user) {
+            $query->where('user_id', '=', $user->id);
         });
 
         //$user = User::find($request->get('user_id'));
@@ -372,9 +396,9 @@ class UserController extends Controller
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(UpdateUserRequest $request, $id)
+    public function update(UpdateUserRequest $request)
     {
-        $user = User::find($id);
+        $user = User::find($request->user()->id);
         
         if($request->get('password') != null && !empty($request->get('password'))) {
             $user->laravel_password = bcrypt($request->get('password'));
@@ -387,7 +411,6 @@ class UserController extends Controller
         $user->state = $request->get('state');
         $user->tell_phone = $request->get('tell_phone');
         $user->nickname = $request->get('nickname');
-        $user->photo_domain = request()->root();
         $user->country_id = $request->country;
         $user->gender = $request->gender;
         $locale = Cookie::get('locale');
@@ -404,13 +427,13 @@ class UserController extends Controller
                     $file = $request->file('photo');
                     $name = $user->id. '.' .$file->getClientOriginalExtension();
                     $request->file('photo')->move(public_path('files/profile'), $name);
+                    $user->photo_domain = request()->root();
                     $user->photo = '/files/profile/' . $name;
                 } catch (\Illuminate\Filesystem\FileNotFoundException $e) {
 
                 }
             } 
         }
-
 
         if($user->save()){
             return response()->json(['message' => trans('alerts.users.update.success')], 200);

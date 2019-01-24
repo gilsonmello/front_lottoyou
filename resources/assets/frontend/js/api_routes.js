@@ -1,151 +1,209 @@
 export const protocol = "http://"
 export const enviroment = "production";
-export const host = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '')+'/api';
+export const domain = window.location.hostname;
+export const domainCookies = '.' + window.location.hostname;
+export const host = process.env.NODE_ENV === 'dev' ? window.location.hostname + (location.port ? ':'+location.port: '') : '.' + window.location.hostname + (location.port ? ':'+location.port: '');
+export const hostAPI = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '')+'/api';
 const base = window.location.protocol + '//'+ window.location.hostname + (location.port ? ':'+location.port: '');
 
+export const getHeaders = () => {
+
+	let token = document.head.querySelector('meta[name="csrf-token"]');
+	
+	var access_token = JSON.parse(Cookies.get('access_token', { domain }));
+	access_token = access_token != null ? access_token : null;
+
+	//Token para refresh
+	var refresh_token = JSON.parse(Cookies.get('refresh_token', { domain }));
+	refresh_token = refresh_token != null ? refresh_token : '';
+
+	//Se o usuário tá logado
+	if (access_token) {
+		return {
+			headers: {
+				'Content-Type' : 'application/json',
+				'Accept' : 'application/json',
+				'Authorization': 'Bearer ' + access_token,
+				'X-CSRF-TOKEN': token.content
+			}
+		};
+	}
+
+	//Se não está logado
+	return {
+		headers: {
+			'Content-Type' : 'application/json',
+			'X-CSRF-TOKEN': token.content
+		}
+	};
+};
 
 export const routes = {
 	base: base,
-	quotation_dolar: host+'/quotation_dolar',
+	quotation_dolar: hostAPI + '/quotation_dolar',
 	historic_balances: {
-		of_the_user: host+'/historic_balances/of_the_user'
+		of_the_user: hostAPI + '/historic_balances/of_the_user'
 	},
 	balance: {
-		agent_withdraw: host+'/balances/agent_withdraw',
-		paypal_withdraw: host+'/balances/paypal_withdraw',
+		agent_withdraw: hostAPI + '/balances/agent_withdraw',
+		paypal_withdraw: hostAPI + '/balances/paypal_withdraw',
 	},
 	recaptcha: {
-		check: host+'/recaptcha/check',
+		check: hostAPI + '/recaptcha/check',
 	},
 	pagseguro: {
-		payment: host+'/pagseguro/payment'
+		payment: hostAPI + '/pagseguro/payment'
 	},
 	paypal: {
-		payment: host+'/paypal/payment',
-		feedback: host+'/paypal/feedback',
-		cancel: host,
+		payment: hostAPI + '/paypal/payment',
+		feedback: hostAPI + '/paypal/feedback',
+		cancel: hostAPI,
 	},
 	contacts: {
-		create: host+'/contacts',
-        categories: host+'/contacts/categories',
+		create: hostAPI + '/contacts',
+        categories: hostAPI + '/contacts/categories',
 	},
 	auth: {
-		/*login: host+'/oauth/token',
-		user: host+'/api/user'*/
+		/*login: hostAPI + '/oauth/token',
+		user: hostAPI + '/api/user'*/
 		login: '/oauth/token',
 		user: '/api/user'
 	},
 	countries: {
-		index: host+'/countries',
-		find: host+'/find/{id}'
+		index: hostAPI + '/countries',
+		find: hostAPI + '/find/{id}'
 	},
 	orders: {
-		show: host+'/orders/{id}',
-		items: host+'/orders/{id}/items',
-		generate_order: host+'/orders/generate_order',
+		show: hostAPI + '/orders/{id}',
+		items: hostAPI + '/orders/{id}/items',
+		generate_order: hostAPI + '/orders/generate_order',
 	},
 	order_items: {
-		index: host+'/order_items/{user_id}',
+		index: hostAPI + '/order_items/{user_id}',
 	},
 	users: {
-		check_token_password_recovery: host+'/users/check_token_password_recovery/{hash}',
-		check_token_forgot_password: host+'/users/check_token_forgot_password/{hash}',
-		password_recovery: host+'/users/password_recovery/{hash}',
-		forgot_password: host+'/users/forgot_password',
-		index: host+'/users',
-		create: host+'/users',
-		edit: host+'/{id}/user',
-		logged: host+'/users/logged',
-		logout: host+'/users/logout',
-		exists: host+'/users/exists',
-		update: host+'/users/{id}',
-		orders: host+'/users/{id}/orders',
-		transactions: host+'/users/{id}/transactions',
-		games: host+'/users/{id}/games',
-		soccer_experts: host+'/users/{id}/soccer_experts',
-		scratch_cards: host+'/users/{id}/scratch_cards',
-		lotteries: host+'/users/{id}/lotteries',
-		items: host+'/users/items',
-		activate: host+'/users/activate/{hash}',
-		check_token_activation: host+'/users/check_token_activation/{token}',
-		create_from_facebook: host+'/users/create_from_facebook',
-		disable: host+'/users/disable',
+		check_token_password_recovery: hostAPI + '/users/check_token_password_recovery/{hash}',
+		check_token_forgot_password: hostAPI + '/users/check_token_forgot_password/{hash}',
+		password_recovery: hostAPI + '/users/password_recovery/{hash}',
+		forgot_password: hostAPI + '/users/forgot_password',
+		index: hostAPI + '/users',
+		create: hostAPI + '/users',
+		edit: hostAPI + '/{id}/user',
+		logged: hostAPI + '/users/logged',
+		logout: hostAPI + '/users/logout',
+		exists: hostAPI + '/users/exists',
+		update: hostAPI + '/users/',
+		orders: hostAPI + '/users/{id}/orders',
+		transactions: hostAPI + '/users/{id}/transactions',
+		games: hostAPI + '/users/{id}/games',
+		soccer_experts: hostAPI + '/users/{id}/soccer_experts',
+		scratch_cards: hostAPI + '/users/{id}/scratch_cards',
+		lotteries: hostAPI + '/users/{id}/lotteries',
+		items: hostAPI + '/users/items',
+		activate: hostAPI + '/users/activate/{hash}',
+		check_token_activation: hostAPI + '/users/check_token_activation/{token}',
+		create_from_facebook: hostAPI + '/users/create_from_facebook',
+		disable: hostAPI + '/users/disable',
+		add_team: hostAPI + '/users/add_team',
 	},
 	packages: {
-		create: host+'/packages',
-		index: host+'/packages',
-		show: host+'/packages/{slug}',
-		find: host+'/packages/find/{id}',
+		create: hostAPI + '/packages',
+		index: hostAPI + '/packages',
+		show: hostAPI + '/packages/{slug}',
+		find: hostAPI + '/packages/find/{id}',
 	},
 	scratch_cards: {
-		index: host+'/scratch_cards',
-		jackpot_available: host+'/scratch_cards/{id}/jackpot_available',
+		index: hostAPI + '/scratch_cards',
+		jackpot_available: hostAPI + '/scratch_cards/{id}/jackpot_available',
 	},
 	scratch_card_themes: {
-		index: host+'/scratch_card_themes',
-		jackpot_available: host+'/scratch_card_themes/{id}/jackpot_available',
-		demo: host+'/scratch_card_themes/{theme_id}/demo',
-		scratch_card: host + '/scratch_card_themes/{theme_id}/scratch_card',
-		show: host + '/scratch_card_themes/{theme_id}',
-		play: host + '/scratch_card_themes/{theme_id}/{user_id}',
-		change_scratch_card: host + '/scratch_card_themes/{scratch_card_id}/{theme_id}/{user_id}/change_scratch_card',
+		index: hostAPI + '/scratch_card_themes',
+		jackpot_available: hostAPI + '/scratch_card_themes/{id}/jackpot_available',
+		demo: hostAPI + '/scratch_card_themes/{theme_id}/demo',
+		scratch_card: hostAPI + '/scratch_card_themes/{theme_id}/scratch_card',
+		show: hostAPI + '/scratch_card_themes/{theme_id}',
+		play: hostAPI + '/scratch_card_themes/{theme_id}/play',
+		change_scratch_card: hostAPI + '/scratch_card_themes/{scratch_card_id}/{theme_id}/change_scratch_card',
 	},
 	scratch_card_demo: {
-		index: host+'/scratch_card_demo',
-		find: host+'/scratch_card_demo/{id}',
+		index: hostAPI + '/scratch_card_demo',
+		find: hostAPI + '/scratch_card_demo/{id}',
 	},
 	soccer_experts: {
-		index: host+'/soccer_experts',
-		show: host+'/soccer_experts/{slug}',
-		play: host+'/soccer_experts/play/{slug}',
-		results: host+'/soccer_experts/results/{slug}',
-		ranks: host+'/soccer_experts/ranks/{slug}',
-		find: host+'/soccer_experts/find/{slug}',
+		index: hostAPI + '/soccer_experts',
+		show: hostAPI + '/soccer_experts/{slug}',
+		play: hostAPI + '/soccer_experts/play/{slug}',
+		results: hostAPI + '/soccer_experts/results/{slug}',
+		ranks: hostAPI + '/soccer_experts/ranks/{slug}',
+		find: hostAPI + '/soccer_experts/find/{slug}',
 	},
 	soccer_categories: {
-		index: host+'/soccer_categories',
-		show: host+'/soccer_categories/{id}'
+		index: hostAPI + '/soccer_categories',
+		show: hostAPI + '/soccer_categories/{id}'
 	},
 	lotteries: {
-		index: host+'/lotteries',
-		show: host+'/lotteries/{slug}',
-		play: host+'/lotteries/play/{slug}',
-		results: host+'/lotteries/results/{slug}',
-		find: host+'/lotteries/find/{slug}',
-		awards: host+'/lotteries/awards/{id}',
-		sweepstakes: host+'/lotteries/sweepstakes/{slug}',
-		sweepstake: host+'/lotteries/sweepstake/{sweepstake_id}',
+		index: hostAPI + '/lotteries',
+		show: hostAPI + '/lotteries/{slug}',
+		play: hostAPI + '/lotteries/play/{slug}',
+		results: hostAPI + '/lotteries/results/{slug}',
+		find: hostAPI + '/lotteries/find/{slug}',
+		awards: hostAPI + '/lotteries/awards/{id}',
+		sweepstakes: hostAPI + '/lotteries/sweepstakes/{slug}',
+		sweepstake: hostAPI + '/lotteries/sweepstake/{sweepstake_id}',
 	},
 	carts: {
-		store: host + '/carts',
-		index: host + '/carts',
-		add_scratch_cards: host + '/carts/add_scratch_cards',
-		add_soccer_experts: host + '/carts/add_soccer_experts',
-		add_lotteries: host + '/carts/add_lotteries',
-		destroy: host + '/carts/{hash}',
-		complete_purchase: host + '/carts/complete_purchase',
-		validate: host + '/carts/validate',
-        validate_soccer_expert_fast_payment: host + '/carts/validate_soccer_expert_fast_payment',
-        complete_fast_payment_soccer_expert: host + '/carts/complete_fast_payment_soccer_expert',
-        validate_lottery_fast_payment: host + '/carts/validate_lottery_fast_payment',
-        complete_fast_payment_lottery: host + '/carts/complete_fast_payment_lottery',
+		store: hostAPI + '/carts',
+		index: hostAPI + '/carts',
+		add_scratch_cards: hostAPI + '/carts/add_scratch_cards',
+		add_soccer_experts: hostAPI + '/carts/add_soccer_experts',
+		add_cartoleandos: hostAPI + '/carts/add_cartoleandos',
+		add_lotteries: hostAPI + '/carts/add_lotteries',
+		destroy: hostAPI + '/carts/{hash}',
+		complete_purchase: hostAPI + '/carts/complete_purchase',
+		validate: hostAPI + '/carts/validate',
+        validate_soccer_expert_fast_payment: hostAPI + '/carts/validate_soccer_expert_fast_payment',
+        complete_fast_payment_soccer_expert: hostAPI + '/carts/complete_fast_payment_soccer_expert',
+		validate_lottery_fast_payment: hostAPI + '/carts/validate_lottery_fast_payment',
+		validate_cartoleando_fast_payment: hostAPI + '/carts/validate_cartoleando_fast_payment',
+        complete_fast_payment_lottery: hostAPI + '/carts/complete_fast_payment_lottery',
+        complete_fast_payment_cartoleando: hostAPI + '/carts/complete_fast_payment_cartoleando',
 	},
 	soccer_tickets: {
-		games: host + '/soccer_tickets/{ticket_id}/games',
+		games: hostAPI + '/soccer_tickets/{ticket_id}/games',
 	},
 	soccer_rounds: {
-		groups: host + '/soccer_rounds/{round_id}/groups',
+		groups: hostAPI + '/soccer_rounds/{round_id}/groups',
 	},
 	soccer_groups: {
-		ranking: host + '/soccer_groups/{id}/ranking',
-		show: host + '/soccer_groups/{id}',
-		find: host + '/soccer_groups/{id}/find',
+		ranking: hostAPI + '/soccer_groups/{id}/ranking',
+		show: hostAPI + '/soccer_groups/{id}',
+		find: hostAPI + '/soccer_groups/{id}/find',
 	},
 	leagues: {
-		create: host+'/leagues',
-		index: host+'/leagues',
-		findBySlug: host+'/packages/findBySlug/{slug}',
-		find: host+'/leagues/find/{id}',
-		awards: host+'/leagues/awards/{slug}',
+		create: hostAPI + '/leagues',
+		index: hostAPI + '/leagues',
+		findBySlug: hostAPI + '/packages/findBySlug/{slug}',
+		find: hostAPI + '/leagues/find/{id}',
+		awards: hostAPI + '/leagues/awards/{slug}',
 	},
+	fantasy_game: {
+		packages: hostAPI + '/',
+	},
+	league_packages: {
+		index: hostAPI + '/league_packages',
+		findBySlug: hostAPI + '/league_packages/findBySlug/{slug}',
+		find_leagues_by_slug: hostAPI + '/league_packages/find_leagues_by_slug/{slug}',
+	},
+	leagues: {
+		index: hostAPI + '/leagues',
+		show: hostAPI + '/leagues/{slug}',
+	},
+	cartola: {
+		find_team_by_slug:  hostAPI + '/cartola/find_team_by_slug',
+	},
+	system: {
+		settings: {
+			index: hostAPI + '/system/settings',
+		}
+	}
 };

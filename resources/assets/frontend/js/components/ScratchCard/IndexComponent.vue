@@ -1,5 +1,5 @@
 <template>
-	<load-component v-if="loading.component == true"></load-component>
+	<load v-if="loading.component == true" />
 	<div class="container" v-else>
 		<h1 class="page-header">{{ trans('strings.scratch_cards') }}</h1>
 
@@ -10,19 +10,9 @@
 		</div>
 
 		<div class="row">
-			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="(scratch_card_theme, index) in scratch_card_themes">
-				<div class="scratch-card">
-					<header class="scratch-card-header">
-						<div class="extras" v-if="scratch_card_theme.lot.new == 1">
-							<img :src="app.basePath+'img/new.png'" alt="new" class="game-badge">
-						</div>
-						<img class="header-image img-fluid" :alt="scratch_card_theme.nome" :src="src(scratch_card_theme.img_card_url)">
-						<div class="descript">
-                            <h2 class="ng-binding">{{ scratch_card_theme.nome }}</h2>
-                            <p class="ng-binding">{{ scratch_card_theme.texto_raspadinha }}</p>
-                        </div>
-					</header>
-					<div class="scratch-card-body">
+			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="(scratch_card_theme, index) in scratch_card_themes" :key="index">
+				<vc-product-card :bg_image="src(scratch_card_theme.img_card_url)" :is_new="scratch_card_theme.lot.new" :name="scratch_card_theme.nome" :title="scratch_card_theme.texto_index" :description="scratch_card_theme.texto_raspadinha">
+					<template slot="card-body">
 						<div class="amount">
 							{{ scratch_card_theme.texto_index }}
 						</div>
@@ -42,26 +32,11 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</template>
 
-					<footer class="scratch-card-footer">
+					<template slot="card-footer">							
 						<form @submit.prevent="addToCart(index, $event)">
-							<div class="row vcenter">
-								<!-- <div class="col-lg-9 col-9 col-md-9 col-sm-9">
-									<label class="">
-										<input type="radio" v-bind:value="0" v-model="scratch_card_theme.positionSelected" :name="'game_'+index+'_option'">
-										<span>
-											1 {{ trans('strings.game') }}
-										</span>
-									</label>
-								</div> 
-								<div class="col-lg-3 col-3 col-md-3 col-sm-3">
-									<span>
-										$ {{ ((scratch_card_theme.value * 1)).format(2, true) }}
-									</span>
-								</div>-->
-							</div>
-							<div class="row vcenter" v-for="(discount_table, ind) in scratch_card_theme.discount_tables">
+							<div class="row vcenter" v-for="(discount_table, ind) in scratch_card_theme.discount_tables" :key="ind">
 								<div class="col-lg-9 col-9 col-md-9 col-sm-9">
 									<label class="">
 										<input type="radio" v-bind:value="ind" v-model="scratch_card_theme.positionSelected" :name="'game_'+index+'_option'">
@@ -77,8 +52,7 @@
 								
 								<div class="col-lg-3 col-3 col-md-3 col-sm-3">
 									<span>
-
-										$ {{ calculatePercentage(scratch_card_theme.lot.value, discount_table.percentage, discount_table.quantity ) }}
+										{{getSystemCurrency.data.symbol}}{{ calculatePercentage(scratch_card_theme.lot.value, discount_table.percentage, discount_table.quantity ) }}
 									</span>
 								</div>
 							</div>
@@ -99,16 +73,15 @@
 								</div>
 							</div>
 						</form>
-					</footer>
-				</div>
+					</template>
+				</vc-product-card>
 			</div>
-			
 		</div>
 		<div class="modal fade modal-jackpot-table" id="nivel1" data-backdrop="static" tabindex="-1" aria-labelledby="nivel1" aria-hidden="true">
 		  	<div class="modal-dialog modal-lg">
 		  		<div class="modal-content" v-if="loading.modalJackpotTable == true">
 		  			<div class="modal-body">
-		  				<load-component></load-component>
+		  				<load />
 		  			</div>
 		  		</div>
 			    <div class="modal-content" v-else>
@@ -181,10 +154,10 @@
 		        				</tr>
 		        			</thead>
 		        			<tbody>
-		        				<tr v-if="scratch_card_jackpot_available != null" v-for="(jackpot, key) in scratch_card_jackpot_available.jackpot_tables">
+		        				<tr v-if="scratch_card_jackpot_available != null" v-for="(jackpot, key) in scratch_card_jackpot_available.jackpot_tables" :key="key">
 		        					<td>{{ key + 1 }}</td>
 		        					<td>{{ jackpot.disponivel }}</td>
-		        					<td>$ {{ jackpot.quantia }}</td>
+		        					<td>{{getSystemCurrency.data.symbol}}{{ jackpot.quantia }}</td>
 		        				</tr>
 		        			</tbody>
 		        		</table>
@@ -201,7 +174,7 @@
 		  	<div class="modal-dialog modal-xl">
 		  		<div class="modal-content" v-if="loading.modalDemo == true">
 		  			<div class="modal-body">
-		  				<load-component></load-component>
+		  				<load />
 		  			</div>
 		  		</div>
 			    <div class="modal-content" v-else>
@@ -342,40 +315,39 @@
 </template>
 
 <script>
-	import {routes} from '../../api_routes'
-	import ModalFormComponent from '../ModalFormComponent'
-	import ModalComponent from './ModalComponent'
-	import LoadComponent from '../Load'
-	import {mapState, mapGetters} from 'vuex'
+	import { routes } from '../../api_routes';
+	import ModalFormComponent from '../ModalFormComponent';
+	import ModalComponent from './ModalComponent';
+	import { mapState, mapGetters } from 'vuex';
 	export default {
 		metaInfo () {
 			return {
-				title: this.trans('strings.scratch_cards'),
+				title: this.trans('strings.scratch_cards') + ' | ' + this.trans('strings.lottoyou'),
 				meta: this.metas
 		    }
 		},
 		props: [],
-		created: function() {
+		created () {
 			
 		},
-		activated: function() {
+		activated () {
 			
 		},
 		methods: {
-			handleScratchCard(index, $event) {
+			handleScratchCard (index, $event) {
 				let theme = this.scratch_card_themes[index];
 				this.$eventBus.$emit('openModal', theme, () => {
 					this.init();
 				});
 			},
 			//Função para remover o espaço de uma url
-			src(src) {
+			src (src) {
 				return src.replace(' ', '%20');
 			},
-			backgroundDemo(background) {
+			backgroundDemo (background) {
 				return 'background-image: url('+background.replace(' ', '%20')+'); background-size: 100% 100%;';
 			},
-			handleBuyNow(el) {
+			handleBuyNow (el) {
 				$('.no-tickets-container').removeClass('hide');
 				$('.h').css({
 					opacity: 0.5
@@ -386,7 +358,7 @@
 				//Removendo evento click do botão
 				this.$off(el);
 			},
-			handlePlayAgain: function (el) {
+			handlePlayAgain (el) {
 				$('.modal-demo').off('hidden.bs.modal');
 				
 				if(this.demoAttempts == 0) {
@@ -418,17 +390,17 @@
 			        });
 		        }		
 			},
-			handlePlay: function (el){
+			handlePlay (el){
 				$(el.target).addClass('hide');
 				$('.btn-reveal-all').removeClass('hide');
 				$('.scratchpad').wScratchPad('enable', true);
 			},
-			handleReveal: function(el) {
+			handleReveal (el) {
 				const vm = this;
 				var time = setTimeout(() => {
 					$('.scratchpad').wScratchPad('clear');
 					if(this.scratch_card_demo.premio > 0) {
-						$('.btn-result').text('Parabéns, você ganhou: $ '+this.scratch_card_demo.premio);
+						$('.btn-result').text('Parabéns, você ganhou: '+this.getSystemCurrency.data.symbol+''+this.scratch_card_demo.premio);
 					}else {
 						$('.btn-result').text(vm.trans('strings.good_luck_to_the_next'));
 					}
@@ -438,7 +410,7 @@
                 	this.demoAttempts -= 1;
 				}, 200);
 			},
-			handleScratchPad: function() {
+			handleScratchPad () {
 				let vm = this;
 				var dataScratchCard = this.scratch_card_demo;
 				var count = 1;
@@ -475,7 +447,7 @@
 		                            	vm.demoAttempts -= 1;
 		                            	if(dataScratchCard.premio > 0) {
 		                            		$('.btn-result').removeClass('invisible');
-											$('.btn-result').text('Parabéns, você ganhou: $ '+dataScratchCard.premio);
+											$('.btn-result').text('Parabéns, você ganhou: '+vm.getSystemCurrency.data.symbol+''+dataScratchCard.premio);
 		                            	}else{
 		                            		$('.btn-result').removeClass('invisible');
 											$('.btn-result').text(vm.trans('strings.good_luck_to_the_next'));
@@ -493,7 +465,7 @@
 					}						
 				});
 			},
-			handleDemo: function(el) {
+			handleDemo (el) {
 				this.id = el.target.getAttribute('data-id');
 				
 				$('.modal-demo').modal('toggle');
@@ -522,10 +494,10 @@
 	        		
 		        });				
 			},
-			submit: function (){
+			submit (){
 
 			},
-			handleJackpotTable: function(el) {
+			handleJackpotTable (el) {
 				this.id = el.target.getAttribute('data-id');
 				$('.modal-jackpot-table').off('hidden.bs.modal');
 				$('.modal-jackpot-table').modal('toggle');
@@ -550,7 +522,7 @@
 		        	}, 500)
 		        })
 			},
-			addToCart: function(index, event) {
+			addToCart (index, event) {
 
 
 				//A posição 0 foi reservada para o valor sem desconto
@@ -571,11 +543,11 @@
 					this.item.scratch_card = new_scratch_card_theme
 				}
 				else*/ 
-				if(this.scratch_card_themes[index].discount_tables != undefined) {
+				if (this.scratch_card_themes[index].discount_tables != undefined) {
 					
 					//Caso o usuário tenha selecionado a opção com desconto, 
 					//Preciso decrementar a posição selecionada, pois o array da tabela de descontos começa em 0
-					const positionSelected = this.scratch_card_themes[index].positionSelected
+					const positionSelected = this.scratch_card_themes[index].positionSelected;
 
 					//Pegando o item da tabela de desconto selecionada
 					var discount_tables = Object.assign(
@@ -602,12 +574,12 @@
 					var total = (value - (value * percentage / 100)) * quantity
 
 					//Passando para a estrutura os dados preenchidos pelo o usuário
-					this.item.total = total
+					this.item.total = total;
 
-					this.item.scratch_card = scratch_card_theme
+					this.item.scratch_card = scratch_card_theme;
 				}
 
-				var addScratchCardRequest = axios.create();
+				const addScratchCardRequest = axios.create();
 
 				addScratchCardRequest.interceptors.request.use(config => {
 		        	$(event.target).find('[type="load"]').removeClass('hide');
@@ -616,13 +588,12 @@
 				  	return config;
 				});
 
-
 				addScratchCardRequest.post(routes.carts.add_scratch_cards, {
-					purchase: this.item, 
+					purchase: this.item,
+					hash: this.item.hash,
 					auth: this.auth,
-					hash: this.item.hash
 				}).then(response => {
-		            if(response.status === 200) {
+		            if (response.status === 200) {
 	            		//Atualizando os dados do carrinho
 						this.$store.dispatch('setItemScratchCard', this.item)
 						//Redirecionando para o carrinho
@@ -632,22 +603,19 @@
 		        	
 		        })			
 			},
-			calculatePercentage(value, percentage, quantity) {
+			calculatePercentage (value, percentage, quantity) {
 				let total = value * quantity;
 				return (total - ((total * percentage) / 100)).format(2, true);
 			},
-			init() {
+			init () {
 
-				var request = axios.create();
+				const request = axios.create();
 				request.interceptors.request.use(config => {
 					this.loading.component = true;
 					return config;
 				});
 				
-				var url = routes.scratch_card_themes.index;
-				
-				if(this.auth)
-					url = url+'?user_id='+this.auth.id;
+				let url = routes.scratch_card_themes.index;
 
 				request.get(url, {}).then(response => {
 		            if(response.status === 200){
@@ -702,7 +670,7 @@
 		beforeDestroy() {
             this.$eventBus.$off('openModal');
         },
-		beforeMount: function() {
+		beforeMount () {
 			
 		},
 		mounted() {
@@ -713,7 +681,8 @@
 		},
 		computed: {
 			...mapGetters([
-                'auth'
+				'auth',
+				'getSystemCurrency'
             ]),
             total: {
             	// getter
@@ -734,7 +703,6 @@
 		},
 		components: {
 			ModalFormComponent,
-			LoadComponent,
 			ModalComponent
 		}
 	}
@@ -757,113 +725,12 @@
 	    line-height: 22px;
 	    text-shadow: 0 2px 3px rgba(0,0,0,.8);
 	}
-
-	.scratch-card {
-		background: #efefef;
-	    border-radius: 5px;
-	    padding: 15px;
-	    margin-bottom: 30px;
-	    position: relative;
-	}
-	
+		
 	.extras img {
 		position: absolute;
 		top: -15px;
 	    left: -5px;
 	    z-index: 4;
-	}
-
-	input[type=radio] {
-		margin: 0;
-    	margin-right: 10px;
-	}
-
-	.scratch-card-footer label {
-		padding: 3px 10px;
-	    margin: 0;
-	    width: 100%;
-	    cursor: pointer;
-	}
-
-	.scratch-card-footer form .row {
-		color: #666;
-	    background: rgba(255,255,255,.3);
-	    border-bottom: 1px solid #eee;
-	    font-size: 15px;
-	    cursor: pointer;
-	}
-
-	.scratch-card-body .amount {
-		background: linear-gradient(87.71deg, #1DB2E0 0%, #6AD1ED 50.77%, #1DB2E0 100%);
-	    height: 46px;
-	    color: #FFFFFF;
-	    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	    font-size: 15px;
-	    font-weight: bold;
-	    line-height: 46px;
-	    text-align: center;
-	    box-shadow: 0px -6px 5px -3px rgba(0,0,0,0.3);
-	    position: relative;
-	}
-
-	.scratch-card-body .jackpot-table {
-		background: #0f546d;
-	    color: #fff;
-	    padding: 10px;
-	    font-size: 13px;
-	    font-weight: 700;
-	}
-	.scratch-card-body .jackpot-table a.demo {
-		display: block;
-	    border: 2px solid rgba(255,255,255,.2);
-	    border-radius: 5px;
-	    color: #fff;
-	    font-weight: 700;
-	    -webkit-transition: border .3s ease-in-out;
-	    transition: border .3s ease-in-out;
-	    font-size: 13px;
-    	margin: 10px 0 10px 0;
-	}
-
-	.scratch-card-body .jackpot-table a.description {
-		cursor: pointer;
-    	color: #fff;
-    	margin: 10px 0 10px 0;
-	}
-	.scratch-card-body .jackpot-table a.demo:hover {
-		border: 2px solid #fff;
-	}
-
-	.scratch-card-body .btn {
-		padding: 0
-	}
-
-	.scratch-card-header {
-		position: relative;
-	}
-
-	.scratch-card-header .header-image { 
-		width: 100%;
-	}
-
-	.scratch-card-header:hover .descript {
-	    opacity: 1;
-	}
-
-	.scratch-card-header .descript {
-	    position: absolute;
-	    left: 0;
-	    top: 0;
-	    width: 100%;
-	    height: 100%;
-	    background-color: rgba(239,239,239,.95);
-	    z-index: 2;
-	    opacity: 0;
-	    -webkit-transition: opacity .3s ease-in-out;
-	    transition: opacity .3s ease-in-out;
-	    padding: 20px;
-	    text-align: center;
-	    color: #666;
 	}
 
 	.modal-jackpot-table .container-actions {

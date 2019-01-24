@@ -2,6 +2,8 @@
 
 return [
 
+    'email' => 'contacts@lottoyou-adm.com',
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -177,6 +179,7 @@ return [
         App\Providers\UserProvider::class,
         App\Providers\ContactProvider::class,
         App\Providers\BalanceProvider::class,
+        App\Providers\CartProvider::class,
     ],
 
     /*

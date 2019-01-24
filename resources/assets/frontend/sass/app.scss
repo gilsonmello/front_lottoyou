@@ -17,6 +17,15 @@ input.error:focus, textarea.error:focus{
   border: 1px solid red;
 }
 
+.display-flex {
+    display: flex;
+}
+
+.items-center {
+    align-items: center !important;
+    justify-content: center !important;
+}
+
 .btn-facebook {
     color: #fff !important;
     background-color: #3b5998;
@@ -191,6 +200,10 @@ main {
     min-width: 200px;
     background-repeat: no-repeat;
     display: inline-block;
+}
+
+.direction-column {
+    flex-direction: column;
 }
 
 .app-loading {

@@ -1,7 +1,11 @@
 <?php namespace App\Repositories\API\User;
 
+use Illuminate\Http\Request;
+
 interface UserContract
 {
+    public function addTeam(Request $request);
+
     /**
      * @param string $hash
      * @return mixed

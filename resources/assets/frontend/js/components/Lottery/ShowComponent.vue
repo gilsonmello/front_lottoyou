@@ -30,23 +30,19 @@
 	        	</div>
 	        	<div class="col-lg-6 col-6 col-md-6 col-sm-6">
 	        		<button class="btn btn-md btn-back pull-right btn-primary" @click.prevent="back($event)">
+						<i class="fa fa-arrow-left"></i>
 	        			{{ trans('strings.back') }}
 	        		</button>
 	        	</div>
 	        </div>
 			<div class="row container-tickets" style="overflow: auto; flex-wrap: nowrap;">
-				<ticket-component v-for="(ticket, index) in item.tickets" :tickets="tickets" :dickers="item.dickers" :dickersMaxSel="item.dickersMaxSel" :dickersExtras="item.dickersExtras" :item="item" :dickersExtrasSelect="item.dickersExtrasSelect" :ticket="ticket" :index="index" :key="index" v-on:refreshTickets="refreshTickets" v-on:refreshNumbersChecked="refreshNumbersChecked" v-on:deleteTicket="deleteTicket">
-					
-				</ticket-component>
+				<ticket-component v-for="(ticket, index) in item.tickets" :tickets="tickets" :dickers="item.dickers" :dickersMaxSel="item.dickersMaxSel" :dickersExtras="item.dickersExtras" :item="item" :dickersExtrasSelect="item.dickersExtrasSelect" :ticket="ticket" :index="index" :key="index" v-on:refreshTickets="refreshTickets" v-on:refreshNumbersChecked="refreshNumbersChecked" v-on:deleteTicket="deleteTicket" /> 
 
-				 <div class="col-lg-1 col-4 col-md-2 col-sm-2 vcenter" style="justify-content: center;" id="btn-add-ticket">
-					<div>
-
-						<a href="#" @click.prevent="addBet($event)" class="btn btn-primary fa fa-angle-right" style="font-size: 60px;"></a>
-						<!--
-						<br>
-						<a v-if="tickets.length > 5" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>-->
-					</div>
+				<div class="col-lg-1 col-4 col-md-2 col-sm-2 vcenter" style="justify-content: center;" id="btn-add-ticket">
+					<button @click.prevent="addBet($event)" class="btn btn-primary fa fa-angle-right" style="font-size: 60px;"></button>
+					<!--
+					<br>
+					<a v-if="tickets.length > 5" href="#" @click.prevent="removeBet($event)" class="fa fa-minus" style="font-size: 60px;"></a>-->
 				</div> 
 			</div>
 
@@ -103,9 +99,7 @@
 						<i class="fa fa-refresh fa-spin"></i>
 					</button>
 					<span class="pull-right price">
-						{{ trans('strings.total_value') }} $<span class="value" v-if="item.total > 0">
-							{{ totalFormated }}
-						</span>
+						{{ trans('strings.total_value') }} {{getSystemCurrency.data.symbol}}<span class="value" v-if="item.total > 0">{{ totalFormated }}</span>
 						<span class="value" v-else>0.00</span>
 					</span>
 				</div>
@@ -240,7 +234,7 @@
 					this.loading.paying = false;
 				});		
 			},
-			validate(event) {
+			validate (event) {
 
 				let tickets = this.getTicketsFinished();
 
@@ -333,23 +327,21 @@
 				});
 
 				addLotteryRequest.post(routes.carts.complete_fast_payment_lottery, {
-					purchase: this.item, 
-					auth: this.auth,
-					hash: this.item.hash
+					purchase: this.item,
+					hash: this.item.hash,
+				}, {
+					headers: {
+						'Content-Type' : 'application/json',
+						'Accept' : 'application/json',
+						'Authorization': 'Bearer ' + this.auth.access_token
+					}
 				}).then(response => {
 		            if(response.status === 200) {
 						//this.completePurchase();
                         this.refreshAuthPromise()
                             .then((response) => {
                                 if (response.status === 200) {
-                                    /* toastr.options.onHidden = function() {
-                                        window.location.reload();
-                                    }; */
-                                    /* toastr.success(
-                                        this.trans('strings.successful_purchase'),
-                                        this.trans('strings.buy'),
-									); */
-									swal({
+                                    swal({
 										showCloseButton: true,
 										imageUrl: '/imgs/logo.png',
 										imageHeight: 50,
@@ -368,7 +360,7 @@
 									});
                                     //window.localStorage.setItem('authUser', JSON.stringify(response.data));
                                     this.$store.dispatch('setUserObject', response.data);
-                                    this.$store.dispatch('clearPurchase');
+                                    //this.$store.dispatch('clearPurchase');
 
                                     /*this.$router.push({
                                         name: 'users.transactions'
@@ -376,7 +368,7 @@
                                 }
                             }).catch((error) => {
 
-                        });
+                        	});
 					}
 		        }).catch((error) => {
 		        	this.loading.paying = false;
@@ -934,7 +926,7 @@
 			},
 			//Função para adicionar item no carrinho
 			addToCart: function(event) {
-				var vm = this
+				var vm = this;
 				var tickets = this.getTicketsFinished();
 
 				/* var item = {
@@ -960,7 +952,7 @@
 				if(tickets.length == 0) {
 					alert('Faça pelo menos um jogo');
 					//this.$store.dispatch('removeItemLottery', item);
-				} else {				
+				} else {			
 
 					var sweepstake = Object.assign(this.item.lottery.sweepstakes[this.item.lot_jogo_id]);
 
@@ -988,7 +980,7 @@
 			        }).catch((error) => {
 			        	this.loading.paying = false;
 			        	toastr.error('Erro ao adicionar item', 'Por favor tente novamente');
-			        })	
+			        });
 					
 					/*const cartRequest = axios.create();
 					cartRequest.interceptors.request.use(config => {
@@ -1060,7 +1052,9 @@
                 User: state => state.User
             }),
             ...mapGetters([
-                'auth', 'purchase'
+				'auth', 
+				'purchase',
+				'getSystemCurrency'
             ]),
             totalFormated: {
             	// getter

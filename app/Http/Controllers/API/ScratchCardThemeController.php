@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\DB;
 
 class ScratchCardThemeController extends Controller
 {
+    /**
+     * ScratchCardThemeController constructor.
+     */
+    public function __construct() {
+        if (isset(request()->header()['authorization'])) {
+            $this->middleware('auth:api');
+        }
+    }
     
     public function jackpotAvailable($id = null){
         $jackpotAvailable = ScratchCardTheme::with([
@@ -49,12 +57,13 @@ class ScratchCardThemeController extends Controller
             ->first();
     }
 
-    public function changeScratchCard(Request $request, $scratch_card_id, $theme_id, $user_id) 
+    public function changeScratchCard(Request $request, $scratch_card_id, $theme_id) 
     {
+        $user_id = $request->user() != null ? $request->user()->id : 0;
         $scratchCard = ScratchCard::find($scratch_card_id);
         
         $scratchCard->ativo = 1;
-        if($scratchCard->save()) {
+        if ($scratchCard->save()) {
 
             $scratchCard = ScratchCard::select([
                 'temas_raspadinha_id', 
@@ -70,21 +79,21 @@ class ScratchCardThemeController extends Controller
             ])
             ->get()
             ->first();
-
             return response()->json($scratchCard, 200);
         }
         return response()->json(['msg' => trans('strings.not_found_demo')], 422);
     }
 
-    public function play($id, $user_id) 
+    public function play($id, Request $request) 
     {
+        $user_id = $request->user() != null ? $request->user()->id : 0;
         $scratchCard = ScratchCard::where('owner', '=', $user_id)
             ->where('temas_raspadinha_id', '=', $id)
             ->where('ativo', '=', 0)
             ->orderByRaw('RAND()')
             ->get()
             ->first();
-        if($scratchCard) {
+        if ($scratchCard) {
             return response()->json($scratchCard, 200);
         }
         return response()->json(['msg' => ''], 422);
@@ -97,8 +106,8 @@ class ScratchCardThemeController extends Controller
      */
     public function index(Request $request)
     {   
-        $user_id = $request->get('user_id') != null ? $request->get('user_id') : 0;
-        
+        $user_id = $request->user() != null ? $request->user()->id : 0;
+
         $theme = ScratchCardTheme::whereHas('lot', function($query) {
             $query->where('active', '=', 1);
         })
@@ -108,7 +117,7 @@ class ScratchCardThemeController extends Controller
         ->get()
         ->makeHidden(['total_tickets']);
 
-        foreach($theme as $key => $value) {
+        foreach ($theme as $key => $value) {
             
             //Pegando o total de raspadinhas do usuário logado
             $value->has_scratch_card = ScratchCard::select([

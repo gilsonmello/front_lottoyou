@@ -1,10 +1,10 @@
 <template>
 	<div class="col-lg-4 col-sm-6 col-md-4 col-12" >
 		<div class="card">
-			<img class="card-img-top" src="" alt="Card image cap">
+			<img class="card-img-top" :src="leaguePackage.bg_image_domain+'/'+leaguePackage.bg_image" :alt="leaguePackage.description">
 			<div class="card-body">
-				<h5 class="card-title">{{ league.name }}</h5>
-				<p class="card-text">{{ league.description }}</p>
+				<h5 class="card-title">{{ leaguePackage.name }}</h5>
+				<p class="card-text">{{ leaguePackage.description }}</p>
 				<div class="jackpot-table">
 					<div class="row vcenter">
 						<div class="col-lg-8 col-12 col-md-8 col-sm-12">
@@ -16,7 +16,7 @@
 						</div>
 					</div>
 				</div>
-				<router-link :to="{ name: 'cartola.play', params: { slug: league.slug } }" class="btn btn-md btn-primary">
+				<router-link :to="{ name: 'cartoleando.play', params: { slug: leaguePackage.slug } }" class="btn btn-md btn-primary">
 					{{ trans('strings.play_now') }}
 				</router-link>
 			</div>
@@ -27,7 +27,7 @@
 
 <script>
 	export default {
-		props: ['league', 'index'],
+		props: ['leaguePackage', 'index'],
 		data: function() {
 			return {				
     			days: '',

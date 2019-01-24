@@ -12,9 +12,19 @@ use App\SoccerExpertRound;
 use App\LotterySweepstake;
 use App\ScratchCard;
 use Illuminate\Support\Facades\DB;
+use App\User;
+use App\Repositories\API\Cart\CartContract;
 
 class CartController extends Controller
 {
+    public function __construct(CartContract $repository) 
+    {
+        $this->repository = $repository;
+        if(isset(request()->header()['authorization'])) {
+            $this->middleware('auth:api');
+        }
+    }
+
     private function scratchCardValidate($theme_id, $quantity)
     {
         $scratchCard = ScratchCard::select([
@@ -58,7 +68,7 @@ class CartController extends Controller
         if(is_null($sweepstake)) {
             $valid = [
                 'valid' => false,
-                'msg' => 'O sorteio '.$request['sweepstake']['sorteio'].' encontra-se indisponível.'
+                'msg' => 'O sorteio '.$request['sweepstake']['sorteio'].' encontra-se indisponível.<br>Remova-o do carrinho para continuar'
             ];
             return response()->json($valid, 422);
         }
@@ -91,10 +101,45 @@ class CartController extends Controller
         if(is_null($round)) {
             $valid = [
                 'valid' => false,
-                'msg' => 'O ticket '.$request['tickets'][0]['nome'].' encontra-se indisponível.'
+                'msg' => 'O ticket '.$request['tickets'][0]['nome'].' encontra-se indisponível.<br>Remova-o do carrinho para continuar'
             ];
             return response()->json($valid, 422);
         }
+        return response()->json($valid, 200);
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    public function validateCartoleandoFastPayment(Request $request)
+    {
+        $user = $request->user();
+        $data = $request->all();
+
+        $package = \App\LeaguePackage::find($data['package']['id']);
+        
+        //Se o usuário estiver logado, evitar que o pacote apareça para ele novamente            
+        $itemsIDS = \App\OrderItem::where('user_id', '=', $user->id)
+            ->select([
+                'lea_package_id'
+            ])
+            ->where('lea_package_id', '=', $package->id)
+            ->where('type', '=', 'cartoleando')
+            ->get();
+            
+        if(!$itemsIDS->isEmpty()) {
+            $valid =  [
+                'valid' => false, 
+                'msg' => 'Você já possui o pacote '.$package->name.'.<br>Só é permitido uma compra.'
+            ];
+            return response()->json($valid, 422);
+        }
+         
+        $valid =  [
+            'valid' => true, 
+            'msg' => 'ok'
+        ];
         return response()->json($valid, 200);
     }
 
@@ -119,13 +164,41 @@ class CartController extends Controller
             if($round->isEmpty()) {
                 $valid = [
                     'valid' => false, 
-                    'msg' => 'O ticket '.$ticket['nome'].' encontra-se indisponível.'
+                    'msg' => 'O ticket '.$ticket['nome'].' encontra-se indisponível.<br>Remova-o do carrinho para continuar'
                 ];
                 break;
             }
         }
 
         return $valid;        
+    }
+
+    private function cartoleandoValidate($data, $request) 
+    {
+        $user = $request->user();  
+
+        $package = \App\LeaguePackage::find($data['package']['id']);
+
+        //Se o usuário estiver logado, evitar que o pacote apareça para ele novamente            
+        $itemsIDS = \App\OrderItem::where('user_id', '=', $user->id)
+            ->select([
+                'lea_package_id'
+            ])
+            ->where('lea_package_id', '=', $package->id)
+            ->where('type', '=', 'cartoleando')
+            ->get();
+            
+        if(!$itemsIDS->isEmpty()) {
+            return [
+                'valid' => false, 
+                'msg' => 'Você já possui o pacote '.$package->name.'.<br>Remova-o do carrinho para continuar'
+            ];
+        }
+         
+        return [
+            'valid' => true, 
+            'msg' => 'ok'
+        ];
     }
 
     private function lotteryValidate($data) 
@@ -147,7 +220,7 @@ class CartController extends Controller
         if($sweepstake->isEmpty()) {
             $valid = [
                 'valid' => false, 
-                'msg' => 'O sorteio '.$data['sorteio'].' encontra-se indisponível.'
+                'msg' => 'O sorteio '.$data['sorteio'].' encontra-se indisponível.<br>Remova-o do carrinho para continuar'
             ];
         }
 
@@ -192,6 +265,13 @@ class CartController extends Controller
                 if(!$valid['valid']) {
                     return response()->json($valid, 422);
                 }
+            } else if($value['type'] == 'cartoleando') {
+                $cartoleando = $value['cartoleando'];
+                $valid = $this->cartoleandoValidate($cartoleando, $request);
+
+                if(!$valid['valid']) {
+                    return response()->json($valid, 422);
+                }
             }
         }
 
@@ -210,14 +290,22 @@ class CartController extends Controller
         if($request->get('id')) {
             $cart = Cart::where('user_id', '=', $request->get('id'))
                 ->where('finished', '=', 0)
-                ->with('items')
+                ->with([
+                    'items' => function($query) {
+                        $query->orderBy('created_at', 'DESC');
+                    }
+                ])
                 ->orderBy('created_at', 'DESC')
                 ->get()
                 ->first();
         } else {
             $cart = Cart::where('visitor', '=', $request->ip())
                 ->where('finished', '=', 0)
-                ->with('items')
+                ->with([
+                    'items' => function($query) {
+                        $query->orderBy('created_at', 'DESC');
+                    }
+                ])
                 ->orderBy('created_at', 'DESC')
                 ->get()
                 ->first();
@@ -258,29 +346,60 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function addCartoleando(Request $request)
+    { 
+        $auth = $request->get('auth');
+        $user = $request->user() == null ? $auth : $request->user();
+        $user_id = gettype($user) === 'array' ? $user['id'] : $user->id;
+        $user = User::find($user_id);
+        $team = $user->team;
+        $purchase = $request->purchase;
+        $purchase['team'] = $team->toArray();
+        $purchase['name'] = $team->name;
+        $purchase['slug'] = $team->slug;
+        $purchase['email'] = $team->email;
+        $purchase['cartoleiro'] = $team->cartoleiro;
+        $request->merge([
+            'purchase' => $purchase
+        ]);
+        //$request->get('purchase')['name'] = 'sdfdsf';
+        /* $request->purchase['name'] = $team->name;
+        $request->purchase['slug'] = $team->slug;
+        $request->purchase['email'] = $team->email; */
+        $this->insertOrRefreshCart($request, 'cartoleando');
+        return response()->json(['msg' => 'ok'], 200);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function addSoccerExpert(Request $request)
     { 
         $this->insertOrRefreshCart($request, 'soccer_expert');
         return response()->json(['msg' => 'ok'], 200);
     }
 
-    private function insertOrRefreshCart($request, $type) {
+    private function insertOrRefreshCart($request, $type) 
+    {
         $data = $request->get('purchase');
         $auth = $request->get('auth');
         $hash = $request->get('hash');
 
-        $user = $auth;
+        $user = $request->user() == null ? $auth : $request->user();
 
         if($user != null) {
-            $cart = Cart::where('user_id', '=', $user['id'])
+            $user_id = gettype($user) === 'array' ? $user['id'] : $user->id;
+            $cart = Cart::where('user_id', '=', $user_id)
                 ->where('finished', '=', 0)
                 ->get()
                 ->first();
 
-
             if(is_null($cart)) {
                 $cart = new Cart;
-                $cart->user_id = $user['id'] != null ? $user['id'] : null;
+                $cart->user_id = $user_id != null ? $user_id : null;
                 $cart->finished = 0;
                 $cart->visitor = $request->ip();
 
@@ -294,13 +413,12 @@ class CartController extends Controller
                 $cartItem->data = $data != null ? json_encode($data) : null;
 
                 $cartItem->save();
-            }else {
+            } else {
                 
                 $cartItem = CartItem::where('cart_id', '=', $cart->id)
                     ->where('hash', '=', $hash)
                     ->get()
                     ->first();
-
                 
                 if(!is_null($cartItem)) {
                     $cartItem->data = $data != null ? json_encode($data) : null;
@@ -314,7 +432,7 @@ class CartController extends Controller
                     $cartItem->save();
                 }
             }
-        }else {
+        } else {
 
             $cart = Cart::where('visitor', '=', $request->ip())
                 ->where('finished', '=', 0)
@@ -340,7 +458,7 @@ class CartController extends Controller
                 $cartItem->data = $data != null ? json_encode($data) : null;
 
                 $cartItem->save();
-            }else {
+            } else {
                 $cartItem = CartItem::where('cart_id', '=', $cart->id)
                     ->where('hash', '=', $hash)
                     ->get()
@@ -373,143 +491,6 @@ class CartController extends Controller
         return response()->json(['msg' => 'ok'], 200);
     }
 
-    private function saveOrder($request) 
-    {
-        $order = new Order;
-
-        $order->user_id = $request->get('user_id');
-        $order->total = $request->get('total');
-        $order->sub_total = $request->get('sub_total');
-        $order->number_items = $request->get('quantity');
-        $order->status = 1;
-        
-        $coupon = $request->get('coupon') != null ? $request->get('coupon') : null;
-        
-        $order->coupon_id = $coupon != null ? $coupon['id'] : null;
-
-        $items = $request->get('items');
-
-
-        if($order->save()) {
-            foreach($items as $key => $value) {
-                $orderItem = new OrderItem;
-                $orderItem->order_id = $order->id;
-                $orderItem->type = $value['type'];
-                $data = null;
-                if($value['type'] == 'lottery') {
-                    $data = json_encode($value['lottery']);
-                    $orderItem->data = $data;
-                    $orderItem->amount = $value['lottery']['value'];
-                    $orderItem->lottery_id = $value['lottery']['id'];
-                    $orderItem->hash = $value['lottery']['hash'];
-                    $orderItem->quantity = count($value['lottery']['tickets']);
-                    /*$order->lotteries()->attach($value['lottery']['id'], [
-                        'data' => $data
-                    ]);*/
-                } else if($value['type'] == 'soccer_expert') {
-                    $data = json_encode($value['soccer_expert']);
-                    $orderItem->amount = $value['soccer_expert']['total'];
-                    $orderItem->data = $data;
-                    $orderItem->hash = $value['soccer_expert']['hash'];
-                    $orderItem->quantity = count($value['soccer_expert']['tickets']);
-                    $orderItem->soccer_expert_id = $value['soccer_expert']['soccer_expert']['id'];
-                    /*$order->soccerExperts()->attach($value['soccer_expert']['soccer_expert']['id'], [
-                        'data' => $data
-                    ]);*/
-                } else if($value['type'] == 'scratch_card') {
-                    $data = json_encode($value['scratch_card']);
-                    $orderItem->data = $data;
-                    $orderItem->quantity = $value['scratch_card']['scratch_card']['discount_tables']['quantity'];
-                    $orderItem->amount = $value['scratch_card']['total'];
-                    $orderItem->hash = $value['scratch_card']['hash'];
-                    $orderItem->scratch_card_id = $value['scratch_card']['scratch_card']['id'];
-                    /*$order->scratchCards()->attach($value['scratch_card']['scratch_card']['id'], [
-                        'data' => $data
-                    ]);*/
-                }
-
-
-                $orderItem->user_id = $request->get('user_id');
-                $orderItem->save();
-            }
-
-            $cart = Cart::where('user_id', '=', $request->get('user_id'))
-                ->where('finished', '=', 0)
-                ->get()
-                ->first();
-                
-            if($cart) {
-                $cart->finished = 1;
-                $cart->save();   
-            }
-
-            $cart = Cart::where('visitor', '=', $request->ip())
-                ->where('finished', '=', 0)
-                ->get()
-                ->first();
-
-            if($cart) {
-                $cart->finished = 1;
-                $cart->save();   
-            }            
-        }   
-    }
-
-    private function saveOrderFastPaymentLottery($request)
-    {
-        $order = new Order;
-        $order->user_id = $request['auth']['id'];
-        $order->total = $request['purchase']['total'];
-        $order->sub_total = $request['purchase']['total'];
-        $order->number_items = 1;
-        $order->status = 1;
-
-        $coupon = $request->get('coupon') != null ? $request->get('coupon') : null;
-
-        $order->coupon_id = $coupon != null ? $coupon['id'] : null;
-
-        if($order->save()) {
-            $orderItem = new OrderItem;
-            $orderItem->order_id = $order->id;
-            $orderItem->type = 'lottery';
-            $data = json_encode($request['purchase']);
-            $orderItem->data = $data;
-            $orderItem->hash = $request['purchase']['hash'];
-            $orderItem->lottery_id = $request['purchase']['lottery']['id'];
-            $orderItem->amount = $request['purchase']['total'];
-            $orderItem->quantity = count($request['purchase']['tickets']);
-            $orderItem->save();
-        }
-    }
-    private function saveOrderFastPaymentSoccerExpert($request)
-    {
-        $order = new Order;
-        $order->user_id = $request['auth']['id'];
-        $order->total = $request['purchase']['total'];
-        $order->sub_total = $request['purchase']['total'];
-        $order->number_items = 1;
-        $order->status = 1;
-
-        $coupon = $request->get('coupon') != null ? $request->get('coupon') : null;
-
-        $order->coupon_id = $coupon != null ? $coupon['id'] : null;
-
-        if($order->save()) {
-            $orderItem = new OrderItem;
-            $orderItem->order_id = $order->id;
-            $orderItem->type = 'soccer_expert';
-            $data = json_encode($request['purchase']);
-            $orderItem->data = $data;
-            $orderItem->soccer_expert_id = $request['purchase']['soccer_expert']['id'];
-            $orderItem->hash = $request['purchase']['hash'];
-            $orderItem->user_id = $order->user_id;
-            $orderItem->amount = $request['purchase']['total'];
-            $orderItem->quantity = count($request['purchase']['tickets']);
-            $orderItem->save();
-        }
-    }
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -523,15 +504,18 @@ class CartController extends Controller
 
         //Caso ocorra algum erro de SQL, é feito o rollback
         try {
-            $this->saveOrderFastPaymentLottery($request);
-            DB::commit();
-            return response()->json(['msg' => 'ok'], 200);
+            if($this->repository->saveOrderFastPaymentLottery($request)) {
+                DB::commit();
+                return response()->json(['message' => 'ok'], 200);
+            }
+            DB::rollBack();
+            return response()->json(['message' => 'error'], 422);
         } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
         } catch (\PDOException $e) {
             DB::rollBack();
         }
-        return response()->json(['msg' => 'error'], 422);
+        return response()->json(['message' => 'error'], 422);
     }
 
     /**
@@ -547,17 +531,48 @@ class CartController extends Controller
 
         //Caso ocorra algum erro de SQL, é feito o rollback
         try {
-            $this->saveOrderFastPaymentSoccerExpert($request);
-            DB::commit();
-            return response()->json(['msg' => 'ok'], 200);
+            if($this->repository->saveOrderFastPaymentSoccerExpert($request)) {
+                DB::commit();
+                return response()->json(['message' => 'ok'], 200);
+            }
+            DB::rollBack();
+            return response()->json(['message' => 'error'], 422);
         } catch (\Illuminate\Database\QueryException $e) {
             DB::rollBack();
         } catch (\PDOException $e) {
             DB::rollBack();
         }
 
-        return response()->json(['msg' => 'error'], 422);
+        return response()->json(['message' => 'error'], 422);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function completeFastPaymentCartoleando(Request $request)
+    {
+        //Iniciando a transação
+        DB::beginTransaction();
+        //Caso ocorra algum erro de SQL, é feito o rollback
+        try {
+            if($this->repository->saveOrderFastPaymentCartoleando($request)) {
+                DB::commit();
+                return response()->json(['message' => 'ok'], 200);
+            }
+            DB::rollBack();
+            return response()->json(['message' => 'error'], 422);
+        } catch (\Illuminate\Database\QueryException $e) {
+            DB::rollBack();
+        } catch (\PDOException $e) {
+            DB::rollBack();
+        }
+
+        return response()->json(['message' => 'error'], 422);
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -572,16 +587,17 @@ class CartController extends Controller
 
         //Caso ocorra algum erro de SQL, é feito o rollback
         try {
-            $this->saveOrder($request);
-            DB::commit();
-            return response()->json(['message' => ''], 200);
+            if($this->repository->saveOrder($request)) {
+                DB::commit();
+                return response()->json(['message' => 'ok'], 200);
+            }
+            DB::rollBack();
+            return response()->json(['message' => 'error'], 422);
         } catch (\Illuminate\Database\QueryException $e) {
-            dd($e->getMessage());
             DB::rollBack();
         } catch (\PDOException $e) {
             DB::rollBack();
         }      
-
         return response()->json(['message' => 'error'], 422);
     }
 

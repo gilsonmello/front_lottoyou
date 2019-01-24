@@ -247,15 +247,15 @@ export default {
 			        component: require('../components/Order/FinishComponent.vue')
 				},
 				{   
-					path: 'cartola',
-					name: 'cartola.index', 
-					component: require('../components/Cartola/VcIndex.vue')
+					path: 'cartoleando',
+					name: 'cartoleando.index', 
+					component: require('../components/Cartoleando/VcIndex.vue')
 				},
 				{   
-					path: 'cartola/play/:slug',
-					name: 'cartola.play', 
+					path: 'cartoleando/play/:slug',
+					name: 'cartoleando.play', 
 					props: true,
-					component: require('../components/Cartola/VcPlay.vue')
+					component: require('../components/Cartoleando/VcPlay.vue')
 				},
   			]
   		}

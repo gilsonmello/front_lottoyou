@@ -13,15 +13,18 @@ use App\BalanceOrder;
 
 class OrderController extends Controller
 {
+    /**
+     * 
+     */
     public function generateOrder(Request $request) 
     {
-        $balanceOrder = BalanceOrder::where('owner_id', '=', $request->owner_id)
+        $balanceOrder = BalanceOrder::where('owner_id', '=', $request->user()->id)
             ->where('submit', '=', 0)
             ->orderBy('created', 'desc')
             ->get()
             ->first();
 
-        if(is_null($balanceOrder)) {
+        if (is_null($balanceOrder)) {
             $balanceOrder = new BalanceOrder;
             $balanceOrder->owner_id = $request->owner_id;
             $balanceOrder->total = 0.00;

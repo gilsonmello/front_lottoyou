@@ -6,9 +6,116 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\League;
 use App\LeagueAward;
-
+use GuzzleHttp\Client;
+use App\Traits\Cartoleando;
 class LeagueController extends Controller
 {
+    use Cartoleando;
+
+    private function findTeamBySlug($slug) 
+    {
+        
+    }
+
+    public function classicTeams($slug)
+    {
+        $league = League::findBySlug($slug);
+        $leaClassic = $league->classic;
+        //Tipos de ordenamentos
+        $typeOrders = [
+            0 => '',
+            1 => 'p_c',
+            2 => 'p_m',
+            3 => 'p_t',
+            4 => 'p_p',
+            5 => 'p_r',
+        ];
+        $typeOrder = $typeOrders[$leaClassic->type_award_id];
+        $teams = $leaClassic->teams()
+            ->orderBy($typeOrder, 'DESC')
+            ->get();
+
+        foreach($teams as $key => $team) {
+            $body = $this->getTeamFromCartola($team->cartoleandoTeam->slug);
+            $team->team = $body;
+        }
+
+        if(!is_null($teams)) {
+            return response()->json($teams, 200);
+        }        
+
+        return response()->json([
+            'message' => ''
+        ], 422);
+    }
+
+    public function cupSteps($slug)
+    {
+        $league = League::findBySlug($slug);
+        $leaCup = $league->cup;
+        $steps = $leaCup->steps()
+            ->where('lea_cup_id', '=', $leaCup->id)
+            ->where(function($query) {
+                $query->where('active', '=', 1)
+                    ->orWhere('upd', '=', 1);
+            })
+            ->orderBy('id', 'desc')
+            ->orderBy('current_step', 'desc')
+            ->get();
+        
+        foreach($steps as $step) {
+            $keys = \App\LeaCupKey::where('lea_cup_step_id', '=', $step->id)
+                ->get();
+                
+            foreach($keys as $key) {
+                $homeTeam = $key->homeTeam;                
+                if(!$homeTeam) {
+                    continue;
+                }
+
+                $key->homeTeam = $this->getTeamFromCartola($homeTeam->slug);
+
+                $outTeam = $key->outTeam;
+                $key->outTeam = $this->getTeamFromCartola($outTeam->slug);
+
+                if($key->finished == 1) {
+                    $winner = $key->winner;
+                    $key->winner = $this->getTeamFromCartola($winner->slug);
+                    $loser = $key->loser;
+                    $key->loser = $this->getTeamFromCartola($loser->slug);
+                }
+            }
+            $step->keys = $keys;
+        }
+
+        if(!is_null($steps)) {
+            return response()->json($steps, 200);
+        }
+
+        return response()->json([
+            'message' => ''
+        ], 422);
+    }
+
+    public function cupTeams($slug)
+    {
+        $league = League::findBySlug($slug);
+        $leaCup = $league->cup;
+        $teams = $leaCup->teams;
+        foreach($teams as $key => $team) {
+            $body = $this->getTeamFromCartola($team->cartoleandoTeam->slug);
+            $team->team = $body;
+        }
+
+        if(!is_null($teams)) {
+            return response()->json($teams, 200);
+        }        
+
+        return response()->json([
+            'message' => ''
+        ], 422);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -61,9 +168,15 @@ class LeagueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $league = \App\League::findBySlug($slug);
+
+        if(!is_null($league)) return response()->json($league, 200);
+
+        return response()->json([
+            'message' => ''
+        ], 422);
     }
 
     /**

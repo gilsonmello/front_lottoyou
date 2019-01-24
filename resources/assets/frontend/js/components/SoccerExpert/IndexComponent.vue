@@ -11,6 +11,11 @@
         	</div>
         </div>
 
+		<div class="row" v-if="soccer_experts.length == 0">
+			<div class="col-lg-12">
+				<h3>Nenhuma cartela disponível no momento</h3>
+			</div>				
+		</div>
 		
 		<div class="row">
 			<div class="col-12 col-md-6 col-sm-6 col-lg-4" v-for="(soccer_expert, index) in soccer_experts" :key="index">

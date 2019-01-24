@@ -1,5 +1,36 @@
 import Vue from 'vue'
-import {routes} from './api_routes'
+import { routes, getHeaders, domain } from './api_routes';
+
+Number.prototype.format = function(n, x) {
+    var re = '(\\d)(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$1,');
+};
+
+Vue.prototype.makeid = function() {
+	var text = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	for (var i = 0; i < 15; i++){
+	  text += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+  return text;
+};
+
+Vue.prototype.trans = (key) => {
+    return _.get(window.trans, key, key);
+};
+
+Vue.prototype.src = function(src) {
+	return src.replace(' ', '%20');
+};
+
+Vue.prototype.$eventBus = new Vue();
+
+Vue.prototype.app = window.app;
+
+Vue.prototype.app.reload = function() {
+	window.location.reload();
+}
 
 /*Vue.prototype.removeRepeatedNumbers = function(numbers, value) {
 	for(var i = 0; i < numbers.length; i++) {
@@ -70,11 +101,11 @@ Vue.prototype.formatDate = function(dateBR) {
 Vue.prototype.refreshAuth = function(params) {
 	params = params != undefined ? params : {}
 	//Token de acesso
-	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+	var access_token = JSON.parse(Cookies.get('access_token', { domain }) || null);
 	access_token = access_token != null ? access_token : null;
 
 	//Token para refresh
-	var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+	var refresh_token = JSON.parse(Cookies.get('refresh_token', { domain }) || null);
 	refresh_token = refresh_token != null ? refresh_token : '';
 
 	var authRequest = axios.create();
@@ -86,16 +117,12 @@ Vue.prototype.refreshAuth = function(params) {
 		return config;
 	});
 	//Fazendo busca do usuário logado, para setar na estrutura de dados
-	authRequest.get(routes.auth.user, { headers: {
-		'Accept': 'application/json',
-		'Authorization': 'Bearer ' + access_token
-	}}).then(response => {
+	authRequest.get(routes.auth.user, getHeaders()).then(response => {
 		if(response.status === 200) {
         	response.data.access_token = access_token
         	response.data.refresh_token = refresh_token
-			//window.localStorage.setItem('authUser', JSON.stringify(response.data))
+			// Cookies.set('authUser', JSON.stringify(response.data), { domain });
 			this.$store.dispatch('setUserObject', response.data);
-
 			if(params.onSuccess != undefined && typeof params.onSuccess == 'function') {
 				params.onSuccess();
 			}
@@ -109,37 +136,33 @@ Vue.prototype.refreshAuth = function(params) {
 
 Vue.prototype.refreshAuthPromise = function() {
 	//Token de acesso
-	var access_token = JSON.parse(window.localStorage.getItem('access_token'));
+	let access_token = JSON.parse(Cookies.get('access_token', { domain }));
 	access_token = access_token != null ? access_token : null;
 
 	//Token para refresh
-	var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
+	let refresh_token = JSON.parse(Cookies.get('refresh_token', { domain }));
 	refresh_token = refresh_token != null ? refresh_token : '';
 
-	var authRequest = axios.create();
+	let authRequest = axios.create();
 
 	authRequest.interceptors.request.use(config => {
 		return config;
 	});
 	//Fazendo busca do usuário logado, para setar na estrutura de dados
-	return authRequest.get(routes.auth.user, { headers: {
-		'Accept': 'application/json',
-		'Authorization': 'Bearer ' + access_token
-	}})
+	return authRequest.get(routes.auth.user, getHeaders());
 };
 
+//Função para dividir o array em 2 partes
 Vue.prototype.divideInTwo = function(arr) {
-	var length = arr.length;
+	let length = arr.length;
 
-	var arrLeft = [];
-	var arrRight = [];
-
-
+	let arrLeft = [];
+	let arrRight = [];
 
 	//Se não tiver itens retorna vazio
 	if(length == 0) {
 		return [[], []]
-	}else if(length == 1) {
+	} else if(length == 1) {
 		//Se só possui 1 item, retorna a posição 0
 		return [
 			[
@@ -282,7 +305,7 @@ Vue.prototype.getLeagues = () => {
 				reject(error)
 			});
 	});
-}
+};
 
 Vue.prototype.getLeaguesBySlug = (slug) => {
 	return new Promise(function(resolve, reject) {       
@@ -310,4 +333,112 @@ Vue.prototype.getLeagueAwards = (slug) => {
 				reject(error)
 			});
 	});
-}
+};
+
+Vue.prototype.getLeaguePackages = () => {
+	return new Promise(function(resolve, reject) {       
+		let request = axios.create();
+		let url = routes.league_packages.index;
+		request.get(url)
+			.then((response) => {
+				resolve(response);
+			})
+			.catch((error) => {
+				reject(error)
+			});
+	});
+};
+
+Vue.prototype.getLeaguePackagesBySlug = function (slug) {
+	return new Promise(function(resolve, reject) {       
+		let request = axios.create();
+		let url = routes.league_packages.findBySlug.replace('{slug}', slug);
+		request.get(url)
+			.then((response) => {
+				resolve(response);
+			})
+			.catch((error) => {
+				reject(error)
+			});
+	});
+};
+
+Vue.prototype.convertSlug = function (str) {
+	str = str.replace(/^\s+|\s+$/g, ''); // trim
+	str = str.toLowerCase();
+
+	// remove accents, swap ñ for n, etc
+	var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;.";
+	var to = "aaaaaeeeeeiiiiooooouuuunc-------";
+	for (var i = 0, l = from.length; i < l; i++) {
+		str = str.replace(from.charAt(i), to.charAt(i));
+	}
+	
+	str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+		.replace(/\s+/g, '-') // collapse whitespace and replace by -
+		.replace(/-+/g, '-'); // collapse dashes
+
+	return str;
+};
+
+//Ajax para buscar todos pacotes que contém ligas
+Vue.prototype.getLeaguesOfPackageBySlug = function(slug) {
+	return new Promise(function(resolve, reject) {       
+		let request = axios.create();
+		let url = routes.league_packages.find_leagues_by_slug.replace('{slug}', slug);
+		request.get(url)
+			.then((response) => {
+				resolve(response);
+			})
+			.catch((error) => {
+				reject(error)
+			});
+	});
+};
+
+Vue.prototype.showModalLogin = () => {
+	$('.modal-login').modal('toggle');
+};
+
+Vue.prototype.teamRequest = () => {
+	let auth = window.VueInstance.auth;
+	let headers = {	};
+
+	if (auth) {
+		headers.headers = {
+			'Content-Type' : 'application/json',
+			'Accept' : 'application/json',
+			'Authorization': 'Bearer ' + auth.access_token
+		};
+	} 
+
+	//Requisição para pegar os itens do carrinho salvo
+	let teamRequest = axios.create();
+
+	teamRequest.interceptors.request.use(config => {
+		return config;
+	});
+
+	let url = routes.cartola.find_team_by_slug;
+	//Executando a requisição
+	return teamRequest.post(url, {
+		slug: window.VueInstance.auth.cartoleando_team.slug
+	}, headers);
+};
+
+
+//Ajax para buscar todas as configurações do sistema
+Vue.prototype.getSystemSettings = function(slug) {
+	return new Promise(function(resolve, reject) {       
+		let request = axios.create();
+		let url = routes.system.settings.index;
+		request.get(url)
+			.then((response) => {
+				resolve(response);
+			})
+			.catch((error) => {
+				reject(error)
+			});
+	});
+	
+};

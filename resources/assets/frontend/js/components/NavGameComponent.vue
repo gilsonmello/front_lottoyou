@@ -22,9 +22,10 @@
 	            	<a class="nav-link">{{ trans('strings.lotteries') }}</a>
             	</router-link>
 
-				<!-- <router-link tag="li" :to="{ name: 'cartola.index' }">
-	            	<a class="nav-link">{{ trans('strings.cartola') }}</a>
+				<!-- <router-link tag="li" :to="{ name: 'cartoleando.index' }">
+	            	<a class="nav-link">{{ trans('strings.cartoleando') }}</a>
             	</router-link> -->
+
 				<li class="no-mobile">
 					<a>&nbsp</a>
 				</li>
@@ -76,7 +77,7 @@
             },
             handleSetInterval() {
 
-                var time = setInterval(this.interval, 800);
+                let time = setInterval(this.interval, 800);
 
                 $('.world_cup_now').mouseover(() => {
                     clearInterval(time);
@@ -146,8 +147,7 @@
 		
 	}
 
-	@media (max-width: 767px) {
-		
+	@media (max-width: 767px) {		
 		.nav-link {
 			padding: 10px;
 		}

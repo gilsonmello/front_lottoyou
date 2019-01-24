@@ -16,6 +16,8 @@ use App\SoccerExpertBet;
 use App\ScratchCard;
 use App\LotteryUser;
 use App\UserExclusion;
+use App\CartoleandoTeam;
+use Illuminate\Http\Request;
 
 class UserRepository implements UserContract
 {
@@ -24,6 +26,22 @@ class UserRepository implements UserContract
 	public function __construct() 
 	{
 
+    }
+
+    public function addTeam(Request $request) 
+    {
+        $user = $request->user();
+
+        $team = new CartoleandoTeam;
+        $team->owner_id = $user->id;
+        $team->name = $request->name;
+        $team->slug = $request->slug;
+        $team->email = $request->email;
+        $team->cartoleiro = $request->cartoleiro;
+        if($team->save()) {
+            return true;
+        }
+        return false;
     }
 
     public function exists($request) 
@@ -84,7 +102,7 @@ class UserRepository implements UserContract
     public function forgotPassword(array $attributes) 
     {
         $locale = Cookie::get('locale');
-        $birth_date = format($attributes['birth_date'], 'd-m-Y', $locale);        
+        $birth_date = format($attributes['birth_date'], 'Y-m-d', $locale);   
         
         $user = User::where('username', '=', $attributes['email'])
             ->where(DB::raw("concat(birth_year, '-', birth_month, '-', birth_day)"), '=', $birth_date)

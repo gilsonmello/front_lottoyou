@@ -15,8 +15,7 @@ use Carbon\Carbon;
 class PaypalController extends Controller
 {
     use PaymentService;
-
-   
+       
     public function payment(Request $request) 
     {
         $order = BalanceOrder::find($request->order_id);
@@ -108,7 +107,10 @@ class PaypalController extends Controller
             //$historicBalance->paypal_order_id = $paypayOrder->id;
             $historicBalance->type = 0;
             $historicBalance->devolution = 1;
-            $historicBalance->description = 'paypal devolution';
+            $historicBalance->description = 'Método Paypal';
+            $historicBalance->modality = 'devolution';
+            $historicBalance->context = 'paypal_orders';
+            $historicBalance->context_message = 'paypal.devolution';
             $historicBalance->system = 1;
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
@@ -132,8 +134,10 @@ class PaypalController extends Controller
             //$historicBalance->paypal_order_id = $paypayOrder->id;
             $historicBalance->type = 1;
             $historicBalance->devolution = 0;
-            $historicBalance->description = 'paypal deposit';
+            $historicBalance->description = 'Método Paypal';
             $historicBalance->modality = 'deposit';
+            $historicBalance->context = 'paypal_orders';
+            $historicBalance->context_message = 'paypal.deposit';
             $historicBalance->system = 1;
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;

@@ -71,7 +71,7 @@
 						{{ trans('strings.add_to_cart') }}
 					</button>
 					<span class="pull-right price">
-						$ <span class="value" v-if="item.total > 0">
+						{{getSystemCurrency.data.symbol}}<span class="value" v-if="item.total > 0">
 							{{ totalFormated }}
 						</span>
 						<span class="value" v-else>0.00</span>
@@ -127,19 +127,16 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
 </template>
 
 <script>
-	import {routes} from '../../api_routes'
-	import LoadComponent from '../Load'
-	import {mapState, mapGetters} from 'vuex'
-	import CycleComponent from './CycleComponent'
-	import TicketComponent from './TicketComponent'
-	import ModalTicketComponent from './Modal/TicketComponent'
+	import { routes } from '../../api_routes';
+	import LoadComponent from '../Load';
+	import { mapState, mapGetters } from 'vuex';
+	import CycleComponent from './CycleComponent';
+	import TicketComponent from './TicketComponent';
+	import ModalTicketComponent from './Modal/TicketComponent';
 	export default {
 		metaInfo () {
 			return {
@@ -222,9 +219,8 @@
 
 					addSoccerExpertRequest.post(routes.carts.add_soccer_experts, {
 						purchase: item, 
-						auth: this.auth,
-						hash: item.hash
-						
+						hash: item.hash,
+						auth: this.auth,					
 					}).then(response => {
 						if(response.status === 200) {
 							this.loading.paying = false;
@@ -340,7 +336,9 @@
 		},
 		computed: {
 			...mapGetters([
-                'purchase', 'auth'
+				'purchase', 
+				'auth',
+				'getSystemCurrency'
             ]),
 			totalFormated: {
             	// getter

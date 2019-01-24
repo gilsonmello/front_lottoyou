@@ -1,12 +1,12 @@
 <template>
-	<load-component v-if="loading.component"></load-component>
+	<load v-if="loading.component" />
 	<div class="container" v-else>
         <h2 class="page-header">{{ trans('strings.I_forgot_my_password') }}</h2>
 		<form id="forgot-password">
 			<div class="row">
                 <div class="col-lg-4 col-12 col-sm-6 col-md-3">
                     <div class="form-group">
-                         <label for="forgot-password-email">{{ trans('strings.email') }}*</label>
+						<label for="forgot-password-email">{{ trans('strings.email') }}*</label>
                         <input name="email" v-model="email" type="email" class="form-control" id="forgot-password-email" aria-describedby="email" :placeholder="trans('strings.email')">
                     </div>
                 </div>
@@ -30,14 +30,12 @@
 		</form>
 	</div>
 </template>
-
 <script>
-	import {routes} from '../../api_routes'
-    import LoadComponent from '../Load'
-	export default {
+	import { routes } from '../../api_routes';
+    export default {
 		metaInfo () {
 			return {
-				title: this.trans('crud.users.I_forgot_my_password') + ' | '+this.trans('strings.lottoyou'),
+				title: this.trans('crud.users.I_forgot_my_password') + ' | ' + this.trans('strings.lottoyou'),
 				meta: [
 					{
 						name: 'description', 
@@ -48,7 +46,7 @@
 		},
 		name: "VcForgotPassword",
 		watch: {
-			birth_date(newValue, oldValue) {
+			birth_date (newValue, oldValue) {
 				this.$refs.birth_date.updateValue(newValue);
 			}
 		},
@@ -63,7 +61,7 @@
             }
         },
 		methods: {
-			requestCheckTokenForgotPassword() {
+			requestCheckTokenForgotPassword () {
 				let requestCheckTokenForgotPassword = axios.create();
 				requestCheckTokenForgotPassword.interceptors.request.use(config => {
 					return config;
@@ -71,7 +69,7 @@
 				let url = routes.users.check_token_forgot_password.replace('{hash}', this.$route.params.hash);
 				requestCheckTokenForgotPassword.post(url)
 				.then((response) => {
-					if(response.status === 200) {
+					if (response.status === 200) {
 						//this.password = '';
 						//this.confirm_password = '';
 					}
@@ -79,7 +77,7 @@
 					this.$router.push({name: 'home'});
 				});
 			},
-			requestForgotPassword() {
+			requestForgotPassword () {
 				let requestForgotPassword = axios.create();
 				requestForgotPassword.interceptors.request.use(config => {
 					this.loading.submit = true;
@@ -91,16 +89,16 @@
 						birth_date: this.birth_date
 					}
 				).then((response) => {
-					if(response.status === 200) {
+					if (response.status === 200) {
 						toastr.options.timeOut = 5000;
 						toastr.options.newestOnTop = true;
-						if(response.data.message != null && response.data.message != '') {
+						if (response.data.message != null && response.data.message != '') {
 							swal({
 								showCloseButton: true,
 								imageUrl: '/imgs/logo.png',
 								imageHeight: 50,
 								imageAlt: 'Logo lottoyou',
-								title: this.trans('strings.success'),
+								title: this.trans('strings.' + response.data.status),
 								html: `<p style="text-align: left">${response.data.message}</p>`,
 								showConfirmButton: true,
 							});
@@ -110,7 +108,7 @@
 								imageUrl: '/imgs/logo.png',
 								imageHeight: 50,
 								imageAlt: 'Logo lottoyou',
-								title: this.trans('strings.success'),
+								title: this.trans('strings.' + response.data.status),
 								html: `<p style="text-align: left">${this.trans('alerts.users.forgot_password.success')}</p>`,
 								showConfirmButton: true,
 							});
@@ -123,13 +121,13 @@
 					this.loading.submit = false;
 					this.email = '';
 					this.birth_date = '';
-					if(error.response.data.message != null && error.response.data.message != '') {
+					if (error.response.data.message != null && error.response.data.message != '') {
 						swal({
 							showCloseButton: true,
 							imageUrl: '/imgs/logo.png',
 							imageHeight: 50,
 							imageAlt: 'Logo lottoyou',
-							title: this.trans('strings.success'),
+							title: this.trans('strings.' + error.response.data.status),
 							html: `<p style="text-align: left">${error.response.data.message}</p>`,
 							showConfirmButton: true,
 						});
@@ -139,7 +137,7 @@
 							imageUrl: '/imgs/logo.png',
 							imageHeight: 50,
 							imageAlt: 'Logo lottoyou',
-							title: this.trans('strings.success'),
+							title: this.trans('strings.' + error.response.data.status),
 							html: `<p style="text-align: left">${this.trans('alerts.users.forgot_password.error')}</p>`,
 							showConfirmButton: true,
 						});
@@ -147,12 +145,12 @@
 				});
 			}
 		},
-		mounted() {
+		mounted () {
 			//window.document.title = this.trans('crud.users.I_forgot_my_password');
 			this.loading.component = false;
 			let vm = this;
 			let time = setInterval(() => {
-                if($('#forgot-password').length > 0) {
+                if ($('#forgot-password').length > 0) {
                     clearInterval(time);
 					let form = $('#forgot-password');
                     form.validate({
@@ -200,11 +198,8 @@
             setTimeout(() => {
                 window.prerenderReady = true;
             }, 1000);
-		},
-		components: {
-            LoadComponent
-        }
-	}
+		}
+	};
 </script>
 
 <style scoped>

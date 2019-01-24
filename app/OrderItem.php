@@ -15,7 +15,10 @@ class OrderItem extends Model
     public $timestamps = true;
 
     protected $appends = [
-        
+        'lottery',
+        'scratch_card',
+        'soccer_expert',
+        'league'
     ];
 
     /**
@@ -43,56 +46,92 @@ class OrderItem extends Model
     ];
 
     /**
-     Pedido
-    */
+     * Categoria da loteria do item
+     */
+    public function historicBalance() 
+    {
+        return $this->belongsTo(HistoricBalance::class, 'historic_balance_id');
+    }
+
+    /**
+     * Pedido
+     */
     public function order() 
     {
         return $this->belongsTo(Order::class, 'order_id');
     }
 
     /**
-     Categoria do soccer expert do item
-    */
-    public function soccerExpert() 
+     * Categoria do soccer expert do item
+     */
+    public function getSoccerExpertAttribute() 
     {
-        return $this->belongsTo(SoccerExpert::class, 'soccer_expert_id');
+        if ($this->type === 'soccer_expert') {
+            return SoccerExpert::where('id', '=', $this->context_id)->get()->first();
+        }
+        return null;
     }
 
     /**
-     Tema da raspadinha do item
-    */
-    public function scratchCard() 
+     * Tema da raspadinha do item
+     */
+    public function getScratchCardAttribute() 
     {
-        return $this->belongsTo(ScratchCardTheme::class, 'scratch_card_id');
+        if ($this->type === 'scratch_card') {
+            return ScratchCardTheme::where('id', '=', $this->context_id)->get()->first();
+        }
+        return null;
     }
 
     /**
-     Categoria da loteria do item
-    */
-    public function lottery() 
+     * Categoria da loteria do item
+     */
+    public function getLotteryAttribute() 
     {
-        return $this->belongsTo(Lottery::class, 'lottery_id');
+        if ($this->type === 'lottery') {
+            return Lottery::where('id', '=', $this->context_id)->get()->first();    
+        }
+        return null;
     }
 
     /**
-     Jogo de Loteria ou seja, as cartelas geradas pelo mesmo item
-    */
+     * Categoria da loteria do item
+     */
+    public function leaPackage() 
+    {
+        return $this->belongsTo(LeaguePackage::class, 'lea_package_id');
+    }
+
+     /**
+     * Categoria da loteria do item
+     */
+    public function getLeagueAttribute() 
+    {
+        if($this->type === 'cartoleando') {
+            return League::where('id', '=', $this->context_id)->get()->first();    
+        }
+        return null;
+    }
+
+    /**
+     * Jogo de Loteria ou seja, as cartelas geradas pelo mesmo item
+     */
     public function lotteryGames() 
     {
         return $this->hasMany(LotteryUser::class, 'order_item_id');
     }
 
     /**
-     Jogo de Raspadinha ou seja, gerada pelo mesmo item
-    */
+     * Jogo de Raspadinha ou seja, gerada pelo mesmo item
+     */
     public function scratchCardGame() 
     {
         return $this->hasMany(ScratchCard::class, 'order_item_id');
     }
 
     /**
-     Jogo de Soccer Expert ou seja, as cartelas geradas pelo mesmo item
-    */
+     * Jogo de Soccer Expert ou seja, as cartelas geradas pelo mesmo item
+     */
     public function soccerExpertGame() 
     {
         return $this->hasOne(SoccerExpertBet::class, 'order_item_id');

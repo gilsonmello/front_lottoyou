@@ -1,8 +1,8 @@
-import state from './state'
-import mutations from './mutations'
-import actions from './actions'
+import state from './state';
+import mutations from './mutations';
+import actions from './actions';
 
-export default{
+export default {
 	state,
 	mutations,
 	actions,
@@ -14,4 +14,4 @@ export default{
 	      	return state.authUser
 	    }
   	}
-}
+};

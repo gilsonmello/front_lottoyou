@@ -117,8 +117,8 @@
 </template>
 
 <script>
-	import {mapState, mapGetters} from 'vuex'
-	import {routes} from '../../../api_routes'
+	import { mapState, mapGetters } from 'vuex';
+	import { routes } from '../../../api_routes';
 	export default {
 		props: ['order_id'],
 		computed: {

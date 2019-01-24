@@ -9,7 +9,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body" style="padding: 0;" v-if="theme">
-                	<load-component v-if="loading.component == true"></load-component>
+                	<load v-if="loading.component == true" />
 
                 	<div class="col-lg-12 col-12 col-md-12 col-sm-12 no-padding" v-else :style="backgroundDemo(theme.img_background_url)">			      			
 	      				<div class="row" style="padding: 20px 20px 0 20px;">
@@ -41,14 +41,14 @@
       								</div>
 	      						</div>
 	      						<div class="row h" v-if="loading.scratchpad" >
-	      							<div class="col-lg-4 col-4 col-md-4 col-sm-4" v-for="(val, index) in (0, 9)">
+	      							<div class="col-lg-4 col-4 col-md-4 col-sm-4" v-for="(val, index) in (0, 9)" :key="index">
 	      								<div class="scratchpad">
 	      									
 	      								</div>
 	      							</div>
 	      						</div>
 	      						<div class="row h" v-else>
-	      							<div class="col-lg-4 col-4 col-md-4 col-sm-4" v-for="(val, index) in (0, 9)">
+	      							<div class="col-lg-4 col-4 col-md-4 col-sm-4" v-for="(val, index) in (0, 9)" :key="index">
 	      								<div class="scratchpad empty" :style="backgroundScratchpad()">
 		      							</div>
 	      							</div>
@@ -87,20 +87,20 @@
 </template>
 
 <script>
-	import LoadComponent from '../Load'
-	import {routes} from '../../api_routes'
-	import {mapState, mapGetters} from 'vuex'
+	import { routes } from '../../api_routes';
+	import { mapState, mapGetters } from 'vuex';
 	export default {
 		props: [],
 		computed: {
 			...mapGetters([
-                'auth'
+				'auth',
+				'getSystemCurrency'
             ]),
 		},
-		beforeDestroy() {
+		beforeDestroy () {
             this.$eventBus.$off('openModal');
         },
-		data() {
+		data () {
 			return {
 				loading: {
 					component: true,
@@ -112,7 +112,7 @@
 				attempts: 5,
 			}
 		},
-		mounted() {
+		mounted () {
 			//Escuta o evento open Modal
 			this.$eventBus.$on('openModal',  (theme, onHidden) => {
                 this.theme = theme;
@@ -137,45 +137,42 @@
 			
 		},
 		methods: {			
-			handleBuyNow(el) {
+			handleBuyNow (el) {
 				this.app.reload();
 			},
-			changeScratchCard() {
-				var instance = axios.create();
+			changeScratchCard () {
+				const rq = axios.create();
 
-				instance.interceptors.request.use(config => {	
+				rq.interceptors.request.use(config => {	
 					this.loading.game = 1;
 					return config;
 				});
 
-				var url = routes.scratch_card_themes.change_scratch_card
+				let url = routes.scratch_card_themes.change_scratch_card
 					.replace('{scratch_card_id}', this.scratch_card.id)
-					.replace('{theme_id}', this.theme.id)
-					.replace('{user_id}', this.auth.id);
-
-				return instance.post(url, {});				
+					.replace('{theme_id}', this.theme.id);
+				return rq.post(url);				
 			},
-			handlePlayAgain: function (el) {
+			handlePlayAgain (el) {
 				
-				if(this.attempts == 0) {
+				if (this.attempts === 0) {
 					$('.modal-scratch-card').modal('hide');
 				} else {
-					var instance = axios.create();
+					const rq = axios.create();
 					
 					this.loading.game = 1;
 					this.loading.scratchpad = false;
 					
-					instance.interceptors.request.use(config => {
+					rq.interceptors.request.use(config => {
 						$(this.$el).find('.btn-result').addClass('invisible');
 						return config;
 					});
 
 					var url = routes.scratch_card_themes.play
-						.replace('{theme_id}', this.theme.id)
-						.replace('{user_id}', this.auth.id);
+						.replace('{theme_id}', this.theme.id);
 
-					instance.get(url, {}).then(response => {
-			            if(response.status === 200) {
+					rq.get(url, {}).then(response => {
+			            if (response.status === 200) {
 			            	this.scratch_card = response.data
 			            	this.loading.scratchpad = true;
 							this.handleScratchPad();
@@ -185,22 +182,22 @@
 			        });				
 		        }		
 			},
-			backgroundScratchpad() {
+			backgroundScratchpad () {
 				return 'background-image: url('+this.theme.img_capa_url.replace(' ', '%20')+'); background-size: 100% 100%;';
 			},
-			handleReveal(el) {
+			handleReveal (el) {
 				this.changeScratchCard()
 					.then(response => {
-			            if(response.status === 200) {
+			            if (response.status === 200) {
 
 			            	this.loading.game = 3;
 			            	this.attempts = response.data.quantity
 
 			            	$(this.$el).find('.scratchpad').wScratchPad('clear');
 
-			            	if(this.scratch_card.premio > 0) {
+			            	if (this.scratch_card.premio > 0) {
 			            		this.refreshAuth();
-								$(this.$el).find('.btn-result').text('Parabéns, você ganhou: $ '+this.scratch_card.premio);
+								$(this.$el).find('.btn-result').text('Parabéns, você ganhou: '+this.getSystemCurrency.data.symbol+''+this.scratch_card.premio);
 							} else {
 								$(this.$el).find('.btn-result').text(this.trans('strings.good_luck_to_the_next'));
 							}
@@ -216,14 +213,14 @@
 			        	
 			        });
 			},
-			handleScratchPad: function() {
+			handleScratchPad () {
 				var vm = this;
 				var dataScratchCard = this.scratch_card;
 				var theme = this.theme;
 				var count = 1;
         		var time = setInterval(() => {	
         			//Verificando se encontrou as divs scratchpad e se seus parentes possuem largura maior do que 0
-					if($(vm.$el).find('.scratchpad').length > 0 && $(vm.$el).find('.scratchpad').parent().width() > 0) {
+					if( $(vm.$el).find('.scratchpad').length > 0 && $(vm.$el).find('.scratchpad').parent().width() > 0) {
 						clearInterval(time);
 						//Destruindo os scratchpads
 						$(vm.$el).find('.scratchpad').wScratchPad('destroy');
@@ -250,15 +247,15 @@
 		                            }
 
 		                            //Caso o usuário raspou 9 quadrados, verifica se o bilhete era premiado
-		                            if(i == 9) {		                            	
+		                            if (i == 9) {		                            	
 		                            	$(vm.$el).find('.scratchpad')
-							            		.wScratchPad('clear');
+											.wScratchPad('clear');
 
 						            	if(vm.scratch_card.premio > 0) {
 						            		vm.refreshAuth();
 											$(vm.$el)
 												.find('.btn-result')
-												.text('Parabéns, você ganhou: $ '+vm.scratch_card.premio);
+												.text('Parabéns, você ganhou: '+vm.getSystemCurrency.data.symbol+''+vm.scratch_card.premio);
 										} else {
 											$(vm.$el)
 												.find('.btn-result')
@@ -266,7 +263,7 @@
 										}
 
 		                            	vm.changeScratchCard().then(response => {
-								            if(response.status === 200) {
+								            if (response.status === 200) {
 								            	vm.attempts = response.data.quantity;
 
 								            	$(vm.$el)
@@ -296,7 +293,7 @@
 					}						
 				});
 			},
-			handlePlay: function(el) {
+			handlePlay (el) {
 				var instance = axios.create();
 				instance.interceptors.request.use(config => {
 					$(el.target).addClass('hide');
@@ -307,11 +304,10 @@
 				});
 				
 				var url = routes.scratch_card_themes.play
-					.replace('{theme_id}', this.theme.id)
-					.replace('{user_id}', this.auth.id);
+					.replace('{theme_id}', this.theme.id);
 
 				instance.get(url, {}).then(response => {
-		            if(response.status === 200) {
+		            if (response.status === 200) {
 		            	this.loading.scratchpad = true;
 		            	this.scratch_card = response.data
 						this.handleScratchPad();
@@ -320,16 +316,16 @@
 		        		        		
 		        });				
 			},
-			backgroundDemo(background) {
+			backgroundDemo (background) {
 				return 'background-image: url('+background.replace(' ', '%20')+'); background-size: 100% 100%;';
 			},
 			//Função para remover o espaço de uma url
-			src(src) {
+			src (src) {
 				return src.replace(' ', '%20');
 			},
 		},
 		components: {
-			LoadComponent
+			
 		},
 		watch: {
 			'loading.scratchpad': {
@@ -345,8 +341,8 @@
 					}
 				}
 			},
-			attempts(newValue, oldValue) {
-				if(newValue == null) {
+			attempts (newValue, oldValue) {
+				if (newValue == null) {
 					this.loading.game = 4;
 					$(this.$el).find('.no-tickets-container').removeClass('hide');
 					$(this.$el).find('.h').css({

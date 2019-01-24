@@ -80,8 +80,7 @@ class SoccerExpertRound extends Model
     }
 
     public function sweepstake() {
-    	return $this->belongsTo(SoccerExpertSweepstake::class, 'soc_bolao_id')
-            ->where('active', '=', 1);
+    	return $this->belongsTo(SoccerExpertSweepstake::class, 'soc_bolao_id');
     }
 
     public function getImagemCapaAttribute($imagem)

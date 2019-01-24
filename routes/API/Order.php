@@ -13,4 +13,4 @@ Route::resource('orders', 'OrderController', [
 ]);
 
 Route::get('orders/{id}/items', 'OrderController@items');
-Route::post('orders/generate_order', 'OrderController@generateOrder');
+Route::middleware('auth:api')->post('orders/generate_order', 'OrderController@generateOrder');

@@ -4,8 +4,8 @@
 		<header-component></header-component>
 		<section class="content">
 			<transition name="fade" mode="out-in">
-	            <keep-alive>
-					<router-view></router-view>
+        <keep-alive>
+          <router-view></router-view>
 				</keep-alive>
 			</transition>
 		</section>
@@ -14,268 +14,113 @@
 
 		<login-component></login-component>
 
-		<vc-modal></vc-modal>
+    <portal-target name="destination">
+			<!--
+			This component can be located anwhere in your App.
+			The slot content of the above portal component will be rendered here.
+			-->
+    </portal-target>
+
+		<portal-target name="cartoleando-index-modal">
+			<!--
+			This component can be located anwhere in your App.
+			The slot content of the above portal component will be rendered here.
+			-->
+    </portal-target>
 	</main>
 </template>
 
 <script>
-	import HeaderComponent from './HeaderComponent'
-	import SliderComponent from './SliderComponent'
-	import CarouselComponent from './CarouselComponent'
-	import FooterComponent from './FooterComponent'
-	import LoginComponent from './LoginComponent'
-	import VcModal from './VcModal'
-	import router from '../router'
-	import LoadComponent from './Load'
-	import AppLoadComponent from './AppLoad'
-	import {routes} from '../api_routes'
-	import {mapGetters} from 'vuex'
-	export default {
-		data() {
-			return {
-				loading: {
-					component: true
-				},
-				modal: {
-					param: null,
-					type: ''					
-				},
-				auth: ''
-			}
-		},
-		methods: {
-			cartRequest() {
-				//Requisição para pegar os itens do carrinho salvo
-				let cartRequest = axios.create();
+import HeaderComponent from './HeaderComponent';
+import SliderComponent from './SliderComponent';
+import CarouselComponent from './CarouselComponent';
+import FooterComponent from './FooterComponent';
+import LoginComponent from './LoginComponent';
+import VcModal from './VcModal';
+import router from '../router';
+import AppLoadComponent from './AppLoad';
+import { routes, getHeaders, domain } from '../api_routes';
+import { mapGetters } from 'vuex';
+export default {
+  data () {
+    return {
+      loading: {
+        component: true
+      },
+      modal: {
+        param: null,
+        type: ''					
+      },
+    }
+  },
+  methods: {
+    cartRequest () {
+      //Requisição para pegar os itens do carrinho salvo
+      let cartRequest = axios.create();
 
-				cartRequest.interceptors.request.use(config => {
-					this.loading.component = true;
-				  	return config;
-				});
+      cartRequest.interceptors.request.use(config => {
+        //this.loading.component = true;
+        return config;
+      });
+      //Executando a requisição
+      cartRequest.get(routes.carts.index, { params: { id: (this.authUser && this.authUser.id) || null } })
+        .then((response) => {
+          if (response.status === 200) {
+            //Caso encontrou algum item
+            //Seto os items na estrura
+            if (response.data.items.length > 0) {
+              this.$store.dispatch('setItems', response.data.items)
+            }
 
-				//Executando a requisição
-				cartRequest.get(routes.carts.index, {
-					params: {
-						id: this.authUser != null ? this.authUser.id : null
-					}
-				}).then((response) => {
-					if(response.status === 200) {
-						//Caso encontrou algum item
-						//Seto os items na estruta
-						if(response.data.items.length > 0)
-		            		this.$store.dispatch('setItems', response.data.items)
+            this.loading.component = false;
+          }
+        }).catch((error) => {
+          this.loading.component = false;
+        });
+    },
+    init () {
+      this.cartRequest();
+      this.getSystemSettings()
+        .then((response) => {
+          this.$store.dispatch('setSystemSettings', response.data);
+        })
+        .catch((error) => {
 
-		            	this.loading.component = false;
-					}
-				}).catch((error) => {
-					this.loading.component = false;
-				});
-			},
-			init() {
-				//Pegando os dados do usuário no localstorage
-				var access_token = JSON.parse(window.localStorage.getItem('access_token'));
-				access_token = access_token != null ? access_token : null;
-
-				//Token para refresh
-				var refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
-				refresh_token = refresh_token != null ? refresh_token : '';
-
-
-				if(access_token && this.$route.name != 'users.account') {
-					this.refreshAuthPromise()
-					.then(response => {
-						if(response.status === 200) {
-							response.data.access_token = access_token;
-				        	response.data.refresh_token = refresh_token;
-							//window.localStorage.setItem('authUser', JSON.stringify(response.data));
-							this.$store.dispatch('setUserObject', response.data);
-							this.cartRequest();
-							this.onReady();
-							this.beforeEach();
-						}
-				    }).catch((error) => {
-				    	this.cartRequest();
-				    	this.onReady();
-						this.beforeEach();
-						this.$store.dispatch('clearAuthUser');
-						window.localStorage.removeItem('authUser');
-						window.localStorage.removeItem('access_token');
-						window.localStorage.removeItem('refresh_token');
-				    });
-				} else {			
-			    	this.cartRequest();		
-			    	this.onReady();
-					this.beforeEach();
-				}
-
-
-				//this.authUser = JSON.parse(window.localStorage.getItem('authUser'));
-				//this.$store.dispatch('setUserObject', this.authUser);				
-
-				
-			},
-			onReady() {
-				router.onReady(() => {
-
-					/*if(this.$router.history.current.query.route_name != null
-						&& this.$router.history.current.query.route_name !== '') {
-                    	this.$router.push({
-                      		name: this.$router.history.current.query.route_name
-                    	})
-					}*/
-
-					let access_token = JSON.parse(window.localStorage.getItem('access_token'));
-					access_token = access_token != null ? access_token : null;
-					//Verificando se a página necessita de login,
-					if(this.$router.history.current.meta.requiresAuth && access_token == null) {
-						this.$router.push({
-							name: 'home'
-						})
-					}
-					
-				});
-			},
-			beforeEach() {
-				router.beforeEach((to, from, next) => {
-					this.loading.component = true;
-					//Pegando os dados do usuário no localstorage
-					var access_token = JSON.parse(window.localStorage.getItem('access_token'));
-					access_token = access_token != null ? access_token : null;
-					//let authUser = JSON.parse(window.localStorage.getItem('authUser'));
-					//authUser = authUser != null ? authUser : null;
-
-				    if(to.meta.requiresAuth === true && (access_token)) {
-				    	next();
-				    }
-
-				    //Se a rota depende de login
-					if(to.meta.requiresAuth === true && (access_token == null)) {
-
-						//Verificando se é diferente da rota para edição de conta do usuário
-						//Pois se não o fizer, a requisição será executada 2 vezes, porque
-						//Dentro do component UserAcount é executada uma requisição para pegar os dados
-						//Do usuário atualizado
-						/*if(to.name != 'users.account') {					
-
-							let refresh_token = JSON.parse(window.localStorage.getItem('refresh_token'));
-							refresh_token = refresh_token != null ? refresh_token : '';
-
-							var loginRequest = axios.create();
-
-							loginRequest.interceptors.request.use(config => {
-								this.loading.component = true;
-							  	return config;
-							});
-							//Fazendo busca do usuário logado, para setar na estrutura de dados
-							loginRequest.get(routes.auth.user, { headers: {
-								'Accept': 'application/json',
-								'Authorization': 'Bearer ' + access_token
-							}}).then(response => {
-
-								if(response.status === 200) {
-						        	response.data.access_token = access_token
-						        	
-						        	response.data.refresh_token = refresh_token
-
-									window.localStorage.setItem('authUser', JSON.stringify(response.data))
-
-									this.$store.dispatch('setUserObject', response.data);
-
-									this.loading.component = false;
-
-									next();
-								}
-			                  	
-			                }).catch((error) => {
-								next({
-					                name: 'login'
-					            });
-			                });
-			            } else {
-			            	//Se a rota não for para o component UserAccount,
-			            	//Verifica se o usuário está logado
-			            	//Se estiver logado, deixa passar,
-			            	//Se não, redireciona para o login
-
-			            	console.log(access_token)
-				            if(access_token) {
-					            next()
-					        } else {
-					            toastr.info('Você já está logado.');
-						        next({
-						            name: 'home'
-						        });
-					        }
-					    }*/
-
-					    toastr.info('Você precisa está logado.');
-				        next(false);
-				        this.loading.component = false;
-  					} 
-
-				    if(!to.meta.requiresAuth) {
-				    	next();
-				    }
-
-				});
-			}
-		},
-		watch: {
-
-		},
-		beforeCreate() {
-			
-		},
-		beforeMount() {
-			
-		},
-		created() {
-			
-		},
-		mounted() {		
-			this.init();		
-
-			router.afterEach((to, from) => {
-				ga('set', 'page', to.path);
-  				ga('send', 'pageview');
-				
-				this.loading.component = false;
-			    var height = $('main').prop('scrollHeight');
-			    $('html, body').animate({
-			        scrollTop: 0
-			    },  300);
-			    setTimeout(() => {
-			    	if(to.matched.length == 0) {
-				    	this.$router.push({name: 'home'});
-					}
-			    }, 200);
-
-			    //Fechando o modal de login
-			    $('.modal').modal('hide');
-
-                var navMain = $("#navbarCollapse");
-				navMain.collapse('hide');
-				
-				$('.tooltip-item-account')
-					.removeClass('open');
-			});			
-		},
-		components: {
-			HeaderComponent,
-			SliderComponent,
-			CarouselComponent,
-			FooterComponent,
-			LoadComponent,
-			LoginComponent,
-			AppLoadComponent,
-			VcModal
-		},
-		computed: {
-            ...mapGetters([
-                'authUser'
-            ]),
-        },
-	}
+        });
+    },
+  },
+  watch: {
+    //
+  },
+  beforeCreate () {
+    // 
+  },
+  beforeMount () {
+    // 
+  },
+  created () {
+    this.init();
+  },
+  mounted () {	
+    // 
+  },
+  components: {
+    HeaderComponent,
+    SliderComponent,
+    CarouselComponent,
+    FooterComponent,
+    LoginComponent,
+    AppLoadComponent,
+    VcModal
+  },
+  computed: {
+    ...mapGetters([
+      'authUser',
+      'auth',
+      'systemSettings'
+    ]),
+  },
+};
 </script>
 
 <style>

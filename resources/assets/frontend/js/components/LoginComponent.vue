@@ -113,11 +113,10 @@
 		</form>  -->
 </template>
 <script>
-	import {mapGetters} from 'vuex'
-	import {routes} from '../api_routes'
-	import LoadComponent from './Load'
+	import { mapGetters } from 'vuex';
+	import { routes, getHeaders, domain } from '../api_routes';
 	export default {
-		data: function() {
+		data () {
 			return {
 				email: '',
 				password: '',
@@ -134,11 +133,12 @@
 		},
 		computed: {
             ...mapGetters([
-                'auth'
+				'auth',
+				'loginOptions'
             ])
 		},
 		watch: {
-			facebook(newValue, oldValue) {
+			facebook (newValue, oldValue) {
 				if(newValue.status === 'connected') {
 					window.FB.api('/me', {
 						fields: 'id,email,first_name,last_name,middle_name,name,name_format,picture,short_name',
@@ -157,8 +157,8 @@
 							short_name: responseF.short_name,
 						})).then((response) => {
 							if(response.status === 200) {
-								window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-								window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+								Cookies.set('access_token', JSON.stringify(response.data.refresh_token), { domain: domain });
+								Cookies.set('refresh_token', JSON.stringify(response.data.refresh_token), { domain: domain });
 								this.refreshAuth();
 								$('.modal-login').modal('hide');
 								//window.location.reload();
@@ -170,15 +170,14 @@
 					});
 				} else {
 					this.$store.dispatch('clearAuthUser');
-					window.localStorage.removeItem('authUser');
-					window.localStorage.removeItem('access_token');
-					window.localStorage.removeItem('refresh_token');
+					Cookies.remove('authUser', { domain });
+					Cookies.remove('access_token', { domain });
+					Cookies.remove('refresh_token', { domain });
 				}
 			}
 		},
-		mounted: function() {
+		mounted () {
 			this.loading.component = false;
-			
 			/* FB.getLoginStatus((response) => {
 			    this.facebook = response;
 			}); */
@@ -199,7 +198,7 @@
 			})
 		},
 		methods: {
-			userExistsRequest(responseF) {
+			userExistsRequest (responseF) {
 				let userExistsRequest = axios.create();
 				userExistsRequest.interceptors.request.use(config => {
 					return config;
@@ -209,9 +208,9 @@
 				userExistsRequest.post(url, {
 					email: responseF.email
 				}).then((response) => {
-					if(response.status === 200) {
-						window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-						window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+					if (response.status === 200) {
+						Cookies.set('access_token', JSON.stringify(response.data.access_token), { domain });
+						Cookies.set('refresh_token', JSON.stringify(response.data.refresh_token), { domain });
 						let access_token = response.data.access_token;
 						let refresh_token = response.data.refresh_token;
 						
@@ -261,17 +260,17 @@
 					});
 				});
 			},
-			logoutFacebook() {
+			logoutFacebook () {
 				window.FB.logout((response) => {
 					
 				});
 			},
-			loginFacebook() {
+			loginFacebook () {
 				window.FB.login((response) => {
 					this.facebook = response;
 				}, {scope: 'public_profile,email,user_birthday'});
 			},
-			viewPassword(event) {
+			viewPassword (event) {
 				var target = $(event.target);
 				
 				target.removeClass('animate-zoom');
@@ -296,7 +295,7 @@
 				})
 				
 			},
-			login: function() {
+			login () {
 				const data = {
 		            grant_type: 'password',
 		            client_id: 2,
@@ -306,6 +305,8 @@
 		            scope: '*',
 		        };
 
+				//Emitindo um evento 'Fazendo login'
+				this.$eventBus.$emit('signingIn', true);
 		        var loginRequest = axios.create();
 		        loginRequest.interceptors.request.use(config => {
 		        	this.loading.login = true;
@@ -314,10 +315,10 @@
 
 				loginRequest.post(routes.auth.login, qs.stringify(data)).then(response => {
 					
-					if(response.status === 200) {
-
-						window.localStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-						window.localStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+					if (response.status === 200) {
+						
+						Cookies.set('access_token', JSON.stringify(response.data.access_token), { domain });
+						Cookies.set('refresh_token', JSON.stringify(response.data.refresh_token), { domain } );
 
 						//this.$router.push({name: 'users.account'});
 
@@ -330,50 +331,51 @@
 						    	clearInterval(time);
 					    	}
 						});
-
 			        	
 			        	let access_token = response.data.access_token;
                         let refresh_token = response.data.refresh_token;
 
-                        let loginRequest = axios.create();
+						let userRequest = axios.create();
 						//Fazendo busca do usuário logado, para setar na estrutura de dados
-						loginRequest.get(routes.auth.user, { headers: {
-							'Content-Type' : 'application/json',
-							'Accept' : 'application/json',
-	    					'Authorization': 'Bearer ' + access_token
-						}}).then(response_2 => {
-							this.email = '';
-							this.password = '';
-							this.errors = {};
-							this.loading.login = false;
-				        	response_2.data.access_token = access_token;
+						userRequest.get(routes.auth.user, getHeaders())
+							.then(response_2 => {
+								this.email = '';
+								this.password = '';
+								this.errors = {};
+								this.loading.login = false;
+								response_2.data.access_token = access_token;
+								response_2.data.refresh_token = refresh_token;
 
-		        			response_2.data.refresh_token = refresh_token;
+								let authUser = response_2.data;
+								
+								window.axios.defaults.headers.common = getHeaders().headers;
+								
+								//window.localStorage.setItem('authUser', JSON.stringify(authUser));
 
-                            let authUser = response_2.data;
+								this.$store.dispatch('setUserObject', authUser);
+								
+								//window.location.reload();
 
-							//window.localStorage.setItem('authUser', JSON.stringify(authUser));
+								$('.modal-login').modal('hide');
 
-							this.$store.dispatch('setUserObject', authUser);
-		                  	
-		                  	//window.location.reload();
+								this.$eventBus.$emit('signingIn', false);
+								this.$store.dispatch('setTeamUser', teamRequestResponse.data);
 
-		                  	this.$router.push({name: 'home'});
-
-		                  	$('.modal-login').modal('hide');
-		                
-		                }).catch((error_2) => {
-		                	this.loading.login = false;
-							this.password = '';
-							this.errors = {
-								credentials: 'Usuário ou Senha inválidos'
-							};
-		                });
-		              
+								if(this.loginOptions.redirectToHome === true) {
+									this.$router.push({name: 'home'});
+								}
+							
+							}).catch((error_2) => {
+								this.loading.login = false;
+								this.password = '';
+								this.errors = {
+									credentials: 'Usuário ou Senha inválidos'
+								};
+							});
 					}
 				}).catch((error) => {
 					this.loading.login = false;
-					if(error.response.data.message != null && error.response.data.message != '') {
+					if(error.response != null && error.response.data.message != '') {
 						toastr.error(
 							error.response.data.message,
 							this.trans('strings.error')
@@ -386,11 +388,11 @@
 				});
 			}
 		},
-		activated: function() {
+		activated () {
 
 		},
 		components: {
-			LoadComponent
+			
 		}
 	}
 </script>
