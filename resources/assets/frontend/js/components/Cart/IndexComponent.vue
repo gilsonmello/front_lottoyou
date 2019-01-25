@@ -198,7 +198,7 @@
 	//import SoccerExpertComponent from './SoccerExpertComponent'
 	import SoccerExpertComponent from './SoccerExpertComponent';
 	import VcCartoleando from './VcCartoleando';
-	import { routes, getHeaders } from '../../api_routes';
+	import { routes, getHeaders, domain } from '../../api_routes';
 	export default {
 		metaInfo () {
 			return {
@@ -240,8 +240,7 @@
 
 				validateRequest.post(
 					routes.carts.validate, 
-					this.purchase, 
-					getHeaders()
+					this.purchase
 				).then(response => {
 					if (response.status === 200) {
 						this.completePurchase();
@@ -264,16 +263,8 @@
 
 				//this.purchase['user_id'] = this.auth.id;
 
-				completePurchaseRequest.post(
-					routes.carts.complete_purchase, 
-					this.purchase, 
-				{
-					headers: {
-						'Content-Type' : 'application/json',
-						'Accept' : 'application/json',
-						'Authorization': 'Bearer ' + this.auth.access_token
-					}
-				}).then(response => {
+				completePurchaseRequest.post( routes.carts.complete_purchase, this.purchase)
+				.then(response => {
 					if (response.status === 200) {
 						this.refreshAuthPromise()
 							.then((response) => {
@@ -289,15 +280,15 @@
 
 									response.data.access_token = access_token;
 									response.data.refresh_token = refresh_token;
-
-									this.$store.dispatch('setUserObject', response.data);
-									this.$store.dispatch('clearPurchase');
-									this.$router.push({
-										name: 'users.transactions'
+									this.$store.dispatch('setUserObject', response.data).then(r => {
+										this.$router.push({
+											name: 'users.transactions'
+										});
 									});
+									this.$store.dispatch('clearPurchase');
 								}								
 							}).catch((error) => {
-
+								console.log(error);
 							});						
 					}
 					this.loading.paying = false;

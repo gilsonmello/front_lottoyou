@@ -46,6 +46,14 @@ class OrderItem extends Model
     ];
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function item()
+    {
+        return $this->morphTo();
+    }
+
+    /**
      * Categoria da loteria do item
      */
     public function historicBalance() 

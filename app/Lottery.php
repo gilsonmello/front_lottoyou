@@ -48,6 +48,14 @@ class Lottery extends Model
         
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function orderItems()
+    {
+        return $this->morphMany(OrderItem::class, 'item');
+    }
+
     public function sweepstakes() 
     {
         return $this->hasMany(LotterySweepstake::class, 'lot_categoria_id');

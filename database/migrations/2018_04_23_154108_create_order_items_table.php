@@ -38,7 +38,7 @@ class CreateOrderItemsTable extends Migration
                 ->nullable();
             
             $table->longText('data')->nullable();
-
+            $table->morphs('item');
             $table->timestamps();
             
             $table->softDeletes();

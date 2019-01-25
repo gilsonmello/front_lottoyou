@@ -42,6 +42,14 @@ class ScratchCard extends Model
         
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function orderItems()
+    {
+        return $this->morphMany(OrderItem::class, 'item');
+    }
+
     public function theme() {
     	return $this->belongsTo(ScratchCardTheme::class, 'temas_raspadinha_id');
     }

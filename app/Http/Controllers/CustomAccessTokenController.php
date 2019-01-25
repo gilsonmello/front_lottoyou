@@ -65,7 +65,7 @@ class CustomAccessTokenController extends AccessTokenController
 
 
             //Verificando se o usuário está ativo e não encontra-se deletado
-            $user = User::findByUsername($httpRequest->username);
+            $user = User::findByUsername($httpRequest->username)->first();
     
             // Perform your validation here
             if(is_null($user)) {
@@ -74,9 +74,11 @@ class CustomAccessTokenController extends AccessTokenController
                 ], 422);
             }
 
-            $user->last_login = date('Y-m-d H:i:s');
-            $user->ip_address = request()->ip();
-            $user->save();
+            if ($user) {
+                $user->last_login = date('Y-m-d H:i:s');
+                $user->ip_address = request()->ip();
+                $user->save();
+            }
 
             // If the validation is successfull:
             return $this->issueToken($request);
