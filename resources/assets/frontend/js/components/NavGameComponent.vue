@@ -22,9 +22,9 @@
 	            	<a class="nav-link">{{ trans('strings.lotteries') }}</a>
             	</router-link>
 
-				<router-link tag="li" :to="{ name: 'cartoleando.index' }">
+				<!-- <router-link tag="li" :to="{ name: 'cartoleando.index' }">
 	            	<a class="nav-link">{{ trans('strings.cartoleando') }}</a>
-            	</router-link>
+            	</router-link> -->
 
 				<li class="no-mobile">
 					<a>&nbsp</a>
