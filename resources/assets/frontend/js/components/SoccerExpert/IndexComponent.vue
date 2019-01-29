@@ -3,13 +3,13 @@
 	<div class="container" v-else>
 		
 		<div class="row page-header">
-        	<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-        		<h1 style="display: inline">{{ trans('strings.soccer_expert') }}</h1>
-        		<router-link :to="{ name: 'how_to_play_soccer_expert' }" class="btn btn-md btn-primary pull-right">
-					{{ trans('strings.how_to_play') }} {{ trans('strings.soccer_expert') }}
-				</router-link>
-        	</div>
-        </div>
+      <div class="col-lg-12 col-12 col-md-12 col-sm-12">
+        <h1 style="display: inline">{{ trans('strings.soccer_expert') }}</h1>
+        <router-link :to="{ name: 'how_to_play_soccer_expert' }" class="btn btn-md btn-primary pull-right">
+          {{ trans('strings.how_to_play') }} {{ trans('strings.soccer_expert') }}
+        </router-link>
+      </div>
+    </div>
 
 		<div class="row" v-if="soccer_experts.length == 0">
 			<div class="col-lg-12">
@@ -26,9 +26,9 @@
 						</div>
 						<img class="header-image img-fluid" :alt="soccer_expert.nome" :src="src(soccer_expert.imagem_capa)">
 						<div class="descript">
-	                        <h2 class="ng-binding">{{ soccer_expert.nome }}</h2>
-	                        <p class="ng-binding">{{ soccer_expert.descricao }}</p>
-	                    </div>
+              <h2 class="ng-binding">{{ soccer_expert.nome }}</h2>
+              <p class="ng-binding">{{ soccer_expert.descricao }}</p>
+            </div>
 					</header>
 
 					<div class="soccer-expert-body">
@@ -78,86 +78,83 @@
 			</div>			
 		</div>
 
+    <div class="modal fade modal-jackpot-table" id="nivel1" data-backdrop="static" tabindex="-1" aria-labelledby="nivel1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content" v-if="loading.modalJackpotTable == true">
+            <div class="modal-body">
+              <load-component></load-component>
+            </div>
+          </div>
+          <div class="modal-content" v-else>
+          <!-- Modal Header -->
+          <div class="modal-header" style="border-bottom: none;" v-if="soccer_experts[indexClicked]">
+            <!-- <h4 class="modal-title">Modal Heading</h4> -->
+            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+              <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12" :style="backgroundDemo(soccer_experts[indexClicked].imagem_capa)+' padding-right: 0; padding-left: 0; min-height: 106px;'">
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions" style="background-color: #155C7B">
+                  <div class="" style="width: 100%;">
+                    <div class="row">
+                      <div class="col-lg-12 col-12 col-md-12 col-sm-12">
+                        <router-link :to="{ name: 'soccer_expert.play', params: {slug: soccer_experts[indexClicked].slug} }" style="display: block" class="btn btn-md btn-primary">
+                          {{ trans('strings.play_now') }}
+                        </router-link>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12 col-12 col-md-12 col-sm-12">
+                        
+                      </div>
+                    </div>
+                  </div>					        		
+                </div>
+              </div>
+            </div>		        	
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
 
-
-
-        <div class="modal fade modal-jackpot-table" id="nivel1" data-backdrop="static" tabindex="-1" aria-labelledby="nivel1" aria-hidden="true">
-		  	<div class="modal-dialog modal-lg">
-		  		<div class="modal-content" v-if="loading.modalJackpotTable == true">
-		  			<div class="modal-body">
-		  				<load-component></load-component>
-		  			</div>
-		  		</div>
-		  		<div class="modal-content" v-else>
-					<!-- Modal Header -->
-			      	<div class="modal-header" style="border-bottom: none;" v-if="soccer_experts[indexClicked]">
-			        	<!-- <h4 class="modal-title">Modal Heading</h4> -->
-						<div class="col-lg-12 col-md-12 col-12 col-sm-12">
-		        			<div class="row">
-		        				<div class="col-lg-4 col-md-4 col-sm-12 col-12" :style="backgroundDemo(soccer_experts[indexClicked].imagem_capa)+' padding-right: 0; padding-left: 0; min-height: 106px;'">
-					        	</div>
-					        	<div class="col-lg-8 col-md-8 col-sm-12 col-12 vcenter container-actions" style="background-color: #155C7B">
-					        		<div class="" style="width: 100%;">
-					        			<div class="row">
-					        				<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-						        				<router-link :to="{ name: 'soccer_expert.play', params: {slug: soccer_experts[indexClicked].slug} }" style="display: block" class="btn btn-md btn-primary">
-						        					{{ trans('strings.play_now') }}
-						        				</router-link>
-						        			</div>
-					        			</div>
-					        			<div class="row">
-						        			<div class="col-lg-12 col-12 col-md-12 col-sm-12">
-						        				
-						        			</div>
-						        		</div>
-					        		</div>					        		
-					        	</div>
-		        			</div>
-		        		</div>		        	
-			        	<button type="button" class="close" data-dismiss="modal">&times;</button>
-			      	</div>
-
-			      	<!-- Modal body -->
-			      	<div class="modal-body" style="padding-top: 0;">
-		        		<table class="table table-striped text-center">
-		        			<thead>
-		        				<tr>
-		        					<th>{{ trans('strings.position') }}</th>
-		        					<th>{{ trans('strings.percentage') }}</th>
-		        				</tr>
-		        			</thead>
-		        			<tbody>
-		        				<tr>
-		        					<td>1º</td>
-		        					<td>50%</td>
-		        				</tr>
-		        				<tr>
-		        					<td>2º</td>
-		        					<td>10%</td>
-		        				</tr>
-		        				<tr>
-		        					<td>3º</td>
-		        					<td>5%</td>
-		        				</tr>
-		        				<tr>
-		        					<td>4º ao 10º</td>
-		        					<td>1% ({{ trans('strings.each_one') }})</td>
-		        				</tr>
-		        				<tr>
-		        					<td>11º ao 20º</td>
-		        					<td>0.5% ({{ trans('strings.each_one') }})</td>
-		        				</tr>
-		        			</tbody>
-		        		</table>
-			      	</div>
-			      	<!-- <p>{{ trans('strings.each_one') }}</p> -->
-					<!-- Modal footer -->
-			      	<!--<div class="modal-footer">
-			      		<p>{{ trans('strings.each_one') }}</p>
-		        	 	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
-			      	</div>-->
-				</div>
-		  	</div>
+          <!-- Modal body -->
+          <div class="modal-body" style="padding-top: 0;">
+            <table class="table table-striped text-center">
+              <thead>
+                <tr>
+                  <th>{{ trans('strings.position') }}</th>
+                  <th>{{ trans('strings.percentage') }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1º</td>
+                  <td>50%</td>
+                </tr>
+                <tr>
+                  <td>2º</td>
+                  <td>10%</td>
+                </tr>
+                <tr>
+                  <td>3º</td>
+                  <td>5%</td>
+                </tr>
+                <tr>
+                  <td>4º ao 10º</td>
+                  <td>1% ({{ trans('strings.each_one') }})</td>
+                </tr>
+                <tr>
+                  <td>11º ao 20º</td>
+                  <td>0.5% ({{ trans('strings.each_one') }})</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- <p>{{ trans('strings.each_one') }}</p> -->
+      <!-- Modal footer -->
+          <!--<div class="modal-footer">
+            <p>{{ trans('strings.each_one') }}</p>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> 
+          </div>-->
+        </div>
+      </div>
 		</div>
 	</div>
 </template>
@@ -336,8 +333,8 @@
 	.extras img {
 		position: absolute;
 		top: -15px;
-	    left: -5px;
-	    z-index: 4;
+    left: -5px;
+    z-index: 4;
 	}
 
 	input[type=radio] {

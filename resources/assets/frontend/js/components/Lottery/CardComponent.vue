@@ -6,11 +6,11 @@
 			</div>
 			<img class="header-image img-fluid" :alt="lottery.nome" :src="lottery.img_loteria">
 			<div class="descript">
-                <h2 class="ng-binding">
-                	{{ lottery.nome }}
-                </h2>
-                <p>Realize seu sonho por apenas 1 dólar</p>
-            </div>
+        <h2 class="ng-binding">
+          {{ lottery.nome }}
+        </h2>
+        <p>Realize seu sonho por apenas 1 dólar</p>
+      </div>
 		</header>
 		<div class="tickets-body">
 			<div class="amount">
@@ -47,55 +47,53 @@
 </template>
 
 <script>
-	export default {
-		props: ['lottery', 'index'],
-		data: function() {
-			return {				
-    			days: '',
-    			hours: '',
-    			minutes: '',
-    			seconds: ''
-			}
-		},
-		beforeDestroy() {
-			this.$eventBus.$off('handleJackpotTable');
-		},
-		methods: {
-			handleJackpotTable() {
-				this.$eventBus.$emit('handleJackpotTable', this.index);
-			},
-			setCountdown(date, timeOut) {
-				this.countdown(date, (d, h, m, s, distance) => {
-	            	this.days = d;
-					this.hours = h;
-					this.minutes = m;
-					this.seconds = s;
-					if(distance < 0) {
-						clearInterval(timeOut);
-					}
-	            });
-			},
-		},
-		mounted: function() {
-			var date = this.formatDate(this.lottery.sweepstakes[0].data_fim);
-					
-			var timeOut = setInterval(() => {
-				this.setCountdown(date, timeOut);
-			}, 1000);
-			this.setCountdown(date, timeOut);
-		},
-		components: {
-			
-		},
-		watch: {
+export default {
+  props: ['lottery', 'index'],
+  data: function() {
+    return {				
+        days: '',
+        hours: '',
+        minutes: '',
+        seconds: ''
+    }
+  },
+  beforeDestroy() {
+    this.$eventBus.$off('handleJackpotTable');
+  },
+  methods: {
+    handleJackpotTable() {
+      this.$eventBus.$emit('handleJackpotTable', this.index);
+    },
+    setCountdown(date, timeOut) {
+      this.countdown(date, (d, h, m, s, distance) => {
+              this.days = d;
+        this.hours = h;
+        this.minutes = m;
+        this.seconds = s;
+        if(distance < 0) {
+          clearInterval(timeOut);
+        }
+            });
+    },
+  },
+  mounted: function() {
+    var date = this.formatDate(this.lottery.sweepstakes[0].data_fim);
+        
+    var timeOut = setInterval(() => {
+      this.setCountdown(date, timeOut);
+    }, 1000);
+    this.setCountdown(date, timeOut);
+  },
+  components: {
+    
+  },
+  watch: {
 
-		}
-	}
+  }
+};
 </script>
 
 <style scoped>
-	
-
 	.tickets {
 		background: #efefef;
 	    border-radius: 5px;

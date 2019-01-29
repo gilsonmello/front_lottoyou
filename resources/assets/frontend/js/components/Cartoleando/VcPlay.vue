@@ -1,35 +1,35 @@
 <template>
-    <load v-if="loading.component == true"></load>
+  <load v-if="loading.component == true"></load>
 	<div class="container" v-else>
-        <div class="row">
-        	<div class="col-lg-12">
-        		<div class="sub-navigation">
-        			<router-link :to="{ name: 'cartoleando.play', params: { slug: item.package.slug } }" class="active show">
-	                    {{ trans('strings.play_on_the') }} {{ item.package.name }}
-	                </router-link>
-	                <router-link :to="{ name: 'cartoleando.leagues', params: { slug: item.package.slug } }" class="show" id="result-component">
-	                    {{ trans('strings.leagues') }}
-	               	</router-link>
-        		</div>
-        	</div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="sub-navigation">
+          <router-link :to="{ name: 'cartoleando.play', params: { slug: item.package.slug } }" class="active show">
+            {{ trans('strings.play_on_the') }} {{ item.package.name }}
+          </router-link>
+          <router-link :to="{ name: 'cartoleando.leagues', params: { slug: item.package.slug } }" class="show" id="result-component">
+            {{ trans('strings.leagues') }}
+          </router-link>
         </div>
+      </div>
+    </div>
 
-        <div class="row">
-            <div class="col-lg-12 col-12 col-md-12 col-sm-12">
-                <h1 class="page-header" style="border: none; margin: 0">
-                    {{ item.package.name }}<br>
-                    <span style="font-size: 20px;" v-if="auth == null || auth.cartoleando_team == null">
-                        Por favor, preencha o formulário para participar do cartoleando
-                    </span>
-                </h1>
-            </div>
-            <!-- <div class="col-lg-6 col-6 col-md-6 col-sm-6">
-                <router-link :to="{ name: 'cartoleando.index' }" class="btn btn-md btn-back btn-primary">
-                    <i class="fa fa-arrow-left"></i>
-                    {{ trans('strings.back') }}
-                </router-link>
-            </div> -->
-        </div>
+    <div class="row">
+      <div class="col-lg-12 col-12 col-md-12 col-sm-12">
+          <h1 class="page-header" style="border: none; margin: 0">
+            {{ item.package.name }}<br>
+            <span style="font-size: 20px;" v-if="auth == null || auth.cartoleando_team == null">
+              Por favor, preencha o formulário para participar do cartoleando
+            </span>
+          </h1>
+      </div>
+      <!-- <div class="col-lg-6 col-6 col-md-6 col-sm-6">
+          <router-link :to="{ name: 'cartoleando.index' }" class="btn btn-md btn-back btn-primary">
+              <i class="fa fa-arrow-left"></i>
+              {{ trans('strings.back') }}
+          </router-link>
+      </div> -->
+    </div>
 
         <!-- Carregamento -->
         <div class="row">
@@ -408,151 +408,151 @@ export default {
             });
         },
         setModalTeam () {
-            let vm = this;
-            let time = setInterval(function() {
-                vm.modal = $('.modal-show-team');
-                if(vm.modal.length > 0) {
-                    clearInterval(time);
-                }
-            });
+          let vm = this;
+          let time = setInterval(function() {
+            vm.modal = $('.modal-show-team');
+            if(vm.modal.length > 0) {
+              clearInterval(time);
+            }
+          });
         },
         setForm () {
-            let vm = this;
-            let time = setInterval(function() {
-                vm.form = $('#packages-purchase');
-                if(vm.form.length > 0) {
-                    clearInterval(time);
-                    vm.form.validate({
-                        rules: {
-                            name: {
-                                required: true,
-                            },
-                            cartoleiro: {
-                                required: true,
-                            },
-                            email: {
-                                required: true,
-                                email: true,
-                            },
-                        },
-                        messages: {
-                            name: {
-                                required: vm.trans('strings.field_required'),
-                            },
-                            cartoleiro: {
-                                required: vm.trans('strings.field_required'),
-                            },
-                            email: {
-                                required: vm.trans('strings.field_required'),
-                                email: vm.trans('validation.user.create.email.email'),
-                            },
-                        },
-                        highlight: function (input) {
-                            $(input).addClass('error');
-                            $(input).parents('.form-control').addClass('error');
-                        },
-                        unhighlight: function (input) {
-                            $(input).removeClass('error');
-                            $(input).parents('.form-control').removeClass('error');
-                        },
-                        errorPlacement: function (error, element) {
-                            $(element).parents('.input-group').append(error);
-                            $(element).parents('.form-group').append(error);
-                        }
-                    });
-                    vm.form.on('submit', function(e) {
-                        e.preventDefault();
-                    });
+          let vm = this;
+          let time = setInterval(function() {
+            vm.form = $('#packages-purchase');
+            if(vm.form.length > 0) {
+              clearInterval(time);
+              vm.form.validate({
+                rules: {
+                  name: {
+                    required: true,
+                  },
+                  cartoleiro: {
+                    required: true,
+                  },
+                  email: {
+                    required: true,
+                    email: true,
+                  }
+                },
+                messages: {
+                  name: {
+                    required: vm.trans('strings.field_required'),
+                  },
+                  cartoleiro: {
+                    required: vm.trans('strings.field_required'),
+                  },
+                  email: {
+                    required: vm.trans('strings.field_required'),
+                    email: vm.trans('validation.user.create.email.email'),
+                  }
+                },
+                highlight: function (input) {
+                  $(input).addClass('error');
+                  $(input).parents('.form-control').addClass('error');
+                },
+                unhighlight: function (input) {
+                  $(input).removeClass('error');
+                  $(input).parents('.form-control').removeClass('error');
+                },
+                errorPlacement: function (error, element) {
+                  $(element).parents('.input-group').append(error);
+                  $(element).parents('.form-group').append(error);
                 }
-            });
+              });
+              vm.form.on('submit', function(e) {
+                  e.preventDefault();
+              });
+            }
+          });
         },
         completePurchase (event) {
-            let completePurchaseRequest = axios.create();
+          let completePurchaseRequest = axios.create();
 
-            completePurchaseRequest.interceptors.request.use(config => {					
-                return config;
-            });
+          completePurchaseRequest.interceptors.request.use(config => {					
+            return config;
+          });
         },
         validate () {
 
         },
         addTeamRequest () {
-            let addTeamRequest = axios.create();
-            addTeamRequest.interceptors.request.use(config => {
+          let addTeamRequest = axios.create();
+          addTeamRequest.interceptors.request.use(config => {
+            return config;
+          });
+
+          addTeamRequest.post(routes.users.add_team, {
+            name: this.item.name,
+            email: this.item.email,
+            cartoleiro: this.item.cartoleiro,
+            slug: this.item.slug,
+          }).then(response => {
+            if(response.status === 200) {
+              this.$store.dispatch('setTeamUser', response.data);
+            }
+          }).catch((error) => {
+              
+          });
+        },
+        addToCart (el) {
+          if (this.auth != null && this.auth.cartoleando_team == null) {
+              this.addTeamRequest();
+          }
+          let vm = this;
+          let isvalid = vm.form.valid();
+          let hasPackage = false;
+          
+          //Verificando se o pacote já está no carrinho
+          this.purchase.items.forEach((element, i) => {
+            if (element.type == 'cartoleando') {
+              if (element.cartoleando.package.id == this.item.package.id) {
+                hasPackage = true;
+              }
+            }
+          });
+
+          //Se está válido e o usuário não possui o pacote no carrinho
+          if (isvalid && !hasPackage) {
+            let addCartoleandoRequest = axios.create();
+            addCartoleandoRequest.interceptors.request.use(config => {
+                this.loading.adding = true;
                 return config;
             });
 
-            addTeamRequest.post(routes.users.add_team, {
-                name: this.item.name,
-                email: this.item.email,
-                cartoleiro: this.item.cartoleiro,
-                slug: this.item.slug,
+            addCartoleandoRequest.post(routes.carts.add_cartoleandos, {
+              purchase: this.item,
+              hash: this.item.hash,
+              auth: this.auth,
             }).then(response => {
-                if(response.status === 200) {
-                    this.$store.dispatch('setTeamUser', response.data);
-                }
+              if(response.status === 200) {
+                this.loading.adding = false;    
+                this.$store.dispatch('setItemCartoleando', this.item);
+                this.$router.push({
+                    name: 'cart.index'
+                });
+              }
             }).catch((error) => {
-                
-            });
-        },
-        addToCart (el) {
-            if (this.auth != null && this.auth.cartoleando_team == null) {
-                this.addTeamRequest();
-            }
-            let vm = this;
-            let isvalid = vm.form.valid();
-            let hasPackage = false;
-            
-            //Verificando se o pacote já está no carrinho
-            this.purchase.items.forEach((element, i) => {
-                if (element.type == 'cartoleando') {
-                    if (element.cartoleando.package.id == this.item.package.id) {
-                        hasPackage = true;
-                    }
-                }
-            });
-
-            //Se está válido e o usuário não possui o pacote no carrinho
-            if (isvalid && !hasPackage) {
-                let addCartoleandoRequest = axios.create();
-                addCartoleandoRequest.interceptors.request.use(config => {
-                    this.loading.adding = true;
-                    return config;
-                });
-
-                addCartoleandoRequest.post(routes.carts.add_cartoleandos, {
-                    purchase: this.item,
-                    hash: this.item.hash,
-                    auth: this.auth,
-                }).then(response => {
-                    if(response.status === 200) {
-                        this.loading.adding = false;    
-                        this.$store.dispatch('setItemCartoleando', this.item);
-                        this.$router.push({
-                            name: 'cart.index'
-                        });
-                    }
-                }).catch((error) => {
-                    this.loading.adding = false;
-                    toastr.error('Erro ao adicionar item', 'Por favor tente novamente');
-                });                 
-            } else {
-                swal({
-                    title: 'O pacote '+ this.item.package.name +' já encontra-se no seu carrinho!',
-                    showCloseButton: true,
-                    imageUrl: '/imgs/logo.png',
-                    imageHeight: 50,
-                    imageAlt: 'Logo lottoyou',
-                    showConfirmButton: false,
-                    showCancelButton: false,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: this.trans('strings.yes'),
-                    cancelButtonText: this.trans('strings.cancel')
-                }).then((result) => {
-                
-                });
-            }        
+              this.loading.adding = false;
+              toastr.error('Erro ao adicionar item', 'Por favor tente novamente');
+            });                 
+          } else {
+              swal({
+                title: 'O pacote '+ this.item.package.name +' já encontra-se no seu carrinho!',
+                showCloseButton: true,
+                imageUrl: '/imgs/logo.png',
+                imageHeight: 50,
+                imageAlt: 'Logo lottoyou',
+                showConfirmButton: false,
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: this.trans('strings.yes'),
+                cancelButtonText: this.trans('strings.cancel')
+              }).then((result) => {
+              
+              });
+          }        
         },
         init () {
             if(this.$route.query.hash != undefined) {
@@ -610,43 +610,43 @@ export default {
         }
     },
     metaInfo () {
-        return {
-            title: this.item.package.name + ' | ' + this.trans('strings.lottoyou'),
-            meta: this.meta
-        }
+      return {
+        title: this.item.package.name + ' | ' + this.trans('strings.lottoyou'),
+        meta: this.meta
+      }
     },
     data () {
-        return {
-            form: null,
-            loading: {
-                signingIn: false,
-                component: true,
-                paying: false,
-                leagues: false,
-                adding: false,
-            },
-            leagues: [],
-            indexClicked: null,
-            meta: [],
-            awards: [],
-            step: 0,
-            item: {
-                hash: '',
-                package: {},
-                total: 0.00,
-                name: '',
-                slug: '',
-                email: '',
-                cartoleiro: '',
-                team: null,
-            }
-        } 
+      return {
+        form: null,
+        loading: {
+          signingIn: false,
+          component: true,
+          paying: false,
+          leagues: false,
+          adding: false
+        },
+        leagues: [],
+        indexClicked: null,
+        meta: [],
+        awards: [],
+        step: 0,
+        item: {
+          hash: '',
+          package: {},
+          total: 0.00,
+          name: '',
+          slug: '',
+          email: '',
+          cartoleiro: '',
+          team: null
+        }
+      };
     },
     mounted () {
-        this.init();
-        this.$eventBus.$on('signingIn', (value) => {
-            this.loading.signingIn = value;
-        });
+      this.init();
+      this.$eventBus.$on('signingIn', (value) => {
+        this.loading.signingIn = value;
+      });
     },
     beforeRouteUpdate (to, from, next) {
         next();

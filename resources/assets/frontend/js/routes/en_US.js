@@ -266,8 +266,8 @@ export default {
 				{   
 					path: 'cartoleando/:slug/leagues',
 					name: 'cartoleando.leagues', 
-					props: true,
-					component: () => import(`@c/Cartoleando/VcLeague.vue`)
+          props: true,
+          component: require('@c/Cartoleando/VcLeague.vue')
 				},
 			]
 		}
