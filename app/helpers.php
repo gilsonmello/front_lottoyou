@@ -254,28 +254,27 @@ if (!function_exists('format')) {
 			return "";
 		}
 		
-		if($locale != null && $locale != '') {
-			switch($locale) {
-				case 'pt_BR' && strpos($date, '/') : {
-					$date = format_without_mask_pt_br($date, '/');
-					break;
-				}
-				case 'es_ES' && strpos($date, '/'): {
-					$date = format_without_mask_pt_br($date, '/');
-					break;
-				}
-				case 'en_US' && strpos($date, '/'): {
-					$date = format_without_mask_pt_br($date, '/');
-					break;
-				}
-				default: {
-					//$date = format_without_mask_en_us($date, '/');
-					$date = format_without_mask_pt_br($date, '/');
-					break;
-				}
-			}
-		}
-		return Carbon\Carbon::parse($date)->format($format);		
+		switch($locale) {
+      case 'pt_BR' && strpos($date, '/') : {
+        $date = format_without_mask_pt_br($date, '/');
+        break;
+      }
+      case 'es_ES' && strpos($date, '/'): {
+        $date = format_without_mask_pt_br($date, '/');
+        break;
+      }
+      case 'en_US' && strpos($date, '/'): {
+        $date = format_without_mask_pt_br($date, '/');
+        break;
+      }
+      default: {
+        //$date = format_without_mask_en_us($date, '/');
+        $date = format_without_mask_pt_br($date, '/');
+        break;
+      }
+    }
+
+		return Carbon\Carbon::parse($date)->format($format);
 	}
 
 }
