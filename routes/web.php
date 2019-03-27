@@ -332,5 +332,5 @@ Route::get('/{param_1}/{param_2?}', function ($param_1 = null, $param_2 = null, 
 Route::get('/'.config('app.url_locale').'users/password_recovery/{hash}', 'UserController@passwordRecovery')
 	->name('frontend.users.password_recovery');
 	
-Route::get('/'.config('app.url_locale').'users/activate/{hash}', 'UserController@activate')
+Route::get('users/activate/{hash}', 'UserController@activate')
     ->name('frontend.users.activate');

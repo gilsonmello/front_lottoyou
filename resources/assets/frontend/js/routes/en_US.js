@@ -66,7 +66,7 @@ export default {
         },
         {
           path: "users/activate/:hash",
-          name: "users.activate",
+          name: "users.activate", 
           props: true,
           component: require(`@c/User/VcActivate.vue`)
         },
