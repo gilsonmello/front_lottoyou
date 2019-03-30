@@ -170,6 +170,10 @@ class BalanceRepository implements BalanceContract
             $balance->value -= $request->value;
             $balance->save();
 
+
+            $historicBalance->context_id = $agentWithdraw->id;
+            $historicBalance->save(); 
+
             DB::commit();
             return true;
         } catch (\Illuminate\Database\QueryException $e) {

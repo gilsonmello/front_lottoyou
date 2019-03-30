@@ -26,7 +26,7 @@ class OrderController extends Controller
 
         if (is_null($balanceOrder)) {
             $balanceOrder = new BalanceOrder;
-            $balanceOrder->owner_id = $request->owner_id;
+            $balanceOrder->owner_id = $request->user()->id;
             $balanceOrder->total = 0.00;
             $balanceOrder->sub_total = 0.00;
             $balanceOrder->status = 'In progress';

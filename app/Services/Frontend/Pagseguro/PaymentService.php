@@ -118,6 +118,9 @@ trait PaymentService
         }
 
         $pagseguroOrder->save();
+        
+        $historicBalance->context_id = $pagseguroOrder->id;
+        $historicBalance->save();
 
         $order->status_pagseguro = $dataXml->status;
         $order->status = $dataXml->status;

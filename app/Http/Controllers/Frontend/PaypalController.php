@@ -108,11 +108,16 @@ class PaypalController extends Controller
             $historicBalance->paypal_order_id = $paypayOrder->id;
             $historicBalance->type = 0;
             $historicBalance->devolution = 1;
-            $historicBalance->description = 'devolution paypal';
+            $historicBalance->description = 'Reembolso no valor de R$'. $request->payment_gross * -1;
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
             $historicBalance->amount = $request->payment_gross * -1;
+            $historicBalance->modality = 'devolution';
+            $historicBalance->context = 'paypal_orders';
+            $historicBalance->context_message = 'devolution.paypal';
+            $historicBalance->system = 0;
+            $historicBalance->context_id = $paypayOrder->id;
 
             $balance->value -= $request->payment_gross;
             $balance->value = $balance->value < 0 ? 0 : $balance->value;
@@ -131,11 +136,16 @@ class PaypalController extends Controller
             $historicBalance->paypal_order_id = $paypayOrder->id;
             $historicBalance->type = 1;
             $historicBalance->devolution = 0;
-            $historicBalance->description = 'deposit paypal';
+            $historicBalance->description = 'Valor de R$' . $request->payment_gross .' inserido na sua conta';
             $historicBalance->balance_id = $balance->id;
             $historicBalance->from = $balance->value;
             $historicBalance->owner_id = $balance->owner_id;
             $historicBalance->amount = $request->payment_gross;
+            $historicBalance->modality = 'deposit';
+            $historicBalance->context = 'paypal_orders';
+            $historicBalance->context_message = 'deposit.paypal';
+            $historicBalance->context_id = $paypayOrder->id;
+            $historicBalance->system = 1;
 
             $balance->value += $request->payment_gross;
 

@@ -41,6 +41,7 @@ class ScratchCardObserver
             $historicBalance->description .= '; Tema '.$theme->nome;
             $historicBalance->context = 'raspadinhas';
             $historicBalance->context_message = 'award.scratch_card';
+            $historicBalance->context_id = $scratchCard->id;
             $historicBalance->type = 1;
             $historicBalance->system = 0;
             $historicBalance->amount = $scratchCard->premio;
