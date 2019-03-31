@@ -1,7 +1,6 @@
-
-window._ = require('lodash');
-window.Popper = require('popper.js').default;
-window.qs = require('qs');
+window._ = require("lodash");
+window.Popper = require("popper.js").default;
+window.qs = require("qs");
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -10,34 +9,46 @@ window.qs = require('qs');
  */
 
 try {
-    window.$ = window.jQuery = require('jquery');
+  window.$ = window.jQuery = require("jquery");
 
-    require('bootstrap');
+  require("bootstrap");
 
-    window.moment = require('moment');
-    
-    require('./plugins/AppWscratchPad.js');
+  window.moment = require("moment");
 
-    require('jquery.inputmask/dist/jquery.inputmask.bundle.js');
+  require("./plugins/AppWscratchPad.js");
 
-    require('bootstrap-datepicker');
-    require('bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css');
-    window.toastr = require('toastr');
-    require('jquery-maskmoney/dist/jquery.maskMoney.min.js');
-    require('toastr/build/toastr.min.css');
+  require("jquery.inputmask/dist/jquery.inputmask.bundle.js");
 
-    require('tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js');
-    require('tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css');
+  require("bootstrap-datepicker");
+  require("bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css");
+  window.toastr = require("toastr");
+  require("jquery-maskmoney/dist/jquery.maskMoney.min.js");
+  require("toastr/build/toastr.min.css");
 
+  require("tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js");
+  require("tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css");
 
-    require('jquery-validation');
-    //require('jquery-maskmoney/dist/jquery.maskMoney.min.js');
- 
-    // CommonJS
-    window.swal = require('sweetalert2');
+  require("jquery-validation");
+  require("jquery-validation/dist/additional-methods.js");
 
-    window.VMasker = require('vanilla-masker');
+  $.validator.addMethod(
+    "filesize",
+    function(value, element, arg) {
+      var minsize = 1000; // min 1kb
+      if (element.files[0].size > minsize && element.files[0].size <= arg) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    "Arquivo muito grande"
+  );
+  //require('jquery-maskmoney/dist/jquery.maskMoney.min.js');
 
+  // CommonJS
+  window.swal = require("sweetalert2");
+
+  window.VMasker = require("vanilla-masker");
 } catch (e) {}
 
 /**
@@ -46,9 +57,9 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = require('axios');
+window.axios = require("axios");
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -59,24 +70,30 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.axios.defaults.headers.common["X-CSRF-TOKEN"] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  console.error(
+    "CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token"
+  );
 }
 
 function getParamsUrl() {
-    var s1 = location.search.substring(1, location.search.length).split('&'),
-        r = {}, s2, i;
-    for (i = 0; i < s1.length; i += 1) {
-        s2 = s1[i].split('=');
-        r[decodeURIComponent(s2[0]).toLowerCase()] = decodeURIComponent(s2[1]);
-    }
-    return r;
-};
+  var s1 = location.search.substring(1, location.search.length).split("&"),
+    r = {},
+    s2,
+    i;
+  for (i = 0; i < s1.length; i += 1) {
+    s2 = s1[i].split("=");
+    r[decodeURIComponent(s2[0]).toLowerCase()] = decodeURIComponent(s2[1]);
+  }
+  return r;
+}
 
-$('<img/>').attr('src', '/img/load.gif').on('load', function() {
+$("<img/>")
+  .attr("src", "/img/load.gif")
+  .on("load", function() {
     $(this).remove();
-});
+  });
 
 /*window.addEventListener('storage', function(e) {
     if((event.key == "authUser") || (e.storageArea.length == 0 || e.newValue == null)) {
@@ -88,8 +105,6 @@ $('<img/>').attr('src', '/img/load.gif').on('load', function() {
 });*/
 
 //window.QueryString = getParamsUrl();
-
-
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
