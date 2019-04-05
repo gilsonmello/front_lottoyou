@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
+        '/oauth/token',
         '/api/paypal/feedback',
         '/api/pagseguro/feedback',
         'https://www.sandbox.paypal.com',
