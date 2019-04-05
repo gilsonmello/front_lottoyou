@@ -28,6 +28,7 @@ class VerifyCsrfToken extends Middleware
      */
     public function handle($request, Closure $next)
     {        
+        dd($request->headers->all());
         if (
             (
                 $request->header('origin') == 'http://lottoyou-adm.com' 
