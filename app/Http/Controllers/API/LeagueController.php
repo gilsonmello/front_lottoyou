@@ -35,8 +35,9 @@ class LeagueController extends Controller
             ->orderBy($typeOrder, 'DESC')
             ->get();
 
+
         foreach($teams as $key => $team) {
-            $body = $this->getTeamFromCartola($team->cartoleandoTeam->slug);
+            $body = $this->getTeamFromCartola($team->cartoleandoTeam->time->slug);
             $team->team = $body;
         }
 
@@ -103,7 +104,7 @@ class LeagueController extends Controller
         $leaCup = $league->cup;
         $teams = $leaCup->teams;
         foreach($teams as $key => $team) {
-            $body = $this->getTeamFromCartola($team->cartoleandoTeam->slug);
+            $body = $this->getTeamFromCartola($team->cartoleandoTeam->time->slug);
             $team->team = $body;
         }
 
