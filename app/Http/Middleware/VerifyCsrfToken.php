@@ -13,7 +13,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        '/oauth/token',
         '/api/paypal/feedback',
         '/api/pagseguro/feedback',
         'https://www.sandbox.paypal.com',
@@ -29,10 +28,20 @@ class VerifyCsrfToken extends Middleware
      */
     public function handle($request, Closure $next)
     {        
-        if ($request->header('origin') == 'http://lottoyou-adm.com' 
-            || $request->header('origin') == 'https://www.lottoyou.bet'
-            || $request->header('origin') == 'https://lottoyou.bet'
-            || $request->header('origin') == 'http://lottoyou.bet') {
+        dd($request->headers->all());
+        if (
+            (
+                $request->header('origin') == 'http://lottoyou-adm.com' 
+                || $request->header('origin') == 'https://www.lottoyou.bet'
+                || $request->header('origin') == 'https://lottoyou.bet'
+                || $request->header('origin') == 'http://lottoyou.bet'
+            )
+            || 
+            (
+                $request->header('host') == 'lottoyou-adm.com' 
+                || $request->header('host') == 'lottoyou.bet'
+            )
+        ) {
             // skip CSRF check
             return $next($request);
         }
