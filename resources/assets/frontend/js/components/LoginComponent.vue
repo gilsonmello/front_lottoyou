@@ -157,7 +157,7 @@
 							short_name: responseF.short_name,
 						})).then((response) => {
 							if(response.status === 200) {
-								Cookies.set('access_token', JSON.stringify(response.data.refresh_token), { domain: domain });
+								Cookies.set('access_token', JSON.stringify(response.data.access_token), { domain: domain });
 								Cookies.set('refresh_token', JSON.stringify(response.data.refresh_token), { domain: domain });
 								this.refreshAuth();
 								$('.modal-login').modal('hide');
