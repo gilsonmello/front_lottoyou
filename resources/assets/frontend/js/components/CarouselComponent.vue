@@ -3,17 +3,17 @@
     <div class="row">
       <div class="col-12">
         <div class="row">
-          <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
             <router-link :to="{ name: 'cartoleando.index' }">
-              <img style="width: 100%;" class="img-fluid" src="/img/card_1.jpg">
+              <img style="width: 100%;" class="img-fluid" src="/img/card_1.jpeg">
             </router-link>
           </div>
-          <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
             <router-link :to="{ name: 'lotteries.play', params: {slug: 'easy-money'} }">
-              <img style="width: 100%;" class="img-fluid" src="/img/card_2.jpg">
+              <img style="width: 100%;" class="img-fluid" src="/img/card_2.jpeg">
             </router-link>
           </div>
-          <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
             <router-link :to="{ name: 'soccer_expert.index' }">
               <img style="width: 100%;" class="img-fluid" src="/img/card_3.jpg">
             </router-link>
@@ -75,50 +75,50 @@
               <span class="fa fa-angle-right" style="color: black"></span>
               <span class="sr-only">Next</span>
           </a>
-      </div> -->
+      </div>-->
     </div>
     <!-- <div class="row" id="conteudo" style="">
         <div class="col-lg-12" style="min-height: 50px; background-color: #fff;">
               
         </div>
-    </div> -->
+    </div>-->
   </div>
 </template>
 
 <script>
 export default {
-  created () {
-    // 
+  created() {
+    //
   },
-  mounted () {
-    $('.carousel').carousel({
+  mounted() {
+    $(".carousel").carousel({
       interval: 5000
     });
   },
-  activated () {
-    // 
+  activated() {
+    //
   }
 };
 </script>
 
 <style scoped>
-	#prev-slide-content{
-    left: 0; 
-    right: auto;
-    width: 30px !important;
-  }
+#prev-slide-content {
+  left: 0;
+  right: auto;
+  width: 30px !important;
+}
 
-  #next-slide-content{
-    left: auto; 
-    right: 0;
-    width: 30px !important;
-  }
-  .slide{
-    width: 85%;
-    margin: 0 auto;
-  }
+#next-slide-content {
+  left: auto;
+  right: 0;
+  width: 30px !important;
+}
+.slide {
+  width: 85%;
+  margin: 0 auto;
+}
 
-  .fa {
-    font-size: 60px !important;
-  }
+.fa {
+  font-size: 60px !important;
+}
 </style>

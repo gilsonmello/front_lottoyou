@@ -1,9 +1,8 @@
-let mix = require('laravel-mix');
+let mix = require("laravel-mix");
 /*
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const PrerenderSpaPlugin = require('prerender-spa-plugin'); */
-const path = require('path');
-
+const path = require("path");
 
 /*mix.webpackConfig({
     plugins: [
@@ -23,7 +22,6 @@ const path = require('path');
     ]
 });*/
 
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -36,19 +34,31 @@ const path = require('path');
  */
 
 mix.webpackConfig({
-    /* entry: {
+  /* entry: {
       vendor: ['jquery', 'bootstrap', 'moment', 'sweetalert2', 'vue', 'vuex', 'axios']
     }, */
-    resolve: {
-        extensions: ['.js', '.vue', '.json'],
-        alias: {
-            '@': path.resolve(__dirname, 'resources/assets/frontend/js'),
-            '@c': path.resolve(__dirname, 'resources/assets/frontend/js/components')
-        },
-    },
+  resolve: {
+    extensions: [".js", ".vue", ".json"],
+    alias: {
+      "@": path.resolve(__dirname, "resources/assets/frontend/js"),
+      "@c": path.resolve(__dirname, "resources/assets/frontend/js/components")
+    }
+  }
 });
 
-mix.js('resources/assets/frontend/js/app.js', 'public/frontend/js')
-    .extract(['jquery', 'bootstrap', 'moment', 'sweetalert2', 'vue', 'vuex', 'axios'])
-    .sass('resources/assets/frontend/sass/app.scss', 'public/frontend/css')
-    .version();
+mix
+  .js("resources/assets/frontend/js/app.js", "public/frontend/js")
+  .extract([
+    "jquery",
+    "bootstrap",
+    "moment",
+    "sweetalert2",
+    "vue",
+    "vuex",
+    "axios"
+  ])
+  .sass("resources/assets/frontend/sass/app.scss", "public/frontend/css");
+
+if (mix.inProduction()) {
+  mix.version();
+}
