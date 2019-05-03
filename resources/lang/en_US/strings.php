@@ -88,6 +88,7 @@ return [
     'deposit' => 'Depósito',
     'to_deposit' => 'Depositar',
     'libertadores_now' => 'Libertadores agora',
+    'america_cup' => 'Copa América',
     'awaiting payment' => 'Aguardando Pagamento',
     'in analysis' => 'Em análise',
     'pay' => 'Paga',

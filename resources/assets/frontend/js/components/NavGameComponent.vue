@@ -43,11 +43,13 @@
           <a>&nbsp</a>
         </li>
 
-        <!-- <router-link class="world_cup_now" tag="li" :to="{ name: 'soccer_expert.play', params: {slug: 'special'} }">
-					<a class="nav-link">
-						{{ trans('strings.libertadores_now') }}
-					</a>
-        </router-link>-->
+        <router-link
+          class="world_cup_now"
+          tag="li"
+          :to="{ name: 'soccer_expert.play', params: {slug: 'special'} }"
+        >
+          <a class="nav-link">{{ trans('strings.america_cup') }}</a>
+        </router-link>
         <!-- <li class="nav-item">
 	          		<router-link class="nav-link" :to="{ name: 'lotteries.index' }">
 	          			{{ trans('strings.lotteries') }}</span>
