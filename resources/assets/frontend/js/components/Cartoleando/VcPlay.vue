@@ -189,7 +189,7 @@
                 @click="submitForm($event)"
                 class="btn btn-xl btn-primary"
               >{{ trans('strings.to_confirm') }}</button>
-              
+
               <button
                 @click="validatePurchase($event)"
                 type="button"
@@ -283,7 +283,7 @@
             </div>
             <div class="row">
               <div class="col-12 vcenter-end">
-                <h4>
+                <h4 class="text-center">
                   {{ item.team.time.nome }}
                   <br>
                   <small>{{ item.team.time.nome_cartola }}</small>
@@ -436,7 +436,8 @@ export default {
       let url = routes.cartola.find_team_by_slug;
       showTeamRequest
         .post(url, {
-          slug: this.item.slug
+          slug: this.item.slug,
+          cartoleiro: this.item.cartoleiro
         })
         .then(response => {
           this.item.team = response.data;
