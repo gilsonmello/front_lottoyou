@@ -19,7 +19,7 @@
             <img
               style="max-width: 62px;"
               class="img-fluid"
-              :src="stepKey.homeTeam.time.url_escudo_svg"
+              :src="stepKey.homeTeam.time.url_escudo_svg != '' ? stepKey.homeTeam.time.url_escudo_svg : 'https://cartolafc.globo.com/dist/4.6.2/img/placeholder_perfil.png'"
             >
           </div>
         </div>
@@ -48,7 +48,7 @@
               v-if="stepKey.outTeam"
               style="max-width: 62px;"
               class="img-fluid"
-              :src="stepKey.outTeam.time.url_escudo_svg"
+              :src="stepKey.outTeam.time.url_escudo_svg != '' ? stepKey.outTeam.time.url_escudo_svg : 'https://cartolafc.globo.com/dist/4.6.2/img/placeholder_perfil.png'"
             >
           </div>
         </div>

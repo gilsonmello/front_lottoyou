@@ -13,7 +13,7 @@
           <div class="card-header" style="padding: 0;">
             <div
               class="help-image"
-              style="background-image: url(https://cartolafc.globo.com/dist/3.18.14/img/tempo.svg)"
+              style="background-image: url(https://cartolafc.globo.com/dist/4.6.2/img/tempo.svg)"
             ></div>
           </div>
           <div class="card-body">
@@ -29,7 +29,7 @@
           <div class="card-header" style="padding: 0">
             <div
               class="help-image"
-              style="background-image: url(https://cartolafc.globo.com/dist/3.18.14/img/disputa.svg)"
+              style="background-image: url(https://cartolafc.globo.com/dist/4.6.2/img/disputa.svg)"
             ></div>
           </div>
           <div class="card-body">
@@ -45,7 +45,7 @@
           <div class="card-header" style="padding: 0">
             <div
               class="help-image"
-              style="background-image: url(https://cartolafc.globo.com/dist/3.18.14/img/trofeu.svg)"
+              style="background-image: url(https://cartolafc.globo.com/dist/4.6.2/img/trofeu.svg)"
             ></div>
           </div>
           <div class="card-body">
@@ -73,7 +73,7 @@
               class
               alt="confirmado na liga"
               title="confirmado na liga"
-              src="https://cartolafc.globo.com/dist/3.18.13/img/icone_aprovado.svg"
+              src="https://cartolafc.globo.com/dist/4.6.2/img/icone_aprovado.svg"
             >
           </div>
           <div class="col-lg-3">
@@ -81,13 +81,13 @@
               <img
                 class="shield"
                 v-if="team.team"
-                :src="team.team.time.url_escudo_svg"
+                :src="team.team.time.url_escudo_svg != '' ? team.team.time.url_escudo_svg : 'https://cartolafc.globo.com/dist/4.6.2/img/placeholder_perfil.png'"
                 :alt="team.team.time.nome"
               >
               <img
                 class="photo"
                 v-if="team.team"
-                :src="team.team.time.foto_perfil"
+                :src="team.team.time.foto_perfil != '' ? team.team.time.foto_perfil : 'https://cartolafc.globo.com/dist/4.6.2/img/placeholder_perfil.png'"
                 :alt="team.team.time.nome"
               >
             </div>
