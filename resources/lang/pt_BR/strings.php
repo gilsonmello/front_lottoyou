@@ -36,6 +36,7 @@ return [
     'hits' => 'Acertos',
     'modality' => 'Modalidade',
     'results' => 'Resultados',
+    'cartoleando' => 'Cartoleando',
     'not_found_results' => 'Resultado não encontrado',
     'unfinished_sweepstake' => 'Sorteio não realizado',
     'remaining_time_for_next_sweepstake' => 'Tempo restante para próximo sorteio',

@@ -5,7 +5,7 @@
       <div class="col-lg-12 col-12 col-md-12 col-sm-12">
         <h1 style="display: inline">{{ trans('strings.cartoleando') }}</h1>
         <router-link
-          :to="{ name: 'how_to_play_easy_money' }"
+          :to="{ name: 'how_to_play_cartoleando' }"
           class="btn btn-md btn-primary pull-right"
         >{{ trans('strings.how_to_play') }} {{ trans('strings.cartoleando') }}</router-link>
       </div>

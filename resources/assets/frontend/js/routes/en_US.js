@@ -53,6 +53,12 @@ export default {
           component: require(`@c/VcHowToPlayEasyMoney.vue`)
         },
         {
+          path: "how_to_play_cartoleando",
+          name: "how_to_play_cartoleando",
+          props: true,
+          component: require(`@c/VcHowToPlayCartoleando.vue`)
+        },
+        {
           path: "login",
           name: "login",
           props: true,
