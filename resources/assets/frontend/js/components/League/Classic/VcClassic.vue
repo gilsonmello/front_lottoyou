@@ -44,7 +44,7 @@
       v-for="(team, index) of teams"
       :key="index"
     >
-      <div class="col-4 col-sm-4 col-md-4 col-lg-8 vcenter" v-if="team.team.time">
+      <div class="col-4 col-sm-4 col-md-4 col-lg-8 vcenter" v-if="team.team && team.team.time">
         <div class="cartola-shield">
           <img
             class="shield"
