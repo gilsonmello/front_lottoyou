@@ -363,11 +363,14 @@ Vue.prototype.convertSlug = function(str) {
   str = str.toLowerCase();
 
   // remove accents, swap ñ for n, etc
-  var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;.";
-  var to = "aaaaaeeeeeiiiiooooouuuunc-------";
-  for (var i = 0, l = from.length; i < l; i++) {
-    str = str.replace(from.charAt(i), to.charAt(i));
+  var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;";
+  var to =   "aaaaaeeeeeiiiiooooouuuunc------";
+  for (var i = 0; i < from.length; i++) {    
+    str = str.replace(new RegExp(from[i], "g"), to.charAt(i));
   }
+
+  // Remove os pontos
+  str = str.replace(/\./, "-");
 
   str = str
     .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
