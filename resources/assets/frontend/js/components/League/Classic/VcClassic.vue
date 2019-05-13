@@ -123,7 +123,10 @@ export default {
       let aux = null;
       for (let i = 0; i < len; i++) {
         for (let j = i + 1; j < len; j++) {
-          if (this.teams[i][newValue] < this.teams[j][newValue]) {
+          if (
+            parseFloat(this.teams[i][newValue]).toFixed(2) <
+            parseFloat(this.teams[j][newValue]).toFixed(2)
+          ) {
             aux = this.teams[j];
             this.teams[j] = this.teams[i];
             this.teams[i] = aux;
