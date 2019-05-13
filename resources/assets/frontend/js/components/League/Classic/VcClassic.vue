@@ -124,9 +124,9 @@ export default {
       for (let i = 0; i < len; i++) {
         for (let j = i + 1; j < len; j++) {
           if (this.teams[i][newValue] < this.teams[j][newValue]) {
-            aux = this.teams[i];
-            this.teams[i] = this.teams[j];
-            this.teams[j] = aux;
+            aux = this.teams[j];
+            this.teams[j] = this.teams[i];
+            this.teams[i] = aux;
           }
         }
       }
