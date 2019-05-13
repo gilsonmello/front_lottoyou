@@ -68,7 +68,7 @@
       </div>
       <div
         class="col-4 col-sm-4 col-md-4 col-lg-2 vcenter-end"
-      >{{ team[rankingOrder] == null ? '-' : team[rankingOrder] }}</div>
+      >{{ team[rankingOrder] == null ? '-' : parseFloat(team[rankingOrder]).toFixed(2) }}</div>
       <div
         class="col-4 col-sm-4 col-md-4 col-lg-2 vcenter-end"
       >{{ team.position == null ? '-' : team.position }}</div>
@@ -85,6 +85,7 @@
 <script>
 import { hostAPI } from "../../../api_routes.js";
 import VcPodium from "./VcPodium";
+import _ from "lodash";
 export default {
   methods: {
     getTeams() {
@@ -120,19 +121,18 @@ export default {
   watch: {
     rankingOrder(newValue, oldValue) {
       let len = this.teams.length;
+      let teams = _.cloneDeep(this.teams);
       let aux = null;
       for (let i = 0; i < len; i++) {
         for (let j = i + 1; j < len; j++) {
-          if (
-            parseFloat(this.teams[i][newValue]).toFixed(2) <
-            parseFloat(this.teams[j][newValue]).toFixed(2)
-          ) {
-            aux = this.teams[j];
-            this.teams[j] = this.teams[i];
-            this.teams[i] = aux;
+          if (parseFloat(teams[i][newValue]) < parseFloat(teams[j][newValue])) {
+            aux = teams[i];
+            teams[i] = teams[j];
+            teams[j] = aux;
           }
         }
       }
+      this.teams = teams;
     }
   },
   props: ["league", "slug"],

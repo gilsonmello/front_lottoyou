@@ -16,6 +16,19 @@ class LeaClassicTeam extends Model
     //const DELETED_AT = 'deleted_at';
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'p_c' => 'double',
+        'p_m' => 'double',
+        'p_p' => 'double',
+        'p_r' => 'double',
+        'p_t' => 'double',
+    ];
+
+    /**
      * @var bool
      */
     public $timestamps = true;
