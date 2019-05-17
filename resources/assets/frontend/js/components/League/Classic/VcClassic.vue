@@ -4,7 +4,7 @@
     <br>
     <vc-podium v-if="league.classic.show_podium" :league="league"/>
 
-    <div v-if="teams.length > 0" class="row">
+    <!-- <div v-if="teams.length > 0" class="row">
       <div class="col-12">
         <h1 style="display: inline-block">Ranking</h1>
         <select
@@ -19,9 +19,9 @@
           <option :value="'p_p'">por patrimônio</option>
         </select>
       </div>
-    </div>
+    </div>-->
 
-    <br>
+    <!-- <br> -->
     <div
       v-if="teams.length > 0"
       class="row row-team no-margin"

@@ -569,6 +569,7 @@ export default {
         .catch(error => {});
     },
     addToCart(el) {
+      this.loading.paying = !this.loading.paying;
       if (this.auth != null && this.auth.cartoleando_team == null) {
         this.addTeamRequest();
       }
@@ -613,6 +614,7 @@ export default {
             toastr.error("Erro ao adicionar item", "Por favor tente novamente");
           });
       } else {
+        this.loading.paying = !this.loading.paying;
         swal({
           title:
             "O pacote " +

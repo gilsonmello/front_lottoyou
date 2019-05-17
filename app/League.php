@@ -61,7 +61,8 @@ class League extends Model
      * @param $string
      * @return mixed
      */
-    public function scopeFindBySlug($query, $string) {
+    public function scopeFindBySlug($query, $string) 
+    {
         //Pegando a liga
         $league = $query->select([
                 '*',
@@ -78,10 +79,10 @@ class League extends Model
             ->get()
             ->first();
         
-        switch($league->context) {
+        switch ($league->context) {
             case 'classic': {
                 $league->classic = $league->classic;
-                if($league->classic->show_podium == 1) {
+                if ($league->classic->winner_id) {
                     $league->classic->winnerTeam = $this->getTeamFromCartola($league->classic->winner->slug);
                     $league->classic->loserTeam  = $this->getTeamFromCartola($league->classic->loser->slug);
                     $league->classic->thirdTeam  = $this->getTeamFromCartola($league->classic->third->slug);
@@ -91,7 +92,7 @@ class League extends Model
             }
             case 'cup': {
                 $league->cup = $league->cup;
-                if($league->cup->winner_id) {
+                if ($league->cup->winner_id) {
                     $league->cup->winnerTeam = $this->getTeamFromCartola($league->cup->winner->slug);
                     $league->cup->loserTeam  = $this->getTeamFromCartola($league->cup->loser->slug);
                     $league->cup->thirdTeam  = $this->getTeamFromCartola($league->cup->third->slug);
